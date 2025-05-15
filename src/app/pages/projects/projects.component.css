@@ -1,0 +1,21 @@
+/* Overlay text ẩn mặc định */
+.hover-overlay {
+  position: relative;
+}
+.hover-overlay .overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #22d3ee; /* cyan-400 */
+  font-weight: 600;
+  font-size: 1.125rem; /* text-lg */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+/* Khi hover lên container, hiện text */
+.hover-overlay:hover .overlay-text {
+  opacity: 1;
+}

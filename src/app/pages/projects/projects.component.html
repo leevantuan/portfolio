@@ -1,0 +1,47 @@
+<div class="w-full sm:w-[700px] md:w-[800px] lg:w-[1200px] mx-auto ps-2 pe-2">
+     <div class="py-6">
+          <h2 class="text-2xl sm:text-3xl font-semibold text-cyan-400 mb-6">{{this.UIResource.project_project}}</h2>
+
+          <div
+               class="bg-gray-800 rounded-xl p-6 sm:p-8 flex flex-col md:flex-row gap-6 cursor-pointer hover:bg-gray-700 transition-transform duration-200">
+
+               <!-- Column 1: Icon (flex 3) -->
+               <div class="flex-[3] flex justify-center items-center">
+                    <img src="https://res.cloudinary.com/dgzupk0ec/image/upload/v1747320896/book_scvetv.png"
+                         alt="Project Icon" class="w-32 h-32 sm:w-60 sm:h-60 object-contain rounded" />
+               </div>
+
+               <!-- Column 2: Name, Skills, and Description (flex 7) -->
+               <div class="flex-[7] grid grid-cols-1 gap-4">
+                    <div class="flex flex-col justify-center items-center md:items-start text-center md:text-left">
+                         <h3 class="text-xl sm:text-2xl font-semibold text-white mb-2">
+                              {{this.UIResource.project_nameProject}}
+                         </h3>
+                         <div class="flex flex-wrap justify-center md:justify-start gap-2">
+                              <span
+                                   class="bg-green-500/20 text-green-400 text-[14px] font-medium px-3 py-1 rounded-full">{{this.UIResource.project_skills[0]}}</span>
+                              <span
+                                   class="bg-pink-500/20 text-pink-400 text-[14px] font-medium px-3 py-1 rounded-full">{{this.UIResource.project_skills[1]}}</span>
+                              <span
+                                   class="bg-blue-500/20 text-blue-400 text-[14px] font-medium px-3 py-1 rounded-full">{{this.UIResource.project_skills[2]}}</span>
+                              <span
+                                   class="bg-purple-500/20 text-purple-400 text-[14px] font-medium px-3 py-1 rounded-full">{{this.UIResource.project_skills[3]}}</span>
+                              <span
+                                   class="bg-yellow-500/20 text-yellow-400 text-[14px] font-medium px-3 py-1 rounded-full">{{this.UIResource.project_skills[4]}}</span>
+                              <span
+                                   class="bg-orange-500/20 text-orange-400 text-[14px] font-medium px-3 py-1 rounded-full">{{this.UIResource.project_skills[5]}}</span>
+                              <span
+                                   class="bg-violet-500/20 text-violet-400 text-[14px] font-medium px-3 py-1 rounded-full">{{this.UIResource.project_skills[6]}}</span>
+                              <span
+                                   class="bg-cyan-500/20 text-cyan-400 text-[14px] font-medium px-3 py-1 rounded-full">{{this.UIResource.project_skills[7]}}</span>
+                              <span
+                                   class="bg-sky-500/20 text-sky-400 text-[14px] font-medium px-3 py-1 rounded-full">{{this.UIResource.project_skills[8]}}</span>
+                         </div>
+                    </div>
+                    <div class="text-gray-400 leading-relaxed text-sm sm:text-base">
+                         {{this.UIResource.project_description}}
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>

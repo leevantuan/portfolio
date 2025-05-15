@@ -1,0 +1,18 @@
+<!-- src/app/header/header.component.html -->
+<header class="pt-6 pb-6 flex justify-between items-center w-full">
+     <div class="text-xl font-semibold text-cyan-400">
+          <span><i class="fa-regular fa-hand-spock"></i></span>
+          LeVanTuan
+     </div>
+     <div class="space-x-4 text-sm">
+          <select [(ngModel)]="lang" (change)="logLanguage($event)"
+               class="text-cyan-400 border border-cyan-400 px-4 py-2 rounded bg-transparent">
+               <option value="ENG">ENG</option>
+               <option value="VN">VN</option>
+          </select>
+          <button (click)="openLink()"
+               class="transition-transform duration-200 text-cyan-400 hover:bg-cyan-500 hover:text-[#0f172a] bg-transparent border border-cyan-400 px-4 py-2 rounded cursor-pointer">
+               {{this.UIResource.resume}}
+          </button>
+     </div>
+</header>
