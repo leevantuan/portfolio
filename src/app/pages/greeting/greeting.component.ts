@@ -17,4 +17,11 @@ export class GreetingComponent {
   ngOnChanges(): void {
     this.UIResource = this.lang === 'VN' ? UIResourceVN : UIResourceENG;
   }
+
+  openLink() {
+    window.open(
+      'https://static.topcv.vn/topcv-cv-uploads/ee20e7fa9aa338dcaeba5eda4e51f7de.pdf#toolbar=0&navpanes=0&scrollbar=0',
+      'resume'
+    );
+  }
 }

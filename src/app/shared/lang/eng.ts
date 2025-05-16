@@ -26,6 +26,7 @@ export const UIResourceENG = {
   project_project: 'Personal Project',
   project_skills: [
     `ASP.Net Core 8`,
+    `Multi Tenancy`,
     `Clean Architecture`,
     `Postgresql`,
     `Redis`,
@@ -37,6 +38,25 @@ export const UIResourceENG = {
   ],
   project_description: ` Built a scalable backend with ASP.NET Core Web API using Clean Architecture and multi-tenant PostgreSQL. Integrated Redis caching, SignalR for real-time chat/booking, JWT authentication, Docker deployment on Ubuntu, and CI/CD pipelines for automated workflows.`,
   project_nameProject: ' Badminton System Manager ',
+
+  // Projects 2
+  project_skills_2: [
+    `Microservice`,
+    `Clean Architecture`,
+    `Distributed Systems`,
+    `ASP.Net Core 8`,
+    `Postgresql`,
+    `MongoDB`,
+    `Redis`,
+    `RabbitMQ`,
+    `SignalR`,
+    `Ubuntu`,
+    `Docker`,
+    `CI / CD`,
+  ],
+  project_description_2: ` Built a scalable backend using ASP.NET Core Web API with Microservices and Clean Architecture, leveraging PostgreSQL and MongoDB. Applied distributed system principles with CQRS, gRPC, RESTful APIs, and Message Queues. Integrated Redis (caching), SignalR (real-time chat), and JWT (authentication). Deployed with Docker on Ubuntu and automated workflows using CI/CD pipelines.`,
+  project_nameProject_2: ' Coffee Shop System Manager ',
+  project_statusProject_2: ' Currently Developed ',
 
   // Contact
   contact_contact: ` Contact `,

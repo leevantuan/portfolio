@@ -24,12 +24,16 @@
                     <img src="https://res.cloudinary.com/dgzupk0ec/image/upload/v1747292024/gmail_732200_lkwnhf.png"
                          alt="Gmail Logo" class="w-10 h-10 transition-transform duration-200 hover:translate-y-1" />
                </a>
+               <button (click)="openLink()"
+                    class="transition-transform duration-200 text-cyan-400 hover:bg-cyan-500 hover:text-[#0f172a] bg-transparent border border-cyan-400 px-4 py-2 rounded cursor-pointer ms-4">
+                    {{this.UIResource.resume}}
+               </button>
           </div>
      </div>
 
      <!-- Column 2: Avatar Image (flex 3) -->
      <div class="flex-[3] flex justify-center items-center md:mt-0">
-          <img src="https://res.cloudinary.com/dgzupk0ec/image/upload/v1747292775/avt_notbackground_kovy54.png"
-               alt="lxartz Avatar" class="rounded-full w-60 h-80  mt-[-32px]" />
+          <img src="https://res.cloudinary.com/dgzupk0ec/image/upload/v1747395457/avatar_dzfpbq.jpg" alt="lxartz Avatar"
+               class="rounded-lg w-60 h-80 border-4 border-cyan-700" />
      </div>
 </div>

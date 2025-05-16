@@ -26,6 +26,7 @@ export const UIResourceVN = {
   project_project: 'Dự Án Cá Nhân',
   project_skills: [
     `ASP.Net Core 8`,
+    `Multi Tenancy`,
     `Clean Architecture`,
     `PostgreSQL`,
     `Redis`,
@@ -37,6 +38,25 @@ export const UIResourceVN = {
   ],
   project_description: ` Xây dựng hệ thống backend có khả năng mở rộng với ASP.NET Core Web API sử dụng Clean Architecture và PostgreSQL đa tenant. Tích hợp Redis caching, SignalR cho chat/đặt sân thời gian thực, xác thực JWT, triển khai trên Ubuntu bằng Docker và thiết lập CI/CD để tự động hoá quy trình.`,
   project_nameProject: ' Hệ Thống Quản Lý Sân Cầu Lông ',
+
+  // Projects 2
+  project_skills_2: [
+    `Microservice`,
+    `Clean Architecture`,
+    `Distributed Systems`,
+    `ASP.Net Core 8`,
+    `Postgresql`,
+    `MongoDB`,
+    `Redis`,
+    `RabbitMQ`,
+    `SignalR`,
+    `Ubuntu`,
+    `Docker`,
+    `CI / CD`,
+  ],
+  project_description_2: ` Xây dựng backend mở rộng với ASP.NET Core Web API theo mô hình Microservices kết hợp Clean Architecture, sử dụng PostgreSQL và MongoDB. Áp dụng kiến trúc phân tán với CQRS, gRPC, RESTful API và Message Queue. Tích hợp Redis (caching), SignalR (chat thời gian thực), JWT (xác thực). Triển khai bằng Docker trên Ubuntu và tự động hóa quy trình với CI/CD pipelines.`,
+  project_nameProject_2: ' Hệ Thống Quản Lý Quán Coffee ',
+  project_statusProject_2: ' Đang triển khai ',
 
   // Contact
   contact_contact: ` Liên Hệ `,
