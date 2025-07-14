@@ -2,15 +2,15 @@ export const UIResourceENG = {
   resume: 'Resume',
   // Header Component
   header_title: ` Hi there, I'm `,
-  header_description: ` I graduated with a degree in Information Technology Engineering and have 1 year of experience as a Backend Developer working with ASP.NET Core and PostgreSQL. I have strong skills in building scalable backend systems, optimizing performance, ensuring security, and hands-on experience with real-time features as well as DevOps tools such as Docker and CI/CD.`,
+  header_description: ` I hold a degree in Information Technology Engineering and have 1 year of hands-on experience as a Backend Developer specializing in ASP.NET Core and PostgreSQL. I have a solid track record of building scalable and high-performance backend systems with a strong focus on security and reliability. My experience includes working with microservices architecture, multi-tenancy, message queues, caching, and real-time features. I’m also proficient with DevOps tools such as Docker and CI/CD, enabling efficient development and deployment workflows.`,
   header_name: ' Le Van Tuan ',
   header_position: `a Backend Developer `,
 
   // Tech Skill
-  tech_skill: 'Tech Skills',
+  tech_skill: 'Technical Skills',
 
   // Experience
-  experience_experience: 'Experience',
+  experience_experience: 'Experiences',
   experience_skills: [
     `ASP.Net Core 8`,
     `SQL Server`,
@@ -23,7 +23,7 @@ export const UIResourceENG = {
   experience_positionCompany: ' Backend Developer',
 
   // Projects
-  project_project: 'Personal Project',
+  project_project: 'Personal Projects',
   project_skills: [
     `ASP.Net Core 8`,
     `Multi Tenancy`,
@@ -36,7 +36,7 @@ export const UIResourceENG = {
     `Docker`,
     `CI / CD`,
   ],
-  project_description: ` Built a scalable backend with ASP.NET Core Web API using Clean Architecture and multi-tenant PostgreSQL. Integrated Redis caching, SignalR for real-time chat/booking, JWT authentication, Docker deployment on Ubuntu, and CI/CD pipelines for automated workflows.`,
+  project_description: ` Built a scalable backend with ASP.NET Core Web API using Clean Architecture and multi-tenant PostgreSQL. Integrated Redis caching, SignalR for real-time chat and booking, JWT authentication, and online payment gateway. Deployed with Docker on Ubuntu and automated workflows using CI/CD pipelines.`,
   project_nameProject: ' Badminton System Manager ',
 
   // Projects 2

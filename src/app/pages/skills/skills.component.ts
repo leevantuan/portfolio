@@ -80,5 +80,9 @@ export class SkillsComponent {
       name: 'Ubuntu',
       icon: 'https://res.cloudinary.com/dgzupk0ec/image/upload/v1747303324/ubuntu_888879_fxa9pv.png',
     },
+    {
+      name: 'Git',
+      icon: 'https://res.cloudinary.com/dgzupk0ec/image/upload/v1747403389/Git_yuh12a.png',
+    },
   ];
 }
