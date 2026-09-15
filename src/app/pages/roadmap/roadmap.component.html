@@ -1,0 +1,203 @@
+<section id="roadmap" class="py-14 border-b border-[var(--border)]">
+  <!-- Section Kicker & Title -->
+  <div class="mb-10">
+    <div class="flex items-center gap-3 font-mono-tech text-[11px] font-bold tracking-wider text-[var(--accent)] uppercase mb-2">
+      <span>01 / {{ UIResource.roadmap.kicker }}</span>
+      <span class="w-8 h-[2px] bg-[var(--accent)]"></span>
+    </div>
+    <h2 class="font-mono-tech text-2xl sm:text-3xl md:text-4xl text-[var(--text-1)] font-bold mb-3 tracking-tight">
+      {{ UIResource.roadmap.title }}
+    </h2>
+    <p class="text-[var(--text-2)] text-sm sm:text-base max-w-3xl leading-relaxed">
+      {{ UIResource.roadmap.desc }}
+    </p>
+  </div>
+
+  <!-- 6-Level Stepped Pipeline & Circuit Grid -->
+  <div class="relative mb-14">
+    <!-- Center Line for Desktop -->
+    <div class="hidden md:block absolute left-1/2 top-4 bottom-4 -translate-x-1/2 w-[2px] bg-[var(--border)] overflow-hidden">
+      <!-- Animated Signal Flowing Down -->
+      <div class="w-full h-24 bg-gradient-to-b from-transparent via-[var(--accent)] to-transparent animate-circuit-flow"></div>
+    </div>
+
+    <div class="flex flex-col gap-8 md:gap-12 relative">
+      <div 
+        *ngFor="let lvl of UIResource.roadmap.levels; let i = index" 
+        class="flex flex-col md:flex-row items-center w-full"
+        [ngClass]="{
+          'md:flex-row-reverse': i % 2 !== 0
+        }"
+      >
+        <!-- Level Content Card (Half Width on Desktop) -->
+        <div class="w-full md:w-[calc(50%-36px)]">
+          <div 
+            class="p-5 sm:p-6 rounded-md border transition-all duration-300 relative group"
+            [ngClass]="{
+              'bg-[var(--surface-2)] border-[var(--border)] hover:border-[var(--text-2)]': lvl.status === 'completed',
+              'bg-[var(--surface)] border-[var(--accent)] shadow-[0_0_20px_var(--accent-glow)] ring-1 ring-[var(--accent)]': lvl.status === 'current',
+              'bg-[var(--surface-3)] border-[var(--border)] border-dashed hover:border-[var(--info)]': lvl.status === 'target'
+            }"
+          >
+            <!-- Top Status Row -->
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="font-mono-tech text-xs font-bold px-2 py-0.5 rounded-sm bg-[var(--surface-3)] border border-[var(--border)] text-[var(--text-1)]">
+                  LEVEL {{ lvl.level }}
+                </span>
+                <span 
+                  *ngIf="lvl.status === 'current'" 
+                  class="font-mono-tech text-[10px] font-bold px-2 py-0.5 rounded-full bg-[var(--accent)] text-[#0B0B0B] flex items-center gap-1"
+                >
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#0B0B0B] animate-ping"></span>
+                  {{ UIResource.roadmap.current_badge }}
+                </span>
+                <span 
+                  *ngIf="lvl.status === 'completed'" 
+                  class="font-mono-tech text-[10px] text-[var(--accent)] border border-[var(--accent)]/30 px-2 py-0.5 rounded-sm"
+                >
+                  ✓ VERIFIED
+                </span>
+                <span 
+                  *ngIf="lvl.status === 'target'" 
+                  class="font-mono-tech text-[10px] text-[var(--info)] border border-[var(--info)] px-2 py-0.5 rounded-sm uppercase tracking-wider"
+                >
+                  ● {{ lvl.badge }}
+                </span>
+              </div>
+              <span class="font-mono-tech text-[11px] text-[var(--text-3)] tracking-wide">
+                {{ lvl.badge }}
+              </span>
+            </div>
+
+            <!-- Title & Subtitle -->
+            <h3 class="font-mono-tech text-lg sm:text-xl text-[var(--text-1)] font-bold mb-2 group-hover:text-[var(--accent)] transition-colors">
+              {{ lvl.title }}
+            </h3>
+            <p class="text-[var(--text-2)] text-xs sm:text-sm mb-4 leading-relaxed">
+              {{ lvl.desc }}
+            </p>
+
+            <!-- Certified Badges if available -->
+            <div *ngIf="lvl.certs && lvl.certs.length > 0" class="mb-3 p-2.5 rounded bg-[var(--bg)] border border-[var(--border)]">
+              <div class="font-mono-tech text-[10px] text-[var(--accent)] uppercase tracking-wider mb-1.5 flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>
+                CHỨNG CHỈ BẢO CHỨNG / CREDENTIALS:
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                <span 
+                  *ngFor="let cert of lvl.certs" 
+                  class="font-mono-tech text-[10px] font-semibold text-[var(--text-1)] bg-[var(--surface-2)] border border-[var(--border)] px-2 py-0.5 rounded-sm"
+                >
+                  {{ cert }}
+                </span>
+              </div>
+            </div>
+
+            <!-- Skill Tags -->
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <span 
+                *ngFor="let skill of lvl.skills" 
+                class="font-mono-tech text-[11px] px-2 py-0.5 rounded-sm bg-[var(--bg)] border border-[var(--border-soft)] text-[var(--text-2)] hover:text-[var(--text-1)] transition-colors"
+              >
+                {{ skill }}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Center Node Connector Indicator (Desktop) -->
+        <div class="hidden md:flex items-center justify-center w-18 flex-shrink-0 z-10">
+          <div 
+            class="w-10 h-10 rounded-full flex items-center justify-center font-mono-tech text-xs font-bold transition-all duration-300"
+            [ngClass]="{
+              'bg-[var(--surface-2)] border-2 border-[var(--border)] text-[var(--text-2)]': lvl.status === 'completed',
+              'bg-[var(--accent)] text-[#0B0B0B] border-2 border-[var(--accent)] shadow-[0_0_16px_var(--accent)] current-radar': lvl.status === 'current',
+              'bg-[var(--surface-3)] text-[var(--info)] border-2 border-dashed border-[var(--info)]': lvl.status === 'target'
+            }"
+          >
+            {{ lvl.level }}
+          </div>
+        </div>
+
+        <!-- Empty Spacer for Opposite Side on Desktop -->
+        <div class="hidden md:block w-[calc(50%-36px)]"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Real-time Grafana Observability Dashboard Widget -->
+  <div class="rounded-md border border-[var(--border)] bg-[var(--surface)] p-5 sm:p-6 relative overflow-hidden">
+    <!-- Corner Decor Blueprint Label -->
+    <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-4 border-b border-[var(--border)]">
+      <div class="flex items-center gap-2 font-mono-tech text-xs font-bold tracking-wider text-[var(--text-2)]">
+        <span class="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse"></span>
+        <span>{{ UIResource.observability.kicker }}</span>
+      </div>
+      <div class="font-mono-tech text-[11px] text-[var(--accent)] border border-[var(--accent)]/30 px-2.5 py-0.5 rounded-sm bg-[var(--accent)]/5">
+        ● LIVE TELEMETRY
+      </div>
+    </div>
+
+    <!-- 4 Stats Cards -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+      <div class="p-3 rounded bg-[var(--bg)] border border-[var(--border)]">
+        <div class="font-mono-tech text-xs text-[var(--text-3)] mb-1 uppercase tracking-wider">
+          {{ UIResource.observability.uptime_label }}
+        </div>
+        <div class="font-mono-tech text-xl sm:text-2xl font-bold text-[var(--accent)]">
+          {{ UIResource.observability.uptime_val }}
+        </div>
+      </div>
+
+      <div class="p-3 rounded bg-[var(--bg)] border border-[var(--border)]">
+        <div class="font-mono-tech text-xs text-[var(--text-3)] mb-1 uppercase tracking-wider">
+          {{ UIResource.observability.latency_label }}
+        </div>
+        <div class="font-mono-tech text-xl sm:text-2xl font-bold text-[var(--text-1)]">
+          {{ UIResource.observability.latency_val }}
+        </div>
+      </div>
+
+      <div class="p-3 rounded bg-[var(--bg)] border border-[var(--border)]">
+        <div class="font-mono-tech text-xs text-[var(--text-3)] mb-1 uppercase tracking-wider">
+          {{ UIResource.observability.reqs_label }}
+        </div>
+        <div class="font-mono-tech text-xl sm:text-2xl font-bold text-[var(--info)]">
+          {{ UIResource.observability.reqs_val }}
+        </div>
+      </div>
+
+      <div class="p-3 rounded bg-[var(--bg)] border border-[var(--border)]">
+        <div class="font-mono-tech text-xs text-[var(--text-3)] mb-1 uppercase tracking-wider">
+          {{ UIResource.observability.exp_label }}
+        </div>
+        <div class="font-mono-tech text-xl sm:text-2xl font-bold text-[var(--accent)]">
+          {{ UIResource.observability.exp_val }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Animated Grafana Histogram Bar Chart -->
+    <div class="pt-2">
+      <div class="flex items-center justify-between text-[10px] font-mono-tech text-[var(--text-3)] mb-2">
+        <span>CLUSTER THROUGHPUT SPECTRUM (30 SECONDS WINDOW)</span>
+        <span>PEAK: 4.8K REQ/S</span>
+      </div>
+      <div class="flex items-end gap-1.5 h-16 sm:h-20 w-full p-2 bg-[var(--bg)] rounded border border-[var(--border)]">
+        <div 
+          *ngFor="let bar of telemetryBars; let idx = index" 
+          class="flex-1 rounded-t-sm grafana-bar"
+          [ngClass]="{
+            'bg-[var(--accent)]': idx % 3 === 0,
+            'bg-[var(--info)]': idx % 3 === 1,
+            'bg-[var(--text-2)]': idx % 3 === 2
+          }"
+          [style.height.%]="bar"
+          [style.opacity]="0.4 + (bar / 100) * 0.6"
+          [title]="'Sample ' + idx + ': ' + bar + '% capacity'"
+        ></div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,18 +1,76 @@
-<!-- src/app/header/header.component.html -->
-<header class="pt-6 pb-6 flex justify-between items-center w-full">
-     <div class="text-xl font-semibold text-cyan-400">
-          <span><i class="fa-regular fa-hand-spock"></i></span>
-          LeTuan
-     </div>
-     <div class="space-x-4 text-sm">
-          <select [(ngModel)]="lang" (change)="logLanguage($event)"
-               class="text-cyan-400 border border-cyan-400 px-4 py-2 rounded bg-transparent">
-               <option value="ENG">ENG</option>
-               <option value="VN">VN</option>
-          </select>
-          <button (click)="openLink()"
-               class="transition-transform duration-200 text-cyan-400 hover:bg-cyan-500 hover:text-[#0f172a] bg-transparent border border-cyan-400 px-4 py-2 rounded cursor-pointer">
-               {{this.UIResource.resume}}
-          </button>
-     </div>
+<header class="py-3 border-b border-[var(--border)] w-full sticky top-0 bg-[var(--bg)]/90 backdrop-blur-md z-40">
+  <div class="flex items-center justify-between gap-4">
+    <!-- Brand Name with Online Beacon -->
+    <a href="#" class="flex items-center gap-2.5 no-underline group">
+      <span class="relative flex h-2.5 w-2.5">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--accent)]"></span>
+      </span>
+      <div class="flex flex-col justify-center">
+        <div class="font-mono-tech text-sm font-extrabold tracking-tight text-[var(--text-1)] group-hover:text-[var(--accent)] transition-colors">
+          Le Van Tuan
+        </div>
+        <div class="font-mono-tech text-[10px] text-[var(--text-3)] font-semibold uppercase tracking-wider hidden sm:block">
+          IT SYSTEM &amp; NETWORK ENGINEER
+        </div>
+      </div>
+    </a>
+
+    <!-- Middle Tech Tabs (Image Layout) -->
+    <nav class="hidden lg:flex items-center gap-3 font-mono-tech text-xs tracking-wider">
+      <a href="#" class="px-2.5 py-1 rounded bg-[var(--surface-2)] border border-[var(--border)] text-[var(--text-1)] font-bold no-underline flex items-center gap-1.5 shadow-xs">
+        <span class="text-[var(--accent)]">[</span>01. Topology<span class="text-[var(--accent)]">]</span>
+      </a>
+      <a href="#skills" class="px-2 py-1 text-[var(--text-2)] hover:text-[var(--accent-text)] transition-colors no-underline">
+        [ 02. Skills Matrix ]
+      </a>
+      <a href="#roadmap" class="px-2 py-1 text-[var(--text-2)] hover:text-[var(--accent-text)] transition-colors no-underline">
+        [ 03. Roadmap &amp; Telemetry ]
+      </a>
+      <a href="#credentials" class="px-2 py-1 text-[var(--text-2)] hover:text-[var(--accent-text)] transition-colors no-underline">
+        [ 04. Credentials ]
+      </a>
+      <a href="#projects" class="px-2 py-1 text-[var(--text-2)] hover:text-[var(--accent-text)] transition-colors no-underline">
+        [ 05. Projects ]
+      </a>
+      <a href="#contact" class="px-2 py-1 text-[var(--text-2)] hover:text-[var(--accent-text)] transition-colors no-underline">
+        [ 06. Contact ]
+      </a>
+    </nav>
+
+    <!-- Controls: Theme Toggle, Language Switcher, Action Button -->
+    <div class="flex items-center gap-2 sm:gap-3">
+      <!-- Theme Toggle (07A Light / 07B Dark) -->
+      <button 
+        (click)="toggleTheme()" 
+        class="h-8 px-2.5 rounded-sm border border-[var(--border)] bg-[var(--surface-2)] hover:border-[var(--accent)] font-mono-tech text-xs text-[var(--text-1)] flex items-center gap-1.5 transition-all cursor-pointer shadow-xs"
+        [title]="currentTheme === 'light' ? 'Switch to Dark Console (07B Dark)' : 'Switch to Light Blueprint (07A Light)'"
+      >
+        <span class="text-xs">{{ currentTheme === 'light' ? '☀️' : '🌙' }}</span>
+        <span class="text-[11px] font-bold hidden sm:inline">{{ currentTheme === 'light' ? 'LIGHT' : 'DARK' }}</span>
+      </button>
+
+      <!-- Language Selector -->
+      <div class="relative">
+        <select 
+          [ngModel]="lang" 
+          (ngModelChange)="onLangSelect($event)"
+          class="h-8 px-2 rounded-sm border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-1)] font-mono-tech text-xs cursor-pointer focus:outline-none focus:border-[var(--accent)] shadow-xs"
+        >
+          <option value="VI">VN</option>
+          <option value="ENG">EN</option>
+          <option value="ZH">ZH</option>
+        </select>
+      </div>
+
+      <!-- Action Button: LET'S CONNECT / RESUME -->
+      <button 
+        (click)="openResume()"
+        class="h-8 px-3.5 rounded-sm font-mono-tech text-xs font-bold uppercase tracking-wider bg-[var(--accent)] text-[#0B0B0B] hover:brightness-105 border border-[var(--accent)] transition-all flex items-center gap-1.5 cursor-pointer shadow-xs"
+      >
+        <span>LET'S CONNECT</span>
+        <span>→</span>
+      </button>
+    </div>
+  </div>
 </header>

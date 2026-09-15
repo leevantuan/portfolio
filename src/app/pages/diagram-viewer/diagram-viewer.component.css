@@ -1,0 +1,16 @@
+/* Diagram Viewer Modal Styles */
+.blueprint-grid {
+  background-size: 24px 24px;
+  background-image: 
+    linear-gradient(to right, rgba(126, 217, 87, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(126, 217, 87, 0.05) 1px, transparent 1px);
+}
+
+.blueprint-node {
+  transition: all 0.2s ease;
+}
+
+.blueprint-node:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+}

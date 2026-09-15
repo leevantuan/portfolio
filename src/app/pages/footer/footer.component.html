@@ -1,7 +1,26 @@
-<hr class="border-gray-700 my-4" />
-<footer class="text-center text-gray-500 text-sm py-4">
-     © 2025 Le Van Tuan. All rights reserved. |
-     <a href="mailto:levantuan.work@gmail.com" class="hover:text-cyan-400">{{this.UIResource.email}}</a> |
-     <a href="https://github.com/leevantuan" class="hover:text-cyan-400">GitHub</a> |
-     <a href="https://www.facebook.com/levantuan0202" class="hover:text-cyan-400">Facebook</a>
+<footer class="py-8 text-center border-t border-[var(--border)] mt-8">
+  <div class="flex flex-col sm:flex-row items-center justify-between gap-4 font-mono-tech text-xs text-[var(--text-3)]">
+    <div class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-[var(--accent)]"></span>
+      <span>{{ UIResource.footer }}</span>
+    </div>
+
+    <div class="flex items-center gap-4 text-xs">
+      <a href="mailto:levantuan.work@gmail.com" class="hover:text-[var(--accent)] text-[var(--text-2)] no-underline">
+        Email
+      </a>
+      <span>·</span>
+      <a href="https://github.com/leevantuan" target="_blank" class="hover:text-[var(--accent)] text-[var(--text-2)] no-underline">
+        GitHub
+      </a>
+      <span>·</span>
+      <a href="https://www.linkedin.com/in/letuaan/" target="_blank" class="hover:text-[var(--accent)] text-[var(--text-2)] no-underline">
+        LinkedIn
+      </a>
+      <span>·</span>
+      <a href="#roadmap" class="text-[var(--accent)] hover:underline no-underline">
+        ↑ Top
+      </a>
+    </div>
+  </div>
 </footer>

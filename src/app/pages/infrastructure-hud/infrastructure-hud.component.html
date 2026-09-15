@@ -1,0 +1,319 @@
+<!-- Floating Corner Infrastructure HUD (Image 2 Exact High-Density Dotted Matrix) -->
+<div 
+  class="hud-panel fixed bottom-3 right-3 sm:bottom-4 sm:right-4 z-40 rounded-xl border border-[var(--border)] bg-[var(--surface)]/95 backdrop-blur-md shadow-2xl transition-all duration-300 select-none overflow-hidden w-[340px] max-w-[92vw]"
+  [class.hud-collapsed]="isMinimized"
+>
+  <!-- HUD Header with Technical Notches (//) & Legend -->
+  <div class="flex items-center justify-between px-3 py-2 border-b border-[var(--border)] bg-[var(--surface-2)]">
+    <div class="flex items-center gap-1.5 font-mono-tech text-[10.5px] font-extrabold tracking-wider text-[var(--text-1)]">
+      <span class="text-[var(--text-3)] font-normal">//</span>
+      <span>GLOBAL INFRASTRUCTURE</span>
+    </div>
+    
+    <div class="flex items-center gap-2">
+      <!-- Image 2 Legend (Online 24 / Warning 1 / Offline 0) -->
+      <div class="flex items-center gap-2 font-mono-tech text-[9px]">
+        <div class="flex items-center gap-1">
+          <span class="w-2 h-2 rounded-full bg-[#22c55e]"></span>
+          <span class="text-[var(--text-3)] text-[8px]">Online</span>
+          <span class="font-bold text-[var(--text-1)]">24</span>
+        </div>
+        <div class="flex items-center gap-1">
+          <span class="w-2 h-2 rounded-full bg-[#f59e0b]"></span>
+          <span class="text-[var(--text-3)] text-[8px]">Warning</span>
+          <span class="font-bold text-[var(--text-1)]">1</span>
+        </div>
+        <div class="flex items-center gap-1">
+          <span class="w-2 h-2 rounded-full bg-[#ef4444]"></span>
+          <span class="text-[var(--text-3)] text-[8px]">Offline</span>
+          <span class="font-bold text-[var(--text-1)]">0</span>
+        </div>
+      </div>
+
+      <!-- Minimize Button -->
+      <button 
+        (click)="toggleMinimize()"
+        class="w-5 h-5 flex items-center justify-center font-mono-tech text-[10px] text-[var(--text-3)] hover:text-[var(--text-1)] rounded cursor-pointer transition-colors"
+        [title]="isMinimized ? 'Expand Panel' : 'Minimize Panel'"
+      >
+        <span>{{ isMinimized ? '▢' : '—' }}</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- HUD Body (Visible when not minimized) -->
+  <div *ngIf="!isMinimized" class="p-2.5">
+    <!-- SVG Map Container with Accurate High-Density Dotted Matrix World Map -->
+    <div class="relative w-full aspect-[16/10] bg-[var(--bg)] rounded-lg border border-[var(--border)] overflow-hidden">
+      <svg class="w-full h-full" viewBox="0 0 380 230" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="hudBeaconGreen" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#22c55e" stop-opacity="1" />
+            <stop offset="60%" stop-color="#22c55e" stop-opacity="0.4" />
+            <stop offset="100%" stop-color="#22c55e" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+
+        <!-- Coordinate Crosshairs (+) in Map Corners -->
+        <g stroke="var(--text-3)" stroke-width="0.8" class="opacity-50">
+          <path d="M 20 25 L 20 35 M 15 30 L 25 30" />
+          <path d="M 20 185 L 20 195 M 15 190 L 25 190" />
+          <path d="M 360 25 L 360 35 M 355 30 L 365 30" />
+          <path d="M 360 185 L 360 195 M 355 190 L 365 190" />
+        </g>
+
+        <!-- Left Technical Annotation -->
+        <g font-family="'IBM Plex Mono', monospace" font-size="5.5" font-weight="600" fill="var(--text-3)" letter-spacing="0.5">
+          <text x="14" y="145">CONNECTING</text>
+          <text x="14" y="153">PEOPLE</text>
+          <text x="14" y="161">SYSTEMS</text>
+          <text x="14" y="169">OPPORTUNITIES</text>
+          <line x1="14" y1="174" x2="22" y2="174" stroke="var(--text-3)" stroke-width="0.8" />
+        </g>
+
+        <!-- Right Technical Annotation -->
+        <g font-family="'IBM Plex Mono', monospace" font-size="5.5" font-weight="600" fill="var(--text-3)" letter-spacing="0.5" text-anchor="end">
+          <text x="366" y="153">LOW LATENCY</text>
+          <text x="366" y="161">HIGH AVAILABILITY</text>
+          <text x="366" y="169">GLOBAL SCALE</text>
+        </g>
+
+        <!-- ======================================================== -->
+        <!-- HIGH-DENSITY DOTTED MATRIX WORLD MAP (Exact Halftone GIS) -->
+        <!-- ======================================================== -->
+        <g class="world-dot-matrix" fill="#94a3b8" fill-opacity="0.75">
+          <!-- North America (Alaska, Canada, USA, Mexico) -->
+          <!-- Row 1-4: Alaska & Northern Canada -->
+          <circle cx="28" cy="38" r="1.1" /><circle cx="34" cy="38" r="1.1" /><circle cx="40" cy="35" r="1.1" /><circle cx="46" cy="34" r="1.1" /><circle cx="52" cy="34" r="1.1" /><circle cx="58" cy="36" r="1.1" /><circle cx="64" cy="38" r="1.1" /><circle cx="70" cy="38" r="1.1" /><circle cx="76" cy="35" r="1.1" /><circle cx="82" cy="32" r="1.1" /><circle cx="88" cy="30" r="1.1" /><circle cx="94" cy="32" r="1.1" />
+          <circle cx="24" cy="44" r="1.1" /><circle cx="30" cy="44" r="1.1" /><circle cx="36" cy="42" r="1.1" /><circle cx="42" cy="40" r="1.1" /><circle cx="48" cy="40" r="1.1" /><circle cx="54" cy="42" r="1.1" /><circle cx="60" cy="44" r="1.1" /><circle cx="66" cy="44" r="1.1" /><circle cx="72" cy="42" r="1.1" /><circle cx="78" cy="40" r="1.1" /><circle cx="84" cy="38" r="1.1" /><circle cx="90" cy="38" r="1.1" /><circle cx="96" cy="40" r="1.1" /><circle cx="102" cy="42" r="1.1" />
+          <!-- Row 5-8: Canada & Northern US -->
+          <circle cx="32" cy="50" r="1.1" /><circle cx="38" cy="48" r="1.1" /><circle cx="44" cy="48" r="1.1" /><circle cx="50" cy="48" r="1.1" /><circle cx="56" cy="48" r="1.1" /><circle cx="62" cy="50" r="1.1" /><circle cx="68" cy="50" r="1.1" /><circle cx="74" cy="48" r="1.1" /><circle cx="80" cy="46" r="1.1" /><circle cx="86" cy="46" r="1.1" /><circle cx="92" cy="46" r="1.1" /><circle cx="98" cy="48" r="1.1" /><circle cx="104" cy="50" r="1.1" /><circle cx="110" cy="52" r="1.1" />
+          <!-- Row 9-12: Continental US (Oregon to East Coast) -->
+          <circle cx="36" cy="56" r="1.1" /><circle cx="42" cy="56" r="1.1" /><circle cx="48" cy="54" r="1.1" /><circle cx="54" cy="54" r="1.1" /><circle cx="60" cy="56" r="1.1" /><circle cx="66" cy="56" r="1.1" /><circle cx="72" cy="56" r="1.1" /><circle cx="78" cy="54" r="1.1" /><circle cx="84" cy="52" r="1.1" /><circle cx="90" cy="52" r="1.1" /><circle cx="96" cy="54" r="1.1" /><circle cx="102" cy="56" r="1.1" /><circle cx="108" cy="58" r="1.1" /><circle cx="114" cy="60" r="1.1" />
+          <circle cx="40" cy="62" r="1.1" /><circle cx="46" cy="62" r="1.1" /><circle cx="52" cy="60" r="1.1" /><circle cx="58" cy="60" r="1.1" /><circle cx="64" cy="62" r="1.1" /><circle cx="70" cy="62" r="1.1" /><circle cx="76" cy="62" r="1.1" /><circle cx="82" cy="60" r="1.1" /><circle cx="88" cy="58" r="1.1" /><circle cx="94" cy="58" r="1.1" /><circle cx="100" cy="60" r="1.1" /><circle cx="106" cy="62" r="1.1" /><circle cx="112" cy="64" r="1.1" />
+          <circle cx="44" cy="68" r="1.1" /><circle cx="50" cy="68" r="1.1" /><circle cx="56" cy="66" r="1.1" /><circle cx="62" cy="66" r="1.1" /><circle cx="68" cy="68" r="1.1" /><circle cx="74" cy="68" r="1.1" /><circle cx="80" cy="68" r="1.1" /><circle cx="86" cy="66" r="1.1" /><circle cx="92" cy="64" r="1.1" /><circle cx="98" cy="64" r="1.1" /><circle cx="104" cy="66" r="1.1" />
+          <!-- Row 13-16: Southern US & Mexico -->
+          <circle cx="48" cy="74" r="1.1" /><circle cx="54" cy="74" r="1.1" /><circle cx="60" cy="72" r="1.1" /><circle cx="66" cy="72" r="1.1" /><circle cx="72" cy="74" r="1.1" /><circle cx="78" cy="74" r="1.1" /><circle cx="84" cy="72" r="1.1" /><circle cx="90" cy="70" r="1.1" />
+          <circle cx="52" cy="80" r="1.1" /><circle cx="58" cy="80" r="1.1" /><circle cx="64" cy="78" r="1.1" /><circle cx="70" cy="78" r="1.1" /><circle cx="76" cy="80" r="1.1" /><circle cx="82" cy="78" r="1.1" />
+          <circle cx="58" cy="86" r="1.1" /><circle cx="64" cy="86" r="1.1" /><circle cx="70" cy="84" r="1.1" /><circle cx="76" cy="84" r="1.1" />
+          <circle cx="62" cy="92" r="1.1" /><circle cx="68" cy="92" r="1.1" /><circle cx="74" cy="90" r="1.1" /><circle cx="80" cy="92" r="1.1" />
+
+          <!-- South America -->
+          <circle cx="86" cy="104" r="1.1" /><circle cx="92" cy="104" r="1.1" /><circle cx="98" cy="102" r="1.1" /><circle cx="104" cy="102" r="1.1" />
+          <circle cx="88" cy="110" r="1.1" /><circle cx="94" cy="110" r="1.1" /><circle cx="100" cy="108" r="1.1" /><circle cx="106" cy="108" r="1.1" /><circle cx="112" cy="110" r="1.1" /><circle cx="118" cy="112" r="1.1" />
+          <circle cx="90" cy="116" r="1.1" /><circle cx="96" cy="116" r="1.1" /><circle cx="102" cy="114" r="1.1" /><circle cx="108" cy="114" r="1.1" /><circle cx="114" cy="116" r="1.1" /><circle cx="120" cy="118" r="1.1" /><circle cx="126" cy="120" r="1.1" />
+          <circle cx="92" cy="122" r="1.1" /><circle cx="98" cy="122" r="1.1" /><circle cx="104" cy="120" r="1.1" /><circle cx="110" cy="120" r="1.1" /><circle cx="116" cy="122" r="1.1" /><circle cx="122" cy="124" r="1.1" /><circle cx="128" cy="124" r="1.1" />
+          <circle cx="94" cy="128" r="1.1" /><circle cx="100" cy="128" r="1.1" /><circle cx="106" cy="126" r="1.1" /><circle cx="112" cy="126" r="1.1" /><circle cx="118" cy="128" r="1.1" /><circle cx="124" cy="130" r="1.1" />
+          <circle cx="96" cy="134" r="1.1" /><circle cx="102" cy="134" r="1.1" /><circle cx="108" cy="132" r="1.1" /><circle cx="114" cy="132" r="1.1" /><circle cx="120" cy="134" r="1.1" />
+          <circle cx="98" cy="140" r="1.1" /><circle cx="104" cy="140" r="1.1" /><circle cx="110" cy="138" r="1.1" /><circle cx="116" cy="138" r="1.1" />
+          <circle cx="100" cy="146" r="1.1" /><circle cx="106" cy="146" r="1.1" /><circle cx="112" cy="144" r="1.1" />
+          <circle cx="102" cy="152" r="1.1" /><circle cx="108" cy="152" r="1.1" />
+          <circle cx="104" cy="158" r="1.1" />
+
+          <!-- Europe (UK, France, Germany, Scandinavia, Mediterranean) -->
+          <circle cx="160" cy="40" r="1.1" /><circle cx="166" cy="38" r="1.1" /><circle cx="172" cy="36" r="1.1" /><circle cx="178" cy="34" r="1.1" /><circle cx="184" cy="34" r="1.1" /><circle cx="190" cy="36" r="1.1" />
+          <circle cx="156" cy="46" r="1.1" /><circle cx="162" cy="46" r="1.1" /><circle cx="168" cy="44" r="1.1" /><circle cx="174" cy="42" r="1.1" /><circle cx="180" cy="42" r="1.1" /><circle cx="186" cy="44" r="1.1" /><circle cx="192" cy="46" r="1.1" />
+          <circle cx="158" cy="52" r="1.1" /><circle cx="164" cy="52" r="1.1" /><circle cx="170" cy="50" r="1.1" /><circle cx="176" cy="50" r="1.1" /><circle cx="182" cy="50" r="1.1" /><circle cx="188" cy="52" r="1.1" /><circle cx="194" cy="54" r="1.1" /><circle cx="200" cy="54" r="1.1" />
+          <circle cx="162" cy="58" r="1.1" /><circle cx="168" cy="58" r="1.1" /><circle cx="174" cy="56" r="1.1" /><circle cx="180" cy="56" r="1.1" /><circle cx="186" cy="58" r="1.1" /><circle cx="192" cy="60" r="1.1" /><circle cx="198" cy="60" r="1.1" />
+          <circle cx="166" cy="64" r="1.1" /><circle cx="172" cy="64" r="1.1" /><circle cx="178" cy="62" r="1.1" /><circle cx="184" cy="62" r="1.1" /><circle cx="190" cy="64" r="1.1" /><circle cx="196" cy="66" r="1.1" /><circle cx="202" cy="66" r="1.1" />
+
+          <!-- Africa -->
+          <circle cx="164" cy="74" r="1.1" /><circle cx="170" cy="74" r="1.1" /><circle cx="176" cy="72" r="1.1" /><circle cx="182" cy="72" r="1.1" /><circle cx="188" cy="74" r="1.1" /><circle cx="194" cy="76" r="1.1" /><circle cx="200" cy="76" r="1.1" /><circle cx="206" cy="76" r="1.1" />
+          <circle cx="160" cy="80" r="1.1" /><circle cx="166" cy="80" r="1.1" /><circle cx="172" cy="78" r="1.1" /><circle cx="178" cy="78" r="1.1" /><circle cx="184" cy="80" r="1.1" /><circle cx="190" cy="82" r="1.1" /><circle cx="196" cy="82" r="1.1" /><circle cx="202" cy="82" r="1.1" /><circle cx="208" cy="82" r="1.1" />
+          <circle cx="162" cy="86" r="1.1" /><circle cx="168" cy="86" r="1.1" /><circle cx="174" cy="84" r="1.1" /><circle cx="180" cy="84" r="1.1" /><circle cx="186" cy="86" r="1.1" /><circle cx="192" cy="88" r="1.1" /><circle cx="198" cy="88" r="1.1" /><circle cx="204" cy="88" r="1.1" />
+          <circle cx="166" cy="92" r="1.1" /><circle cx="172" cy="92" r="1.1" /><circle cx="178" cy="90" r="1.1" /><circle cx="184" cy="90" r="1.1" /><circle cx="190" cy="92" r="1.1" /><circle cx="196" cy="94" r="1.1" /><circle cx="202" cy="94" r="1.1" />
+          <circle cx="170" cy="98" r="1.1" /><circle cx="176" cy="98" r="1.1" /><circle cx="182" cy="96" r="1.1" /><circle cx="188" cy="96" r="1.1" /><circle cx="194" cy="98" r="1.1" /><circle cx="200" cy="100" r="1.1" />
+          <circle cx="174" cy="104" r="1.1" /><circle cx="180" cy="104" r="1.1" /><circle cx="186" cy="102" r="1.1" /><circle cx="192" cy="102" r="1.1" /><circle cx="198" cy="104" r="1.1" />
+          <circle cx="178" cy="110" r="1.1" /><circle cx="184" cy="110" r="1.1" /><circle cx="190" cy="108" r="1.1" /><circle cx="196" cy="108" r="1.1" />
+          <circle cx="182" cy="116" r="1.1" /><circle cx="188" cy="116" r="1.1" /><circle cx="194" cy="114" r="1.1" />
+          <circle cx="186" cy="122" r="1.1" /><circle cx="192" cy="122" r="1.1" />
+
+          <!-- Asia, Middle East, India, China, Vietnam, Japan -->
+          <circle cx="210" cy="38" r="1.1" /><circle cx="216" cy="36" r="1.1" /><circle cx="222" cy="36" r="1.1" /><circle cx="228" cy="38" r="1.1" /><circle cx="234" cy="38" r="1.1" /><circle cx="240" cy="36" r="1.1" /><circle cx="246" cy="36" r="1.1" /><circle cx="252" cy="38" r="1.1" /><circle cx="258" cy="38" r="1.1" /><circle cx="264" cy="36" r="1.1" /><circle cx="270" cy="36" r="1.1" /><circle cx="276" cy="38" r="1.1" /><circle cx="282" cy="40" r="1.1" /><circle cx="288" cy="42" r="1.1" /><circle cx="294" cy="42" r="1.1" />
+          <circle cx="214" cy="44" r="1.1" /><circle cx="220" cy="44" r="1.1" /><circle cx="226" cy="42" r="1.1" /><circle cx="232" cy="42" r="1.1" /><circle cx="238" cy="44" r="1.1" /><circle cx="244" cy="44" r="1.1" /><circle cx="250" cy="42" r="1.1" /><circle cx="256" cy="42" r="1.1" /><circle cx="262" cy="44" r="1.1" /><circle cx="268" cy="44" r="1.1" /><circle cx="274" cy="46" r="1.1" /><circle cx="280" cy="48" r="1.1" /><circle cx="286" cy="48" r="1.1" /><circle cx="292" cy="50" r="1.1" /><circle cx="298" cy="52" r="1.1" />
+          <circle cx="218" cy="50" r="1.1" /><circle cx="224" cy="50" r="1.1" /><circle cx="230" cy="48" r="1.1" /><circle cx="236" cy="48" r="1.1" /><circle cx="242" cy="50" r="1.1" /><circle cx="248" cy="50" r="1.1" /><circle cx="254" cy="48" r="1.1" /><circle cx="260" cy="48" r="1.1" /><circle cx="266" cy="50" r="1.1" /><circle cx="272" cy="50" r="1.1" /><circle cx="278" cy="52" r="1.1" /><circle cx="284" cy="54" r="1.1" /><circle cx="290" cy="56" r="1.1" /><circle cx="296" cy="58" r="1.1" />
+          <circle cx="222" cy="56" r="1.1" /><circle cx="228" cy="56" r="1.1" /><circle cx="234" cy="54" r="1.1" /><circle cx="240" cy="54" r="1.1" /><circle cx="246" cy="56" r="1.1" /><circle cx="252" cy="56" r="1.1" /><circle cx="258" cy="54" r="1.1" /><circle cx="264" cy="54" r="1.1" /><circle cx="270" cy="56" r="1.1" /><circle cx="276" cy="56" r="1.1" /><circle cx="282" cy="58" r="1.1" /><circle cx="288" cy="60" r="1.1" /><circle cx="294" cy="62" r="1.1" />
+          <!-- Japan Island Dots -->
+          <circle cx="310" cy="56" r="1.2" /><circle cx="314" cy="60" r="1.2" /><circle cx="318" cy="66" r="1.2" /><circle cx="314" cy="72" r="1.2" />
+          <!-- India -->
+          <circle cx="230" cy="66" r="1.1" /><circle cx="236" cy="66" r="1.1" /><circle cx="242" cy="68" r="1.1" /><circle cx="248" cy="70" r="1.1" /><circle cx="254" cy="72" r="1.1" />
+          <circle cx="234" cy="74" r="1.1" /><circle cx="240" cy="74" r="1.1" /><circle cx="246" cy="76" r="1.1" /><circle cx="252" cy="78" r="1.1" />
+          <circle cx="238" cy="82" r="1.1" /><circle cx="244" cy="82" r="1.1" /><circle cx="250" cy="84" r="1.1" />
+          <!-- Southeast Asia & Indochina & Vietnam -->
+          <circle cx="264" cy="76" r="1.1" /><circle cx="270" cy="76" r="1.1" /><circle cx="276" cy="78" r="1.1" /><circle cx="282" cy="80" r="1.1" />
+          <circle cx="268" cy="84" r="1.1" /><circle cx="274" cy="84" r="1.1" /><circle cx="280" cy="86" r="1.1" />
+          <circle cx="272" cy="92" r="1.1" /><circle cx="278" cy="92" r="1.1" />
+          <!-- Indonesia / Philippines Archipelago -->
+          <circle cx="266" cy="106" r="1.2" /><circle cx="272" cy="108" r="1.2" /><circle cx="282" cy="104" r="1.2" /><circle cx="292" cy="108" r="1.2" /><circle cx="304" cy="106" r="1.2" />
+          <circle cx="270" cy="116" r="1.2" /><circle cx="280" cy="118" r="1.2" /><circle cx="290" cy="118" r="1.2" /><circle cx="300" cy="116" r="1.2" />
+
+          <!-- Australia & New Zealand -->
+          <circle cx="290" cy="132" r="1.1" /><circle cx="296" cy="132" r="1.1" /><circle cx="302" cy="130" r="1.1" /><circle cx="308" cy="130" r="1.1" /><circle cx="314" cy="132" r="1.1" /><circle cx="320" cy="134" r="1.1" /><circle cx="326" cy="136" r="1.1" />
+          <circle cx="286" cy="138" r="1.1" /><circle cx="292" cy="138" r="1.1" /><circle cx="298" cy="136" r="1.1" /><circle cx="304" cy="136" r="1.1" /><circle cx="310" cy="138" r="1.1" /><circle cx="316" cy="140" r="1.1" /><circle cx="322" cy="142" r="1.1" /><circle cx="328" cy="142" r="1.1" />
+          <circle cx="288" cy="144" r="1.1" /><circle cx="294" cy="144" r="1.1" /><circle cx="300" cy="142" r="1.1" /><circle cx="306" cy="142" r="1.1" /><circle cx="312" cy="144" r="1.1" /><circle cx="318" cy="146" r="1.1" /><circle cx="324" cy="148" r="1.1" />
+          <circle cx="292" cy="150" r="1.1" /><circle cx="298" cy="150" r="1.1" /><circle cx="304" cy="148" r="1.1" /><circle cx="310" cy="148" r="1.1" /><circle cx="316" cy="150" r="1.1" /><circle cx="322" cy="152" r="1.1" />
+          <circle cx="296" cy="156" r="1.1" /><circle cx="302" cy="156" r="1.1" /><circle cx="308" cy="154" r="1.1" /><circle cx="314" cy="154" r="1.1" />
+          <!-- New Zealand -->
+          <circle cx="338" cy="158" r="1.2" /><circle cx="342" cy="164" r="1.2" />
+        </g>
+
+
+        <!-- ======================================================== -->
+        <!-- TRANSMISSION ARCS RADIATING FROM VN-HQ (276, 94)         -->
+        <!-- ======================================================== -->
+
+        <!-- 1. VN-HQ -> US-WEST (54, 58) -->
+        <path d="M 276 94 Q 165 18 54 58" stroke="#22c55e" stroke-width="1.3" stroke-dasharray="3 3" />
+        <!-- Square packet node on the arc -->
+        <rect x="150" y="38" width="3" height="3" fill="#22c55e" />
+        <rect x="96" y="44" width="3" height="3" fill="#22c55e" />
+        <circle r="2.5" fill="#22c55e">
+          <animateMotion dur="3.4s" repeatCount="indefinite" path="M 276 94 Q 165 18 54 58" />
+        </circle>
+
+        <!-- 2. VN-HQ -> EU-CENTRAL (180, 48) -->
+        <path d="M 276 94 Q 228 62 180 48" stroke="#22c55e" stroke-width="1.3" stroke-dasharray="3 3" />
+        <rect x="230" y="64" width="3" height="3" fill="#22c55e" />
+        <circle r="2.5" fill="#22c55e">
+          <animateMotion dur="2.8s" repeatCount="indefinite" path="M 276 94 Q 228 62 180 48" />
+        </circle>
+
+        <!-- 3. VN-HQ -> AP-SOUTHEAST (262, 114) -->
+        <path d="M 276 94 L 262 114" stroke="#22c55e" stroke-width="1.5" />
+        <rect x="268" y="103" width="3" height="3" fill="#22c55e" />
+        <circle r="2.5" fill="#22c55e">
+          <animateMotion dur="1.6s" repeatCount="indefinite" path="M 276 94 L 262 114" />
+        </circle>
+
+        <!-- 4. VN-HQ -> ASIA-EAST (314, 62) -->
+        <path d="M 276 94 Q 295 78 314 62" stroke="#22c55e" stroke-width="1.3" stroke-dasharray="3 3" />
+        <rect x="296" y="78" width="3" height="3" fill="#22c55e" />
+        <circle r="2.5" fill="#22c55e">
+          <animateMotion dur="2.2s" repeatCount="indefinite" path="M 276 94 Q 295 78 314 62" />
+        </circle>
+
+        <!-- Secondary Inter-WAN Arcs -->
+        <path d="M 54 58 Q 117 32 180 48" stroke="#94a3b8" stroke-width="0.9" stroke-dasharray="2 3" class="opacity-40" />
+        <path d="M 180 48 Q 247 40 314 62" stroke="#94a3b8" stroke-width="0.9" stroke-dasharray="2 3" class="opacity-40" />
+
+
+        <!-- ======================================================== -->
+        <!-- 5 PINS & CALLOUT CARDS (Exact Match to User Image)       -->
+        <!-- ======================================================== -->
+
+        <!-- 1. US-WEST (OREGON) -->
+        <line x1="54" y1="52" x2="54" y2="58" stroke="#22c55e" stroke-width="1.2" />
+        <circle cx="54" cy="58" r="6" fill="url(#hudBeaconGreen)" class="animate-ping" />
+        <circle cx="54" cy="58" r="3" fill="#22c55e" />
+        <g transform="translate(48, 30)">
+          <rect x="0" y="0" width="58" height="22" rx="3" fill="var(--surface-2)" stroke="var(--border)" stroke-width="0.9" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.18))" />
+          <circle cx="6" cy="8" r="2" fill="#22c55e" />
+          <text x="11" y="10" font-family="'IBM Plex Mono', monospace" font-size="6.8" font-weight="extrabold" fill="var(--text-1)">US-WEST</text>
+          <text x="11" y="18" font-family="'IBM Plex Mono', monospace" font-size="5.5" font-weight="600" fill="var(--text-3)">(OREGON)</text>
+        </g>
+
+        <!-- 2. EU-CENTRAL (FRANKFURT) -->
+        <line x1="180" y1="38" x2="180" y2="48" stroke="#22c55e" stroke-width="1.2" />
+        <circle cx="180" cy="48" r="6" fill="url(#hudBeaconGreen)" class="animate-ping" />
+        <circle cx="180" cy="48" r="3" fill="#22c55e" />
+        <g transform="translate(165, 16)">
+          <rect x="0" y="0" width="70" height="22" rx="3" fill="var(--surface-2)" stroke="var(--border)" stroke-width="0.9" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.18))" />
+          <circle cx="6" cy="8" r="2" fill="#22c55e" />
+          <text x="11" y="10" font-family="'IBM Plex Mono', monospace" font-size="6.8" font-weight="extrabold" fill="var(--text-1)">EU-CENTRAL</text>
+          <text x="11" y="18" font-family="'IBM Plex Mono', monospace" font-size="5.5" font-weight="600" fill="var(--text-3)">(FRANKFURT)</text>
+        </g>
+
+        <!-- 3. AP-SOUTHEAST (SINGAPORE) -->
+        <line x1="262" y1="114" x2="250" y2="114" stroke="#22c55e" stroke-width="1.2" />
+        <circle cx="262" cy="114" r="6" fill="url(#hudBeaconGreen)" class="animate-ping" />
+        <circle cx="262" cy="114" r="3" fill="#22c55e" />
+        <g transform="translate(175, 102)">
+          <rect x="0" y="0" width="74" height="22" rx="3" fill="var(--surface-2)" stroke="var(--border)" stroke-width="0.9" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.18))" />
+          <circle cx="6" cy="8" r="2" fill="#22c55e" />
+          <text x="11" y="10" font-family="'IBM Plex Mono', monospace" font-size="6.8" font-weight="extrabold" fill="var(--text-1)">AP-SOUTHEAST</text>
+          <text x="11" y="18" font-family="'IBM Plex Mono', monospace" font-size="5.5" font-weight="600" fill="var(--text-3)">(SINGAPORE)</text>
+        </g>
+
+        <!-- 4. ASIA-EAST (TOKYO) -->
+        <line x1="314" y1="56" x2="314" y2="62" stroke="#22c55e" stroke-width="1.2" />
+        <circle cx="314" cy="62" r="6" fill="url(#hudBeaconGreen)" class="animate-ping" />
+        <circle cx="314" cy="62" r="3" fill="#22c55e" />
+        <g transform="translate(305, 34)">
+          <rect x="0" y="0" width="62" height="22" rx="3" fill="var(--surface-2)" stroke="var(--border)" stroke-width="0.9" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.18))" />
+          <circle cx="6" cy="8" r="2" fill="#22c55e" />
+          <text x="11" y="10" font-family="'IBM Plex Mono', monospace" font-size="6.8" font-weight="extrabold" fill="var(--text-1)">ASIA-EAST</text>
+          <text x="11" y="18" font-family="'IBM Plex Mono', monospace" font-size="5.5" font-weight="600" fill="var(--text-3)">(TOKYO)</text>
+        </g>
+
+        <!-- 5. VN-HQ (HO CHI MINH) - Core Central Hub -->
+        <line x1="276" y1="94" x2="295" y2="120" stroke="#22c55e" stroke-width="1.2" />
+        <circle cx="276" cy="94" r="8" fill="url(#hudBeaconGreen)" class="animate-ping" />
+        <circle cx="276" cy="94" r="3.5" fill="#22c55e" />
+        <circle cx="276" cy="94" r="1.5" fill="var(--bg)" />
+        <g transform="translate(295, 116)">
+          <rect x="0" y="0" width="70" height="22" rx="3" fill="var(--surface-2)" stroke="#22c55e" stroke-width="1.3" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.25))" />
+          <circle cx="6" cy="8" r="2" fill="#22c55e" />
+          <text x="11" y="10" font-family="'IBM Plex Mono', monospace" font-size="7" font-weight="extrabold" fill="var(--text-1)">VN-HQ</text>
+          <text x="11" y="18" font-family="'IBM Plex Mono', monospace" font-size="5.5" font-weight="bold" fill="#22c55e">(HO CHI MINH)</text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Image 2 Bottom Summary Bar: 4 Cards with Exact Icons -->
+    <div class="mt-2 p-1.5 rounded-lg bg-[var(--surface-2)] border border-[var(--border)] grid grid-cols-4 gap-1 text-center font-mono-tech">
+      <!-- 1. 5 Sites (Hexagon Cube Icon) -->
+      <div class="flex items-center justify-center gap-1.5 p-1">
+        <svg class="w-4 h-4 text-[var(--text-1)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5" />
+          <polyline points="2 8.5 12 14.5 22 8.5" />
+          <line x1="12" y1="14.5" x2="12" y2="22" />
+        </svg>
+        <div class="text-left leading-none">
+          <div class="text-xs font-extrabold text-[var(--text-1)]">5</div>
+          <div class="text-[7.5px] text-[var(--text-3)] uppercase">Sites</div>
+        </div>
+      </div>
+
+      <!-- 2. 60 Devices (Server Rack 3-Blade Icon) -->
+      <div class="flex items-center justify-center gap-1.5 p-1 border-l border-[var(--border)]">
+        <svg class="w-4 h-4 text-[var(--text-1)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="4" y="2" width="16" height="6" rx="1" />
+          <rect x="4" y="9" width="16" height="6" rx="1" />
+          <rect x="4" y="16" width="16" height="6" rx="1" />
+          <circle cx="8" cy="5" r="0.75" fill="currentColor" />
+          <circle cx="8" cy="12" r="0.75" fill="currentColor" />
+          <circle cx="8" cy="19" r="0.75" fill="currentColor" />
+        </svg>
+        <div class="text-left leading-none">
+          <div class="text-xs font-extrabold text-[var(--text-1)]">60</div>
+          <div class="text-[7.5px] text-[var(--text-3)] uppercase">Devices</div>
+        </div>
+      </div>
+
+      <!-- 3. 1.2k Users (Double Outline User Icon) -->
+      <div class="flex items-center justify-center gap-1.5 p-1 border-l border-[var(--border)]">
+        <svg class="w-4 h-4 text-[var(--text-1)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+        <div class="text-left leading-none">
+          <div class="text-xs font-extrabold text-[var(--text-1)]">1.2k</div>
+          <div class="text-[7.5px] text-[var(--text-3)] uppercase">Users</div>
+        </div>
+      </div>
+
+      <!-- 4. 99.99% Uptime (Cloud Outline Icon) -->
+      <div class="flex items-center justify-center gap-1.5 p-1 border-l border-[var(--border)]">
+        <svg class="w-4 h-4 text-[#22c55e]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+        </svg>
+        <div class="text-left leading-none">
+          <div class="text-xs font-extrabold text-[#22c55e]">99.99%</div>
+          <div class="text-[7.5px] text-[var(--text-3)] uppercase">Uptime</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

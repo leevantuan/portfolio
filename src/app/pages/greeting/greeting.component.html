@@ -1,39 +1,102 @@
-<div class="flex flex-col md:flex-row gap-6 text-white mt-8 mb-6">
-     <!-- Column 1: Text and Social Icons (flex 7) -->
-     <div class="flex-[7] md:text-left">
-          <h2 class="text-2xl font-semibold leading-10 mb-2">
-               {{this.UIResource.header_title}}
-               <span class="text-cyan-400">{{this.UIResource.header_name}}</span>
-               {{this.UIResource.header_position}}👋
-          </h2>
-          <p class="mb-4 leading-loose text-sm sm:text-base text-gray-400">{{this.UIResource.header_description}}</p>
-          <div class="flex justify-start space-x-4 mt-6">
-               <a href="https://github.com/leevantuan" class="text-white hover:text-gray-300 inline-block">
-                    <img src="https://res.cloudinary.com/dgzupk0ec/image/upload/v1747292024/github_919847_yf3dbe.png"
-                         alt="GitHub Logo" class="w-10 h-10 transition-transform duration-200 hover:translate-y-1" />
-               </a>
-               <a href="https://www.linkedin.com/in/letuaan/" class="text-white hover:text-gray-300 inline-block">
-                    <img src="https://res.cloudinary.com/dgzupk0ec/image/upload/v1747292024/linkedin_3536505_edya4z.png"
-                         alt="LinkedIn Logo" class="w-10 h-10 transition-transform duration-200 hover:translate-y-1" />
-               </a>
-               <a href="tel:+84817251624" class="text-white hover:text-gray-300 inline-block">
-                    <img src="https://res.cloudinary.com/dgzupk0ec/image/upload/v1747292024/mobile_16076069_uhvgxw.png"
-                         alt="Mobile Logo" class="w-10 h-10 transition-transform duration-200 hover:translate-y-1" />
-               </a>
-               <a href="mailto:levantuan.work@gmail.com" class="text-white hover:text-gray-300 inline-block">
-                    <img src="https://res.cloudinary.com/dgzupk0ec/image/upload/v1747292024/gmail_732200_lkwnhf.png"
-                         alt="Gmail Logo" class="w-10 h-10 transition-transform duration-200 hover:translate-y-1" />
-               </a>
-               <button (click)="openLink()"
-                    class="transition-transform duration-200 text-cyan-400 hover:bg-cyan-500 hover:text-[#0f172a] bg-transparent border border-cyan-400 px-4 py-2 rounded cursor-pointer ms-4">
-                    {{this.UIResource.resume}}
-               </button>
-          </div>
-     </div>
+<section class="w-full min-h-[88vh] flex items-center py-8 lg:py-0 border-b border-[var(--border)]">
+  <div class="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-14 w-full">
+    <!-- Left Column: Technical Intro & Badges -->
+    <div class="flex-1 w-full text-left">
+      <!-- Blueprint Spec Kicker -->
+      <div class="inline-flex items-center gap-2 font-mono-tech text-[11px] font-bold text-[var(--accent-text)] border border-[var(--accent)]/40 bg-[var(--accent)]/10 px-2.5 py-1 rounded-sm uppercase tracking-wider mb-4 shadow-sm">
+        <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-ping"></span>
+        <span>{{ UIResource.hero_kicker }}</span>
+      </div>
 
-     <!-- Column 2: Avatar Image (flex 3) -->
-     <div class="flex-[3] flex justify-center items-center md:mt-0">
-          <img src="https://res.cloudinary.com/dgzupk0ec/image/upload/v1747395457/avatar_dzfpbq.jpg" alt="lxartz Avatar"
-               class="rounded-lg w-60 h-80 border-4 border-cyan-700" />
-     </div>
-</div>
+      <!-- Main Heading -->
+      <h1 class="font-mono-tech text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-extrabold tracking-tight text-[var(--text-1)] mb-4 leading-tight">
+        {{ UIResource.header_title }} 
+        <span class="text-[var(--accent-text)] underline decoration-[var(--accent)]/50 underline-offset-8">
+          {{ UIResource.header_name }}
+        </span>
+      </h1>
+
+      <div class="font-mono-tech text-sm sm:text-base text-[var(--text-1)] font-semibold mb-4 tracking-wide flex items-center gap-2">
+        <span class="text-[var(--accent)]">❯</span>
+        <span>{{ UIResource.header_position }}</span>
+      </div>
+
+      <!-- Description Paragraph -->
+      <p class="text-[var(--text-2)] text-sm sm:text-base leading-relaxed max-w-2xl mb-7">
+        {{ UIResource.header_description }}
+      </p>
+
+      <!-- Key Specs Chips Matrix -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-8 max-w-xl">
+        <div class="p-3 rounded bg-[var(--surface-2)] border border-[var(--border)] text-center shadow-xs">
+          <div class="font-mono-tech text-base sm:text-lg font-bold text-[var(--accent-text)]">2 NĂM</div>
+          <div class="font-mono-tech text-[10px] text-[var(--text-3)] uppercase font-semibold">IT SYSTEM & NETWORK</div>
+        </div>
+        <div class="p-3 rounded bg-[var(--surface-2)] border border-[var(--border)] text-center shadow-xs">
+          <div class="font-mono-tech text-base sm:text-lg font-bold text-[var(--text-1)]">1 NĂM</div>
+          <div class="font-mono-tech text-[10px] text-[var(--text-3)] uppercase font-semibold">BACKEND .NET DEV</div>
+        </div>
+        <div class="p-3 rounded bg-[var(--surface-2)] border border-[var(--border)] text-center shadow-xs">
+          <div class="font-mono-tech text-base sm:text-lg font-bold text-[var(--info)]">8 CERT</div>
+          <div class="font-mono-tech text-[10px] text-[var(--text-3)] uppercase font-semibold">CHỨNG CHỈ QUỐC TẾ</div>
+        </div>
+        <div class="p-3 rounded bg-[var(--surface-2)] border border-[var(--border)] text-center shadow-xs">
+          <div class="font-mono-tech text-base sm:text-lg font-bold text-[var(--accent-text)]">2 LANG</div>
+          <div class="font-mono-tech text-[10px] text-[var(--text-3)] uppercase font-semibold">EN (TOEIC) · ZH (HSK)</div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap items-center gap-4 mb-8">
+        <button 
+          (click)="onViewArchitecture()"
+          class="h-11 px-6 rounded-sm font-mono-tech text-xs sm:text-sm font-bold uppercase tracking-wider bg-[var(--accent)] text-[#0B0B0B] hover:brightness-105 border border-[var(--accent)] transition-all flex items-center gap-2 cursor-pointer shadow-md"
+        >
+          <span>{{ UIResource.view_architecture }}</span>
+          <span>→</span>
+        </button>
+
+        <button 
+          (click)="openResume()"
+          class="h-11 px-6 rounded-sm font-mono-tech text-xs sm:text-sm font-semibold uppercase tracking-wider bg-[var(--surface-2)] text-[var(--text-1)] hover:border-[var(--accent)] border border-[var(--border)] transition-all flex items-center gap-2 cursor-pointer"
+        >
+          <span>{{ UIResource.resume }}</span>
+          <span>↓</span>
+        </button>
+      </div>
+
+      <!-- Terminal Connect Footnote -->
+      <div class="flex items-center gap-3 pt-4 border-t border-[var(--border)]">
+        <span class="font-mono-tech text-[11px] text-[var(--text-3)] uppercase">TERMINAL ACCESS:</span>
+        <a 
+          href="https://github.com/leevantuan" 
+          target="_blank" 
+          class="font-mono-tech text-xs text-[var(--text-2)] hover:text-[var(--accent-text)] px-2.5 py-1 rounded bg-[var(--surface-2)] border border-[var(--border)] transition-colors no-underline flex items-center gap-1"
+        >
+          <span>GitHub</span>
+          <span class="text-[10px]">↗</span>
+        </a>
+        <a 
+          href="https://www.linkedin.com/in/letuaan/" 
+          target="_blank" 
+          class="font-mono-tech text-xs text-[var(--text-2)] hover:text-[var(--accent-text)] px-2.5 py-1 rounded bg-[var(--surface-2)] border border-[var(--border)] transition-colors no-underline flex items-center gap-1"
+        >
+          <span>LinkedIn</span>
+          <span class="text-[10px]">↗</span>
+        </a>
+        <a 
+          href="mailto:levantuan.work@gmail.com" 
+          class="font-mono-tech text-xs text-[var(--text-2)] hover:text-[var(--accent-text)] px-2.5 py-1 rounded bg-[var(--surface-2)] border border-[var(--border)] transition-colors no-underline flex items-center gap-1"
+        >
+          <span>Email</span>
+          <span class="text-[10px]">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Column: Interactive Global Network Mesh (Quả Địa Cầu Bự & Dây Cáp Mạng Liên Kết) -->
+    <div class="w-full lg:w-auto flex justify-center flex-shrink-0">
+      <app-global-network [lang]="lang"></app-global-network>
+    </div>
+  </div>
+</section>

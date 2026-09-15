@@ -1,20 +1,43 @@
-import { Component, Input } from '@angular/core';
-import { SessionService } from '../../shared/session.service';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { UIResourceENG } from '../../shared/lang/eng';
 import { UIResourceVN } from '../../shared/lang/vn';
+import { UIResourceZH } from '../../shared/lang/zh';
 
 @Component({
   selector: 'app-experience',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.css',
 })
-export class ExperienceComponent {
-  @Input() lang: string = 'ENG';
+export class ExperienceComponent implements OnInit, OnChanges {
+  @Input() lang: string = 'VI';
 
-  UIResource: any;
+  UIResource: any = UIResourceVN;
 
-  ngOnChanges(): void {
-    this.UIResource = this.lang === 'VN' ? UIResourceVN : UIResourceENG;
+  ngOnInit(): void {
+    this.updateResource();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['lang']) {
+      this.updateResource();
+    }
+  }
+
+  private updateResource(): void {
+    switch (this.lang) {
+      case 'ENG':
+        this.UIResource = UIResourceENG;
+        break;
+      case 'ZH':
+        this.UIResource = UIResourceZH;
+        break;
+      case 'VI':
+      default:
+        this.UIResource = UIResourceVN;
+        break;
+    }
   }
 }

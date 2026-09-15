@@ -1,22 +1,2174 @@
-<div class="py-4">
-     <h2 class="text-2xl sm:text-3xl font-semibold text-cyan-400 mb-6">{{this.UIResource.tech_skill}}</h2>
+<!-- ========================================================================= -->
+<!-- SECTION 01: SYSTEM & SERVER INFRASTRUCTURE (CORE PILLAR 01)               -->
+<!-- ========================================================================= -->
+<section id="systems" class="py-16 border-b border-[var(--border)] scroll-reveal-item">
+  <!-- Section Heading & Strategic Positioning -->
+  <div class="mb-10">
+    <div class="flex items-center gap-3 font-mono-tech text-[11px] font-bold tracking-wider text-[var(--accent-text)] uppercase mb-2">
+      <span class="px-2 py-0.5 rounded bg-[var(--accent)]/10 border border-[var(--accent)]/30">01 / CORE COMPETENCY</span>
+      <span>SYSTEM & SERVER INFRASTRUCTURE</span>
+      <span class="w-8 h-[2px] bg-[var(--accent)]"></span>
+    </div>
+    <h2 class="font-mono-tech text-2xl sm:text-3xl md:text-4xl text-[var(--text-1)] font-bold mb-3 tracking-tight">
+      Quản Trị Hệ Thống Máy Chủ & Vận Hành Doanh Nghiệp
+    </h2>
+    <p class="font-mono-tech text-xs sm:text-sm text-[var(--accent-text)] font-semibold mb-3">
+      Server Administration · Identity & Cloud · Virtualization · Operations & Backup
+    </p>
+    <p class="text-[var(--text-2)] text-sm sm:text-base max-w-4xl leading-relaxed">
+      Kinh nghiệm thực chiến quản trị hệ thống máy chủ đa nền tảng <strong>Linux (Ubuntu 24.04/26 LTS, RHEL, CentOS)</strong> và <strong>Windows Server</strong>. Chuyên sâu thiết lập định danh tập trung <strong>Active Directory / GPO</strong>, hạ tầng đám mây lai <strong>Microsoft Entra ID (Azure AD)</strong> & <strong>Microsoft 365 / Exchange Online</strong>, cụm ảo hóa <strong>VMware vSphere ESXi / Hyper-V</strong>, chiến lược sao lưu <strong>Veeam 3-2-1</strong>, giám sát <strong>Zabbix & Grafana</strong> và tự động hóa vận hành Datacenter 24/7.
+    </p>
+  </div>
 
-     <div class="bg-gray-900 py-10 px-4">
-          <div class="max-w-full mx-auto flex flex-wrap justify-center gap-4">
-               <div *ngFor="let tech of techStack" class="group bg-gray-600 rounded-xl shadow-md transition-shadow p-2 w-20 h-20 flex items-center justify-center relative cursor-pointer overflow-hidden
-               hover:shadow-gray-600">
+  <!-- Technical Showcase Grid: Skills Matrix + Linux 26 Terminal Interactive -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+    
+    <!-- Left Column (5 Cols): Categorized Skill Groups & Hardware Telemetry -->
+    <div class="lg:col-span-5 p-6 rounded-md border border-[var(--border)] bg-[var(--surface)] flex flex-col justify-between shadow-xs scroll-reveal-item delay-100">
+      <div class="space-y-6">
+        
+        <!-- Group 1: OS & Centralized Identity -->
+        <div>
+          <div class="flex items-center justify-between mb-2.5">
+            <span class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider">
+              01. HỆ ĐIỀU HÀNH & ĐỊNH DANH
+            </span>
+            <span class="text-[10px] font-mono-tech text-[var(--text-3)]">HYBRID AD</span>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Windows Server
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Linux (Ubuntu/RHEL)
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Active Directory / GPO
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              DNS / DHCP Failover
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Microsoft Entra ID
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Microsoft 365 & Exchange
+            </span>
+          </div>
+        </div>
 
-                    <div class="flex flex-col items-center transition-transform duration-200 hover:translate-y-1">
-                         <img [src]="tech.icon" [alt]="tech.name" class="w-10 h-10" />
-                         <div class="text-white text-[14px] text-center mt-1">
-                              {{ tech.name }}
-                         </div>
-                    </div>
+        <!-- Group 2: Virtualization & Disaster Recovery -->
+        <div>
+          <div class="flex items-center justify-between mb-2.5">
+            <span class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider">
+              02. ẢO HÓA & SAO LƯU DỰ PHÒNG
+            </span>
+            <span class="text-[10px] font-mono-tech text-[var(--text-3)]">HIGH AVAILABILITY</span>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              VMware vSphere ESXi
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              vCenter HA Cluster
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Hyper-V Cluster
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Veeam Backup (3-2-1)
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Synology NAS RAID 10
+            </span>
+          </div>
+        </div>
+
+        <!-- Group 3: Monitoring, Scripting & Hardware -->
+        <div>
+          <div class="flex items-center justify-between mb-2.5">
+            <span class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider">
+              03. GIÁM SÁT, AUTOMATION & PHẦN CỨNG
+            </span>
+            <span class="text-[10px] font-mono-tech text-[var(--text-3)]">OBSERVABILITY</span>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Zabbix Enterprise
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Grafana NOC Dashboards
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              PowerShell Scripting
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Bash Shell Automation
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Server Hardware & Storage
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Specs Footer Bar -->
+      <div class="mt-6 pt-4 border-t border-[var(--border)] font-mono-tech text-xs text-[var(--text-3)] flex flex-wrap items-center justify-between gap-2">
+        <span class="flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse"></span>
+          UPTIME: <strong class="text-[var(--text-1)]">99.99% SLA</strong>
+        </span>
+        <span>RPO: <strong class="text-[var(--text-1)]">&lt; 15m</strong> · RTO: <strong class="text-[var(--text-1)]">&lt; 1h</strong></span>
+      </div>
+    </div>
+
+    <!-- Right Column (7 Cols): Linux 26 Terminal Interactive Showcase -->
+    <div id="systems-terminal" class="lg:col-span-7 terminal-window rounded-md p-5 font-mono-tech text-xs text-[#F5F5F5] flex flex-col justify-between shadow-lg scroll-reveal-item delay-200">
+      
+      <!-- Linux Terminal Header Bar -->
+      <div>
+        <div class="flex items-center justify-between pb-3 mb-3 border-b border-[#26292e]">
+          <!-- Window Dots & Session Title -->
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#EF4444]"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-[#F59E0B]"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-[#7ED957]"></span>
+            <span class="text-[11px] text-[#A0A0A0] ml-2 select-none">
+              tuanle&#64;srv-infra-01:~ (Ubuntu 26 LTS x86_64)
+            </span>
+          </div>
+
+          <!-- Tab Controls & Replay -->
+          <div class="flex items-center gap-2">
+            <button 
+              (click)="switchLinuxTab('tree')"
+              [class.active]="activeLinuxTab === 'tree'"
+              class="terminal-tab-btn">
+              tree --skills
+            </button>
+            <button 
+              (click)="switchLinuxTab('systemctl')"
+              [class.active]="activeLinuxTab === 'systemctl'"
+              class="terminal-tab-btn">
+              systemctl status
+            </button>
+            <button 
+              (click)="replayLinuxTerminal()" 
+              title="Gõ lại lệnh"
+              class="text-[11px] text-[#888] hover:text-[var(--accent)] px-1.5 py-0.5 rounded hover:bg-[#222] transition-colors cursor-pointer">
+              ↺
+            </button>
+          </div>
+        </div>
+
+        <!-- TAB 1: Tree View Skills Animation -->
+        <div *ngIf="activeLinuxTab === 'tree'" class="terminal-scroll overflow-x-auto max-h-[380px] pr-1">
+          <!-- Command line typing -->
+          <div class="flex items-center text-[#7ED957] font-semibold mb-2">
+            <span class="text-[#38bdf8] mr-2">tuanle&#64;srv-infra-01:~$</span>
+            <span>{{ linuxTypedCmd }}</span>
+            <span class="terminal-cursor text-[var(--accent)] ml-0.5">▍</span>
+          </div>
+
+          <!-- Directory Tree Output (Rendered) -->
+          <div class="leading-relaxed text-[11px] select-text">
+            <div class="text-[#888] mb-1">SERVER TERMINAL (Enterprise Infrastructure Hierarchy)</div>
+            
+            <!-- 01 Windows Server -->
+            <div><span class="tree-branch">├── </span><span class="tree-folder">01_Windows_Server/</span></div>
+            <div><span class="tree-branch">│   ├── </span><span class="tree-file">Active_Directory_Domain_Services (AD DS)</span></div>
+            <div><span class="tree-branch">│   ├── </span><span class="tree-file">Group_Policy_Objects (GPO Hardening & LAPS)</span></div>
+            <div><span class="tree-branch">│   └── </span><span class="tree-file">DNS_DHCP_Failover_Cluster</span></div>
+
+            <!-- 02 Linux -->
+            <div><span class="tree-branch">├── </span><span class="tree-folder">02_Linux_Enterprise/</span></div>
+            <div><span class="tree-branch">│   ├── </span><span class="tree-file">Ubuntu_26_LTS & RHEL_Enterprise</span></div>
+            <div><span class="tree-branch">│   ├── </span><span class="tree-file">Systemd_Services & Security_Hardening (SSH/UFW)</span></div>
+            <div><span class="tree-branch">│   └── </span><span class="tree-file">Bash_Automation_Scripts</span></div>
+
+            <!-- 03 Identity & Cloud -->
+            <div><span class="tree-branch">├── </span><span class="tree-folder">03_Identity_&_Cloud/</span></div>
+            <div><span class="tree-branch">│   ├── </span><span class="tree-highlight">Microsoft_Entra_ID (Azure AD Connect Sync)</span></div>
+            <div><span class="tree-branch">│   ├── </span><span class="tree-file">Microsoft_365 & Exchange_Online_Hybrid</span></div>
+            <div><span class="tree-branch">│   └── </span><span class="tree-file">MFA & Conditional_Access_Policies</span></div>
+
+            <!-- 04 Virtualization -->
+            <div><span class="tree-branch">├── </span><span class="tree-folder">04_Virtualization/</span></div>
+            <div><span class="tree-branch">│   ├── </span><span class="tree-file">VMware_vSphere_ESXi_7.x/8.x & vCenter_HA</span></div>
+            <div><span class="tree-branch">│   └── </span><span class="tree-file">Microsoft_Hyper-V_Failover_Cluster</span></div>
+
+            <!-- 05 Backup -->
+            <div><span class="tree-branch">├── </span><span class="tree-folder">05_Backup_&_DR/</span></div>
+            <div><span class="tree-branch">│   ├── </span><span class="tree-file">Veeam_Backup_&_Replication (3-2-1 Strategy)</span></div>
+            <div><span class="tree-branch">│   └── </span><span class="tree-file">Synology_NAS_Storage_RAID_10</span></div>
+
+            <!-- 06 Monitoring -->
+            <div><span class="tree-branch">└── </span><span class="tree-folder">06_Monitoring_&_Automation/</span></div>
+            <div><span class="tree-branch">    ├── </span><span class="tree-file">Zabbix_Enterprise_SNMP_Agents</span></div>
+            <div><span class="tree-branch">    ├── </span><span class="tree-file">Grafana_NOC_Dashboard_Alerting</span></div>
+            <div><span class="tree-branch">    └── </span><span class="tree-file">PowerShell_7_Automation_Modules</span></div>
+          </div>
+
+          <div class="mt-3 text-[#666] text-[10px] border-t border-[#222] pt-2 flex items-center justify-between">
+            <span>6 directories, 15 core competencies verified</span>
+            <span class="text-[#7ED957]">● 0 errors detected</span>
+          </div>
+        </div>
+
+        <!-- TAB 2: Systemctl Status -->
+        <div *ngIf="activeLinuxTab === 'systemctl'" class="terminal-scroll overflow-x-auto max-h-[380px] leading-relaxed text-[11px] pr-1">
+          <div class="text-[#38bdf8] mb-1.5">$ systemctl status enterprise-core-stack.target</div>
+          <div class="text-[#7ED957]">● enterprise-core-stack.target - Corporate Hybrid Infrastructure Engine</div>
+          <div class="text-[#777]">     Loaded: loaded (/etc/systemd/system/enterprise-core.target; enabled)</div>
+          <div class="text-[#777]">     Active: <span class="text-[#7ED957]">active (running)</span> since Mon 2026-09-15 08:00:00 UTC; 182d uptime</div>
+          <div class="text-[#777]">   Tasks: 420 (limit: 16384) | Memory: 48.2G (ECC Reg) | CPU: 3.4%</div>
+          
+          <div class="mt-3 text-[#A0A0A0]">$ journalctl -u entra-sync -u veeam-agent -n 3 --no-pager</div>
+          <div class="text-[#DDD]">[INFO] Entra ID Hybrid Agent: <span class="text-[#38bdf8]">Synced 1,840 user objects to tenant (TLS 1.3)</span></div>
+          <div class="text-[#DDD]">[INFO] Veeam Backup Daemon: <span class="text-[#7ED957]">Nightly incremental backup completed (RPO: 12m)</span></div>
+          <div class="text-[#DDD]">[INFO] Zabbix Agent v7.0: <span class="text-[#7ED957]">All 48 Datacenter hosts reporting NORMAL state</span></div>
+        </div>
+      </div>
+
+      <!-- Linux Terminal Bottom Status Bar -->
+      <div class="pt-3 mt-3 border-t border-[#26292e] flex items-center justify-between text-[10px] text-[#777]">
+        <div class="flex items-center gap-3">
+          <span>HOST: <span class="text-[#DDD]">datacenter-node01</span></span>
+          <span>KERNEL: <span class="text-[#7ED957]">Linux 6.8.0-enterprise</span></span>
+        </div>
+        <span class="text-[#7ED957] font-semibold">STATUS: PRODUCTION ACTIVE</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
 
-               </div>
+<!-- ========================================================================= -->
+<!-- SECTION 02: ENTERPRISE NETWORKING & SECURITY (CORE PILLAR 02)             -->
+<!-- ========================================================================= -->
+<section id="networking" class="py-16 border-b border-[var(--border)] scroll-reveal-item">
+  <!-- Section Heading & Strategic Positioning -->
+  <div class="mb-10">
+    <div class="flex items-center gap-3 font-mono-tech text-[11px] font-bold tracking-wider text-[var(--accent-text)] uppercase mb-2">
+      <span class="px-2 py-0.5 rounded bg-[var(--accent)]/10 border border-[var(--accent)]/30">02 / CORE COMPETENCY</span>
+      <span>ENTERPRISE NETWORKING & SECURITY</span>
+      <span class="w-8 h-[2px] bg-[var(--accent)]"></span>
+    </div>
+    <h2 class="font-mono-tech text-2xl sm:text-3xl md:text-4xl text-[var(--text-1)] font-bold mb-3 tracking-tight">
+      Hạ Tầng Mạng Doanh Nghiệp & Network Security
+    </h2>
+    <p class="font-mono-tech text-xs sm:text-sm text-[var(--accent-text)] font-semibold mb-3">
+      Routing · Switching · Next-Gen Firewall · VPN · Network Operations
+    </p>
+    <p class="text-[var(--text-2)] text-sm sm:text-base max-w-4xl leading-relaxed">
+      Sở hữu cặp chứng chỉ chuyên môn quốc tế uy tín <strong>Cisco CCNA & CCNP</strong>. Năng lực thiết kế, triển khai và vận hành hệ thống mạng doanh nghiệp quy mô lớn đa hãng: định tuyến nâng cao <strong>OSPF / BGP</strong>, chuyển mạch L3 Core/Distribution, phân đoạn mạng <strong>VLAN 802.1Q</strong>, an ninh biên <strong>Fortinet FortiGate</strong>, giải pháp không dây <strong>Ubiquiti UniFi</strong>, thiết lập <strong>IPsec VPN Site-to-Site</strong>, kiểm soát truy cập <strong>802.1X</strong> và chuẩn hóa sơ đồ mạng Topology.
+    </p>
+  </div>
+
+  <!-- Technical Showcase Grid: Skills Matrix + Cisco CLI & Topology Visual -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+    
+    <!-- Left Column (5 Cols): Categorized Skill Groups & Network Telemetry -->
+    <div class="lg:col-span-5 p-6 rounded-md border border-[var(--border)] bg-[var(--surface)] flex flex-col justify-between shadow-xs scroll-reveal-item delay-100">
+      <div class="space-y-6">
+        
+        <!-- Group 1: Multi-vendor Hardware -->
+        <div>
+          <div class="flex items-center justify-between mb-2.5">
+            <span class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider">
+              01. THIẾT BỊ MẠNG ĐA NỀN TẢNG
+            </span>
+            <span class="text-[10px] font-mono-tech text-[var(--text-3)]">HARDWARE</span>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Cisco Catalyst (3850/2960)
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Cisco Nexus Datacenter
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Fortinet FortiGate (1500D)
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Ubiquiti UniFi (Switch & AP)
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              MikroTik RouterBOARD
+            </span>
+          </div>
+        </div>
+
+        <!-- Group 2: Routing & Switching Protocols -->
+        <div>
+          <div class="flex items-center justify-between mb-2.5">
+            <span class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider">
+              02. ĐỊNH TUYẾN & CHUYỂN MẠCH
+            </span>
+            <span class="text-[10px] font-mono-tech text-[var(--text-3)]">L2/L3 PROTOCOLS</span>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Routing L3 (OSPF, BGP, EIGRP)
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              VLAN Segmentation (802.1Q)
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Spanning Tree (STP / RSTP)
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              LACP EtherChannel Trunk
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Inter-VLAN SVI Routing
+            </span>
+          </div>
+        </div>
+
+        <!-- Group 3: Security & Architecture -->
+        <div>
+          <div class="flex items-center justify-between mb-2.5">
+            <span class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider">
+              03. AN NINH BIÊN & BẢO MẬT
+            </span>
+            <span class="text-[10px] font-mono-tech text-[var(--text-3)]">ZERO TRUST</span>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Next-Gen Firewall UTM
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              IPsec Site-to-Site VPN
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              SSL VPN Remote Access
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Network ACLs & Port Security
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              802.1X RADIUS Authentication
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Network Topology Diagramming
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Specs Footer Bar -->
+      <div class="mt-6 pt-4 border-t border-[var(--border)] font-mono-tech text-xs text-[var(--text-3)] flex flex-wrap items-center justify-between gap-2">
+        <span class="flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse"></span>
+          BACKBONE: <strong class="text-[var(--text-1)]">10Gbps SFP+ FIBER</strong>
+        </span>
+        <span>SECURITY: <strong class="text-[var(--accent-text)]">802.1X ACTIVE</strong></span>
+      </div>
+    </div>
+
+    <!-- Right Column (7 Cols): Cisco IOS CLI & Topology Visual Simulator -->
+    <div id="networking-terminal" class="lg:col-span-7 terminal-window rounded-md p-5 font-mono-tech text-xs text-[#F5F5F5] flex flex-col justify-between shadow-lg scroll-reveal-item delay-200">
+      
+      <!-- Cisco Terminal Header Bar -->
+      <div>
+        <div class="flex items-center justify-between pb-3 mb-3 border-b border-[#26292e]">
+          <!-- Window Dots & Prompt Title -->
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#EF4444]"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-[#F59E0B]"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-[#7ED957]"></span>
+            <span class="text-[11px] text-[#A0A0A0] ml-2 select-none">
+              Core-Switch-01# (Cisco IOS-XE 17.9.4a)
+            </span>
+          </div>
+
+          <!-- Tab Controls & Replay -->
+          <div class="flex items-center gap-2">
+            <button 
+              (click)="switchCiscoTab('topology')"
+              [class.active]="activeCiscoTab === 'topology'"
+              class="terminal-tab-btn">
+              show topology
+            </button>
+            <button 
+              (click)="switchCiscoTab('routes')"
+              [class.active]="activeCiscoTab === 'routes'"
+              class="terminal-tab-btn">
+              show ip route
+            </button>
+            <button 
+              (click)="switchCiscoTab('vlan')"
+              [class.active]="activeCiscoTab === 'vlan'"
+              class="terminal-tab-btn">
+              show vlan
+            </button>
+            <button 
+              (click)="replayCiscoTerminal()" 
+              title="Gõ lại lệnh"
+              class="text-[11px] text-[#888] hover:text-[var(--accent)] px-1.5 py-0.5 rounded hover:bg-[#222] transition-colors cursor-pointer">
+              ↺
+            </button>
+          </div>
+        </div>
+
+        <!-- TAB 1: Network Topology Visual Diagram -->
+        <div *ngIf="activeCiscoTab === 'topology'" class="terminal-scroll overflow-x-auto max-h-[380px] pr-1">
+          <!-- Command line typing -->
+          <div class="flex items-center text-[#7ED957] font-semibold mb-2">
+            <span class="text-[#f59e0b] mr-2">Core-Switch-01#</span>
+            <span>{{ ciscoTypedCmd }}</span>
+            <span class="terminal-cursor text-[var(--accent)] ml-0.5">_</span>
+          </div>
+
+          <!-- Enterprise Network Hierarchy Diagram (ASCII & Box Model) -->
+          <div class="leading-tight text-[11px] select-text py-2 flex flex-col items-center">
+            
+            <!-- Level 1: Internet & WAN -->
+            <div class="text-center">
+              <span class="px-3 py-1 rounded bg-[#1e293b] text-[#38bdf8] border border-[#38bdf8]/40 font-bold inline-block">
+                [ INTERNET ] (Dual WAN Fiber Active-Passive)
+              </span>
+            </div>
+            
+            <!-- Connection Line 1 -->
+            <div class="text-[#555e69] text-center my-0.5">│</div>
+            
+            <!-- Level 2: Perimeter Firewall -->
+            <div class="cisco-box px-4 py-2 rounded text-center min-w-[280px]">
+              <div class="text-[#F59E0B] font-bold flex items-center justify-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#F59E0B] pulse-node"></span>
+                FIREWALL: FortiGate 1500D (HA Cluster)
+              </div>
+              <div class="text-[#888] text-[10px] mt-0.5">Next-Gen UTM · IPsec Site-to-Site VPN · IPS/WAF</div>
+            </div>
+
+            <!-- Connection Line 2 (10G SFP+ Trunk) -->
+            <div class="text-[#7ED957] text-[10px] my-1 flex items-center gap-2">
+              <span class="text-[#555e69]">│</span>
+              <span class="px-1.5 py-0.2 rounded bg-[#7ED957]/10 border border-[#7ED957]/30 text-[#7ED957] text-[9px]">
+                10GbE SFP+ 802.1Q TRUNK
+              </span>
+            </div>
+
+            <!-- Level 3: Core Switch L3 -->
+            <div class="cisco-box px-4 py-2 rounded text-center min-w-[280px]">
+              <div class="text-[#7ED957] font-bold flex items-center justify-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#7ED957] pulse-node"></span>
+                CORE SWITCH: Cisco Catalyst 3850X (Layer 3)
+              </div>
+              <div class="text-[#888] text-[10px] mt-0.5">OSPF Area 0 Core · Inter-VLAN Routing SVI · ACL Policies</div>
+            </div>
+
+            <!-- Branch Lines -->
+            <div class="text-[#555e69] text-center my-0.5">
+              ┌─────────────────────┼─────────────────────┐
+            </div>
+
+            <!-- Level 4: 3 Distinct VLAN Zones -->
+            <div class="grid grid-cols-3 gap-2 w-full max-w-[500px] mt-1 text-center">
+              
+              <!-- Zone 1: Server Datacenter -->
+              <div class="cisco-box p-2 rounded">
+                <div class="text-[#38bdf8] font-bold text-[10px]">SERVER ZONE</div>
+                <div class="text-[#7ED957] text-[9px] mt-0.5">VLAN 10 (DC)</div>
+                <div class="text-[#777] text-[9px]">192.168.10.0/24</div>
+              </div>
+
+              <!-- Zone 2: UniFi WiFi -->
+              <div class="cisco-box p-2 rounded">
+                <div class="text-[#F59E0B] font-bold text-[10px]">UNIFI AP MESH</div>
+                <div class="text-[#7ED957] text-[9px] mt-0.5">VLAN 20 (WiFi 6)</div>
+                <div class="text-[#777] text-[9px]">802.11ax Roaming</div>
+              </div>
+
+              <!-- Zone 3: Client LAN -->
+              <div class="cisco-box p-2 rounded">
+                <div class="text-[#DDD] font-bold text-[10px]">CLIENT LAN</div>
+                <div class="text-[#7ED957] text-[9px] mt-0.5">VLAN 30 (Users)</div>
+                <div class="text-[#777] text-[9px]">192.168.30.0/24</div>
+              </div>
+
+            </div>
 
           </div>
-     </div>
 
-</div>
+          <div class="mt-2 text-[#666] text-[10px] border-t border-[#222] pt-2 flex items-center justify-between">
+            <span>Topology Status: Active Convergence</span>
+            <span class="text-[#7ED957]">● 0 STP Loops · All Uplinks Forwarding</span>
+          </div>
+        </div>
+
+        <!-- TAB 2: Show IP Route OSPF -->
+        <div *ngIf="activeCiscoTab === 'routes'" class="terminal-scroll overflow-x-auto max-h-[380px] leading-relaxed text-[11px] pr-1">
+          <div class="text-[#f59e0b] mb-1">Core-Switch-01# show ip route ospf</div>
+          <div class="text-[#777] text-[10px] mb-2">Codes: C - connected, S - static, O - OSPF, B - BGP, IA - OSPF inter area</div>
+          
+          <div class="text-[#EEE] font-mono-tech space-y-1">
+            <div><span class="text-[#7ED957]">O IA</span> 10.100.0.0/16 [110/2] via 192.168.1.1, 14:32:10, TenGigabitEthernet1/1/1</div>
+            <div><span class="text-[#7ED957]">O   </span> 10.200.0.0/24 [110/10] via 192.168.1.2, 14:32:10, TenGigabitEthernet1/1/2</div>
+            <div><span class="text-[#7ED957]">O   </span> 172.16.10.0/24 [110/5] via 10.10.10.254, 08:14:02, Vlan10</div>
+            <div><span class="text-[#38bdf8]">B   </span> 0.0.0.0/0 [20/0] via 203.0.113.1, 24d08h, GigabitEthernet0/0/0 (FortiGate WAN)</div>
+          </div>
+
+          <div class="mt-4 text-[#888] text-[10px]">
+            Routing Table: 4 Active OSPF Paths · BGP Default Route Installed
+          </div>
+        </div>
+
+        <!-- TAB 3: Show VLAN Brief -->
+        <div *ngIf="activeCiscoTab === 'vlan'" class="terminal-scroll overflow-x-auto max-h-[380px] leading-relaxed text-[11px] pr-1">
+          <div class="text-[#f59e0b] mb-1">Core-Switch-01# show vlan brief</div>
+          
+          <div class="border-b border-[#333] pb-1 text-[#777] grid grid-cols-12 gap-1 text-[10px]">
+            <span class="col-span-2">VLAN</span>
+            <span class="col-span-4">Name</span>
+            <span class="col-span-2">Status</span>
+            <span class="col-span-4">Ports</span>
+          </div>
+
+          <div class="space-y-1.5 mt-1.5 font-mono-tech text-[10px]">
+            <div class="grid grid-cols-12 gap-1 text-[#7ED957]">
+              <span class="col-span-2">10</span>
+              <span class="col-span-4">DATACENTER-SRV</span>
+              <span class="col-span-2">active</span>
+              <span class="col-span-4 text-[#AAA]">Te1/1/1-4, Gi1/0/1-12</span>
+            </div>
+            <div class="grid grid-cols-12 gap-1 text-[#38bdf8]">
+              <span class="col-span-2">20</span>
+              <span class="col-span-4">WIRELESS-AP-UNIFI</span>
+              <span class="col-span-2">active</span>
+              <span class="col-span-4 text-[#AAA]">Gi1/0/13-20 (PoE+)</span>
+            </div>
+            <div class="grid grid-cols-12 gap-1 text-[#F59E0B]">
+              <span class="col-span-2">30</span>
+              <span class="col-span-4">WORKSTATION-LAN</span>
+              <span class="col-span-2">active</span>
+              <span class="col-span-4 text-[#AAA]">Gi1/0/21-44</span>
+            </div>
+            <div class="grid grid-cols-12 gap-1 text-[#DDD]">
+              <span class="col-span-2">99</span>
+              <span class="col-span-4">MANAGEMENT-OOB</span>
+              <span class="col-span-2">active</span>
+              <span class="col-span-4 text-[#AAA]">Gi1/0/45-48</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Cisco Terminal Bottom Status Bar -->
+      <div class="pt-3 mt-3 border-t border-[#26292e] flex items-center justify-between text-[10px] text-[#777]">
+        <div class="flex items-center gap-3">
+          <span>HOSTNAME: <span class="text-[#DDD]">Core-Switch-01</span></span>
+          <span>UPTIME: <span class="text-[#7ED957]">328 days, 14 hours</span></span>
+        </div>
+        <span class="text-[#7ED957] font-semibold">● LINK UP/UP (10G FIBER)</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ========================================================================= -->
+<!-- SECTION 03: CLOUD, DEVOPS & AUTOMATION (3Y+ CLOUD OPERATIONS)             -->
+<!-- ========================================================================= -->
+<section id="cloud-devops" class="py-16 border-b border-[var(--border)] scroll-reveal-item">
+  <!-- Section Heading -->
+  <div class="mb-10">
+    <div class="flex items-center gap-3 font-mono-tech text-[11px] font-bold tracking-wider text-[var(--accent-text)] uppercase mb-2">
+      <span class="px-2 py-0.5 rounded bg-[var(--accent)]/10 border border-[var(--accent)]/30">03 / EXTENDED COMPETENCY</span>
+      <span>CLOUD, DEVOPS & AUTOMATION</span>
+      <span class="w-8 h-[2px] bg-[var(--accent)]"></span>
+    </div>
+    <h2 class="font-mono-tech text-2xl sm:text-3xl md:text-4xl text-[var(--text-1)] font-bold mb-3 tracking-tight">
+      Vận Hành Cloud, DevOps & Tự Động Hóa Hệ Thống
+    </h2>
+    <p class="font-mono-tech text-xs sm:text-sm text-[var(--accent-text)] font-semibold mb-3">
+      Azure Cloud · Kubernetes / AKS · CI/CD Pipelines · Infrastructure Automation
+    </p>
+    <p class="text-[var(--text-2)] text-sm sm:text-base max-w-4xl leading-relaxed">
+      Kinh nghiệm thực chiến triển khai và vận hành hệ thống Cloud/DevOps, xây dựng đường ống CI/CD pipeline tự động hóa hoàn toàn từ mã nguồn đến môi trường Kubernetes (AKS), container hóa ứng dụng với Docker và Helm Charts. Thiết kế quy trình khép kín: <em>Source code &rarr; Build &rarr; Test &rarr; Container &rarr; Registry &rarr; Deployment &rarr; Observability</em>, kết hợp các script tự động hóa PowerShell/Bash/Python và Nginx Reverse Proxy.
+    </p>
+  </div>
+
+  <!-- Technical Showcase Grid: Skills Matrix + Live DevOps Dashboard -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+    
+    <!-- Left Column (5 Cols): Categorized Skill Groups -->
+    <div class="lg:col-span-5 p-6 rounded-md border border-[var(--border)] bg-[var(--surface)] flex flex-col justify-between shadow-xs scroll-reveal-item delay-100">
+      <div class="space-y-6">
+        
+        <!-- Group 1: Cloud Platform & Container -->
+        <div>
+          <div class="flex items-center justify-between mb-2.5">
+            <span class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider">
+              01. NỀN TẢNG CLOUD & CONTAINER
+            </span>
+            <span class="text-[10px] font-mono-tech text-[var(--text-3)]">KUBERNETES</span>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Microsoft Azure (AZ-104)
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Docker & Compose
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Kubernetes / Azure AKS
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Helm Charts
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Nginx / Reverse Proxy
+            </span>
+          </div>
+        </div>
+
+        <!-- Group 2: Automated CI/CD Pipelines -->
+        <div>
+          <div class="flex items-center justify-between mb-2.5">
+            <span class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider">
+              02. ĐƯỜNG ỐNG TỰ ĐỘNG HÓA CI/CD
+            </span>
+            <span class="text-[10px] font-mono-tech text-[var(--text-3)]">PIPELINES</span>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Jenkins CI/CD Pipeline
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              GitHub Actions
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Automated Testing
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Multi-stage Builds
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Container Registry (ACR)
+            </span>
+          </div>
+        </div>
+
+        <!-- Group 3: Infrastructure Automation & Observability -->
+        <div>
+          <div class="flex items-center justify-between mb-2.5">
+            <span class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider">
+              03. HẠ TẦNG & GIÁM SÁT VẬN HÀNH
+            </span>
+            <span class="text-[10px] font-mono-tech text-[var(--text-3)]">SCRIPTING</span>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Infrastructure Automation
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Linux (Ubuntu/RHEL)
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              PowerShell 7 Core
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Bash Shell Scripting
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Python Automation
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Grafana & Prometheus
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Specs Footer Bar -->
+      <div class="mt-6 pt-4 border-t border-[var(--border)] font-mono-tech text-xs text-[var(--text-3)] flex flex-wrap items-center justify-between gap-2">
+        <span class="flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse"></span>
+          CLUSTER: <strong class="text-[var(--text-1)]">AKS-PROD-SEA</strong>
+        </span>
+        <span>DEPLOY: <strong class="text-[var(--accent-text)]">ZERO-DOWNTIME</strong> · UPTIME: <strong class="text-[var(--text-1)]">99.99%</strong></span>
+      </div>
+    </div>
+
+    <!-- Right Column (7 Cols): Production CI/CD Pipeline & Live AKS Dashboard -->
+    <div class="lg:col-span-7 terminal-window rounded-md p-5 font-mono-tech text-xs text-[#F5F5F5] flex flex-col justify-between shadow-lg scroll-reveal-item delay-200">
+      
+      <div>
+        <!-- Window Top Bar with Tabs -->
+        <div class="flex items-center justify-between pb-3 mb-4 border-b border-[#26292e]">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#EF4444]"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-[#F59E0B]"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-[#7ED957]"></span>
+            <span class="text-[11px] text-[#A0A0A0] ml-2 select-none">
+              devops&#64;azure-cloud-ops: ~
+            </span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button 
+              (click)="switchDevOpsTab('pipeline')"
+              [class.active]="activeDevOpsTab === 'pipeline'"
+              class="terminal-tab-btn">
+              pipeline & aks
+            </button>
+            <button 
+              (click)="switchDevOpsTab('kubectl')"
+              [class.active]="activeDevOpsTab === 'kubectl'"
+              class="terminal-tab-btn">
+              kubectl get pods
+            </button>
+          </div>
+        </div>
+
+        <!-- TAB 1: Live CI/CD Pipeline & AKS Live Telemetry -->
+        <div *ngIf="activeDevOpsTab === 'pipeline'" class="space-y-4 terminal-scroll overflow-x-auto max-h-[380px] pr-1">
+          
+          <!-- Block 1: CI/CD Pipeline 6-stage flow -->
+          <div class="p-3 rounded bg-[#16191f] border border-[#2a303c]">
+            <div class="flex items-center justify-between pb-2 mb-2.5 border-b border-[#222733] text-[11px]">
+              <span class="text-[#38bdf8] font-bold">CI/CD PIPELINE #142 · PROD RELEASE</span>
+              <span class="text-[#7ED957] font-semibold text-[10px] bg-[#7ED957]/10 px-2 py-0.5 rounded border border-[#7ED957]/30">
+                ✓ SUCCESS (1m 48s)
+              </span>
+            </div>
+
+            <!-- 6 Stages Grid -->
+            <div class="grid grid-cols-3 sm:grid-cols-6 gap-1.5 text-center text-[10px]">
+              <div class="p-1.5 rounded bg-[#101216] border border-[#262b35]">
+                <div class="text-[#777]">1. GIT</div>
+                <div class="text-[#EEE] font-bold my-0.5">Commit</div>
+                <div class="text-[#7ED957] font-bold">✓ 8s</div>
+              </div>
+              <div class="p-1.5 rounded bg-[#101216] border border-[#262b35]">
+                <div class="text-[#777]">2. LINT</div>
+                <div class="text-[#EEE] font-bold my-0.5">Test Pass</div>
+                <div class="text-[#7ED957] font-bold">✓ 22s</div>
+              </div>
+              <div class="p-1.5 rounded bg-[#101216] border border-[#262b35]">
+                <div class="text-[#777]">3. BUILD</div>
+                <div class="text-[#EEE] font-bold my-0.5">Docker</div>
+                <div class="text-[#7ED957] font-bold">✓ 34s</div>
+              </div>
+              <div class="p-1.5 rounded bg-[#101216] border border-[#262b35]">
+                <div class="text-[#777]">4. PUSH</div>
+                <div class="text-[#EEE] font-bold my-0.5">Registry</div>
+                <div class="text-[#7ED957] font-bold">✓ 16s</div>
+              </div>
+              <div class="p-1.5 rounded bg-[#101216] border border-[#262b35]">
+                <div class="text-[#777]">5. HELM</div>
+                <div class="text-[#EEE] font-bold my-0.5">Deploy</div>
+                <div class="text-[#7ED957] font-bold">✓ 18s</div>
+              </div>
+              <div class="p-1.5 rounded bg-[#101216] border border-[#262b35]">
+                <div class="text-[#777]">6. HEALTH</div>
+                <div class="text-[#EEE] font-bold my-0.5">Live K8s</div>
+                <div class="text-[#7ED957] font-bold">✓ 10s</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Block 2: Azure AKS Cluster Live Health Metrics -->
+          <div class="p-3.5 rounded bg-[#16191f] border border-[#2a303c]">
+            <div class="flex items-center justify-between pb-2 mb-3 border-b border-[#222733] text-[11px]">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[var(--accent)] pulse-node"></span>
+                <span class="font-bold text-[#F5F5F5]">AZURE AKS: aks-prod-southeastasia</span>
+              </div>
+              <span class="text-[10px] text-[var(--accent-text)] font-semibold">● CLUSTER HEALTHY</span>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-[11px] mb-3">
+              <div>
+                <div class="text-[#777] text-[10px]">DEPLOYMENTS</div>
+                <div class="text-[#7ED957] font-bold text-sm">3/3 Running</div>
+              </div>
+              <div>
+                <div class="text-[#777] text-[10px]">ACTIVE PODS</div>
+                <div class="text-[#7ED957] font-bold text-sm">12/12 Ready</div>
+              </div>
+              <div>
+                <div class="text-[#777] text-[10px]">INGRESS CONTROLLER</div>
+                <div class="text-[#38bdf8] font-bold text-sm">Nginx TLS 1.3</div>
+              </div>
+              <div>
+                <div class="text-[#777] text-[10px]">TRAFFIC / SEC</div>
+                <div class="text-[#F59E0B] font-bold text-sm">1.8 Gbps</div>
+              </div>
+            </div>
+
+            <!-- Resource Allocation Gauges -->
+            <div class="space-y-2 text-[10px]">
+              <div>
+                <div class="flex justify-between mb-1 text-[#AAA]">
+                  <span>CPU Allocation: 42% (Normal Load)</span>
+                  <span class="text-[#7ED957]">8 / 16 Cores</span>
+                </div>
+                <div class="aks-metric-bar">
+                  <div class="aks-metric-fill bg-[#7ED957]" style="width: 42%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-1 text-[#AAA]">
+                  <span>Memory Allocation: 61% (Optimized)</span>
+                  <span class="text-[#38bdf8]">39.2 / 64 GB</span>
+                </div>
+                <div class="aks-metric-bar">
+                  <div class="aks-metric-fill bg-[#38bdf8]" style="width: 61%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- TAB 2: Kubectl CLI Terminal -->
+        <div *ngIf="activeDevOpsTab === 'kubectl'" class="terminal-scroll overflow-x-auto max-h-[380px] leading-relaxed text-[11px] pr-1">
+          <div class="text-[#38bdf8] mb-1.5">$ kubectl get pods -n production -o wide</div>
+          
+          <div class="border-b border-[#333] pb-1 text-[#777] grid grid-cols-12 gap-1 text-[10px]">
+            <span class="col-span-5">NAME</span>
+            <span class="col-span-2">READY</span>
+            <span class="col-span-2">STATUS</span>
+            <span class="col-span-3">IP</span>
+          </div>
+
+          <div class="space-y-1.5 mt-1.5 font-mono-tech text-[10px]">
+            <div class="grid grid-cols-12 gap-1 text-[#7ED957]">
+              <span class="col-span-5">order-api-deployment-7f8b9-k12</span>
+              <span class="col-span-2">1/1</span>
+              <span class="col-span-2">Running</span>
+              <span class="col-span-3 text-[#AAA]">10.244.1.42</span>
+            </div>
+            <div class="grid grid-cols-12 gap-1 text-[#7ED957]">
+              <span class="col-span-5">order-api-deployment-7f8b9-m49</span>
+              <span class="col-span-2">1/1</span>
+              <span class="col-span-2">Running</span>
+              <span class="col-span-3 text-[#AAA]">10.244.2.19</span>
+            </div>
+            <div class="grid grid-cols-12 gap-1 text-[#38bdf8]">
+              <span class="col-span-5">rabbitmq-cluster-node-0</span>
+              <span class="col-span-2">1/1</span>
+              <span class="col-span-2">Running</span>
+              <span class="col-span-3 text-[#AAA]">10.244.3.08</span>
+            </div>
+            <div class="grid grid-cols-12 gap-1 text-[#F59E0B]">
+              <span class="col-span-5">redis-cache-master-0</span>
+              <span class="col-span-2">1/1</span>
+              <span class="col-span-2">Running</span>
+              <span class="col-span-3 text-[#AAA]">10.244.1.15</span>
+            </div>
+            <div class="grid grid-cols-12 gap-1 text-[#DDD]">
+              <span class="col-span-5">ingress-nginx-controller-v99</span>
+              <span class="col-span-2">1/1</span>
+              <span class="col-span-2">Running</span>
+              <span class="col-span-3 text-[#AAA]">10.244.0.04</span>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-2 border-t border-[#222] text-[#888] text-[10px] flex items-center justify-between">
+            <span>Namespace: production · Context: aks-prod-sea</span>
+            <span class="text-[#7ED957]">All 12 pods healthy</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- DevOps Terminal Bottom Status -->
+      <div class="pt-3 mt-3 border-t border-[#26292e] flex items-center justify-between text-[10px] text-[#777]">
+        <div class="flex items-center gap-3">
+          <span>PIPELINE: <span class="text-[#DDD]">Automated Continuous Deployment</span></span>
+        </div>
+        <span class="text-[#7ED957] font-semibold">● DEPLOY STATUS: ZERO REGRESSION</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ========================================================================= -->
+<!-- SECTION 04: BACKEND & DISTRIBUTED SYSTEMS (ASP.NET CORE 8)                -->
+<!-- ========================================================================= -->
+<section id="backend-systems" class="py-16 border-b border-[var(--border)] scroll-reveal-item">
+  <!-- Section Heading -->
+  <div class="mb-10">
+    <div class="flex items-center gap-3 font-mono-tech text-[11px] font-bold tracking-wider text-[var(--accent-text)] uppercase mb-2">
+      <span class="px-2 py-0.5 rounded bg-[var(--accent)]/10 border border-[var(--accent)]/30">04 / EXTENDED COMPETENCY</span>
+      <span>BACKEND & DISTRIBUTED SYSTEMS</span>
+      <span class="w-8 h-[2px] bg-[var(--accent)]"></span>
+    </div>
+    <h2 class="font-mono-tech text-2xl sm:text-3xl md:text-4xl text-[var(--text-1)] font-bold mb-3 tracking-tight">
+      Phát Triển Backend & Distributed Systems với ASP.NET Core
+    </h2>
+    <p class="font-mono-tech text-xs sm:text-sm text-[var(--accent-text)] font-semibold mb-3">
+      Clean Architecture · CQRS / MediatR · Message Broker · In-Memory Caching
+    </p>
+    <p class="text-[var(--text-2)] text-sm sm:text-base max-w-4xl leading-relaxed">
+      1+ năm kinh nghiệm phát triển backend thực tế tại công ty phần mềm với <strong>ASP.NET Core 8 / .NET</strong>, thiết kế RESTful API chuẩn Enterprise và xây dựng kiến trúc phân tán theo mô hình <strong>Clean Architecture & CQRS</strong>. Làm chủ xử lý luồng công việc bất đồng bộ quy mô lớn với <strong>RabbitMQ</strong>, tối ưu hóa truy xuất dữ liệu với bộ nhớ đệm phân tán <strong>Redis</strong>, lưu trữ dữ liệu với <strong>PostgreSQL & MongoDB</strong>, truyền thông thời gian thực với <strong>SignalR/WebSocket</strong> và đảm bảo chất lượng với Unit/Integration Testing.
+    </p>
+  </div>
+
+  <!-- Technical Showcase Grid: Skills Matrix + Event-Driven Architecture Stage -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+    
+    <!-- Left Column (5 Cols): Categorized Backend Skills -->
+    <div class="lg:col-span-5 p-6 rounded-md border border-[var(--border)] bg-[var(--surface)] flex flex-col justify-between shadow-xs scroll-reveal-item delay-100">
+      <div class="space-y-6">
+        
+        <!-- Group 1: Core Framework & Architecture -->
+        <div>
+          <div class="flex items-center justify-between mb-2.5">
+            <span class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider">
+              01. FRAMEWORK & KIẾN TRÚC
+            </span>
+            <span class="text-[10px] font-mono-tech text-[var(--text-3)]">ARCHITECTURE</span>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              ASP.NET Core 8 (.NET)
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              RESTful Web API
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Clean Architecture
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              CQRS / MediatR Pattern
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Microservices Patterns
+            </span>
+          </div>
+        </div>
+
+        <!-- Group 2: Data, Caching & Message Broker -->
+        <div>
+          <div class="flex items-center justify-between mb-2.5">
+            <span class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider">
+              02. LƯU TRỮ, CACHE & MESSAGE QUEUE
+            </span>
+            <span class="text-[10px] font-mono-tech text-[var(--text-3)]">ASYNC BUS</span>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              RabbitMQ Message Bus
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Redis In-Memory Cache
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              PostgreSQL (ACID)
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              MongoDB
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Entity Framework Core
+            </span>
+          </div>
+        </div>
+
+        <!-- Group 3: Realtime, Security & Testing -->
+        <div>
+          <div class="flex items-center justify-between mb-2.5">
+            <span class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider">
+              03. BẢO MẬT, THỜI GIAN THỰC & KIỂM THỬ
+            </span>
+            <span class="text-[10px] font-mono-tech text-[var(--text-3)]">TESTING</span>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              SignalR / WebSockets
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              JWT & OAuth2 Security
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              API Gateway Integration
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Unit & Integration Tests
+            </span>
+            <span class="font-mono-tech text-xs px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)] font-medium hover:border-[var(--accent)] transition-colors">
+              Observability & Telemetry
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Specs Footer Bar -->
+      <div class="mt-6 pt-4 border-t border-[var(--border)] font-mono-tech text-xs text-[var(--text-3)] flex flex-wrap items-center justify-between gap-2">
+        <span class="flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse"></span>
+          LATENCY P95: <strong class="text-[var(--text-1)]">12ms</strong>
+        </span>
+        <span>THROUGHPUT: <strong class="text-[var(--text-1)]">5,000 req/s</strong> · <strong class="text-[var(--accent-text)]">EVENT-DRIVEN</strong></span>
+      </div>
+    </div>
+
+    <!-- Right Column (7 Cols): Event-Driven Transaction Pipeline Showcase -->
+    <div class="lg:col-span-7 terminal-window rounded-md p-5 font-mono-tech text-xs text-[#F5F5F5] flex flex-col justify-between shadow-lg scroll-reveal-item delay-200">
+      
+      <div>
+        <!-- Top Bar with Tabs -->
+        <div class="flex items-center justify-between pb-3 mb-4 border-b border-[#26292e]">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#EF4444]"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-[#F59E0B]"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-[#7ED957]"></span>
+            <span class="text-[11px] text-[#A0A0A0] ml-2 select-none">
+              dotnet&#64;backend-distributed-bus: ~
+            </span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button 
+              (click)="switchBackendTab('flow')"
+              [class.active]="activeBackendTab === 'flow'"
+              class="terminal-tab-btn">
+              transaction flow
+            </button>
+            <button 
+              (click)="switchBackendTab('code')"
+              [class.active]="activeBackendTab === 'code'"
+              class="terminal-tab-btn">
+              cqrs handler code
+            </button>
+          </div>
+        </div>
+
+        <!-- TAB 1: 4 Event-Driven Transaction Blocks -->
+        <div *ngIf="activeBackendTab === 'flow'" class="space-y-2.5 terminal-scroll overflow-x-auto max-h-[380px] pr-1">
+          
+          <div class="p-3 rounded bg-[#16191f] border border-[#2a303c] flex items-center justify-between">
+            <div>
+              <div class="font-bold text-[#F5F5F5]">1. Client Ingress / API Gateway</div>
+              <div class="text-[11px] text-[#888]">JWT Validation · Rate Limiting · Route to Microservice</div>
+            </div>
+            <span class="text-[#7ED957] font-bold text-xs bg-[#7ED957]/10 px-2 py-0.5 rounded border border-[#7ED957]/30">
+              POST /orders &rarr; 200 OK
+            </span>
+          </div>
+
+          <div class="p-3 rounded bg-[#16191f] border border-[#2a303c] flex items-center justify-between">
+            <div>
+              <div class="font-bold text-[#F5F5F5]">2. Command Handler (CQRS & MediatR)</div>
+              <div class="text-[11px] text-[#888]">FluentValidation · Business Logic · Cache Check (Redis)</div>
+            </div>
+            <span class="text-[#38bdf8] font-bold text-xs bg-[#38bdf8]/10 px-2 py-0.5 rounded border border-[#38bdf8]/30">
+              Cache Hit (92%)
+            </span>
+          </div>
+
+          <div class="p-3 rounded bg-[#16191f] border border-[#2a303c] flex items-center justify-between">
+            <div>
+              <div class="font-bold text-[#F5F5F5]">3. Message Bus (RabbitMQ Topic Exchange)</div>
+              <div class="text-[11px] text-[#888]">Publish OrderCreatedEvent · Async Decoupled Worker Consumers</div>
+            </div>
+            <span class="text-[#F59E0B] font-bold text-xs bg-[#F59E0B]/10 px-2 py-0.5 rounded border border-[#F59E0B]/30">
+              Throughput 5k/s
+            </span>
+          </div>
+
+          <div class="p-3 rounded bg-[#16191f] border border-[#2a303c] flex items-center justify-between">
+            <div>
+              <div class="font-bold text-[#F5F5F5]">4. PostgreSQL & SignalR Real-time Broadcast</div>
+              <div class="text-[11px] text-[#888]">ACID Transaction Committed · Real-time Socket Event Pushed</div>
+            </div>
+            <span class="text-[#7ED957] font-bold text-xs bg-[#7ED957]/10 px-2 py-0.5 rounded border border-[#7ED957]/30">
+              Committed ✓
+            </span>
+          </div>
+
+        </div>
+
+        <!-- TAB 2: C# CQRS Handler Snippet -->
+        <div *ngIf="activeBackendTab === 'code'" class="terminal-scroll overflow-x-auto max-h-[380px] leading-relaxed text-[11px] pr-1">
+          <div class="text-[#888] mb-1.5">// OrderCommandHandler.cs · CQRS with MediatR & RabbitMQ</div>
+          <div class="font-mono-tech space-y-1 text-[#DDD]">
+            <div><span class="text-[#38bdf8]">public class</span> <span class="text-[#7ED957]">CreateOrderHandler</span> : <span class="text-[#F59E0B]">IRequestHandler</span>&lt;<span class="text-[#F59E0B]">CreateOrderCommand</span>, <span class="text-[#F59E0B]">OrderResponse</span>&gt;</div>
+            <div>&#123;</div>
+            <div class="pl-4"><span class="text-[#777]">// 1. Validate & Check Redis Distributed Cache</span></div>
+            <div class="pl-4"><span class="text-[#38bdf8]">var</span> cached = <span class="text-[#38bdf8]">await</span> _cache.GetAsync(cmd.Id);</div>
+            <div class="pl-4"><span class="text-[#38bdf8]">if</span> (cached != <span class="text-[#38bdf8]">null</span>) <span class="text-[#38bdf8]">return</span> cached;</div>
+            <br>
+            <div class="pl-4"><span class="text-[#777]">// 2. Commit Transaction to PostgreSQL Database</span></div>
+            <div class="pl-4"><span class="text-[#38bdf8]">var</span> order = <span class="text-[#38bdf8]">await</span> _dbContext.Orders.AddAsync(cmd.ToEntity());</div>
+            <div class="pl-4"><span class="text-[#38bdf8]">await</span> _dbContext.SaveChangesAsync();</div>
+            <br>
+            <div class="pl-4"><span class="text-[#777]">// 3. Publish Event to RabbitMQ Bus & Push SignalR</span></div>
+            <div class="pl-4"><span class="text-[#38bdf8]">await</span> _bus.PublishAsync(<span class="text-[#38bdf8]">new</span> <span class="text-[#7ED957]">OrderCreatedEvent</span>(order.Id));</div>
+            <div class="pl-4"><span class="text-[#38bdf8]">await</span> _hub.Clients.User(cmd.UserId).SendAsync(<span class="text-[#7ED957]">"OrderConfirmed"</span>, order.Id);</div>
+            <div>&#125;</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Backend Terminal Bottom Status -->
+      <div class="pt-3 mt-3 border-t border-[#26292e] flex items-center justify-between text-[10px] text-[#777]">
+        <div class="flex items-center gap-3">
+          <span>PATTERN: <span class="text-[#DDD]">CQRS + Event-Driven Microservices</span></span>
+        </div>
+        <span class="text-[#7ED957] font-semibold">● RUNTIME: .NET 8 LTS ACTIVE</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ========================================================================= -->
+<!-- MODULE 05: FULL-LIFECYCLE 8-PHASE AI ENGINEERING ORCHESTRATOR             -->
+<!-- ========================================================================= -->
+<section id="ai-engineering" class="py-16 border-b border-[var(--border)] scroll-reveal-item">
+  <!-- Section Heading -->
+  <div class="mb-10">
+    <div class="flex items-center gap-3 font-mono-tech text-[11px] font-bold tracking-wider text-[var(--accent-text)] uppercase mb-2">
+      <span class="px-2 py-0.5 rounded bg-[var(--accent)]/10 border border-[var(--accent)]/30">05 / ADVANCED PARADIGM</span>
+      <span>8-PHASE AI ENGINEERING ORCHESTRATOR</span>
+      <span class="w-8 h-[2px] bg-[var(--accent)]"></span>
+    </div>
+    <h2 class="font-mono-tech text-2xl sm:text-3xl md:text-4xl text-[var(--text-1)] font-bold mb-3 tracking-tight">
+      Hệ Thống Điều Phối 8 Giai Đoạn Từ Khảo Sát Đến Tự Phục Hồi
+    </h2>
+    <p class="font-mono-tech text-xs sm:text-sm text-[var(--accent-text)] font-semibold mb-3">
+      Claude Code · ChatGPT · Gemini · MCP & Skills · 8-Phase Lifecycle · Autonomous Self-Healing
+    </p>
+    <p class="text-[var(--text-2)] text-sm sm:text-base max-w-4xl leading-relaxed">
+      AI không phải là một bước độc lập — mà là <strong>Lớp Điều Phối Thông Minh (Orchestration Layer)</strong> kiểm soát và tăng tốc toàn bộ 8 giai đoạn của vòng đời kỹ thuật phần mềm và vận hành hạ tầng: từ <em>Khảo sát yêu cầu (Discover) &rarr; Thiết kế kiến trúc (Architect) &rarr; Thực thi mã nguồn (Implement) &rarr; Kiểm thử đa tầng (Verify) &rarr; Đóng gói CI/CD (Build) &rarr; Quét an ninh DevSecOps (Security) &rarr; Triển khai hạ tầng (Deploy) &rarr; Vận hành và tự động chữa lành sự cố (Operate & Self-Healing)</em>.
+    </p>
+  </div>
+
+  <!-- Technical Showcase Grid: Core Competencies + Interactive 8-Phase Stage -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+    
+    <!-- Left Column (5 Cols): AI Engineering Core Competencies -->
+    <div class="lg:col-span-5 p-6 rounded-md border border-[var(--border)] bg-[var(--surface)] flex flex-col justify-between shadow-xs scroll-reveal-item delay-100">
+      <div>
+        <div class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider mb-4">
+          QUY TRÌNH KỸ THUẬT ĐÓNG GÓI TỪ A &rarr; Z (8 PHASES)
+        </div>
+
+        <div class="space-y-3">
+          
+          <!-- Pillar 1: Discovery & Architecture -->
+          <div class="p-3 rounded dialogue-card border-l-2 border-l-[var(--accent)]">
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-[#F5F5F5] text-xs">Phases 01 &rarr; 02: Khảo Sát & Thiết Kế Kiến Trúc</span>
+              <span class="text-[10px] text-[#7ED957] font-semibold bg-[#7ED957]/10 px-1.5 py-0.2 rounded border border-[#7ED957]/30">ARCHITECT</span>
+            </div>
+            <div class="text-[11px] text-[#888] mt-1">
+              Phân tích yêu cầu, tra cứu 1M+ token tài liệu RFC, thiết kế kiến trúc phân tán CQRS, mô hình dữ liệu PostgreSQL/Redis và sizing cụm Azure AKS.
+            </div>
+          </div>
+
+          <!-- Pillar 2: Implementation & Rigorous Testing -->
+          <div class="p-3 rounded dialogue-card border-l-2 border-l-[#38bdf8]">
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-[#F5F5F5] text-xs">Phases 03 &rarr; 04: Thực Thi Mã Nguồn & Testing Toàn Diện</span>
+              <span class="text-[10px] text-[#38bdf8] font-semibold bg-[#38bdf8]/10 px-1.5 py-0.2 rounded border border-[#38bdf8]/30">TESTING</span>
+            </div>
+            <div class="text-[11px] text-[#888] mt-1">
+              Claude Code CLI thao tác qua MCP sinh mã nguồn .NET 8, chạy tự động Unit Test (xUnit), E2E Playwright và kích hoạt vòng lặp tự sửa lỗi khi test fail.
+            </div>
+          </div>
+
+          <!-- Pillar 3: CI/CD Build & DevSecOps Security Scan -->
+          <div class="p-3 rounded dialogue-card border-l-2 border-l-[#22c55e]">
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-[#F5F5F5] text-xs">Phases 05 &rarr; 06: Đóng Gói CI/CD & An Ninh DevSecOps</span>
+              <span class="text-[10px] text-[#22c55e] font-semibold bg-[#22c55e]/10 px-1.5 py-0.2 rounded border border-[#22c55e]/30">DEVSECOPS</span>
+            </div>
+            <div class="text-[11px] text-[#888] mt-1">
+              Jenkins CI build Docker image đa tầng, quét mã tĩnh SAST SonarQube, quét CVE Trivy, quét rò rỉ bí mật Gitleaks đạt chuẩn OWASP Top 10.
+            </div>
+          </div>
+
+          <!-- Pillar 4: Production Deployment & Self-Healing Ops -->
+          <div class="p-3 rounded dialogue-card border-l-2 border-l-[#A855F7]">
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-[#F5F5F5] text-xs">Phases 07 &rarr; 08: Triển Khai Hạ Tầng & Tự Phục Hồi</span>
+              <span class="text-[10px] text-[#A855F7] font-semibold bg-[#A855F7]/10 px-1.5 py-0.2 rounded border border-[#A855F7]/30">SELF-HEALING</span>
+            </div>
+            <div class="text-[11px] text-[#888] mt-1">
+              Rolling update không gián đoạn lên Azure AKS, cấu hình Cisco Trunk VLAN 10. AI theo dõi Prometheus/Zabbix, tự chẩn đoán và chữa lành lỗi trong 4s.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-[var(--border)] font-mono-tech text-xs text-[var(--text-3)] flex items-center justify-between">
+        <span>PARADIGM: 2-TIER ORCHESTRATOR LIFECYCLE</span>
+        <span class="text-[var(--accent-text)] font-bold">● END-TO-END AUTOMATED</span>
+      </div>
+    </div>
+
+    <!-- Right Column (7 Cols): Interactive Animated SVG Canvas + Live Telemetry Console -->
+    <div class="lg:col-span-7 terminal-window rounded-md p-5 font-mono-tech text-xs text-[#F5F5F5] flex flex-col justify-between shadow-lg scroll-reveal-item delay-200">
+      
+      <div>
+        <!-- Top Orchestrator Control Panel -->
+        <div class="p-2.5 rounded bg-[#101318] border border-[#262c36] mb-3">
+          
+          <div class="flex items-center justify-between pb-2 mb-2 border-b border-[#1e232d] text-[10px]">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[var(--accent)] pulse-node"></span>
+              <span class="font-bold text-[#F5F5F5]">AI ENGINEERING ORCHESTRATION LAYER</span>
+            </div>
+            <span class="text-[var(--accent-text)] font-semibold">08/08 PHASES ACTIVE</span>
+          </div>
+
+          <!-- 3 AI Engines + MCP Bus -->
+          <div class="flex items-center justify-around text-center text-[10px] text-[#BBB] py-0.5">
+            <span class="px-2 py-0.5 rounded bg-[#161a22] border border-[#2d3440] font-bold text-[#7ED957]">
+              CLAUDE CODE CLI
+            </span>
+            <span class="text-[#555]">&bull;</span>
+            <span class="px-2 py-0.5 rounded bg-[#161a22] border border-[#2d3440] font-bold text-[#38bdf8]">
+              CHATGPT o3-MINI
+            </span>
+            <span class="text-[#555]">&bull;</span>
+            <span class="px-2 py-0.5 rounded bg-[#161a22] border border-[#2d3440] font-bold text-[#F59E0B]">
+              GEMINI 2.0 PRO
+            </span>
+          </div>
+
+          <div class="text-center text-[9px] text-[#777] mt-1.5 flex items-center justify-center gap-2">
+            <span class="text-[#555]">═══════</span>
+            <span>MCP PROTOCOL & SUBAGENTS DISPATCH</span>
+            <span class="text-[#555]">═══════</span>
+          </div>
+
+        </div>
+
+        <!-- STAGE 1: SVG Canvas: 8 Nodes in 2 Rows of 4 with Connecting Cables & Loops -->
+        <div class="p-3 rounded bg-[#0b0e12] border border-[#222832] mb-3">
+          
+          <div class="flex items-center justify-between text-[10px] text-[#777] mb-2 pb-1 border-b border-[#181d26]">
+            <span class="text-[#38bdf8] font-bold">8-PHASE AUTOMATED ENGINEERING PIPELINE</span>
+            <button 
+              (click)="toggleAiSimulation()"
+              [class.bg-[var(--accent)]]="isAiSimulating"
+              [class.text-[#0B0B0B]]="isAiSimulating"
+              class="px-2 py-0.5 text-[9px] rounded border border-[var(--accent)] font-bold text-[var(--accent-text)] hover:bg-[var(--accent)] hover:text-[#0B0B0B] transition-all cursor-pointer flex items-center gap-1">
+              <span *ngIf="!isAiSimulating">▶ AUTO SIMULATION</span>
+              <span *ngIf="isAiSimulating">⏸ PAUSE</span>
+            </button>
+          </div>
+
+          <!-- SVG Flow Canvas with 8 Nodes -->
+          <svg viewBox="0 0 680 175" class="w-full h-auto select-none overflow-visible">
+            <defs>
+              <filter id="aiPulseGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="2.5" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+
+            <!-- ================= CABLES: ROW 1 (01 -> 02 -> 03 -> 04) ================= -->
+            <line x1="135" y1="36" x2="185" y2="36" stroke="#222834" stroke-width="2" />
+            <line x1="135" y1="36" x2="185" y2="36" stroke="#38bdf8" stroke-width="2" class="ai-cable-flow" />
+
+            <line x1="305" y1="36" x2="355" y2="36" stroke="#222834" stroke-width="2" />
+            <line x1="305" y1="36" x2="355" y2="36" stroke="var(--accent)" stroke-width="2" class="ai-cable-flow" filter="url(#aiPulseGlow)" />
+
+            <line x1="475" y1="36" x2="525" y2="36" stroke="#222834" stroke-width="2" />
+            <line x1="475" y1="36" x2="525" y2="36" stroke="#F59E0B" stroke-width="2" class="ai-cable-flow" />
+
+            <!-- QA FAIL LOOP (From 04 back to 03) -->
+            <path d="M 585 58 Q 500 84 415 58" fill="none" stroke="#A855F7" stroke-width="1.5" stroke-dasharray="3 4" class="ai-cable-flow-reverse" />
+            <text x="500" y="80" fill="#A855F7" font-size="7" text-anchor="middle" font-family="monospace">QA Fix Loop ↺</text>
+
+            <!-- CABLE: DOWN FROM ROW 1 TO ROW 2 (04 down to 05) -->
+            <path d="M 645 36 Q 675 36 675 78 T 645 118 L 135 118" fill="none" stroke="#222834" stroke-width="2" />
+            <path d="M 645 36 Q 675 36 675 78 T 645 118 L 135 118" fill="none" stroke="#38bdf8" stroke-width="2" class="ai-cable-flow" />
+
+            <!-- ================= CABLES: ROW 2 (05 -> 06 -> 07 -> 08) ================= -->
+            <line x1="135" y1="118" x2="185" y2="118" stroke="#222834" stroke-width="2" />
+            <line x1="135" y1="118" x2="185" y2="118" stroke="#38bdf8" stroke-width="2" class="ai-cable-flow" />
+
+            <line x1="305" y1="118" x2="355" y2="118" stroke="#222834" stroke-width="2" />
+            <line x1="305" y1="118" x2="355" y2="118" stroke="#22c55e" stroke-width="2" class="ai-cable-flow" />
+
+            <line x1="475" y1="118" x2="525" y2="118" stroke="#222834" stroke-width="2" />
+            <line x1="475" y1="118" x2="525" y2="118" stroke="var(--accent)" stroke-width="2" class="ai-cable-flow" filter="url(#aiPulseGlow)" />
+
+            <!-- ================= SELF-HEALING LOOP (From 08 back to 07 & Orchestrator) ================= -->
+            <path d="M 585 138 Q 500 172 415 138" fill="none" stroke="#22c55e" stroke-width="2" stroke-dasharray="4 4" class="ai-cable-flow-reverse" filter="url(#aiPulseGlow)" />
+            <text x="500" y="165" fill="#22c55e" font-size="8" font-weight="bold" text-anchor="middle" font-family="monospace">Autonomous Self-Healing Loop ↺</text>
+
+
+            <!-- ================= ROW 1: NODES 01, 02, 03, 04 ================= -->
+            
+            <!-- NODE 01: DISCOVER -->
+            <g class="ai-stage-node" (click)="selectAiStep(1)" [class.active-node]="currentAiStep === 1">
+              <rect x="15" y="18" width="120" height="38" rx="4" 
+                    [attr.fill]="currentAiStep === 1 ? '#10222e' : '#12161d'" 
+                    [attr.stroke]="currentAiStep === 1 ? '#38bdf8' : '#262d38'" stroke-width="1.5" />
+              <circle cx="28" cy="37" r="3" fill="#38bdf8" />
+              <circle cx="28" cy="37" r="6" fill="#38bdf8" opacity="0.3" class="animate-ping" *ngIf="currentAiStep === 1" />
+              <text x="38" y="32" fill="#FFF" font-size="8.5" font-weight="bold" font-family="monospace">01. DISCOVER</text>
+              <text x="38" y="44" fill="#38bdf8" font-size="7.5" font-family="monospace">Researcher · Gemini</text>
+            </g>
+
+            <!-- NODE 02: ARCHITECT -->
+            <g class="ai-stage-node" (click)="selectAiStep(2)" [class.active-node]="currentAiStep === 2">
+              <rect x="185" y="18" width="120" height="38" rx="4" 
+                    [attr.fill]="currentAiStep === 2 ? '#16281a' : '#12161d'" 
+                    [attr.stroke]="currentAiStep === 2 ? 'var(--accent)' : '#262d38'" stroke-width="1.5" />
+              <circle cx="198" cy="37" r="3" fill="var(--accent)" />
+              <circle cx="198" cy="37" r="6" fill="var(--accent)" opacity="0.3" class="animate-ping" *ngIf="currentAiStep === 2" />
+              <text x="208" y="32" fill="#FFF" font-size="8.5" font-weight="bold" font-family="monospace">02. ARCHITECT</text>
+              <text x="208" y="44" fill="var(--accent)" font-size="7.5" font-family="monospace">Claude 3.7 · Specs</text>
+            </g>
+
+            <!-- NODE 03: IMPLEMENT -->
+            <g class="ai-stage-node" (click)="selectAiStep(3)" [class.active-node]="currentAiStep === 3">
+              <rect x="355" y="18" width="120" height="38" rx="4" 
+                    [attr.fill]="currentAiStep === 3 ? '#2b1f0d' : '#12161d'" 
+                    [attr.stroke]="currentAiStep === 3 ? '#F59E0B' : '#262d38'" stroke-width="1.5" />
+              <circle cx="368" cy="37" r="3" fill="#F59E0B" />
+              <circle cx="368" cy="37" r="6" fill="#F59E0B" opacity="0.3" class="animate-ping" *ngIf="currentAiStep === 3" />
+              <text x="378" y="32" fill="#FFF" font-size="8.5" font-weight="bold" font-family="monospace">03. IMPLEMENT</text>
+              <text x="378" y="44" fill="#F59E0B" font-size="7.5" font-family="monospace">Claude Code · MCP</text>
+            </g>
+
+            <!-- NODE 04: VERIFY -->
+            <g class="ai-stage-node" (click)="selectAiStep(4)" [class.active-node]="currentAiStep === 4">
+              <rect x="525" y="18" width="120" height="38" rx="4" 
+                    [attr.fill]="currentAiStep === 4 ? '#25132d' : '#12161d'" 
+                    [attr.stroke]="currentAiStep === 4 ? '#A855F7' : '#262d38'" stroke-width="1.5" />
+              <circle cx="538" cy="37" r="3" fill="#A855F7" />
+              <circle cx="538" cy="37" r="6" fill="#A855F7" opacity="0.3" class="animate-ping" *ngIf="currentAiStep === 4" />
+              <text x="548" y="32" fill="#FFF" font-size="8.5" font-weight="bold" font-family="monospace">04. VERIFY</text>
+              <text x="548" y="44" fill="#A855F7" font-size="7.5" font-family="monospace">QA · xUnit · Tests</text>
+            </g>
+
+
+            <!-- ================= ROW 2: NODES 05, 06, 07, 08 ================= -->
+
+            <!-- NODE 05: BUILD -->
+            <g class="ai-stage-node" (click)="selectAiStep(5)" [class.active-node]="currentAiStep === 5">
+              <rect x="15" y="100" width="120" height="38" rx="4" 
+                    [attr.fill]="currentAiStep === 5 ? '#10222e' : '#12161d'" 
+                    [attr.stroke]="currentAiStep === 5 ? '#38bdf8' : '#262d38'" stroke-width="1.5" />
+              <circle cx="28" cy="119" r="3" fill="#38bdf8" />
+              <circle cx="28" cy="119" r="6" fill="#38bdf8" opacity="0.3" class="animate-ping" *ngIf="currentAiStep === 5" />
+              <text x="38" y="114" fill="#FFF" font-size="8.5" font-weight="bold" font-family="monospace">05. BUILD</text>
+              <text x="38" y="126" fill="#38bdf8" font-size="7.5" font-family="monospace">Jenkins CI · Docker</text>
+            </g>
+
+            <!-- NODE 06: SECURITY -->
+            <g class="ai-stage-node" (click)="selectAiStep(6)" [class.active-node]="currentAiStep === 6">
+              <rect x="185" y="100" width="120" height="38" rx="4" 
+                    [attr.fill]="currentAiStep === 6 ? '#112918' : '#12161d'" 
+                    [attr.stroke]="currentAiStep === 6 ? '#22C55E' : '#262d38'" stroke-width="1.5" />
+              <circle cx="198" cy="119" r="3" fill="#22C55E" />
+              <circle cx="198" cy="119" r="6" fill="#22C55E" opacity="0.3" class="animate-ping" *ngIf="currentAiStep === 6" />
+              <text x="208" y="114" fill="#FFF" font-size="8.5" font-weight="bold" font-family="monospace">06. SECURITY</text>
+              <text x="208" y="126" fill="#22C55E" font-size="7.5" font-family="monospace">SAST · Trivy · Audit</text>
+            </g>
+
+            <!-- NODE 07: DEPLOY -->
+            <g class="ai-stage-node" (click)="selectAiStep(7)" [class.active-node]="currentAiStep === 7">
+              <rect x="355" y="100" width="120" height="38" rx="4" 
+                    [attr.fill]="currentAiStep === 7 ? '#16281a' : '#12161d'" 
+                    [attr.stroke]="currentAiStep === 7 ? 'var(--accent)' : '#262d38'" stroke-width="1.5" />
+              <circle cx="368" cy="119" r="3" fill="var(--accent)" />
+              <circle cx="368" cy="119" r="6" fill="var(--accent)" opacity="0.3" class="animate-ping" *ngIf="currentAiStep === 7" />
+              <text x="378" y="114" fill="#FFF" font-size="8.5" font-weight="bold" font-family="monospace">07. DEPLOY</text>
+              <text x="378" y="126" fill="var(--accent)" font-size="7.5" font-family="monospace">Azure AKS · Cisco</text>
+            </g>
+
+            <!-- NODE 08: OPERATE -->
+            <g class="ai-stage-node" (click)="selectAiStep(8)" [class.active-node]="currentAiStep === 8">
+              <rect x="525" y="100" width="120" height="38" rx="4" 
+                    [attr.fill]="currentAiStep === 8 ? '#16281a' : '#12161d'" 
+                    [attr.stroke]="currentAiStep === 8 ? '#22C55E' : '#262d38'" stroke-width="1.5" />
+              <circle cx="538" cy="119" r="3" fill="#22C55E" />
+              <circle cx="538" cy="119" r="6" fill="#22C55E" opacity="0.3" class="animate-ping" *ngIf="currentAiStep === 8" />
+              <text x="548" y="114" fill="#FFF" font-size="8.5" font-weight="bold" font-family="monospace">08. OPERATE</text>
+              <text x="548" y="126" fill="#22C55E" font-size="7.5" font-family="monospace">Grafana · Self-Heal</text>
+            </g>
+
+          </svg>
+        </div>
+
+        <!-- STAGE 2: Step Navigation Controls + Live Telemetry Console -->
+        <div class="p-3.5 rounded bg-[#11141a] border border-[#262c38]">
+          
+          <!-- Phase Switcher Buttons -->
+          <div class="flex items-center justify-between pb-2 mb-3 border-b border-[#202530] flex-wrap gap-1.5">
+            <div class="flex items-center gap-1 flex-wrap">
+              <button 
+                *ngFor="let s of aiSteps"
+                (click)="selectAiStep(s.step)"
+                class="px-2 py-0.5 text-[9.5px] rounded border border-[#2d3442] hover:border-[var(--accent)] transition-all cursor-pointer step-pill"
+                [style.background]="currentAiStep === s.step ? 'var(--accent)' : 'transparent'"
+                [style.color]="currentAiStep === s.step ? '#0B0B0B' : '#888'"
+                [style.fontWeight]="currentAiStep === s.step ? 'bold' : 'normal'">
+                0{{ s.step }} {{ s.shortName }}
+              </button>
+            </div>
+
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded border" 
+                  [style.color]="currentStepData.statusColor"
+                  [style.borderColor]="currentStepData.statusColor + '40'"
+                  [style.background]="currentStepData.statusColor + '15'">
+              ● {{ currentStepData.statusBadge }}
+            </span>
+          </div>
+
+          <!-- Phase Header & Description -->
+          <div class="mb-2.5">
+            <div class="text-[#F5F5F5] font-bold text-xs">
+              {{ currentStepData.title }}
+            </div>
+            <div class="text-[10px] text-[var(--accent-text)] font-semibold mt-0.5">
+              Lead Engine: {{ currentStepData.leadAi }} · ({{ currentStepData.role }})
+            </div>
+            <div class="text-[11px] text-[#A0A0A0] mt-1 leading-relaxed">
+              {{ currentStepData.description }}
+            </div>
+          </div>
+
+          <!-- Phase Dialogue / Telemetry Log Messages -->
+          <div class="space-y-2 terminal-scroll overflow-x-auto max-h-[190px] pr-1">
+            
+            <div *ngFor="let log of currentStepData.logs" class="p-2 rounded dialogue-card border-l-2" [style.borderLeftColor]="log.badgeColor">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-bold text-[10px]" [style.color]="log.badgeColor">
+                  [{{ log.sender }}]
+                </span>
+                <span class="text-[9px] text-[#777]">{{ log.senderRole }}</span>
+              </div>
+              <div class="text-[11px] text-[#DDD] leading-relaxed select-text">
+                {{ log.text }}
+              </div>
+              
+              <div *ngIf="log.codeSnippet" class="mt-1.5 p-1.5 rounded bg-[#080a0d] border border-[#222] text-[10px] text-[#7ED957] font-mono-tech select-all">
+                {{ log.codeSnippet }}
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Bottom Status Bar -->
+      <div class="pt-3 mt-3 border-t border-[#26292e] flex items-center justify-between text-[10px] text-[#777]">
+        <div class="flex items-center gap-3">
+          <span>PIPELINE: <span class="text-[#DDD]">Autonomous Multi-Agent Collaboration Engine</span></span>
+        </div>
+        <span class="text-[#7ED957] font-semibold">● MCP PROTOCOL ACTIVE</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ========================================================================= -->
+<!-- GRAND UNIFIED CONVERGENCE ECOSYSTEM (4 DOMAINS POWERED BY AI ORCHESTRATOR)-->
+<!-- ========================================================================= -->
+<section class="py-14 scroll-reveal-item" id="convergence-ecosystem">
+  <div class="p-6 sm:p-10 rounded-xl border border-[var(--border)] bg-[var(--surface-2)] shadow-lg">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-[var(--border)] pb-6 mb-8 gap-4">
+      <div>
+        <div class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider mb-2 flex items-center gap-2">
+          <span class="inline-block w-2 h-2 rounded-full bg-[var(--accent)] animate-ping"></span>
+          // GRAND UNIFIED ENTERPRISE BLUEPRINT
+        </div>
+        <h3 class="font-mono-tech text-2xl sm:text-3xl font-bold text-[var(--text-1)] tracking-tight">
+          Hệ Sinh Thái Năng Lực Hội Tụ (4 Chuyên Môn + AI Layer)
+        </h3>
+        <p class="text-[var(--text-2)] text-xs sm:text-sm mt-2 max-w-3xl leading-relaxed">
+          Không đơn thuần là các kỹ năng phân mảnh — mà là sự tích hợp cộng hưởng mạch lạc giữa 
+          <span class="text-[#7ED957] font-semibold">Hạ tầng Máy chủ (01)</span>, 
+          <span class="text-[#38BDF8] font-semibold">Mạng Doanh nghiệp & An ninh (02)</span>, 
+          <span class="text-[#F59E0B] font-semibold">Cloud & DevOps (03)</span>, 
+          <span class="text-[#A855F7] font-semibold">Backend CQRS Microservices (04)</span> 
+          được khuếch đại 10x bởi <span class="text-[var(--accent-text)] font-semibold">Bộ Não Điều Phối AI Orchestrator</span>.
+        </p>
+      </div>
+
+      <!-- Domain View Mode Filter Pills -->
+      <div class="flex flex-wrap gap-1.5 font-mono-tech text-[10px] self-start md:self-end">
+        <button
+          type="button"
+          (click)="selectConvergenceTab('all')"
+          [class.bg-[var(--accent)]]="selectedConvergenceTab === 'all'"
+          [class.text-[#0b0b0b]]="selectedConvergenceTab === 'all'"
+          [class.font-bold]="selectedConvergenceTab === 'all'"
+          [class.bg-[var(--surface)]]="selectedConvergenceTab !== 'all'"
+          [class.text-[var(--text-2)]]="selectedConvergenceTab !== 'all'"
+          class="px-2.5 py-1.5 rounded border border-[var(--border)] transition-all hover:border-[var(--accent)]"
+        >
+          ● ALL CONVERGENCE
+        </button>
+        <button
+          type="button"
+          (click)="selectConvergenceTab('01')"
+          [class.bg-[#7ED957]]="selectedConvergenceTab === '01'"
+          [class.text-[#0b0b0b]]="selectedConvergenceTab === '01'"
+          [class.font-bold]="selectedConvergenceTab === '01'"
+          [class.bg-[var(--surface)]]="selectedConvergenceTab !== '01'"
+          [class.text-[var(--text-2)]]="selectedConvergenceTab !== '01'"
+          class="px-2.5 py-1.5 rounded border border-[var(--border)] transition-all hover:border-[#7ED957]"
+        >
+          01 INFRA
+        </button>
+        <button
+          type="button"
+          (click)="selectConvergenceTab('02')"
+          [class.bg-[#38BDF8]]="selectedConvergenceTab === '02'"
+          [class.text-[#0b0b0b]]="selectedConvergenceTab === '02'"
+          [class.font-bold]="selectedConvergenceTab === '02'"
+          [class.bg-[var(--surface)]]="selectedConvergenceTab !== '02'"
+          [class.text-[var(--text-2)]]="selectedConvergenceTab !== '02'"
+          class="px-2.5 py-1.5 rounded border border-[var(--border)] transition-all hover:border-[#38BDF8]"
+        >
+          02 NETWORK
+        </button>
+        <button
+          type="button"
+          (click)="selectConvergenceTab('03')"
+          [class.bg-[#F59E0B]]="selectedConvergenceTab === '03'"
+          [class.text-[#0b0b0b]]="selectedConvergenceTab === '03'"
+          [class.font-bold]="selectedConvergenceTab === '03'"
+          [class.bg-[var(--surface)]]="selectedConvergenceTab !== '03'"
+          [class.text-[var(--text-2)]]="selectedConvergenceTab !== '03'"
+          class="px-2.5 py-1.5 rounded border border-[var(--border)] transition-all hover:border-[#F59E0B]"
+        >
+          03 DEVOPS
+        </button>
+        <button
+          type="button"
+          (click)="selectConvergenceTab('04')"
+          [class.bg-[#A855F7]]="selectedConvergenceTab === '04'"
+          [class.text-[#0b0b0b]]="selectedConvergenceTab === '04'"
+          [class.font-bold]="selectedConvergenceTab === '04'"
+          [class.bg-[var(--surface)]]="selectedConvergenceTab !== '04'"
+          [class.text-[var(--text-2)]]="selectedConvergenceTab !== '04'"
+          class="px-2.5 py-1.5 rounded border border-[var(--border)] transition-all hover:border-[#A855F7]"
+        >
+          04 BACKEND
+        </button>
+        <button
+          type="button"
+          (click)="selectConvergenceTab('ai')"
+          [class.bg-[var(--accent)]]="selectedConvergenceTab === 'ai'"
+          [class.text-[#0b0b0b]]="selectedConvergenceTab === 'ai'"
+          [class.font-bold]="selectedConvergenceTab === 'ai'"
+          [class.bg-[var(--surface)]]="selectedConvergenceTab !== 'ai'"
+          [class.text-[var(--text-2)]]="selectedConvergenceTab !== 'ai'"
+          class="px-2.5 py-1.5 rounded border border-[var(--border)] transition-all hover:border-[var(--accent)]"
+        >
+          ✦ AI LAYER
+        </button>
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- INTERACTIVE STAR & NEURAL MESH SVG CANVAS (760x370)                       -->
+    <!-- ========================================================================= -->
+    <div class="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-3 sm:p-5 overflow-x-auto select-none shadow-inner mb-8">
+      <div class="min-w-[720px] max-w-[960px] mx-auto">
+        <svg viewBox="0 0 760 370" class="w-full h-auto overflow-visible font-mono-tech">
+          <defs>
+            <!-- Radial glow for Central AI Hub -->
+            <radialGradient id="aiHubGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#7ED957" stop-opacity="0.35" />
+              <stop offset="60%" stop-color="#7ED957" stop-opacity="0.08" />
+              <stop offset="100%" stop-color="#7ED957" stop-opacity="0" />
+            </radialGradient>
+
+            <!-- Linear Gradients for Cross-Domain Cables -->
+            <linearGradient id="cableGrad01to02" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#7ED957" />
+              <stop offset="100%" stop-color="#38BDF8" />
+            </linearGradient>
+
+            <linearGradient id="cableGrad03to04" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#F59E0B" />
+              <stop offset="100%" stop-color="#A855F7" />
+            </linearGradient>
+
+            <linearGradient id="cableGradHybrid" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#38BDF8" />
+              <stop offset="50%" stop-color="#7ED957" />
+              <stop offset="100%" stop-color="#F59E0B" />
+            </linearGradient>
+          </defs>
+
+          <!-- 1. Background Grid Markings -->
+          <g opacity="0.12" stroke="currentColor" stroke-dasharray="2 6">
+            <line x1="20" y1="185" x2="740" y2="185" />
+            <line x1="380" y1="20" x2="380" y2="350" />
+            <circle cx="380" cy="185" r="140" fill="none" />
+          </g>
+
+          <!-- 2. Inter-Pillar Synapse Cables (Bus lines) -->
+          
+          <!-- Cable: 01 Systems (Top-Left) to 02 Network (Bottom-Left) [Datacenter Backbone] -->
+          <path
+            d="M 145 115 L 145 255"
+            fill="none"
+            stroke="url(#cableGrad01to02)"
+            stroke-width="2.5"
+            class="convergence-cable-flow"
+          />
+          <text x="155" y="185" fill="#888" font-size="9" font-weight="bold">
+            LACP 802.3ad · 20Gbps
+          </text>
+
+          <!-- Cable: 03 Cloud/DevOps (Top-Right) to 04 Backend (Bottom-Right) [Delivery Pipeline] -->
+          <path
+            d="M 615 115 L 615 255"
+            fill="none"
+            stroke="url(#cableGrad03to04)"
+            stroke-width="2.5"
+            class="convergence-cable-flow"
+          />
+          <text x="500" y="185" fill="#888" font-size="9" font-weight="bold" text-anchor="end">
+            AKS Deployment · OCI Images
+          </text>
+
+          <!-- Cable: Top Bridge (01 Systems to 03 Cloud) [Hybrid Cloud & Entra Sync] -->
+          <path
+            d="M 260 70 L 500 70"
+            fill="none"
+            stroke="#7ED957"
+            stroke-width="1.8"
+            stroke-opacity="0.6"
+            class="convergence-cable-cross"
+          />
+          <text x="380" y="62" fill="#7ED957" font-size="9" font-weight="bold" text-anchor="middle">
+            Entra ID Sync · Hybrid Runners
+          </text>
+
+          <!-- Cable: Bottom Bridge (02 Network to 04 Backend) [Zero-Trust WAF & Gateway] -->
+          <path
+            d="M 260 300 L 500 300"
+            fill="none"
+            stroke="#38BDF8"
+            stroke-width="1.8"
+            stroke-opacity="0.6"
+            class="convergence-cable-cross"
+          />
+          <text x="380" y="318" fill="#38BDF8" font-size="9" font-weight="bold" text-anchor="middle">
+            FortiGate WAF · TLS 1.3 · Rate Limit
+          </text>
+
+          <!-- 3. AI Center Neural Rays to all 4 Pillars (The Force Multiplier Bus) -->
+          <!-- Ray to 01 Systems -->
+          <line
+            x1="380" y1="185" x2="260" y2="85"
+            stroke="#7ED957"
+            stroke-width="2"
+            class="convergence-cable-flow"
+          />
+          <!-- Ray to 02 Network -->
+          <line
+            x1="380" y1="185" x2="260" y2="285"
+            stroke="#38BDF8"
+            stroke-width="2"
+            class="convergence-cable-flow"
+          />
+          <!-- Ray to 03 Cloud -->
+          <line
+            x1="380" y1="185" x2="500" y2="85"
+            stroke="#F59E0B"
+            stroke-width="2"
+            class="convergence-cable-flow"
+          />
+          <!-- Ray to 04 Backend -->
+          <line
+            x1="380" y1="185" x2="500" y2="285"
+            stroke="#A855F7"
+            stroke-width="2"
+            class="convergence-cable-flow"
+          />
+
+          <!-- Central AI Radar Sweep Line -->
+          <g class="convergence-radar-sweep" opacity="0.35">
+            <line x1="380" y1="185" x2="380" y2="45" stroke="#7ED957" stroke-width="2" />
+          </g>
+
+          <!-- Central AI Glow and Waves -->
+          <circle cx="380" cy="185" r="70" fill="url(#aiHubGlow)" />
+          <circle cx="380" cy="185" r="36" fill="none" stroke="#7ED957" stroke-width="1.5" class="convergence-core-ripple" />
+          
+          <!-- Central AI Core Button Node -->
+          <g
+            class="pillar-node"
+            [class.active-pillar]="selectedConvergenceTab === 'ai'"
+            (click)="selectConvergenceTab('ai')"
+          >
+            <circle cx="380" cy="185" r="42" fill="#14181F" stroke="#7ED957" stroke-width="2.5" />
+            <circle cx="380" cy="185" r="35" fill="#1B222C" stroke="rgba(126, 217, 87, 0.4)" stroke-width="1" />
+            <text x="380" y="177" fill="#7ED957" font-size="10" font-weight="900" text-anchor="middle" letter-spacing="1">
+              AI ORCHESTRATOR
+            </text>
+            <text x="380" y="191" fill="#FFF" font-size="8.5" font-weight="bold" text-anchor="middle">
+              MCP NEURAL CORE
+            </text>
+            <text x="380" y="202" fill="#888" font-size="7.5" text-anchor="middle">
+              Claude · ChatGPT · Gemini
+            </text>
+          </g>
+
+          <!-- 4. PILLAR NODES (4 CORNERS) -->
+
+          <!-- Pillar 01: SYSTEMS & SERVERS (Top-Left) -->
+          <g
+            class="pillar-node"
+            [class.active-pillar]="selectedConvergenceTab === '01'"
+            (click)="selectConvergenceTab('01')"
+          >
+            <rect
+              x="30" y="25" width="230" height="90" rx="8"
+              fill="#14181F"
+              [attr.stroke]="selectedConvergenceTab === '01' ? '#7ED957' : 'rgba(126, 217, 87, 0.4)'"
+              [attr.stroke-width]="selectedConvergenceTab === '01' ? '2.5' : '1.5'"
+            />
+            <rect x="42" y="37" width="24" height="14" rx="3" fill="rgba(126, 217, 87, 0.2)" />
+            <text x="54" y="48" fill="#7ED957" font-size="9" font-weight="bold" text-anchor="middle">01</text>
+            <text x="74" y="48" fill="#FFFFFF" font-size="11" font-weight="bold">SYSTEMS & SERVERS</text>
+            <text x="42" y="68" fill="#7ED957" font-size="8.5" font-weight="bold">Windows Server · Linux · Hyper-V</text>
+            <text x="42" y="82" fill="#8E99A8" font-size="8">Active Directory · Veeam · Zabbix</text>
+            <text x="42" y="100" fill="#667080" font-size="8" font-weight="bold">Uptime SLA: 99.98% · RPO &lt; 15m</text>
+          </g>
+
+          <!-- Pillar 02: ENTERPRISE NETWORK & SECURITY (Bottom-Left) -->
+          <g
+            class="pillar-node"
+            [class.active-pillar]="selectedConvergenceTab === '02'"
+            (click)="selectConvergenceTab('02')"
+          >
+            <rect
+              x="30" y="255" width="230" height="90" rx="8"
+              fill="#14181F"
+              [attr.stroke]="selectedConvergenceTab === '02' ? '#38BDF8' : 'rgba(56, 189, 248, 0.4)'"
+              [attr.stroke-width]="selectedConvergenceTab === '02' ? '2.5' : '1.5'"
+            />
+            <rect x="42" y="267" width="24" height="14" rx="3" fill="rgba(56, 189, 248, 0.2)" />
+            <text x="54" y="278" fill="#38BDF8" font-size="9" font-weight="bold" text-anchor="middle">02</text>
+            <text x="74" y="278" fill="#FFFFFF" font-size="11" font-weight="bold">ENTERPRISE NETWORK</text>
+            <text x="42" y="298" fill="#38BDF8" font-size="8.5" font-weight="bold">Cisco L3 · FortiGate · UniFi SDN</text>
+            <text x="42" y="312" fill="#8E99A8" font-size="8">VLAN Trunks · OSPF · IPsec · 802.1X</text>
+            <text x="42" y="330" fill="#667080" font-size="8" font-weight="bold">Core Bandwidth: 20Gbps · Zero-Trust</text>
+          </g>
+
+          <!-- Pillar 03: CLOUD, DEVOPS & AUTOMATION (Top-Right) -->
+          <g
+            class="pillar-node"
+            [class.active-pillar]="selectedConvergenceTab === '03'"
+            (click)="selectConvergenceTab('03')"
+          >
+            <rect
+              x="500" y="25" width="230" height="90" rx="8"
+              fill="#14181F"
+              [attr.stroke]="selectedConvergenceTab === '03' ? '#F59E0B' : 'rgba(245, 158, 11, 0.4)'"
+              [attr.stroke-width]="selectedConvergenceTab === '03' ? '2.5' : '1.5'"
+            />
+            <rect x="512" y="37" width="24" height="14" rx="3" fill="rgba(245, 158, 11, 0.2)" />
+            <text x="524" y="48" fill="#F59E0B" font-size="9" font-weight="bold" text-anchor="middle">03</text>
+            <text x="544" y="48" fill="#FFFFFF" font-size="11" font-weight="bold">CLOUD & DEVOPS</text>
+            <text x="512" y="68" fill="#F59E0B" font-size="8.5" font-weight="bold">Azure AKS · Docker · Helm</text>
+            <text x="512" y="82" fill="#8E99A8" font-size="8">Jenkins · GitHub Actions · Terraform</text>
+            <text x="512" y="100" fill="#667080" font-size="8" font-weight="bold">Lead Time: &lt; 4m · 100% CI Scan</text>
+          </g>
+
+          <!-- Pillar 04: BACKEND SYSTEMS & CQRS (Bottom-Right) -->
+          <g
+            class="pillar-node"
+            [class.active-pillar]="selectedConvergenceTab === '04'"
+            (click)="selectConvergenceTab('04')"
+          >
+            <rect
+              x="500" y="255" width="230" height="90" rx="8"
+              fill="#14181F"
+              [attr.stroke]="selectedConvergenceTab === '04' ? '#A855F7' : 'rgba(168, 85, 247, 0.4)'"
+              [attr.stroke-width]="selectedConvergenceTab === '04' ? '2.5' : '1.5'"
+            />
+            <rect x="512" y="267" width="24" height="14" rx="3" fill="rgba(168, 85, 247, 0.2)" />
+            <text x="524" y="278" fill="#A855F7" font-size="9" font-weight="bold" text-anchor="middle">04</text>
+            <text x="544" y="278" fill="#FFFFFF" font-size="11" font-weight="bold">BACKEND & CQRS</text>
+            <text x="512" y="298" fill="#A855F7" font-size="8.5" font-weight="bold">ASP.NET Core 8 · Clean Arch · CQRS</text>
+            <text x="512" y="312" fill="#8E99A8" font-size="8">RabbitMQ Bus · PostgreSQL · Redis</text>
+            <text x="512" y="330" fill="#667080" font-size="8" font-weight="bold">10k+ RPS · P99 &lt; 35ms · Outbox</text>
+          </g>
+
+        </svg>
+      </div>
+
+      <!-- Quick Canvas Footnote -->
+      <div class="flex flex-wrap items-center justify-between text-[11px] font-mono-tech text-[var(--text-3)] pt-2 border-t border-[var(--border)] px-2">
+        <div class="flex items-center gap-4">
+          <span class="flex items-center gap-1.5">
+            <span class="w-2.5 h-1 bg-[#7ED957] rounded-full inline-block"></span>
+            <span>Infra & Systems Bus</span>
+          </span>
+          <span class="flex items-center gap-1.5">
+            <span class="w-2.5 h-1 bg-[#38BDF8] rounded-full inline-block"></span>
+            <span>Network & Security Bus</span>
+          </span>
+          <span class="flex items-center gap-1.5">
+            <span class="w-2.5 h-1 bg-[#F59E0B] rounded-full inline-block"></span>
+            <span>Cloud Delivery Pipeline</span>
+          </span>
+          <span class="flex items-center gap-1.5">
+            <span class="w-2.5 h-1 bg-[#A855F7] rounded-full inline-block"></span>
+            <span>Distributed Event Bus</span>
+          </span>
+        </div>
+        <div class="text-[var(--accent-text)] font-semibold mt-1 sm:mt-0">
+          ● REAL-TIME SYNAPSE PROTOCOL ACTIVE
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- DEEP DIVE DOMAIN / SYNERGY INSPECTION CARD                                -->
+    <!-- ========================================================================= -->
+    <div *ngIf="selectedDomainData" class="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-6 mb-8 transition-all">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[var(--border)] pb-4 mb-5">
+        <div class="flex items-center gap-3">
+          <span
+            class="px-3 py-1 rounded font-mono-tech text-xs font-bold"
+            [style.backgroundColor]="selectedDomainData.accentColor"
+            style="color: #0b0b0b;"
+          >
+            {{ selectedDomainData.num }}
+          </span>
+          <div>
+            <h4 class="font-mono-tech text-lg sm:text-xl font-bold text-[var(--text-1)]">
+              {{ selectedDomainData.title }}
+            </h4>
+            <div class="text-xs text-[var(--accent-text)] font-mono-tech font-semibold">
+              // {{ selectedDomainData.categoryBadge }} · {{ selectedDomainData.headline }}
+            </div>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          (click)="selectConvergenceTab('all')"
+          class="text-xs font-mono-tech text-[var(--text-3)] hover:text-[var(--text-1)] px-3 py-1.5 rounded border border-[var(--border)] self-start md:self-auto"
+        >
+          ✕ CLOSE DETAIL / BACK TO ALL
+        </button>
+      </div>
+
+      <!-- Core Role & Key Metrics -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-6">
+        <div class="lg:col-span-2 space-y-4">
+          <div>
+            <div class="text-[11px] font-mono-tech text-[var(--text-3)] uppercase font-semibold mb-1">
+              // VAI TRÒ VẬN HÀNH TRONG HỆ SINH THÁI DOANH NGHIỆP:
+            </div>
+            <p class="text-xs sm:text-sm text-[var(--text-1)] leading-relaxed">
+              {{ selectedDomainData.operationalRole }}
+            </p>
+          </div>
+
+          <div>
+            <div class="text-[11px] font-mono-tech text-[var(--text-3)] uppercase font-semibold mb-2">
+              // VŨ KHÍ CÔNG NGHỆ CỐT LÕI (CORE STACK):
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                *ngFor="let skill of selectedDomainData.coreSkills"
+                class="px-2.5 py-1 rounded text-xs font-mono-tech border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-2)]"
+              >
+                {{ skill }}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Key Operational Metrics -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-2.5">
+          <div
+            *ngFor="let metric of selectedDomainData.metrics"
+            class="p-3 rounded-lg border border-[var(--border)] bg-[var(--surface-2)]"
+          >
+            <div class="text-[10px] font-mono-tech text-[var(--text-3)] uppercase">{{ metric.label }}</div>
+            <div class="text-base sm:text-lg font-mono-tech font-bold text-[var(--accent-text)] mt-0.5">
+              {{ metric.value }}
+            </div>
+            <div class="text-[10px] text-[var(--text-2)] mt-0.5">{{ metric.sub }}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cross-Domain Synergies Table -->
+      <div class="mb-5">
+        <div class="text-[11px] font-mono-tech text-[var(--text-3)] uppercase font-semibold mb-3">
+          // ĐIỂM GIAO THOA CỘNG HƯỞNG VỚI CÁC TRỤ CỘT KHÁC (CROSS-DOMAIN SYNERGIES):
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 font-mono-tech text-xs">
+          <div
+            *ngFor="let syn of selectedDomainData.synergies"
+            class="p-4 rounded-lg border border-[var(--border)] bg-[var(--surface-2)] flex flex-col justify-between"
+          >
+            <div>
+              <div class="flex items-center justify-between text-[10px] text-[var(--text-3)] mb-1">
+                <span>LIÊN KẾT [{{ syn.partnerNum }}]</span>
+                <span class="text-[var(--accent-text)] font-semibold">{{ syn.protocol }}</span>
+              </div>
+              <div class="font-bold text-[var(--text-1)] mb-1.5">{{ syn.title }}</div>
+              <div class="text-[11px] text-[var(--text-2)] leading-relaxed">{{ syn.description }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Multiplier Impact Banner -->
+      <div class="p-4 rounded-lg border border-[rgba(126,217,87,0.3)] bg-[rgba(126,217,87,0.06)] flex items-start gap-3">
+        <span class="text-xl">⚡</span>
+        <div>
+          <div class="font-mono-tech text-xs font-bold text-[var(--accent-text)] uppercase mb-1">
+            AI ORCHESTRATOR SUPERCHARGE: TÁC ĐỘNG NHÂN BỘI 10X NĂNG SUẤT
+          </div>
+          <p class="text-xs text-[var(--text-1)] leading-relaxed">
+            {{ selectedDomainData.aiSupercharge }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Default View: 4-Domain Synergy Matrix Grid (When Tab === 'all') -->
+    <div *ngIf="selectedConvergenceTab === 'all'" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      
+      <!-- Card 01 -->
+      <div
+        (click)="selectConvergenceTab('01')"
+        class="p-5 rounded-xl border border-[var(--border)] bg-[var(--surface)] hover:border-[#7ED957] transition-all cursor-pointer group"
+      >
+        <div class="flex items-center justify-between mb-3">
+          <span class="px-2 py-0.5 rounded text-[11px] font-mono-tech font-bold bg-[#7ED957] text-[#0b0b0b]">01</span>
+          <span class="text-[10px] font-mono-tech text-[#7ED957] font-semibold">FOUNDATION</span>
+        </div>
+        <h5 class="font-mono-tech text-sm font-bold text-[var(--text-1)] group-hover:text-[#7ED957] transition-colors">
+          SYSTEMS & SERVERS
+        </h5>
+        <p class="text-xs text-[var(--text-2)] mt-1.5 leading-relaxed">
+          Quản trị máy chủ vật lý, ảo hóa VMware/Hyper-V, Active Directory & Entra ID, backup Veeam và Zabbix telemetry.
+        </p>
+        <div class="mt-4 pt-3 border-t border-[var(--border)] flex items-center justify-between text-[10px] font-mono-tech text-[var(--text-3)]">
+          <span>Uptime SLA: 99.98%</span>
+          <span class="text-[var(--accent-text)] font-semibold">CHI TIẾT →</span>
+        </div>
+      </div>
+
+      <!-- Card 02 -->
+      <div
+        (click)="selectConvergenceTab('02')"
+        class="p-5 rounded-xl border border-[var(--border)] bg-[var(--surface)] hover:border-[#38BDF8] transition-all cursor-pointer group"
+      >
+        <div class="flex items-center justify-between mb-3">
+          <span class="px-2 py-0.5 rounded text-[11px] font-mono-tech font-bold bg-[#38BDF8] text-[#0b0b0b]">02</span>
+          <span class="text-[10px] font-mono-tech text-[#38BDF8] font-semibold">BACKBONE</span>
+        </div>
+        <h5 class="font-mono-tech text-sm font-bold text-[var(--text-1)] group-hover:text-[#38BDF8] transition-colors">
+          ENTERPRISE NETWORK
+        </h5>
+        <p class="text-xs text-[var(--text-2)] mt-1.5 leading-relaxed">
+          Cisco L3 switching & routing, tường lửa FortiGate NGFW, UniFi SDN, phân tách VLAN, IPsec VPN và 802.1X Zero-Trust.
+        </p>
+        <div class="mt-4 pt-3 border-t border-[var(--border)] flex items-center justify-between text-[10px] font-mono-tech text-[var(--text-3)]">
+          <span>Capacity: 20Gbps</span>
+          <span class="text-[var(--accent-text)] font-semibold">CHI TIẾT →</span>
+        </div>
+      </div>
+
+      <!-- Card 03 -->
+      <div
+        (click)="selectConvergenceTab('03')"
+        class="p-5 rounded-xl border border-[var(--border)] bg-[var(--surface)] hover:border-[#F59E0B] transition-all cursor-pointer group"
+      >
+        <div class="flex items-center justify-between mb-3">
+          <span class="px-2 py-0.5 rounded text-[11px] font-mono-tech font-bold bg-[#F59E0B] text-[#0b0b0b]">03</span>
+          <span class="text-[10px] font-mono-tech text-[#F59E0B] font-semibold">CI/CD ENGINE</span>
+        </div>
+        <h5 class="font-mono-tech text-sm font-bold text-[var(--text-1)] group-hover:text-[#F59E0B] transition-colors">
+          CLOUD & DEVOPS
+        </h5>
+        <p class="text-xs text-[var(--text-2)] mt-1.5 leading-relaxed">
+          Azure Kubernetes Service (AKS), Docker containerization, Jenkins & GitHub Actions CI/CD, Helm và Terraform IaC.
+        </p>
+        <div class="mt-4 pt-3 border-t border-[var(--border)] flex items-center justify-between text-[10px] font-mono-tech text-[var(--text-3)]">
+          <span>Lead Time: &lt; 4 Phút</span>
+          <span class="text-[var(--accent-text)] font-semibold">CHI TIẾT →</span>
+        </div>
+      </div>
+
+      <!-- Card 04 -->
+      <div
+        (click)="selectConvergenceTab('04')"
+        class="p-5 rounded-xl border border-[var(--border)] bg-[var(--surface)] hover:border-[#A855F7] transition-all cursor-pointer group"
+      >
+        <div class="flex items-center justify-between mb-3">
+          <span class="px-2 py-0.5 rounded text-[11px] font-mono-tech font-bold bg-[#A855F7] text-[#0b0b0b]">04</span>
+          <span class="text-[10px] font-mono-tech text-[#A855F7] font-semibold">APPLICATION</span>
+        </div>
+        <h5 class="font-mono-tech text-sm font-bold text-[var(--text-1)] group-hover:text-[#A855F7] transition-colors">
+          BACKEND & CQRS
+        </h5>
+        <p class="text-xs text-[var(--text-2)] mt-1.5 leading-relaxed">
+          ASP.NET Core 8 Clean Architecture, CQRS & MediatR, RabbitMQ Message Broker, PostgreSQL ACID và Redis Cache.
+        </p>
+        <div class="mt-4 pt-3 border-t border-[var(--border)] flex items-center justify-between text-[10px] font-mono-tech text-[var(--text-3)]">
+          <span>Throughput: 10k+ RPS</span>
+          <span class="text-[var(--accent-text)] font-semibold">CHI TIẾT →</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- 3 REAL-WORLD CONVERGENCE SCENARIOS (INTERACTIVE RUNTIME SIMULATION)       -->
+    <!-- ========================================================================= -->
+    <div class="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-6 sm:p-7 shadow-sm">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[var(--border)] pb-4 mb-6">
+        <div>
+          <div class="font-mono-tech text-[10px] font-bold text-[var(--accent-text)] uppercase tracking-wider mb-1">
+            // BẰNG CHỨNG THỰC CHIẾN LIÊN CHUYÊN MÔN
+          </div>
+          <h4 class="font-mono-tech text-lg sm:text-xl font-bold text-[var(--text-1)]">
+            Kịch Bản Vận Hành Hệ Thống Toàn Diện (End-to-End Synergy Scenarios)
+          </h4>
+          <p class="text-xs text-[var(--text-2)] mt-1">
+            Minh chứng cách 4 chuyên môn và AI Agent phối hợp nhịp nhàng trong các tình huống thử thách gắt gao nhất.
+          </p>
+        </div>
+
+        <!-- Scenario Tab Selection -->
+        <div class="flex flex-wrap gap-2 font-mono-tech text-xs">
+          <button
+            *ngFor="let sc of convergenceScenarios; let i = index"
+            type="button"
+            (click)="selectScenario(i)"
+            [class.bg-[var(--accent)]]="activeScenarioIndex === i"
+            [class.text-[#0b0b0b]]="activeScenarioIndex === i"
+            [class.font-bold]="activeScenarioIndex === i"
+            [class.bg-[var(--surface-2)]]="activeScenarioIndex !== i"
+            [class.text-[var(--text-2)]]="activeScenarioIndex !== i"
+            class="px-3 py-1.5 rounded border border-[var(--border)] transition-all hover:border-[var(--accent)]"
+          >
+            KỊCH BẢN {{ i + 1 }}
+          </button>
+          
+          <button
+            type="button"
+            (click)="toggleScenarioPlay()"
+            class="px-3 py-1.5 rounded font-mono-tech text-xs font-bold border border-[var(--accent)] transition-all"
+            [class.bg-[rgba(126,217,87,0.15)]]="isScenarioAutoPlaying"
+            [class.text-[var(--accent-text)]]="true"
+          >
+            {{ isScenarioAutoPlaying ? '⏸ TẠM DỪNG' : '▶ CHẠY MÔ PHỎNG LUỒNG' }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Active Scenario Description Banner -->
+      <div class="p-4 rounded-lg border border-[var(--border)] bg-[var(--surface-2)] mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 font-mono-tech">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span
+              class="px-2 py-0.5 rounded text-[10px] font-bold"
+              [style.backgroundColor]="activeScenario.badgeColor"
+              style="color: #0b0b0b;"
+            >
+              {{ activeScenario.badge }}
+            </span>
+            <span class="text-xs font-bold text-[var(--text-1)]">{{ activeScenario.title }}</span>
+          </div>
+          <div class="text-[11px] text-[var(--text-2)]">{{ activeScenario.description }}</div>
+        </div>
+        <div class="text-right self-start sm:self-center shrink-0">
+          <div class="text-[10px] text-[var(--text-3)]">THỜI GIAN XỬ LÝ (MTTR):</div>
+          <div class="text-sm font-bold text-[var(--accent-text)]">{{ activeScenario.totalTime }}</div>
+        </div>
+      </div>
+
+      <!-- 5-Step Timeline Cards -->
+      <div class="space-y-3 font-mono-tech">
+        <div
+          *ngFor="let step of activeScenario.steps; let sIdx = index"
+          [class.step-active]="activeScenarioStepIdx === sIdx"
+          [style.borderLeftColor]="step.badgeColor"
+          class="scenario-step-item p-4 rounded-lg border border-[var(--border)] bg-[var(--surface-2)] transition-all"
+        >
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div class="flex items-center gap-3">
+              <!-- Step Index Circle -->
+              <span
+                class="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0"
+                [style.backgroundColor]="activeScenarioStepIdx === sIdx ? step.badgeColor : 'rgba(255,255,255,0.1)'"
+                [style.color]="activeScenarioStepIdx === sIdx ? '#0b0b0b' : 'inherit'"
+              >
+                {{ sIdx + 1 }}
+              </span>
+
+              <!-- Domain Indicator -->
+              <span
+                class="px-2 py-0.5 rounded text-[10px] font-bold shrink-0"
+                [style.color]="step.badgeColor"
+                [style.backgroundColor]="'rgba(' + (step.domainNum === '01' ? '126,217,87' : step.domainNum === '02' ? '56,189,248' : step.domainNum === '03' ? '245,158,11' : step.domainNum === '04' ? '168,85,247' : '126,217,87') + ', 0.15)'"
+              >
+                [{{ step.domainNum }}] {{ step.domainName }}
+              </span>
+
+              <span class="text-xs sm:text-sm font-bold text-[var(--text-1)]">
+                {{ step.action }}
+              </span>
+            </div>
+
+            <!-- Status Badge -->
+            <span
+              class="px-2 py-0.5 rounded text-[10px] font-bold self-start sm:self-auto"
+              [style.color]="step.badgeColor"
+              style="border: 1px solid currentColor;"
+            >
+              ● {{ step.status }}
+            </span>
+          </div>
+
+          <!-- Telemetry details -->
+          <div class="mt-2 pl-9 text-[11px] text-[var(--text-2)] font-mono leading-relaxed">
+            ↳ {{ step.telemetry }}
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

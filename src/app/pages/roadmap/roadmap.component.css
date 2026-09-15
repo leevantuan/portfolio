@@ -1,0 +1,61 @@
+/* Roadmap Component Blueprint Styles */
+.roadmap-container {
+  position: relative;
+}
+
+/* Circuit trace path animations */
+.circuit-line {
+  stroke-dasharray: 8 6;
+  animation: circuitFlow 2s linear infinite;
+}
+
+.circuit-glow-line {
+  stroke-dasharray: 4 20;
+  animation: circuitFlow 1.5s linear infinite;
+  filter: drop-shadow(0 0 4px var(--accent));
+}
+
+/* Pulsing radar for current level */
+.current-radar {
+  position: relative;
+}
+
+.current-radar::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: inherit;
+  border: 1.5px solid var(--accent);
+  opacity: 0.8;
+  animation: radarPing 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes radarPing {
+  75%, 100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* Target node dashed border rotating */
+.target-dashed-ring {
+  stroke-dasharray: 6 6;
+  animation: rotateRing 16s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes rotateRing {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Grafana live bar animations */
+.grafana-bar {
+  transition: height 0.4s ease, opacity 0.3s ease;
+}
+
+.grafana-bar:hover {
+  filter: brightness(1.25);
+  box-shadow: 0 0 10px var(--accent);
+}

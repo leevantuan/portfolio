@@ -1,0 +1,818 @@
+<div class="relative w-full h-full flex flex-col justify-between overflow-hidden select-none bg-[var(--bg)]">
+  
+  <!-- Edge-to-Edge Full-Bleed Blueprint Grid Background -->
+  <div class="absolute inset-0 blueprint-grid-full pointer-events-none"></div>
+
+  <!-- Ambient Planetary Glow Behind Globe -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-[var(--accent)]/8 blur-[150px] pointer-events-none"></div>
+
+  <!-- Top Hero Bar: Sleek Technical Telemetry Strip & Architecture Trigger (High Z-Index) -->
+  <h1 class="sr-only">Le Van Tuan — IT System &amp; Network Engineer Portfolio</h1>
+  <div class="relative z-30 shrink-0 pt-2 sm:pt-3 px-4 sm:px-8 lg:px-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-2.5 pointer-events-auto">
+    <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3.5">
+      <div class="flex items-center gap-2 font-mono-tech text-[11px] uppercase tracking-widest text-[var(--accent-text)] font-semibold px-2.5 py-1 rounded-sm bg-[var(--surface-2)] border border-[var(--border)]">
+        <span class="w-2 h-2 rounded-full bg-[var(--accent)] animate-ping"></span>
+        <span>// DESIGN &gt; BUILD &gt; DEPLOY &gt; OPERATE</span>
+      </div>
+      <div class="font-mono-tech text-xs text-[var(--text-3)] tracking-wide flex items-center gap-2">
+        <span class="text-[var(--border)] hidden sm:inline">|</span>
+        <span>Enterprise Infrastructure • Hybrid Cloud • High-Availability Networks • Automated Systems</span>
+      </div>
+    </div>
+
+    <!-- Quick Action / Spec Trigger -->
+    <div class="flex items-center gap-3 self-end md:self-auto">
+      <button 
+        (click)="onViewSpecs()"
+        class="font-mono-tech text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-sm bg-[var(--accent)] text-[#0B0B0B] hover:brightness-105 transition-all cursor-pointer shadow-sm flex items-center gap-1.5"
+      >
+        <span>&gt; VIEW ARCHITECTURE</span>
+      </button>
+      <div class="font-mono-tech text-[11px] text-[var(--text-3)] border border-[var(--border)] px-2.5 py-1 rounded-sm bg-[var(--surface)]">
+        <span class="text-[var(--accent)]">●</span> 99.99% UPTIME
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Canvas: SVG Isometric Topology View (Edge-to-Edge Balanced Canvas) -->
+  <div class="relative flex-1 min-h-0 w-full flex items-center justify-center p-0 z-10 overflow-hidden">
+    <svg class="w-full h-full max-h-full" viewBox="0 0 1440 860" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Realistic 3D Spherical Shader -->
+        <radialGradient id="globeSphericalLighting" cx="35%" cy="30%" r="68%" fx="30%" fy="25%">
+          <stop offset="0%" stop-color="#4B5563" stop-opacity="0.85" />
+          <stop offset="30%" stop-color="#2D3748" stop-opacity="0.95" />
+          <stop offset="68%" stop-color="#1A202C" stop-opacity="1" />
+          <stop offset="90%" stop-color="#0F141C" stop-opacity="1" />
+          <stop offset="100%" stop-color="#080B10" stop-opacity="1" />
+        </radialGradient>
+
+        <radialGradient id="globeAtmosphereGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="85%" stop-color="var(--accent)" stop-opacity="0" />
+          <stop offset="96%" stop-color="var(--accent)" stop-opacity="0.25" />
+          <stop offset="100%" stop-color="var(--accent)" stop-opacity="0.6" />
+        </radialGradient>
+
+        <!-- Subtle Glow Filter -->
+        <filter id="cyanGlow" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="3.5" result="blur" />
+          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+
+        <!-- Clip Path for Globe Continents & Grid -->
+        <clipPath id="globeSphereClip">
+          <circle cx="720" cy="430" r="160" />
+        </clipPath>
+      </defs>
+
+      <!-- Isometric Floor Grid System -->
+      <g class="opacity-20" stroke="var(--border)" stroke-width="0.8">
+        <line x1="80" y1="430" x2="720" y2="800" stroke-dasharray="4 8" />
+        <line x1="720" y1="800" x2="1360" y2="430" stroke-dasharray="4 8" />
+        <line x1="220" y1="180" x2="720" y2="460" stroke-dasharray="4 8" />
+        <line x1="720" y1="460" x2="1220" y2="180" stroke-dasharray="4 8" />
+        <line x1="180" y1="680" x2="720" y2="430" stroke-dasharray="4 8" />
+        <line x1="720" y1="430" x2="1260" y2="680" stroke-dasharray="4 8" />
+      </g>
+
+      <!-- ======================================================== -->
+      <!-- DATA TRANSMISSION CABLES (Strict Isometric Orthogonal)   -->
+      <!-- ======================================================== -->
+
+      <!-- Cable 1: [ CLIENTS ] (440, 160) -> [ GLOBE ] (640, 300) -->
+      <path d="M 440 160 L 540 230 L 640 300" stroke="var(--border)" stroke-width="1.6" />
+      <path d="M 440 160 L 540 230 L 640 300" stroke="var(--accent)" stroke-width="2.2" class="cable-flow-1" stroke-dasharray="8 12" />
+
+      <!-- Cable 2: [ FIREWALL ] (270, 310) -> [ GLOBE ] (580, 365) -->
+      <path d="M 270 310 L 430 335 L 580 365" stroke="var(--border)" stroke-width="1.6" />
+      <path d="M 270 310 L 430 335 L 580 365" stroke="#f59e0b" stroke-width="2.2" class="cable-flow-2" stroke-dasharray="6 10" />
+
+      <!-- Cable 3: [ NETWORK & UNIFI ] (270, 480) -> [ GLOBE ] (575, 450) -->
+      <path d="M 270 480 L 420 470 L 575 450" stroke="var(--border)" stroke-width="1.6" />
+      <path d="M 270 480 L 420 470 L 575 450" stroke="var(--accent)" stroke-width="2.2" class="cable-flow-3" stroke-dasharray="8 12" />
+
+      <!-- Cable 4: [ DATABASE ] (410, 690) -> [ GLOBE ] (640, 555) -->
+      <path d="M 410 690 L 530 620 L 640 555" stroke="var(--border)" stroke-width="1.6" />
+      <path d="M 410 690 L 530 620 L 640 555" stroke="var(--accent)" stroke-width="2.2" class="cable-flow-1" stroke-dasharray="8 14" />
+
+      <!-- Cable 5: [ CLOUD ] (860, 160) -> [ GLOBE ] (800, 300) -->
+      <path d="M 860 160 L 830 230 L 800 300" stroke="var(--border)" stroke-width="1.6" />
+      <path d="M 860 160 L 830 230 L 800 300" stroke="var(--accent)" stroke-width="2.2" class="cable-flow-1" stroke-dasharray="8 12" />
+
+      <!-- Cable 6: [ SERVERS ] (1070, 310) -> [ GLOBE ] (860, 365) -->
+      <path d="M 1070 310 L 960 335 L 860 365" stroke="var(--border)" stroke-width="1.6" />
+      <path d="M 1070 310 L 960 335 L 860 365" stroke="var(--accent)" stroke-width="2.2" class="cable-flow-2" stroke-dasharray="6 10" />
+
+      <!-- Cable 7: [ STORAGE & BACKUP ] (1070, 485) -> [ GLOBE ] (865, 450) -->
+      <path d="M 1070 485 L 970 470 L 865 450" stroke="var(--border)" stroke-width="1.6" />
+      <path d="M 1070 485 L 970 470 L 865 450" stroke="var(--accent)" stroke-width="2.2" class="cable-flow-3" stroke-dasharray="8 12" />
+
+      <!-- Cable 8: [ MONITORING ] (900, 640) -> [ GLOBE ] (800, 555) -->
+      <path d="M 900 640 L 850 600 L 800 555" stroke="var(--border)" stroke-width="1.6" />
+      <path d="M 900 640 L 850 600 L 800 555" stroke="var(--accent)" stroke-width="2.2" class="cable-flow-1" stroke-dasharray="8 12" />
+
+      <!-- Junction Terminals on Spherical Perimeter -->
+      <circle cx="640" cy="300" r="4" fill="var(--accent)" />
+      <circle cx="580" cy="365" r="4" fill="#f59e0b" />
+      <circle cx="575" cy="450" r="4" fill="var(--accent)" />
+      <circle cx="640" cy="555" r="4" fill="var(--accent)" />
+      <circle cx="800" cy="300" r="4" fill="var(--accent)" />
+      <circle cx="860" cy="365" r="4" fill="var(--accent)" />
+      <circle cx="865" cy="450" r="4" fill="var(--accent)" />
+      <circle cx="800" cy="555" r="4" fill="var(--accent)" />
+
+      <!-- Animated Data Packet Pulses Traversing along Isometric Cables -->
+      <circle r="4" fill="var(--accent)" filter="url(#cyanGlow)">
+        <animateMotion dur="3.2s" repeatCount="indefinite" path="M 440 160 L 540 230 L 640 300" />
+      </circle>
+      <circle r="3.5" fill="#f59e0b" filter="url(#cyanGlow)">
+        <animateMotion dur="2.9s" repeatCount="indefinite" path="M 270 310 L 430 335 L 580 365" />
+      </circle>
+      <circle r="4" fill="var(--accent)" filter="url(#cyanGlow)">
+        <animateMotion dur="3.5s" repeatCount="indefinite" path="M 575 450 L 420 470 L 270 480" />
+      </circle>
+      <circle r="4" fill="var(--accent)" filter="url(#cyanGlow)">
+        <animateMotion dur="3.8s" repeatCount="indefinite" path="M 410 690 L 530 620 L 640 555" />
+      </circle>
+      <circle r="4" fill="var(--accent)" filter="url(#cyanGlow)">
+        <animateMotion dur="3.4s" repeatCount="indefinite" path="M 800 300 L 830 230 L 860 160" />
+      </circle>
+      <circle r="4" fill="var(--accent)" filter="url(#cyanGlow)">
+        <animateMotion dur="3.1s" repeatCount="indefinite" path="M 1070 310 L 960 335 L 860 365" />
+      </circle>
+      <circle r="4" fill="var(--accent)" filter="url(#cyanGlow)">
+        <animateMotion dur="3.7s" repeatCount="indefinite" path="M 865 450 L 970 470 L 1070 485" />
+      </circle>
+      <circle r="4" fill="var(--accent)" filter="url(#cyanGlow)">
+        <animateMotion dur="4.2s" repeatCount="indefinite" path="M 800 555 L 850 600 L 900 640" />
+      </circle>
+
+
+      <!-- ======================================================== -->
+      <!-- CENTRAL 3D PLANETARY GLOBE & CYBER DOT-MATRIX CONTINENTS -->
+      <!-- ======================================================== -->
+      <g id="globe-center-system">
+        <!-- Floor Drop Shadow (3D Elevation) -->
+        <ellipse cx="720" cy="605" rx="165" ry="28" fill="#000000" fill-opacity="0.22" filter="url(#cyanGlow)" />
+
+        <!-- ORBIT RING 1 (Tilted -28 deg around Globe) -->
+        <g transform="rotate(-28 720 430)">
+          <ellipse cx="720" cy="430" rx="280" ry="100" stroke="var(--accent)" stroke-width="1.8" stroke-dasharray="10 8" fill="none" class="opacity-80" />
+          <circle r="5.5" fill="var(--accent)" filter="url(#cyanGlow)">
+            <animateMotion dur="8.5s" repeatCount="indefinite" path="M 440 430 a 280 100 0 1 0 560 0 a 280 100 0 1 0 -560 0" />
+          </circle>
+        </g>
+
+        <!-- ORBIT RING 2 (Tilted +38 deg around Globe) -->
+        <g transform="rotate(38 720 430)">
+          <ellipse cx="720" cy="430" rx="270" ry="90" stroke="var(--accent)" stroke-width="1.8" stroke-dasharray="12 6" fill="none" class="opacity-85" />
+          <circle r="5" fill="var(--accent)" filter="url(#cyanGlow)">
+            <animateMotion dur="10.5s" repeatCount="indefinite" path="M 450 430 a 270 90 0 1 1 540 0 a 270 90 0 1 1 -540 0" />
+          </circle>
+        </g>
+
+        <!-- Base Spherical Shaded Body -->
+        <circle cx="720" cy="430" r="160" fill="url(#globeSphericalLighting)" stroke="var(--border)" stroke-width="2" />
+
+        <!-- Clipped Planetary Surface: CYBER DOT-MATRIX CONTINENTS (Image 3 Halftone GIS Precision) -->
+        <g clip-path="url(#globeSphereClip)">
+
+          <!-- CONTINENT WRAP TRACK 1 & 2 (Seamless Infinite Rotation across Sphere) -->
+          <g class="continents-scroll-track">
+            
+            <!-- TILE 1 (Width = 640px) -->
+            <g transform="translate(400, 270)">
+              <!-- CYBER DOT MATRIX CONTINENTS (No soft cartoon curves; pure high-density point cloud) -->
+              <g class="globe-dot-matrix" fill="var(--accent)" fill-opacity="0.75">
+                
+                <!-- 1. ASIA & EURASIA (Dense grid of cyber points) -->
+                <!-- Row 1: Siberia / Northern Eurasia -->
+                <circle cx="210" cy="50" r="1.4" /><circle cx="220" cy="48" r="1.4" /><circle cx="230" cy="48" r="1.4" /><circle cx="240" cy="50" r="1.4" /><circle cx="250" cy="50" r="1.4" /><circle cx="260" cy="48" r="1.4" /><circle cx="270" cy="48" r="1.4" /><circle cx="280" cy="50" r="1.4" /><circle cx="290" cy="52" r="1.4" /><circle cx="300" cy="54" r="1.4" />
+                <!-- Row 2 -->
+                <circle cx="205" cy="60" r="1.4" /><circle cx="215" cy="58" r="1.4" /><circle cx="225" cy="58" r="1.4" /><circle cx="235" cy="60" r="1.4" /><circle cx="245" cy="60" r="1.4" /><circle cx="255" cy="58" r="1.4" /><circle cx="265" cy="58" r="1.4" /><circle cx="275" cy="60" r="1.4" /><circle cx="285" cy="62" r="1.4" /><circle cx="295" cy="64" r="1.4" /><circle cx="305" cy="66" r="1.4" /><circle cx="315" cy="68" r="1.4" />
+                <!-- Row 3: Central Asia & China -->
+                <circle cx="210" cy="72" r="1.4" /><circle cx="220" cy="70" r="1.4" /><circle cx="230" cy="70" r="1.4" /><circle cx="240" cy="72" r="1.4" /><circle cx="250" cy="72" r="1.4" /><circle cx="260" cy="70" r="1.4" /><circle cx="270" cy="70" r="1.4" /><circle cx="280" cy="72" r="1.4" /><circle cx="290" cy="74" r="1.4" /><circle cx="300" cy="76" r="1.4" /><circle cx="310" cy="78" r="1.4" />
+                <!-- Row 4 -->
+                <circle cx="215" cy="84" r="1.4" /><circle cx="225" cy="82" r="1.4" /><circle cx="235" cy="82" r="1.4" /><circle cx="245" cy="84" r="1.4" /><circle cx="255" cy="84" r="1.4" /><circle cx="265" cy="82" r="1.4" /><circle cx="275" cy="82" r="1.4" /><circle cx="285" cy="84" r="1.4" /><circle cx="295" cy="86" r="1.4" /><circle cx="305" cy="88" r="1.4" />
+                <!-- Row 5: India & East Asia -->
+                <circle cx="225" cy="96" r="1.4" /><circle cx="235" cy="94" r="1.4" /><circle cx="245" cy="96" r="1.4" /><circle cx="255" cy="96" r="1.4" /><circle cx="265" cy="94" r="1.4" /><circle cx="275" cy="94" r="1.4" /><circle cx="285" cy="96" r="1.4" /><circle cx="295" cy="98" r="1.4" />
+                <!-- Row 6: India Subcontinent & Indochina -->
+                <circle cx="235" cy="108" r="1.4" /><circle cx="245" cy="108" r="1.4" /><circle cx="255" cy="106" r="1.4" /><circle cx="265" cy="106" r="1.4" /><circle cx="275" cy="108" r="1.4" /><circle cx="285" cy="110" r="1.4" />
+                <!-- Row 7 -->
+                <circle cx="240" cy="120" r="1.4" /><circle cx="245" cy="120" r="1.4" /><circle cx="268" cy="118" r="1.4" /><circle cx="276" cy="120" r="1.4" /><circle cx="284" cy="122" r="1.4" />
+                <circle cx="242" cy="130" r="1.4" /><circle cx="272" cy="130" r="1.4" /><circle cx="280" cy="132" r="1.4" />
+
+                <!-- Japan Archipelago (Tech Dots) -->
+                <circle cx="325" cy="74" r="1.6" fill="#FFFFFF" /><circle cx="330" cy="84" r="1.6" fill="#FFFFFF" /><circle cx="334" cy="94" r="1.6" /><circle cx="330" cy="104" r="1.6" />
+
+                <!-- 2. VIETNAM S-CURVE & VN-HQ CORE HUB -->
+                <circle cx="276" cy="136" r="1.8" fill="#FFFFFF" />
+                <circle cx="279" cy="144" r="1.8" fill="#FFFFFF" />
+                <circle cx="282" cy="152" r="2.2" fill="var(--accent)" />
+                <circle cx="279" cy="160" r="1.8" fill="#FFFFFF" />
+                <circle cx="274" cy="168" r="1.8" fill="#FFFFFF" />
+
+                <!-- Southeast Asia & Indonesia Archipelago -->
+                <circle cx="260" cy="180" r="1.6" /><circle cx="270" cy="182" r="1.6" /><circle cx="282" cy="180" r="1.6" /><circle cx="294" cy="184" r="1.6" /><circle cx="306" cy="182" r="1.6" /><circle cx="318" cy="180" r="1.6" />
+                <circle cx="265" cy="190" r="1.6" /><circle cx="278" cy="192" r="1.6" /><circle cx="290" cy="192" r="1.6" /><circle cx="302" cy="190" r="1.6" />
+
+                <!-- 3. AUSTRALIA (Dense Halftone Matrix) -->
+                <circle cx="295" cy="215" r="1.4" /><circle cx="305" cy="213" r="1.4" /><circle cx="315" cy="213" r="1.4" /><circle cx="325" cy="215" r="1.4" /><circle cx="335" cy="217" r="1.4" />
+                <circle cx="290" cy="225" r="1.4" /><circle cx="300" cy="223" r="1.4" /><circle cx="310" cy="223" r="1.4" /><circle cx="320" cy="223" r="1.4" /><circle cx="330" cy="225" r="1.4" /><circle cx="340" cy="227" r="1.4" />
+                <circle cx="292" cy="235" r="1.4" /><circle cx="302" cy="233" r="1.4" /><circle cx="312" cy="233" r="1.4" /><circle cx="322" cy="233" r="1.4" /><circle cx="332" cy="235" r="1.4" />
+                <circle cx="296" cy="245" r="1.4" /><circle cx="306" cy="245" r="1.4" /><circle cx="316" cy="243" r="1.4" /><circle cx="326" cy="245" r="1.4" />
+                <circle cx="302" cy="255" r="1.4" /><circle cx="312" cy="255" r="1.4" /><circle cx="322" cy="255" r="1.4" />
+
+                <!-- 4. EUROPE (Dot Array) -->
+                <circle cx="120" cy="56" r="1.4" /><circle cx="130" cy="54" r="1.4" /><circle cx="140" cy="52" r="1.4" /><circle cx="150" cy="52" r="1.4" /><circle cx="160" cy="54" r="1.4" /><circle cx="170" cy="56" r="1.4" />
+                <circle cx="115" cy="66" r="1.4" /><circle cx="125" cy="64" r="1.4" /><circle cx="135" cy="64" r="1.4" /><circle cx="145" cy="62" r="1.4" /><circle cx="155" cy="64" r="1.4" /><circle cx="165" cy="66" r="1.4" />
+                <circle cx="120" cy="76" r="1.4" /><circle cx="130" cy="74" r="1.4" /><circle cx="140" cy="74" r="1.4" /><circle cx="150" cy="74" r="1.4" /><circle cx="160" cy="76" r="1.4" />
+                <circle cx="125" cy="86" r="1.4" /><circle cx="135" cy="84" r="1.4" /><circle cx="145" cy="84" r="1.4" /><circle cx="155" cy="86" r="1.4" />
+
+                <!-- 5. AFRICA (Dot Array) -->
+                <circle cx="120" cy="100" r="1.4" /><circle cx="130" cy="98" r="1.4" /><circle cx="140" cy="98" r="1.4" /><circle cx="150" cy="100" r="1.4" /><circle cx="160" cy="102" r="1.4" />
+                <circle cx="115" cy="112" r="1.4" /><circle cx="125" cy="110" r="1.4" /><circle cx="135" cy="110" r="1.4" /><circle cx="145" cy="112" r="1.4" /><circle cx="155" cy="114" r="1.4" /><circle cx="165" cy="114" r="1.4" />
+                <circle cx="118" cy="124" r="1.4" /><circle cx="128" cy="122" r="1.4" /><circle cx="138" cy="122" r="1.4" /><circle cx="148" cy="124" r="1.4" /><circle cx="158" cy="126" r="1.4" />
+                <circle cx="122" cy="136" r="1.4" /><circle cx="132" cy="136" r="1.4" /><circle cx="142" cy="136" r="1.4" /><circle cx="152" cy="138" r="1.4" />
+                <circle cx="126" cy="148" r="1.4" /><circle cx="136" cy="148" r="1.4" /><circle cx="146" cy="148" r="1.4" />
+                <circle cx="130" cy="160" r="1.4" /><circle cx="140" cy="160" r="1.4" />
+                <circle cx="135" cy="172" r="1.4" />
+
+                <!-- 6. THE AMERICAS (North & South America Halftone Dot Cloud) -->
+                <!-- North America -->
+                <circle cx="450" cy="48" r="1.4" /><circle cx="460" cy="46" r="1.4" /><circle cx="470" cy="46" r="1.4" /><circle cx="480" cy="48" r="1.4" /><circle cx="490" cy="48" r="1.4" /><circle cx="500" cy="50" r="1.4" /><circle cx="510" cy="52" r="1.4" />
+                <circle cx="445" cy="58" r="1.4" /><circle cx="455" cy="56" r="1.4" /><circle cx="465" cy="56" r="1.4" /><circle cx="475" cy="56" r="1.4" /><circle cx="485" cy="58" r="1.4" /><circle cx="495" cy="60" r="1.4" /><circle cx="505" cy="62" r="1.4" />
+                <circle cx="450" cy="70" r="1.4" /><circle cx="460" cy="68" r="1.4" /><circle cx="470" cy="68" r="1.4" /><circle cx="480" cy="70" r="1.4" /><circle cx="490" cy="72" r="1.4" /><circle cx="500" cy="74" r="1.4" />
+                <circle cx="458" cy="82" r="1.4" /><circle cx="468" cy="80" r="1.4" /><circle cx="478" cy="82" r="1.4" /><circle cx="488" cy="84" r="1.4" /><circle cx="498" cy="86" r="1.4" />
+                <circle cx="465" cy="94" r="1.4" /><circle cx="475" cy="94" r="1.4" /><circle cx="485" cy="96" r="1.4" />
+                <circle cx="472" cy="106" r="1.4" /><circle cx="480" cy="108" r="1.4" />
+                <circle cx="478" cy="118" r="1.4" />
+                <!-- South America -->
+                <circle cx="486" cy="135" r="1.4" /><circle cx="496" cy="135" r="1.4" /><circle cx="506" cy="137" r="1.4" /><circle cx="516" cy="139" r="1.4" />
+                <circle cx="488" cy="147" r="1.4" /><circle cx="498" cy="147" r="1.4" /><circle cx="508" cy="149" r="1.4" /><circle cx="518" cy="151" r="1.4" /><circle cx="528" cy="153" r="1.4" />
+                <circle cx="492" cy="159" r="1.4" /><circle cx="502" cy="159" r="1.4" /><circle cx="512" cy="161" r="1.4" /><circle cx="522" cy="163" r="1.4" />
+                <circle cx="496" cy="171" r="1.4" /><circle cx="506" cy="171" r="1.4" /><circle cx="516" cy="173" r="1.4" />
+                <circle cx="500" cy="183" r="1.4" /><circle cx="510" cy="183" r="1.4" />
+                <circle cx="504" cy="195" r="1.4" />
+              </g>
+
+              <!-- VN-HQ Radar Ping & Beacon Callout on Vietnam -->
+              <circle cx="282" cy="152" r="8" fill="var(--accent)" fill-opacity="0.3" class="animate-ping" />
+              <circle cx="282" cy="152" r="3.5" fill="var(--accent)" />
+              <circle cx="282" cy="152" r="1.5" fill="#FFFFFF" />
+              <g transform="translate(290, 142)">
+                <rect x="0" y="0" width="42" height="15" rx="2" fill="var(--bg)" stroke="var(--accent)" stroke-width="0.9" />
+                <text x="5" y="11" font-family="'IBM Plex Mono', monospace" font-size="7.5" font-weight="extrabold" fill="var(--accent)">VN-HQ</text>
+              </g>
+            </g>
+
+
+            <!-- TILE 2 (Seamless Duplicate - Width = 640px) -->
+            <g transform="translate(1040, 270)">
+              <!-- CYBER DOT MATRIX CONTINENTS (Exact duplicate of Tile 1) -->
+              <g class="globe-dot-matrix" fill="var(--accent)" fill-opacity="0.75">
+                
+                <!-- 1. ASIA & EURASIA -->
+                <circle cx="210" cy="50" r="1.4" /><circle cx="220" cy="48" r="1.4" /><circle cx="230" cy="48" r="1.4" /><circle cx="240" cy="50" r="1.4" /><circle cx="250" cy="50" r="1.4" /><circle cx="260" cy="48" r="1.4" /><circle cx="270" cy="48" r="1.4" /><circle cx="280" cy="50" r="1.4" /><circle cx="290" cy="52" r="1.4" /><circle cx="300" cy="54" r="1.4" />
+                <circle cx="205" cy="60" r="1.4" /><circle cx="215" cy="58" r="1.4" /><circle cx="225" cy="58" r="1.4" /><circle cx="235" cy="60" r="1.4" /><circle cx="245" cy="60" r="1.4" /><circle cx="255" cy="58" r="1.4" /><circle cx="265" cy="58" r="1.4" /><circle cx="275" cy="60" r="1.4" /><circle cx="285" cy="62" r="1.4" /><circle cx="295" cy="64" r="1.4" /><circle cx="305" cy="66" r="1.4" /><circle cx="315" cy="68" r="1.4" />
+                <circle cx="210" cy="72" r="1.4" /><circle cx="220" cy="70" r="1.4" /><circle cx="230" cy="70" r="1.4" /><circle cx="240" cy="72" r="1.4" /><circle cx="250" cy="72" r="1.4" /><circle cx="260" cy="70" r="1.4" /><circle cx="270" cy="70" r="1.4" /><circle cx="280" cy="72" r="1.4" /><circle cx="290" cy="74" r="1.4" /><circle cx="300" cy="76" r="1.4" /><circle cx="310" cy="78" r="1.4" />
+                <circle cx="215" cy="84" r="1.4" /><circle cx="225" cy="82" r="1.4" /><circle cx="235" cy="82" r="1.4" /><circle cx="245" cy="84" r="1.4" /><circle cx="255" cy="84" r="1.4" /><circle cx="265" cy="82" r="1.4" /><circle cx="275" cy="82" r="1.4" /><circle cx="285" cy="84" r="1.4" /><circle cx="295" cy="86" r="1.4" /><circle cx="305" cy="88" r="1.4" />
+                <circle cx="225" cy="96" r="1.4" /><circle cx="235" cy="94" r="1.4" /><circle cx="245" cy="96" r="1.4" /><circle cx="255" cy="96" r="1.4" /><circle cx="265" cy="94" r="1.4" /><circle cx="275" cy="94" r="1.4" /><circle cx="285" cy="96" r="1.4" /><circle cx="295" cy="98" r="1.4" />
+                <circle cx="235" cy="108" r="1.4" /><circle cx="245" cy="108" r="1.4" /><circle cx="255" cy="106" r="1.4" /><circle cx="265" cy="106" r="1.4" /><circle cx="275" cy="108" r="1.4" /><circle cx="285" cy="110" r="1.4" />
+                <circle cx="240" cy="120" r="1.4" /><circle cx="245" cy="120" r="1.4" /><circle cx="268" cy="118" r="1.4" /><circle cx="276" cy="120" r="1.4" /><circle cx="284" cy="122" r="1.4" />
+                <circle cx="242" cy="130" r="1.4" /><circle cx="272" cy="130" r="1.4" /><circle cx="280" cy="132" r="1.4" />
+
+                <!-- Japan Archipelago -->
+                <circle cx="325" cy="74" r="1.6" fill="#FFFFFF" /><circle cx="330" cy="84" r="1.6" fill="#FFFFFF" /><circle cx="334" cy="94" r="1.6" /><circle cx="330" cy="104" r="1.6" />
+
+                <!-- 2. VIETNAM S-CURVE & VN-HQ -->
+                <circle cx="276" cy="136" r="1.8" fill="#FFFFFF" />
+                <circle cx="279" cy="144" r="1.8" fill="#FFFFFF" />
+                <circle cx="282" cy="152" r="2.2" fill="var(--accent)" />
+                <circle cx="279" cy="160" r="1.8" fill="#FFFFFF" />
+                <circle cx="274" cy="168" r="1.8" fill="#FFFFFF" />
+
+                <!-- Southeast Asia & Indonesia -->
+                <circle cx="260" cy="180" r="1.6" /><circle cx="270" cy="182" r="1.6" /><circle cx="282" cy="180" r="1.6" /><circle cx="294" cy="184" r="1.6" /><circle cx="306" cy="182" r="1.6" /><circle cx="318" cy="180" r="1.6" />
+                <circle cx="265" cy="190" r="1.6" /><circle cx="278" cy="192" r="1.6" /><circle cx="290" cy="192" r="1.6" /><circle cx="302" cy="190" r="1.6" />
+
+                <!-- 3. AUSTRALIA -->
+                <circle cx="295" cy="215" r="1.4" /><circle cx="305" cy="213" r="1.4" /><circle cx="315" cy="213" r="1.4" /><circle cx="325" cy="215" r="1.4" /><circle cx="335" cy="217" r="1.4" />
+                <circle cx="290" cy="225" r="1.4" /><circle cx="300" cy="223" r="1.4" /><circle cx="310" cy="223" r="1.4" /><circle cx="320" cy="223" r="1.4" /><circle cx="330" cy="225" r="1.4" /><circle cx="340" cy="227" r="1.4" />
+                <circle cx="292" cy="235" r="1.4" /><circle cx="302" cy="233" r="1.4" /><circle cx="312" cy="233" r="1.4" /><circle cx="322" cy="233" r="1.4" /><circle cx="332" cy="235" r="1.4" />
+                <circle cx="296" cy="245" r="1.4" /><circle cx="306" cy="245" r="1.4" /><circle cx="316" cy="243" r="1.4" /><circle cx="326" cy="245" r="1.4" />
+                <circle cx="302" cy="255" r="1.4" /><circle cx="312" cy="255" r="1.4" /><circle cx="322" cy="255" r="1.4" />
+
+                <!-- 4. EUROPE -->
+                <circle cx="120" cy="56" r="1.4" /><circle cx="130" cy="54" r="1.4" /><circle cx="140" cy="52" r="1.4" /><circle cx="150" cy="52" r="1.4" /><circle cx="160" cy="54" r="1.4" /><circle cx="170" cy="56" r="1.4" />
+                <circle cx="115" cy="66" r="1.4" /><circle cx="125" cy="64" r="1.4" /><circle cx="135" cy="64" r="1.4" /><circle cx="145" cy="62" r="1.4" /><circle cx="155" cy="64" r="1.4" /><circle cx="165" cy="66" r="1.4" />
+                <circle cx="120" cy="76" r="1.4" /><circle cx="130" cy="74" r="1.4" /><circle cx="140" cy="74" r="1.4" /><circle cx="150" cy="74" r="1.4" /><circle cx="160" cy="76" r="1.4" />
+                <circle cx="125" cy="86" r="1.4" /><circle cx="135" cy="84" r="1.4" /><circle cx="145" cy="84" r="1.4" /><circle cx="155" cy="86" r="1.4" />
+
+                <!-- 5. AFRICA -->
+                <circle cx="120" cy="100" r="1.4" /><circle cx="130" cy="98" r="1.4" /><circle cx="140" cy="98" r="1.4" /><circle cx="150" cy="100" r="1.4" /><circle cx="160" cy="102" r="1.4" />
+                <circle cx="115" cy="112" r="1.4" /><circle cx="125" cy="110" r="1.4" /><circle cx="135" cy="110" r="1.4" /><circle cx="145" cy="112" r="1.4" /><circle cx="155" cy="114" r="1.4" /><circle cx="165" cy="114" r="1.4" />
+                <circle cx="118" cy="124" r="1.4" /><circle cx="128" cy="122" r="1.4" /><circle cx="138" cy="122" r="1.4" /><circle cx="148" cy="124" r="1.4" /><circle cx="158" cy="126" r="1.4" />
+                <circle cx="122" cy="136" r="1.4" /><circle cx="132" cy="136" r="1.4" /><circle cx="142" cy="136" r="1.4" /><circle cx="152" cy="138" r="1.4" />
+                <circle cx="126" cy="148" r="1.4" /><circle cx="136" cy="148" r="1.4" /><circle cx="146" cy="148" r="1.4" />
+                <circle cx="130" cy="160" r="1.4" /><circle cx="140" cy="160" r="1.4" />
+                <circle cx="135" cy="172" r="1.4" />
+
+                <!-- 6. THE AMERICAS -->
+                <circle cx="450" cy="48" r="1.4" /><circle cx="460" cy="46" r="1.4" /><circle cx="470" cy="46" r="1.4" /><circle cx="480" cy="48" r="1.4" /><circle cx="490" cy="48" r="1.4" /><circle cx="500" cy="50" r="1.4" /><circle cx="510" cy="52" r="1.4" />
+                <circle cx="445" cy="58" r="1.4" /><circle cx="455" cy="56" r="1.4" /><circle cx="465" cy="56" r="1.4" /><circle cx="475" cy="56" r="1.4" /><circle cx="485" cy="58" r="1.4" /><circle cx="495" cy="60" r="1.4" /><circle cx="505" cy="62" r="1.4" />
+                <circle cx="450" cy="70" r="1.4" /><circle cx="460" cy="68" r="1.4" /><circle cx="470" cy="68" r="1.4" /><circle cx="480" cy="70" r="1.4" /><circle cx="490" cy="72" r="1.4" /><circle cx="500" cy="74" r="1.4" />
+                <circle cx="458" cy="82" r="1.4" /><circle cx="468" cy="80" r="1.4" /><circle cx="478" cy="82" r="1.4" /><circle cx="488" cy="84" r="1.4" /><circle cx="498" cy="86" r="1.4" />
+                <circle cx="465" cy="94" r="1.4" /><circle cx="475" cy="94" r="1.4" /><circle cx="485" cy="96" r="1.4" />
+                <circle cx="472" cy="106" r="1.4" /><circle cx="480" cy="108" r="1.4" />
+                <circle cx="478" cy="118" r="1.4" />
+                <circle cx="486" cy="135" r="1.4" /><circle cx="496" cy="135" r="1.4" /><circle cx="506" cy="137" r="1.4" /><circle cx="516" cy="139" r="1.4" />
+                <circle cx="488" cy="147" r="1.4" /><circle cx="498" cy="147" r="1.4" /><circle cx="508" cy="149" r="1.4" /><circle cx="518" cy="151" r="1.4" /><circle cx="528" cy="153" r="1.4" />
+                <circle cx="492" cy="159" r="1.4" /><circle cx="502" cy="159" r="1.4" /><circle cx="512" cy="161" r="1.4" /><circle cx="522" cy="163" r="1.4" />
+                <circle cx="496" cy="171" r="1.4" /><circle cx="506" cy="171" r="1.4" /><circle cx="516" cy="173" r="1.4" />
+                <circle cx="500" cy="183" r="1.4" /><circle cx="510" cy="183" r="1.4" />
+                <circle cx="504" cy="195" r="1.4" />
+              </g>
+
+              <!-- VN-HQ Radar Ping & Beacon Callout on Vietnam -->
+              <circle cx="282" cy="152" r="8" fill="var(--accent)" fill-opacity="0.3" class="animate-ping" />
+              <circle cx="282" cy="152" r="3.5" fill="var(--accent)" />
+              <circle cx="282" cy="152" r="1.5" fill="#FFFFFF" />
+              <g transform="translate(290, 142)">
+                <rect x="0" y="0" width="42" height="15" rx="2" fill="var(--bg)" stroke="var(--accent)" stroke-width="0.9" />
+                <text x="5" y="11" font-family="'IBM Plex Mono', monospace" font-size="7.5" font-weight="extrabold" fill="var(--accent)">VN-HQ</text>
+              </g>
+            </g>
+
+          </g>
+
+          <!-- 3D Perspective Latitude Curves Layered Above Rotating Continents -->
+          <ellipse cx="720" cy="330" rx="145" ry="32" stroke="var(--border)" stroke-width="1" stroke-dasharray="3 4" fill="none" class="opacity-50" />
+          <ellipse cx="720" cy="380" rx="156" ry="38" stroke="var(--border)" stroke-width="1" stroke-dasharray="3 5" fill="none" class="opacity-60" />
+          <ellipse cx="720" cy="430" rx="160" ry="44" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="4 6" fill="none" class="opacity-80" />
+          <ellipse cx="720" cy="480" rx="156" ry="38" stroke="var(--border)" stroke-width="1" stroke-dasharray="3 5" fill="none" class="opacity-60" />
+          <ellipse cx="720" cy="530" rx="145" ry="32" stroke="var(--border)" stroke-width="1" stroke-dasharray="3 4" fill="none" class="opacity-50" />
+
+          <!-- Prime Meridian Center Line -->
+          <line x1="720" y1="270" x2="720" y2="590" stroke="var(--accent)" stroke-width="1.6" class="opacity-80" />
+
+          <!-- Photorealistic Spherical Rim-Light Filter Layer -->
+          <circle cx="720" cy="430" r="160" fill="url(#globeAtmosphereGlow)" />
+          <circle cx="720" cy="430" r="159" stroke="var(--accent)" stroke-width="2" fill="none" class="opacity-45" filter="url(#cyanGlow)" />
+        </g>
+
+        <!-- Center Core Beacon -->
+        <circle cx="720" cy="430" r="10" fill="var(--accent)" fill-opacity="0.25" class="animate-ping" />
+        <circle cx="720" cy="430" r="4.5" fill="var(--accent)" />
+      </g>
+
+
+      <!-- ======================================================== -->
+      <!-- 8 BALANCED INFRASTRUCTURE STATIONS                       -->
+      <!-- CONTENT-ON-TOP ARCHITECTURE: Hardware drawn FIRST,       -->
+      <!-- Labels/Text drawn LAST with crisp backings (Never hid)   -->
+      <!-- ======================================================== -->
+
+      <!-- ======================================================== -->
+      <!-- 8 BALANCED INFRASTRUCTURE STATIONS                       -->
+      <!-- CONTENT-ON-TOP ARCHITECTURE: Hardware drawn FIRST,       -->
+      <!-- Labels/Text drawn LAST with crisp backings (Never hid)   -->
+      <!-- ======================================================== -->
+
+      <!-- STATION 1: [ CLIENTS ] (Web • Mobile • Desktop) - Upper Left Shoulder -->
+      <g id="st-clients" class="cursor-pointer station-hover" (click)="selectNode('clients')" (mouseenter)="onStationHover('clients')" (mouseleave)="onStationLeave()">
+        <!-- 1. Platform & Hardware (Shifted to upper-left quadrant beneath label) -->
+        <g transform="translate(160, -30)">
+          <polygon points="140,200 270,135 380,190 250,255" fill="var(--surface)" stroke="var(--border)" stroke-width="1.1" />
+          <!-- Laptop -->
+          <g transform="translate(175, 160)">
+            <polygon points="0,35 45,15 88,35 43,55" fill="var(--surface-2)" stroke="var(--text-1)" stroke-width="1.3" />
+            <polygon points="0,35 45,15 45,-25 0,-5" fill="var(--surface)" stroke="var(--text-1)" stroke-width="1.3" />
+            <polygon points="4,31 41,15 41,-20 4,-4" fill="var(--bg)" stroke="var(--accent)" stroke-width="0.8" />
+          </g>
+          <!-- Phone -->
+          <g transform="translate(265, 130)">
+            <polygon points="0,15 15,8 28,18 13,25" fill="var(--surface-2)" stroke="var(--text-1)" stroke-width="1.1" />
+            <polygon points="0,15 15,8 15,-18 0,-11" fill="var(--surface)" stroke="var(--text-1)" stroke-width="1.3" />
+            <polygon points="2,13 13,7 13,-15 2,-9" fill="var(--bg)" stroke="var(--accent)" stroke-width="0.7" />
+          </g>
+          <!-- Monitor -->
+          <g transform="translate(300, 145)">
+            <polygon points="20,40 36,32 48,38 32,46" fill="var(--surface-2)" stroke="var(--text-1)" stroke-width="1" />
+            <line x1="34" y1="38" x2="34" y2="20" stroke="var(--text-1)" stroke-width="2" />
+            <polygon points="5,20 52,-6 52,-46 5,-20" fill="var(--surface)" stroke="var(--text-1)" stroke-width="1.3" />
+            <polygon points="8,17 49,-7 49,-42 8,-18" fill="var(--bg)" stroke="var(--accent)" stroke-width="0.8" />
+          </g>
+        </g>
+
+        <!-- 2. Text Labels (Drawn strictly on top with crisp clearance) -->
+        <g transform="translate(340, 65)">
+          <rect x="-8" y="-14" width="220" height="42" rx="4" fill="var(--bg)" fill-opacity="0.9" stroke="var(--border)" stroke-width="0.8" />
+          <circle cx="4" cy="-2" r="3.5" fill="var(--accent)" />
+          <text x="16" y="2" font-family="'IBM Plex Mono', monospace" font-size="13" font-weight="bold" fill="var(--text-1)">[ CLIENTS ]</text>
+          <text x="16" y="19" font-family="'IBM Plex Mono', monospace" font-size="9.5" font-weight="500" fill="var(--text-3)">Desktop • Laptop • Mobile</text>
+        </g>
+      </g>
+
+
+      <!-- STATION 2: [ FIREWALL & SECURITY ] (Fortinet • Palo Alto • Cisco ASA) - Mid Left (Upper) -->
+      <g id="st-firewall" class="cursor-pointer station-hover" (click)="selectNode('firewall')" (mouseenter)="onStationHover('firewall')" (mouseleave)="onStationLeave()">
+        <!-- 1. Hardware (Drawn FIRST at Y=300) -->
+        <g transform="translate(150, 300)">
+          <polygon points="0,0 70,-35 130,-5 60,30" fill="var(--surface-2)" stroke="var(--text-1)" stroke-width="1.3" />
+          <polygon points="60,30 130,-5 130,22 60,52" fill="var(--surface)" stroke="var(--text-1)" stroke-width="1.3" />
+          <polygon points="0,0 60,30 60,52 0,22" fill="var(--surface)" stroke="var(--text-1)" stroke-width="1.3" />
+          <line x1="8" y1="16" x2="52" y2="38" stroke="var(--border)" stroke-width="3" stroke-linecap="round" />
+          <circle cx="14" cy="18" r="2" fill="#f59e0b" class="animate-ping" />
+          <circle cx="24" cy="23" r="1.5" fill="var(--accent)" />
+          <circle cx="34" cy="28" r="1.5" fill="var(--accent)" />
+          <circle cx="44" cy="33" r="1.5" fill="#f59e0b" />
+        </g>
+
+        <!-- 2. Text Labels (Drawn LAST above hardware at Y=210, strictly in front) -->
+        <g transform="translate(110, 210)">
+          <rect x="-8" y="-14" width="235" height="54" rx="4" fill="var(--bg)" fill-opacity="0.9" stroke="var(--border)" stroke-width="0.8" />
+          <circle cx="4" cy="-2" r="3.5" fill="#f59e0b" />
+          <text x="16" y="2" font-family="'IBM Plex Mono', monospace" font-size="13" font-weight="bold" fill="var(--text-1)">[ FIREWALL &amp; SECURITY ]</text>
+          <text x="16" y="18" font-family="'IBM Plex Mono', monospace" font-size="9.5" font-weight="500" fill="var(--text-3)">Fortinet • Palo Alto • Cisco ASA</text>
+          <text x="16" y="32" font-family="'IBM Plex Mono', monospace" font-size="8.5" font-weight="600" fill="#f59e0b">VPN • IPS • WAF • Threat Shield</text>
+        </g>
+      </g>
+
+
+      <!-- STATION 3: [ CISCO & UNIFI NETWORK ] (Switch • Router • Wireless) - Mid Left (Lower) -->
+      <g id="st-network" class="cursor-pointer station-hover" (click)="selectNode('network')" (mouseenter)="onStationHover('network')" (mouseleave)="onStationLeave()">
+        <!-- 1. Hardware (Drawn FIRST at Y=480) -->
+        <g transform="translate(150, 480)">
+          <!-- Cisco Catalyst Switch Box -->
+          <polygon points="0,0 65,-32 125,-2 60,30" fill="var(--surface-2)" stroke="var(--text-1)" stroke-width="1.3" />
+          <polygon points="60,30 125,-2 125,24 60,56" fill="var(--surface)" stroke="var(--text-1)" stroke-width="1.3" />
+          <polygon points="0,0 60,30 60,56 0,26" fill="var(--surface)" stroke="var(--text-1)" stroke-width="1.3" />
+          <circle cx="15" cy="18" r="1.5" fill="var(--accent)" class="animate-ping" />
+          <circle cx="28" cy="25" r="1.5" fill="var(--accent)" />
+          <circle cx="42" cy="32" r="1.5" fill="var(--accent)" class="animate-ping" />
+
+          <!-- UniFi AP Saucer -->
+          <g transform="translate(130, -5)">
+            <ellipse cx="25" cy="15" rx="22" ry="14" fill="var(--surface-2)" stroke="var(--text-1)" stroke-width="1.2" />
+            <ellipse cx="25" cy="14" rx="14" ry="9" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.2" />
+            <circle cx="25" cy="14" r="2.5" fill="var(--accent)" class="animate-pulse" />
+          </g>
+        </g>
+
+        <!-- 2. Text Labels (Drawn LAST above hardware at Y=395, strictly in front) -->
+        <g transform="translate(110, 395)">
+          <rect x="-8" y="-14" width="245" height="54" rx="4" fill="var(--bg)" fill-opacity="0.9" stroke="var(--border)" stroke-width="0.8" />
+          <circle cx="4" cy="-2" r="3.5" fill="var(--accent)" />
+          <text x="16" y="2" font-family="'IBM Plex Mono', monospace" font-size="13" font-weight="bold" fill="var(--text-1)">[ CISCO &amp; UNIFI NETWORK ]</text>
+          <text x="16" y="18" font-family="'IBM Plex Mono', monospace" font-size="9.5" font-weight="500" fill="var(--text-3)">Catalyst Switch • Access Point • Gateway</text>
+          <text x="16" y="32" font-family="'IBM Plex Mono', monospace" font-size="8.5" font-weight="600" fill="var(--accent-text)">VLAN • OSPF • PoE+ • 10Gbps Uplink</text>
+        </g>
+      </g>
+
+
+      <!-- STATION 4: [ DATABASE ] (PostgreSQL • MongoDB • MySQL) - Bottom Left -->
+      <g id="st-database" class="cursor-pointer station-hover" (click)="selectNode('database')" (mouseenter)="onStationHover('database')" (mouseleave)="onStationLeave()">
+        <!-- 1. Hardware (Drawn FIRST at X=340, Y=640) -->
+        <g transform="translate(340, 640)">
+          <!-- Tier 3 -->
+          <path d="M 0 50 C 0 35, 70 35, 70 50 L 70 68 C 70 83, 0 83, 0 68 Z" fill="var(--surface)" stroke="var(--text-1)" stroke-width="1.2" />
+          <ellipse cx="35" cy="50" rx="35" ry="15" fill="var(--surface-2)" stroke="var(--text-1)" stroke-width="1.2" />
+          <circle cx="35" cy="65" r="1.5" fill="var(--accent)" />
+          <!-- Tier 2 -->
+          <path d="M 0 25 C 0 10, 70 10, 70 25 L 70 43 C 70 58, 0 58, 0 43 Z" fill="var(--surface)" stroke="var(--text-1)" stroke-width="1.2" />
+          <ellipse cx="35" cy="25" rx="35" ry="15" fill="var(--surface-2)" stroke="var(--text-1)" stroke-width="1.2" />
+          <circle cx="35" cy="40" r="1.5" fill="var(--accent)" class="animate-ping" />
+          <!-- Tier 1 -->
+          <path d="M 0 0 C 0 -15, 70 -15, 70 0 L 70 18 C 70 33, 0 33, 0 18 Z" fill="var(--surface)" stroke="var(--text-1)" stroke-width="1.2" />
+          <ellipse cx="35" cy="0" rx="35" ry="15" fill="var(--surface-2)" stroke="var(--text-1)" stroke-width="1.2" />
+          <circle cx="35" cy="15" r="1.5" fill="var(--accent)" />
+        </g>
+
+        <!-- 2. Text Labels (Drawn LAST to the left at X=120, Y=635, strictly in front) -->
+        <g transform="translate(120, 635)">
+          <rect x="-8" y="-14" width="220" height="54" rx="4" fill="var(--bg)" fill-opacity="0.9" stroke="var(--border)" stroke-width="0.8" />
+          <circle cx="4" cy="-2" r="3.5" fill="var(--accent)" />
+          <text x="16" y="2" font-family="'IBM Plex Mono', monospace" font-size="13" font-weight="bold" fill="var(--text-1)">[ DATABASE ]</text>
+          <text x="16" y="18" font-family="'IBM Plex Mono', monospace" font-size="9.5" font-weight="500" fill="var(--text-3)">PostgreSQL • MongoDB • MySQL</text>
+          <text x="16" y="32" font-family="'IBM Plex Mono', monospace" font-size="8.5" font-weight="600" fill="var(--accent-text)">Replication • ACID • Clustering</text>
+        </g>
+      </g>
+
+
+      <!-- STATION 5: [ CLOUD PROVIDERS ] (AWS • Azure • GCP) - Upper Right Shoulder -->
+      <g id="st-cloud" class="cursor-pointer station-hover" (click)="selectNode('cloud')" (mouseenter)="onStationHover('cloud')" (mouseleave)="onStationLeave()">
+        <!-- 1. Hardware (Shifted into upper-right quadrant beneath label) -->
+        <g transform="translate(820, 105)">
+          <path d="M 20 46 C 5 46, -5 33, 2 19 C 5 7, 22 2, 35 8 C 43 -5, 70 -6, 80 8 C 90 6, 105 13, 102 27 C 114 33, 112 47, 98 47 Z" 
+                fill="var(--surface)" stroke="var(--text-1)" stroke-width="1.4" />
+          <path d="M 20 46 C 36 49, 82 49, 98 47" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 6" />
+          <text x="38" y="33" font-family="'IBM Plex Mono', monospace" font-size="13" font-weight="extrabold" fill="var(--text-1)">aws</text>
+          <path d="M 39 39 Q 52 45 65 39" stroke="var(--accent)" stroke-width="1.8" fill="none" stroke-linecap="round" />
+        </g>
+        <g transform="translate(950, 115)">
+          <polygon points="15,0 30,-8 45,0 30,8" fill="var(--surface-2)" stroke="var(--text-1)" stroke-width="1" />
+          <polygon points="15,0 30,8 30,22 15,14" fill="var(--surface)" stroke="var(--text-1)" stroke-width="1" />
+          <polygon points="30,8 45,0 45,14 30,22" fill="var(--surface)" stroke="var(--text-1)" stroke-width="1" />
+          <circle cx="65" cy="11" r="10" fill="var(--surface)" stroke="var(--text-1)" stroke-width="1.1" />
+          <circle cx="65" cy="11" r="4" fill="var(--accent)" />
+        </g>
+
+        <!-- 2. Text Labels (Drawn LAST above hardware at Y=65, strictly in front) -->
+        <g transform="translate(820, 65)">
+          <rect x="-8" y="-14" width="235" height="42" rx="4" fill="var(--bg)" fill-opacity="0.9" stroke="var(--border)" stroke-width="0.8" />
+          <circle cx="4" cy="-2" r="3.5" fill="var(--accent)" />
+          <text x="16" y="2" font-family="'IBM Plex Mono', monospace" font-size="13" font-weight="bold" fill="var(--text-1)">[ CLOUD PROVIDERS ]</text>
+          <text x="16" y="19" font-family="'IBM Plex Mono', monospace" font-size="9.5" font-weight="500" fill="var(--text-3)">AWS • Azure • GCP • Kubernetes</text>
+        </g>
+      </g>
+
+
+      <!-- STATION 6: [ SERVERS & VIRTUALIZATION ] (Dell • VMware • Proxmox) - Mid Right (Upper) -->
+      <g id="st-servers" class="cursor-pointer station-hover" (click)="selectNode('servers')" (mouseenter)="onStationHover('servers')" (mouseleave)="onStationLeave()">
+        <!-- 1. Hardware (Drawn FIRST at Y=300) -->
+        <g transform="translate(1070, 300)">
+          <!-- Blade 1 -->
+          <polygon points="0,0 35,-18 70,0 35,18" fill="var(--surface-2)" stroke="var(--text-1)" stroke-width="1.3" />
+          <polygon points="35,18 70,0 70,105 35,123" fill="var(--surface)" stroke="var(--text-1)" stroke-width="1.3" />
+          <polygon points="0,0 35,18 35,123 0,105" fill="var(--surface)" stroke="var(--text-1)" stroke-width="1.3" />
+          <line x1="5" y1="24" x2="30" y2="36" stroke="var(--border)" stroke-width="1.5" />
+          <circle cx="8" cy="26" r="1.2" fill="var(--accent)" />
+          <line x1="5" y1="48" x2="30" y2="60" stroke="var(--border)" stroke-width="1.5" />
+          <circle cx="8" cy="50" r="1.2" fill="var(--accent)" class="animate-ping" />
+          <line x1="5" y1="72" x2="30" y2="84" stroke="var(--border)" stroke-width="1.5" />
+          <circle cx="8" cy="74" r="1.2" fill="var(--accent)" />
+
+          <!-- Blade 2 -->
+          <g transform="translate(55, -28)">
+            <polygon points="0,0 35,-18 70,0 35,18" fill="var(--surface-2)" stroke="var(--text-1)" stroke-width="1.3" />
+            <polygon points="35,18 70,0 70,105 35,123" fill="var(--surface)" stroke="var(--text-1)" stroke-width="1.3" />
+            <polygon points="0,0 35,18 35,123 0,105" fill="var(--surface)" stroke="var(--text-1)" stroke-width="1.3" />
+            <line x1="5" y1="24" x2="30" y2="36" stroke="var(--border)" stroke-width="1.5" />
+            <circle cx="8" cy="26" r="1.2" fill="var(--accent)" />
+            <line x1="5" y1="48" x2="30" y2="60" stroke="var(--border)" stroke-width="1.5" />
+            <circle cx="8" cy="50" r="1.2" fill="var(--accent)" class="animate-ping" />
+          </g>
+        </g>
+
+        <!-- 2. Text Labels (Drawn LAST above hardware at Y=210, strictly in front) -->
+        <g transform="translate(1060, 210)">
+          <rect x="-8" y="-14" width="255" height="54" rx="4" fill="var(--bg)" fill-opacity="0.9" stroke="var(--border)" stroke-width="0.8" />
+          <circle cx="4" cy="-2" r="3.5" fill="var(--accent)" />
+          <text x="16" y="2" font-family="'IBM Plex Mono', monospace" font-size="13" font-weight="bold" fill="var(--text-1)">[ SERVERS &amp; VIRTUALIZATION ]</text>
+          <text x="16" y="18" font-family="'IBM Plex Mono', monospace" font-size="9.5" font-weight="500" fill="var(--text-3)">Dell PowerEdge • VMware • Proxmox</text>
+          <text x="16" y="32" font-family="'IBM Plex Mono', monospace" font-size="8.5" font-weight="600" fill="var(--accent-text)">Windows Server • Linux HA Cluster</text>
+        </g>
+      </g>
+
+
+      <!-- STATION 7: [ STORAGE & BACKUP ] (Synology • QNAP • NAS) - Mid Right (Lower) -->
+      <g id="st-storage" class="cursor-pointer station-hover" (click)="selectNode('storage')" (mouseenter)="onStationHover('storage')" (mouseleave)="onStationLeave()">
+        <!-- 1. Hardware (Drawn FIRST at Y=480) -->
+        <g transform="translate(1070, 480)">
+          <polygon points="0,0 55,-28 110,0 55,28" fill="var(--surface-2)" stroke="var(--text-1)" stroke-width="1.3" />
+          <polygon points="55,28 110,0 110,75 55,103" fill="var(--surface)" stroke="var(--text-1)" stroke-width="1.3" />
+          <polygon points="0,0 55,28 55,103 0,75" fill="var(--surface)" stroke="var(--text-1)" stroke-width="1.3" />
+          <line x1="12" y1="18" x2="12" y2="78" stroke="var(--border)" stroke-width="2.5" />
+          <circle cx="12" cy="84" r="1.2" fill="var(--accent)" />
+          <line x1="24" y1="24" x2="24" y2="84" stroke="var(--border)" stroke-width="2.5" />
+          <circle cx="24" cy="90" r="1.2" fill="var(--accent)" class="animate-ping" />
+          <line x1="36" y1="30" x2="36" y2="90" stroke="var(--border)" stroke-width="2.5" />
+          <circle cx="36" cy="96" r="1.2" fill="var(--accent)" />
+          <line x1="48" y1="36" x2="48" y2="96" stroke="var(--border)" stroke-width="2.5" />
+          <circle cx="48" cy="102" r="1.2" fill="var(--accent)" />
+        </g>
+
+        <!-- 2. Text Labels (Drawn LAST above hardware at Y=395, strictly in front) -->
+        <g transform="translate(1060, 395)">
+          <rect x="-8" y="-14" width="250" height="54" rx="4" fill="var(--bg)" fill-opacity="0.9" stroke="var(--border)" stroke-width="0.8" />
+          <circle cx="4" cy="-2" r="3.5" fill="var(--accent)" />
+          <text x="16" y="2" font-family="'IBM Plex Mono', monospace" font-size="13" font-weight="bold" fill="var(--text-1)">[ STORAGE &amp; BACKUP ]</text>
+          <text x="16" y="18" font-family="'IBM Plex Mono', monospace" font-size="9.5" font-weight="500" fill="var(--text-3)">Synology NAS • QNAP • SAN Storage</text>
+          <text x="16" y="32" font-family="'IBM Plex Mono', monospace" font-size="8.5" font-weight="600" fill="var(--accent-text)">RAID 10 • Veeam Backup • Snapshot</text>
+        </g>
+      </g>
+
+
+      <!-- STATION 8: [ MONITORING & OBSERVABILITY ] (Grafana • Prometheus) - Bottom Right -->
+      <g id="st-monitoring" class="cursor-pointer station-hover" (click)="selectNode('monitoring')" (mouseenter)="onStationHover('monitoring')" (mouseleave)="onStationLeave()">
+        <!-- 1. Hardware (Drawn FIRST at X=890, Y=640) -->
+        <g transform="translate(890, 640)">
+          <!-- Stand Base -->
+          <polygon points="30,70 50,60 65,68 45,78" fill="var(--surface-2)" stroke="var(--text-1)" stroke-width="1.2" />
+          <line x1="47" y1="67" x2="47" y2="40" stroke="var(--text-1)" stroke-width="2.5" />
+          <!-- Monitor Panel -->
+          <polygon points="0,35 76,-5 76,-65 0,-25" fill="var(--surface)" stroke="var(--text-1)" stroke-width="1.4" />
+          <polygon points="4,30 72,-8 72,-60 4,-22" fill="#0B0B0B" stroke="var(--accent)" stroke-width="0.8" />
+          <!-- Oscillating Waveform Inside Screen -->
+          <path d="M 8 10 Q 20 -20 32 -5 T 50 -30 T 68 -20" stroke="var(--accent)" stroke-width="1.8" fill="none" class="animate-pulse" />
+          <circle cx="68" cy="-20" r="2" fill="var(--accent)" />
+        </g>
+
+        <!-- 2. Text Labels (Drawn LAST to the right at X=975, Y=635, strictly in front) -->
+        <g transform="translate(975, 635)">
+          <rect x="-8" y="-14" width="260" height="54" rx="4" fill="var(--bg)" fill-opacity="0.9" stroke="var(--border)" stroke-width="0.8" />
+          <circle cx="4" cy="-2" r="3.5" fill="var(--accent)" />
+          <text x="16" y="2" font-family="'IBM Plex Mono', monospace" font-size="13" font-weight="bold" fill="var(--text-1)">[ MONITORING &amp; OBSERVABILITY ]</text>
+          <text x="16" y="18" font-family="'IBM Plex Mono', monospace" font-size="9.5" font-weight="500" fill="var(--text-3)">Grafana • Prometheus • Zabbix • ELK</text>
+          <text x="16" y="32" font-family="'IBM Plex Mono', monospace" font-size="8.5" font-weight="600" fill="var(--accent-text)">Real-time NOC • Alerts • APM</text>
+        </g>
+      </g>
+
+
+      <!-- ======================================================== -->
+      <!-- CHAT TELEMETRY POPUPS (Hover Interactive Typewriter)    -->
+      <!-- ======================================================== -->
+
+      <!-- POPUP 1: CLIENTS (Upper Left Shoulder - Points right to label) -->
+      <g id="popup-clients" *ngIf="activeStation === 'clients'" class="pointer-events-none" filter="drop-shadow(0 8px 24px rgba(0,0,0,0.75))">
+        <polygon points="325,65 338,65 325,77" fill="#090d16" stroke="var(--accent)" stroke-width="1.2" />
+        <rect x="75" y="45" width="250" height="82" rx="5" fill="#090d16" stroke="var(--accent)" stroke-width="1.4" />
+        <rect x="76" y="46" width="248" height="22" rx="4" fill="#1e293b" fill-opacity="0.95" />
+        <rect x="76" y="62" width="248" height="6" fill="#1e293b" fill-opacity="0.95" />
+        <line x1="75" y1="68" x2="325" y2="68" stroke="var(--border)" stroke-width="0.8" />
+        <circle cx="89" cy="57" r="4.5" fill="var(--accent)" opacity="0.4" class="animate-ping" />
+        <circle cx="89" cy="57" r="2.8" fill="var(--accent)" />
+        <text x="100" y="60.5" font-family="'IBM Plex Mono', monospace" font-size="8.5" font-weight="extrabold" fill="#F8FAFC" letter-spacing="0.5">SYS.CLIENTS</text>
+        <text x="315" text-anchor="end" y="60.5" font-family="'IBM Plex Mono', monospace" font-size="7" font-weight="bold" fill="var(--accent)">● ENDPOINTS</text>
+        <text x="87" y="85" font-family="'IBM Plex Mono', monospace" font-size="8.2" font-weight="600" fill="#F8FAFC">{{ typedLine1 }}<tspan *ngIf="!typingLine2" fill="var(--accent)" class="animate-pulse">▍</tspan></text>
+        <text x="87" y="103" font-family="'IBM Plex Mono', monospace" font-size="7.2" font-weight="500" fill="#94A3B8">{{ typedLine2 }}<tspan *ngIf="typingLine2" fill="var(--accent)" class="animate-pulse">▍</tspan></text>
+        <line x1="75" y1="45" x2="83" y2="45" stroke="var(--accent)" stroke-width="2.5" />
+        <line x1="75" y1="45" x2="75" y2="53" stroke="var(--accent)" stroke-width="2.5" />
+        <line x1="325" y1="127" x2="317" y2="127" stroke="var(--accent)" stroke-width="2.5" />
+        <line x1="325" y1="127" x2="325" y2="119" stroke="var(--accent)" stroke-width="2.5" />
+      </g>
+
+      <!-- POPUP 2: FIREWALL & SECURITY (Mid Left Upper - Anchored Above Label) -->
+      <g id="popup-firewall" *ngIf="activeStation === 'firewall'" class="pointer-events-none" filter="drop-shadow(0 8px 24px rgba(0,0,0,0.75))">
+        <polygon points="170,197 180,210 190,197" fill="#090d16" stroke="var(--accent)" stroke-width="1.2" />
+        <rect x="110" y="115" width="250" height="82" rx="5" fill="#090d16" stroke="var(--accent)" stroke-width="1.4" />
+        <rect x="111" y="116" width="248" height="22" rx="4" fill="#1e293b" fill-opacity="0.95" />
+        <rect x="111" y="132" width="248" height="6" fill="#1e293b" fill-opacity="0.95" />
+        <line x1="110" y1="138" x2="360" y2="138" stroke="var(--border)" stroke-width="0.8" />
+        <circle cx="124" cy="127" r="4.5" fill="var(--accent)" opacity="0.4" class="animate-ping" />
+        <circle cx="124" cy="127" r="2.8" fill="var(--accent)" />
+        <text x="135" y="130.5" font-family="'IBM Plex Mono', monospace" font-size="8.5" font-weight="extrabold" fill="#F8FAFC" letter-spacing="0.5">SEC.FIREWALL</text>
+        <text x="350" text-anchor="end" y="130.5" font-family="'IBM Plex Mono', monospace" font-size="7" font-weight="bold" fill="#f59e0b">● PERIMETER</text>
+        <text x="122" y="155" font-family="'IBM Plex Mono', monospace" font-size="8.2" font-weight="600" fill="#F8FAFC">{{ typedLine1 }}<tspan *ngIf="!typingLine2" fill="var(--accent)" class="animate-pulse">▍</tspan></text>
+        <text x="122" y="173" font-family="'IBM Plex Mono', monospace" font-size="7.2" font-weight="500" fill="#94A3B8">{{ typedLine2 }}<tspan *ngIf="typingLine2" fill="var(--accent)" class="animate-pulse">▍</tspan></text>
+        <line x1="110" y1="115" x2="118" y2="115" stroke="var(--accent)" stroke-width="2.5" />
+        <line x1="110" y1="115" x2="110" y2="123" stroke="var(--accent)" stroke-width="2.5" />
+        <line x1="360" y1="197" x2="352" y2="197" stroke="var(--accent)" stroke-width="2.5" />
+        <line x1="360" y1="197" x2="360" y2="189" stroke="var(--accent)" stroke-width="2.5" />
+      </g>
+
+      <!-- POPUP 3: CISCO & UNIFI NETWORK (Mid Left Lower - Anchored Above Label) -->
+      <g id="popup-network" *ngIf="activeStation === 'network'" class="pointer-events-none" filter="drop-shadow(0 8px 24px rgba(0,0,0,0.75))">
+        <polygon points="170,382 180,395 190,382" fill="#090d16" stroke="var(--accent)" stroke-width="1.2" />
+        <rect x="110" y="300" width="250" height="82" rx="5" fill="#090d16" stroke="var(--accent)" stroke-width="1.4" />
+        <rect x="111" y="301" width="248" height="22" rx="4" fill="#1e293b" fill-opacity="0.95" />
+        <rect x="111" y="317" width="248" height="6" fill="#1e293b" fill-opacity="0.95" />
+        <line x1="110" y1="323" x2="360" y2="323" stroke="var(--border)" stroke-width="0.8" />
+        <circle cx="124" cy="312" r="4.5" fill="var(--accent)" opacity="0.4" class="animate-ping" />
+        <circle cx="124" cy="312" r="2.8" fill="var(--accent)" />
+        <text x="135" y="315.5" font-family="'IBM Plex Mono', monospace" font-size="8.5" font-weight="extrabold" fill="#F8FAFC" letter-spacing="0.5">NET.ROUTING</text>
+        <text x="350" text-anchor="end" y="315.5" font-family="'IBM Plex Mono', monospace" font-size="7" font-weight="bold" fill="var(--accent)">● CORE &amp; AP</text>
+        <text x="122" y="340" font-family="'IBM Plex Mono', monospace" font-size="8.2" font-weight="600" fill="#F8FAFC">{{ typedLine1 }}<tspan *ngIf="!typingLine2" fill="var(--accent)" class="animate-pulse">▍</tspan></text>
+        <text x="122" y="358" font-family="'IBM Plex Mono', monospace" font-size="7.2" font-weight="500" fill="#94A3B8">{{ typedLine2 }}<tspan *ngIf="typingLine2" fill="var(--accent)" class="animate-pulse">▍</tspan></text>
+        <line x1="110" y1="300" x2="118" y2="300" stroke="var(--accent)" stroke-width="2.5" />
+        <line x1="110" y1="300" x2="110" y2="308" stroke="var(--accent)" stroke-width="2.5" />
+        <line x1="360" y1="382" x2="352" y2="382" stroke="var(--accent)" stroke-width="2.5" />
+        <line x1="360" y1="382" x2="360" y2="374" stroke="var(--accent)" stroke-width="2.5" />
+      </g>
+
+      <!-- POPUP 4: DATABASE (Bottom Left - Anchored Above Label) -->
+      <g id="popup-database" *ngIf="activeStation === 'database'" class="pointer-events-none" filter="drop-shadow(0 8px 24px rgba(0,0,0,0.75))">
+        <polygon points="180,622 190,635 200,622" fill="#090d16" stroke="var(--accent)" stroke-width="1.2" />
+        <rect x="120" y="540" width="250" height="82" rx="5" fill="#090d16" stroke="var(--accent)" stroke-width="1.4" />
+        <rect x="121" y="541" width="248" height="22" rx="4" fill="#1e293b" fill-opacity="0.95" />
+        <rect x="121" y="557" width="248" height="6" fill="#1e293b" fill-opacity="0.95" />
+        <line x1="120" y1="563" x2="370" y2="563" stroke="var(--border)" stroke-width="0.8" />
+        <circle cx="134" cy="552" r="4.5" fill="var(--accent)" opacity="0.4" class="animate-ping" />
+        <circle cx="134" cy="552" r="2.8" fill="var(--accent)" />
+        <text x="145" y="555.5" font-family="'IBM Plex Mono', monospace" font-size="8.5" font-weight="extrabold" fill="#F8FAFC" letter-spacing="0.5">DATA.CLUSTER</text>
+        <text x="360" text-anchor="end" y="555.5" font-family="'IBM Plex Mono', monospace" font-size="7" font-weight="bold" fill="var(--accent)">● SQL / NOSQL</text>
+        <text x="132" y="580" font-family="'IBM Plex Mono', monospace" font-size="8.2" font-weight="600" fill="#F8FAFC">{{ typedLine1 }}<tspan *ngIf="!typingLine2" fill="var(--accent)" class="animate-pulse">▍</tspan></text>
+        <text x="132" y="598" font-family="'IBM Plex Mono', monospace" font-size="7.2" font-weight="500" fill="#94A3B8">{{ typedLine2 }}<tspan *ngIf="typingLine2" fill="var(--accent)" class="animate-pulse">▍</tspan></text>
+        <line x1="120" y1="540" x2="128" y2="540" stroke="var(--accent)" stroke-width="2.5" />
+        <line x1="120" y1="540" x2="120" y2="548" stroke="var(--accent)" stroke-width="2.5" />
+        <line x1="370" y1="622" x2="362" y2="622" stroke="var(--accent)" stroke-width="2.5" />
+        <line x1="370" y1="622" x2="370" y2="614" stroke="var(--accent)" stroke-width="2.5" />
+      </g>
+
+      <!-- POPUP 5: CLOUD PROVIDERS (Upper Right Shoulder - Points left to label) -->
+      <g id="popup-cloud" *ngIf="activeStation === 'cloud'" class="pointer-events-none" filter="drop-shadow(0 8px 24px rgba(0,0,0,0.75))">
+        <polygon points="1070,65 1057,65 1070,77" fill="#090d16" stroke="var(--accent)" stroke-width="1.2" />
+        <rect x="1070" y="45" width="250" height="82" rx="5" fill="#090d16" stroke="var(--accent)" stroke-width="1.4" />
+        <rect x="1071" y="46" width="248" height="22" rx="4" fill="#1e293b" fill-opacity="0.95" />
+        <rect x="1071" y="62" width="248" height="6" fill="#1e293b" fill-opacity="0.95" />
+        <line x1="1070" y1="68" x2="1320" y2="68" stroke="var(--border)" stroke-width="0.8" />
+        <circle cx="1084" cy="57" r="4.5" fill="var(--accent)" opacity="0.4" class="animate-ping" />
+        <circle cx="1084" cy="57" r="2.8" fill="var(--accent)" />
+        <text x="1095" y="60.5" font-family="'IBM Plex Mono', monospace" font-size="8.5" font-weight="extrabold" fill="#F8FAFC" letter-spacing="0.5">CLOUD.HYBRID</text>
+        <text x="1310" text-anchor="end" y="60.5" font-family="'IBM Plex Mono', monospace" font-size="7" font-weight="bold" fill="var(--accent)">● MULTI-CLOUD</text>
+        <text x="1082" y="85" font-family="'IBM Plex Mono', monospace" font-size="8.2" font-weight="600" fill="#F8FAFC">{{ typedLine1 }}<tspan *ngIf="!typingLine2" fill="var(--accent)" class="animate-pulse">▍</tspan></text>
+        <text x="1082" y="103" font-family="'IBM Plex Mono', monospace" font-size="7.2" font-weight="500" fill="#94A3B8">{{ typedLine2 }}<tspan *ngIf="typingLine2" fill="var(--accent)" class="animate-pulse">▍</tspan></text>
+        <line x1="1070" y1="45" x2="1078" y2="45" stroke="var(--accent)" stroke-width="2.5" />
+        <line x1="1070" y1="45" x2="1070" y2="53" stroke="var(--accent)" stroke-width="2.5" />
+        <line x1="1320" y1="127" x2="1312" y2="127" stroke="var(--accent)" stroke-width="2.5" />
+        <line x1="1320" y1="127" x2="1320" y2="119" stroke="var(--accent)" stroke-width="2.5" />
+      </g>
+
+      <!-- POPUP 6: SERVERS & VIRTUALIZATION (Mid Right Upper - Clear of Globe) -->
+      <g id="popup-servers" *ngIf="activeStation === 'servers'" class="pointer-events-none" filter="drop-shadow(0 8px 24px rgba(0,0,0,0.75))">
+        <polygon points="1045,205 1058,210 1045,217" fill="#090d16" stroke="var(--accent)" stroke-width="1.2" />
+        <rect x="795" y="150" width="250" height="82" rx="5" fill="#090d16" stroke="var(--accent)" stroke-width="1.4" />
+        <rect x="796" y="151" width="248" height="22" rx="4" fill="#1e293b" fill-opacity="0.95" />
+        <rect x="796" y="167" width="248" height="6" fill="#1e293b" fill-opacity="0.95" />
+        <line x1="795" y1="173" x2="1045" y2="173" stroke="var(--border)" stroke-width="0.8" />
+        <circle cx="809" cy="162" r="4.5" fill="var(--accent)" opacity="0.4" class="animate-ping" />
+        <circle cx="809" cy="162" r="2.8" fill="var(--accent)" />
+        <text x="820" y="165.5" font-family="'IBM Plex Mono', monospace" font-size="8.5" font-weight="extrabold" fill="#F8FAFC" letter-spacing="0.5">SRV.COMPUTE</text>
+        <text x="1035" text-anchor="end" y="165.5" font-family="'IBM Plex Mono', monospace" font-size="7" font-weight="bold" fill="var(--accent)">● VMWARE HA</text>
+        <text x="807" y="190" font-family="'IBM Plex Mono', monospace" font-size="8.2" font-weight="600" fill="#F8FAFC">{{ typedLine1 }}<tspan *ngIf="!typingLine2" fill="var(--accent)" class="animate-pulse">▍</tspan></text>
+        <text x="807" y="208" font-family="'IBM Plex Mono', monospace" font-size="7.2" font-weight="500" fill="#94A3B8">{{ typedLine2 }}<tspan *ngIf="typingLine2" fill="var(--accent)" class="animate-pulse">▍</tspan></text>
+        <line x1="795" y1="150" x2="803" y2="150" stroke="var(--accent)" stroke-width="2.5" />
+        <line x1="795" y1="150" x2="795" y2="158" stroke="var(--accent)" stroke-width="2.5" />
+        <line x1="1045" y1="232" x2="1037" y2="232" stroke="var(--accent)" stroke-width="2.5" />
+        <line x1="1045" y1="232" x2="1045" y2="224" stroke="var(--accent)" stroke-width="2.5" />
+      </g>
+
+      <!-- POPUP 7: STORAGE & BACKUP (Mid Right Lower - Clear of Globe) -->
+      <g id="popup-storage" *ngIf="activeStation === 'storage'" class="pointer-events-none" filter="drop-shadow(0 8px 24px rgba(0,0,0,0.75))">
+        <polygon points="1045,390 1058,395 1045,402" fill="#090d16" stroke="var(--accent)" stroke-width="1.2" />
+        <rect x="795" y="335" width="250" height="82" rx="5" fill="#090d16" stroke="var(--accent)" stroke-width="1.4" />
+        <rect x="796" y="336" width="248" height="22" rx="4" fill="#1e293b" fill-opacity="0.95" />
+        <rect x="796" y="352" width="248" height="6" fill="#1e293b" fill-opacity="0.95" />
+        <line x1="795" y1="358" x2="1045" y2="358" stroke="var(--border)" stroke-width="0.8" />
+        <circle cx="809" cy="347" r="4.5" fill="var(--accent)" opacity="0.4" class="animate-ping" />
+        <circle cx="809" cy="347" r="2.8" fill="var(--accent)" />
+        <text x="820" y="350.5" font-family="'IBM Plex Mono', monospace" font-size="8.5" font-weight="extrabold" fill="#F8FAFC" letter-spacing="0.5">STORE.BACKUP</text>
+        <text x="1035" text-anchor="end" y="350.5" font-family="'IBM Plex Mono', monospace" font-size="7" font-weight="bold" fill="var(--accent)">● RAID &amp; VEEAM</text>
+        <text x="807" y="375" font-family="'IBM Plex Mono', monospace" font-size="8.2" font-weight="600" fill="#F8FAFC">{{ typedLine1 }}<tspan *ngIf="!typingLine2" fill="var(--accent)" class="animate-pulse">▍</tspan></text>
+        <text x="807" y="393" font-family="'IBM Plex Mono', monospace" font-size="7.2" font-weight="500" fill="#94A3B8">{{ typedLine2 }}<tspan *ngIf="typingLine2" fill="var(--accent)" class="animate-pulse">▍</tspan></text>
+        <line x1="795" y1="335" x2="803" y2="335" stroke="var(--accent)" stroke-width="2.5" />
+        <line x1="795" y1="335" x2="795" y2="343" stroke="var(--accent)" stroke-width="2.5" />
+        <line x1="1045" y1="417" x2="1037" y2="417" stroke="var(--accent)" stroke-width="2.5" />
+        <line x1="1045" y1="417" x2="1045" y2="409" stroke="var(--accent)" stroke-width="2.5" />
+      </g>
+
+      <!-- POPUP 8: MONITORING & OBSERVABILITY (Bottom Right - Anchored Above Label) -->
+      <g id="popup-monitoring" *ngIf="activeStation === 'monitoring'" class="pointer-events-none" filter="drop-shadow(0 8px 24px rgba(0,0,0,0.75))">
+        <polygon points="1035,622 1045,635 1055,622" fill="#090d16" stroke="var(--accent)" stroke-width="1.2" />
+        <rect x="975" y="540" width="250" height="82" rx="5" fill="#090d16" stroke="var(--accent)" stroke-width="1.4" />
+        <rect x="976" y="541" width="248" height="22" rx="4" fill="#1e293b" fill-opacity="0.95" />
+        <rect x="976" y="557" width="248" height="6" fill="#1e293b" fill-opacity="0.95" />
+        <line x1="975" y1="563" x2="1225" y2="563" stroke="var(--border)" stroke-width="0.8" />
+        <circle cx="989" cy="552" r="4.5" fill="var(--accent)" opacity="0.4" class="animate-ping" />
+        <circle cx="989" cy="552" r="2.8" fill="var(--accent)" />
+        <text x="1000" y="555.5" font-family="'IBM Plex Mono', monospace" font-size="8.5" font-weight="extrabold" fill="#F8FAFC" letter-spacing="0.5">OPS.MONITOR</text>
+        <text x="1215" text-anchor="end" y="555.5" font-family="'IBM Plex Mono', monospace" font-size="7" font-weight="bold" fill="var(--accent)">● NOC LIVE</text>
+        <text x="987" y="580" font-family="'IBM Plex Mono', monospace" font-size="8.2" font-weight="600" fill="#F8FAFC">{{ typedLine1 }}<tspan *ngIf="!typingLine2" fill="var(--accent)" class="animate-pulse">▍</tspan></text>
+        <text x="987" y="598" font-family="'IBM Plex Mono', monospace" font-size="7.2" font-weight="500" fill="#94A3B8">{{ typedLine2 }}<tspan *ngIf="typingLine2" fill="var(--accent)" class="animate-pulse">▍</tspan></text>
+        <line x1="975" y1="540" x2="983" y2="540" stroke="var(--accent)" stroke-width="2.5" />
+        <line x1="975" y1="540" x2="975" y2="548" stroke="var(--accent)" stroke-width="2.5" />
+        <line x1="1225" y1="622" x2="1217" y2="622" stroke="var(--accent)" stroke-width="2.5" />
+        <line x1="1225" y1="622" x2="1225" y2="614" stroke="var(--accent)" stroke-width="2.5" />
+      </g>
+
+
+      <!-- ======================================================== -->
+      <!-- VERTICAL ENGINEERING PIPELINE (Image 1 Far Right)        -->
+      <!-- ======================================================== -->
+      <g id="pipeline-vertical" transform="translate(1360, 260)">
+        <text x="0" y="0" font-family="'IBM Plex Mono', monospace" font-size="12" font-weight="bold" fill="var(--text-1)" letter-spacing="1">IDEA</text>
+        <line x1="14" y1="9" x2="14" y2="38" stroke="var(--border)" stroke-width="1.6" />
+
+        <text x="0" y="60" font-family="'IBM Plex Mono', monospace" font-size="12" font-weight="bold" fill="var(--text-1)" letter-spacing="1">DEVELOP</text>
+        <line x1="14" y1="69" x2="14" y2="98" stroke="var(--border)" stroke-width="1.6" />
+
+        <text x="0" y="120" font-family="'IBM Plex Mono', monospace" font-size="12" font-weight="bold" fill="var(--text-1)" letter-spacing="1">DEPLOY</text>
+        <line x1="14" y1="129" x2="14" y2="158" stroke="var(--border)" stroke-width="1.6" />
+
+        <text x="0" y="180" font-family="'IBM Plex Mono', monospace" font-size="12" font-weight="bold" fill="var(--accent)" letter-spacing="1">OPERATE</text>
+        <line x1="14" y1="189" x2="14" y2="218" stroke="var(--accent)" stroke-width="1.6" />
+
+        <text x="0" y="240" font-family="'IBM Plex Mono', monospace" font-size="12" font-weight="bold" fill="var(--text-1)" letter-spacing="1">IMPROVE</text>
+
+        <text x="-6" y="470" font-family="'IBM Plex Mono', monospace" font-size="11" font-weight="bold" fill="var(--text-3)">v1.0.0</text>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Bottom Hero Specs Bar: Hardware & Telecom Counters (Z-30, with Desktop HUD Clearance Padding) -->
+  <div class="relative z-30 shrink-0 pb-3 pt-2 px-4 sm:px-8 lg:px-12 pr-4 lg:pr-[360px] flex flex-wrap items-center justify-between gap-3 border-t border-[var(--border)] bg-[var(--bg)]/95 backdrop-blur-md pointer-events-auto">
+    <div class="flex items-center gap-6 font-mono-tech text-[11px] text-[var(--text-3)]">
+      <div><span class="text-[var(--text-1)] font-bold">2+ YRS</span> IT INFRA &amp; NETWORKS</div>
+      <div><span class="text-[var(--text-1)] font-bold">1+ YRS</span> DEV &amp; CLOUD</div>
+      <div><span class="text-[var(--accent)] font-bold">8+ CERTS</span> CISCO / LINUX / AZURE</div>
+      <div class="hidden sm:block"><span class="text-[var(--text-1)] font-bold">2 LANG</span> EN (TOEIC) • ZH (HSK)</div>
+    </div>
+
+    <!-- Scroll Down Prompt -->
+    <div class="font-mono-tech text-[11px] text-[var(--accent-text)] flex items-center gap-2 cursor-pointer" (click)="onViewSpecs()">
+      <span class="w-2 h-2 rounded-full bg-[var(--accent)] animate-ping"></span>
+      <span>SCROLL DOWN TO EXPLORE DOMAINS &amp; ROADMAP ↓</span>
+    </div>
+  </div>
+</div>

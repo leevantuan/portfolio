@@ -1,27 +1,56 @@
-import { Component, Input } from '@angular/core';
-import { SessionService } from '../../shared/session.service';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { GlobalNetworkComponent } from '../global-network/global-network.component';
 import { UIResourceENG } from '../../shared/lang/eng';
 import { UIResourceVN } from '../../shared/lang/vn';
+import { UIResourceZH } from '../../shared/lang/zh';
 
 @Component({
   selector: 'app-greeting',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, GlobalNetworkComponent],
   templateUrl: './greeting.component.html',
   styleUrl: './greeting.component.css',
 })
-export class GreetingComponent {
-  @Input() lang: string = 'ENG';
+export class GreetingComponent implements OnInit, OnChanges {
+  @Input() lang: string = 'VI';
+  @Output() viewArchitecture = new EventEmitter<void>();
 
-  UIResource: any;
+  UIResource: any = UIResourceVN;
 
-  ngOnChanges(): void {
-    this.UIResource = this.lang === 'VN' ? UIResourceVN : UIResourceENG;
+  ngOnInit(): void {
+    this.updateResource();
   }
 
-  openLink() {
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['lang']) {
+      this.updateResource();
+    }
+  }
+
+  private updateResource(): void {
+    switch (this.lang) {
+      case 'ENG':
+        this.UIResource = UIResourceENG;
+        break;
+      case 'ZH':
+        this.UIResource = UIResourceZH;
+        break;
+      case 'VI':
+      default:
+        this.UIResource = UIResourceVN;
+        break;
+    }
+  }
+
+  onViewArchitecture(): void {
+    this.viewArchitecture.emit();
+  }
+
+  openResume(): void {
     window.open(
       'https://static.topcv.vn/topcv-cv-uploads/79561995b822783d9e4198be1c9a7a18.pdf#toolbar=0&navpanes=0&scrollbar=0',
-      'resume'
+      '_blank'
     );
   }
 }

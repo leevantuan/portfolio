@@ -1,9 +1,71 @@
-<div class="w-full sm:w-[700px] md:w-[800px] lg:w-[1200px] mx-auto ps-2 pe-2">
-     <app-header (langChange)="handleLangChange($event)"></app-header>
-     <app-greeting [lang]="lang"></app-greeting>
-     <app-skills [lang]="lang"></app-skills>
-     <app-experience [lang]="lang"></app-experience>
-     <app-projects [lang]="lang"></app-projects>
-     <app-contact [lang]="lang"></app-contact>
-     <app-footer [lang]="lang"></app-footer>
+<div class="w-full bg-[var(--bg)] text-[var(--text-1)] selection:bg-[var(--accent)] selection:text-[#0B0B0B]">
+  
+  <!-- ======================================================== -->
+  <!-- HERO SCREEN (PAGE 1): 100vw x 100vh FULL-BLEED TOPOLOGY  -->
+  <!-- ======================================================== -->
+  <div class="w-full h-screen max-h-screen relative flex flex-col justify-between border-b border-[var(--border)] overflow-hidden">
+    <!-- Edge-to-Edge Sticky Header (Shrink-0) -->
+    <div class="w-full max-w-[1600px] mx-auto px-4 sm:px-8 shrink-0 z-40">
+      <app-header (langChange)="handleLangChange($event)"></app-header>
+    </div>
+
+    <!-- Center Stage: Edge-to-Edge Full-Screen Isometric Network Topology (Image 1) -->
+    <main class="flex-1 w-full min-h-0 flex flex-col justify-between overflow-hidden">
+      <app-global-network class="h-full w-full flex flex-col min-h-0" [lang]="lang" (viewArchitecture)="openArchitectureModal()"></app-global-network>
+    </main>
+
+    <!-- Floating Corner Infrastructure HUD (Image 2) -->
+    <app-infrastructure-hud [lang]="lang"></app-infrastructure-hud>
+  </div>
+
+
+  <!-- ======================================================== -->
+  <!-- SCROLLABLE PORTFOLIO FLOW (SECTIONS UNDERNEATH)           -->
+  <!-- ======================================================== -->
+  <div class="w-full max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-10 py-10 space-y-20">
+    
+    <!-- Domain Skills (4 Technical Matrix Domains) -->
+    <section id="skills">
+      <app-skills [lang]="lang"></app-skills>
+    </section>
+
+    <!-- Career Roadmap (6 Levels from Fresh IT to Solution Architect) & Grafana Telemetry -->
+    <section id="roadmap">
+      <app-roadmap [lang]="lang"></app-roadmap>
+    </section>
+
+    <!-- International Credential Vault (8 Verified Certifications) -->
+    <section id="credentials">
+      <app-credentials [lang]="lang"></app-credentials>
+    </section>
+
+    <!-- Professional Experience (2Y Infra + 1Y Dev) -->
+    <section id="experience">
+      <app-experience [lang]="lang"></app-experience>
+    </section>
+
+    <!-- Featured Projects (Technical Blueprint Cards) -->
+    <section id="projects">
+      <app-projects [lang]="lang" (viewArchitecture)="openArchitectureModal()"></app-projects>
+    </section>
+
+    <!-- Contact Terminal & Connection Direct -->
+    <section id="contact">
+      <app-contact [lang]="lang"></app-contact>
+    </section>
+
+    <!-- Engineering Footer -->
+    <app-footer [lang]="lang"></app-footer>
+  </div>
+
+
+  <!-- ======================================================== -->
+  <!-- SYSTEM ARCHITECTURE BLUEPRINT MODAL                      -->
+  <!-- ======================================================== -->
+  <app-diagram-viewer 
+    [isOpen]="isDiagramOpen" 
+    [lang]="lang" 
+    (close)="closeArchitectureModal()"
+  ></app-diagram-viewer>
+
 </div>

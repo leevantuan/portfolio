@@ -1,28 +1,20 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { UIResourceENG } from '../../shared/lang/eng';
 import { UIResourceVN } from '../../shared/lang/vn';
 import { UIResourceZH } from '../../shared/lang/zh';
 
 @Component({
-  selector: 'app-contact',
+  selector: 'app-credentials',
   standalone: true,
-  imports: [CommonModule, FormsModule],
-  templateUrl: './contact.component.html',
-  styleUrl: './contact.component.css',
+  imports: [CommonModule],
+  templateUrl: './credentials.component.html',
+  styleUrl: './credentials.component.css',
 })
-export class ContactComponent implements OnInit, OnChanges {
+export class CredentialsComponent implements OnInit, OnChanges {
   @Input() lang: string = 'VI';
 
   UIResource: any = UIResourceVN;
-  isSubmitted: boolean = false;
-
-  contactForm = {
-    name: '',
-    email: '',
-    message: '',
-  };
 
   ngOnInit(): void {
     this.updateResource();
@@ -47,13 +39,5 @@ export class ContactComponent implements OnInit, OnChanges {
         this.UIResource = UIResourceVN;
         break;
     }
-  }
-
-  onSubmit() {
-    this.isSubmitted = true;
-    setTimeout(() => {
-      this.contactForm = { name: '', email: '', message: '' };
-      this.isSubmitted = false;
-    }, 4000);
   }
 }

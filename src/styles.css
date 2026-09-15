@@ -1,12 +1,186 @@
-/* You can add global styles to this file, and also import other style files */
-/* Import tailwindcss */
 @import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *, .dark, .dark *));
+
+/* 
+ * Tone 07 — Technical Blueprint 
+ * Primary Default: Dark Console (07B)
+ * Secondary: Light Blueprint (07A)
+ */
+:root,
+[data-theme="dark"] {
+  --bg: #0B0B0B;
+  --surface: #111111;
+  --surface-2: #181818;
+  --surface-3: #222222;
+  --border: #333333;
+  --border-soft: #222222;
+  --border-dark: #333333;
+  --text-1: #F5F5F5;
+  --text-2: #A0A0A0;
+  --text-3: #777777;
+  --accent: #7ED957;
+  --accent-glow: rgba(126, 217, 87, 0.22);
+  --accent-text: #7ED957;
+  --info: #2563EB;
+  --warning: #F59E0B;
+  --error: #EF4444;
+  --font-mono: "IBM Plex Mono", Consolas, monospace;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+[data-theme="light"] {
+  --bg: #FFFFFF;
+  --surface: #FAFAFA;
+  --surface-2: #F3F4F6;
+  --surface-3: #E5E7EB;
+  --border: #D8D8D8;
+  --border-soft: #E5E7EB;
+  --border-dark: #1A1A1A;
+  --text-1: #111111;
+  --text-2: #4B5563;
+  --text-3: #6B7280;
+  --accent: #7ED957;
+  --accent-glow: rgba(126, 217, 87, 0.28);
+  --accent-text: #206d11;
+  --info: #2563EB;
+  --warning: #F59E0B;
+  --error: #EF4444;
+}
+
+* {
+  box-sizing: border-box;
+}
 
 html,
 body {
-  height: 100%;
   margin: 0;
-  font-size: 20px;
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(to right, #0f172a 0%, #0f172a 100%);
+  padding: 0;
+  background-color: var(--bg);
+  color: var(--text-1);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+/* Monospace headings and labels */
+h1, h2, h3, h4, .font-mono-tech {
+  font-family: var(--font-mono);
+  letter-spacing: -0.02em;
+}
+
+/* Global Network 3D Globe & Cable Animations */
+@keyframes globeSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-globe-spin {
+  animation: globeSpin 60s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes cablePulse {
+  0% {
+    stroke-dashoffset: 80;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-cable-pulse {
+  stroke-dasharray: 8 16;
+  animation: cablePulse 2s linear infinite;
+}
+
+.animate-cable-pulse-fast {
+  stroke-dasharray: 6 12;
+  animation: cablePulse 1.3s linear infinite;
+}
+
+@keyframes nodePing {
+  0% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(126, 217, 87, 0.7);
+  }
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 12px rgba(126, 217, 87, 0);
+  }
+  100% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(126, 217, 87, 0);
+  }
+}
+
+.animate-node-ping {
+  animation: nodePing 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Blueprint Circuit Animations */
+@keyframes circuitFlow {
+  from {
+    stroke-dashoffset: 40;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-circuit-flow {
+  animation: circuitFlow 1.8s linear infinite;
+}
+
+@keyframes barRise {
+  0% {
+    transform: scaleY(0.4);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(0.4);
+  }
+}
+
+.animate-bar-rise {
+  transform-origin: bottom;
+  animation: barRise 2.5s ease-in-out infinite;
+}
+
+/* Blueprint Grid Background Pattern */
+.blueprint-paper-grid {
+  background-size: 28px 28px;
+  background-image: 
+    linear-gradient(to right, rgba(126, 217, 87, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(126, 217, 87, 0.08) 1px, transparent 1px);
+}
+
+[data-theme="light"] .blueprint-paper-grid {
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+}
+
+/* Tech Blueprint custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
 }

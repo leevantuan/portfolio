@@ -1,0 +1,62 @@
+/* Edge-to-Edge Full-Bleed Blueprint Grid */
+.blueprint-grid-full {
+  background-image: 
+    linear-gradient(to right, var(--border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.75;
+}
+
+/* Traveling Data Packet Animations */
+@keyframes flowDashForward {
+  from {
+    stroke-dashoffset: 40;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.cable-flow-1 {
+  animation: flowDashForward 1.3s linear infinite;
+  filter: drop-shadow(0 0 4px var(--accent));
+}
+
+.cable-flow-2 {
+  animation: flowDashForward 1.7s linear infinite;
+  filter: drop-shadow(0 0 4px var(--accent));
+}
+
+.cable-flow-3 {
+  animation: flowDashForward 2.1s linear infinite;
+  filter: drop-shadow(0 0 4px var(--accent));
+}
+
+/* ======================================================== */
+/* TRUE 3D ROTATING CONTINENTS ACROSS SPHERICAL AXIS        */
+/* ======================================================== */
+@keyframes continentsScrollOrbit {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-640px);
+  }
+}
+
+.continents-scroll-track {
+  animation: continentsScrollOrbit 28s linear infinite;
+}
+
+/* Station Hover Effects */
+.station-hover {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease;
+}
+
+.station-hover:hover {
+  filter: drop-shadow(0 0 12px rgba(126, 217, 87, 0.5));
+}
+
+.station-hover:hover polygon {
+  stroke: var(--accent);
+}
