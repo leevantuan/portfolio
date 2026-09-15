@@ -39,7 +39,12 @@ export class RoadmapComponent implements OnInit, OnChanges, OnDestroy, AfterView
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['lang']) {
       this.updateResource();
-      setTimeout(() => this.revealAll());
+      // Angular also calls ngOnChanges for the initial @Input binding on mount, not just
+      // on real language switches — only re-reveal on an actual (non-first) change, or
+      // every element would be force-revealed immediately on page load instead of on scroll.
+      if (!changes['lang'].firstChange) {
+        setTimeout(() => this.revealAll());
+      }
     }
   }
 

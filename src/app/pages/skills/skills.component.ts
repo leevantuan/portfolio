@@ -151,7 +151,10 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnChanges, OnDest
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['lang']) {
       this.updateResource();
-      if (isPlatformBrowser(this.platformId)) {
+      // Angular also calls ngOnChanges for the initial @Input binding on mount, not just
+      // on real language switches — only re-reveal on an actual (non-first) change, or
+      // every element would be force-revealed immediately on page load instead of on scroll.
+      if (!changes['lang'].firstChange && isPlatformBrowser(this.platformId)) {
         setTimeout(() => this.revealAll());
       }
     }
