@@ -12,9 +12,9 @@ import { UIResourceZH } from '../../shared/lang/zh';
   styleUrl: './credentials.component.css',
 })
 export class CredentialsComponent implements OnInit, OnChanges {
-  @Input() lang: string = 'VI';
+  @Input() lang: string = 'ENG';
 
-  UIResource: any = UIResourceVN;
+  UIResource: any = UIResourceENG;
 
   ngOnInit(): void {
     this.updateResource();

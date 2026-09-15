@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './infrastructure-hud.component.css'
 })
 export class InfrastructureHudComponent {
-  @Input() lang: string = 'VI';
+  @Input() lang: string = 'ENG';
   
   isMinimized: boolean = false;
 

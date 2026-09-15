@@ -40,18 +40,41 @@
       </div>
 
       <!-- Description -->
-      <p class="text-[var(--text-2)] text-sm sm:text-base leading-relaxed mb-5">
+      <p class="text-[var(--text-2)] text-sm sm:text-base leading-relaxed mb-4">
         {{ exp.desc }}
       </p>
 
-      <!-- Tags -->
-      <div class="flex flex-wrap gap-2">
-        <span 
-          *ngFor="let tag of exp.tags" 
-          class="font-mono-tech text-xs px-2.5 py-1 rounded-sm bg-[var(--bg)] text-[var(--text-1)] border border-[var(--border)]"
-        >
-          {{ tag }}
-        </span>
+      <!-- Detailed Accomplishments Highlights List -->
+      <div *ngIf="exp.highlights && exp.highlights.length" class="space-y-3 mb-5 pl-1">
+        <div *ngFor="let h of exp.highlights" class="flex items-start gap-2.5 text-xs sm:text-sm text-[var(--text-2)] leading-relaxed">
+          <span class="text-[var(--accent)] font-bold shrink-0 mt-0.5 select-none">▹</span>
+          <div>
+            <strong class="text-[var(--text-1)] font-semibold" *ngIf="h.title">{{ h.title }}: </strong>
+            <span>{{ h.desc }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Running Tech Stack Ticker (Animated Infinite Marquee) -->
+      <div class="exp-marquee-track border-t border-[var(--border)] pt-3.5 mt-2 overflow-hidden flex select-none">
+        <div class="exp-marquee-content flex shrink-0 items-center gap-2.5 pr-2.5">
+          <span 
+            *ngFor="let tag of exp.tags" 
+            class="font-mono-tech text-[11px] px-2.5 py-1 rounded-sm bg-[var(--bg)] text-[var(--accent)] border border-[var(--border)] whitespace-nowrap font-medium flex items-center gap-1.5 shadow-2xs hover:border-[var(--accent)] transition-colors"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>
+            {{ tag }}
+          </span>
+        </div>
+        <div class="exp-marquee-content flex shrink-0 items-center gap-2.5 pr-2.5" aria-hidden="true">
+          <span 
+            *ngFor="let tag of exp.tags" 
+            class="font-mono-tech text-[11px] px-2.5 py-1 rounded-sm bg-[var(--bg)] text-[var(--accent)] border border-[var(--border)] whitespace-nowrap font-medium flex items-center gap-1.5 shadow-2xs hover:border-[var(--accent)] transition-colors"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>
+            {{ tag }}
+          </span>
+        </div>
       </div>
     </div>
   </div>

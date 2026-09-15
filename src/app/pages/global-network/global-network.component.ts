@@ -16,7 +16,7 @@ export interface StationDetails {
   styleUrl: './global-network.component.css',
 })
 export class GlobalNetworkComponent implements OnDestroy {
-  @Input() lang: string = 'VI';
+  @Input() lang: string = 'ENG';
   @Output() viewArchitecture = new EventEmitter<void>();
 
   selectedNode: string | null = null;

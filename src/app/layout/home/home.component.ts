@@ -7,10 +7,10 @@ import { SkillsComponent } from '../../pages/skills/skills.component';
 import { RoadmapComponent } from '../../pages/roadmap/roadmap.component';
 import { CredentialsComponent } from '../../pages/credentials/credentials.component';
 import { ExperienceComponent } from '../../pages/experience/experience.component';
-import { ProjectsComponent } from '../../pages/projects/projects.component';
 import { DiagramViewerComponent } from '../../pages/diagram-viewer/diagram-viewer.component';
 import { ContactComponent } from '../../pages/contact/contact.component';
 import { FooterComponent } from '../../pages/footer/footer.component';
+import { NetworkBgComponent } from '../../shared/network-bg/network-bg.component';
 import { SessionService } from '../../shared/session.service';
 import { UIResourceENG } from '../../shared/lang/eng';
 import { UIResourceVN } from '../../shared/lang/vn';
@@ -28,17 +28,17 @@ import { UIResourceZH } from '../../shared/lang/zh';
     RoadmapComponent,
     CredentialsComponent,
     ExperienceComponent,
-    ProjectsComponent,
     DiagramViewerComponent,
     ContactComponent,
     FooterComponent,
+    NetworkBgComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
-  lang: string = 'VI';
-  UIResource: any = UIResourceVN;
+  lang: string = 'ENG';
+  UIResource: any = UIResourceENG;
   isDiagramOpen: boolean = false;
 
   constructor(private sessionService: SessionService) {

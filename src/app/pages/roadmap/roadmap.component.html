@@ -1,6 +1,6 @@
 <section id="roadmap" class="py-14 border-b border-[var(--border)]">
   <!-- Section Kicker & Title -->
-  <div class="mb-10">
+  <div class="mb-8 gnome-reveal-item">
     <div class="flex items-center gap-3 font-mono-tech text-[11px] font-bold tracking-wider text-[var(--accent)] uppercase mb-2">
       <span>01 / {{ UIResource.roadmap.kicker }}</span>
       <span class="w-8 h-[2px] bg-[var(--accent)]"></span>
@@ -13,6 +13,36 @@
     </p>
   </div>
 
+  <!-- System Roadmap Infinite Marquee Ticker (Lấp khoảng trống & Preview lộ trình) -->
+  <div class="gnome-reveal-item delay-75 mb-12">
+    <div class="marquee-track font-mono-tech text-xs tracking-wider border-y border-[var(--border)] py-3 bg-[var(--surface-1)]/50 backdrop-blur-md">
+      <div class="marquee-content gap-8 pr-8">
+        <ng-container *ngFor="let lvl of UIResource.roadmap.levels">
+          <div class="inline-flex items-center gap-2.5">
+            <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-[var(--accent)]/15 text-[var(--accent)] border border-[var(--accent)]/30">
+              LEVEL {{ lvl.level }}
+            </span>
+            <span class="text-[var(--accent)] font-semibold text-[11px]">{{ lvl.badge }}</span>
+            <span class="text-[var(--text-1)] text-xs font-medium">{{ lvl.title }}</span>
+            <span class="text-[var(--border)] ml-2">◆</span>
+          </div>
+        </ng-container>
+      </div>
+      <div class="marquee-content gap-8 pr-8" aria-hidden="true">
+        <ng-container *ngFor="let lvl of UIResource.roadmap.levels">
+          <div class="inline-flex items-center gap-2.5">
+            <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-[var(--accent)]/15 text-[var(--accent)] border border-[var(--accent)]/30">
+              LEVEL {{ lvl.level }}
+            </span>
+            <span class="text-[var(--accent)] font-semibold text-[11px]">{{ lvl.badge }}</span>
+            <span class="text-[var(--text-1)] text-xs font-medium">{{ lvl.title }}</span>
+            <span class="text-[var(--border)] ml-2">◆</span>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
   <!-- 6-Level Stepped Pipeline & Circuit Grid -->
   <div class="relative mb-14">
     <!-- Center Line for Desktop -->
@@ -22,9 +52,9 @@
     </div>
 
     <div class="flex flex-col gap-8 md:gap-12 relative">
-      <div 
-        *ngFor="let lvl of UIResource.roadmap.levels; let i = index" 
-        class="flex flex-col md:flex-row items-center w-full"
+      <div
+        *ngFor="let lvl of UIResource.roadmap.levels; let i = index; trackBy: trackByLevel"
+        class="flex flex-col md:flex-row items-center w-full gnome-reveal-item delay-150"
         [ngClass]="{
           'md:flex-row-reverse': i % 2 !== 0
         }"
@@ -82,7 +112,7 @@
             <div *ngIf="lvl.certs && lvl.certs.length > 0" class="mb-3 p-2.5 rounded bg-[var(--bg)] border border-[var(--border)]">
               <div class="font-mono-tech text-[10px] text-[var(--accent)] uppercase tracking-wider mb-1.5 flex items-center gap-1">
                 <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>
-                CHỨNG CHỈ BẢO CHỨNG / CREDENTIALS:
+                {{ UIResource.roadmap.certs_label }}
               </div>
               <div class="flex flex-wrap gap-1.5">
                 <span 
@@ -127,7 +157,7 @@
   </div>
 
   <!-- Real-time Grafana Observability Dashboard Widget -->
-  <div class="rounded-md border border-[var(--border)] bg-[var(--surface)] p-5 sm:p-6 relative overflow-hidden">
+  <div class="rounded-md border border-[var(--border)] bg-[var(--surface)] p-5 sm:p-6 relative overflow-hidden gnome-reveal-item delay-200">
     <!-- Corner Decor Blueprint Label -->
     <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-4 border-b border-[var(--border)]">
       <div class="flex items-center gap-2 font-mono-tech text-xs font-bold tracking-wider text-[var(--text-2)]">

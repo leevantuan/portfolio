@@ -13,9 +13,9 @@ import { UIResourceZH } from '../../shared/lang/zh';
   styleUrl: './contact.component.css',
 })
 export class ContactComponent implements OnInit, OnChanges {
-  @Input() lang: string = 'VI';
+  @Input() lang: string = 'ENG';
 
-  UIResource: any = UIResourceVN;
+  UIResource: any = UIResourceENG;
   isSubmitted: boolean = false;
 
   contactForm = {

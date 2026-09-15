@@ -12,10 +12,10 @@ import { UIResourceZH } from '../../shared/lang/zh';
   styleUrl: './projects.component.css',
 })
 export class ProjectsComponent implements OnInit, OnChanges {
-  @Input() lang: string = 'VI';
+  @Input() lang: string = 'ENG';
   @Output() viewArchitecture = new EventEmitter<void>();
 
-  UIResource: any = UIResourceVN;
+  UIResource: any = UIResourceENG;
 
   ngOnInit(): void {
     this.updateResource();

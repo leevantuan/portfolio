@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, OnDestroy, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, OnDestroy, SimpleChanges, ElementRef, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UIResourceVN } from '../../shared/lang/vn';
 import { UIResourceENG } from '../../shared/lang/eng';
@@ -11,10 +11,10 @@ import { UIResourceZH } from '../../shared/lang/zh';
   templateUrl: './roadmap.component.html',
   styleUrl: './roadmap.component.css',
 })
-export class RoadmapComponent implements OnInit, OnChanges, OnDestroy {
-  @Input() lang: string = 'VI';
+export class RoadmapComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit {
+  @Input() lang: string = 'ENG';
 
-  UIResource: any = UIResourceVN;
+  UIResource: any = UIResourceENG;
 
   // Real-time telemetry histogram bars (Grafana style)
   telemetryBars: number[] = [
@@ -23,22 +23,71 @@ export class RoadmapComponent implements OnInit, OnChanges, OnDestroy {
   ];
 
   private telemetryTimer: any;
+  private observer?: IntersectionObserver;
+
+  constructor(private el: ElementRef) {}
 
   ngOnInit(): void {
     this.updateResource();
     this.startLiveTelemetry();
   }
 
+  ngAfterViewInit(): void {
+    this.setupIntersectionObserver();
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['lang']) {
       this.updateResource();
+      setTimeout(() => this.revealAll());
     }
+  }
+
+  trackByLevel(_index: number, lvl: { level: number | string }): number | string {
+    return lvl.level;
   }
 
   ngOnDestroy(): void {
     if (this.telemetryTimer) {
       clearInterval(this.telemetryTimer);
     }
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+  }
+
+  private setupIntersectionObserver(): void {
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      this.revealAll();
+      return;
+    }
+
+    const options: IntersectionObserverInit = {
+      root: null,
+      rootMargin: '0px 0px -60px 0px',
+      threshold: 0.1,
+    };
+
+    this.observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          this.observer?.unobserve(entry.target);
+        }
+      });
+    }, options);
+
+    const targets = this.el.nativeElement.querySelectorAll('.gnome-reveal-item');
+    targets.forEach((target: Element) => {
+      this.observer?.observe(target);
+    });
+  }
+
+  private revealAll(): void {
+    const targets = this.el.nativeElement.querySelectorAll('.gnome-reveal-item');
+    targets.forEach((target: Element) => {
+      target.classList.add('is-revealed');
+    });
   }
 
   private updateResource(): void {

@@ -1,0 +1,28 @@
+/* Running Tech Stack Ticker (Marquee Loop) */
+.exp-marquee-track {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+}
+
+.exp-marquee-content {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  animation: expMarqueeLoop 24s linear infinite;
+}
+
+.exp-marquee-track:hover .exp-marquee-content {
+  animation-play-state: paused;
+}
+
+@keyframes expMarqueeLoop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

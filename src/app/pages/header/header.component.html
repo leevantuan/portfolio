@@ -1,4 +1,4 @@
-<header class="py-3 border-b border-[var(--border)] w-full sticky top-0 bg-[var(--bg)]/90 backdrop-blur-md z-40">
+<header class="py-2.5 sm:py-3 w-full">
   <div class="flex items-center justify-between gap-4">
     <!-- Brand Name with Online Beacon -->
     <a href="#" class="flex items-center gap-2.5 no-underline group">
@@ -18,23 +18,19 @@
 
     <!-- Middle Tech Tabs (Image Layout) -->
     <nav class="hidden lg:flex items-center gap-3 font-mono-tech text-xs tracking-wider">
-      <a href="#" class="px-2.5 py-1 rounded bg-[var(--surface-2)] border border-[var(--border)] text-[var(--text-1)] font-bold no-underline flex items-center gap-1.5 shadow-xs">
-        <span class="text-[var(--accent)]">[</span>01. Topology<span class="text-[var(--accent)]">]</span>
-      </a>
-      <a href="#skills" class="px-2 py-1 text-[var(--text-2)] hover:text-[var(--accent-text)] transition-colors no-underline">
-        [ 02. Skills Matrix ]
-      </a>
-      <a href="#roadmap" class="px-2 py-1 text-[var(--text-2)] hover:text-[var(--accent-text)] transition-colors no-underline">
-        [ 03. Roadmap &amp; Telemetry ]
-      </a>
-      <a href="#credentials" class="px-2 py-1 text-[var(--text-2)] hover:text-[var(--accent-text)] transition-colors no-underline">
-        [ 04. Credentials ]
-      </a>
-      <a href="#projects" class="px-2 py-1 text-[var(--text-2)] hover:text-[var(--accent-text)] transition-colors no-underline">
-        [ 05. Projects ]
-      </a>
-      <a href="#contact" class="px-2 py-1 text-[var(--text-2)] hover:text-[var(--accent-text)] transition-colors no-underline">
-        [ 06. Contact ]
+      <a
+        *ngFor="let item of navItems; trackBy: trackByNavId"
+        [href]="'#' + item.id"
+        (click)="setActiveSection(item.id)"
+        class="no-underline flex items-center gap-1.5"
+        [ngClass]="isActive(item.id)
+          ? 'px-2.5 py-1 rounded bg-[var(--surface-2)] border border-[var(--border)] text-[var(--text-1)] font-bold shadow-xs'
+          : 'px-2 py-1 text-[var(--text-2)] hover:text-[var(--accent-text)] transition-colors'"
+      >
+        <ng-container *ngIf="isActive(item.id); else plainNavLabel">
+          <span class="text-[var(--accent)]">[</span>{{ item.num }}. {{ item.label }}<span class="text-[var(--accent)]">]</span>
+        </ng-container>
+        <ng-template #plainNavLabel>[ {{ item.num }}. {{ item.label }} ]</ng-template>
       </a>
     </nav>
 

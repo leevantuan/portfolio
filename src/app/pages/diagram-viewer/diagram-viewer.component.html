@@ -1,175 +1,109 @@
 <div 
   *ngIf="isOpen" 
-  class="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/80 backdrop-blur-md animate-fade"
+  class="fixed inset-0 z-50 flex items-center justify-center p-1 sm:p-2.5 bg-black/85 backdrop-blur-md animate-fade"
   (click)="onBackdropClick($event)"
 >
   <div 
-    class="relative w-full max-w-6xl xl:max-w-7xl max-h-[94vh] flex flex-col rounded-xl border border-[var(--border)] bg-[var(--surface)] shadow-2xl overflow-hidden"
+    class="relative w-full max-w-[1740px] h-[94vh] max-h-[96vh] flex flex-col rounded-xl border border-[#1e293b] bg-[#070b0e] text-[#E0E6ED] shadow-2xl overflow-hidden font-mono-tech select-none"
     (click)="$event.stopPropagation()"
   >
-    <!-- Modal Header with 2 Tabs (Network Topology First Priority) -->
-    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-6 py-4 border-b border-[var(--border)] bg-[var(--surface-2)]">
+    <!-- TOP MODAL HEADER WITH TABS & LIVE FLOW STEPPER -->
+    <div class="px-4 sm:px-6 py-3 border-b border-[#1e293b] bg-[#090e13] shrink-0 flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <!-- Left: Title & Subtitle -->
       <div>
         <div class="flex items-center gap-2">
-          <span class="w-2.5 h-2.5 rounded-full bg-[var(--accent)] animate-ping"></span>
-          <h3 class="font-mono-tech text-base sm:text-lg font-bold text-[var(--text-1)]">
-            {{ activeTab === 'network' ? '// REAL-TIME NETWORK OVERVIEW' : 'SYSTEM ARCHITECTURE BLUEPRINT' }}
-          </h3>
+          <span class="text-[var(--accent)] font-bold text-xs uppercase tracking-wider">
+            {{ activeTab === 'network' ? '01 / NETWORK TOPOLOGY' : (activeTab === 'system' ? '02 / SYSTEM ARCHITECTURE' : '03 / PERMISSION & ACCESS CONTROL') }}
+          </span>
+          <span class="text-[var(--accent)] font-bold">───</span>
         </div>
-        <p class="font-mono-tech text-xs text-[var(--text-3)] mt-0.5">
-          {{ activeTab === 'network' ? 'Core Enterprise Routing, Switching, Perimeter Firewalls & Cluster Infrastructure' : 'Enterprise Microservices, Event-Driven Queue & Distributed Infrastructure' }}
+        <h2 class="text-base sm:text-lg lg:text-xl font-extrabold tracking-tight text-white mt-0.5">
+          {{ activeTab === 'network' ? '// Real-Time Network Overview' : (activeTab === 'system' ? 'Enterprise Backend & Distributed Systems' : 'Permission Engine & File/Folder Access Control') }}
+        </h2>
+        <p class="text-[10px] sm:text-[11px] text-[#64748b] mt-0.5">
+          {{ activeTab === 'network' ? 'Core Enterprise Routing, Switching, Perimeter Firewalls & Cluster Infrastructure' : (activeTab === 'system' ? 'ASP.NET Core • Microservices • CQRS • Event-Driven • Real-time • DevOps • Security • Scalable Architecture' : 'RBAC • Binary Permission • Resource-Level ACL • Department Scope • Audit & Compliance') }}
         </p>
       </div>
 
-      <!-- Tab Buttons & Close Button -->
-      <div class="flex items-center gap-2">
-        <!-- 2 Tabs (01. NETWORK TOPOLOGY -> 02. SYSTEM ARCHITECTURE) -->
-        <div class="flex items-center bg-[var(--bg)] p-1 rounded-sm border border-[var(--border)]">
+      <!-- Right: Tabs & Stepper -->
+      <div class="flex flex-col items-end gap-2 shrink-0">
+        <!-- Row 1: Tab Switchers & Close -->
+        <div class="flex items-center gap-2">
+          <div class="flex items-center bg-[#070b0e] p-1 rounded border border-[#1e293b] gap-1">
+            <button 
+              (click)="setTab('network')"
+              class="px-2.5 py-1 text-[11px] font-bold rounded transition-all cursor-pointer flex items-center gap-1.5"
+              [ngClass]="activeTab === 'network' ? 'bg-[var(--accent)] text-[#0B0B0B] shadow-xs' : 'text-[#94a3b8] hover:text-white'"
+            >
+              01. NETWORK TOPOLOGY
+            </button>
+            <button 
+              (click)="setTab('system')"
+              class="px-2.5 py-1 text-[11px] font-bold rounded transition-all cursor-pointer flex items-center gap-1.5"
+              [ngClass]="activeTab === 'system' ? 'bg-[var(--accent)] text-[#0B0B0B] shadow-xs' : 'text-[#94a3b8] hover:text-white'"
+            >
+              02. SYSTEM ARCHITECTURE
+            </button>
+            <button 
+              (click)="setTab('permission')"
+              class="px-2.5 py-1 text-[11px] font-bold rounded transition-all cursor-pointer flex items-center gap-1.5"
+              [ngClass]="activeTab === 'permission' ? 'bg-[var(--accent)] text-[#0B0B0B] shadow-xs' : 'text-[#94a3b8] hover:text-white'"
+            >
+              03. PERMISSION &amp; ACCESS
+            </button>
+            <span class="text-[#475569] text-xs px-1 font-bold">&gt;&gt;</span>
+          </div>
+
           <button 
-            (click)="setTab('network')"
-            class="px-3 py-1 font-mono-tech text-xs font-bold rounded-xs transition-all cursor-pointer flex items-center gap-1.5"
-            [ngClass]="activeTab === 'network' ? 'bg-[var(--accent)] text-[#0B0B0B] shadow-xs' : 'text-[var(--text-2)] hover:text-[var(--text-1)]'"
+            (click)="closeModal()"
+            class="h-7 px-2.5 rounded font-mono-tech text-xs font-semibold bg-[#111827] text-[#94a3b8] hover:text-white hover:border-[var(--accent)] border border-[#1e293b] transition-colors cursor-pointer"
           >
-            <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
-            01. NETWORK TOPOLOGY
-          </button>
-          <button 
-            (click)="setTab('system')"
-            class="px-3 py-1 font-mono-tech text-xs font-bold rounded-xs transition-all cursor-pointer"
-            [ngClass]="activeTab === 'system' ? 'bg-[var(--accent)] text-[#0B0B0B] shadow-xs' : 'text-[var(--text-2)] hover:text-[var(--text-1)]'"
-          >
-            02. SYSTEM ARCHITECTURE
+            ✕
           </button>
         </div>
 
-        <button 
-          (click)="closeModal()"
-          class="h-8 px-3 rounded-sm font-mono-tech text-xs font-semibold bg-[var(--surface-3)] text-[var(--text-1)] hover:border-[var(--accent)] border border-[var(--border)] transition-colors cursor-pointer ml-2"
-        >
-          ✕
-        </button>
-      </div>
-    </div>
-
-
-    <!-- ======================================================== -->
-    <!-- TAB 1: SYSTEM ARCHITECTURE (Distributed Microservices)   -->
-    <!-- ======================================================== -->
-    <div *ngIf="activeTab === 'system'" class="p-6 overflow-y-auto blueprint-grid flex-1">
-      <div class="flex flex-col gap-8 max-w-4xl mx-auto">
-        <!-- Layer 1: Client / Ingress -->
-        <div>
-          <div class="font-mono-tech text-[11px] text-[var(--accent)] uppercase tracking-wider mb-3">
-            01. CLIENT &amp; INGRESS TRAFFIC LAYER
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div class="p-3.5 rounded bg-[var(--bg)] border border-[var(--border)] blueprint-node text-center">
-              <div class="font-mono-tech text-xs font-bold text-[var(--text-1)]">Web SPA &amp; Mobile App</div>
-              <div class="font-mono-tech text-[10px] text-[var(--text-3)]">Angular 19 / HTTPS / WSS</div>
-            </div>
-            <div class="p-3.5 rounded bg-[var(--bg)] border border-[var(--accent)] blueprint-node text-center sm:col-span-2">
-              <div class="font-mono-tech text-xs font-bold text-[var(--accent)]">{{ UIResource.diagram.api_gateway }}</div>
-              <div class="font-mono-tech text-[10px] text-[var(--text-2)]">Rate Limiting · SSL Termination · Circuit Breaker · Routing</div>
-            </div>
+        <!-- Row 2: Live Request / Access Check Stepper -->
+        <div *ngIf="activeTab === 'system'" class="flex items-center gap-2 text-[10px] bg-[#070b0e] px-2.5 py-1 rounded border border-[#1e293b]">
+          <button (click)="toggleFlow()" class="text-[var(--accent)] hover:brightness-125 cursor-pointer font-bold flex items-center gap-1">
+            <span>{{ isFlowRunning ? '⏸' : '▶' }}</span>
+            <span class="uppercase tracking-wider font-bold">LIVE REQUEST FLOW</span>
+          </button>
+          <span class="text-[#334155]">|</span>
+          <div class="flex items-center gap-1.5">
+            <ng-container *ngFor="let step of tab2Stepper; let i = index; let last = last">
+              <span 
+                (click)="jumpToFlowStep(i)"
+                class="cursor-pointer hover:text-white flex items-center gap-1 transition-colors" 
+                [ngClass]="tab2ActiveStep === i ? 'text-[var(--accent)] font-bold' : 'text-[#64748b]'"
+                [title]="'Jump to ' + step"
+              >
+                <span class="w-1.5 h-1.5 rounded-full" [ngClass]="tab2ActiveStep === i ? 'bg-[var(--accent)] shadow-[0_0_8px_#7ED957] animate-pulse' : 'bg-[#334155]'"></span>
+                <span>{{ step }}</span>
+              </span>
+              <span *ngIf="!last" class="text-[#334155]">→</span>
+            </ng-container>
           </div>
         </div>
 
-        <!-- Flow Line Indicator -->
-        <div class="flex justify-center -my-4">
-          <div class="font-mono-tech text-xs text-[var(--accent)]">▼ gRPC / REST / SignalR WebSocket</div>
-        </div>
-
-        <!-- Layer 2: Core Microservices & Identity -->
-        <div>
-          <div class="font-mono-tech text-[11px] text-[var(--accent)] uppercase tracking-wider mb-3">
-            02. CORE MICROSERVICES &amp; ASYNCHRONOUS PIPELINES
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
-            <div class="p-3.5 rounded bg-[var(--bg)] border border-[var(--border)] blueprint-node text-center">
-              <div class="font-mono-tech text-xs font-bold text-[var(--text-1)]">Auth Service</div>
-              <div class="font-mono-tech text-[10px] text-[var(--text-3)]">JWT / OAuth2 / RBAC</div>
-            </div>
-            <div class="p-3.5 rounded bg-[var(--bg)] border border-[var(--border)] blueprint-node text-center">
-              <div class="font-mono-tech text-xs font-bold text-[var(--text-1)]">Order Service</div>
-              <div class="font-mono-tech text-[10px] text-[var(--text-3)]">MediatR CQRS Pipeline</div>
-            </div>
-            <div class="p-3.5 rounded bg-[var(--bg)] border border-[var(--border)] blueprint-node text-center">
-              <div class="font-mono-tech text-xs font-bold text-[var(--text-1)]">Real-time Service</div>
-              <div class="font-mono-tech text-[10px] text-[var(--text-3)]">SignalR Hub / PubSub</div>
-            </div>
-            <div class="p-3.5 rounded bg-[var(--bg)] border border-[var(--border)] blueprint-node text-center">
-              <div class="font-mono-tech text-xs font-bold text-[var(--text-1)]">Coffee ERP Service</div>
-              <div class="font-mono-tech text-[10px] text-[var(--text-3)]">Clean Architecture Domain</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Flow Line Indicator -->
-        <div class="flex justify-center -my-4">
-          <div class="font-mono-tech text-xs text-[var(--accent)]">▼ Asynchronous Message Broker &amp; Event Bus</div>
-        </div>
-
-        <!-- Layer 3: Broker & Persistence -->
-        <div>
-          <div class="font-mono-tech text-[11px] text-[var(--accent)] uppercase tracking-wider mb-3">
-            03. BROKER, CACHING &amp; HIGH-AVAILABILITY PERSISTENCE
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="p-3.5 rounded bg-[var(--bg)] border border-[var(--border)] blueprint-node">
-              <div class="flex items-center justify-between mb-1">
-                <span class="font-mono-tech text-xs font-bold text-[var(--text-1)]">RabbitMQ Cluster</span>
-                <span class="font-mono-tech text-[10px] text-[var(--accent-text)]">Active / Mirror</span>
-              </div>
-              <p class="font-mono-tech text-[10px] text-[var(--text-3)]">Dead Letter Queue · Direct Exchange · Fanout</p>
-            </div>
-            <div class="p-3.5 rounded bg-[var(--bg)] border border-[var(--border)] blueprint-node">
-              <div class="flex items-center justify-between mb-1">
-                <span class="font-mono-tech text-xs font-bold text-[var(--text-1)]">Redis Sentinel Cluster</span>
-                <span class="font-mono-tech text-[10px] text-[var(--accent-text)]">In-Memory / L2 Cache</span>
-              </div>
-              <p class="font-mono-tech text-[10px] text-[var(--text-3)]">Distributed Lock · Session State · Response Caching</p>
-            </div>
-            <div class="p-3.5 rounded bg-[var(--bg)] border border-[var(--border)] blueprint-node">
-              <div class="flex items-center justify-between mb-1">
-                <span class="font-mono-tech text-xs font-bold text-[var(--text-1)]">PostgreSQL Primary-Replica</span>
-                <span class="font-mono-tech text-[10px] text-[var(--info)]">Relational ACID</span>
-              </div>
-              <p class="font-mono-tech text-[10px] text-[var(--text-3)]">Partitioning · Connection Pooling (PgBouncer)</p>
-            </div>
-            <div class="p-3.5 rounded bg-[var(--bg)] border border-[var(--border)] blueprint-node">
-              <div class="flex items-center justify-between mb-1">
-                <span class="font-mono-tech text-xs font-bold text-[var(--text-1)]">MongoDB Sharded Cluster</span>
-                <span class="font-mono-tech text-[10px] text-[var(--info)]">Document NoSQL</span>
-              </div>
-              <p class="font-mono-tech text-[10px] text-[var(--text-3)]">Audit Logs · Event Store · Time-series Analytics</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Layer 4: Infrastructure & Monitoring -->
-        <div>
-          <div class="font-mono-tech text-[11px] text-[var(--accent)] uppercase tracking-wider mb-3">
-            04. KUBERNETES ORCHESTRATION &amp; OBSERVABILITY
-          </div>
-          <div class="p-4 rounded bg-[var(--bg)] border border-[var(--border)] blueprint-node">
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
-              <div>
-                <div class="font-mono-tech text-xs font-bold text-[var(--text-1)]">Azure AKS</div>
-                <div class="font-mono-tech text-[10px] text-[var(--text-3)]">K8s Cluster HA</div>
-              </div>
-              <div>
-                <div class="font-mono-tech text-xs font-bold text-[var(--text-1)]">Jenkins CI/CD</div>
-                <div class="font-mono-tech text-[10px] text-[var(--text-3)]">Pipeline Automation</div>
-              </div>
-              <div>
-                <div class="font-mono-tech text-xs font-bold text-[var(--accent-text)]">Prometheus</div>
-                <div class="font-mono-tech text-[10px] text-[var(--text-3)]">Metrics Collector</div>
-              </div>
-              <div>
-                <div class="font-mono-tech text-xs font-bold text-[var(--accent-text)]">Grafana NOC</div>
-                <div class="font-mono-tech text-[10px] text-[var(--text-3)]">Live Alerting Telemetry</div>
-              </div>
-            </div>
+        <div *ngIf="activeTab === 'permission'" class="flex items-center gap-2 text-[10px] bg-[#070b0e] px-2.5 py-1 rounded border border-[#1e293b]">
+          <button (click)="toggleAccessCheck()" class="text-[var(--accent)] hover:brightness-125 cursor-pointer font-bold flex items-center gap-1">
+            <span>{{ isAccessCheckRunning ? '⏸' : '▶' }}</span>
+            <span class="uppercase tracking-wider font-bold">LIVE ACCESS CHECK</span>
+          </button>
+          <span class="text-[#334155]">|</span>
+          <div class="flex items-center gap-1.5">
+            <ng-container *ngFor="let step of tab3Stepper; let i = index; let last = last">
+              <span 
+                (click)="jumpToAccessStep(i)"
+                class="cursor-pointer hover:text-white flex items-center gap-1 transition-colors" 
+                [ngClass]="tab3ActiveStep === i ? 'text-[var(--accent)] font-bold' : 'text-[#64748b]'"
+                [title]="'Jump to ' + step"
+              >
+                <span class="w-1.5 h-1.5 rounded-full" [ngClass]="tab3ActiveStep === i ? 'bg-[var(--accent)] shadow-[0_0_8px_#7ED957] animate-pulse' : 'bg-[#334155]'"></span>
+                <span>{{ step }}</span>
+              </span>
+              <span *ngIf="!last" class="text-[#334155]">→</span>
+            </ng-container>
           </div>
         </div>
       </div>
@@ -177,9 +111,1236 @@
 
 
     <!-- ======================================================== -->
-    <!-- TAB 2: REAL-TIME ENTERPRISE NETWORK TOPOLOGY (Image 2)   -->
+    <!-- TAB 02: SYSTEM ARCHITECTURE (MATCHING IMAGE 1 EXACTLY)    -->
     <!-- ======================================================== -->
-    <div *ngIf="activeTab === 'network'" class="p-4 sm:p-6 overflow-y-auto blueprint-grid flex-1">
+    <div *ngIf="activeTab === 'system'" class="p-3 sm:p-4 overflow-y-auto blueprint-grid flex-1 min-h-0 text-[11px]">
+      <div class="flex flex-col lg:flex-row gap-3 min-w-[1300px]">
+        
+        <!-- LEFT SIDEBAR (Layers & System Status) -->
+        <div class="w-[220px] shrink-0 flex flex-col gap-3">
+          <!-- Architecture Layers List -->
+          <div class="p-2.5 rounded-lg border border-[#1e293b] bg-[#090e13]/90">
+            <div class="text-[10px] font-bold text-[var(--accent)] tracking-wider mb-2">// ARCHITECTURE LAYERS</div>
+            <div class="space-y-1">
+              <div 
+                *ngFor="let layer of tab2Layers; let i = index"
+                (click)="tab2SelectedLayer = i"
+                class="px-2.5 py-1 rounded cursor-pointer transition-all flex items-center justify-between"
+                [ngClass]="tab2SelectedLayer === i 
+                  ? 'border border-[var(--accent)] bg-[var(--accent)]/10 text-[var(--accent)] font-bold shadow-[0_0_8px_rgba(126,217,87,0.2)]' 
+                  : 'text-[#94a3b8] hover:text-white hover:bg-[#111827]'"
+              >
+                <span>{{ layer }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- System Status List -->
+          <div class="p-2.5 rounded-lg border border-[#1e293b] bg-[#090e13]/90">
+            <div class="text-[10px] font-bold text-[var(--accent)] tracking-wider mb-2">// SYSTEM STATUS</div>
+            <div class="space-y-1.5 text-[10px]">
+              <div *ngFor="let item of tab2SystemStatus" class="flex items-center justify-between">
+                <span class="text-[#94a3b8] flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full" [ngClass]="item.color === 'emerald' ? 'bg-[var(--accent)] shadow-[0_0_6px_#7ED957]' : 'bg-[#64748b]'"></span>
+                  {{ item.name }}
+                </span>
+                <span class="font-bold" [ngClass]="item.color === 'emerald' ? 'text-[var(--accent)]' : 'text-[#64748b]'">{{ item.status }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- RIGHT MAIN AREA (Flow Diagram, Logs, Metrics, CI/CD) -->
+        <div class="flex-1 flex flex-col gap-3 min-w-0">
+          
+          <!-- TOP 6-COLUMN FLOW DIAGRAM CANVAS -->
+          <div class="p-3 rounded-lg border border-[#1e293b] bg-[#090e13]/90">
+            <div class="grid grid-cols-6 gap-2.5 relative">
+              
+              <!-- Col 1: 01. Client & Security -->
+              <div 
+                class="p-2.5 rounded border border-[#1e293b] bg-[#070b0e] flex flex-col justify-between transition-all duration-300 relative"
+                [class.step-card-active]="tab2ActiveStep === 0 || tab2ActiveStep === 1"
+              >
+                <!-- Flow forward indicator -->
+                <div class="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 z-10 pointer-events-none">
+                  <span class="text-[var(--accent)] font-bold text-xs" [class.animate-pulse]="tab2ActiveStep === 1">▶</span>
+                </div>
+                <div>
+                  <div class="text-[10px] font-bold text-[var(--accent)] uppercase mb-0.5">01. CLIENT &amp; SECURITY</div>
+                  <div class="text-[9px] text-[#64748b] mb-2">Incoming Requests &amp; Protection</div>
+
+                  <!-- Devices -->
+                  <div class="p-1.5 rounded border border-[#1e293b] bg-[#0c1319] mb-1.5 text-[9px] space-y-1" [class.border-[var(--accent)]]="tab2ActiveStep === 0">
+                    <div class="flex items-center gap-1.5 text-white">
+                      <span>💻</span> <span class="font-bold">Web App</span> <span class="text-[#64748b]">Angular 19</span>
+                    </div>
+                    <div class="flex items-center gap-1.5 text-white">
+                      <span>📱</span> <span class="font-bold">Mobile App</span> <span class="text-[#64748b]">iOS / Android</span>
+                    </div>
+                    <div class="flex items-center gap-1.5 text-[#94a3b8]">
+                      <span>☁️</span> <span>External System</span> <span class="text-[#64748b]">3rd Party / API</span>
+                    </div>
+                  </div>
+
+                  <!-- Connector Badge -->
+                  <div class="text-center my-1 text-[8px] text-[var(--accent)] font-bold">
+                    ▼ HTTPS (TLS 1.3)
+                  </div>
+
+                  <!-- API Gateway Card -->
+                  <div class="p-1.5 rounded border border-[#1e293b] bg-[#0c1319] mb-1.5" [class.border-[var(--accent)]]="tab2ActiveStep === 1">
+                    <div class="font-bold text-[var(--accent)] text-[10px] flex items-center gap-1">
+                      <span>🛡️</span> <span>API Gateway (Ocelot / YARP)</span>
+                    </div>
+                    <div class="text-[8px] text-[#94a3b8] mt-0.5 leading-tight">
+                      • Rate Limiting • SSL Termination<br>• Request Routing • WAF Protection
+                    </div>
+                  </div>
+
+                  <!-- Authentication -->
+                  <div class="p-1.5 rounded border border-[#1e293b] bg-[#0c1319] mb-1.5">
+                    <div class="font-bold text-white text-[10px]">Authentication</div>
+                    <div class="text-[8px] text-[#64748b]">JWT / OAuth2 Identity Provider</div>
+                  </div>
+
+                  <!-- Permission Check -->
+                  <div class="p-1.5 rounded border border-[var(--accent)]/40 bg-[#0c1319]">
+                    <div class="font-bold text-[var(--accent)] text-[10px]">Permission Check</div>
+                    <div class="text-[8px] text-[#64748b]">RBAC + Policy (See Tab 3)</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Col 2: 02. Business Services -->
+              <div 
+                class="p-2.5 rounded border border-[#1e293b] bg-[#070b0e] flex flex-col justify-between transition-all duration-300 relative"
+                [class.step-card-active]="tab2ActiveStep === 2"
+              >
+                <!-- Flow forward indicator -->
+                <div class="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 z-10 pointer-events-none">
+                  <span class="text-[var(--accent)] font-bold text-xs" [class.animate-pulse]="tab2ActiveStep === 2">▶</span>
+                </div>
+                <div>
+                  <div class="text-[10px] font-bold text-[var(--accent)] uppercase mb-0.5">02. BUSINESS SERVICES</div>
+                  <div class="text-[9px] text-[#64748b] mb-2">Microservices (CQRS + MediatR)</div>
+
+                  <!-- Backend Services Card -->
+                  <div class="p-2 rounded border border-[#1e293b] bg-[#0c1319] mb-2">
+                    <div class="text-[9px] font-bold text-white mb-1.5">Backend Services</div>
+                    <div class="space-y-1 text-[9px]">
+                      <div class="p-1 rounded bg-[#111827] border border-[#1e293b] flex items-center gap-1 text-[var(--accent)] font-semibold" [class.border-[var(--accent)]]="tab2ActiveStep === 2">
+                        <span>🛒</span> <span>Order Service (Write)</span>
+                      </div>
+                      <div class="p-1 rounded bg-[#111827] border border-[#1e293b] flex items-center gap-1 text-white">
+                        <span>👤</span> <span>User Service (Command/Query)</span>
+                      </div>
+                      <div class="p-1 rounded bg-[#111827] border border-[#1e293b] flex items-center gap-1 text-white">
+                        <span>📄</span> <span>File Service</span>
+                      </div>
+                      <div class="p-1 rounded bg-[#111827] border border-[#1e293b] flex items-center gap-1 text-white">
+                        <span>🔔</span> <span>Notification Service</span>
+                      </div>
+                      <div class="text-center text-[8px] text-[#475569]">...</div>
+                    </div>
+                  </div>
+
+                  <!-- CQRS + MediatR Card -->
+                  <div class="p-2 rounded border border-[#1e293b] bg-[#0c1319]">
+                    <div class="text-[9px] font-bold text-[var(--accent)] mb-1">CQRS + MediatR</div>
+                    <div class="text-[8px] text-[#94a3b8] space-y-0.5 leading-tight">
+                      <div>• Command Handlers</div>
+                      <div>• Query Handlers</div>
+                      <div>• Validation (FluentValidation)</div>
+                      <div>• Business Logic</div>
+                      <div>• Transaction Management</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Col 3: 03. Data Layer -->
+              <div 
+                class="p-2.5 rounded border border-[#1e293b] bg-[#070b0e] flex flex-col justify-between transition-all duration-300 relative"
+                [class.step-card-active]="tab2ActiveStep === 3"
+              >
+                <!-- Flow forward indicator -->
+                <div class="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 z-10 pointer-events-none">
+                  <span class="text-[var(--accent)] font-bold text-xs" [class.animate-pulse]="tab2ActiveStep === 3">▶</span>
+                </div>
+                <div>
+                  <div class="text-[10px] font-bold text-[var(--accent)] uppercase mb-0.5">03. DATA LAYER</div>
+                  <div class="text-[9px] text-[#64748b] mb-2">Write / Read Separation</div>
+
+                  <!-- PostgreSQL Primary -->
+                  <div class="p-2 rounded border border-[#1e293b] bg-[#0c1319] mb-2" [class.border-[var(--accent)]]="tab2ActiveStep === 3">
+                    <div class="flex items-center justify-between text-[10px]">
+                      <span class="font-bold text-white flex items-center gap-1"><span>🗄️</span> PostgreSQL (Write DB)</span>
+                    </div>
+                    <div class="text-[8px] text-[#94a3b8] mt-0.5">Primary (AZ-1)</div>
+                    <div class="text-[8px] text-[var(--accent)] font-bold mt-1">● Write</div>
+                  </div>
+
+                  <!-- Replication Arrow -->
+                  <div class="text-center text-[8px] text-[var(--accent)] font-bold my-1">
+                    ▼ Transaction + Outbox
+                  </div>
+
+                  <!-- PostgreSQL Replica -->
+                  <div class="p-2 rounded border border-[#1e293b] bg-[#0c1319] mb-2">
+                    <div class="flex items-center justify-between text-[10px]">
+                      <span class="font-bold text-white flex items-center gap-1"><span>🗄️</span> PostgreSQL (Read DB)</span>
+                    </div>
+                    <div class="text-[8px] text-[#94a3b8] mt-0.5">Replica (AZ-2)</div>
+                    <div class="text-[8px] text-sky-400 font-bold mt-1">● Read</div>
+                  </div>
+
+                  <!-- MongoDB Read Model -->
+                  <div class="p-2 rounded border border-[#1e293b] bg-[#0c1319]">
+                    <div class="font-bold text-emerald-400 text-[10px] flex items-center gap-1">
+                      <span>🍃</span> <span>MongoDB (Read Model)</span>
+                    </div>
+                    <div class="text-[8px] text-[#64748b] mt-0.5">Documents / Analytics</div>
+                    <div class="text-[8px] text-[#94a3b8] mt-1 space-y-0.5">
+                      <div>• User Profiles</div>
+                      <div>• Logs / Audit</div>
+                      <div>• Search / Reporting</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Col 4: 04. Event & Message -->
+              <div 
+                class="p-2.5 rounded border border-[#1e293b] bg-[#070b0e] flex flex-col justify-between transition-all duration-300 relative"
+                [class.step-card-active]="tab2ActiveStep === 4"
+              >
+                <!-- Flow forward indicator -->
+                <div class="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 z-10 pointer-events-none">
+                  <span class="text-[var(--accent)] font-bold text-xs" [class.animate-pulse]="tab2ActiveStep === 4">▶</span>
+                </div>
+                <div>
+                  <div class="text-[10px] font-bold text-[var(--accent)] uppercase mb-0.5">04. EVENT &amp; MESSAGE</div>
+                  <div class="text-[9px] text-[#64748b] mb-2">Outbox + RabbitMQ</div>
+
+                  <!-- Outbox Pattern Card -->
+                  <div class="p-2 rounded border border-[#1e293b] bg-[#0c1319] mb-2" [class.border-[var(--accent)]]="tab2ActiveStep === 4">
+                    <div class="font-bold text-sky-400 text-[10px] flex items-center gap-1">
+                      <span>📤</span> <span>Outbox Pattern</span>
+                    </div>
+                    <div class="text-[8px] text-[#94a3b8] mt-1 space-y-0.5">
+                      <div>• DB Transaction</div>
+                      <div>• Event Publisher</div>
+                      <div>• Reliable Delivery</div>
+                    </div>
+                  </div>
+
+                  <!-- Connector Arrow -->
+                  <div class="text-center text-[8px] text-[var(--accent)] font-bold my-1">
+                    ▼ High-Speed Dispatch
+                  </div>
+
+                  <!-- RabbitMQ Cluster Card -->
+                  <div class="p-2 rounded border border-[#1e293b] bg-[#0c1319]" [class.border-orange-400]="tab2ActiveStep === 4">
+                    <div class="font-bold text-orange-400 text-[10px] flex items-center gap-1">
+                      <span>🐇</span> <span>RabbitMQ Cluster</span>
+                    </div>
+                    <div class="text-[8px] text-[#94a3b8] mt-1 space-y-0.5">
+                      <div>• Order Events</div>
+                      <div>• User Events</div>
+                      <div>• File Events</div>
+                      <div>• Notification Events</div>
+                    </div>
+                    <div class="mt-2 pt-1 border-t border-[#1e293b] text-[8px] text-[#64748b]">
+                      High Availability<br>Mirror / Cluster
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Col 5: 05. Async Workers -->
+              <div 
+                class="p-2.5 rounded border border-[#1e293b] bg-[#070b0e] flex flex-col justify-between transition-all duration-300 relative"
+                [class.step-card-active]="tab2ActiveStep === 5"
+              >
+                <!-- Flow forward indicator -->
+                <div class="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 z-10 pointer-events-none">
+                  <span class="text-[var(--accent)] font-bold text-xs" [class.animate-pulse]="tab2ActiveStep === 5">▶</span>
+                </div>
+                <div>
+                  <div class="text-[10px] font-bold text-[var(--accent)] uppercase mb-0.5">05. ASYNC WORKERS</div>
+                  <div class="text-[9px] text-[#64748b] mb-2">Background Processing</div>
+
+                  <!-- Background Workers Card -->
+                  <div class="p-2 rounded border border-[#1e293b] bg-[#0c1319] mb-2" [class.border-[var(--accent)]]="tab2ActiveStep === 5">
+                    <div class="font-bold text-sky-400 text-[10px] flex items-center gap-1">
+                      <span>⚙️</span> <span>Background Workers</span>
+                    </div>
+                    <div class="text-[8px] text-[#94a3b8] mt-1 space-y-0.5">
+                      <div>• Data Synchronization</div>
+                      <div>• Send Email / Notification</div>
+                      <div>• Process Files</div>
+                      <div>• Retry &amp; Idempotent</div>
+                      <div>• Scheduled Jobs</div>
+                    </div>
+                  </div>
+
+                  <!-- Connector Arrow -->
+                  <div class="text-center text-[8px] text-[var(--accent)] font-bold my-1">
+                    ▼ Distributed Cache &amp; State
+                  </div>
+
+                  <!-- Redis Cluster Card -->
+                  <div class="p-2 rounded border border-[#1e293b] bg-[#0c1319]">
+                    <div class="font-bold text-red-400 text-[10px] flex items-center gap-1">
+                      <span>⚡</span> <span>Redis Cluster</span>
+                    </div>
+                    <div class="text-[8px] text-[#64748b] mt-0.5">Cache / Session / Lock</div>
+                    <div class="text-[8px] text-[#94a3b8] mt-1 space-y-0.5">
+                      <div>• Cache-Aside Pattern</div>
+                      <div>• Distributed Lock</div>
+                      <div>• Session Store</div>
+                      <div>• Rate Limiting Cache</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Col 6: 06. Real-Time -->
+              <div 
+                class="p-2.5 rounded border border-[#1e293b] bg-[#070b0e] flex flex-col justify-between transition-all duration-300 relative"
+                [class.step-card-active]="tab2ActiveStep === 6"
+              >
+                <div>
+                  <div class="text-[10px] font-bold text-[var(--accent)] uppercase mb-0.5">06. REAL-TIME</div>
+                  <div class="text-[9px] text-[#64748b] mb-2">SignalR &amp; Notifications</div>
+
+                  <!-- SignalR Hub Card -->
+                  <div class="p-2 rounded border border-[#1e293b] bg-[#0c1319] mb-2" [class.border-[var(--accent)]]="tab2ActiveStep === 6">
+                    <div class="font-bold text-sky-400 text-[10px] flex items-center gap-1">
+                      <span>📡</span> <span>SignalR Hub</span>
+                    </div>
+                    <div class="text-[8px] text-[#64748b] mt-0.5">Real-time Communication</div>
+                    <div class="text-[8px] text-[#94a3b8] mt-1 space-y-0.5">
+                      <div>• WebSocket / SignalR</div>
+                      <div>• Live Notifications</div>
+                      <div>• Multi Client Support</div>
+                      <div>• Group / User Targeting</div>
+                    </div>
+                  </div>
+
+                  <!-- Device Targets -->
+                  <div class="p-1.5 rounded border border-[#1e293b] bg-[#0c1319] mb-2 text-center text-[9px] text-white flex items-center justify-around">
+                    <span>🖥️ Browser</span>
+                    <span>📱 Mobile</span>
+                    <span>💻 Desktop</span>
+                  </div>
+
+                  <!-- External Services Card -->
+                  <div class="p-2 rounded border border-[#1e293b] bg-[#0c1319]">
+                    <div class="font-bold text-amber-400 text-[10px] flex items-center gap-1">
+                      <span>✉️</span> <span>External Services</span>
+                    </div>
+                    <div class="text-[8px] text-[#94a3b8] mt-1 space-y-0.5">
+                      <div>• Email (SMTP/SendGrid)</div>
+                      <div>• Push Notification</div>
+                      <div>• SMS / Third Party API</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+          <!-- MIDDLE ROW: LOGS + METRICS + STATUS -->
+          <div class="grid grid-cols-12 gap-3">
+            
+            <!-- Left: // LIVE REQUEST LOG (Col-span-5) -->
+            <div class="col-span-12 lg:col-span-5 p-3 rounded-lg border border-[#1e293b] bg-[#090e13]/90 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between pb-1.5 border-b border-[#1e293b] text-[10px]">
+                  <span class="font-bold text-[var(--accent)]">// LIVE REQUEST LOG</span>
+                  <span class="text-[9px] text-[#64748b]">AUTO STREAMING</span>
+                </div>
+                <div class="space-y-1 mt-2 text-[9px] leading-snug overflow-hidden max-h-[140px]">
+                  <div *ngFor="let log of tab2Logs" class="flex items-start gap-1.5">
+                    <span class="text-[#475569] shrink-0">[{{ log.time }}]</span>
+                    <span class="font-bold shrink-0" [ngClass]="log.type === 'success' ? 'text-[var(--accent)]' : (log.type === 'warn' ? 'text-amber-400' : 'text-sky-400')">{{ log.tag }}</span>
+                    <span [ngClass]="log.type === 'success' ? 'text-[var(--accent)] font-semibold' : 'text-[#cbd5e1]'">{{ log.text }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: // METRICS & QUEUE/CACHE (Col-span-7) -->
+            <div class="col-span-12 lg:col-span-7 flex flex-col gap-2.5">
+              
+              <!-- Metrics Real-Time (4 Cards) -->
+              <div class="p-2.5 rounded-lg border border-[#1e293b] bg-[#090e13]/90">
+                <div class="text-[10px] font-bold text-[var(--accent)] mb-2">// METRICS (REAL-TIME)</div>
+                <div class="grid grid-cols-4 gap-2 text-[10px]">
+                  
+                  <!-- Metric 1: Requests/min -->
+                  <div class="p-2 rounded bg-[#070b0e] border border-[#1e293b] flex flex-col justify-between">
+                    <div>
+                      <div class="text-xs font-extrabold text-white flex items-center justify-between">
+                        <span>1.2k</span> <span class="text-[8px] text-[var(--accent)] font-bold">↑ 12%</span>
+                      </div>
+                      <div class="text-[8px] text-[#64748b]">Requests/min</div>
+                    </div>
+                    <div class="mt-1.5 h-4 w-full">
+                      <svg class="w-full h-full overflow-visible" viewBox="0 0 80 20" preserveAspectRatio="none">
+                        <path d="M 0 16 Q 15 18 25 10 T 50 12 T 70 4 T 80 8" fill="none" stroke="#38bdf8" stroke-width="1.8" class="sparkline-glow-green" />
+                        <circle cx="80" cy="8" r="2" fill="#38bdf8" class="animate-ping" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <!-- Metric 2: Success Rate -->
+                  <div class="p-2 rounded bg-[#070b0e] border border-[#1e293b] flex items-center justify-between gap-1.5">
+                    <div>
+                      <div class="text-xs font-extrabold text-white flex items-center gap-1">
+                        <span>98.7%</span> <span class="text-[8px] text-[var(--accent)] font-bold">↑ 0.3%</span>
+                      </div>
+                      <div class="text-[8px] text-[#64748b]">Success Rate</div>
+                      <div class="text-[7px] text-[var(--accent)] font-bold mt-0.5">● HEALTHY</div>
+                    </div>
+                    <div class="w-7 h-7 shrink-0 relative flex items-center justify-center">
+                      <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                        <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#1e293b" stroke-width="3"/>
+                        <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#22c55e" stroke-width="3" stroke-dasharray="98.7, 100" class="sparkline-glow-green"/>
+                      </svg>
+                      <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-ping absolute"></span>
+                    </div>
+                  </div>
+
+                  <!-- Metric 3: Avg Response -->
+                  <div class="p-2 rounded bg-[#070b0e] border border-[#1e293b] flex flex-col justify-between">
+                    <div>
+                      <div class="text-xs font-extrabold text-white flex items-center justify-between">
+                        <span>324ms</span> <span class="text-[8px] text-amber-400 font-bold">▲ 18%</span>
+                      </div>
+                      <div class="text-[8px] text-[#64748b]">Avg Response</div>
+                    </div>
+                    <div class="mt-1.5 h-4 w-full">
+                      <svg class="w-full h-full overflow-visible" viewBox="0 0 80 20" preserveAspectRatio="none">
+                        <path d="M 0 14 Q 20 6 35 15 T 60 8 T 80 12" fill="none" stroke="#f59e0b" stroke-width="1.8" class="sparkline-glow-amber" />
+                        <circle cx="80" cy="12" r="2" fill="#f59e0b" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <!-- Metric 4: Services Healthy -->
+                  <div class="p-2 rounded bg-[#070b0e] border border-[#1e293b] flex flex-col justify-between">
+                    <div>
+                      <div class="text-xs font-extrabold text-white flex items-center justify-between">
+                        <span>12</span> <span class="text-[8px] text-emerald-400 font-bold">ALL OK</span>
+                      </div>
+                      <div class="text-[8px] text-[#64748b]">Services Healthy</div>
+                    </div>
+                    <div class="mt-1.5 h-4 w-full">
+                      <svg class="w-full h-full overflow-visible" viewBox="0 0 80 20" preserveAspectRatio="none">
+                        <path d="M 0 16 Q 20 18 35 12 T 60 10 T 80 5" fill="none" stroke="#a855f7" stroke-width="1.8" class="sparkline-glow-purple" />
+                        <circle cx="80" cy="5" r="2" fill="#a855f7" class="animate-pulse" />
+                      </svg>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Queue & Cache Status (4 Cards) -->
+              <div class="p-2.5 rounded-lg border border-[#1e293b] bg-[#090e13]/90">
+                <div class="text-[10px] font-bold text-[var(--accent)] mb-2">// QUEUE &amp; CACHE STATUS</div>
+                <div class="grid grid-cols-4 gap-2 text-[10px]">
+                  <div class="p-2 rounded bg-[#070b0e] border border-[#1e293b]">
+                    <div class="text-[8px] text-orange-400 font-bold flex items-center gap-1"><span>🐇</span> RabbitMQ</div>
+                    <div class="text-xs font-bold text-white mt-0.5">3,421</div>
+                    <div class="text-[8px] text-[#64748b]">Messages/min</div>
+                  </div>
+
+                  <div class="p-2 rounded bg-[#070b0e] border border-[#1e293b]">
+                    <div class="text-[8px] text-red-400 font-bold flex items-center gap-1"><span>⚡</span> Redis</div>
+                    <div class="text-xs font-bold text-white mt-0.5">92%</div>
+                    <div class="text-[8px] text-[#64748b]">Cache Hit Rate</div>
+                  </div>
+
+                  <div class="p-2 rounded bg-[#070b0e] border border-[#1e293b]">
+                    <div class="text-[8px] text-sky-400 font-bold flex items-center gap-1"><span>⚙️</span> Active Workers</div>
+                    <div class="text-xs font-bold text-white mt-0.5">4/4</div>
+                    <div class="text-[8px] text-[var(--accent)]">Running</div>
+                  </div>
+
+                  <div class="p-2 rounded bg-[#070b0e] border border-[#1e293b]">
+                    <div class="text-[8px] text-purple-400 font-bold flex items-center gap-1"><span>👥</span> SignalR Connections</div>
+                    <div class="text-xs font-bold text-white mt-0.5">128</div>
+                    <div class="text-[8px] text-[var(--accent)]">Online</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+          <!-- BOTTOM ROW: // CI/CD AUTOMATION PIPELINE -->
+          <div class="p-3 rounded-lg border border-[#1e293b] bg-[#090e13]/90">
+            <div class="text-[10px] font-bold text-[var(--accent)] mb-2.5">// CI/CD AUTOMATION PIPELINE</div>
+            
+            <div class="flex items-center justify-between gap-1 text-[9px] overflow-x-auto pb-1">
+              <!-- Step 1: Git Push -->
+              <div class="p-2 rounded border border-[#1e293b] bg-[#070b0e] flex items-center gap-2 shrink-0">
+                <span class="text-red-400 text-sm">🐙</span>
+                <div>
+                  <div class="font-bold text-white">Git Push</div>
+                  <div class="text-[#64748b] text-[8px]">main branch</div>
+                </div>
+              </div>
+              <span class="text-[var(--accent)] font-bold">→</span>
+
+              <!-- Step 2: Jenkins -->
+              <div class="p-2 rounded border border-[#1e293b] bg-[#070b0e] flex items-center gap-2 shrink-0">
+                <span class="text-amber-400 text-sm">👨‍🍳</span>
+                <div>
+                  <div class="font-bold text-white">Jenkins</div>
+                  <div class="text-[#64748b] text-[8px]">Pipeline Triggered</div>
+                </div>
+              </div>
+              <span class="text-[var(--accent)] font-bold">→</span>
+
+              <!-- Step 3: Build & Test -->
+              <div class="p-2 rounded border border-[#1e293b] bg-[#070b0e] flex items-center gap-2 shrink-0">
+                <span class="text-sky-400 text-sm">&lt;/&gt;</span>
+                <div>
+                  <div class="font-bold text-white">Build &amp; Test</div>
+                  <div class="text-[var(--accent)] text-[8px]">• Build Success • Unit Tests 124/124</div>
+                </div>
+              </div>
+              <span class="text-[var(--accent)] font-bold">→</span>
+
+              <!-- Step 4: Security Scan -->
+              <div class="p-2 rounded border border-[#1e293b] bg-[#070b0e] flex items-center gap-2 shrink-0">
+                <span class="text-emerald-400 text-sm">🛡️</span>
+                <div>
+                  <div class="font-bold text-white">Security Scan</div>
+                  <div class="text-[#64748b] text-[8px]">Trivy / SonarQube • 0 Vulns</div>
+                </div>
+              </div>
+              <span class="text-[var(--accent)] font-bold">→</span>
+
+              <!-- Step 5: Docker Build -->
+              <div class="p-2 rounded border border-[#1e293b] bg-[#070b0e] flex items-center gap-2 shrink-0">
+                <span class="text-blue-400 text-sm">🐳</span>
+                <div>
+                  <div class="font-bold text-white">Docker Build</div>
+                  <div class="text-[#64748b] text-[8px]">Image: v1.2.4 • Size: 821MB</div>
+                </div>
+              </div>
+              <span class="text-[var(--accent)] font-bold">→</span>
+
+              <!-- Step 6: Push Registry -->
+              <div class="p-2 rounded border border-[#1e293b] bg-[#070b0e] flex items-center gap-2 shrink-0">
+                <span class="text-sky-400 text-sm">📦</span>
+                <div>
+                  <div class="font-bold text-white">Push Registry</div>
+                  <div class="text-[#64748b] text-[8px]">Azure ACR Pushed</div>
+                </div>
+              </div>
+              <span class="text-[var(--accent)] font-bold">→</span>
+
+              <!-- Step 7: Deploy to K8s -->
+              <div class="p-2 rounded border border-[#1e293b] bg-[#070b0e] flex items-center gap-2 shrink-0">
+                <span class="text-blue-500 text-sm">☸️</span>
+                <div>
+                  <div class="font-bold text-white">Deploy to K8s</div>
+                  <div class="text-[#64748b] text-[8px]">helm upgrade • Rolling Update</div>
+                </div>
+              </div>
+              <span class="text-[var(--accent)] font-bold">→</span>
+
+              <!-- Step 8: Health Check -->
+              <div class="p-2 rounded border border-[#1e293b] bg-[#070b0e] flex items-center gap-2 shrink-0">
+                <span class="text-emerald-400 text-sm">💚</span>
+                <div>
+                  <div class="font-bold text-white">Health Check</div>
+                  <div class="text-[var(--accent)] text-[8px]">All Pods Ready 6/6</div>
+                </div>
+              </div>
+              <span class="text-[var(--accent)] font-bold">→</span>
+
+              <!-- Step 9: Production -->
+              <div class="p-2 rounded border border-[var(--accent)] bg-[#0c1319] flex items-center gap-2 shrink-0 shadow-[0_0_12px_rgba(126,217,87,0.3)]">
+                <span class="text-[var(--accent)] text-sm">📦</span>
+                <div>
+                  <div class="font-bold text-[var(--accent)] flex items-center gap-1">
+                    <span>Production</span> <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-ping"></span>
+                  </div>
+                  <div class="text-[#94a3b8] text-[8px]">Live v1.2.4</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FOOTER STATUS BAR -->
+          <div class="pt-1 border-t border-[#1e293b] flex items-center justify-between text-[10px] text-[#64748b]">
+            <div>Backend &amp; Distributed Systems // Built for Scale</div>
+            <div class="flex items-center gap-3">
+              <span>Event-Driven</span> • <span>Resilient</span> • <span>Observable</span> • <span class="text-[var(--accent)]">Secure</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ======================================================== -->
+    <!-- TAB 03: PERMISSION & ACCESS (MATCHING IMAGE 2 EXACTLY)    -->
+    <!-- ======================================================== -->
+    <div *ngIf="activeTab === 'permission'" class="p-3 sm:p-4 overflow-y-auto blueprint-grid flex-1 min-h-0 text-[11px]">
+      <div class="flex flex-col lg:flex-row gap-3 min-w-[1300px]">
+        
+        <!-- LEFT SIDEBAR (Modules, Online Users, Quick Actions) -->
+        <div class="w-[220px] shrink-0 flex flex-col gap-3">
+          <!-- Permission Modules List -->
+          <div class="p-2.5 rounded-lg border border-[#1e293b] bg-[#090e13]/90">
+            <div class="text-[10px] font-bold text-[var(--accent)] tracking-wider mb-2">// PERMISSION MODULES</div>
+            <div class="space-y-1">
+              <div 
+                *ngFor="let mod of tab3Modules; let i = index"
+                (click)="tab3SelectedModule = i"
+                class="px-2.5 py-1 rounded cursor-pointer transition-all flex items-center justify-between"
+                [ngClass]="tab3SelectedModule === i 
+                  ? 'border border-[var(--accent)] bg-[var(--accent)]/10 text-[var(--accent)] font-bold shadow-[0_0_8px_rgba(126,217,87,0.2)]' 
+                  : 'text-[#94a3b8] hover:text-white hover:bg-[#111827]'"
+              >
+                <span>{{ mod }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Online Users List -->
+          <div class="p-2.5 rounded-lg border border-[#1e293b] bg-[#090e13]/90">
+            <div class="text-[10px] font-bold text-[var(--accent)] tracking-wider mb-2">// ONLINE USERS</div>
+            <div class="space-y-1.5 text-[10px]">
+              <div *ngFor="let user of tab3OnlineUsers" class="flex items-center justify-between">
+                <span class="text-[#cbd5e1] flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full" [ngClass]="user.active ? 'bg-[var(--accent)] shadow-[0_0_6px_#7ED957]' : 'bg-[#64748b]'"></span>
+                  {{ user.name }}
+                </span>
+                <span class="text-[#64748b] text-[9px]">{{ user.role }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Actions List -->
+          <div class="p-2.5 rounded-lg border border-[#1e293b] bg-[#090e13]/90">
+            <div class="text-[10px] font-bold text-[var(--accent)] tracking-wider mb-2">// QUICK ACTIONS</div>
+            <div class="space-y-1 text-[10px]">
+              <button class="w-full text-left px-2 py-1 rounded bg-[#0c1319] hover:bg-[#1e293b] text-[#cbd5e1] flex items-center gap-1.5 cursor-pointer">
+                <span>➕</span> <span>Add User</span>
+              </button>
+              <button class="w-full text-left px-2 py-1 rounded bg-[#0c1319] hover:bg-[#1e293b] text-[#cbd5e1] flex items-center gap-1.5 cursor-pointer">
+                <span>👥</span> <span>Create Role</span>
+              </button>
+              <button class="w-full text-left px-2 py-1 rounded bg-[#0c1319] hover:bg-[#1e293b] text-[#cbd5e1] flex items-center gap-1.5 cursor-pointer">
+                <span>🔒</span> <span>Set Permission</span>
+              </button>
+              <button class="w-full text-left px-2 py-1 rounded bg-[#0c1319] hover:bg-[#1e293b] text-[#cbd5e1] flex items-center gap-1.5 cursor-pointer">
+                <span>📋</span> <span>Audit Log</span>
+              </button>
+              <button class="w-full text-left px-2 py-1 rounded bg-[#0c1319] hover:bg-[#1e293b] text-[#cbd5e1] flex items-center gap-1.5 cursor-pointer">
+                <span>📊</span> <span>Export Report</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- RIGHT MAIN AREA (Access Flow, 4 Panels, Logs & Stats) -->
+        <div class="flex-1 flex flex-col gap-3 min-w-0">
+          
+          <!-- TOP 7-STEP ACCESS CONTROL FLOW PIPELINE -->
+          <div class="p-3 rounded-lg border border-[#1e293b] bg-[#090e13]/90">
+            <div class="text-[10px] font-bold text-[var(--accent)] mb-2.5">// ACCESS CONTROL FLOW</div>
+            
+            <div class="grid grid-cols-7 gap-2 relative">
+              
+              <!-- Step 1: User Request -->
+              <div 
+                class="p-2 rounded border border-[#1e293b] bg-[#070b0e] flex flex-col justify-between transition-all duration-300 relative"
+                [class.step-card-active]="tab3ActiveStep === 0"
+                [class.laser-beam-container]="tab3ActiveStep === 0"
+              >
+                <div class="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 z-10 pointer-events-none">
+                  <span class="text-[var(--accent)] font-bold text-xs" [class.animate-pulse]="tab3ActiveStep === 0">▶</span>
+                </div>
+                <div>
+                  <div class="text-[9px] font-bold text-white mb-1 flex items-center gap-1">
+                    <span>1. USER REQUEST</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 mb-1.5">
+                    <span class="w-5 h-5 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-[10px]">👤</span>
+                    <div>
+                      <div class="font-bold text-white text-[10px]">tuan.le</div>
+                      <div class="text-[8px] text-[#64748b]">tuan.le&#64;company.com</div>
+                    </div>
+                  </div>
+                  <div class="p-1 rounded bg-[#0c1319] text-[8px] text-[var(--accent)] font-semibold mb-1">
+                    GET /api/files/config.json
+                  </div>
+                  <div class="text-[8px] text-[#64748b] flex justify-between">
+                    <span>IP: 192.168.1.100</span>
+                    <span class="text-white">Dept: IT</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2: Authentication -->
+              <div 
+                class="p-2 rounded border border-[#1e293b] bg-[#070b0e] flex flex-col justify-between transition-all duration-300 relative"
+                [class.step-card-active]="tab3ActiveStep === 1"
+                [class.laser-beam-container]="tab3ActiveStep === 1"
+              >
+                <div class="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 z-10 pointer-events-none">
+                  <span class="text-[var(--accent)] font-bold text-xs" [class.animate-pulse]="tab3ActiveStep === 1">▶</span>
+                </div>
+                <div>
+                  <div class="text-[9px] font-bold text-white mb-1.5 flex items-center gap-1">
+                    <span>2. AUTHENTICATION</span>
+                  </div>
+                  <div class="text-center my-1 text-sm text-[var(--accent)]">🔒</div>
+                  <div class="space-y-1 text-[8px] text-[#cbd5e1]">
+                    <div class="flex items-center gap-1"><span class="text-[var(--accent)]">✓</span> Verify Identity</div>
+                    <div class="flex items-center gap-1"><span class="text-[var(--accent)]">✓</span> JWT Validation</div>
+                    <div class="flex items-center gap-1"><span class="text-[var(--accent)]">✓</span> Session Check</div>
+                    <div class="flex items-center gap-1 text-[#64748b]"><span class="text-[var(--accent)]">✓</span> MFA (Optional)</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3: Role & Department -->
+              <div 
+                class="p-2 rounded border border-[#1e293b] bg-[#070b0e] flex flex-col justify-between transition-all duration-300 relative"
+                [class.step-card-active]="tab3ActiveStep === 2"
+                [class.laser-beam-container]="tab3ActiveStep === 2"
+              >
+                <div class="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 z-10 pointer-events-none">
+                  <span class="text-[var(--accent)] font-bold text-xs" [class.animate-pulse]="tab3ActiveStep === 2">▶</span>
+                </div>
+                <div>
+                  <div class="text-[9px] font-bold text-white mb-1.5 flex items-center gap-1">
+                    <span>3. ROLE &amp; DEPARTMENT</span>
+                  </div>
+                  <div class="text-center my-1 text-sm text-sky-400">👥</div>
+                  <div class="space-y-0.5 text-[8px] text-[#cbd5e1]">
+                    <div>Role: <strong class="text-white">System Admin</strong></div>
+                    <div>Department: <strong class="text-[var(--accent)]">IT</strong></div>
+                    <div class="text-[#64748b]">Office: Head Office</div>
+                    <div class="text-[#64748b]">Scope: Global + Project</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 4: Permission Engine -->
+              <div 
+                class="p-2 rounded border border-[#1e293b] bg-[#070b0e] flex flex-col justify-between transition-all duration-300 relative"
+                [class.step-card-active]="tab3ActiveStep === 3"
+                [class.laser-beam-container]="tab3ActiveStep === 3"
+              >
+                <div class="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 z-10 pointer-events-none">
+                  <span class="text-[var(--accent)] font-bold text-xs" [class.animate-pulse]="tab3ActiveStep === 3">▶</span>
+                </div>
+                <div>
+                  <div class="text-[9px] font-bold text-[var(--accent)] mb-1.5 flex items-center gap-1">
+                    <span>4. PERMISSION ENGINE</span>
+                  </div>
+                  <div class="text-center my-0.5 text-sm text-[var(--accent)]">⚙️</div>
+                  <div class="text-[8px] text-[#64748b]">Binary Permission</div>
+                  <div class="p-1 rounded bg-[#0c1319] text-[9px] font-bold text-emerald-400 text-center my-1 tracking-wider border border-[#1e293b]" [class.pulse-beacon]="tab3ActiveStep === 3">
+                    11011010
+                  </div>
+                  <div class="text-[8px] grid grid-cols-2 gap-0.5">
+                    <span class="text-white">Read <span class="text-[var(--accent)]">✓</span></span>
+                    <span class="text-[#64748b]">Delete <span class="text-red-400">✕</span></span>
+                    <span class="text-white">Execute <span class="text-[var(--accent)]">✓</span></span>
+                    <span class="text-white">Edit <span class="text-[var(--accent)]">✓</span></span>
+                    <span class="text-white col-span-2">Admin <span class="text-[var(--accent)]">✓</span></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 5: Resource Scope -->
+              <div 
+                class="p-2 rounded border border-[#1e293b] bg-[#070b0e] flex flex-col justify-between transition-all duration-300 relative"
+                [class.step-card-active]="tab3ActiveStep === 4"
+                [class.laser-beam-container]="tab3ActiveStep === 4"
+              >
+                <div class="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 z-10 pointer-events-none">
+                  <span class="text-[var(--accent)] font-bold text-xs" [class.animate-pulse]="tab3ActiveStep === 4">▶</span>
+                </div>
+                <div>
+                  <div class="text-[9px] font-bold text-white mb-1.5 flex items-center gap-1">
+                    <span>5. RESOURCE SCOPE</span>
+                  </div>
+                  <div class="text-center my-1 text-sm text-sky-400">📁</div>
+                  <div class="space-y-0.5 text-[8px] text-[#cbd5e1]">
+                    <div>Resource Type: <span class="text-white">File</span></div>
+                    <div class="text-[#64748b]">Root: /company</div>
+                    <div>Dept: <strong class="text-[var(--accent)]">IT</strong></div>
+                    <div class="text-[7px] text-[#64748b] truncate" title="/company/IT/Server/">Current: .../IT/Server/</div>
+                    <div class="text-[var(--accent)] font-bold mt-1">Scope Match ✓</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 6: File / Folder ACL -->
+              <div 
+                class="p-2 rounded border border-[#1e293b] bg-[#070b0e] flex flex-col justify-between transition-all duration-300 relative"
+                [class.step-card-active]="tab3ActiveStep === 5"
+                [class.laser-beam-container]="tab3ActiveStep === 5"
+              >
+                <div class="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 z-10 pointer-events-none">
+                  <span class="text-[var(--accent)] font-bold text-xs" [class.animate-pulse]="tab3ActiveStep === 5">▶</span>
+                </div>
+                <div>
+                  <div class="text-[9px] font-bold text-white mb-1.5 flex items-center gap-1">
+                    <span>6. FILE / FOLDER ACL</span>
+                  </div>
+                  <div class="text-center my-1 text-sm text-amber-400">📄</div>
+                  <div class="space-y-0.5 text-[8px] text-[#cbd5e1]">
+                    <div>File: <strong class="text-white">{{ tab3SelectedFileData.name }}</strong></div>
+                    <div class="text-[#64748b]">Folder: /Server/</div>
+                    <div>Owner: <span class="text-white">{{ tab3SelectedFileData.owner }}</span></div>
+                    <div class="text-[#64748b]">Inherited: Yes</div>
+                    <div class="text-[var(--accent)]">Rules: 3 matched</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 7: Access Decision -->
+              <div 
+                class="p-2 rounded border border-[var(--accent)] bg-[#0c1319] flex flex-col justify-between shadow-[0_0_12px_rgba(126,217,87,0.25)] transition-all duration-300"
+                [class.step-card-active]="tab3ActiveStep === 6"
+                [class.laser-beam-container]="tab3ActiveStep === 6"
+              >
+                <div>
+                  <div class="text-[9px] font-bold text-[var(--accent)] mb-1 flex items-center gap-1">
+                    <span>7. ACCESS DECISION</span>
+                  </div>
+                  <div class="text-center my-1 text-sm text-[var(--accent)]" [class.animate-bounce]="tab3ActiveStep === 6">🛡️</div>
+                  <div class="font-extrabold text-[10px] text-[var(--accent)] text-center mb-1">
+                    ACCESS GRANTED
+                  </div>
+                  <div class="space-y-0.5 text-[8px]">
+                    <div class="text-white">• Read: Allowed <span class="text-[var(--accent)]">✓</span></div>
+                    <div class="text-white">• Write: Allowed <span class="text-[var(--accent)]">✓</span></div>
+                    <div class="text-[#64748b]">• Delete: Denied <span class="text-red-400">✕</span></div>
+                    <div class="text-white">• Execute: Allowed <span class="text-[var(--accent)]">✓</span></div>
+                  </div>
+                  <div class="mt-1 pt-1 border-t border-[#1e293b] text-[8px] text-[#64748b] flex justify-between">
+                    <span>Time: 12ms</span>
+                    <span class="text-[var(--accent)]">Audit: Logged</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+          <!-- MIDDLE 4 PANELS: EXPLORER, MATRIX, ROLES, FILE DETAILS -->
+          <div class="grid grid-cols-12 gap-2.5">
+            
+            <!-- Panel 1: Resource Explorer (Col-span-3) -->
+            <div class="col-span-12 md:col-span-3 p-2.5 rounded-lg border border-[#1e293b] bg-[#090e13]/90">
+              <div class="text-[10px] font-bold text-[var(--accent)] mb-2">// RESOURCE EXPLORER</div>
+              <div class="space-y-1 text-[9px] text-[#cbd5e1]">
+                <div class="flex items-center gap-1 font-bold text-white"><span>📂</span> <span>company</span></div>
+                <div class="pl-3 space-y-1">
+                  <div class="flex items-center gap-1 text-[#94a3b8]"><span>📁</span> <span>HR</span></div>
+                  <div class="flex items-center gap-1 text-[#94a3b8]"><span>📁</span> <span>Finance</span></div>
+                  <div class="space-y-1">
+                    <div class="flex items-center gap-1 font-bold text-[var(--accent)]"><span>📂</span> <span>IT</span></div>
+                    <div class="pl-3 space-y-1">
+                      <div class="space-y-0.5">
+                        <div class="flex items-center gap-1 font-semibold text-sky-400"><span>📂</span> <span>Server</span></div>
+                        <div class="pl-4 space-y-0.5">
+                          <div 
+                            (click)="selectFile('config.json', '/company/IT/Server/config.json', '11011010', '12.4 KB')" 
+                            class="p-1 rounded cursor-pointer transition-all flex items-center gap-1"
+                            [ngClass]="tab3SelectedFile === 'config.json' ? 'bg-[var(--accent)]/15 border border-[var(--accent)] text-[var(--accent)] font-bold shadow-[0_0_8px_rgba(126,217,87,0.3)]' : 'text-[#cbd5e1] hover:text-white'"
+                          >
+                            <span>📄</span> <span>config.json</span>
+                          </div>
+                          <div 
+                            (click)="selectFile('backup.zip', '/company/IT/Server/backup.zip', '11000000', '1.2 GB')" 
+                            class="p-1 rounded cursor-pointer transition-all flex items-center gap-1"
+                            [ngClass]="tab3SelectedFile === 'backup.zip' ? 'bg-[var(--accent)]/15 border border-[var(--accent)] text-[var(--accent)] font-bold shadow-[0_0_8px_rgba(126,217,87,0.3)]' : 'text-[#64748b] hover:text-white'"
+                          >
+                            <span>📦</span> <span>backup.zip</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div (click)="selectFile('network.conf', '/company/IT/Network/network.conf', '11010000', '4.8 KB')" class="flex items-center gap-1 text-[#64748b] hover:text-white cursor-pointer pl-1">
+                        <span>📁</span> <span>Network</span>
+                      </div>
+                      <div (click)="selectFile('project-alpha.doc', '/company/IT/Projects/alpha.doc', '11111000', '32.1 KB')" class="flex items-center gap-1 text-[#64748b] hover:text-white cursor-pointer pl-1">
+                        <span>📁</span> <span>Projects</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-1 text-[#64748b] hover:text-white cursor-pointer"><span>📁</span> <span>Shared</span></div>
+                  <div class="flex items-center gap-1 text-[#64748b] hover:text-white cursor-pointer"><span>📁</span> <span>Public</span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 2: Permission Matrix (Binary) (Col-span-4) -->
+            <div class="col-span-12 md:col-span-4 p-2.5 rounded-lg border border-[#1e293b] bg-[#090e13]/90">
+              <div class="text-[10px] font-bold text-[var(--accent)] mb-2">// PERMISSION MATRIX (BINARY)</div>
+              
+              <table class="w-full text-[9px] text-center border-collapse">
+                <thead>
+                  <tr class="border-b border-[#1e293b] text-[#64748b]">
+                    <th class="text-left pb-1 font-normal">Permission</th>
+                    <th class="pb-1 font-normal">Binary</th>
+                    <th class="pb-1 font-normal">Sys Admin</th>
+                    <th class="pb-1 font-normal">IT Mgr</th>
+                    <th class="pb-1 font-normal">HR</th>
+                    <th class="pb-1 font-normal">Finance</th>
+                    <th class="pb-1 font-normal">Guest</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-[#1e293b]/50">
+                  <tr class="hover:bg-[#111827]">
+                    <td class="text-left py-1 text-white font-semibold">Read</td>
+                    <td class="font-mono text-[#64748b]">000001</td>
+                    <td class="text-[var(--accent)] font-bold">✓</td>
+                    <td class="text-[var(--accent)] font-bold">✓</td>
+                    <td class="text-[var(--accent)] font-bold">✓</td>
+                    <td class="text-[var(--accent)] font-bold">✓</td>
+                    <td class="text-[var(--accent)] font-bold">✓</td>
+                  </tr>
+                  <tr class="hover:bg-[#111827]">
+                    <td class="text-left py-1 text-white font-semibold">Write</td>
+                    <td class="font-mono text-[#64748b]">000010</td>
+                    <td class="text-[var(--accent)] font-bold">✓</td>
+                    <td class="text-[var(--accent)] font-bold">✓</td>
+                    <td class="text-red-400 font-bold">✕</td>
+                    <td class="text-red-400 font-bold">✕</td>
+                    <td class="text-red-400 font-bold">✕</td>
+                  </tr>
+                  <tr class="hover:bg-[#111827]">
+                    <td class="text-left py-1 text-white font-semibold">Delete</td>
+                    <td class="font-mono text-[#64748b]">000100</td>
+                    <td class="text-[var(--accent)] font-bold">✓</td>
+                    <td class="text-red-400 font-bold">✕</td>
+                    <td class="text-red-400 font-bold">✕</td>
+                    <td class="text-red-400 font-bold">✕</td>
+                    <td class="text-red-400 font-bold">✕</td>
+                  </tr>
+                  <tr class="hover:bg-[#111827]">
+                    <td class="text-left py-1 text-white font-semibold">Execute</td>
+                    <td class="font-mono text-[#64748b]">001000</td>
+                    <td class="text-[var(--accent)] font-bold">✓</td>
+                    <td class="text-[var(--accent)] font-bold">✓</td>
+                    <td class="text-red-400 font-bold">✕</td>
+                    <td class="text-red-400 font-bold">✕</td>
+                    <td class="text-red-400 font-bold">✕</td>
+                  </tr>
+                  <tr class="hover:bg-[#111827]">
+                    <td class="text-left py-1 text-white font-semibold">Share</td>
+                    <td class="font-mono text-[#64748b]">010000</td>
+                    <td class="text-[var(--accent)] font-bold">✓</td>
+                    <td class="text-[var(--accent)] font-bold">✓</td>
+                    <td class="text-red-400 font-bold">✕</td>
+                    <td class="text-red-400 font-bold">✕</td>
+                    <td class="text-red-400 font-bold">✕</td>
+                  </tr>
+                  <tr class="hover:bg-[#111827]">
+                    <td class="text-left py-1 text-white font-semibold">Admin</td>
+                    <td class="font-mono text-[#64748b]">100000</td>
+                    <td class="text-[var(--accent)] font-bold">✓</td>
+                    <td class="text-red-400 font-bold">✕</td>
+                    <td class="text-red-400 font-bold">✕</td>
+                    <td class="text-red-400 font-bold">✕</td>
+                    <td class="text-red-400 font-bold">✕</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Panel 3: Role Management (Col-span-2) -->
+            <div class="col-span-12 md:col-span-2 p-2.5 rounded-lg border border-[#1e293b] bg-[#090e13]/90">
+              <div class="text-[10px] font-bold text-[var(--accent)] mb-2">// ROLE MANAGEMENT</div>
+              <div class="space-y-1.5 text-[9px]">
+                <div class="p-1.5 rounded border border-[var(--accent)] bg-[var(--accent)]/10 cursor-pointer">
+                  <div class="font-bold text-[var(--accent)] flex items-center gap-1"><span>👑</span> System Admin</div>
+                  <div class="text-[8px] text-[#94a3b8]">Full access to all resources</div>
+                </div>
+                <div class="p-1.5 rounded border border-[#1e293b] bg-[#070b0e] hover:border-[#334155] cursor-pointer">
+                  <div class="font-bold text-white flex items-center gap-1"><span>👤</span> IT Manager</div>
+                  <div class="text-[8px] text-[#64748b]">IT department resources</div>
+                </div>
+                <div class="p-1.5 rounded border border-[#1e293b] bg-[#070b0e] hover:border-[#334155] cursor-pointer">
+                  <div class="font-bold text-white flex items-center gap-1"><span>👤</span> HR Staff</div>
+                  <div class="text-[8px] text-[#64748b]">HR department resources</div>
+                </div>
+                <div class="p-1.5 rounded border border-[#1e293b] bg-[#070b0e] hover:border-[#334155] cursor-pointer">
+                  <div class="font-bold text-white flex items-center gap-1"><span>👤</span> Finance Staff</div>
+                  <div class="text-[8px] text-[#64748b]">Finance resources</div>
+                </div>
+                <div class="p-1.5 rounded border border-[#1e293b] bg-[#070b0e] hover:border-[#334155] cursor-pointer">
+                  <div class="font-bold text-white flex items-center gap-1"><span>💻</span> Developer</div>
+                  <div class="text-[8px] text-[#64748b]">Development resources</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 4: File Permission Details (Col-span-3) -->
+            <div class="col-span-12 md:col-span-3 p-2.5 rounded-lg border border-[#1e293b] bg-[#090e13]/90">
+              <div class="text-[10px] font-bold text-[var(--accent)] mb-1.5">// FILE PERMISSION DETAILS</div>
+              
+              <div class="flex items-center gap-1.5 mb-2">
+                <span class="text-sm">📄</span>
+                <div class="min-w-0">
+                  <div class="font-bold text-white text-[10px] truncate">{{ tab3SelectedFileData.name }}</div>
+                  <div class="text-[8px] text-[#64748b] truncate">{{ tab3SelectedFileData.path }}</div>
+                </div>
+              </div>
+
+              <!-- Inner Tabs -->
+              <div class="flex items-center gap-1 border-b border-[#1e293b] pb-1 mb-2 text-[8px]">
+                <button 
+                  (click)="tab3FileTab = 'permissions'" 
+                  class="px-1.5 py-0.5 rounded font-bold cursor-pointer transition-colors" 
+                  [ngClass]="tab3FileTab === 'permissions' ? 'bg-[var(--accent)] text-[#0B0B0B]' : 'text-[#94a3b8] hover:text-white'"
+                >
+                  Permissions
+                </button>
+                <button 
+                  (click)="tab3FileTab = 'inheritance'" 
+                  class="px-1.5 py-0.5 rounded font-bold cursor-pointer transition-colors" 
+                  [ngClass]="tab3FileTab === 'inheritance' ? 'bg-[var(--accent)] text-[#0B0B0B]' : 'text-[#94a3b8] hover:text-white'"
+                >
+                  Inheritance
+                </button>
+                <button 
+                  (click)="tab3FileTab = 'audit'" 
+                  class="px-1.5 py-0.5 rounded font-bold cursor-pointer transition-colors" 
+                  [ngClass]="tab3FileTab === 'audit' ? 'bg-[var(--accent)] text-[#0B0B0B]' : 'text-[#94a3b8] hover:text-white'"
+                >
+                  Audit Log
+                </button>
+              </div>
+
+              <div *ngIf="tab3FileTab === 'permissions'" class="space-y-1 text-[8px] text-[#cbd5e1]">
+                <div>Owner: <strong class="text-white">{{ tab3SelectedFileData.owner }}</strong></div>
+                <div>Group: <strong class="text-white">{{ tab3SelectedFileData.group }}</strong></div>
+                <div>Permission (Binary): <strong class="text-[var(--accent)] font-mono">{{ tab3SelectedFileData.binary }}</strong></div>
+                <div class="grid grid-cols-2 gap-0.5 pt-1">
+                  <span [class.text-[var(--accent)]]="tab3SelectedFileData.read">✓ Read</span>
+                  <span [class.text-[var(--accent)]]="tab3SelectedFileData.write">✓ Write</span>
+                  <span [class.text-[var(--accent)]]="tab3SelectedFileData.execute">✓ Execute</span>
+                  <span [class.text-[var(--accent)]]="tab3SelectedFileData.admin">✓ Admin</span>
+                </div>
+                <div class="pt-1.5 border-t border-[#1e293b] text-[#64748b]">
+                  <div>Last Modified: {{ tab3SelectedFileData.modified }}</div>
+                  <div>Size: {{ tab3SelectedFileData.size }}</div>
+                </div>
+              </div>
+
+              <div *ngIf="tab3FileTab === 'inheritance'" class="space-y-1.5 text-[8px] text-[#cbd5e1]">
+                <div>Inherited from: <span class="text-[var(--accent)]">/company/IT/</span></div>
+                <div class="text-[#64748b]">Inheritance type: Propagate to subfolders and files</div>
+                <div class="p-1.5 rounded bg-[#0c1319] border border-[#1e293b] text-[#94a3b8]">
+                  Rules count: 3 active policies mapped via Active Directory OU.
+                </div>
+              </div>
+
+              <div *ngIf="tab3FileTab === 'audit'" class="space-y-1 text-[8px] text-[#cbd5e1]">
+                <div class="text-[7px] text-[#64748b]">Last 3 Audit Events:</div>
+                <div class="p-1 rounded bg-[#0c1319] border border-[#1e293b] space-y-0.5">
+                  <div class="text-[var(--accent)]">● READ by tuan.le (10:24:06)</div>
+                  <div class="text-white">● WRITE by sys-worker (08:15:22)</div>
+                  <div class="text-amber-400">● PERM_UPDATE by admin (06:00:10)</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+          <!-- BOTTOM ROW: LOGS + STATS + OVERVIEW -->
+          <div class="grid grid-cols-12 gap-3">
+            
+            <!-- Left: // ACCESS LOGS (REAL-TIME) (Col-span-5) -->
+            <div class="col-span-12 lg:col-span-5 p-3 rounded-lg border border-[#1e293b] bg-[#090e13]/90 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between pb-1.5 border-b border-[#1e293b] text-[10px]">
+                  <span class="font-bold text-[var(--accent)]">// ACCESS LOGS (REAL-TIME)</span>
+                  <div class="flex items-center gap-1 text-[8px]">
+                    <button 
+                      (click)="tab3LogFilter = 'all'" 
+                      class="px-1.5 py-0.5 rounded font-bold cursor-pointer transition-colors" 
+                      [ngClass]="tab3LogFilter === 'all' ? 'bg-[var(--accent)] text-[#0B0B0B]' : 'text-[#94a3b8] hover:text-white'"
+                    >
+                      All
+                    </button>
+                    <button 
+                      (click)="tab3LogFilter = 'info'" 
+                      class="px-1.5 py-0.5 rounded font-bold cursor-pointer transition-colors" 
+                      [ngClass]="tab3LogFilter === 'info' ? 'bg-[var(--accent)] text-[#0B0B0B]' : 'text-[#94a3b8] hover:text-white'"
+                    >
+                      Info
+                    </button>
+                    <button 
+                      (click)="tab3LogFilter = 'warn'" 
+                      class="px-1.5 py-0.5 rounded font-bold cursor-pointer transition-colors" 
+                      [ngClass]="tab3LogFilter === 'warn' ? 'bg-[var(--accent)] text-[#0B0B0B]' : 'text-[#94a3b8] hover:text-white'"
+                    >
+                      Warn
+                    </button>
+                    <button 
+                      (click)="tab3LogFilter = 'error'" 
+                      class="px-1.5 py-0.5 rounded font-bold cursor-pointer transition-colors" 
+                      [ngClass]="tab3LogFilter === 'error' ? 'bg-[var(--accent)] text-[#0B0B0B]' : 'text-[#94a3b8] hover:text-white'"
+                    >
+                      Error
+                    </button>
+                  </div>
+                </div>
+
+                <div class="space-y-1 mt-2 text-[9px] leading-snug overflow-hidden max-h-[140px]">
+                  <div *ngFor="let log of filteredTab3Logs" class="flex items-start gap-1.5">
+                    <span class="text-[#475569] shrink-0">[{{ log.time }}]</span>
+                    <span class="font-bold shrink-0" [ngClass]="log.type === 'success' ? 'text-[var(--accent)]' : (log.type === 'warn' ? 'text-amber-400' : 'text-sky-400')">{{ log.tag }}</span>
+                    <span [ngClass]="log.type === 'warn' ? 'text-amber-300' : (log.type === 'success' ? 'text-[var(--accent)]' : 'text-[#cbd5e1]')">{{ log.text }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Middle: // ACCESS STATISTICS (Col-span-3) -->
+            <div class="col-span-12 md:col-span-3 p-3 rounded-lg border border-[#1e293b] bg-[#090e13]/90">
+              <div class="text-[10px] font-bold text-[var(--accent)] mb-2">// ACCESS STATISTICS</div>
+              
+              <div class="grid grid-cols-2 gap-2 text-[10px]">
+                <div class="p-2 rounded bg-[#070b0e] border border-[#1e293b]">
+                  <div class="text-sm font-extrabold text-white">1,248</div>
+                  <div class="text-[8px] text-[#64748b]">Total Users</div>
+                  <div class="text-[8px] text-[var(--accent)] font-bold mt-1">↑ + 12%</div>
+                </div>
+
+                <div class="p-2 rounded bg-[#070b0e] border border-[#1e293b]">
+                  <div class="text-sm font-extrabold text-white">342</div>
+                  <div class="text-[8px] text-[#64748b]">Active Sessions</div>
+                  <div class="text-[8px] text-[var(--accent)] font-bold mt-1">↑ + 5%</div>
+                </div>
+
+                <div class="p-2 rounded bg-[#070b0e] border border-[#1e293b]">
+                  <div class="text-sm font-extrabold text-white">186</div>
+                  <div class="text-[8px] text-[#64748b]">Permission Roles</div>
+                  <div class="text-[8px] text-sky-400 font-bold mt-1">Configured</div>
+                </div>
+
+                <div class="p-2 rounded bg-[#070b0e] border border-[#1e293b]">
+                  <div class="text-sm font-extrabold text-white">12,480</div>
+                  <div class="text-[8px] text-[#64748b]">File Resources</div>
+                  <div class="text-[8px] text-[var(--accent)] font-bold mt-1">↑ + 18%</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: // DEPARTMENT ACCESS OVERVIEW (Col-span-4) -->
+            <div class="col-span-12 md:col-span-4 p-3 rounded-lg border border-[#1e293b] bg-[#090e13]/90">
+              <div class="text-[10px] font-bold text-[var(--accent)] mb-2">// DEPARTMENT ACCESS OVERVIEW</div>
+              
+              <table class="w-full text-[9px] text-center border-collapse">
+                <thead>
+                  <tr class="border-b border-[#1e293b] text-[#64748b]">
+                    <th class="text-left pb-1 font-normal">Department</th>
+                    <th class="pb-1 font-normal">Users</th>
+                    <th class="pb-1 font-normal">Folders</th>
+                    <th class="pb-1 font-normal">Files</th>
+                    <th class="pb-1 font-normal">Access Today</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-[#1e293b]/50">
+                  <tr>
+                    <td class="text-left py-1 text-white font-semibold flex items-center gap-1">
+                      <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span> IT
+                    </td>
+                    <td>42</td>
+                    <td>328</td>
+                    <td>2,481</td>
+                    <td class="text-[var(--accent)] font-bold">5,241</td>
+                  </tr>
+                  <tr>
+                    <td class="text-left py-1 text-white font-semibold flex items-center gap-1">
+                      <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> HR
+                    </td>
+                    <td>28</td>
+                    <td>156</td>
+                    <td>1,024</td>
+                    <td class="text-white">2,115</td>
+                  </tr>
+                  <tr>
+                    <td class="text-left py-1 text-white font-semibold flex items-center gap-1">
+                      <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> Finance
+                    </td>
+                    <td>24</td>
+                    <td>98</td>
+                    <td>842</td>
+                    <td class="text-white">1,632</td>
+                  </tr>
+                  <tr>
+                    <td class="text-left py-1 text-white font-semibold flex items-center gap-1">
+                      <span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span> Operations
+                    </td>
+                    <td>18</td>
+                    <td>76</td>
+                    <td>421</td>
+                    <td class="text-white">986</td>
+                  </tr>
+                  <tr>
+                    <td class="text-left py-1 text-white font-semibold flex items-center gap-1">
+                      <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span> R&amp;D
+                    </td>
+                    <td>32</td>
+                    <td>210</td>
+                    <td>1,856</td>
+                    <td class="text-[var(--accent)] font-bold">3,421</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+
+          <!-- FOOTER STATUS BAR -->
+          <div class="pt-1 border-t border-[#1e293b] flex items-center justify-between text-[10px] text-[#64748b]">
+            <div>Permission &amp; Access Control // Secure • Manage • Audit</div>
+            <div class="flex items-center gap-3">
+              <span>Enterprise Security</span> • <span>Compliance</span> • <span class="text-[var(--accent)]">Full Control</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ======================================================== -->
+    <!-- TAB 01: REAL-TIME ENTERPRISE NETWORK TOPOLOGY (Image 2)   -->
+    <!-- ======================================================== -->
+    <div *ngIf="activeTab === 'network'" class="p-4 sm:p-6 overflow-y-auto blueprint-grid flex-1 min-h-0">  <div *ngIf="activeTab === 'network'" class="p-4 sm:p-6 overflow-y-auto blueprint-grid flex-1 min-h-0">
       <div class="flex flex-col gap-4 w-full max-w-[1200px] mx-auto">
         
         <!-- Top Toolbar with Title & Time Filter (Live, 1h, 6h, 24h, 7d) -->

@@ -13,10 +13,10 @@ import { UIResourceZH } from '../../shared/lang/zh';
   styleUrl: './greeting.component.css',
 })
 export class GreetingComponent implements OnInit, OnChanges {
-  @Input() lang: string = 'VI';
+  @Input() lang: string = 'ENG';
   @Output() viewArchitecture = new EventEmitter<void>();
 
-  UIResource: any = UIResourceVN;
+  UIResource: any = UIResourceENG;
 
   ngOnInit(): void {
     this.updateResource();

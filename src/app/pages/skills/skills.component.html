@@ -10,13 +10,12 @@
       <span class="w-8 h-[2px] bg-[var(--accent)]"></span>
     </div>
     <h2 class="font-mono-tech text-2xl sm:text-3xl md:text-4xl text-[var(--text-1)] font-bold mb-3 tracking-tight">
-      Quản Trị Hệ Thống Máy Chủ & Vận Hành Doanh Nghiệp
+      {{ UIResource.skills_page.systems.title }}
     </h2>
     <p class="font-mono-tech text-xs sm:text-sm text-[var(--accent-text)] font-semibold mb-3">
       Server Administration · Identity & Cloud · Virtualization · Operations & Backup
     </p>
-    <p class="text-[var(--text-2)] text-sm sm:text-base max-w-4xl leading-relaxed">
-      Kinh nghiệm thực chiến quản trị hệ thống máy chủ đa nền tảng <strong>Linux (Ubuntu 24.04/26 LTS, RHEL, CentOS)</strong> và <strong>Windows Server</strong>. Chuyên sâu thiết lập định danh tập trung <strong>Active Directory / GPO</strong>, hạ tầng đám mây lai <strong>Microsoft Entra ID (Azure AD)</strong> & <strong>Microsoft 365 / Exchange Online</strong>, cụm ảo hóa <strong>VMware vSphere ESXi / Hyper-V</strong>, chiến lược sao lưu <strong>Veeam 3-2-1</strong>, giám sát <strong>Zabbix & Grafana</strong> và tự động hóa vận hành Datacenter 24/7.
+    <p class="text-[var(--text-2)] text-sm sm:text-base max-w-4xl leading-relaxed" [innerHTML]="UIResource.skills_page.systems.desc">
     </p>
   </div>
 
@@ -31,7 +30,7 @@
         <div>
           <div class="flex items-center justify-between mb-2.5">
             <span class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider">
-              01. HỆ ĐIỀU HÀNH & ĐỊNH DANH
+              {{ UIResource.skills_page.systems.group1_title }}
             </span>
             <span class="text-[10px] font-mono-tech text-[var(--text-3)]">HYBRID AD</span>
           </div>
@@ -61,7 +60,7 @@
         <div>
           <div class="flex items-center justify-between mb-2.5">
             <span class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider">
-              02. ẢO HÓA & SAO LƯU DỰ PHÒNG
+              {{ UIResource.skills_page.systems.group2_title }}
             </span>
             <span class="text-[10px] font-mono-tech text-[var(--text-3)]">HIGH AVAILABILITY</span>
           </div>
@@ -88,7 +87,7 @@
         <div>
           <div class="flex items-center justify-between mb-2.5">
             <span class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider">
-              03. GIÁM SÁT, AUTOMATION & PHẦN CỨNG
+              {{ UIResource.skills_page.systems.group3_title }}
             </span>
             <span class="text-[10px] font-mono-tech text-[var(--text-3)]">OBSERVABILITY</span>
           </div>
@@ -155,7 +154,7 @@
             </button>
             <button 
               (click)="replayLinuxTerminal()" 
-              title="Gõ lại lệnh"
+              [attr.title]="UIResource.skills_page.replay_label"
               class="text-[11px] text-[#888] hover:text-[var(--accent)] px-1.5 py-0.5 rounded hover:bg-[#222] transition-colors cursor-pointer">
               ↺
             </button>
@@ -258,13 +257,12 @@
       <span class="w-8 h-[2px] bg-[var(--accent)]"></span>
     </div>
     <h2 class="font-mono-tech text-2xl sm:text-3xl md:text-4xl text-[var(--text-1)] font-bold mb-3 tracking-tight">
-      Hạ Tầng Mạng Doanh Nghiệp & Network Security
+      {{ UIResource.skills_page.networking.title }}
     </h2>
     <p class="font-mono-tech text-xs sm:text-sm text-[var(--accent-text)] font-semibold mb-3">
       Routing · Switching · Next-Gen Firewall · VPN · Network Operations
     </p>
-    <p class="text-[var(--text-2)] text-sm sm:text-base max-w-4xl leading-relaxed">
-      Sở hữu cặp chứng chỉ chuyên môn quốc tế uy tín <strong>Cisco CCNA & CCNP</strong>. Năng lực thiết kế, triển khai và vận hành hệ thống mạng doanh nghiệp quy mô lớn đa hãng: định tuyến nâng cao <strong>OSPF / BGP</strong>, chuyển mạch L3 Core/Distribution, phân đoạn mạng <strong>VLAN 802.1Q</strong>, an ninh biên <strong>Fortinet FortiGate</strong>, giải pháp không dây <strong>Ubiquiti UniFi</strong>, thiết lập <strong>IPsec VPN Site-to-Site</strong>, kiểm soát truy cập <strong>802.1X</strong> và chuẩn hóa sơ đồ mạng Topology.
+    <p class="text-[var(--text-2)] text-sm sm:text-base max-w-4xl leading-relaxed" [innerHTML]="UIResource.skills_page.networking.desc">
     </p>
   </div>
 
@@ -279,7 +277,7 @@
         <div>
           <div class="flex items-center justify-between mb-2.5">
             <span class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider">
-              01. THIẾT BỊ MẠNG ĐA NỀN TẢNG
+              {{ UIResource.skills_page.networking.group1_title }}
             </span>
             <span class="text-[10px] font-mono-tech text-[var(--text-3)]">HARDWARE</span>
           </div>
@@ -306,7 +304,7 @@
         <div>
           <div class="flex items-center justify-between mb-2.5">
             <span class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider">
-              02. ĐỊNH TUYẾN & CHUYỂN MẠCH
+              {{ UIResource.skills_page.networking.group2_title }}
             </span>
             <span class="text-[10px] font-mono-tech text-[var(--text-3)]">L2/L3 PROTOCOLS</span>
           </div>
@@ -333,7 +331,7 @@
         <div>
           <div class="flex items-center justify-between mb-2.5">
             <span class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider">
-              03. AN NINH BIÊN & BẢO MẬT
+              {{ UIResource.skills_page.networking.group3_title }}
             </span>
             <span class="text-[10px] font-mono-tech text-[var(--text-3)]">ZERO TRUST</span>
           </div>
@@ -409,7 +407,7 @@
             </button>
             <button 
               (click)="replayCiscoTerminal()" 
-              title="Gõ lại lệnh"
+              [attr.title]="UIResource.skills_page.replay_label"
               class="text-[11px] text-[#888] hover:text-[var(--accent)] px-1.5 py-0.5 rounded hover:bg-[#222] transition-colors cursor-pointer">
               ↺
             </button>
@@ -588,13 +586,12 @@
       <span class="w-8 h-[2px] bg-[var(--accent)]"></span>
     </div>
     <h2 class="font-mono-tech text-2xl sm:text-3xl md:text-4xl text-[var(--text-1)] font-bold mb-3 tracking-tight">
-      Vận Hành Cloud, DevOps & Tự Động Hóa Hệ Thống
+      {{ UIResource.skills_page.cloud_devops.title }}
     </h2>
     <p class="font-mono-tech text-xs sm:text-sm text-[var(--accent-text)] font-semibold mb-3">
       Azure Cloud · Kubernetes / AKS · CI/CD Pipelines · Infrastructure Automation
     </p>
-    <p class="text-[var(--text-2)] text-sm sm:text-base max-w-4xl leading-relaxed">
-      Kinh nghiệm thực chiến triển khai và vận hành hệ thống Cloud/DevOps, xây dựng đường ống CI/CD pipeline tự động hóa hoàn toàn từ mã nguồn đến môi trường Kubernetes (AKS), container hóa ứng dụng với Docker và Helm Charts. Thiết kế quy trình khép kín: <em>Source code &rarr; Build &rarr; Test &rarr; Container &rarr; Registry &rarr; Deployment &rarr; Observability</em>, kết hợp các script tự động hóa PowerShell/Bash/Python và Nginx Reverse Proxy.
+    <p class="text-[var(--text-2)] text-sm sm:text-base max-w-4xl leading-relaxed" [innerHTML]="UIResource.skills_page.cloud_devops.desc">
     </p>
   </div>
 
@@ -609,7 +606,7 @@
         <div>
           <div class="flex items-center justify-between mb-2.5">
             <span class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider">
-              01. NỀN TẢNG CLOUD & CONTAINER
+              {{ UIResource.skills_page.cloud_devops.group1_title }}
             </span>
             <span class="text-[10px] font-mono-tech text-[var(--text-3)]">KUBERNETES</span>
           </div>
@@ -636,7 +633,7 @@
         <div>
           <div class="flex items-center justify-between mb-2.5">
             <span class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider">
-              02. ĐƯỜNG ỐNG TỰ ĐỘNG HÓA CI/CD
+              {{ UIResource.skills_page.cloud_devops.group2_title }}
             </span>
             <span class="text-[10px] font-mono-tech text-[var(--text-3)]">PIPELINES</span>
           </div>
@@ -663,7 +660,7 @@
         <div>
           <div class="flex items-center justify-between mb-2.5">
             <span class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider">
-              03. HẠ TẦNG & GIÁM SÁT VẬN HÀNH
+              {{ UIResource.skills_page.cloud_devops.group3_title }}
             </span>
             <span class="text-[10px] font-mono-tech text-[var(--text-3)]">SCRIPTING</span>
           </div>
@@ -912,13 +909,12 @@
       <span class="w-8 h-[2px] bg-[var(--accent)]"></span>
     </div>
     <h2 class="font-mono-tech text-2xl sm:text-3xl md:text-4xl text-[var(--text-1)] font-bold mb-3 tracking-tight">
-      Phát Triển Backend & Distributed Systems với ASP.NET Core
+      {{ UIResource.skills_page.backend.title }}
     </h2>
     <p class="font-mono-tech text-xs sm:text-sm text-[var(--accent-text)] font-semibold mb-3">
       Clean Architecture · CQRS / MediatR · Message Broker · In-Memory Caching
     </p>
-    <p class="text-[var(--text-2)] text-sm sm:text-base max-w-4xl leading-relaxed">
-      1+ năm kinh nghiệm phát triển backend thực tế tại công ty phần mềm với <strong>ASP.NET Core 8 / .NET</strong>, thiết kế RESTful API chuẩn Enterprise và xây dựng kiến trúc phân tán theo mô hình <strong>Clean Architecture & CQRS</strong>. Làm chủ xử lý luồng công việc bất đồng bộ quy mô lớn với <strong>RabbitMQ</strong>, tối ưu hóa truy xuất dữ liệu với bộ nhớ đệm phân tán <strong>Redis</strong>, lưu trữ dữ liệu với <strong>PostgreSQL & MongoDB</strong>, truyền thông thời gian thực với <strong>SignalR/WebSocket</strong> và đảm bảo chất lượng với Unit/Integration Testing.
+    <p class="text-[var(--text-2)] text-sm sm:text-base max-w-4xl leading-relaxed" [innerHTML]="UIResource.skills_page.backend.desc">
     </p>
   </div>
 
@@ -933,7 +929,7 @@
         <div>
           <div class="flex items-center justify-between mb-2.5">
             <span class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider">
-              01. FRAMEWORK & KIẾN TRÚC
+              {{ UIResource.skills_page.backend.group1_title }}
             </span>
             <span class="text-[10px] font-mono-tech text-[var(--text-3)]">ARCHITECTURE</span>
           </div>
@@ -960,7 +956,7 @@
         <div>
           <div class="flex items-center justify-between mb-2.5">
             <span class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider">
-              02. LƯU TRỮ, CACHE & MESSAGE QUEUE
+              {{ UIResource.skills_page.backend.group2_title }}
             </span>
             <span class="text-[10px] font-mono-tech text-[var(--text-3)]">ASYNC BUS</span>
           </div>
@@ -987,7 +983,7 @@
         <div>
           <div class="flex items-center justify-between mb-2.5">
             <span class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider">
-              03. BẢO MẬT, THỜI GIAN THỰC & KIỂM THỬ
+              {{ UIResource.skills_page.backend.group3_title }}
             </span>
             <span class="text-[10px] font-mono-tech text-[var(--text-3)]">TESTING</span>
           </div>
@@ -1147,13 +1143,12 @@
       <span class="w-8 h-[2px] bg-[var(--accent)]"></span>
     </div>
     <h2 class="font-mono-tech text-2xl sm:text-3xl md:text-4xl text-[var(--text-1)] font-bold mb-3 tracking-tight">
-      Hệ Thống Điều Phối 8 Giai Đoạn Từ Khảo Sát Đến Tự Phục Hồi
+      {{ UIResource.skills_page.ai_orchestrator.title }}
     </h2>
     <p class="font-mono-tech text-xs sm:text-sm text-[var(--accent-text)] font-semibold mb-3">
       Claude Code · ChatGPT · Gemini · MCP & Skills · 8-Phase Lifecycle · Autonomous Self-Healing
     </p>
-    <p class="text-[var(--text-2)] text-sm sm:text-base max-w-4xl leading-relaxed">
-      AI không phải là một bước độc lập — mà là <strong>Lớp Điều Phối Thông Minh (Orchestration Layer)</strong> kiểm soát và tăng tốc toàn bộ 8 giai đoạn của vòng đời kỹ thuật phần mềm và vận hành hạ tầng: từ <em>Khảo sát yêu cầu (Discover) &rarr; Thiết kế kiến trúc (Architect) &rarr; Thực thi mã nguồn (Implement) &rarr; Kiểm thử đa tầng (Verify) &rarr; Đóng gói CI/CD (Build) &rarr; Quét an ninh DevSecOps (Security) &rarr; Triển khai hạ tầng (Deploy) &rarr; Vận hành và tự động chữa lành sự cố (Operate & Self-Healing)</em>.
+    <p class="text-[var(--text-2)] text-sm sm:text-base max-w-4xl leading-relaxed" [innerHTML]="UIResource.skills_page.ai_orchestrator.desc">
     </p>
   </div>
 
@@ -1164,52 +1159,52 @@
     <div class="lg:col-span-5 p-6 rounded-md border border-[var(--border)] bg-[var(--surface)] flex flex-col justify-between shadow-xs scroll-reveal-item delay-100">
       <div>
         <div class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider mb-4">
-          QUY TRÌNH KỸ THUẬT ĐÓNG GÓI TỪ A &rarr; Z (8 PHASES)
+          {{ UIResource.skills_page.ai_orchestrator.process_label }}
         </div>
 
         <div class="space-y-3">
-          
+
           <!-- Pillar 1: Discovery & Architecture -->
           <div class="p-3 rounded dialogue-card border-l-2 border-l-[var(--accent)]">
             <div class="flex items-center justify-between">
-              <span class="font-bold text-[#F5F5F5] text-xs">Phases 01 &rarr; 02: Khảo Sát & Thiết Kế Kiến Trúc</span>
+              <span class="font-bold text-[#F5F5F5] text-xs">{{ UIResource.skills_page.ai_orchestrator.pillars[0].title }}</span>
               <span class="text-[10px] text-[#7ED957] font-semibold bg-[#7ED957]/10 px-1.5 py-0.2 rounded border border-[#7ED957]/30">ARCHITECT</span>
             </div>
             <div class="text-[11px] text-[#888] mt-1">
-              Phân tích yêu cầu, tra cứu 1M+ token tài liệu RFC, thiết kế kiến trúc phân tán CQRS, mô hình dữ liệu PostgreSQL/Redis và sizing cụm Azure AKS.
+              {{ UIResource.skills_page.ai_orchestrator.pillars[0].desc }}
             </div>
           </div>
 
           <!-- Pillar 2: Implementation & Rigorous Testing -->
           <div class="p-3 rounded dialogue-card border-l-2 border-l-[#38bdf8]">
             <div class="flex items-center justify-between">
-              <span class="font-bold text-[#F5F5F5] text-xs">Phases 03 &rarr; 04: Thực Thi Mã Nguồn & Testing Toàn Diện</span>
+              <span class="font-bold text-[#F5F5F5] text-xs">{{ UIResource.skills_page.ai_orchestrator.pillars[1].title }}</span>
               <span class="text-[10px] text-[#38bdf8] font-semibold bg-[#38bdf8]/10 px-1.5 py-0.2 rounded border border-[#38bdf8]/30">TESTING</span>
             </div>
             <div class="text-[11px] text-[#888] mt-1">
-              Claude Code CLI thao tác qua MCP sinh mã nguồn .NET 8, chạy tự động Unit Test (xUnit), E2E Playwright và kích hoạt vòng lặp tự sửa lỗi khi test fail.
+              {{ UIResource.skills_page.ai_orchestrator.pillars[1].desc }}
             </div>
           </div>
 
           <!-- Pillar 3: CI/CD Build & DevSecOps Security Scan -->
           <div class="p-3 rounded dialogue-card border-l-2 border-l-[#22c55e]">
             <div class="flex items-center justify-between">
-              <span class="font-bold text-[#F5F5F5] text-xs">Phases 05 &rarr; 06: Đóng Gói CI/CD & An Ninh DevSecOps</span>
+              <span class="font-bold text-[#F5F5F5] text-xs">{{ UIResource.skills_page.ai_orchestrator.pillars[2].title }}</span>
               <span class="text-[10px] text-[#22c55e] font-semibold bg-[#22c55e]/10 px-1.5 py-0.2 rounded border border-[#22c55e]/30">DEVSECOPS</span>
             </div>
             <div class="text-[11px] text-[#888] mt-1">
-              Jenkins CI build Docker image đa tầng, quét mã tĩnh SAST SonarQube, quét CVE Trivy, quét rò rỉ bí mật Gitleaks đạt chuẩn OWASP Top 10.
+              {{ UIResource.skills_page.ai_orchestrator.pillars[2].desc }}
             </div>
           </div>
 
           <!-- Pillar 4: Production Deployment & Self-Healing Ops -->
           <div class="p-3 rounded dialogue-card border-l-2 border-l-[#A855F7]">
             <div class="flex items-center justify-between">
-              <span class="font-bold text-[#F5F5F5] text-xs">Phases 07 &rarr; 08: Triển Khai Hạ Tầng & Tự Phục Hồi</span>
+              <span class="font-bold text-[#F5F5F5] text-xs">{{ UIResource.skills_page.ai_orchestrator.pillars[3].title }}</span>
               <span class="text-[10px] text-[#A855F7] font-semibold bg-[#A855F7]/10 px-1.5 py-0.2 rounded border border-[#A855F7]/30">SELF-HEALING</span>
             </div>
             <div class="text-[11px] text-[#888] mt-1">
-              Rolling update không gián đoạn lên Azure AKS, cấu hình Cisco Trunk VLAN 10. AI theo dõi Prometheus/Zabbix, tự chẩn đoán và chữa lành lỗi trong 4s.
+              {{ UIResource.skills_page.ai_orchestrator.pillars[3].desc }}
             </div>
           </div>
 
@@ -1420,7 +1415,7 @@
           <div class="flex items-center justify-between pb-2 mb-3 border-b border-[#202530] flex-wrap gap-1.5">
             <div class="flex items-center gap-1 flex-wrap">
               <button 
-                *ngFor="let s of aiSteps"
+                *ngFor="let s of aiSteps; trackBy: trackByStep"
                 (click)="selectAiStep(s.step)"
                 class="px-2 py-0.5 text-[9.5px] rounded border border-[#2d3442] hover:border-[var(--accent)] transition-all cursor-pointer step-pill"
                 [style.background]="currentAiStep === s.step ? 'var(--accent)' : 'transparent'"
@@ -1454,7 +1449,7 @@
           <!-- Phase Dialogue / Telemetry Log Messages -->
           <div class="space-y-2 terminal-scroll overflow-x-auto max-h-[190px] pr-1">
             
-            <div *ngFor="let log of currentStepData.logs" class="p-2 rounded dialogue-card border-l-2" [style.borderLeftColor]="log.badgeColor">
+            <div *ngFor="let log of currentStepData.logs; trackBy: trackByLog" class="p-2 rounded dialogue-card border-l-2" [style.borderLeftColor]="log.badgeColor">
               <div class="flex items-center justify-between mb-1">
                 <span class="font-bold text-[10px]" [style.color]="log.badgeColor">
                   [{{ log.sender }}]
@@ -1504,15 +1499,9 @@
           // GRAND UNIFIED ENTERPRISE BLUEPRINT
         </div>
         <h3 class="font-mono-tech text-2xl sm:text-3xl font-bold text-[var(--text-1)] tracking-tight">
-          Hệ Sinh Thái Năng Lực Hội Tụ (4 Chuyên Môn + AI Layer)
+          {{ UIResource.skills_page.convergence.title }}
         </h3>
-        <p class="text-[var(--text-2)] text-xs sm:text-sm mt-2 max-w-3xl leading-relaxed">
-          Không đơn thuần là các kỹ năng phân mảnh — mà là sự tích hợp cộng hưởng mạch lạc giữa 
-          <span class="text-[#7ED957] font-semibold">Hạ tầng Máy chủ (01)</span>, 
-          <span class="text-[#38BDF8] font-semibold">Mạng Doanh nghiệp & An ninh (02)</span>, 
-          <span class="text-[#F59E0B] font-semibold">Cloud & DevOps (03)</span>, 
-          <span class="text-[#A855F7] font-semibold">Backend CQRS Microservices (04)</span> 
-          được khuếch đại 10x bởi <span class="text-[var(--accent-text)] font-semibold">Bộ Não Điều Phối AI Orchestrator</span>.
+        <p class="text-[var(--text-2)] text-xs sm:text-sm mt-2 max-w-3xl leading-relaxed" [innerHTML]="UIResource.skills_page.convergence.desc">
         </p>
       </div>
 
@@ -1890,7 +1879,7 @@
         <div class="lg:col-span-2 space-y-4">
           <div>
             <div class="text-[11px] font-mono-tech text-[var(--text-3)] uppercase font-semibold mb-1">
-              // VAI TRÒ VẬN HÀNH TRONG HỆ SINH THÁI DOANH NGHIỆP:
+              {{ UIResource.skills_page.convergence.role_label }}
             </div>
             <p class="text-xs sm:text-sm text-[var(--text-1)] leading-relaxed">
               {{ selectedDomainData.operationalRole }}
@@ -1899,11 +1888,11 @@
 
           <div>
             <div class="text-[11px] font-mono-tech text-[var(--text-3)] uppercase font-semibold mb-2">
-              // VŨ KHÍ CÔNG NGHỆ CỐT LÕI (CORE STACK):
+              {{ UIResource.skills_page.convergence.core_stack_label }}
             </div>
             <div class="flex flex-wrap gap-2">
               <span
-                *ngFor="let skill of selectedDomainData.coreSkills"
+                *ngFor="let skill of selectedDomainData.coreSkills; trackBy: trackBySkill"
                 class="px-2.5 py-1 rounded text-xs font-mono-tech border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-2)]"
               >
                 {{ skill }}
@@ -1915,7 +1904,7 @@
         <!-- 3 Key Operational Metrics -->
         <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-2.5">
           <div
-            *ngFor="let metric of selectedDomainData.metrics"
+            *ngFor="let metric of selectedDomainData.metrics; trackBy: trackByMetric"
             class="p-3 rounded-lg border border-[var(--border)] bg-[var(--surface-2)]"
           >
             <div class="text-[10px] font-mono-tech text-[var(--text-3)] uppercase">{{ metric.label }}</div>
@@ -1930,16 +1919,16 @@
       <!-- Cross-Domain Synergies Table -->
       <div class="mb-5">
         <div class="text-[11px] font-mono-tech text-[var(--text-3)] uppercase font-semibold mb-3">
-          // ĐIỂM GIAO THOA CỘNG HƯỞNG VỚI CÁC TRỤ CỘT KHÁC (CROSS-DOMAIN SYNERGIES):
+          {{ UIResource.skills_page.convergence.synergies_label }}
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-3 font-mono-tech text-xs">
           <div
-            *ngFor="let syn of selectedDomainData.synergies"
+            *ngFor="let syn of selectedDomainData.synergies; trackBy: trackBySynergy"
             class="p-4 rounded-lg border border-[var(--border)] bg-[var(--surface-2)] flex flex-col justify-between"
           >
             <div>
               <div class="flex items-center justify-between text-[10px] text-[var(--text-3)] mb-1">
-                <span>LIÊN KẾT [{{ syn.partnerNum }}]</span>
+                <span>{{ UIResource.skills_page.convergence.link_label }} [{{ syn.partnerNum }}]</span>
                 <span class="text-[var(--accent-text)] font-semibold">{{ syn.protocol }}</span>
               </div>
               <div class="font-bold text-[var(--text-1)] mb-1.5">{{ syn.title }}</div>
@@ -1954,7 +1943,7 @@
         <span class="text-xl">⚡</span>
         <div>
           <div class="font-mono-tech text-xs font-bold text-[var(--accent-text)] uppercase mb-1">
-            AI ORCHESTRATOR SUPERCHARGE: TÁC ĐỘNG NHÂN BỘI 10X NĂNG SUẤT
+            {{ UIResource.skills_page.convergence.supercharge_label }}
           </div>
           <p class="text-xs text-[var(--text-1)] leading-relaxed">
             {{ selectedDomainData.aiSupercharge }}
@@ -1979,11 +1968,11 @@
           SYSTEMS & SERVERS
         </h5>
         <p class="text-xs text-[var(--text-2)] mt-1.5 leading-relaxed">
-          Quản trị máy chủ vật lý, ảo hóa VMware/Hyper-V, Active Directory & Entra ID, backup Veeam và Zabbix telemetry.
+          {{ convergenceDomains[0].headline }}
         </p>
         <div class="mt-4 pt-3 border-t border-[var(--border)] flex items-center justify-between text-[10px] font-mono-tech text-[var(--text-3)]">
           <span>Uptime SLA: 99.98%</span>
-          <span class="text-[var(--accent-text)] font-semibold">CHI TIẾT →</span>
+          <span class="text-[var(--accent-text)] font-semibold">{{ UIResource.skills_page.convergence.detail_label }}</span>
         </div>
       </div>
 
@@ -2000,11 +1989,11 @@
           ENTERPRISE NETWORK
         </h5>
         <p class="text-xs text-[var(--text-2)] mt-1.5 leading-relaxed">
-          Cisco L3 switching & routing, tường lửa FortiGate NGFW, UniFi SDN, phân tách VLAN, IPsec VPN và 802.1X Zero-Trust.
+          {{ convergenceDomains[1].headline }}
         </p>
         <div class="mt-4 pt-3 border-t border-[var(--border)] flex items-center justify-between text-[10px] font-mono-tech text-[var(--text-3)]">
           <span>Capacity: 20Gbps</span>
-          <span class="text-[var(--accent-text)] font-semibold">CHI TIẾT →</span>
+          <span class="text-[var(--accent-text)] font-semibold">{{ UIResource.skills_page.convergence.detail_label }}</span>
         </div>
       </div>
 
@@ -2021,11 +2010,11 @@
           CLOUD & DEVOPS
         </h5>
         <p class="text-xs text-[var(--text-2)] mt-1.5 leading-relaxed">
-          Azure Kubernetes Service (AKS), Docker containerization, Jenkins & GitHub Actions CI/CD, Helm và Terraform IaC.
+          {{ convergenceDomains[2].headline }}
         </p>
         <div class="mt-4 pt-3 border-t border-[var(--border)] flex items-center justify-between text-[10px] font-mono-tech text-[var(--text-3)]">
-          <span>Lead Time: &lt; 4 Phút</span>
-          <span class="text-[var(--accent-text)] font-semibold">CHI TIẾT →</span>
+          <span>Lead Time: {{ convergenceDomains[2].metrics[0].value }}</span>
+          <span class="text-[var(--accent-text)] font-semibold">{{ UIResource.skills_page.convergence.detail_label }}</span>
         </div>
       </div>
 
@@ -2042,11 +2031,11 @@
           BACKEND & CQRS
         </h5>
         <p class="text-xs text-[var(--text-2)] mt-1.5 leading-relaxed">
-          ASP.NET Core 8 Clean Architecture, CQRS & MediatR, RabbitMQ Message Broker, PostgreSQL ACID và Redis Cache.
+          {{ convergenceDomains[3].headline }}
         </p>
         <div class="mt-4 pt-3 border-t border-[var(--border)] flex items-center justify-between text-[10px] font-mono-tech text-[var(--text-3)]">
           <span>Throughput: 10k+ RPS</span>
-          <span class="text-[var(--accent-text)] font-semibold">CHI TIẾT →</span>
+          <span class="text-[var(--accent-text)] font-semibold">{{ UIResource.skills_page.convergence.detail_label }}</span>
         </div>
       </div>
 
@@ -2059,20 +2048,20 @@
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[var(--border)] pb-4 mb-6">
         <div>
           <div class="font-mono-tech text-[10px] font-bold text-[var(--accent-text)] uppercase tracking-wider mb-1">
-            // BẰNG CHỨNG THỰC CHIẾN LIÊN CHUYÊN MÔN
+            {{ UIResource.skills_page.convergence.scenarios_label }}
           </div>
           <h4 class="font-mono-tech text-lg sm:text-xl font-bold text-[var(--text-1)]">
-            Kịch Bản Vận Hành Hệ Thống Toàn Diện (End-to-End Synergy Scenarios)
+            {{ UIResource.skills_page.convergence.scenarios_title }}
           </h4>
           <p class="text-xs text-[var(--text-2)] mt-1">
-            Minh chứng cách 4 chuyên môn và AI Agent phối hợp nhịp nhàng trong các tình huống thử thách gắt gao nhất.
+            {{ UIResource.skills_page.convergence.scenarios_desc }}
           </p>
         </div>
 
         <!-- Scenario Tab Selection -->
         <div class="flex flex-wrap gap-2 font-mono-tech text-xs">
           <button
-            *ngFor="let sc of convergenceScenarios; let i = index"
+            *ngFor="let sc of convergenceScenarios; let i = index; trackBy: trackByScenario"
             type="button"
             (click)="selectScenario(i)"
             [class.bg-[var(--accent)]]="activeScenarioIndex === i"
@@ -2082,7 +2071,7 @@
             [class.text-[var(--text-2)]]="activeScenarioIndex !== i"
             class="px-3 py-1.5 rounded border border-[var(--border)] transition-all hover:border-[var(--accent)]"
           >
-            KỊCH BẢN {{ i + 1 }}
+            {{ UIResource.skills_page.convergence.scenario_tab_prefix }} {{ i + 1 }}
           </button>
           
           <button
@@ -2092,7 +2081,7 @@
             [class.bg-[rgba(126,217,87,0.15)]]="isScenarioAutoPlaying"
             [class.text-[var(--accent-text)]]="true"
           >
-            {{ isScenarioAutoPlaying ? '⏸ TẠM DỪNG' : '▶ CHẠY MÔ PHỎNG LUỒNG' }}
+            {{ isScenarioAutoPlaying ? UIResource.skills_page.convergence.pause_label : UIResource.skills_page.convergence.play_label }}
           </button>
         </div>
       </div>
@@ -2113,7 +2102,7 @@
           <div class="text-[11px] text-[var(--text-2)]">{{ activeScenario.description }}</div>
         </div>
         <div class="text-right self-start sm:self-center shrink-0">
-          <div class="text-[10px] text-[var(--text-3)]">THỜI GIAN XỬ LÝ (MTTR):</div>
+          <div class="text-[10px] text-[var(--text-3)]">{{ UIResource.skills_page.convergence.mttr_label }}</div>
           <div class="text-sm font-bold text-[var(--accent-text)]">{{ activeScenario.totalTime }}</div>
         </div>
       </div>
@@ -2121,7 +2110,7 @@
       <!-- 5-Step Timeline Cards -->
       <div class="space-y-3 font-mono-tech">
         <div
-          *ngFor="let step of activeScenario.steps; let sIdx = index"
+          *ngFor="let step of activeScenario.steps; let sIdx = index; trackBy: trackByScenarioStep"
           [class.step-active]="activeScenarioStepIdx === sIdx"
           [style.borderLeftColor]="step.badgeColor"
           class="scenario-step-item p-4 rounded-lg border border-[var(--border)] bg-[var(--surface-2)] transition-all"

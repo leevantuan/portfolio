@@ -1,8 +1,25 @@
 <!-- Floating Corner Infrastructure HUD (Image 2 Exact High-Density Dotted Matrix) -->
 <div 
-  class="hud-panel fixed bottom-3 right-3 sm:bottom-4 sm:right-4 z-40 rounded-xl border border-[var(--border)] bg-[var(--surface)]/95 backdrop-blur-md shadow-2xl transition-all duration-300 select-none overflow-hidden w-[340px] max-w-[92vw]"
+  class="hud-panel fixed bottom-3 right-3 sm:bottom-4 sm:right-4 z-[45] rounded-xl border border-[var(--border)] bg-[var(--surface)]/95 backdrop-blur-md shadow-2xl transition-all duration-300 select-none overflow-hidden w-[340px] max-w-[92vw]"
   [class.hud-collapsed]="isMinimized"
 >
+  <!-- Animated Cyber Green Running Border Beam -->
+  <svg class="hud-border-svg pointer-events-none absolute inset-0 w-full h-full z-50 rounded-xl" xmlns="http://www.w3.org/2000/svg">
+    <rect 
+      x="1" 
+      y="1" 
+      width="calc(100% - 2px)" 
+      height="calc(100% - 2px)" 
+      rx="11" 
+      fill="none" 
+      stroke="var(--accent)" 
+      stroke-width="1.8" 
+      pathLength="100"
+      stroke-dasharray="20 80"
+      stroke-linecap="round"
+      class="hud-running-trace"
+    />
+  </svg>
   <!-- HUD Header with Technical Notches (//) & Legend -->
   <div class="flex items-center justify-between px-3 py-2 border-b border-[var(--border)] bg-[var(--surface-2)]">
     <div class="flex items-center gap-1.5 font-mono-tech text-[10.5px] font-extrabold tracking-wider text-[var(--text-1)]">

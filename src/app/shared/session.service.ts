@@ -6,7 +6,7 @@ import { Injectable, signal } from '@angular/core';
 export class SessionService {
   // Default to Dark Console (07B) as requested
   currentTheme = signal<'dark' | 'light'>('dark');
-  currentLang = signal<'VI' | 'ENG' | 'ZH'>('VI');
+  currentLang = signal<'VI' | 'ENG' | 'ZH'>('ENG');
 
   constructor() {
     this.initTheme();
@@ -28,7 +28,7 @@ export class SessionService {
       if (savedLang && ['VI', 'ENG', 'ZH'].includes(savedLang)) {
         this.currentLang.set(savedLang);
       } else {
-        this.currentLang.set('VI');
+        this.currentLang.set('ENG');
       }
     }
   }

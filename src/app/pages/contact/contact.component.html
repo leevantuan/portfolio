@@ -24,7 +24,7 @@
           Lê Văn Tuấn
         </h3>
         <p class="text-[var(--text-2)] text-sm leading-relaxed mb-6">
-          Sẵn sàng kết nối để thảo luận về các dự án kiến trúc hệ thống phân tán, tối ưu hóa hạ tầng DevOps/Cloud, hoặc cơ hội việc làm Backend & IT System.
+          {{ UIResource.contact_bio }}
         </p>
 
         <!-- Direct Info List -->
@@ -74,7 +74,7 @@
     <div class="lg:col-span-7 p-6 sm:p-8 rounded-md border border-[var(--border)] bg-[var(--surface-2)]">
       <div *ngIf="isSubmitted" class="p-4 mb-4 rounded bg-[var(--accent)]/10 border border-[var(--accent)] text-[var(--accent)] font-mono-tech text-xs flex items-center gap-2">
         <span>✓</span>
-        <span>Cảm ơn bạn! Tin nhắn đã được ghi nhận vào hệ thống. Tôi sẽ phản hồi sớm nhất!</span>
+        <span>{{ UIResource.contact_thanks }}</span>
       </div>
 
       <form (ngSubmit)="onSubmit()" class="flex flex-col gap-4">
@@ -87,7 +87,7 @@
             [(ngModel)]="contactForm.name" 
             name="name" 
             required 
-            placeholder="Lê Văn A"
+            [attr.placeholder]="UIResource.contact_namePlaceholder"
             class="w-full h-10 px-3 rounded-sm bg-[var(--bg)] border border-[var(--border)] text-[var(--text-1)] font-mono-tech text-sm focus:outline-none focus:border-[var(--accent)]"
           />
         </div>
@@ -115,7 +115,7 @@
             name="message" 
             required 
             rows="4" 
-            placeholder="Nội dung trao đổi về dự án hoặc tuyển dụng..."
+            [attr.placeholder]="UIResource.contact_messagePlaceholder"
             class="w-full p-3 rounded-sm bg-[var(--bg)] border border-[var(--border)] text-[var(--text-1)] font-mono-tech text-sm focus:outline-none focus:border-[var(--accent)] resize-none"
           ></textarea>
         </div>

@@ -2,8 +2,28 @@
 .blueprint-grid {
   background-size: 24px 24px;
   background-image: 
-    linear-gradient(to right, rgba(126, 217, 87, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(126, 217, 87, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(126, 217, 87, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(126, 217, 87, 0.04) 1px, transparent 1px);
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.blueprint-grid::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.blueprint-grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.blueprint-grid::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: 3px;
+}
+
+.blueprint-grid::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text-3);
 }
 
 .blueprint-node {
@@ -13,4 +33,128 @@
 .blueprint-node:hover {
   border-color: var(--accent);
   box-shadow: 0 0 12px var(--accent-glow);
+}
+
+/* Animations for Tab 02 & Tab 03 */
+@keyframes flowStepPulse {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(126, 217, 87, 0.25);
+    border-color: rgba(126, 217, 87, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(126, 217, 87, 0.6);
+    border-color: #22c55e;
+  }
+}
+
+.step-card-active {
+  animation: flowStepPulse 1.8s ease-in-out infinite;
+  border-color: #22c55e !important;
+}
+
+@keyframes packetDash {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.animated-dash-line {
+  stroke-dasharray: 4 3;
+  animation: packetDash 0.8s linear infinite;
+}
+
+@keyframes laserScanHorizontal {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.laser-beam-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.laser-beam-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(126, 217, 87, 0.35), transparent);
+  animation: laserScanHorizontal 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes pulseGlowRing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+.pulse-beacon {
+  animation: pulseGlowRing 2s infinite;
+}
+
+@keyframes sparklineWave {
+  0%, 100% {
+    filter: drop-shadow(0 0 3px rgba(34, 197, 94, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 7px rgba(34, 197, 94, 0.8));
+  }
+}
+
+.sparkline-glow-green {
+  animation: sparklineWave 2.5s ease-in-out infinite;
+}
+
+@keyframes sparklineWaveAmber {
+  0%, 100% {
+    filter: drop-shadow(0 0 3px rgba(245, 158, 11, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 7px rgba(245, 158, 11, 0.8));
+  }
+}
+
+.sparkline-glow-amber {
+  animation: sparklineWaveAmber 2.5s ease-in-out infinite;
+}
+
+@keyframes sparklineWavePurple {
+  0%, 100% {
+    filter: drop-shadow(0 0 3px rgba(168, 85, 247, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 7px rgba(168, 85, 247, 0.8));
+  }
+}
+
+.sparkline-glow-purple {
+  animation: sparklineWavePurple 2.5s ease-in-out infinite;
+}
+
+.animate-fade {
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

@@ -59,3 +59,68 @@
   filter: brightness(1.25);
   box-shadow: 0 0 10px var(--accent);
 }
+
+/* ========================================================================= */
+/* GNOME SHELL 26.04 ULTRA-SMOOTH REVEAL MOTION                              */
+/* ========================================================================= */
+.gnome-reveal-item {
+  opacity: 0;
+  transform: translateY(24px) scale(0.96);
+  filter: blur(8px);
+  will-change: transform, opacity, filter;
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gnome-reveal-item.is-revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+.delay-75 { transition-delay: 75ms; }
+.delay-100 { transition-delay: 100ms; }
+.delay-150 { transition-delay: 150ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .gnome-reveal-item {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
+
+/* ========================================================================= */
+/* SYSTEM ROADMAP INFINITE MARQUEE TICKER                                    */
+/* ========================================================================= */
+.marquee-track {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+}
+
+.marquee-content {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  animation: marqueeLoop 28s linear infinite;
+}
+
+.marquee-track:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeLoop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
