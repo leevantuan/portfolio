@@ -1,0 +1,68 @@
+<div class="mobile-hero-container w-full px-4 py-8 border-b border-[var(--border)] bg-[var(--bg)] flex flex-col justify-center">
+  <!-- Status Tag with Single Subtle Radar Pulse Animation -->
+  <div class="mb-4">
+    <span class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[var(--accent)]/10 border border-[var(--accent)]/30 text-[var(--accent)] text-[11px] font-mono-tech font-bold tracking-wider">
+      <!-- Light subtle pulse beacon (ONLY animation on mobile) -->
+      <span class="relative flex h-2 w-2">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-[var(--accent)]"></span>
+      </span>
+      <span>// ONLINE · IT SYSTEM &amp; NETWORK ARCHITECTURE</span>
+    </span>
+  </div>
+
+  <!-- Name & Professional Title -->
+  <div class="space-y-1 mb-4">
+    <div class="font-mono-tech text-xs text-[var(--text-3)] font-semibold tracking-widest uppercase">
+      Lê Văn Tuấn
+    </div>
+    <h1 class="font-mono-tech text-2xl sm:text-3xl font-black text-[var(--text-1)] tracking-tight">
+      IT SYSTEM &amp; NETWORK ENGINEER
+    </h1>
+    <div class="font-mono-tech text-xs sm:text-sm text-[var(--accent-text)] font-bold">
+      Backend Developer &amp; Hybrid Cloud Infrastructure
+    </div>
+  </div>
+
+  <!-- Brief Description -->
+  <p class="text-[var(--text-2)] text-xs sm:text-sm leading-relaxed mb-6">
+    {{ UIResource?.header_description || 'Information Technology engineer specializing in enterprise network & server infrastructure, hybrid cloud virtualization, and high-performance backend systems.' }}
+  </p>
+
+  <!-- Technical Specs Cards (Clean Static Grid) -->
+  <div class="grid grid-cols-2 gap-2 mb-6 font-mono-tech">
+    <div class="p-2.5 rounded bg-[var(--surface)] border border-[var(--border)]">
+      <div class="text-[10px] text-[var(--text-3)] uppercase font-semibold">INFRASTRUCTURE</div>
+      <div class="text-xs font-bold text-[var(--text-1)]">2+ YRS IT INFRA &amp; NETWORKS</div>
+    </div>
+    <div class="p-2.5 rounded bg-[var(--surface)] border border-[var(--border)]">
+      <div class="text-[10px] text-[var(--text-3)] uppercase font-semibold">SOFTWARE &amp; CLOUD</div>
+      <div class="text-xs font-bold text-[var(--text-1)]">1+ YRS DEV &amp; CLOUD</div>
+    </div>
+    <div class="p-2.5 rounded bg-[var(--surface)] border border-[var(--border)]">
+      <div class="text-[10px] text-[var(--text-3)] uppercase font-semibold">VERIFICATION</div>
+      <div class="text-xs font-bold text-[var(--accent)]">8+ CERTIFICATIONS</div>
+    </div>
+    <div class="p-2.5 rounded bg-[var(--surface)] border border-[var(--border)]">
+      <div class="text-[10px] text-[var(--text-3)] uppercase font-semibold">FOREIGN LANGUAGES</div>
+      <div class="text-xs font-bold text-[var(--text-1)]">EN (TOEIC) · ZH (HSK)</div>
+    </div>
+  </div>
+
+  <!-- Action CTA Buttons -->
+  <div class="flex flex-col sm:flex-row gap-2.5 font-mono-tech text-xs">
+    <button
+      (click)="onViewSpecs()"
+      class="w-full py-2.5 px-4 rounded bg-[var(--accent)] text-[#0B0B0B] font-bold text-center border border-[var(--accent)] flex items-center justify-center gap-2 cursor-pointer shadow-xs"
+    >
+      <span>&gt; VIEW ARCHITECTURE</span>
+      <span>⬡</span>
+    </button>
+    <button
+      (click)="scrollToContact()"
+      class="w-full py-2.5 px-4 rounded bg-[var(--surface-2)] text-[var(--text-1)] font-bold text-center border border-[var(--border)] hover:border-[var(--accent)] transition-colors cursor-pointer"
+    >
+      [ CONTACT &amp; RESUME ]
+    </button>
+  </div>
+</div>

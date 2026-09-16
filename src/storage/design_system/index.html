@@ -1835,7 +1835,115 @@
       border-radius: 4px !important;
     }
 
-    
+    /* ==========================================================================
+       AGENT CORE — ported content (scoped under .ac-content, uses host tone
+       tokens directly so it re-colors with the tone/family switcher above)
+       ========================================================================== */
+    .ac-content h2.sec{font-size:16px;font-weight:800;letter-spacing:-.01em;margin:26px 0 12px;display:flex;align-items:center;gap:8px;color:var(--text-primary)}
+    .ac-content h2.sec:first-child{margin-top:0}
+    .ac-content h2.sec .n{font-size:11px;color:var(--text-tertiary);font-weight:700}
+    .ac-content h3{font-size:14px;margin:0 0 6px;font-weight:800;color:var(--text-primary)}
+    .ac-content p.desc{color:var(--text-secondary);margin:0;font-size:13.5px;line-height:1.6}
+    .ac-content .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+    .ac-content .c12{grid-column:span 12}.ac-content .c8{grid-column:span 8}.ac-content .c6{grid-column:span 6}.ac-content .c4{grid-column:span 4}.ac-content .c3{grid-column:span 3}
+    .ac-content .card{background:var(--surface-card);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:18px;box-shadow:var(--shadow-sm);transition:transform .2s ease, box-shadow .2s ease}
+    .ac-content .card.tight{padding:14px 16px}
+    .ac-content .statrow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+    .ac-content .stat{background:var(--surface-card);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:16px}
+    .ac-content .stat b{display:block;font-size:22px;font-weight:800;letter-spacing:-.02em;color:var(--text-primary)}
+    .ac-content .stat span{font-size:11.5px;color:var(--text-tertiary)}
+
+    .ac-content .tag{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;border-radius:99px;padding:3px 9px;background:var(--surface-subtle);color:var(--text-secondary);border:1px solid var(--border-color)}
+    .ac-content .tag.good{background:var(--status-success-bg);color:var(--status-success);border-color:transparent}
+    .ac-content .tag.warn{background:var(--status-warning-bg);color:var(--status-warning);border-color:transparent}
+    .ac-content .tag.bad{background:var(--status-error-bg);color:var(--status-error);border-color:transparent}
+    .ac-content .tag.info{background:var(--badge-bg);color:var(--badge-color);border-color:transparent}
+
+    .ac-content .agent{display:flex;gap:13px}
+    .ac-content .agent .icon{width:38px;height:38px;flex:none;border-radius:10px;background:var(--color-primary-subtle);color:var(--color-primary);display:grid;place-items:center;font-weight:800;font-size:14px}
+    .ac-content .agent.gap-icon .icon{background:var(--surface-subtle);color:var(--text-tertiary);border:1px dashed var(--border-color)}
+
+    .ac-content .flow{display:flex;align-items:stretch;gap:8px;overflow-x:auto;padding:10px 8px 14px 8px;margin:-6px -4px 0 -4px}
+    .ac-content .node{min-width:128px;border:1px solid var(--border-color);border-radius:10px;padding:10px 11px;background:var(--surface-card);flex:none;transition:box-shadow .25s ease, transform .25s ease, border-color .25s ease, opacity .25s ease;position:relative}
+    .ac-content .node small{display:block;font-size:9.5px;color:var(--text-tertiary);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+    .ac-content .node b{display:block;font-size:12px;margin:4px 0 3px;color:var(--text-primary)}
+    .ac-content .node em{font-style:normal;font-size:10.5px;color:var(--text-secondary);line-height:1.35}
+    .ac-content .node.g{background:var(--status-success-bg);border-color:transparent}
+    .ac-content .node.b{background:var(--badge-bg);border-color:transparent}
+    .ac-content .node.a{background:var(--status-warning-bg);border-color:transparent}
+    .ac-content .arrow{display:grid;place-items:center;color:var(--text-tertiary);font-size:15px;flex:none;position:relative;overflow:visible}
+    .ac-content .arrow.on::after{content:'';position:absolute;top:50%;left:-3px;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:var(--color-primary);box-shadow:0 0 8px var(--color-primary);animation:acFlowDot 1.15s linear infinite}
+    @keyframes acFlowDot{0%{left:-3px;opacity:0}12%{opacity:1}88%{opacity:1}100%{left:21px;opacity:0}}
+    @keyframes acPulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+    .ac-content .stepper-toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+    .ac-content .flow-play-btn{width:30px;height:30px;border-radius:50%;border:1px solid var(--border-color);background:var(--surface-card);color:var(--color-primary);cursor:pointer;display:grid;place-items:center;font-size:12px;flex:none;transition:.15s}
+    .ac-content .flow-play-btn:hover{border-color:var(--color-primary)}
+    .ac-content .flow-caption{font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--text-tertiary);text-transform:uppercase;display:flex;align-items:center;gap:6px;flex:none}
+    .ac-content .flow-caption .pulse{width:6px;height:6px;border-radius:50%;background:var(--color-primary);box-shadow:0 0 6px var(--color-primary);animation:acPulse 1.6s infinite}
+    .ac-content .stepper-pills{display:flex;gap:4px;overflow-x:auto;flex:1;min-width:0;scrollbar-width:none}
+    .ac-content .stepper-pills::-webkit-scrollbar{display:none}
+    .ac-content .spill{flex:none;font-size:10.5px;font-weight:700;color:var(--text-tertiary);padding:5px 10px;border-radius:999px;border:1px solid var(--border-color);cursor:pointer;white-space:nowrap;transition:.15s;background:var(--surface-card)}
+    .ac-content .spill:hover{color:var(--text-primary);border-color:var(--color-primary)}
+    .ac-content .spill.active{color:var(--text-on-accent);background:var(--color-primary);border-color:var(--color-primary)}
+
+    .ac-content .flow.flow-anim .node{cursor:pointer}
+    .ac-content .flow.flow-anim .node .stepbadge{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:var(--surface-subtle);color:var(--text-tertiary);font-size:9px;font-weight:800;margin-right:5px}
+    .ac-content .flow.flow-anim .node.done{opacity:.7}
+    .ac-content .flow.flow-anim .node.done .stepbadge{background:var(--color-primary);color:var(--text-on-accent)}
+    .ac-content .flow.flow-anim .node.active{border-color:var(--color-primary) !important;box-shadow:0 0 0 3px var(--color-primary-subtle), 0 8px 20px -4px rgba(0,0,0,.35);transform:translateY(-4px);z-index:3}
+    .ac-content .flow.flow-anim .node.active .stepbadge{background:var(--color-primary);color:var(--text-on-accent);box-shadow:0 0 8px var(--color-primary)}
+
+    .ac-content .agent-row{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 12px}
+    .ac-content .apill{font-size:10.5px;font-weight:700;padding:5px 11px;border-radius:999px;border:1px solid var(--border-color);color:var(--text-tertiary);transition:.2s;background:var(--surface-card)}
+    .ac-content .apill.on{color:var(--color-primary);background:var(--color-primary-subtle);border-color:transparent}
+
+    .ac-content .log-panel{background:#0b0f14;color:#c9dccf;border-radius:10px;padding:12px 14px;font:12px/1.75 var(--font-mono);max-height:190px;overflow-y:auto}
+    .ac-content .log-panel .logline{opacity:.5;transition:opacity .2s}
+    .ac-content .log-panel .logline.cur{opacity:1}
+    .ac-content .log-panel .ltag{color:#7fd7ac;font-weight:700;margin-right:5px}
+
+    .ac-content table{width:100%;border-collapse:collapse;font-size:12.5px}
+    .ac-content th,.ac-content td{padding:9px 10px;border-bottom:1px solid var(--border-color);text-align:left;vertical-align:top}
+    .ac-content th{color:var(--text-tertiary);font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;font-weight:700}
+    .ac-content tr:last-child td{border-bottom:none}
+    .ac-content td.mono{font:12px var(--font-mono);color:var(--text-secondary)}
+
+    .ac-content .code{background:#0b0f14;color:#c9dccf;border-radius:10px;padding:14px 16px;font:12.3px/1.65 var(--font-mono);white-space:pre-wrap;overflow-x:auto}
+
+    .ac-content .callout{padding:13px 15px;border-radius:10px;border:1px solid var(--border-color);border-left:3px solid var(--color-primary);background:var(--color-primary-subtle);font-size:13px;line-height:1.6;color:var(--text-primary)}
+    .ac-content .callout.warn{border-left-color:var(--status-warning);background:var(--status-warning-bg);color:var(--status-warning)}
+    .ac-content .callout.bad{border-left-color:var(--status-error);background:var(--status-error-bg);color:var(--status-error)}
+    .ac-content .callout b{color:inherit}
+
+    .ac-content .steps{display:grid;gap:10px}
+    .ac-content .step{display:grid;grid-template-columns:26px 1fr;gap:11px}
+    .ac-content .step .n{width:26px;height:26px;border-radius:50%;background:var(--color-primary);color:var(--text-on-accent);display:grid;place-items:center;font-size:11px;font-weight:800;flex:none}
+    .ac-content .step b{font-size:12.5px;display:block;color:var(--text-primary)}
+    .ac-content .step p{font-size:12px;margin:2px 0 0;color:var(--text-secondary)}
+
+    .ac-content details.acc{border:1px solid var(--border-color);border-radius:10px;background:var(--surface-card);margin-bottom:8px;overflow:hidden}
+    .ac-content details.acc summary{list-style:none;cursor:pointer;padding:12px 15px;display:flex;align-items:center;justify-content:space-between;font-weight:700;font-size:13px;color:var(--text-primary)}
+    .ac-content details.acc summary::-webkit-details-marker{display:none}
+    .ac-content details.acc summary:after{content:"+";color:var(--text-tertiary);font-size:16px;font-weight:400}
+    .ac-content details.acc[open] summary:after{content:"–"}
+    .ac-content details.acc .body{padding:0 15px 15px;font-size:13px;color:var(--text-secondary);line-height:1.65}
+    .ac-content details.acc .body ul{margin:6px 0;padding-left:18px}
+    .ac-content details.acc .body li{margin:4px 0}
+
+    .ac-content ul.plain{margin:6px 0;padding-left:18px;color:var(--text-secondary);font-size:13px;line-height:1.7}
+    .ac-content ul.plain li b{color:var(--text-primary)}
+    .ac-content ol.plain{margin:6px 0;padding-left:20px;color:var(--text-secondary);font-size:13px;line-height:1.7}
+
+    .ac-content .reveal-item{opacity:0;transform:translateY(12px);transition:opacity .5s ease, transform .5s ease}
+    .ac-content .reveal-item.in{opacity:1;transform:translateY(0)}
+
+    @media(max-width:980px){
+      .ac-content .c8,.ac-content .c6,.ac-content .c4,.ac-content .c3{grid-column:span 12}
+      .ac-content .statrow{grid-template-columns:repeat(2,1fr)}
+    }
+
+
     /* Topbar Integrated Tone Control */
     .topbar-tone-control {
       display: flex;
@@ -3002,6 +3110,321 @@
       justify-content: center;
       font-size: 11px;
     }
+
+    /* ==========================================================================
+       HÌNH 1: INFRASTRUCTURE OVERVIEW (LIVE IT TOPOLOGY - TONE SYNCED)
+       ========================================================================== */
+    .infra-overview-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg, 16px);
+      padding: 16px 20px 18px 20px;
+      margin-top: 14px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+
+    .infra-overview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .infra-overview-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 2px 0;
+      letter-spacing: -0.01em;
+    }
+
+    .infra-overview-subtitle {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    .infra-svg-canvas {
+      width: 100%;
+      height: auto;
+      max-height: 520px;
+      display: block;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md, 12px);
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+
+    @keyframes cablePulseFlow {
+      0% {
+        stroke-dashoffset: 48;
+      }
+      100% {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .cable-pulse-animated {
+      stroke: var(--color-primary) !important;
+      stroke-dasharray: 6 18;
+      animation: cablePulseFlow 1.2s linear infinite;
+      filter: drop-shadow(0 0 6px var(--color-primary));
+    }
+
+    .cable-pulse-animated-alt {
+      stroke: var(--color-primary) !important;
+      stroke-dasharray: 8 20;
+      animation: cablePulseFlow 1.6s linear infinite;
+      filter: drop-shadow(0 0 6px var(--color-primary));
+    }
+
+    .infra-node-hover {
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease;
+      cursor: pointer;
+    }
+    .infra-node-hover:hover {
+      filter: drop-shadow(0 0 12px var(--color-primary-glow, rgba(56, 189, 248, 0.5)));
+    }
+
+    /* ==========================================================================
+       HÌNH 2: REAL-TIME MONITORING & SLA ANALYTICS (TONE SYNCED)
+       ========================================================================== */
+    .rtm-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .rtm-topbar-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2px;
+    }
+
+    .rtm-time-segmented {
+      display: inline-flex;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm, 8px);
+      padding: 3px;
+      gap: 2px;
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+
+    .rtm-time-btn {
+      padding: 5px 12px;
+      font-size: 11.5px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      border-radius: var(--radius-xs, 5px);
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .rtm-time-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .rtm-time-btn.active {
+      background: var(--color-primary);
+      color: var(--text-on-accent);
+      box-shadow: 0 0 10px var(--color-primary-subtle);
+    }
+
+    .rtm-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    @media (max-width: 1024px) {
+      .rtm-kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .rtm-kpi-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md, 12px);
+      padding: 16px 18px 12px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+
+    .rtm-kpi-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    .rtm-kpi-icon-box {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm, 8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .rtm-kpi-title {
+      font-size: 11.5px;
+      color: var(--text-secondary);
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .rtm-kpi-val {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .rtm-sparkline-svg {
+      width: 100%;
+      height: 36px;
+      margin-top: 4px;
+      display: block;
+    }
+
+    .rtm-mid-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 1024px) {
+      .rtm-mid-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .rtm-panel {
+      background: var(--surface-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md, 12px);
+      padding: 18px;
+      box-shadow: var(--shadow-sm);
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+
+    .rtm-panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .rtm-panel-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0;
+      font-family: var(--font-display);
+    }
+
+    .rtm-chart-legend {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 11.5px;
+      font-family: var(--font-mono);
+      font-weight: 600;
+    }
+
+    .rtm-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .rtm-legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+    }
+
+    .rtm-alerts-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .rtm-alert-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm, 8px);
+      background: var(--surface-subtle);
+      border: 1px solid var(--border-subtle);
+      transition: background 0.25s ease;
+    }
+
+    .rtm-alert-row-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .rtm-alert-row-count {
+      font-family: var(--font-mono);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .rtm-table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      border-radius: var(--radius-sm, 8px);
+    }
+
+    .rtm-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      text-align: left;
+    }
+
+    .rtm-table th {
+      padding: 10px 14px;
+      color: var(--text-tertiary);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border-color);
+      background: var(--surface-subtle);
+    }
+
+    .rtm-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+    }
+
+    .rtm-table tr:hover td {
+      background: var(--surface-hover);
+    }
   </style>
 </head>
 <body>
@@ -3289,6 +3712,44 @@
               <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
             </svg>
             <span>Quản trị & Team</span>
+          </div>
+        </a>
+
+        <div class="nav-group-title" style="margin-top:10px;">Agent Core</div>
+        <a class="nav-item" data-screen="agent-agents" onclick="switchScreen('agent-agents'); revealAgentPanel('agent-agents')">
+          <div class="nav-item-left">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+            <span>Sub-agents</span>
+          </div>
+        </a>
+
+        <a class="nav-item" data-screen="agent-workflow" onclick="switchScreen('agent-workflow'); revealAgentPanel('agent-workflow')">
+          <div class="nav-item-left">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 9h6v6H9z"/><path d="M3 9h6"/><path d="M15 9h6"/><path d="M9 3v6"/><path d="M9 15v6"/>
+            </svg>
+            <span>Core Flow</span>
+          </div>
+          <span class="nav-badge info">Live</span>
+        </a>
+
+        <a class="nav-item" data-screen="agent-rules" onclick="switchScreen('agent-rules'); revealAgentPanel('agent-rules')">
+          <div class="nav-item-left">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/><path d="M6 14h6"/>
+            </svg>
+            <span>Rules</span>
+          </div>
+        </a>
+
+        <a class="nav-item" data-screen="agent-memory" onclick="switchScreen('agent-memory'); revealAgentPanel('agent-memory')">
+          <div class="nav-item-left">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+            </svg>
+            <span>Memory &amp; Audit</span>
           </div>
         </a>
       </nav>
@@ -3827,137 +4288,764 @@
             </div>
           </div>
 
-          <div class="dashboard-panel-card" style="margin-top:20px;">
-            <div class="panel-card-head">
+          <!-- ==================================================================
+               HÌNH 1: INFRASTRUCTURE OVERVIEW (TOPOLOGY STREAM)
+               ================================================================== -->
+          <div class="infra-overview-card">
+            <div class="infra-overview-header">
               <div>
-                <h2>Bản đồ luồng dữ liệu liên vùng</h2>
-                <p style="font-size:12.5px; color:var(--text-secondary);">Trực quan hóa kết nối giữa HN - ĐN - HCM - Singapore Hub.</p>
+                <h2 class="infra-overview-title">Infrastructure Overview</h2>
+                <p class="infra-overview-subtitle">Live status of your IT environment</p>
               </div>
-              <button class="btn-secondary" style="height:32px; font-size:12px;" onclick="showToast('Topology cập nhật tự động mỗi 30s')">Tự động cân bằng tải</button>
+              <div style="display:flex; align-items:center; gap:10px;">
+                <span class="status-badge-pill online" style="font-family:var(--font-mono); font-size:11px;">
+                  <span class="status-dot-pulse"></span>
+                  99.99% UPTIME
+                </span>
+                <button class="btn-secondary" style="height:32px; font-size:12px;" onclick="showToast('Topology cập nhật tự động mỗi 30s: Tất cả 8 cụm Online')">
+                  Tự động cân bằng tải
+                </button>
+              </div>
             </div>
 
-            <div style="background:var(--surface-subtle); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:32px; text-align:center;">
-              <svg width="100%" height="220" viewBox="0 0 700 200" style="max-width:700px; margin:0 auto; display:block;">
-                <!-- Connections -->
-                <line x1="120" y1="100" x2="320" y2="60" stroke="var(--color-primary)" stroke-width="2.5" stroke-dasharray="6"/>
-                <line x1="320" y1="60" x2="520" y2="100" stroke="var(--color-primary)" stroke-width="2.5"/>
-                <line x1="120" y1="100" x2="320" y2="150" stroke="var(--border-color)" stroke-width="2"/>
-                <line x1="320" y1="150" x2="520" y2="100" stroke="var(--color-primary)" stroke-width="2.5"/>
+            <!-- SVG Topology Canvas (Image 1 Exact Layout, Trimmed to Full Screen & Tone Synced) -->
+            <svg class="infra-svg-canvas" viewBox="0 68 860 364" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <!-- Glow Filters -->
+                <filter id="nodeGlow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="3" result="blur"/>
+                  <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
 
-                <!-- Nodes -->
-                <g transform="translate(120, 100)">
-                  <circle r="34" fill="var(--surface-card)" stroke="var(--color-primary)" stroke-width="2.5"/>
-                  <text y="-4" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-display)" font-size="12" font-weight="700">Hà Nội HQ</text>
-                  <text y="14" text-anchor="middle" fill="var(--status-success)" font-family="var(--font-mono)" font-size="10">ONLINE</text>
-                </g>
+                <filter id="globeGlow" x="-40%" y="-40%" width="180%" height="180%">
+                  <feGaussianBlur stdDeviation="8" result="blur"/>
+                  <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
 
-                <g transform="translate(320, 60)">
-                  <circle r="34" fill="var(--surface-card)" stroke="var(--color-primary)" stroke-width="2.5"/>
-                  <text y="-4" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-display)" font-size="12" font-weight="700">Đà Nẵng DC</text>
-                  <text y="14" text-anchor="middle" fill="var(--status-success)" font-family="var(--font-mono)" font-size="10">ONLINE</text>
-                </g>
+                <!-- Gradients -->
+                <radialGradient id="globeGrad" cx="40%" cy="35%" r="65%">
+                  <stop offset="0%" stop-color="var(--color-accent, #38bdf8)"/>
+                  <stop offset="50%" stop-color="var(--color-primary, #0284c7)"/>
+                  <stop offset="90%" stop-color="#082f49"/>
+                  <stop offset="100%" stop-color="#030712"/>
+                </radialGradient>
 
-                <g transform="translate(320, 150)">
-                  <circle r="34" fill="var(--surface-card)" stroke="var(--border-color)" stroke-width="2"/>
-                  <text y="-4" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-display)" font-size="12" font-weight="700">Backup Ring</text>
-                  <text y="14" text-anchor="middle" fill="var(--status-warning)" font-family="var(--font-mono)" font-size="10">STANDBY</text>
-                </g>
+                <linearGradient id="cableGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="var(--color-primary)" stop-opacity="0.6"/>
+                  <stop offset="50%" stop-color="var(--color-primary)" stop-opacity="1"/>
+                  <stop offset="100%" stop-color="var(--color-primary)" stop-opacity="0.6"/>
+                </linearGradient>
 
-                <g transform="translate(520, 100)">
-                  <circle r="34" fill="var(--surface-card)" stroke="var(--color-primary)" stroke-width="2.5"/>
-                  <text y="-4" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-display)" font-size="12" font-weight="700">TP.HCM Hub</text>
-                  <text y="14" text-anchor="middle" fill="var(--status-success)" font-family="var(--font-mono)" font-size="10">ONLINE</text>
-                </g>
-              </svg>
-            </div>
+                <linearGradient id="firewallGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#fb923c"/>
+                  <stop offset="60%" stop-color="#ea580c"/>
+                  <stop offset="100%" stop-color="#9a3412"/>
+                </linearGradient>
+
+                <linearGradient id="coreSwitchGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="var(--color-accent, #38bdf8)"/>
+                  <stop offset="60%" stop-color="var(--color-primary, #0284c7)"/>
+                  <stop offset="100%" stop-color="#075985"/>
+                </linearGradient>
+
+                <linearGradient id="serverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#64748b"/>
+                  <stop offset="50%" stop-color="#334155"/>
+                  <stop offset="100%" stop-color="#1e293b"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Subtle Background Grid inside SVG -->
+              <g stroke="var(--border-subtle)" stroke-width="0.8" opacity="0.45">
+                <line x1="0" y1="80" x2="860" y2="80" stroke-dasharray="4 8"/>
+                <line x1="0" y1="220" x2="860" y2="220" stroke-dasharray="4 8"/>
+                <line x1="0" y1="360" x2="860" y2="360" stroke-dasharray="4 8"/>
+                <line x1="220" y1="68" x2="220" y2="432" stroke-dasharray="4 8"/>
+                <line x1="480" y1="68" x2="480" y2="432" stroke-dasharray="4 8"/>
+                <line x1="720" y1="68" x2="720" y2="432" stroke-dasharray="4 8"/>
+              </g>
+
+              <!-- ======================================================== -->
+              <!-- GLOWING BUS & CABLES (Tone Bound Primary Color Flow)     -->
+              <!-- ======================================================== -->
+              <g id="cable-traces" stroke="var(--color-primary)" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                <!-- Path 1: Internet (90,220) <-> Firewall (220,220) -->
+                <path id="path-net-fw" d="M 125 220 L 195 220" stroke-width="2.8" opacity="0.85"/>
+                <path d="M 125 220 L 195 220" stroke-width="2.8" class="cable-pulse-animated"/>
+
+                <!-- Path 2: Firewall (220,220) <-> Core Switch (360,220) -->
+                <path id="path-fw-sw" d="M 245 220 L 335 220" stroke-width="2.8" opacity="0.85"/>
+                <path d="M 245 220 L 335 220" stroke-width="2.8" class="cable-pulse-animated"/>
+
+                <!-- Path 3: Core Switch (360,220) -> Trunk Junction (470,220) -->
+                <path id="path-sw-junc" d="M 385 220 L 470 220" stroke-width="2.8" opacity="0.85"/>
+                <path d="M 385 220 L 470 220" stroke-width="2.8" class="cable-pulse-animated"/>
+
+                <!-- Path 4: Trunk Junction Up -> Servers (540,110) -->
+                <path id="path-junc-srv" d="M 470 220 C 470 140 490 110 520 110" stroke-width="2.8" opacity="0.85"/>
+                <path d="M 470 220 C 470 140 490 110 520 110" stroke-width="2.8" class="cable-pulse-animated"/>
+
+                <!-- Path 5: Servers (540,110) -> Virtualization (760,110) -->
+                <path id="path-srv-virt" d="M 565 110 C 640 110 680 110 740 110" stroke-width="2.8" opacity="0.85"/>
+                <path d="M 565 110 C 640 110 680 110 740 110" stroke-width="2.8" class="cable-pulse-animated-alt"/>
+
+                <!-- Path 6: Trunk Junction -> Backup (610,230) -->
+                <path id="path-junc-bkp" d="M 470 220 C 510 220 540 230 585 230" stroke-width="2.8" opacity="0.85"/>
+                <path d="M 470 220 C 510 220 540 230 585 230" stroke-width="2.8" class="cable-pulse-animated"/>
+
+                <!-- Path 7: Backup (610,230) -> Storage (780,230) -->
+                <path id="path-bkp-store" d="M 635 230 C 680 230 710 230 760 230" stroke-width="2.8" opacity="0.85"/>
+                <path d="M 635 230 C 680 230 710 230 760 230" stroke-width="2.8" class="cable-pulse-animated-alt"/>
+
+                <!-- Path 8: Trunk Junction Down -> Network UniFi (470,360) -->
+                <path id="path-junc-net" d="M 470 220 L 470 340" stroke-width="2.8" opacity="0.85"/>
+                <path d="M 470 220 L 470 340" stroke-width="2.8" class="cable-pulse-animated"/>
+
+                <!-- Path 9: Network UniFi (470,360) <-> Clients (230,360) -->
+                <path id="path-net-cli" d="M 445 360 L 265 360" stroke-width="2.8" opacity="0.85"/>
+                <path d="M 445 360 L 265 360" stroke-width="2.8" class="cable-pulse-animated"/>
+
+                <!-- Path 10: Backup / Servers -> Remote Access RustDesk (740,360) -->
+                <path id="path-bkp-rem" d="M 610 255 C 610 330 650 360 710 360" stroke-width="2.8" opacity="0.85"/>
+                <path d="M 610 255 C 610 330 650 360 710 360" stroke-width="2.8" class="cable-pulse-animated-alt"/>
+              </g>
+
+              <!-- Flowing Packet Particles (Tone-Bound Glowing Orbs) -->
+              <circle r="3.5" fill="#FFFFFF" stroke="var(--color-primary)" stroke-width="1.5" filter="url(#nodeGlow)">
+                <animateMotion repeatCount="indefinite" dur="2s" path="M 125 220 L 195 220"/>
+              </circle>
+              <circle r="3.5" fill="#FFFFFF" stroke="var(--color-primary)" stroke-width="1.5" filter="url(#nodeGlow)">
+                <animateMotion repeatCount="indefinite" dur="2s" path="M 245 220 L 335 220"/>
+              </circle>
+              <circle r="3.5" fill="#FFFFFF" stroke="var(--color-primary)" stroke-width="1.5" filter="url(#nodeGlow)">
+                <animateMotion repeatCount="indefinite" dur="2.4s" path="M 385 220 L 470 220 C 470 140 490 110 520 110"/>
+              </circle>
+              <circle r="3.5" fill="#FFFFFF" stroke="var(--color-primary)" stroke-width="1.5" filter="url(#nodeGlow)">
+                <animateMotion repeatCount="indefinite" dur="2.8s" path="M 565 110 C 640 110 680 110 740 110"/>
+              </circle>
+              <circle r="3.5" fill="#FFFFFF" stroke="var(--color-primary)" stroke-width="1.5" filter="url(#nodeGlow)">
+                <animateMotion repeatCount="indefinite" dur="2.2s" path="M 470 220 C 510 220 540 230 585 230"/>
+              </circle>
+              <circle r="3.5" fill="#FFFFFF" stroke="var(--color-primary)" stroke-width="1.5" filter="url(#nodeGlow)">
+                <animateMotion repeatCount="indefinite" dur="2.6s" path="M 635 230 C 680 230 710 230 760 230"/>
+              </circle>
+              <circle r="3.5" fill="#FFFFFF" stroke="var(--color-primary)" stroke-width="1.5" filter="url(#nodeGlow)">
+                <animateMotion repeatCount="indefinite" dur="2s" path="M 470 220 L 470 340"/>
+              </circle>
+              <circle r="3.5" fill="#FFFFFF" stroke="var(--color-primary)" stroke-width="1.5" filter="url(#nodeGlow)">
+                <animateMotion repeatCount="indefinite" dur="2.4s" path="M 445 360 L 265 360"/>
+              </circle>
+              <circle r="3.5" fill="#FFFFFF" stroke="var(--color-primary)" stroke-width="1.5" filter="url(#nodeGlow)">
+                <animateMotion repeatCount="indefinite" dur="2.8s" path="M 610 255 C 610 330 650 360 710 360"/>
+              </circle>
+
+              <!-- ======================================================== -->
+              <!-- 1. INTERNET (3D GLOWING CYBER GLOBE)                     -->
+              <!-- ======================================================== -->
+              <g class="infra-node-hover" transform="translate(90, 220)" onclick="showToast('Node: Internet Gateway · Trạng thái: Online 10Gbps')">
+                <!-- Atmosphere outer glow ring -->
+                <circle r="42" fill="none" stroke="var(--color-primary)" stroke-width="1.5" opacity="0.35" filter="url(#globeGlow)">
+                  <animate attributeName="r" values="40;45;40" dur="3s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0.25;0.5;0.25" dur="3s" repeatCount="indefinite"/>
+                </circle>
+                <!-- Planet Sphere -->
+                <circle r="34" fill="url(#globeGrad)" stroke="var(--color-primary)" stroke-width="1.8"/>
+                <!-- Continent Patterns -->
+                <path d="M -18 -8 Q -10 -22 8 -18 Q 18 -10 14 6 Q 6 18 -8 15 Q -22 6 -18 -8 Z" fill="var(--color-primary)" opacity="0.75"/>
+                <path d="M -12 12 Q 2 8 8 20 Q -4 28 -12 12 Z" fill="var(--color-primary)" opacity="0.75"/>
+                <path d="M 8 -12 Q 18 -4 22 8 Q 14 10 8 -12 Z" fill="var(--color-primary)" opacity="0.6"/>
+                <!-- Latitude/Longitude Arcs -->
+                <ellipse rx="34" ry="12" fill="none" stroke="var(--color-accent, #38bdf8)" stroke-width="0.8" opacity="0.4" transform="rotate(-20)"/>
+                <ellipse rx="14" ry="34" fill="none" stroke="var(--color-accent, #38bdf8)" stroke-width="0.8" opacity="0.4" transform="rotate(15)"/>
+                <!-- Pulse Core -->
+                <circle cx="0" cy="0" r="4" fill="var(--color-primary)" opacity="0.9"/>
+                <!-- Label -->
+                <text y="54" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-display)" font-size="14" font-weight="700">Internet</text>
+              </g>
+
+              <!-- ======================================================== -->
+              <!-- 2. FIREWALL (FORTINET 3D ISOMETRIC BRICK)                -->
+              <!-- ======================================================== -->
+              <g class="infra-node-hover" transform="translate(220, 220)" onclick="showToast('Node: Firewall Fortinet · Inspection: Active · WAF: Online')">
+                <!-- 3D Brick Box (Orange/Red Fortinet) -->
+                <!-- Top Face -->
+                <polygon points="0,-18 24,-7 0,4 -24,-7" fill="#fb923c" stroke="#fed7aa" stroke-width="0.8"/>
+                <!-- Left Face -->
+                <polygon points="-24,-7 0,4 0,26 -24,15" fill="#ea580c" stroke="#c2410c" stroke-width="0.8"/>
+                <!-- Right Face -->
+                <polygon points="0,4 24,-7 24,15 0,26" fill="#c2410c" stroke="#9a3412" stroke-width="0.8"/>
+                <!-- Brick Grid Details -->
+                <line x1="-16" y1="3" x2="-16" y2="18" stroke="#9a3412" stroke-width="1"/>
+                <line x1="-8" y1="-1" x2="-8" y2="15" stroke="#9a3412" stroke-width="1"/>
+                <line x1="8" y1="-1" x2="8" y2="15" stroke="#7c2d12" stroke-width="1"/>
+                <line x1="16" y1="3" x2="16" y2="18" stroke="#7c2d12" stroke-width="1"/>
+                <!-- Status LED -->
+                <circle cx="0" cy="-6" r="2.5" fill="var(--status-success)">
+                  <animate attributeName="opacity" values="1;0.4;1" dur="1.2s" repeatCount="indefinite"/>
+                </circle>
+                <!-- Label -->
+                <text y="44" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-display)" font-size="13.5" font-weight="700">Firewall</text>
+                <text y="58" text-anchor="middle" fill="var(--text-secondary)" font-family="var(--font-mono)" font-size="11" font-weight="500">Fortinet</text>
+              </g>
+
+              <!-- ======================================================== -->
+              <!-- 3. CORE SWITCH (CISCO 3D SWITCH CHASSIS)                 -->
+              <!-- ======================================================== -->
+              <g class="infra-node-hover" transform="translate(360, 220)" onclick="showToast('Node: Core Switch Cisco Catalyst · Ports: 48x 10G · VLAN: 10/20/30')">
+                <!-- 3D Switch Box (Blue/Tone Primary) -->
+                <!-- Top Face -->
+                <polygon points="0,-16 26,-5 0,6 -26,-5" fill="var(--color-accent, #38bdf8)" stroke="var(--border-subtle)" stroke-width="0.8"/>
+                <!-- Left Face -->
+                <polygon points="-26,-5 0,6 0,22 -26,11" fill="var(--color-primary, #0284c7)" stroke="var(--border-color)" stroke-width="0.8"/>
+                <!-- Right Face (Port Panel) -->
+                <polygon points="0,6 26,-5 26,11 0,22" fill="var(--color-primary, #0369a1)" stroke="var(--border-color)" stroke-width="0.8"/>
+                <!-- Rack Port Indicator Dots -->
+                <circle cx="5" cy="8" r="1.2" fill="var(--status-success)"/>
+                <circle cx="10" cy="5.5" r="1.2" fill="var(--status-success)"/>
+                <circle cx="15" cy="3" r="1.2" fill="var(--status-success)"/>
+                <circle cx="20" cy="0.5" r="1.2" fill="var(--status-success)"/>
+                <circle cx="5" cy="14" r="1.2" fill="var(--color-primary)"/>
+                <circle cx="10" cy="11.5" r="1.2" fill="var(--color-primary)"/>
+                <circle cx="15" cy="9" r="1.2" fill="var(--color-primary)"/>
+                <circle cx="20" cy="6.5" r="1.2" fill="var(--color-primary)"/>
+                <!-- Label -->
+                <text y="42" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-display)" font-size="13.5" font-weight="700">Core Switch</text>
+                <text y="56" text-anchor="middle" fill="var(--text-secondary)" font-family="var(--font-mono)" font-size="11" font-weight="500">Cisco</text>
+              </g>
+
+              <!-- ======================================================== -->
+              <!-- 4. SERVERS (PROXMOX 3D TOWER RACK)                       -->
+              <!-- ======================================================== -->
+              <g class="infra-node-hover" transform="translate(540, 110)" onclick="showToast('Node: Servers Proxmox VE · 8 Nodes · CPU: 32% · RAM: 64%')">
+                <!-- 3D Tower Chassis -->
+                <!-- Top Face -->
+                <polygon points="0,-24 20,-14 0,-4 -20,-14" fill="#64748b" stroke="#94a3b8" stroke-width="0.8"/>
+                <!-- Left Face -->
+                <polygon points="-20,-14 0,-4 0,30 -20,20" fill="#334155" stroke="#1e293b" stroke-width="0.8"/>
+                <!-- Right Face (Drive Bays) -->
+                <polygon points="0,-4 20,-14 20,20 0,30" fill="#1e293b" stroke="#0f172a" stroke-width="0.8"/>
+                <!-- Server Bay Lines & Cyan LED -->
+                <line x1="3" y1="2" x2="17" y2="-5" stroke="var(--color-primary)" stroke-width="1.8"/>
+                <line x1="3" y1="10" x2="17" y2="3" stroke="var(--color-primary)" stroke-width="1.8"/>
+                <line x1="3" y1="18" x2="17" y2="11" stroke="var(--color-primary)" stroke-width="1.8"/>
+                <line x1="3" y1="26" x2="17" y2="19" stroke="var(--color-primary)" stroke-width="1.8"/>
+                <circle cx="-6" cy="6" r="1.5" fill="var(--status-success)"/>
+                <circle cx="-6" cy="14" r="1.5" fill="var(--status-success)"/>
+                <!-- Label -->
+                <text y="50" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-display)" font-size="13.5" font-weight="700">Servers</text>
+                <text y="64" text-anchor="middle" fill="var(--text-secondary)" font-family="var(--font-mono)" font-size="11" font-weight="500">Proxmox</text>
+              </g>
+
+              <!-- ======================================================== -->
+              <!-- 5. VIRTUALIZATION (PROXMOX 3D TIERED LAYERS)            -->
+              <!-- ======================================================== -->
+              <g class="infra-node-hover" transform="translate(760, 110)" onclick="showToast('Node: Virtualization Cluster · 24 VMs · KVM/LXC Active')">
+                <!-- Tier 1 Base Layer -->
+                <polygon points="0,10 24,0 0,-10 -24,0" fill="var(--color-primary, #0369a1)" stroke="var(--color-accent, #0ea5e9)" stroke-width="0.8"/>
+                <polygon points="-24,0 0,10 0,18 -24,8" fill="#075985"/>
+                <polygon points="0,10 24,0 24,8 0,18" fill="#0c4a6e"/>
+
+                <!-- Tier 2 Mid Layer -->
+                <polygon points="0,-4 22,-13 0,-22 -22,-13" fill="var(--color-primary, #0284c7)" stroke="var(--color-accent, #38bdf8)" stroke-width="0.8"/>
+                <polygon points="-22,-13 0,-4 0,3 -22,-6" fill="#0369a1"/>
+                <polygon points="0,-4 22,-13 22,-6 0,3" fill="#075985"/>
+
+                <!-- Tier 3 Top Floating Glowing Plate -->
+                <polygon points="0,-18 20,-26 0,-34 -20,-26" fill="var(--color-accent, #38bdf8)" stroke="#bae6fd" stroke-width="1.2"/>
+                <polygon points="-20,-26 0,-18 0,-12 -20,-20" fill="var(--color-primary, #0284c7)"/>
+                <polygon points="0,-18 20,-26 20,-20 0,-12" fill="#0369a1"/>
+                <!-- Top Light Beacon -->
+                <circle cx="0" cy="-26" r="3.5" fill="var(--color-primary)" filter="url(#nodeGlow)"/>
+
+                <!-- Label -->
+                <text y="42" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-display)" font-size="13.5" font-weight="700">Virtualization</text>
+                <text y="56" text-anchor="middle" fill="var(--text-secondary)" font-family="var(--font-mono)" font-size="11" font-weight="500">Proxmox</text>
+              </g>
+
+              <!-- ======================================================== -->
+              <!-- 6. BACKUP (VEEAM / PBS 3D BLUE TOWER)                    -->
+              <!-- ======================================================== -->
+              <g class="infra-node-hover" transform="translate(610, 230)" onclick="showToast('Node: Backup Server Veeam/PBS · 3-2-1 Rule · Daily Snapshots OK')">
+                <!-- 3D Tower Box -->
+                <polygon points="0,-22 18,-13 0,-4 -18,-13" fill="var(--color-accent, #38bdf8)" stroke="#7dd3fc" stroke-width="0.8"/>
+                <polygon points="-18,-13 0,-4 0,26 -18,17" fill="var(--color-primary, #0284c7)" stroke="var(--border-color)" stroke-width="0.8"/>
+                <polygon points="0,-4 18,-13 18,17 0,26" fill="var(--color-primary, #0369a1)" stroke="var(--border-color)" stroke-width="0.8"/>
+                <!-- Front Backup Slots -->
+                <line x1="-12" y1="-2" x2="-2" y2="3" stroke="#bae6fd" stroke-width="1.5"/>
+                <line x1="-12" y1="6" x2="-2" y2="11" stroke="#bae6fd" stroke-width="1.5"/>
+                <line x1="-12" y1="14" x2="-2" y2="19" stroke="#bae6fd" stroke-width="1.5"/>
+                <circle cx="8" cy="4" r="1.5" fill="var(--status-success)"/>
+                <circle cx="8" cy="12" r="1.5" fill="var(--color-primary)"/>
+                <!-- Label -->
+                <text y="46" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-display)" font-size="13.5" font-weight="700">Backup</text>
+                <text y="60" text-anchor="middle" fill="var(--text-secondary)" font-family="var(--font-mono)" font-size="11" font-weight="500">Veeam / PBS</text>
+              </g>
+
+              <!-- ======================================================== -->
+              <!-- 7. STORAGE (NAS / SAN 3-TIER CYLINDER DISKS)             -->
+              <!-- ======================================================== -->
+              <g class="infra-node-hover" transform="translate(780, 230)" onclick="showToast('Node: Storage Synology NAS RAID 10 · 24 Bay · Btrfs Scrub OK')">
+                <!-- Cylinder Tier 1 (Bottom) -->
+                <ellipse cx="0" cy="18" rx="20" ry="8" fill="#1e293b" stroke="#64748b" stroke-width="0.8"/>
+                <path d="M -20 18 L -20 28 A 20 8 0 0 0 20 28 L 20 18 Z" fill="#334155" stroke="#475569" stroke-width="0.8"/>
+                <circle cx="-10" cy="24" r="1.5" fill="var(--color-primary)"/>
+                <circle cx="-5" cy="25" r="1.5" fill="var(--status-success)"/>
+
+                <!-- Cylinder Tier 2 (Middle) -->
+                <ellipse cx="0" cy="6" rx="20" ry="8" fill="#1e293b" stroke="#64748b" stroke-width="0.8"/>
+                <path d="M -20 6 L -20 16 A 20 8 0 0 0 20 16 L 20 6 Z" fill="#334155" stroke="#475569" stroke-width="0.8"/>
+                <circle cx="-10" cy="12" r="1.5" fill="var(--color-primary)"/>
+                <circle cx="-5" cy="13" r="1.5" fill="var(--status-success)"/>
+
+                <!-- Cylinder Tier 3 (Top) -->
+                <ellipse cx="0" cy="-6" rx="20" ry="8" fill="#475569" stroke="#94a3b8" stroke-width="0.8"/>
+                <path d="M -20 -6 L -20 4 A 20 8 0 0 0 20 4 L 20 -6 Z" fill="#334155" stroke="#475569" stroke-width="0.8"/>
+                <circle cx="-10" cy="0" r="1.5" fill="var(--color-primary)"/>
+                <circle cx="-5" cy="1" r="1.5" fill="var(--status-success)"/>
+
+                <!-- Top Cap Ring -->
+                <ellipse cx="0" cy="-6" rx="14" ry="5.5" fill="none" stroke="var(--color-primary)" stroke-width="1.2" opacity="0.85"/>
+
+                <!-- Label -->
+                <text y="46" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-display)" font-size="13.5" font-weight="700">Storage</text>
+                <text y="60" text-anchor="middle" fill="var(--text-secondary)" font-family="var(--font-mono)" font-size="11" font-weight="500">NAS / SAN</text>
+              </g>
+
+              <!-- ======================================================== -->
+              <!-- 8. NETWORK (UNIFI GATEWAY & CONTROLLER)                  -->
+              <!-- ======================================================== -->
+              <g class="infra-node-hover" transform="translate(470, 360)" onclick="showToast('Node: UniFi Network · AP WiFi 6 · Controller: Online')">
+                <!-- 3D Gateway -->
+                <polygon points="0,-16 22,-6 0,4 -22,-6" fill="var(--color-primary, #06b6d4)" stroke="var(--border-subtle)" stroke-width="0.8"/>
+                <polygon points="-22,-6 0,4 0,18 -22,8" fill="#0891b2" stroke="#0e7490" stroke-width="0.8"/>
+                <polygon points="0,4 22,-6 22,8 0,18" fill="#0e7490" stroke="#155e75" stroke-width="0.8"/>
+                <!-- Glowing UniFi Square/Logo Top -->
+                <circle cx="0" cy="-6" r="5" fill="#FFFFFF" opacity="0.9"/>
+                <circle cx="0" cy="-6" r="2.5" fill="var(--color-primary)"/>
+                <!-- Front Status Bar -->
+                <rect x="-14" y="2" width="8" height="2" fill="var(--status-success)" rx="1"/>
+                <rect x="6" y="2" width="8" height="2" fill="var(--color-primary)" rx="1"/>
+                <!-- Label -->
+                <text y="38" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-display)" font-size="13.5" font-weight="700">Network</text>
+                <text y="52" text-anchor="middle" fill="var(--text-secondary)" font-family="var(--font-mono)" font-size="11" font-weight="500">UniFi</text>
+              </g>
+
+              <!-- ======================================================== -->
+              <!-- 9. CLIENTS (DESKTOP PC + LAPTOP ENDPOINTS)               -->
+              <!-- ======================================================== -->
+              <g class="infra-node-hover" transform="translate(230, 360)" onclick="showToast('Endpoints: 248 Clients · Windows/macOS/Linux · 802.1X Active')">
+                <!-- Desktop Monitor -->
+                <rect x="-24" y="-18" width="26" height="18" rx="2" fill="#1e293b" stroke="var(--color-primary)" stroke-width="1.2"/>
+                <rect x="-22" y="-16" width="22" height="14" fill="#0f172a"/>
+                <polygon points="-16,-6 -6,-6 -4,-12 -14,-12" fill="var(--color-primary)" opacity="0.8"/>
+                <line x1="-11" y1="0" x2="-11" y2="4" stroke="#64748b" stroke-width="2"/>
+                <line x1="-16" y1="4" x2="-6" y2="4" stroke="#64748b" stroke-width="1.5"/>
+
+                <!-- Laptop Beside Monitor -->
+                <polygon points="4,-10 20,-10 18,2 2,2" fill="#1e293b" stroke="var(--color-primary)" stroke-width="1"/>
+                <polygon points="5,-9 19,-9 17,1 3,1" fill="#0f172a"/>
+                <line x1="8" y1="-4" x2="14" y2="-4" stroke="var(--color-primary)" stroke-width="1" opacity="0.8"/>
+                <polygon points="0,2 20,2 24,8 -4,8" fill="#334155" stroke="#475569" stroke-width="0.8"/>
+
+                <!-- Label -->
+                <text y="38" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-display)" font-size="13.5" font-weight="700">Clients</text>
+              </g>
+
+              <!-- ======================================================== -->
+              <!-- 10. REMOTE ACCESS (RUSTDESK 3D GEOMETRIC RING)           -->
+              <!-- ======================================================== -->
+              <g class="infra-node-hover" transform="translate(740, 360)" onclick="showToast('Node: Remote Access RustDesk Server · P2P Encrypted · MeshCentral')">
+                <!-- Interlocking Geometric Ring / Hexagon -->
+                <polygon points="0,-18 18,-8 18,12 0,22 -18,12 -18,-8" fill="var(--color-primary, #0369a1)" stroke="var(--color-accent, #38bdf8)" stroke-width="1.8"/>
+                <polygon points="0,-12 12,-5 12,8 0,15 -12,8 -12,-5" fill="#0f172a" stroke="var(--color-primary)" stroke-width="1"/>
+                <!-- Inner Glowing Core Sphere -->
+                <circle cx="0" cy="1.5" r="5" fill="var(--color-primary)" filter="url(#nodeGlow)">
+                  <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/>
+                </circle>
+                <!-- Label -->
+                <text y="42" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-display)" font-size="13.5" font-weight="700">Remote Access</text>
+                <text y="56" text-anchor="middle" fill="var(--text-secondary)" font-family="var(--font-mono)" font-size="11" font-weight="500">RustDesk</text>
+              </g>
+            </svg>
           </div>
         </section>
 
         <!-- ==================================================================
-             VIEW: ANALYTICS (Hiệu năng & SLA)
+             HÌNH 2: VIEW ANALYTICS (REAL-TIME MONITORING & ALERT MANAGEMENT)
              ================================================================== -->
         <section id="view-analytics" class="screen-view" style="display:none;">
-          <div class="page-head">
-            <div class="page-title-wrap">
-              <h1>Phân tích Hiệu năng & Cam kết SLA</h1>
-              <p>Chỉ số độ trễ, lưu lượng mạng và cam kết sẵn sàng trên toàn cụm hệ thống.</p>
-            </div>
-          </div>
-
-          <div class="dashboard-two-col">
-            <div class="dashboard-panel-card">
-              <div class="panel-card-head">
-                <h2>Cam kết chất lượng dịch vụ (SLA)</h2>
-                <span class="status-badge-pill online">Đạt 99.98%</span>
+          <div class="rtm-container">
+            <!-- Header with Time Range Selectors (Image 2 Exact) -->
+            <div class="rtm-topbar-controls">
+              <div>
+                <h1 style="font-family:var(--font-display); font-size:20px; font-weight:700; color:var(--text-primary); margin:0 0 3px 0;">
+                  Real-time Monitoring and Alert Management
+                </h1>
+                <p style="font-size:12.5px; color:var(--text-secondary); margin:0;">
+                  Phân tích Hiệu năng &amp; Cam kết SLA · Giám sát tải trọng, chuỗi cảnh báo và độ trễ toàn mạng.
+                </p>
               </div>
-              <p style="font-size:13px; color:var(--text-secondary); margin-bottom:18px;">Hệ thống duy trì hoạt động liên tục 8.760 giờ không gián đoạn dịch vụ cấp 1.</p>
-              
-              <div style="display:flex; flex-direction:column; gap:16px;">
-                <div>
-                  <div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:6px;">
-                    <span style="font-weight:600;">Cụm máy chủ Database (PostgreSQL Cluster)</span>
-                    <span style="font-family:var(--font-mono);">99.99%</span>
-                  </div>
-                  <div class="mini-load-bar" style="width:100%; height:8px;">
-                    <div class="mini-load-fill" style="width:99.9%;"></div>
-                  </div>
-                </div>
 
-                <div>
-                  <div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:6px;">
-                    <span style="font-weight:600;">API Gateway & K8s Ingress</span>
-                    <span style="font-family:var(--font-mono);">99.95%</span>
-                  </div>
-                  <div class="mini-load-bar" style="width:100%; height:8px;">
-                    <div class="mini-load-fill" style="width:99.95%;"></div>
-                  </div>
-                </div>
-
-                <div>
-                  <div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:6px;">
-                    <span style="font-weight:600;">Storage S3 / Ceph Cluster</span>
-                    <span style="font-family:var(--font-mono);">99.98%</span>
-                  </div>
-                  <div class="mini-load-bar" style="width:100%; height:8px;">
-                    <div class="mini-load-fill" style="width:99.98%;"></div>
-                  </div>
-                </div>
+              <!-- Time segmented buttons: 1H, 6H, 12H, 24H (active), 7D, 30D -->
+              <div class="rtm-time-segmented">
+                <button class="rtm-time-btn" onclick="setRtmTime(this, '1H')">1H</button>
+                <button class="rtm-time-btn" onclick="setRtmTime(this, '6H')">6H</button>
+                <button class="rtm-time-btn" onclick="setRtmTime(this, '12H')">12H</button>
+                <button class="rtm-time-btn active" onclick="setRtmTime(this, '24H')">24H</button>
+                <button class="rtm-time-btn" onclick="setRtmTime(this, '7D')">7D</button>
+                <button class="rtm-time-btn" onclick="setRtmTime(this, '30D')">30D</button>
               </div>
             </div>
 
-            <div class="dashboard-panel-card">
-              <div class="panel-card-head">
-                <h2>Phân bố Độ trễ theo Khu vực</h2>
+            <!-- Top 4 Metric Cards with Sparklines (Image 2 Top Row - Tone Synced) -->
+            <div class="rtm-kpi-grid">
+              <!-- KPI 1: CPU Usage (28%) -->
+              <div class="rtm-kpi-card">
+                <div class="rtm-kpi-top">
+                  <div class="rtm-kpi-icon-box" style="background:var(--color-primary-subtle); border:1px solid var(--color-primary);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="rtm-kpi-title">CPU Usage</div>
+                    <div class="rtm-kpi-val" id="rtm-cpu-val">28%</div>
+                  </div>
+                </div>
+                <!-- Sparkline Area SVG -->
+                <svg class="rtm-sparkline-svg" viewBox="0 0 220 40" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="sparkCpuGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="var(--color-primary)" stop-opacity="0.35"/>
+                      <stop offset="100%" stop-color="var(--color-primary)" stop-opacity="0.0"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M 0 32 Q 25 35 50 28 T 100 24 T 150 20 T 190 26 T 220 22 L 220 40 L 0 40 Z" fill="url(#sparkCpuGrad)"/>
+                  <path d="M 0 32 Q 25 35 50 28 T 100 24 T 150 20 T 190 26 T 220 22" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+                  <circle cx="220" cy="22" r="3" fill="var(--color-primary)">
+                    <animate attributeName="r" values="2.5;4;2.5" dur="1.5s" repeatCount="indefinite"/>
+                  </circle>
+                </svg>
               </div>
-              <div style="display:flex; flex-direction:column; gap:14px;">
-                <div class="health-item">
-                  <div class="health-item-text">
-                    <strong>Hà Nội Nội hạt</strong>
-                    <span>Cáp quang nội bộ data center</span>
+
+              <!-- KPI 2: Memory Usage (62%) -->
+              <div class="rtm-kpi-card">
+                <div class="rtm-kpi-top">
+                  <div class="rtm-kpi-icon-box" style="background:var(--status-warning-bg); border:1px solid var(--status-warning);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--status-warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M6 19v-3"/><path d="M10 19v-3"/><path d="M14 19v-3"/><path d="M18 19v-3"/><path d="M4 11h16"/><path d="M4 16h16"/><rect width="20" height="14" x="2" y="5" rx="2"/>
+                    </svg>
                   </div>
-                  <span class="status-badge-pill online">1.2 ms</span>
-                </div>
-                <div class="health-item">
-                  <div class="health-item-text">
-                    <strong>Hà Nội ↔ Đà Nẵng</strong>
-                    <span>Tuyến đường trục Bắc - Trung</span>
+                  <div>
+                    <div class="rtm-kpi-title">Memory Usage</div>
+                    <div class="rtm-kpi-val" id="rtm-mem-val">62%</div>
                   </div>
-                  <span class="status-badge-pill online">3.8 ms</span>
                 </div>
-                <div class="health-item">
-                  <div class="health-item-text">
-                    <strong>Đà Nẵng ↔ TP.HCM</strong>
-                    <span>Tuyến đường trục Trung - Nam</span>
+                <!-- Sparkline Area SVG -->
+                <svg class="rtm-sparkline-svg" viewBox="0 0 220 40" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="sparkMemGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="var(--status-warning)" stop-opacity="0.35"/>
+                      <stop offset="100%" stop-color="var(--status-warning)" stop-opacity="0.0"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M 0 28 Q 30 25 60 30 T 110 24 T 160 28 T 200 18 T 220 16 L 220 40 L 0 40 Z" fill="url(#sparkMemGrad)"/>
+                  <path d="M 0 28 Q 30 25 60 30 T 110 24 T 160 28 T 200 18 T 220 16" fill="none" stroke="var(--status-warning)" stroke-width="2" stroke-linecap="round"/>
+                  <circle cx="220" cy="16" r="3" fill="var(--status-warning)">
+                    <animate attributeName="r" values="2.5;4;2.5" dur="1.8s" repeatCount="indefinite"/>
+                  </circle>
+                </svg>
+              </div>
+
+              <!-- KPI 3: Disk Usage (71%) -->
+              <div class="rtm-kpi-card">
+                <div class="rtm-kpi-top">
+                  <div class="rtm-kpi-icon-box" style="background:var(--status-error-bg); border:1px solid var(--status-error);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--status-error)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                    </svg>
                   </div>
-                  <span class="status-badge-pill online">4.5 ms</span>
-                </div>
-                <div class="health-item">
-                  <div class="health-item-text">
-                    <strong>TP.HCM ↔ Singapore Gateway</strong>
-                    <span>Cáp biển APG / AAG</span>
+                  <div>
+                    <div class="rtm-kpi-title">Disk Usage</div>
+                    <div class="rtm-kpi-val" id="rtm-disk-val">71%</div>
                   </div>
-                  <span class="status-badge-pill online">18.4 ms</span>
                 </div>
+                <!-- Sparkline Area SVG -->
+                <svg class="rtm-sparkline-svg" viewBox="0 0 220 40" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="sparkDiskGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="var(--status-error)" stop-opacity="0.35"/>
+                      <stop offset="100%" stop-color="var(--status-error)" stop-opacity="0.0"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M 0 35 Q 25 32 60 36 T 110 30 T 150 28 T 190 22 T 220 20 L 220 40 L 0 40 Z" fill="url(#sparkDiskGrad)"/>
+                  <path d="M 0 35 Q 25 32 60 36 T 110 30 T 150 28 T 190 22 T 220 20" fill="none" stroke="var(--status-error)" stroke-width="2" stroke-linecap="round"/>
+                  <circle cx="220" cy="20" r="3" fill="var(--status-error)">
+                    <animate attributeName="r" values="2.5;4;2.5" dur="1.3s" repeatCount="indefinite"/>
+                  </circle>
+                </svg>
+              </div>
+
+              <!-- KPI 4: Network (320 Mbps) -->
+              <div class="rtm-kpi-card">
+                <div class="rtm-kpi-top">
+                  <div class="rtm-kpi-icon-box" style="background:var(--color-primary-subtle); border:1px solid var(--color-primary);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="rtm-kpi-title">Network</div>
+                    <div class="rtm-kpi-val" id="rtm-net-val">320 Mbps</div>
+                  </div>
+                </div>
+                <!-- Sparkline Area SVG -->
+                <svg class="rtm-sparkline-svg" viewBox="0 0 220 40" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="sparkNetGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="var(--color-accent, var(--color-primary))" stop-opacity="0.35"/>
+                      <stop offset="100%" stop-color="var(--color-primary)" stop-opacity="0.0"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M 0 34 Q 30 36 60 30 T 105 28 T 145 32 T 185 24 T 220 18 L 220 40 L 0 40 Z" fill="url(#sparkNetGrad)"/>
+                  <path d="M 0 34 Q 30 36 60 30 T 105 28 T 145 32 T 185 24 T 220 18" fill="none" stroke="var(--color-accent, var(--color-primary))" stroke-width="2" stroke-linecap="round"/>
+                  <circle cx="220" cy="18" r="3" fill="var(--color-primary)">
+                    <animate attributeName="r" values="2.5;4;2.5" dur="1.6s" repeatCount="indefinite"/>
+                  </circle>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Middle Row: System Performance (Multi-line Area Chart) & Active Alerts -->
+            <div class="rtm-mid-grid">
+              <!-- Left: System Performance Chart -->
+              <div class="rtm-panel">
+                <div class="rtm-panel-head">
+                  <h2 class="rtm-panel-title">System Performance</h2>
+                  <div class="rtm-chart-legend">
+                    <div class="rtm-legend-item">
+                      <span class="rtm-legend-dot" style="background:var(--color-primary);"></span>
+                      <span style="color:var(--text-secondary);">CPU</span>
+                    </div>
+                    <div class="rtm-legend-item">
+                      <span class="rtm-legend-dot" style="background:var(--status-warning);"></span>
+                      <span style="color:var(--text-secondary);">Memory</span>
+                    </div>
+                    <div class="rtm-legend-item">
+                      <span class="rtm-legend-dot" style="background:var(--status-success);"></span>
+                      <span style="color:var(--text-secondary);">Disk</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Multi-line Glowing Area Chart SVG -->
+                <div style="position:relative; width:100%; height:220px;">
+                  <svg viewBox="0 0 600 220" preserveAspectRatio="none" style="width:100%; height:100%; display:block;">
+                    <defs>
+                      <linearGradient id="chartCpuFill" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="var(--color-primary)" stop-opacity="0.35"/>
+                        <stop offset="100%" stop-color="var(--color-primary)" stop-opacity="0.0"/>
+                      </linearGradient>
+                      <linearGradient id="chartMemFill" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="var(--status-warning)" stop-opacity="0.3"/>
+                        <stop offset="100%" stop-color="var(--status-warning)" stop-opacity="0.0"/>
+                      </linearGradient>
+                      <linearGradient id="chartDiskFill" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="var(--status-success)" stop-opacity="0.25"/>
+                        <stop offset="100%" stop-color="var(--status-success)" stop-opacity="0.0"/>
+                      </linearGradient>
+                    </defs>
+
+                    <!-- Y-Axis Grid Lines & Labels -->
+                    <g stroke="var(--border-subtle)" stroke-width="0.8" stroke-dasharray="3 4">
+                      <line x1="40" y1="20" x2="590" y2="20"/>
+                      <line x1="40" y1="105" x2="590" y2="105"/>
+                      <line x1="40" y1="190" x2="590" y2="190" stroke-dasharray="none" stroke="var(--border-color)"/>
+                    </g>
+                    <text x="5" y="24" fill="var(--text-tertiary)" font-family="var(--font-mono)" font-size="10.5">100%</text>
+                    <text x="12" y="109" fill="var(--text-tertiary)" font-family="var(--font-mono)" font-size="10.5">50%</text>
+                    <text x="18" y="194" fill="var(--text-tertiary)" font-family="var(--font-mono)" font-size="10.5">0%</text>
+
+                    <!-- 1. MEMORY AREA & CURVE (Yellow) -->
+                    <path d="M 40,150 C 90,145 130,130 180,105 C 230,80 270,120 320,135 C 370,150 420,140 470,120 C 520,100 560,70 590,75 L 590,190 L 40,190 Z" fill="url(#chartMemFill)"/>
+                    <path d="M 40,150 C 90,145 130,130 180,105 C 230,80 270,120 320,135 C 370,150 420,140 470,120 C 520,100 560,70 590,75" fill="none" stroke="var(--status-warning)" stroke-width="2.2" stroke-linecap="round"/>
+
+                    <!-- 2. DISK AREA & CURVE (Green) -->
+                    <path d="M 40,165 C 90,150 140,160 190,135 C 240,110 280,155 330,160 C 380,165 430,135 480,140 C 530,145 565,160 590,165 L 590,190 L 40,190 Z" fill="url(#chartDiskFill)"/>
+                    <path d="M 40,165 C 90,150 140,160 190,135 C 240,110 280,155 330,160 C 380,165 430,135 480,140 C 530,145 565,160 590,165" fill="none" stroke="var(--status-success)" stroke-width="2.2" stroke-linecap="round"/>
+
+                    <!-- 3. CPU AREA & CURVE (Primary Theme Accent) -->
+                    <path d="M 40,175 C 80,170 120,155 160,170 C 200,185 240,155 280,150 C 330,145 370,160 410,145 C 460,130 510,135 550,155 C 570,165 585,160 590,162 L 590,190 L 40,190 Z" fill="url(#chartCpuFill)"/>
+                    <path d="M 40,175 C 80,170 120,155 160,170 C 200,185 240,155 280,150 C 330,145 370,160 410,145 C 460,130 510,135 550,155 C 570,165 585,160 590,162" fill="none" stroke="var(--color-primary)" stroke-width="2.2" stroke-linecap="round"/>
+
+                    <!-- Live Indicator Dots -->
+                    <circle cx="590" cy="75" r="4" fill="var(--status-warning)">
+                      <animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="590" cy="162" r="4" fill="var(--color-primary)">
+                      <animate attributeName="r" values="3;5;3" dur="2.4s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="590" cy="165" r="4" fill="var(--status-success)">
+                      <animate attributeName="r" values="3;5;3" dur="1.8s" repeatCount="indefinite"/>
+                    </circle>
+                  </svg>
+                </div>
+
+                <!-- X-Axis Labels -->
+                <div style="display:flex; justify-content:space-between; padding-left:40px; margin-top:8px; font-family:var(--font-mono); font-size:11px; color:var(--text-tertiary);">
+                  <span>00:00</span>
+                  <span>04:00</span>
+                  <span>08:00</span>
+                  <span>12:00</span>
+                  <span>16:00</span>
+                  <span>20:00</span>
+                  <span>23:59</span>
+                </div>
+              </div>
+
+              <!-- Right: Active Alerts (Image 2 Exact 4 Items - Tone Synced) -->
+              <div class="rtm-panel">
+                <div class="rtm-panel-head">
+                  <h2 class="rtm-panel-title">Active Alerts</h2>
+                  <a href="javascript:void(0)" onclick="switchScreen('alerts')" style="color:var(--color-primary); font-size:12px; font-weight:600; text-decoration:none; display:flex; align-items:center; gap:4px;">
+                    View all →
+                  </a>
+                </div>
+
+                <div class="rtm-alerts-list">
+                  <!-- Critical (1) -->
+                  <div class="rtm-alert-row" style="background:var(--status-error-bg); border-color:var(--border-subtle);">
+                    <div class="rtm-alert-row-left">
+                      <span style="display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; background:rgba(239, 68, 68, 0.2); color:var(--status-error); font-size:11px;">
+                        🔥
+                      </span>
+                      <span style="color:var(--status-error); font-weight:700;">Critical</span>
+                    </div>
+                    <span class="rtm-alert-row-count" style="color:var(--status-error);">1</span>
+                  </div>
+
+                  <!-- Warning (2) -->
+                  <div class="rtm-alert-row" style="background:var(--status-warning-bg); border-color:var(--border-subtle);">
+                    <div class="rtm-alert-row-left">
+                      <span style="display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; background:rgba(234, 179, 8, 0.2); color:var(--status-warning); font-size:11px;">
+                        ▲
+                      </span>
+                      <span style="color:var(--status-warning); font-weight:700;">Warning</span>
+                    </div>
+                    <span class="rtm-alert-row-count" style="color:var(--status-warning);">2</span>
+                  </div>
+
+                  <!-- Info (5) -->
+                  <div class="rtm-alert-row" style="background:var(--color-primary-subtle); border-color:var(--border-subtle);">
+                    <div class="rtm-alert-row-left">
+                      <span style="display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; background:var(--color-primary-subtle); color:var(--color-primary); font-size:11px;">
+                        ℹ️
+                      </span>
+                      <span style="color:var(--color-primary); font-weight:700;">Info</span>
+                    </div>
+                    <span class="rtm-alert-row-count" style="color:var(--color-primary);">5</span>
+                  </div>
+
+                  <!-- Total (8) -->
+                  <div class="rtm-alert-row" style="background:var(--surface-subtle); border-color:var(--border-color);">
+                    <div class="rtm-alert-row-left">
+                      <span style="display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; background:var(--color-primary-subtle); color:var(--color-primary); font-size:11px;">
+                        🛡️
+                      </span>
+                      <span style="color:var(--color-primary); font-weight:700;">Total</span>
+                    </div>
+                    <span class="rtm-alert-row-count" style="color:var(--color-primary);">8</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom Row: Alert History Table (Image 2 Exact Rows - Tone Synced) -->
+            <div class="rtm-panel" style="padding:16px 20px;">
+              <div class="rtm-panel-head" style="margin-bottom:12px;">
+                <h2 class="rtm-panel-title">Alert History</h2>
+                <span style="font-size:11.5px; font-family:var(--font-mono); color:var(--text-tertiary);">5 sự cố gần nhất · Cập nhật theo thời gian thực</span>
+              </div>
+
+              <div class="rtm-table-wrap">
+                <table class="rtm-table">
+                  <thead>
+                    <tr>
+                      <th style="width:170px;">Time</th>
+                      <th style="width:120px;">Level</th>
+                      <th style="width:140px;">Source</th>
+                      <th>Message</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Row 1: Critical -->
+                    <tr>
+                      <td style="font-family:var(--font-mono); font-size:12px; color:var(--text-secondary);">2026-09-15 15:12</td>
+                      <td>
+                        <span style="display:inline-flex; align-items:center; gap:5px; padding:2px 8px; border-radius:4px; background:var(--status-error-bg); color:var(--status-error); font-weight:700; font-size:11.5px; border:1px solid var(--status-error);">
+                          <span style="width:6px; height:6px; border-radius:50%; background:var(--status-error);" class="status-dot-pulse"></span>
+                          Critical
+                        </span>
+                      </td>
+                      <td style="font-family:var(--font-mono); font-weight:600; color:var(--text-primary);">SRV-APP-01</td>
+                      <td style="color:var(--text-secondary);">CPU usage &gt; 90% for 5 minutes</td>
+                    </tr>
+
+                    <!-- Row 2: Warning -->
+                    <tr>
+                      <td style="font-family:var(--font-mono); font-size:12px; color:var(--text-secondary);">2026-09-15 14:38</td>
+                      <td>
+                        <span style="display:inline-flex; align-items:center; gap:5px; padding:2px 8px; border-radius:4px; background:var(--status-warning-bg); color:var(--status-warning); font-weight:700; font-size:11.5px; border:1px solid var(--status-warning);">
+                          ▲ Warning
+                        </span>
+                      </td>
+                      <td style="font-family:var(--font-mono); font-weight:600; color:var(--text-primary);">NAS-01</td>
+                      <td style="color:var(--text-secondary);">Storage usage &gt; 80% (15.2 TB)</td>
+                    </tr>
+
+                    <!-- Row 3: Info -->
+                    <tr>
+                      <td style="font-family:var(--font-mono); font-size:12px; color:var(--text-secondary);">2026-09-15 13:20</td>
+                      <td>
+                        <span style="display:inline-flex; align-items:center; gap:5px; padding:2px 8px; border-radius:4px; background:var(--color-primary-subtle); color:var(--color-primary); font-weight:700; font-size:11.5px; border:1px solid var(--color-primary);">
+                          ℹ Info
+                        </span>
+                      </td>
+                      <td style="font-family:var(--font-mono); font-weight:600; color:var(--text-primary);">SW-Core-01</td>
+                      <td style="color:var(--text-secondary);">Interface Gi1/0/24 status changed</td>
+                    </tr>
+
+                    <!-- Row 4: Warning -->
+                    <tr>
+                      <td style="font-family:var(--font-mono); font-size:12px; color:var(--text-secondary);">2026-09-15 11:05</td>
+                      <td>
+                        <span style="display:inline-flex; align-items:center; gap:5px; padding:2px 8px; border-radius:4px; background:var(--status-warning-bg); color:var(--status-warning); font-weight:700; font-size:11.5px; border:1px solid var(--status-warning);">
+                          ▲ Warning
+                        </span>
+                      </td>
+                      <td style="font-family:var(--font-mono); font-weight:600; color:var(--text-primary);">NVR-01</td>
+                      <td style="color:var(--text-secondary);">Device offline</td>
+                    </tr>
+
+                    <!-- Row 5: Info -->
+                    <tr>
+                      <td style="font-family:var(--font-mono); font-size:12px; color:var(--text-secondary);">2026-09-15 09:48</td>
+                      <td>
+                        <span style="display:inline-flex; align-items:center; gap:5px; padding:2px 8px; border-radius:4px; background:var(--color-primary-subtle); color:var(--color-primary); font-weight:700; font-size:11.5px; border:1px solid var(--color-primary);">
+                          ℹ Info
+                        </span>
+                      </td>
+                      <td style="font-family:var(--font-mono); font-weight:600; color:var(--text-primary);">VM-ERP</td>
+                      <td style="color:var(--text-secondary);">Backup job completed successfully</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -4114,6 +5202,294 @@
         </section>
 
         <!-- ==================================================================
+             VIEW: AGENT CORE / SUB-AGENTS
+             ================================================================== -->
+        <section id="view-agent-agents" class="screen-view" style="display:none;">
+          <div class="page-head" style="margin-bottom:16px;">
+            <div class="page-title-wrap">
+              <h1>Sub-Agent System</h1>
+              <p>4 vai trò chuyên trách, Main Agent điều phối — dùng đúng agent cần thiết cho quy mô task.</p>
+            </div>
+          </div>
+
+          <div class="ac-content">
+            <h2 class="sec"><span class="n">●</span> Agent nào phụ trách giai đoạn nào</h2>
+            <div class="card reveal-item">
+              <div class="stepper-toolbar">
+                <button id="agentsFlow-play" class="flow-play-btn" title="Tạm dừng / chạy tiếp">⏸</button>
+                <span class="flow-caption"><span class="pulse"></span>Live handoff</span>
+                <div class="stepper-pills" id="agentsFlow-pills"></div>
+              </div>
+              <div class="flow flow-anim" id="agentsFlow-nodes"></div>
+              <div class="agent-row" id="agentsFlow-agentrow"></div>
+              <div class="log-panel" id="agentsFlow-log"></div>
+            </div>
+
+            <div class="grid" style="margin-top:14px">
+              <div class="card c6 reveal-item"><div class="agent"><div class="icon">R</div><div>
+                <h3>Researcher <span class="tag good">.agents/researcher.md</span></h3>
+                <p class="desc">Khảo sát codebase, trace flow, tìm root cause <b>trước khi</b> đề xuất/chạm code — không implement. Đọc code thật trước khi tin tài liệu audit cũ. Gắn nhãn <b>Confirmed</b> (đã đọc file:line) hoặc <b>Probable</b> (suy đoán) cho mọi kết luận.</p>
+              </div></div></div>
+
+              <div class="card c6 reveal-item"><div class="agent"><div class="icon">V</div><div>
+                <h3>Reviewer <span class="tag good">.agents/reviewer.md</span></h3>
+                <p class="desc">Gatekeeper trước khi báo "hoàn thành". Checklist 9 mục: Scope Discipline → Dependency direction → Error-handling → Auth theo route → Security → Config protection → Test integrity → Database/Performance → Naming convention.</p>
+              </div></div></div>
+
+              <div class="card c6 reveal-item"><div class="agent"><div class="icon">Q</div><div>
+                <h3>QA Testing Agent <span class="tag good">.agents/qa-testing-agent.md</span></h3>
+                <p class="desc">Test feature/API/UI/DB/regression. Không bao giờ viết "đã test thành công" chung chung — tách riêng Build / Unit / Integration / Mock external / Real external / Real device / Manual UI.</p>
+              </div></div></div>
+
+              <div class="card c6 reveal-item"><div class="agent gap-icon"><div class="icon">D</div><div>
+                <h3>Documentation Agent <span class="tag warn">chưa có file</span></h3>
+                <p class="desc">Được CLAUDE.md &amp; README.md tham chiếu (chuẩn hoá ADR, đồng bộ docs với code thật) nhưng <code>.agents/documentation-agent.md</code> <b>chưa tồn tại</b> trong repo hiện tại.</p>
+              </div></div></div>
+            </div>
+
+            <h2 class="sec"><span class="n">01</span> Responsibility matrix</h2>
+            <div class="card reveal-item">
+              <table>
+                <tr><th>Phase</th><th>Main</th><th>Researcher</th><th>Reviewer</th><th>QA</th><th>Docs</th></tr>
+                <tr><td>Understand / scope</td><td><b>Primary</b></td><td>Support</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><td>Investigation</td><td>Coordinate</td><td><b>Primary</b></td><td>Support</td><td>Support</td><td>—</td></tr>
+                <tr><td>Review</td><td>Coordinate</td><td>Input</td><td><b>Primary</b></td><td>—</td><td>—</td></tr>
+                <tr><td>Testing</td><td>Coordinate</td><td>—</td><td>Review</td><td><b>Primary</b></td><td>—</td></tr>
+                <tr><td>Documentation</td><td>Coordinate</td><td>Input</td><td>Input</td><td>Input</td><td><b>Primary</b></td></tr>
+              </table>
+            </div>
+
+            <h2 class="sec"><span class="n">02</span> Chuẩn báo cáo bắt buộc</h2>
+            <div class="grid">
+              <div class="card c4 reveal-item"><h3>Researcher</h3><p class="desc">6 mục cố định: Phạm vi khảo sát → Kết luận (Confirmed/Probable) → Bằng chứng (file:line) → Điểm bất đồng giữa các project → Giới hạn điều tra → Đề xuất tiếp theo.</p></div>
+              <div class="card c4 reveal-item"><h3>Reviewer</h3><p class="desc">Mỗi finding độc lập: file, line, category, summary 1 câu, failure_scenario cụ thể, verdict CONFIRMED/PLAUSIBLE nếu có verify.</p></div>
+              <div class="card c4 reveal-item"><h3>QA</h3><p class="desc">Không gộp "đã test thành công". Test invariant DB (filtered unique index) phải chạy SQL Server thật, không InMemory provider.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             VIEW: AGENT CORE / WORKFLOW & CORE FLOW
+             ================================================================== -->
+        <section id="view-agent-workflow" class="screen-view" style="display:none;">
+          <div class="page-head" style="margin-bottom:16px;">
+            <div class="page-title-wrap">
+              <h1>Workflow &amp; Core Flow</h1>
+              <p>Pipeline request tới hoàn thành, quy trình Bug Fix / Feature Implementation và các skill nền tảng dùng chung.</p>
+            </div>
+          </div>
+
+          <div class="ac-content">
+            <h2 class="sec"><span class="n">●</span> Core flow — request tới hoàn thành</h2>
+            <div class="card reveal-item">
+              <div class="stepper-toolbar">
+                <button id="core-play" class="flow-play-btn" title="Tạm dừng / chạy tiếp">⏸</button>
+                <span class="flow-caption"><span class="pulse"></span>Live pipeline</span>
+                <div class="stepper-pills" id="core-pills"></div>
+              </div>
+              <div class="flow flow-anim" id="core-nodes"></div>
+              <div class="agent-row" id="core-agentrow"></div>
+              <div class="log-panel" id="core-log"></div>
+            </div>
+            <div class="callout bad reveal-item" style="margin-top:10px"><b>Mandatory gate:</b> Không implement trước khi đọc context. Task chạm Frontend → đọc FE rules + FE skills trước. Task chạm Backend/DB → đọc bộ tương ứng trước. Rule/skill riêng của project luôn ưu tiên hơn quy ước chung.</div>
+
+            <h2 class="sec"><span class="n">01</span> Bug Fix — <code class="mono">.skills/common/bug-fix/SKILL.md</code></h2>
+            <div class="card reveal-item"><div class="flow">
+              <div class="node g"><b>Bug Report</b><em>Mô tả lỗi</em></div><i class="arrow">→</i>
+              <div class="node"><b>Audit</b><em>Trace flow thật, không giả định</em></div><i class="arrow">→</i>
+              <div class="node b"><b>Root Cause</b><em>Verify bằng code, phân biệt race/stale state</em></div><i class="arrow">→</i>
+              <div class="node"><b>Fix Plan</b><em>Nhỏ nhất, giữ nguyên UI/UX</em></div><i class="arrow">→</i>
+              <div class="node a"><b>Second-pass Review</b><em>Missing state, regression risk</em></div><i class="arrow">→</i>
+              <div class="node g"><b>Implement</b><em>Plan đã sửa đúng</em></div><i class="arrow">→</i>
+              <div class="node a"><b>Test</b><em>Fail → investigate → fix → retest</em></div><i class="arrow">→</i>
+              <div class="node g"><b>Final QA</b><em>PASS/FAIL rõ ràng</em></div>
+            </div></div>
+
+            <h2 class="sec"><span class="n">02</span> Feature Implementation — 2 bản mô tả song song</h2>
+            <div class="grid">
+              <div class="card c6 reveal-item">
+                <h3><code class="mono">.skills/common/feature-implement/SKILL.md</code></h3>
+                <p class="desc" style="margin-bottom:8px">8 phase: Requirement → Audit → Impact Analysis → Implementation Plan → Second-Pass Review → Implement → Testing → Final QA.</p>
+                <div class="steps">
+                  <div class="step"><span class="n">1</span><div><b>Requirement</b><p>Behavior, user flow, AC, edge case — chưa code.</p></div></div>
+                  <div class="step"><span class="n">2</span><div><b>Audit</b><p>Component/service/API/DB liên quan đã có, tái dùng tối đa.</p></div></div>
+                  <div class="step"><span class="n">3</span><div><b>Impact Analysis</b><p>FE/BE/API/DB/auth/perf/security/responsive/test/docs.</p></div></div>
+                  <div class="step"><span class="n">4</span><div><b>Implementation Plan</b><p>File tạo/sửa, data flow, validation, migration.</p></div></div>
+                  <div class="step"><span class="n">5</span><div><b>Second-pass Review</b><p>Missing requirement, security, regression risk.</p></div></div>
+                  <div class="step"><span class="n">6</span><div><b>Implement</b><p>Tối thiểu, giữ hành vi hiện có.</p></div></div>
+                  <div class="step"><span class="n">7</span><div><b>Testing</b><p>Happy path + edge + regression.</p></div></div>
+                  <div class="step"><span class="n">8</span><div><b>Final QA</b><p>Đúng AC, không thay đổi thừa.</p></div></div>
+                </div>
+              </div>
+              <div class="card c6 reveal-item">
+                <h3><code class="mono">.rules/workflow.md</code> — Khung 6 bước</h3>
+                <p class="desc" style="margin-bottom:8px">Cùng ý tưởng, gắn thêm chi tiết kỹ thuật cụ thể theo layer Clean Architecture.</p>
+                <div class="steps">
+                  <div class="step"><span class="n">1</span><div><b>Hero — Scope Boundary &amp; AC</b><p>Checklist AC + "Out of Scope" tường minh.</p></div></div>
+                  <div class="step"><span class="n">2</span><div><b>Problem — Gap Analysis</b><p>Grep pattern/entity/service tương tự.</p></div></div>
+                  <div class="step"><span class="n">3</span><div><b>Contract Design</b><p><code>ICommand</code>/<code>IQuery</code>, <code>Result&lt;T&gt;</code>, route Carter.</p></div></div>
+                  <div class="step"><span class="n">4</span><div><b>Vertical Slice Implementation</b><p>Domain → Persistence → Application → Presentation → FE.</p></div></div>
+                  <div class="step"><span class="n">5</span><div><b>Verification &amp; Testing</b><p>xUnit handler/validator, Vitest FE.</p></div></div>
+                  <div class="step"><span class="n">6</span><div><b>Review, Docs &amp; DoD</b><p>Reviewer check kiến trúc/secret/JWT/SQLi.</p></div></div>
+                </div>
+              </div>
+            </div>
+
+            <h2 class="sec"><span class="n">03</span> 4 skill nền tảng — <code class="mono">.skills/common/</code></h2>
+            <div class="grid">
+              <div class="card c6 reveal-item"><h3>code-analysis.md</h3><p class="desc">Trace request theo đúng layering — xác nhận layering thật qua <code>ProjectReference</code>, không đoán theo tên thư mục.</p></div>
+              <div class="card c6 reveal-item"><h3>debugging.md</h3><p class="desc">Kiểm tra sink log thật đang active trước khi tìm log sai chỗ. 401/403 dù có <code>[Authorize]</code> → nghi <code>.AllowAnonymous()</code> đè.</p></div>
+              <div class="card c6 reveal-item"><h3>problem-solving.md</h3><p class="desc">Nguyên tắc cốt lõi: <b>smallest correct diff</b>. Không đoán API contract/DB column khi thiếu thông tin.</p></div>
+              <div class="card c6 reveal-item"><h3>permission.md</h3><p class="desc">Mẫu RBAC bitmask <code>(SubjectId, ClaimType, ClaimValue: bitmask)</code>; JWT chỉ chứa danh tính, quyền resolve lại từ DB mỗi request.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             VIEW: AGENT CORE / RULES
+             ================================================================== -->
+        <section id="view-agent-rules" class="screen-view" style="display:none;">
+          <div class="page-head" style="margin-bottom:16px;">
+            <div class="page-title-wrap">
+              <h1>Rules (.rules/)</h1>
+              <p>Quy ước dùng chung, đúc kết từ audit thật — mô tả target convention cho code mới, không bắt buộc rewrite code cũ.</p>
+            </div>
+          </div>
+
+          <div class="ac-content">
+            <h2 class="sec"><span class="n">●</span> Thứ tự đọc rule trước khi code</h2>
+            <div class="card reveal-item">
+              <div class="stepper-toolbar">
+                <button id="rulesFlow-play" class="flow-play-btn" title="Tạm dừng / chạy tiếp">⏸</button>
+                <span class="flow-caption"><span class="pulse"></span>Live gate order</span>
+                <div class="stepper-pills" id="rulesFlow-pills"></div>
+              </div>
+              <div class="flow flow-anim" id="rulesFlow-nodes"></div>
+              <div class="log-panel" id="rulesFlow-log"></div>
+            </div>
+
+            <h2 class="sec"><span class="n">01</span> Nền tảng</h2>
+            <div class="reveal-item">
+            <details class="acc" open><summary>coding.md — Tech stack &amp; naming convention <span class="tag">C# · TypeScript</span></summary>
+              <div class="body">
+                <b>Backend:</b> .NET 8/9, EF Core 8/9, MediatR 13–14, Carter 8.x, Serilog hoặc <code>ILogger&lt;T&gt;</code> thuần.<br>
+                <b>Frontend:</b> Angular 18–21, 100% standalone, TypeScript strict, Tailwind v4, Signal API cho state mới.
+                <ul>
+                  <li>PascalCase class/interface(<code>I</code>)/enum/method/property; camelCase local/param; method async luôn hậu tố <code>Async</code>.</li>
+                  <li>Command/Query: <code>&lt;Verb&gt;&lt;Entity&gt;Command/Query</code>, handler hậu tố <code>Handler</code>.</li>
+                  <li>Angular: <code>input()</code>/<code>output()</code> thay <code>@Input/@Output</code>, <code>OnPush</code>, <code>inject()</code>, control-flow gốc <code>@if/@for</code>.</li>
+                </ul>
+              </div>
+            </details>
+            </div>
+            <div class="reveal-item">
+            <details class="acc"><summary>architecture.md — Dependency direction &amp; layer boundary <span class="tag">Clean Architecture</span></summary>
+              <div class="body">
+                Chain đã xác nhận thật (4/7 BE: Device, Ops, ZKTime, Face):
+                <div class="code">Domain ← Contract ← Application ← { Infrastructure, Persistence } ← Presentation ← Api</div>
+                <ul>
+                  <li>Kiểu đặc thù hạ tầng (<code>SqlException</code>…) <b>không được lộ</b> ra khỏi Persistence/Infrastructure.</li>
+                  <li>CIO, CSR: Endpoint→Service→DbContext trực tiếp — hợp lệ, không bắt buộc đổi.</li>
+                  <li>Device/protocol integration (Hikvision ISAPI…) phải sau 1 interface + <code>DelegatingHandler</code> riêng.</li>
+                </ul>
+              </div>
+            </details>
+            </div>
+            <div class="reveal-item">
+            <details class="acc"><summary>security.md — Checklist hệ thống + bảo vệ config <span class="tag bad">rule tuyệt đối</span></summary>
+              <div class="body">
+                <p style="margin-bottom:8px">Không bao giờ xoá/làm rỗng/ghi đè/di dời 1 giá trị config thật mà không có chấp thuận rõ ràng cho từng lần của user. Phát hiện secret thật trong file tracked → không xoá/mask, chỉ báo path/key/tình trạng Configured/Missing và chờ duyệt.</p>
+                <div class="grid">
+                  <div class="c6"><b style="font-size:12.5px;color:var(--text-primary)">Network &amp; Auth</b><ul class="plain">
+                    <li>CORS whitelist domain cụ thể, không bao giờ <code>AllowAnyOrigin()</code>.</li>
+                    <li>JWT bật đủ 4 validation: Issuer, Audience, Lifetime, IssuerSigningKey.</li>
+                    <li>Swagger chỉ Development, rate limit endpoint nhạy cảm.</li>
+                  </ul></div>
+                  <div class="c6"><b style="font-size:12.5px;color:var(--text-primary)">Data &amp; Query</b><ul class="plain">
+                    <li>Không nội suy giá trị chưa escape vào <code>FromSqlRaw</code>.</li>
+                    <li>Không <code>EnableSensitiveDataLogging()</code> vô điều kiện; không <code>UseLazyLoadingProxies()</code>.</li>
+                    <li>Không log secret/PII/dữ liệu sinh trắc học thô.</li>
+                  </ul></div>
+                </div>
+              </div>
+            </details>
+            </div>
+            <div class="reveal-item">
+            <details class="acc"><summary>workflow.md — Staged delivery, quyết định đã chốt, audit read-only</summary>
+              <div class="body">
+                <ul>
+                  <li><b>Giao hàng theo giai đoạn:</b> xong 1 giai đoạn → dừng → báo cáo → chờ xác nhận.</li>
+                  <li><b>Quyết định đã chốt</b> không tự ý lật lại — cần lý do kỹ thuật, giải thích trước khi đổi.</li>
+                  <li><b>Hệ thống/thiết bị thật:</b> mặc định KHÔNG gọi API đối tác, thiết bị chấm công, DB production.</li>
+                </ul>
+              </div>
+            </details>
+            </div>
+
+            <h2 class="sec"><span class="n">02</span> Backend / Frontend — <code class="mono">.rules/</code></h2>
+            <div class="grid">
+              <div class="card c6 reveal-item"><h3>api.md</h3><p class="desc">Carter <code>ICarterModule</code> là pattern chiếm ưu thế. <code>RequireAuthorization()</code> ở group không đảm bảo route con được bảo vệ.</p></div>
+              <div class="card c6 reveal-item"><h3>database.md</h3><p class="desc">Migration áp dụng thủ công, không <code>Database.Migrate()</code> lúc startup. FK/cột filter-sort-join bắt buộc có index.</p></div>
+              <div class="card c6 reveal-item"><h3>ui-ux.md</h3><p class="desc">Design token theo vai trò, không hardcode màu/spacing. Data table: đủ loading/empty/error + phân trang server-side.</p></div>
+              <div class="card c6 reveal-item"><h3>accessibility.md</h3><p class="desc">Bắt buộc pass AXE + WCAG AA tối thiểu. Icon-only button phải có <code>aria-label</code>.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             VIEW: AGENT CORE / MEMORY & AUDIT
+             ================================================================== -->
+        <section id="view-agent-memory" class="screen-view" style="display:none;">
+          <div class="page-head" style="margin-bottom:16px;">
+            <div class="page-title-wrap">
+              <h1>Memory &amp; Audit</h1>
+              <p>Pattern đã xác nhận &amp; bad pattern đã audit — snapshot tại thời điểm audit, luôn grep xác nhận code thật trước khi dùng làm căn cứ.</p>
+            </div>
+          </div>
+
+          <div class="ac-content">
+            <h2 class="sec"><span class="n">●</span> Vòng đời tri thức memory.md</h2>
+            <div class="card reveal-item">
+              <div class="stepper-toolbar">
+                <button id="memoryFlow-play" class="flow-play-btn" title="Tạm dừng / chạy tiếp">⏸</button>
+                <span class="flow-caption"><span class="pulse"></span>Live audit loop</span>
+                <div class="stepper-pills" id="memoryFlow-pills"></div>
+              </div>
+              <div class="flow flow-anim" id="memoryFlow-nodes"></div>
+              <div class="log-panel" id="memoryFlow-log"></div>
+            </div>
+
+            <h2 class="sec"><span class="n">01</span> Pattern chung đã xác nhận</h2>
+            <div class="card reveal-item">
+              <ul class="plain">
+                <li><b>Result / Result&lt;T&gt;</b> tại <code>&lt;Project&gt;.Contract/Abstractions/Shared/Result.cs</code> — 6/7 project (không có ở TaskFlow).</li>
+                <li><b>AsNoTracking()</b> cho mọi read query — nhất quán ở cả 7 project.</li>
+                <li><b>Migration thủ công</b>, không auto-migrate lúc startup.</li>
+                <li><b>Filtered unique index</b> chống trùng/race condition ở tầng DB.</li>
+                <li><b>100% Angular standalone component</b>, không NgModule nào trong toàn bộ 7 FE.</li>
+              </ul>
+            </div>
+
+            <h2 class="sec"><span class="n">02</span> Bad pattern đã audit — đừng lặp lại ở code mới</h2>
+            <div class="card reveal-item">
+              <table>
+                <tr><th>Vấn đề</th><th>Project</th><th>Mức</th></tr>
+                <tr><td>CORS <code>AllowAnyOrigin()</code></td><td>CIO, Device, Ops, ZKTime</td><td><span class="tag bad">security</span></td></tr>
+                <tr><td>JWT <code>ValidateIssuer</code>/<code>ValidateAudience</code> = false</td><td>Device, ZKTime</td><td><span class="tag bad">security</span></td></tr>
+                <tr><td><code>.AllowAnonymous()</code> đè <code>.RequireAuthorization()</code> ở group</td><td>Ops</td><td><span class="tag bad">bug thật</span></td></tr>
+                <tr><td>SQL injection: giá trị search chưa escape vào <code>FromSqlRaw</code></td><td>Device</td><td><span class="tag bad">security</span></td></tr>
+                <tr><td>Secret thật commit thẳng vào <code>appsettings*.json</code></td><td>gần như mọi project</td><td><span class="tag bad">security</span></td></tr>
+                <tr><td>Swagger UI public trong Production</td><td>ZKTime</td><td><span class="tag warn">hardening</span></td></tr>
+                <tr><td><code>npm test</code> có script nhưng không có test target đăng ký</td><td>Device, TaskFlow</td><td><span class="tag warn">nợ kỹ thuật</span></td></tr>
+              </table>
+            </div>
+
+            <h2 class="sec"><span class="n">03</span> Ghi chú vận hành</h2>
+            <div class="callout reveal-item">Chỉ Face và TaskFlow có CLAUDE.md riêng. <code>.rules/</code> nên coi là điểm khởi đầu, cập nhật tiếp khi có bằng chứng mới từ code thật (không phải từ suy đoán).</div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
              VIEW: ADMIN & TEAM (Quản trị viên)
              ================================================================== -->
         <section id="view-admin" class="screen-view" style="display:none;">
@@ -4261,6 +5637,50 @@
        JAVASCRIPT LOGIC & STATE MANAGEMENT
        ======================================================================== -->
   <script>
+    /* --------------------------------------------------------------------------
+       RTM TIME FILTER HANDLER
+       -------------------------------------------------------------------------- */
+    function setRtmTime(btn, range) {
+      document.querySelectorAll('.rtm-time-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      const cpu = document.getElementById('rtm-cpu-val');
+      const mem = document.getElementById('rtm-mem-val');
+      const disk = document.getElementById('rtm-disk-val');
+      const net = document.getElementById('rtm-net-val');
+      if (range === '1H') {
+        if (cpu) cpu.textContent = '24%';
+        if (mem) mem.textContent = '59%';
+        if (disk) disk.textContent = '71%';
+        if (net) net.textContent = '340 Mbps';
+      } else if (range === '6H') {
+        if (cpu) cpu.textContent = '31%';
+        if (mem) mem.textContent = '64%';
+        if (disk) disk.textContent = '71%';
+        if (net) net.textContent = '295 Mbps';
+      } else if (range === '12H') {
+        if (cpu) cpu.textContent = '26%';
+        if (mem) mem.textContent = '61%';
+        if (disk) disk.textContent = '71%';
+        if (net) net.textContent = '310 Mbps';
+      } else if (range === '24H') {
+        if (cpu) cpu.textContent = '28%';
+        if (mem) mem.textContent = '62%';
+        if (disk) disk.textContent = '71%';
+        if (net) net.textContent = '320 Mbps';
+      } else if (range === '7D') {
+        if (cpu) cpu.textContent = '35%';
+        if (mem) mem.textContent = '68%';
+        if (disk) disk.textContent = '73%';
+        if (net) net.textContent = '280 Mbps';
+      } else if (range === '30D') {
+        if (cpu) cpu.textContent = '29%';
+        if (mem) mem.textContent = '65%';
+        if (disk) disk.textContent = '70%';
+        if (net) net.textContent = '305 Mbps';
+      }
+      showToast('Đang cập nhật chỉ số phạm vi ' + range);
+    }
+
     /* --------------------------------------------------------------------------
        1. DATA STORE (FLEET DEVICES & VOCABULARY)
        -------------------------------------------------------------------------- */
@@ -4580,6 +6000,165 @@ ${desc}
         showToast('Đang làm mới dữ liệu All Tones...');
       }
     }
+
+    /* --------------------------------------------------------------------------
+       AGENT CORE — generic animated flow stepper (4 pages: agents / workflow /
+       rules / memory), reveal-on-first-visit, wired into switchScreen() above.
+       -------------------------------------------------------------------------- */
+    var agentPanelsRevealed = {};
+    function revealAgentPanel(screenId) {
+      if (agentPanelsRevealed[screenId]) return;
+      agentPanelsRevealed[screenId] = true;
+      var view = document.getElementById('view-' + screenId);
+      if (!view) return;
+      var items = view.querySelectorAll('.reveal-item');
+      items.forEach(function (el, i) {
+        var delay = Math.min(i, 12) * 55;
+        setTimeout(function () { el.classList.add('in'); }, delay);
+      });
+    }
+
+    function mountAgentFlow(key, steps, opts) {
+      opts = opts || {};
+      var interval = opts.interval || 2600;
+      var flowEl = document.getElementById(key + '-nodes');
+      var pillsEl = document.getElementById(key + '-pills');
+      var logEl = document.getElementById(key + '-log');
+      var agentEl = document.getElementById(key + '-agentrow');
+      var playBtn = document.getElementById(key + '-play');
+      if (!flowEl || !pillsEl || !logEl) return;
+
+      steps.forEach(function (s, i) {
+        var node = document.createElement('div');
+        node.className = 'node' + (s.color ? ' ' + s.color : '');
+        node.setAttribute('data-step', i);
+        node.innerHTML = '<span class="stepbadge">' + s.no + '</span><b>' + s.title + '</b><em>' + s.sub + '</em>';
+        flowEl.appendChild(node);
+
+        if (i < steps.length - 1) {
+          var arrow = document.createElement('i');
+          arrow.className = 'arrow on';
+          arrow.textContent = '→';
+          flowEl.appendChild(arrow);
+        }
+
+        var pill = document.createElement('span');
+        pill.className = 'spill';
+        pill.setAttribute('data-step', i);
+        pill.textContent = s.no + '. ' + s.title;
+        pillsEl.appendChild(pill);
+      });
+
+      if (agentEl && opts.agents) {
+        opts.agents.forEach(function (a) {
+          var p = document.createElement('span');
+          p.className = 'apill';
+          p.setAttribute('data-agent', a);
+          p.textContent = a;
+          agentEl.appendChild(p);
+        });
+      }
+
+      var activeStep = 0, playing = true, timer = null;
+
+      function render() {
+        Array.prototype.forEach.call(flowEl.querySelectorAll('.node'), function (n) {
+          var i = +n.getAttribute('data-step');
+          n.classList.toggle('active', i === activeStep);
+          n.classList.toggle('done', i < activeStep);
+        });
+        Array.prototype.forEach.call(pillsEl.querySelectorAll('.spill'), function (p) {
+          p.classList.toggle('active', +p.getAttribute('data-step') === activeStep);
+        });
+        if (agentEl && opts.agents) {
+          var onAgents = steps[activeStep].agents || [];
+          Array.prototype.forEach.call(agentEl.querySelectorAll('.apill'), function (p) {
+            p.classList.toggle('on', onAgents.indexOf(p.getAttribute('data-agent')) > -1);
+          });
+        }
+        logEl.innerHTML = steps.slice(0, activeStep + 1).map(function (s, i) {
+          return '<div class="logline' + (i === activeStep ? ' cur' : '') + '"><span class="ltag">[' + s.tag + ']</span>' + s.log + '</div>';
+        }).join('');
+        logEl.scrollTop = logEl.scrollHeight;
+      }
+
+      function nextStep() {
+        activeStep = (activeStep + 1) % steps.length;
+        render();
+      }
+      function startTimer() {
+        stopTimer();
+        timer = setInterval(function () { if (playing) nextStep(); }, interval);
+      }
+      function stopTimer() {
+        if (timer) { clearInterval(timer); timer = null; }
+      }
+
+      flowEl.addEventListener('click', function (e) {
+        var n = e.target.closest ? e.target.closest('.node') : null;
+        if (!n) return;
+        activeStep = +n.getAttribute('data-step');
+        render();
+      });
+      pillsEl.addEventListener('click', function (e) {
+        var p = e.target.closest ? e.target.closest('.spill') : null;
+        if (!p) return;
+        activeStep = +p.getAttribute('data-step');
+        render();
+      });
+      if (playBtn) {
+        playBtn.addEventListener('click', function () {
+          playing = !playing;
+          playBtn.textContent = playing ? '⏸' : '▶';
+        });
+      }
+
+      render();
+      startTimer();
+    }
+
+    // ---- Sub-agents — agent nào phụ trách giai đoạn nào ----
+    mountAgentFlow('agentsFlow', [
+      { no: '01', color: 'g', title: 'Understand / Scope', sub: 'Main: Primary', tag: 'PHASE', log: 'Main tự đọc &amp; xác định scope — Researcher hỗ trợ nếu cần khảo sát nhanh.', agents: ['Main', 'Researcher'] },
+      { no: '02', color: '', title: 'Investigation', sub: 'Researcher: Primary', tag: 'PHASE', log: 'Researcher trace root cause; Main điều phối, Reviewer/QA hỗ trợ khi cần.', agents: ['Researcher', 'Main'] },
+      { no: '03', color: 'b', title: 'Review', sub: 'Reviewer: Primary', tag: 'PHASE', log: 'Reviewer gate kế hoạch/kết quả; Researcher góp input, Main điều phối.', agents: ['Reviewer', 'Main'] },
+      { no: '04', color: 'a', title: 'Testing', sub: 'QA: Primary', tag: 'PHASE', log: 'QA chạy test tách loại; Reviewer review lại, Main điều phối.', agents: ['QA', 'Reviewer'] },
+      { no: '05', color: 'g', title: 'Documentation', sub: 'Docs: Primary', tag: 'PHASE', log: 'Documentation Agent chuẩn hoá docs/memory — các agent khác góp input.', agents: ['Docs'] }
+    ], { interval: 2600, agents: ['Main', 'Researcher', 'Reviewer', 'QA', 'Docs'] });
+
+    // ---- Workflow & Core Flow — request tới hoàn thành ----
+    mountAgentFlow('core', [
+      { no: '01', color: 'g', title: 'User Request', sub: 'Bug / Feature / Audit', tag: 'REQ', log: 'Nhận request từ user — phân loại Bug / Feature / Audit.', agents: ['Main'] },
+      { no: '02', color: '', title: 'Xác định scope', sub: 'Area nào bị chạm, project nào', tag: 'SCOPE', log: 'Xác định project &amp; area bị chạm (BE / FE / DB, 1 hay nhiều project trong 7).', agents: ['Main'] },
+      { no: '03', color: 'b', title: 'Đọc Rules + Skills', sub: 'Project-specific trước, root sau', tag: 'CTX', log: 'Đọc .rules/ + .skills/ đúng vùng — CLAUDE.md riêng (Face/TaskFlow) ưu tiên hơn quy ước chung.', agents: ['Main', 'Researcher'] },
+      { no: '04', color: '', title: 'Researcher', sub: 'Trace root cause, đọc code thật', tag: 'RESEARCH', log: 'Researcher trace root cause trên code thật, gắn nhãn Confirmed/Probable.', agents: ['Researcher'] },
+      { no: '05', color: 'a', title: 'Second-pass review', sub: 'Sửa kế hoạch nếu thiếu', tag: 'REVIEW', log: 'Second-pass review kế hoạch — bổ sung phần thiếu trước khi code.', agents: ['Reviewer', 'Researcher'] },
+      { no: '06', color: 'g', title: 'Implement', sub: 'Thay đổi nhỏ nhất, đúng nhất', tag: 'IMPLEMENT', log: 'Áp dụng thay đổi nhỏ nhất, đúng nhất — không refactor ngoài luồng đang sửa.', agents: ['Main'] },
+      { no: '07', color: 'b', title: 'QA + Reviewer', sub: 'Test tách loại · gate scope/security', tag: 'QA', log: 'QA chạy test tách loại; Reviewer gate scope/architecture/security.', agents: ['QA', 'Reviewer'] },
+      { no: '08', color: 'g', title: 'Báo cáo', sub: 'PASS/FAIL rõ ràng, không gộp mơ hồ', tag: 'REPORT', log: 'Trả kết quả PASS/FAIL rõ ràng — không tuyên bố "xong" khi test còn fail.', agents: ['Main'] }
+    ], { interval: 2600, agents: ['Main', 'Researcher', 'Reviewer', 'QA', 'Docs'] });
+
+    // ---- Rules — thứ tự đọc rule trước khi code ----
+    mountAgentFlow('rulesFlow', [
+      { no: '01', color: 'g', title: 'Nhận task', sub: 'Xác định vùng bị chạm', tag: 'TASK', log: 'Nhận task — xác định vùng bị chạm: project nào, BE/FE/DB/nhiều vùng.' },
+      { no: '02', color: '', title: 'CLAUDE.md riêng', sub: 'Face / TaskFlow ưu tiên tuyệt đối', tag: 'LOCAL', log: 'Nếu project có CLAUDE.md riêng (Face, TaskFlow) → đọc &amp; theo nó trước, kể cả khi khác quy ước chung.' },
+      { no: '03', color: 'b', title: '.rules/ gốc', sub: 'coding · architecture · security · …', tag: 'ROOT', log: 'Đọc .rules/ gốc: coding.md, architecture.md, security.md, workflow.md, git.md, testing.md.' },
+      { no: '04', color: '', title: '.rules/backend|frontend', sub: 'Đúng layer bị chạm', tag: 'LAYER', log: 'Đọc .rules/backend/ hoặc .rules/frontend/ đúng layer đang sửa.' },
+      { no: '05', color: 'a', title: '.skills/common', sub: 'code-analysis · debugging · …', tag: 'SKILL', log: 'Đọc .skills/common/ liên quan: code-analysis, debugging, problem-solving, permission.' },
+      { no: '06', color: 'g', title: 'Áp dụng khi code', sub: 'Rule riêng thắng rule chung nếu xung đột', tag: 'APPLY', log: 'Implement theo đúng thứ tự ưu tiên — nếu rule riêng &amp; rule chung xung đột, nêu rõ trước khi chọn.' }
+    ], { interval: 2200 });
+
+    // ---- Memory & Audit — vòng đời tri thức memory.md ----
+    mountAgentFlow('memoryFlow', [
+      { no: '01', color: 'g', title: 'Source code thật', sub: 'Nguồn xác thực cao nhất', tag: 'SOURCE', log: 'Source code thật luôn là nguồn xác thực cao nhất — không phải doc.' },
+      { no: '02', color: '', title: 'Audit doc gốc', sub: 'PROJECT_AUDIT · ARCHITECTURE · REAUDIT', tag: 'AUDIT', log: 'Tham chiếu audit doc gốc: PROJECT_AUDIT.md, review_pj.md, ARCHITECTURE.md, FINAL_PROJECT_AUDIT/REAUDIT.' },
+      { no: '03', color: 'b', title: 'Grep xác nhận lại', sub: 'Không tin doc cũ nếu chưa verify', tag: 'VERIFY', log: 'Grep/đọc code thật để xác nhận — audit doc có thể mô tả cái nên có, không phải cái đang có.' },
+      { no: '04', color: 'a', title: 'Ghi nhận memory.md', sub: 'Pattern đã xác nhận / Bad pattern', tag: 'RECORD', log: 'Ghi nhận vào memory.md: Pattern chung đã xác nhận, hoặc Bad pattern đã audit — đừng lặp lại.' },
+      { no: '05', color: 'g', title: 'Dùng làm căn cứ', sub: 'Luôn re-verify cho task mới', tag: 'REUSE', log: 'Dùng memory.md làm điểm khởi đầu cho task mới — vẫn re-verify code thật trước khi tin.' }
+    ], { interval: 2200 });
+
+    // Trang này mở mặc định ở view "overview" — chỉ reveal Core Flow khi thực sự cần
+    // (không auto-reveal lúc load để không lệch với switchScreen('overview') mặc định).
 
     function switchScreen(screenId) {
       // Nav active styling

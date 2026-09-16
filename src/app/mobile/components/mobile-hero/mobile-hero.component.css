@@ -1,0 +1,12 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.mobile-hero-container {
+  /* Subtle CSS Blueprint Grid - Zero SVG, Zero Compositing Cost */
+  background-image: 
+    linear-gradient(to right, var(--border-soft, rgba(128,128,128,0.08)) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-soft, rgba(128,128,128,0.08)) 1px, transparent 1px);
+  background-size: 28px 28px;
+}

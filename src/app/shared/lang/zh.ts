@@ -714,12 +714,22 @@ export const UIResourceZH = {
           { partnerNum: '01, 02, 03, 04', partnerDomain: 'ALL 4 DOMAINS', title: 'Full-Spectrum Technical Synchronization', description: '后端代码、网络基础设施、服务器配置与云端流水线之间毫无断层 —— AI 扮演着绝对的技术粘合剂角色。', protocol: 'MCP Protocol Bus' },
         ],
         aiSupercharge: '让工程师从单打独斗的键盘操作者，转变为指挥一支 7x24 小时运作的精锐 AI Subagent 军团的技术指挥官 (Technical Commander)。',
-        demo: {
-          title: 'Live Demo — AI 构建的语言学习应用',
-          description: '使用 AI 编排式工程工作流 (Claude Code) 端到端构建并上线一个中文 + 英文学习网页应用 —— 从创意到生产环境仅耗时 3 小时。',
-          url: 'https://learnzh.website/',
-          credentialsLabel: '演示账号: test01 / 12345678',
-        },
+        demos: [
+          {
+            title: 'Live Demo — AI 构建的语言学习应用',
+            description: '使用 AI 编排式工程工作流 (Claude Code) 端到端构建并上线一个中文 + 英文学习网页应用 —— 从创意到生产环境仅耗时 3 小时。',
+            url: 'https://learnzh.website/',
+            ctaLabel: '查看实时演示 (learnzh.website) ↗',
+            credentialsLabel: '演示账号: test01 / 12345678',
+          },
+          {
+            title: 'Live Demo — Elite Console（IT 基础设施管理控制台）',
+            description: '使用 AI 编排式工程工作流 (Claude Code) 端到端构建并上线一个 IT 基础设施管理控制台 —— 设备管理、网络拓扑、SLA 分析与 Agent Core 知识库 —— 从创意到生产环境仅耗时 2 小时。',
+            url: '/storage/design_system/elite_design_system.html',
+            ctaLabel: '查看实时演示 (mystorage) ↗',
+            credentialsLabel: '演示账号: test01 / 12345678',
+          },
+        ],
       },
     ],
     convergenceScenarios: [

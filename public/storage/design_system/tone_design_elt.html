@@ -1,0 +1,2575 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design System — 8 Tones Color Exploration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --radius-card: 22px;
+    --radius-sm: 12px;
+    --font-head: 'Poppins', 'Inter', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'IBM Plex Mono', Consolas, monospace;
+    --page-bg: #EDF3F8;
+    --page-text: #1E293B;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    background: var(--page-bg);
+    padding: 32px 24px 60px;
+    color: var(--page-text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  /* ---------- HERO BAR ---------- */
+  .hero-bar {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: var(--radius-card);
+    padding: 28px 36px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 20px -6px rgba(15, 23, 42, 0.05);
+  }
+
+  .hero-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-bottom: 20px;
+  }
+
+  .hero-title {
+    font-family: var(--font-head);
+    font-size: 26px;
+    font-weight: 800;
+    color: #0F172A;
+    margin: 0 0 6px 0;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-badge {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    background: #E0F2FE;
+    color: #0284C7;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+  }
+
+  .hero-desc {
+    font-size: 13.5px;
+    color: #64748B;
+    margin: 0;
+    line-height: 1.6;
+    max-width: 860px;
+  }
+
+  .controls-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding-top: 18px;
+    border-top: 1px solid #F1F5F9;
+  }
+
+  .filter-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 12.5px;
+    font-weight: 600;
+    font-family: var(--font-body);
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .filter-btn:hover {
+    background: #F1F5F9;
+    color: #0F172A;
+  }
+
+  .filter-btn.active {
+    background: #0284C7;
+    border-color: #0284C7;
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+  }
+
+  .quick-nav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .nav-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: #94A3B8;
+    margin-right: 4px;
+    text-transform: uppercase;
+  }
+
+  .tone-pill {
+    padding: 4px 9px;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    font-weight: 700;
+    background: #F1F5F9;
+    border: 1px solid #E2E8F0;
+    color: #475569;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .tone-pill:hover {
+    background: #E0F2FE;
+    color: #0284C7;
+    border-color: #BAE6FD;
+  }
+
+  /* ---------- GRID ---------- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
+    gap: 22px;
+  }
+
+  /* ---------- CARD SHELL ---------- */
+  .card {
+    border-radius: var(--radius-card);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background: var(--card-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--card-shadow);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
+    scroll-margin-top: 24px;
+  }
+
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow-hover);
+  }
+
+  /* Header */
+  .head-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .head-num {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 38px;
+    color: var(--accent-num);
+    line-height: 1;
+    margin: 0 0 6px 0;
+    letter-spacing: -1.5px;
+  }
+
+  .theme-badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid var(--badge-border);
+    color: var(--badge-color);
+    background: var(--badge-bg);
+  }
+
+  .head-title {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 23px;
+    margin: 0 0 8px 0;
+    color: var(--text-primary);
+    letter-spacing: -0.3px;
+  }
+
+  .head-sub {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  /* ---------- LOGO ROW (UNIFIED DEV·ARCHIVE) ---------- */
+  .logo-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 4px 0;
+  }
+
+  .bp-logo-box {
+    width: 170px;
+    height: 84px;
+    background: #FAFAFA;
+    border: 1px solid #DDD;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    font-size: 36px;
+    letter-spacing: -3.5px;
+    color: #111;
+    border-radius: 10px;
+    flex-shrink: 0;
+  }
+
+  .theme-2 .bp-logo-box,
+  .theme-5 .bp-logo-box,
+  .theme-8 .bp-logo-box {
+    background: #F7F7F7;
+    color: #111;
+    border-color: #333;
+  }
+
+  .bp-logo-box b { font-weight: 400; }
+  .bp-logo-box i { color: var(--accent-num); font-style: normal; font-weight: 700; }
+
+  .bp-tagline {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--text-primary);
+  }
+  .bp-tagline .line {
+    display: block;
+    width: 34px;
+    height: 2px;
+    margin-top: 8px;
+    background: var(--accent-num);
+  }
+
+  .taglist {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .taglist span {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.35;
+  }
+
+  .taglist .underline {
+    margin-top: 7px;
+    width: 32px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--accent-num);
+  }
+
+  /* ---------- SECTION LABEL ---------- */
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+  }
+
+  /* ---------- PALETTE GRID ---------- */
+  .palette-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 16px;
+    column-gap: 10px;
+  }
+
+  .swatch-item {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 4px;
+    margin: -4px;
+    transition: background 0.15s ease;
+  }
+
+  .swatch-item:hover {
+    background: var(--swatch-hover-bg);
+  }
+
+  .swatch-label {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin: 0 0 6px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .swatch-circle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--swatch-border);
+    margin-bottom: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    transition: transform 0.18s ease;
+  }
+
+  .swatch-item:hover .swatch-circle {
+    transform: scale(1.08);
+  }
+
+  .swatch-hex {
+    font-size: 10.5px;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    margin: 0;
+    font-weight: 500;
+  }
+
+  /* ---------- UI EXAMPLE BOX (Tones 1-6) ---------- */
+  .ui-card {
+    background: var(--ui-bg);
+    border: 1px solid var(--ui-border);
+    border-radius: 14px;
+    padding: 18px 18px 14px;
+  }
+
+  .ui-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .ui-welcome {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+  }
+
+  .ui-headline {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--text-primary);
+    margin: 0 0 4px 0;
+    letter-spacing: -0.2px;
+  }
+
+  .ui-subtext {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .ring-wrap { flex-shrink: 0; }
+  .ring-pct {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 13px;
+    fill: var(--text-primary);
+  }
+
+  .btn-row {
+    display: flex;
+    gap: 10px;
+    margin: 16px 0 14px 0;
+  }
+
+  .btn {
+    flex: 1;
+    text-align: center;
+    padding: 9px 10px;
+    border-radius: 9px;
+    font-size: 12.5px;
+    font-weight: 600;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+
+  .btn:hover { opacity: 0.9; }
+
+  .btn-fill {
+    background: var(--btn-fill);
+    color: var(--btn-fill-text, #FFFFFF);
+    border: none;
+  }
+
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--ui-border);
+    color: var(--text-primary);
+  }
+
+  .ui-row2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--ui-border);
+    padding: 12px 0 0;
+  }
+
+  .ui-row2-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .check-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--btn-fill);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .ui-row2-title {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .ui-row2-sub {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin: 2px 0 0;
+  }
+
+  .ui-row2-date {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11.5px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    font-family: var(--font-mono);
+  }
+
+  .quote-strip {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--quote-bg);
+    border: 1px solid var(--quote-border);
+    border-radius: 12px;
+    padding: 12px 16px;
+  }
+
+  .quote-text {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .quote-under {
+    width: 24px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--accent-num);
+    margin-top: 5px;
+  }
+
+  /* ---------- BLUEPRINT ORIGINAL UI (Tones 7 & 8) ---------- */
+  .bp-example-box {
+    border: 1px solid var(--bp-box-border);
+    padding: 20px;
+    background: var(--bp-box-bg);
+    border-radius: 4px;
+  }
+
+  .bp-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .bp-mini-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--bp-mini-color);
+    letter-spacing: 0.8px;
+  }
+
+  .bp-title {
+    font-family: var(--font-mono);
+    font-size: 18px;
+    font-weight: 700;
+    margin: 6px 0;
+    color: var(--text-primary);
+  }
+
+  .bp-desc {
+    margin: 0;
+    font-size: 12px;
+    color: var(--bp-desc-color);
+  }
+
+  .bp-status {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    white-space: nowrap;
+    color: #7ED957;
+    font-weight: 700;
+  }
+
+  .bp-rule {
+    border-top: 1px solid var(--bp-rule-color);
+    margin: 16px 0 14px;
+  }
+
+  .bp-tech-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .bp-chip {
+    border: 1px solid var(--bp-chip-border);
+    padding: 6px 10px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-primary);
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .bp-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .bp-btn {
+    padding: 10px 14px;
+    border: 1px solid var(--bp-btn-border);
+    background: var(--bp-btn-bg);
+    color: var(--bp-btn-color);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 0;
+  }
+
+  .bp-btn.primary {
+    background: var(--bp-btn-pri-bg);
+    color: var(--bp-btn-pri-color);
+    border-color: var(--bp-btn-pri-border);
+  }
+
+  .bp-footer-note {
+    margin-top: 4px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--bp-note-color);
+    letter-spacing: 0.5px;
+  }
+
+  /* Toast Notification */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #0F172A;
+    color: #FFFFFF;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ================================================================
+     TONE COLOR PALETTES
+     3 Core Color Pillars: Green, Sky Blue, and Grafana Observability
+     Tones 01 - 06: Soft, soothing palettes with delicate borders
+     Tones 07 - 08: Exact Original Technical Blueprint (Light & Dark)
+     ================================================================ */
+
+  
+  /* ================================================================
+     18-PALETTE MATRIX (3 Core Colors x 6 Tones + 2 Fixed Blueprints)
+     Green | Blue | Grafana applied dynamically to Tones 1 through 6
+     ================================================================ */
+
+  /* ---------------- GREEN FAMILY (Default) ---------------- */
+  [data-primary="green"] .theme-1,
+  :root:not([data-primary]) .theme-1 {
+    --card-bg: #FFFFFF;
+    --card-border: #E2ECE5;
+    --card-shadow: 0 4px 20px -4px rgba(16, 185, 129, 0.06);
+    --text-primary: #1F2937;
+    --text-secondary: #6B7280;
+    --accent-num: #22C55E;
+    --badge-bg: #F0FDF4;
+    --badge-color: #15803D;
+    --badge-border: #BBF7D0;
+    --ui-bg: #F8FBF7;
+    --ui-border: #E5EAE3;
+    --btn-fill: #22C55E;
+    --quote-bg: #F0FAF1;
+    --swatch-border: #E5E7EB;
+  }
+  [data-primary="green"] .theme-2,
+  :root:not([data-primary]) .theme-2 {
+    --card-bg: #0B1220;
+    --card-border: rgba(34, 197, 94, 0.2);
+    --text-primary: #F9FAFB;
+    --text-secondary: #9CA3AF;
+    --accent-num: #22C55E;
+    --badge-bg: rgba(34, 197, 94, 0.12);
+    --badge-color: #34D399;
+    --badge-border: rgba(34, 197, 94, 0.28);
+    --ui-bg: #111827;
+    --ui-border: rgba(255, 255, 255, 0.08);
+    --btn-fill: #22C55E;
+    --quote-bg: #111827;
+    --swatch-border: rgba(255, 255, 255, 0.1);
+  }
+  [data-primary="green"] .theme-3,
+  :root:not([data-primary]) .theme-3 {
+    --card-bg: #F5FAF6;
+    --card-border: #D1E7DD;
+    --text-primary: #111827;
+    --text-secondary: #4B5563;
+    --accent-num: #4CAF50;
+    --badge-bg: #F0FDF4;
+    --badge-color: #15803D;
+    --badge-border: #BBF7D0;
+    --ui-bg: #FFFFFF;
+    --ui-border: #E5E7EB;
+    --btn-fill: #4CAF50;
+    --quote-bg: #F0FAF1;
+    --swatch-border: #E5E7EB;
+  }
+  [data-primary="green"] .theme-4,
+  :root:not([data-primary]) .theme-4 {
+    --card-bg: #F0FDF4;
+    --card-border: #BBF7D0;
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --accent-num: #16A34A;
+    --badge-bg: #F0FDF4;
+    --badge-color: #16A34A;
+    --badge-border: #BBF7D0;
+    --ui-bg: #FFFFFF;
+    --ui-border: #E2ECE5;
+    --btn-fill: #16A34A;
+    --quote-bg: #F0FAF1;
+    --swatch-border: #BBF7D0;
+  }
+  [data-primary="green"] .theme-5,
+  :root:not([data-primary]) .theme-5 {
+    --card-bg: #0A120E;
+    --card-border: #1E382B;
+    --text-primary: #F0FDF4;
+    --text-secondary: #86EFAC;
+    --accent-num: #10B981;
+    --badge-bg: rgba(16, 185, 129, 0.14);
+    --badge-color: #10B981;
+    --badge-border: rgba(16, 185, 129, 0.3);
+    --ui-bg: #101E17;
+    --ui-border: #1E382B;
+    --btn-fill: #10B981;
+    --quote-bg: #101E17;
+    --swatch-border: #1E382B;
+  }
+  [data-primary="green"] .theme-6,
+  :root:not([data-primary]) .theme-6 {
+    --card-bg: #EEF4F1;
+    --card-border: #CFE0D8;
+    --text-primary: #064E3B;
+    --text-secondary: #047857;
+    --accent-num: #059669;
+    --badge-bg: #D1FAE5;
+    --badge-color: #047857;
+    --badge-border: #A7F3D0;
+    --ui-bg: #FFFFFF;
+    --ui-border: #D7E4DE;
+    --btn-fill: #059669;
+    --quote-bg: #E7F5EF;
+    --swatch-border: #D7E4DE;
+  }
+
+  /* ---------------- BLUE FAMILY ---------------- */
+  [data-primary="blue"] .theme-1 {
+    --card-bg: #FFFFFF;
+    --card-border: #E2E8F0;
+    --card-shadow: 0 4px 20px -4px rgba(2, 132, 199, 0.06);
+    --text-primary: #1E293B;
+    --text-secondary: #64748B;
+    --accent-num: #0284C7;
+    --badge-bg: #F0F9FF;
+    --badge-color: #0284C7;
+    --badge-border: #BAE6FD;
+    --ui-bg: #F8FAFC;
+    --ui-border: #EDF2F7;
+    --btn-fill: #0284C7;
+    --quote-bg: #F0F9FF;
+    --swatch-border: #E2E8F0;
+  }
+  [data-primary="blue"] .theme-2 {
+    --card-bg: #070C15;
+    --card-border: rgba(56, 189, 248, 0.18);
+    --text-primary: #F1F5F9;
+    --text-secondary: #94A3B8;
+    --accent-num: #38BDF8;
+    --badge-bg: rgba(56, 189, 248, 0.12);
+    --badge-color: #38BDF8;
+    --badge-border: rgba(56, 189, 248, 0.28);
+    --ui-bg: #0C1322;
+    --ui-border: rgba(255, 255, 255, 0.08);
+    --btn-fill: #38BDF8;
+    --quote-bg: #0C1322;
+    --swatch-border: rgba(255, 255, 255, 0.1);
+  }
+  [data-primary="blue"] .theme-3 {
+    --card-bg: #F0F7FF;
+    --card-border: #DBEAFE;
+    --text-primary: #1E3A8A;
+    --text-secondary: #3B82F6;
+    --accent-num: #3B82F6;
+    --badge-bg: #EFF6FF;
+    --badge-color: #2563EB;
+    --badge-border: #BFDBFE;
+    --ui-bg: #FFFFFF;
+    --ui-border: #DBEAFE;
+    --btn-fill: #3B82F6;
+    --quote-bg: #EFF6FF;
+    --swatch-border: #DBEAFE;
+  }
+  [data-primary="blue"] .theme-4 {
+    --card-bg: #F4F7FB;
+    --card-border: #CBD5E1;
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --accent-num: #2563EB;
+    --badge-bg: #EFF6FF;
+    --badge-color: #2563EB;
+    --badge-border: #BFDBFE;
+    --ui-bg: #FFFFFF;
+    --ui-border: #E2E8F0;
+    --btn-fill: #2563EB;
+    --quote-bg: #EFF6FF;
+    --swatch-border: #E2E8F0;
+  }
+  [data-primary="blue"] .theme-5 {
+    --card-bg: #0B0F19;
+    --card-border: #1E293B;
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --accent-num: #38BDF8;
+    --badge-bg: rgba(56, 189, 248, 0.12);
+    --badge-color: #38BDF8;
+    --badge-border: rgba(56, 189, 248, 0.28);
+    --ui-bg: #111827;
+    --ui-border: #1E293B;
+    --btn-fill: #38BDF8;
+    --quote-bg: #111827;
+    --swatch-border: #1E293B;
+  }
+  [data-primary="blue"] .theme-6 {
+    --card-bg: #F1F5F9;
+    --card-border: #CBD5E1;
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --accent-num: #0284C7;
+    --badge-bg: #E0F2FE;
+    --badge-color: #0369A1;
+    --badge-border: #BAE6FD;
+    --ui-bg: #FFFFFF;
+    --ui-border: #E2E8F0;
+    --btn-fill: #0284C7;
+    --quote-bg: #E0F2FE;
+    --swatch-border: #CBD5E1;
+  }
+
+  /* ---------------- GRAFANA FAMILY ---------------- */
+  [data-primary="grafana"] .theme-1 {
+    --card-bg: #FFFFFF;
+    --card-border: #EFE8E2;
+    --card-shadow: 0 4px 20px -4px rgba(234, 88, 12, 0.06);
+    --text-primary: #1C1917;
+    --text-secondary: #78716C;
+    --accent-num: #EA580C;
+    --badge-bg: #FFEDD5;
+    --badge-color: #C2410C;
+    --badge-border: #FED7AA;
+    --ui-bg: #FAF7F5;
+    --ui-border: #F5EFEA;
+    --btn-fill: #EA580C;
+    --quote-bg: #FFF7ED;
+    --swatch-border: #EFE8E2;
+  }
+  [data-primary="grafana"] .theme-2 {
+    --card-bg: #0E1117;
+    --card-border: #30363D;
+    --text-primary: #F0F6FC;
+    --text-secondary: #8B949E;
+    --accent-num: #FF9830;
+    --badge-bg: rgba(255, 152, 48, 0.14);
+    --badge-color: #FF9830;
+    --badge-border: rgba(255, 152, 48, 0.28);
+    --ui-bg: #161B22;
+    --ui-border: #21262D;
+    --btn-fill: #FF9830;
+    --quote-bg: #161B22;
+    --swatch-border: #30363D;
+  }
+  [data-primary="grafana"] .theme-3 {
+    --card-bg: #FDF8F0;
+    --card-border: #FDE68A;
+    --text-primary: #78350F;
+    --text-secondary: #B45309;
+    --accent-num: #F59E0B;
+    --badge-bg: #FEF3C7;
+    --badge-color: #B45309;
+    --badge-border: #FDE68A;
+    --ui-bg: #FFFFFF;
+    --ui-border: #FDE68A;
+    --btn-fill: #F59E0B;
+    --quote-bg: #FFFBEB;
+    --swatch-border: #FDE68A;
+  }
+  [data-primary="grafana"] .theme-4 {
+    --card-bg: #FFF7ED;
+    --card-border: #FED7AA;
+    --text-primary: #1C1917;
+    --text-secondary: #78716C;
+    --accent-num: #D97706;
+    --badge-bg: #FFEDD5;
+    --badge-color: #C2410C;
+    --badge-border: #FED7AA;
+    --ui-bg: #FFFFFF;
+    --ui-border: #FED7AA;
+    --btn-fill: #D97706;
+    --quote-bg: #FFF7ED;
+    --swatch-border: #FED7AA;
+  }
+  [data-primary="grafana"] .theme-5 {
+    --card-bg: #0B0F14;
+    --card-border: #263241;
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --accent-num: #5794F2;
+    --badge-bg: rgba(87, 148, 242, 0.12);
+    --badge-color: #5794F2;
+    --badge-border: rgba(87, 148, 242, 0.28);
+    --ui-bg: #111827;
+    --ui-border: #263241;
+    --btn-fill: #5794F2;
+    --quote-bg: #111827;
+    --swatch-border: #263241;
+  }
+  [data-primary="grafana"] .theme-6 {
+    --card-bg: #F7F4EF;
+    --card-border: #E8DFD5;
+    --text-primary: #292524;
+    --text-secondary: #57534E;
+    --accent-num: #EA580C;
+    --badge-bg: #FFEDD5;
+    --badge-color: #C2410C;
+    --badge-border: #FED7AA;
+    --ui-bg: #FFFFFF;
+    --ui-border: #E8DFD5;
+    --btn-fill: #EA580C;
+    --quote-bg: #FFEDD5;
+    --swatch-border: #E8DFD5;
+  }
+
+  /* ---------------- TONES 7 & 8: STRICTLY FIXED BLUEPRINT ---------------- */
+  .card.theme-7 {
+    border: 2px solid #111111 !important;
+  }
+  .card.theme-8 {
+    border: 1.5px solid #1F1F1F !important;
+  }
+
+  /* Core Color Switcher in Hero */
+  .core-palette-switcher {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    padding: 6px 12px;
+    border-radius: 9999px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .core-palette-switcher .sw-label {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .core-sw-btn {
+    padding: 5px 12px;
+    border-radius: 9999px;
+    border: 1px solid #CBD5E1;
+    background: #FFFFFF;
+    font-size: 12px;
+    font-weight: 600;
+    color: #334155;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .core-sw-btn:hover {
+    border-color: #22C55E;
+    transform: translateY(-1px);
+  }
+  .core-sw-btn.active {
+    background: #0F172A;
+    color: #FFFFFF;
+    border-color: #0F172A;
+  }
+
+  /* ---------- TONE 01 : Natural Green & Soft Sky (Light) ---------- */
+  .theme-1 {
+    --card-bg: #FFFFFF;
+    --card-border: #E2ECE5;
+    --card-shadow: 0 4px 20px -4px rgba(16, 185, 129, 0.06);
+    --card-shadow-hover: 0 10px 28px -6px rgba(16, 185, 129, 0.15);
+    --text-primary: #1F2937;
+    --text-secondary: #6B7280;
+    --accent-num: #22C55E;
+    --badge-bg: #F0FDF4;
+    --badge-color: #15803D;
+    --badge-border: #BBF7D0;
+    --ui-bg: #F8FBF7;
+    --ui-border: #E5EAE3;
+    --btn-fill: #22C55E;
+    --btn-fill-text: #FFFFFF;
+    --quote-bg: #F0FAF1;
+    --quote-border: #DCFCE7;
+    --swatch-border: #E5E7EB;
+    --swatch-hover-bg: #F0FDF4;
+  }
+
+  /* ---------- TONE 02 : Deep Green / Professional (Dark) ---------- */
+  .theme-2 {
+    --card-bg: #0B1220;
+    --card-border: rgba(34, 197, 94, 0.18);
+    --card-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.45);
+    --card-shadow-hover: 0 12px 32px -6px rgba(34, 197, 94, 0.2);
+    --text-primary: #F9FAFB;
+    --text-secondary: #9CA3AF;
+    --accent-num: #22C55E;
+    --badge-bg: rgba(34, 197, 94, 0.12);
+    --badge-color: #34D399;
+    --badge-border: rgba(34, 197, 94, 0.28);
+    --ui-bg: #111827;
+    --ui-border: rgba(255, 255, 255, 0.08);
+    --btn-fill: #22C55E;
+    --btn-fill-text: #05140A;
+    --quote-bg: #111827;
+    --quote-border: rgba(34, 197, 94, 0.16);
+    --swatch-border: rgba(255, 255, 255, 0.1);
+    --swatch-hover-bg: rgba(34, 197, 94, 0.06);
+  }
+
+  /* ---------- TONE 03 : Soft Sky & Emerald / Modern (Light) ---------- */
+  .theme-3 {
+    --card-bg: #F5F7FB;
+    --card-border: #E0E7FF;
+    --card-shadow: 0 4px 20px -4px rgba(96, 165, 250, 0.06);
+    --card-shadow-hover: 0 10px 28px -6px rgba(96, 165, 250, 0.14);
+    --text-primary: #111827;
+    --text-secondary: #6B7280;
+    --accent-num: #60A5FA;
+    --badge-bg: #EFF6FF;
+    --badge-color: #2563EB;
+    --badge-border: #BFDBFE;
+    --ui-bg: #FFFFFF;
+    --ui-border: #E5E7EB;
+    --btn-fill: #4CAF50;
+    --btn-fill-text: #FFFFFF;
+    --quote-bg: #EEF2FF;
+    --quote-border: #E0E7FF;
+    --swatch-border: #E5E7EB;
+    --swatch-hover-bg: #EEF2FF;
+  }
+
+  /* ---------- TONE 04 : IT Device Fleet / Cloud Sky (Light) ---------- */
+  .theme-4 {
+    --card-bg: #F4F7FB;
+    --card-border: #DFE8F3;
+    --card-shadow: 0 4px 20px -4px rgba(37, 99, 235, 0.06);
+    --card-shadow-hover: 0 10px 28px -6px rgba(37, 99, 235, 0.15);
+    --text-primary: #0F172A;
+    --text-secondary: #64748B;
+    --accent-num: #2563EB;
+    --badge-bg: #EFF6FF;
+    --badge-color: #2563EB;
+    --badge-border: #BFDBFE;
+    --ui-bg: #FFFFFF;
+    --ui-border: #E2E8F0;
+    --btn-fill: #2563EB;
+    --btn-fill-text: #FFFFFF;
+    --quote-bg: #EFF6FF;
+    --quote-border: #DBEAFE;
+    --swatch-border: #E2E8F0;
+    --swatch-hover-bg: #EFF6FF;
+  }
+
+  /* ---------- TONE 05 : Grafana / Observability (Dark) ---------- */
+  .theme-5 {
+    --card-bg: #0B0F14;
+    --card-border: #263241;
+    --card-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.6);
+    --card-shadow-hover: 0 12px 32px -6px rgba(87, 148, 242, 0.16);
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --accent-num: #5794F2;
+    --badge-bg: rgba(87, 148, 242, 0.12);
+    --badge-color: #5794F2;
+    --badge-border: rgba(87, 148, 242, 0.28);
+    --ui-bg: #111827;
+    --ui-border: #263241;
+    --btn-fill: #5794F2;
+    --btn-fill-text: #0B0F14;
+    --quote-bg: #111827;
+    --quote-border: #263241;
+    --swatch-border: #263241;
+    --swatch-hover-bg: rgba(87, 148, 242, 0.05);
+  }
+
+  /* ---------- TONE 06 : IT Infrastructure / Ocean Breeze (Light) ---------- */
+  .theme-6 {
+    --card-bg: #EEF4F1;
+    --card-border: #DAEAE5;
+    --card-shadow: 0 4px 20px -4px rgba(15, 118, 110, 0.06);
+    --card-shadow-hover: 0 10px 28px -6px rgba(15, 118, 110, 0.14);
+    --text-primary: #10231A;
+    --text-secondary: #60756A;
+    --accent-num: #0F766E;
+    --badge-bg: #F0FDFA;
+    --badge-color: #0F766E;
+    --badge-border: #CCFBF1;
+    --ui-bg: #FFFFFF;
+    --ui-border: #D7E4DE;
+    --btn-fill: #0F766E;
+    --btn-fill-text: #FFFFFF;
+    --quote-bg: #E7F5EF;
+    --quote-border: #CFE0D8;
+    --swatch-border: #D7E4DE;
+    --swatch-hover-bg: #F0FDFA;
+  }
+
+  /* ---------- TONE 07 : Technical Blueprint / Light (EXACT ORIGINAL 07A) ---------- */
+  .card.theme-7 {
+    border: 2px solid #111111 !important;
+  }
+  .theme-7 {
+    --card-bg: #FFFFFF;
+    --card-border: #111111; /* KHUNG VIỀN ĐEN KỸ THUẬT BLUEPRINT */
+    --card-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.12);
+    --card-shadow-hover: 0 10px 26px -4px rgba(0, 0, 0, 0.18);
+    --text-primary: #111111;
+    --text-secondary: #555555;
+    --accent-num: #7ED957;
+    --badge-bg: #111111;
+    --badge-color: #7ED957;
+    --badge-border: #111111;
+    --swatch-border: #111111;
+    --swatch-hover-bg: #F5F5F5;
+
+    /* Blueprint original tokens */
+    --bp-box-border: #1A1A1A;
+    --bp-box-bg: #FFFFFF;
+    --bp-mini-color: #777777;
+    --bp-desc-color: #666666;
+    --bp-rule-color: #DDDDDD;
+    --bp-chip-border: #222222;
+    --bp-btn-border: #111111;
+    --bp-btn-bg: #FFFFFF;
+    --bp-btn-color: #111111;
+    --bp-btn-pri-bg: #111111;
+    --bp-btn-pri-color: #FFFFFF;
+    --bp-btn-pri-border: #111111;
+    --bp-note-color: #777777;
+  }
+
+  /* ---------- TONE 08 : Technical Blueprint / Dark (EXACT ORIGINAL 07B) ---------- */
+  .theme-8 {
+    --card-bg: #0B0B0B;
+    --card-border: #1F1F1F;
+    --card-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.6);
+    --card-shadow-hover: 0 12px 32px -4px rgba(0, 0, 0, 0.75);
+    --text-primary: #F5F5F5;
+    --text-secondary: #9B9B9B;
+    --accent-num: #7ED957;
+    --badge-bg: #152210;
+    --badge-color: #7ED957;
+    --badge-border: #2A4020;
+    --swatch-border: rgba(255, 255, 255, 0.12);
+    --swatch-hover-bg: rgba(255, 255, 255, 0.05);
+
+    /* Blueprint original tokens */
+    --bp-box-border: #333333;
+    --bp-box-bg: #111111;
+    --bp-mini-color: #888888;
+    --bp-desc-color: #999999;
+    --bp-rule-color: #333333;
+    --bp-chip-border: #444444;
+    --bp-btn-border: #EEEEEE;
+    --bp-btn-bg: #0B0B0B;
+    --bp-btn-color: #EEEEEE;
+    --bp-btn-pri-bg: #7ED957;
+    --bp-btn-pri-color: #0B0B0B;
+    --bp-btn-pri-border: #7ED957;
+    --bp-note-color: #777777;
+  }
+
+  /* ---------- FOOTER ---------- */
+  .footer {
+    margin-top: 36px;
+    padding: 22px 10px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12.5px;
+    color: #64748B;
+    border-top: 1px solid #CBD5E1;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 18px;
+  }
+
+  .footer-links a {
+    color: #0284C7;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .footer-links a:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 16px 12px 40px; }
+    .hero-bar { padding: 20px 18px; border-radius: 16px; }
+    .card { padding: 22px 18px; border-radius: 16px; }
+    .palette-grid { grid-template-columns: repeat(3, 1fr); }
+    .logo-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .btn-row { flex-direction: column; }
+    .bp-buttons { flex-direction: column; }
+  }
+
+  /* ---------- EXPORT MARKDOWN ACTION BAR ---------- */
+  .tone-export-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--swatch-border, rgba(0,0,0,0.1));
+    align-items: center;
+  }
+
+  .tone-export-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--swatch-border, #CBD5E1);
+    background: var(--card-bg, #FFFFFF);
+    color: var(--text-primary, #1E293B);
+    transition: all 0.2s ease;
+    font-family: var(--font-body, sans-serif);
+  }
+
+  .tone-export-btn:hover {
+    border-color: var(--accent-num, #22C55E);
+    color: var(--accent-num, #22C55E);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  .tone-export-btn.primary {
+    background: var(--accent-num, #22C55E);
+    color: #FFFFFF;
+    border-color: var(--accent-num, #22C55E);
+  }
+
+  .tone-export-btn.primary:hover {
+    opacity: 0.9;
+  }
+
+  /* Tone 7 Blueprint Specific */
+  .theme-7 .tone-export-actions {
+    border-top: 1px solid #111111;
+  }
+  .theme-7 .tone-export-btn {
+    border: 1.5px solid #111111 !important;
+    border-radius: 4px !important;
+    font-family: var(--font-mono) !important;
+    background: #FFFFFF !important;
+    color: #111111 !important;
+  }
+  .theme-7 .tone-export-btn.primary {
+    background: #111111 !important;
+    color: #7ED957 !important;
+    border-color: #111111 !important;
+  }
+
+  /* Tone 8 Blueprint Specific */
+  .theme-8 .tone-export-actions {
+    border-top: 1px solid #1F1F1F;
+  }
+  .theme-8 .tone-export-btn {
+    border: 1px solid #2A2A2A !important;
+    border-radius: 4px !important;
+    font-family: var(--font-mono) !important;
+    background: #151515 !important;
+    color: #EEEEEE !important;
+  }
+  .theme-8 .tone-export-btn.primary {
+    background: #7ED957 !important;
+    color: #050505 !important;
+    border-color: #7ED957 !important;
+  }
+
+
+  /* Embedded iframe mode (inside Elite Console) */
+  body.embedded-mode {
+    padding: 12px 14px 48px !important;
+    background: transparent !important;
+  }
+  body.embedded-mode .page {
+    max-width: 100% !important;
+  }
+  body.embedded-mode .hero-bar {
+    display: none !important;
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ==================== HERO BAR ==================== -->
+  <header class="hero-bar">
+    <div class="hero-top">
+      <div>
+        <h1 class="hero-title">
+          <span>Design System — 8 Tones Exploration</span>
+          <span class="hero-badge">Curated Palette</span>
+        </h1>
+        <p class="hero-desc">
+          Bảng hệ thống màu gom 2 file thành <strong>1 file duy nhất với thứ tự 01 đến 08</strong>.
+          Tất cả các tone từ 01 đến 08 đều đồng bộ logo <strong>dev·archive</strong>.
+          <strong>Tone 1–6:</strong> Tinh chỉnh theo phong cách Sky nhẹ nhàng, loại bỏ màu đỏ gắt/xanh đậm/đỏ đô, border hạ thanh mảnh mềm mại.
+          <strong>Tone 07–08:</strong> Giữ nguyên vẹn 100% thiết kế, mã màu kỹ thuật và layout bản gốc Technical Blueprint (Light & Dark).
+        </p>
+      </div>
+    </div>
+
+    <div class="controls-row">
+      <div class="filter-group">
+        <button class="filter-btn active" onclick="filterTones('all', this)">Tất cả (8 Tones)</button>
+        <button class="filter-btn" onclick="filterTones('green', this)">🌿 Green (01, 02, 03)</button>
+        <button class="filter-btn" onclick="filterTones('blue', this)">🔷 Sky Blue (03, 04)</button>
+        <button class="filter-btn" onclick="filterTones('grafana', this)">📊 Grafana (05)</button>
+        <button class="filter-btn" onclick="filterTones('blueprint', this)">📐 Blueprint (07, 08)</button>
+        <button class="filter-btn" onclick="filterTones('light', this)">Light Mode</button>
+        <button class="filter-btn" onclick="filterTones('dark', this)">Dark Mode</button>
+      </div>
+
+      <div class="quick-nav">
+        <span class="nav-label">Chuyển nhanh:</span>
+        <a href="#tone-01" class="tone-pill">01</a>
+        <a href="#tone-02" class="tone-pill">02</a>
+        <a href="#tone-03" class="tone-pill">03</a>
+        <a href="#tone-04" class="tone-pill">04</a>
+        <a href="#tone-05" class="tone-pill">05</a>
+        <a href="#tone-06" class="tone-pill">06</a>
+        <a href="#tone-07" class="tone-pill">07</a>
+        <a href="#tone-08" class="tone-pill">08</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== GRID OF 8 TONES ==================== -->
+  <div class="grid" id="tones-grid">
+
+    <!-- ============ CARD 01 : Natural Green & Soft Sky ============ -->
+    <section class="card theme-1" id="tone-01" data-mode="light" data-family="green">
+      <div class="head-wrap">
+        <div>
+          <p class="head-num">01</p>
+          <h2 class="head-title">Natural Green & Soft Sky</h2>
+          <p class="head-sub">Tự nhiên · Cân bằng · Nhẹ nhàng<br>Màu xanh lá nguyên bản với sắc độ dịu mắt và viền mềm mại, không chói gắt.</p>
+        </div>
+        <span class="theme-badge">Light Mode</span>
+      </div>
+
+      <div class="logo-row">
+        <div class="bp-logo-box">
+          <b>dev</b><i>·</i><b>archive</b>
+        </div>
+        <div class="taglist">
+          <span>People</span>
+          <span>Progress</span>
+          <span>A Better Tomorrow</span>
+          <div class="underline"></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-label">Color Palette (Soft Green & Sky)</p>
+        <div class="palette-grid">
+          <div class="swatch-item" onclick="copyHex('#22C55E', 'Primary Green')"><p class="swatch-label">Primary Green</p><div class="swatch-circle" style="background:#22C55E"></div><p class="swatch-hex">#22C55E</p></div>
+          <div class="swatch-item" onclick="copyHex('#34D399', 'Mint Breeze')"><p class="swatch-label">Mint Breeze</p><div class="swatch-circle" style="background:#34D399"></div><p class="swatch-hex">#34D399</p></div>
+          <div class="swatch-item" onclick="copyHex('#15803D', 'Forest Dark')"><p class="swatch-label">Forest Dark</p><div class="swatch-circle" style="background:#15803D"></div><p class="swatch-hex">#15803D</p></div>
+          <div class="swatch-item" onclick="copyHex('#BBF7D0', 'Green Pale')"><p class="swatch-label">Green Pale</p><div class="swatch-circle" style="background:#BBF7D0"></div><p class="swatch-hex">#BBF7D0</p></div>
+
+          <div class="swatch-item" onclick="copyHex('#F8FBF7', 'Background')"><p class="swatch-label">Background</p><div class="swatch-circle" style="background:#F8FBF7"></div><p class="swatch-hex">#F8FBF7</p></div>
+          <div class="swatch-item" onclick="copyHex('#FFFFFF', 'Surface')"><p class="swatch-label">Surface</p><div class="swatch-circle" style="background:#FFFFFF"></div><p class="swatch-hex">#FFFFFF</p></div>
+          <div class="swatch-item" onclick="copyHex('#1F2937', 'Text Primary')"><p class="swatch-label">Text Primary</p><div class="swatch-circle" style="background:#1F2937"></div><p class="swatch-hex">#1F2937</p></div>
+          <div class="swatch-item" onclick="copyHex('#6B7280', 'Text Soft')"><p class="swatch-label">Text Soft</p><div class="swatch-circle" style="background:#6B7280"></div><p class="swatch-hex">#6B7280</p></div>
+
+          <div class="swatch-item" onclick="copyHex('#E2ECE5', 'Border Soft')"><p class="swatch-label">Border Soft</p><div class="swatch-circle" style="background:#E2ECE5"></div><p class="swatch-hex">#E2ECE5</p></div>
+          <div class="swatch-item" onclick="copyHex('#22C55E', 'Success')"><p class="swatch-label">Success</p><div class="swatch-circle" style="background:#22C55E"></div><p class="swatch-hex">#22C55E</p></div>
+          <div class="swatch-item" onclick="copyHex('#F59E0B', 'Warning')"><p class="swatch-label">Warning</p><div class="swatch-circle" style="background:#F59E0B"></div><p class="swatch-hex">#F59E0B</p></div>
+          <div class="swatch-item" onclick="copyHex('#EF4444', 'Error')"><p class="swatch-label">Error</p><div class="swatch-circle" style="background:#EF4444"></div><p class="swatch-hex">#EF4444</p></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-label">UI Example</p>
+        <div class="ui-card">
+          <div class="ui-top">
+            <div>
+              <div class="ui-welcome">
+                <svg width="15" height="15" viewBox="0 0 16 16"><path d="M8 1c1 2.6 1.3 5 .7 7.6-.6 2.4-2 3.9-3 5.6-.5-.3-.8-2-.6-3.7.3-2.3 1.3-4 2.2-6C7.8 3.4 7.9 2 8 1Z" fill="#22C55E"/></svg>
+                Welcome back
+              </div>
+              <p class="ui-headline">Make progress today.</p>
+              <p class="ui-subtext">Small steps create big results.</p>
+            </div>
+            <div class="ring-wrap">
+              <svg width="56" height="56" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="24" stroke="#E5EAE3" stroke-width="5" fill="none"/>
+                <circle cx="30" cy="30" r="24" stroke="#22C55E" stroke-width="5" fill="none"
+                  stroke-dasharray="150.8" stroke-dashoffset="37.7" stroke-linecap="round"
+                  transform="rotate(-90 30 30)"/>
+                <text x="30" y="34.5" text-anchor="middle" class="ring-pct">75%</text>
+              </svg>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <div class="btn btn-fill">Create New Goal</div>
+            <div class="btn btn-outline">View Timeline</div>
+          </div>
+
+          <div class="ui-row2">
+            <div class="ui-row2-left">
+              <div class="check-circle" style="background:#22C55E">✓</div>
+              <div>
+                <p class="ui-row2-title">Natural green identity</p>
+                <p class="ui-row2-sub">Soft border & soothing tone</p>
+              </div>
+            </div>
+            <div class="ui-row2-date">Apr 2026 <span>›</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-strip">
+        <svg width="18" height="18" viewBox="0 0 16 16"><path d="M8 1c1 2.6 1.3 5 .7 7.6-.6 2.4-2 3.9-3 5.6-.5-.3-.8-2-.6-3.7.3-2.3 1.3-4 2.2-6C7.8 3.4 7.9 2 8 1Z" fill="#22C55E"/></svg>
+        <div>
+          <p class="quote-text">Turning intention into impactful reality.</p>
+          <div class="quote-under"></div>
+        </div>
+      </div>
+    
+      <div class="tone-export-actions">
+        <button class="tone-export-btn" onclick="copyToneMarkdown(1)" title="Sao chép Markdown đặc tả Tone 01">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+          Sao chép .MD
+        </button>
+        <button class="tone-export-btn primary" onclick="downloadToneMarkdown(1)" title="Tải file .md mô tả Tone 01">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Tải file .MD
+        </button>
+      </div>
+</section>
+
+
+    <!-- ============ CARD 02 : Deep Green / Professional ============ -->
+    <section class="card theme-2" id="tone-02" data-mode="dark" data-family="green">
+      <div class="head-wrap">
+        <div>
+          <p class="head-num">02</p>
+          <h2 class="head-title">Deep Green / Professional</h2>
+          <p class="head-sub">Tập trung · Đẳng cấp · Ổn định<br>Tông nền đêm thanh lịch kết hợp điểm nhấn xanh lá dịu mắt, tăng độ tập trung.</p>
+        </div>
+        <span class="theme-badge">Dark Mode</span>
+      </div>
+
+      <div class="logo-row">
+        <div class="bp-logo-box">
+          <b>dev</b><i>·</i><b>archive</b>
+        </div>
+        <div class="taglist">
+          <span>People</span>
+          <span>Progress</span>
+          <span>A Better Tomorrow</span>
+          <div class="underline"></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-label">Color Palette (Deep Green)</p>
+        <div class="palette-grid">
+          <div class="swatch-item" onclick="copyHex('#22C55E', 'Primary Green')"><p class="swatch-label">Primary Green</p><div class="swatch-circle" style="background:#22C55E"></div><p class="swatch-hex">#22C55E</p></div>
+          <div class="swatch-item" onclick="copyHex('#34D399', 'Mint Glow')"><p class="swatch-label">Mint Glow</p><div class="swatch-circle" style="background:#34D399"></div><p class="swatch-hex">#34D399</p></div>
+          <div class="swatch-item" onclick="copyHex('#15803D', 'Forest Dark')"><p class="swatch-label">Forest Dark</p><div class="swatch-circle" style="background:#15803D"></div><p class="swatch-hex">#15803D</p></div>
+          <div class="swatch-item" onclick="copyHex('#A7F3D0', 'Mint Pale')"><p class="swatch-label">Mint Pale</p><div class="swatch-circle" style="background:#A7F3D0"></div><p class="swatch-hex">#A7F3D0</p></div>
+
+          <div class="swatch-item" onclick="copyHex('#0B1220', 'Deep Night')"><p class="swatch-label">Deep Night</p><div class="swatch-circle" style="background:#0B1220"></div><p class="swatch-hex">#0B1220</p></div>
+          <div class="swatch-item" onclick="copyHex('#111827', 'Surface Dark')"><p class="swatch-label">Surface Dark</p><div class="swatch-circle" style="background:#111827"></div><p class="swatch-hex">#111827</p></div>
+          <div class="swatch-item" onclick="copyHex('#F9FAFB', 'Text Primary')"><p class="swatch-label">Text Primary</p><div class="swatch-circle" style="background:#F9FAFB"></div><p class="swatch-hex">#F9FAFB</p></div>
+          <div class="swatch-item" onclick="copyHex('#9CA3AF', 'Text Soft')"><p class="swatch-label">Text Soft</p><div class="swatch-circle" style="background:#9CA3AF"></div><p class="swatch-hex">#9CA3AF</p></div>
+
+          <div class="swatch-item" onclick="copyHex('rgba(34,197,94,0.2)', 'Border Green')"><p class="swatch-label">Border Green</p><div class="swatch-circle" style="background:rgba(34,197,94,0.2)"></div><p class="swatch-hex">#22C55E-20%</p></div>
+          <div class="swatch-item" onclick="copyHex('#22C55E', 'Success')"><p class="swatch-label">Success</p><div class="swatch-circle" style="background:#22C55E"></div><p class="swatch-hex">#22C55E</p></div>
+          <div class="swatch-item" onclick="copyHex('#F59E0B', 'Warning')"><p class="swatch-label">Warning</p><div class="swatch-circle" style="background:#F59E0B"></div><p class="swatch-hex">#F59E0B</p></div>
+          <div class="swatch-item" onclick="copyHex('#EF4444', 'Error')"><p class="swatch-label">Error</p><div class="swatch-circle" style="background:#EF4444"></div><p class="swatch-hex">#EF4444</p></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-label">UI Example</p>
+        <div class="ui-card">
+          <div class="ui-top">
+            <div>
+              <div class="ui-welcome">
+                <svg width="15" height="15" viewBox="0 0 16 16"><path d="M8 1c1 2.6 1.3 5 .7 7.6-.6 2.4-2 3.9-3 5.6-.5-.3-.8-2-.6-3.7.3-2.3 1.3-4 2.2-6C7.8 3.4 7.9 2 8 1Z" fill="#22C55E"/></svg>
+                Active Session
+              </div>
+              <p class="ui-headline">Keep building daily.</p>
+              <p class="ui-subtext">Consistency compounds over time.</p>
+            </div>
+            <div class="ring-wrap">
+              <svg width="56" height="56" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="24" stroke="rgba(255,255,255,0.08)" stroke-width="5" fill="none"/>
+                <circle cx="30" cy="30" r="24" stroke="#22C55E" stroke-width="5" fill="none"
+                  stroke-dasharray="150.8" stroke-dashoffset="48.3" stroke-linecap="round"
+                  transform="rotate(-90 30 30)"/>
+                <text x="30" y="34.5" text-anchor="middle" class="ring-pct">68%</text>
+              </svg>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <div class="btn btn-fill">Create New Task</div>
+            <div class="btn btn-outline">View Matrix</div>
+          </div>
+
+          <div class="ui-row2">
+            <div class="ui-row2-left">
+              <div class="check-circle" style="background:#22C55E;color:#0B1220">✓</div>
+              <div>
+                <p class="ui-row2-title">Infrastructure core</p>
+                <p class="ui-row2-sub">Cloud cluster telemetry</p>
+              </div>
+            </div>
+            <div class="ui-row2-date">Running <span>›</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-strip">
+        <svg width="18" height="18" viewBox="0 0 16 16"><path d="M8 1c1 2.6 1.3 5 .7 7.6-.6 2.4-2 3.9-3 5.6-.5-.3-.8-2-.6-3.7.3-2.3 1.3-4 2.2-6C7.8 3.4 7.9 2 8 1Z" fill="#22C55E"/></svg>
+        <div>
+          <p class="quote-text">Focus fuels momentum. Quality defines success.</p>
+          <div class="quote-under"></div>
+        </div>
+      </div>
+    
+      <div class="tone-export-actions">
+        <button class="tone-export-btn" onclick="copyToneMarkdown(2)" title="Sao chép Markdown đặc tả Tone 02">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+          Sao chép .MD
+        </button>
+        <button class="tone-export-btn primary" onclick="downloadToneMarkdown(2)" title="Tải file .md mô tả Tone 02">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Tải file .MD
+        </button>
+      </div>
+</section>
+
+
+    <!-- ============ CARD 03 : Soft Sky / Modern ============ -->
+    <section class="card theme-3" id="tone-03" data-mode="light" data-family="blue green">
+      <div class="head-wrap">
+        <div>
+          <p class="head-num">03</p>
+          <h2 class="head-title">Soft Sky / Modern</h2>
+          <p class="head-sub">Thuần khiết · Thân thiện · Thư thái<br>Gam màu bầu trời ban mai tạo cảm giác êm ả cho công việc hằng ngày.</p>
+        </div>
+        <span class="theme-badge">Light Mode</span>
+      </div>
+
+      <div class="logo-row">
+        <div class="bp-logo-box">
+          <b>dev</b><i>·</i><b>archive</b>
+        </div>
+        <div class="taglist">
+          <span>People</span>
+          <span>Progress</span>
+          <span>A Better Tomorrow</span>
+          <div class="underline"></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-label">Color Palette (Softened)</p>
+        <div class="palette-grid">
+          <div class="swatch-item" onclick="copyHex('#3B82F6', 'Soft Azure')"><p class="swatch-label">Soft Azure</p><div class="swatch-circle" style="background:#3B82F6"></div><p class="swatch-hex">#3B82F6</p></div>
+          <div class="swatch-item" onclick="copyHex('#60A5FA', 'Sky Blue')"><p class="swatch-label">Sky Blue</p><div class="swatch-circle" style="background:#60A5FA"></div><p class="swatch-hex">#60A5FA</p></div>
+          <div class="swatch-item" onclick="copyHex('#818CF8', 'Periwinkle')"><p class="swatch-label">Periwinkle</p><div class="swatch-circle" style="background:#818CF8"></div><p class="swatch-hex">#818CF8</p></div>
+          <div class="swatch-item" onclick="copyHex('#BAE6FD', 'Ice Sky')"><p class="swatch-label">Ice Sky</p><div class="swatch-circle" style="background:#BAE6FD"></div><p class="swatch-hex">#BAE6FD</p></div>
+
+          <div class="swatch-item" onclick="copyHex('#F8FAFD', 'Card Bg')"><p class="swatch-label">Card Bg</p><div class="swatch-circle" style="background:#F8FAFD"></div><p class="swatch-hex">#F8FAFD</p></div>
+          <div class="swatch-item" onclick="copyHex('#FFFFFF', 'Surface')"><p class="swatch-label">Surface</p><div class="swatch-circle" style="background:#FFFFFF"></div><p class="swatch-hex">#FFFFFF</p></div>
+          <div class="swatch-item" onclick="copyHex('#0F172A', 'Text Primary')"><p class="swatch-label">Text Primary</p><div class="swatch-circle" style="background:#0F172A"></div><p class="swatch-hex">#0F172A</p></div>
+          <div class="swatch-item" onclick="copyHex('#64748B', 'Text Soft')"><p class="swatch-label">Text Soft</p><div class="swatch-circle" style="background:#64748B"></div><p class="swatch-hex">#64748B</p></div>
+
+          <div class="swatch-item" onclick="copyHex('#E0E7FF', 'Border Tint')"><p class="swatch-label">Border Tint</p><div class="swatch-circle" style="background:#E0E7FF"></div><p class="swatch-hex">#E0E7FF</p></div>
+          <div class="swatch-item" onclick="copyHex('#34D399', 'Success Soft')"><p class="swatch-label">Success Soft</p><div class="swatch-circle" style="background:#34D399"></div><p class="swatch-hex">#34D399</p></div>
+          <div class="swatch-item" onclick="copyHex('#FBBF24', 'Warning Soft')"><p class="swatch-label">Warning Soft</p><div class="swatch-circle" style="background:#FBBF24"></div><p class="swatch-hex">#FBBF24</p></div>
+          <div class="swatch-item" onclick="copyHex('#F87171', 'Coral Soft')"><p class="swatch-label">Coral Soft</p><div class="swatch-circle" style="background:#F87171"></div><p class="swatch-hex">#F87171</p></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-label">UI Example</p>
+        <div class="ui-card">
+          <div class="ui-top">
+            <div>
+              <div class="ui-welcome">
+                <svg width="15" height="15" viewBox="0 0 16 16"><path d="M8 1c1 2.6 1.3 5 .7 7.6-.6 2.4-2 3.9-3 5.6-.5-.3-.8-2-.6-3.7.3-2.3 1.3-4 2.2-6C7.8 3.4 7.9 2 8 1Z" fill="#3B82F6"/></svg>
+                Clarity Hub
+              </div>
+              <p class="ui-headline">Serene workspace.</p>
+              <p class="ui-subtext">Designed for effortless focus.</p>
+            </div>
+            <div class="ring-wrap">
+              <svg width="56" height="56" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="24" stroke="#E2E8F0" stroke-width="5" fill="none"/>
+                <circle cx="30" cy="30" r="24" stroke="#3B82F6" stroke-width="5" fill="none"
+                  stroke-dasharray="150.8" stroke-dashoffset="30" stroke-linecap="round"
+                  transform="rotate(-90 30 30)"/>
+                <text x="30" y="34.5" text-anchor="middle" class="ring-pct">80%</text>
+              </svg>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <div class="btn btn-fill">Start Focus</div>
+            <div class="btn btn-outline">Check Insights</div>
+          </div>
+
+          <div class="ui-row2">
+            <div class="ui-row2-left">
+              <div class="check-circle" style="background:#3B82F6">✓</div>
+              <div>
+                <p class="ui-row2-title">Component library</p>
+                <p class="ui-row2-sub">Refined soft-blue buttons</p>
+              </div>
+            </div>
+            <div class="ui-row2-date">Active <span>›</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-strip">
+        <svg width="18" height="18" viewBox="0 0 16 16"><path d="M8 1c1 2.6 1.3 5 .7 7.6-.6 2.4-2 3.9-3 5.6-.5-.3-.8-2-.6-3.7.3-2.3 1.3-4 2.2-6C7.8 3.4 7.9 2 8 1Z" fill="#3B82F6"/></svg>
+        <div>
+          <p class="quote-text">Simplicity is the ultimate sophistication.</p>
+          <div class="quote-under"></div>
+        </div>
+      </div>
+    
+      <div class="tone-export-actions">
+        <button class="tone-export-btn" onclick="copyToneMarkdown(3)" title="Sao chép Markdown đặc tả Tone 03">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+          Sao chép .MD
+        </button>
+        <button class="tone-export-btn primary" onclick="downloadToneMarkdown(3)" title="Tải file .md mô tả Tone 03">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Tải file .MD
+        </button>
+      </div>
+</section>
+
+
+    <!-- ============ CARD 04 : IT Device Fleet / Cloud Sky ============ -->
+    <section class="card theme-4" id="tone-04" data-mode="light" data-family="blue">
+      <div class="head-wrap">
+        <div>
+          <p class="head-num">04</p>
+          <h2 class="head-title">IT Device Fleet / Cloud Sky</h2>
+          <p class="head-sub">Rõ ràng · Trực quan · Vận hành bền bỉ<br>Màu xanh sky dịu mát thay thế hoàn toàn xanh đậm gắt, border thanh mảnh.</p>
+        </div>
+        <span class="theme-badge">Light Mode</span>
+      </div>
+
+      <div class="logo-row">
+        <div class="bp-logo-box">
+          <b>dev</b><i>·</i><b>archive</b>
+        </div>
+        <div class="taglist">
+          <span>Devices</span>
+          <span>Inventory</span>
+          <span>Health</span>
+          <div class="underline"></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-label">Color Palette (Softened)</p>
+        <div class="palette-grid">
+          <div class="swatch-item" onclick="copyHex('#0284C7', 'Cloud Azure')"><p class="swatch-label">Cloud Azure</p><div class="swatch-circle" style="background:#0284C7"></div><p class="swatch-hex">#0284C7</p></div>
+          <div class="swatch-item" onclick="copyHex('#0EA5E9', 'Sky Primary')"><p class="swatch-label">Sky Primary</p><div class="swatch-circle" style="background:#0EA5E9"></div><p class="swatch-hex">#0EA5E9</p></div>
+          <div class="swatch-item" onclick="copyHex('#14B8A6', 'Teal Wave')"><p class="swatch-label">Teal Wave</p><div class="swatch-circle" style="background:#14B8A6"></div><p class="swatch-hex">#14B8A6</p></div>
+          <div class="swatch-item" onclick="copyHex('#7DD3FC', 'Sky Tint')"><p class="swatch-label">Sky Tint</p><div class="swatch-circle" style="background:#7DD3FC"></div><p class="swatch-hex">#7DD3FC</p></div>
+
+          <div class="swatch-item" onclick="copyHex('#F4F8FC', 'Fleet Bg')"><p class="swatch-label">Fleet Bg</p><div class="swatch-circle" style="background:#F4F8FC"></div><p class="swatch-hex">#F4F8FC</p></div>
+          <div class="swatch-item" onclick="copyHex('#FFFFFF', 'Surface')"><p class="swatch-label">Surface</p><div class="swatch-circle" style="background:#FFFFFF"></div><p class="swatch-hex">#FFFFFF</p></div>
+          <div class="swatch-item" onclick="copyHex('#0F172A', 'Text Primary')"><p class="swatch-label">Text Primary</p><div class="swatch-circle" style="background:#0F172A"></div><p class="swatch-hex">#0F172A</p></div>
+          <div class="swatch-item" onclick="copyHex('#64748B', 'Text Slate')"><p class="swatch-label">Text Slate</p><div class="swatch-circle" style="background:#64748B"></div><p class="swatch-hex">#64748B</p></div>
+
+          <div class="swatch-item" onclick="copyHex('#DFE8F3', 'Border Soft')"><p class="swatch-label">Border Soft</p><div class="swatch-circle" style="background:#DFE8F3"></div><p class="swatch-hex">#DFE8F3</p></div>
+          <div class="swatch-item" onclick="copyHex('#34D399', 'Success Soft')"><p class="swatch-label">Success Soft</p><div class="swatch-circle" style="background:#34D399"></div><p class="swatch-hex">#34D399</p></div>
+          <div class="swatch-item" onclick="copyHex('#FBBF24', 'Warning Soft')"><p class="swatch-label">Warning Soft</p><div class="swatch-circle" style="background:#FBBF24"></div><p class="swatch-hex">#FBBF24</p></div>
+          <div class="swatch-item" onclick="copyHex('#FB7185', 'Rose Alert')"><p class="swatch-label">Rose Alert</p><div class="swatch-circle" style="background:#FB7185"></div><p class="swatch-hex">#FB7185</p></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-label">IT Fleet Management Example</p>
+        <div class="ui-card">
+          <div class="ui-top">
+            <div>
+              <p class="ui-headline">Device Fleet</p>
+              <p class="ui-subtext">248 managed cloud nodes & switches</p>
+            </div>
+            <div class="ring-wrap">
+              <svg width="56" height="56" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="24" stroke="#E2E8F0" stroke-width="5" fill="none"/>
+                <circle cx="30" cy="30" r="24" stroke="#0284C7" stroke-width="5" fill="none"
+                  stroke-dasharray="150.8" stroke-dashoffset="12" stroke-linecap="round"
+                  transform="rotate(-90 30 30)"/>
+                <text x="30" y="34.5" text-anchor="middle" class="ring-pct">92%</text>
+              </svg>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <div class="btn btn-fill">Add Device</div>
+            <div class="btn btn-outline">View Fleet</div>
+          </div>
+
+          <div class="ui-row2">
+            <div class="ui-row2-left">
+              <div class="check-circle" style="background:#0284C7">✓</div>
+              <div>
+                <p class="ui-row2-title">Switch SW-CORE-01</p>
+                <p class="ui-row2-sub">Online · 24 ports active</p>
+              </div>
+            </div>
+            <div class="ui-row2-date">Healthy <span>›</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-strip">
+        <svg width="18" height="18" viewBox="0 0 16 16"><path d="M8 1c1 2.6 1.3 5 .7 7.6-.6 2.4-2 3.9-3 5.6-.5-.3-.8-2-.6-3.7.3-2.3 1.3-4 2.2-6C7.8 3.4 7.9 2 8 1Z" fill="#0284C7"/></svg>
+        <div>
+          <p class="quote-text">Know every asset. Fix issues with speed and grace.</p>
+          <div class="quote-under"></div>
+        </div>
+      </div>
+    
+      <div class="tone-export-actions">
+        <button class="tone-export-btn" onclick="copyToneMarkdown(4)" title="Sao chép Markdown đặc tả Tone 04">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+          Sao chép .MD
+        </button>
+        <button class="tone-export-btn primary" onclick="downloadToneMarkdown(4)" title="Tải file .md mô tả Tone 04">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Tải file .MD
+        </button>
+      </div>
+</section>
+
+
+    <!-- ============ CARD 05 : Grafana / Observability ============ -->
+    <section class="card theme-5" id="tone-05" data-mode="dark" data-family="grafana">
+      <div class="head-wrap">
+        <div>
+          <p class="head-num">05</p>
+          <h2 class="head-title">Grafana / Observability</h2>
+          <p class="head-sub">Giám sát · Thời gian thực · Chuẩn Grafana<br>Tông màu tối graphite chuyên dụng kết hợp thanh đo đa sắc xanh dương, xanh lá và cam amber.</p>
+        </div>
+        <span class="theme-badge">Dark Mode</span>
+      </div>
+
+      <div class="logo-row">
+        <div class="bp-logo-box">
+          <b>dev</b><i>·</i><b>archive</b>
+        </div>
+        <div class="taglist">
+          <span>Metrics</span>
+          <span>Traces</span>
+          <span>Zero Outage</span>
+          <div class="underline"></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-label">Color Palette (Grafana Multi-Metric)</p>
+        <div class="palette-grid">
+          <div class="swatch-item" onclick="copyHex('#5794F2', 'Grafana Blue')"><p class="swatch-label">Grafana Blue</p><div class="swatch-circle" style="background:#5794F2"></div><p class="swatch-hex">#5794F2</p></div>
+          <div class="swatch-item" onclick="copyHex('#73BF69', 'Grafana Green')"><p class="swatch-label">Grafana Green</p><div class="swatch-circle" style="background:#73BF69"></div><p class="swatch-hex">#73BF69</p></div>
+          <div class="swatch-item" onclick="copyHex('#FF9830', 'Grafana Orange')"><p class="swatch-label">Grafana Orange</p><div class="swatch-circle" style="background:#FF9830"></div><p class="swatch-hex">#FF9830</p></div>
+          <div class="swatch-item" onclick="copyHex('#F2495C', 'Grafana Red')"><p class="swatch-label">Grafana Red</p><div class="swatch-circle" style="background:#F2495C"></div><p class="swatch-hex">#F2495C</p></div>
+
+          <div class="swatch-item" onclick="copyHex('#0B0F14', 'Dark Canvas')"><p class="swatch-label">Dark Canvas</p><div class="swatch-circle" style="background:#0B0F14"></div><p class="swatch-hex">#0B0F14</p></div>
+          <div class="swatch-item" onclick="copyHex('#111827', 'Panel Surface')"><p class="swatch-label">Panel Surface</p><div class="swatch-circle" style="background:#111827"></div><p class="swatch-hex">#111827</p></div>
+          <div class="swatch-item" onclick="copyHex('#F8FAFC', 'Text Primary')"><p class="swatch-label">Text Primary</p><div class="swatch-circle" style="background:#F8FAFC"></div><p class="swatch-hex">#F8FAFC</p></div>
+          <div class="swatch-item" onclick="copyHex('#94A3B8', 'Text Soft')"><p class="swatch-label">Text Soft</p><div class="swatch-circle" style="background:#94A3B8"></div><p class="swatch-hex">#94A3B8</p></div>
+
+          <div class="swatch-item" onclick="copyHex('#263241', 'Border Dark')"><p class="swatch-label">Border Dark</p><div class="swatch-circle" style="background:#263241"></div><p class="swatch-hex">#263241</p></div>
+          <div class="swatch-item" onclick="copyHex('#73BF69', 'Success')"><p class="swatch-label">Success</p><div class="swatch-circle" style="background:#73BF69"></div><p class="swatch-hex">#73BF69</p></div>
+          <div class="swatch-item" onclick="copyHex('#FF9830', 'Warning')"><p class="swatch-label">Warning</p><div class="swatch-circle" style="background:#FF9830"></div><p class="swatch-hex">#FF9830</p></div>
+          <div class="swatch-item" onclick="copyHex('#F2495C', 'Error')"><p class="swatch-label">Error</p><div class="swatch-circle" style="background:#F2495C"></div><p class="swatch-hex">#F2495C</p></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-label">Grafana Dashboard Example</p>
+        <div class="ui-card">
+          <div class="ui-top">
+            <div>
+              <p class="ui-headline">Cluster Health & Ingress</p>
+              <p class="ui-subtext">Last 15 minutes · 62 targets online</p>
+            </div>
+            <div style="font-family:var(--font-head); font-weight:800; font-size:22px; color:#73BF69">99.8%</div>
+          </div>
+
+          <!-- Grafana Multi-color Histogram -->
+          <div style="margin:16px 0 10px; height:52px; display:flex; align-items:flex-end; gap:5px; border-bottom:1px solid #263241; padding-bottom:4px;">
+            <i style="height:45%; flex:1; background:#5794F2; border-radius:2px 2px 0 0;"></i>
+            <i style="height:65%; flex:1; background:#5794F2; border-radius:2px 2px 0 0;"></i>
+            <i style="height:55%; flex:1; background:#73BF69; border-radius:2px 2px 0 0;"></i>
+            <i style="height:80%; flex:1; background:#5794F2; border-radius:2px 2px 0 0;"></i>
+            <i style="height:70%; flex:1; background:#FF9830; border-radius:2px 2px 0 0;"></i>
+            <i style="height:90%; flex:1; background:#73BF69; border-radius:2px 2px 0 0;"></i>
+            <i style="height:75%; flex:1; background:#5794F2; border-radius:2px 2px 0 0;"></i>
+            <i style="height:88%; flex:1; background:#73BF69; border-radius:2px 2px 0 0;"></i>
+          </div>
+
+          <div class="btn-row">
+            <div class="btn btn-fill">Query Prometheus</div>
+            <div class="btn btn-outline">Live Grafana View</div>
+          </div>
+
+          <div class="ui-row2">
+            <div class="ui-row2-left">
+              <div class="check-circle" style="background:#5794F2; color:#0B0F14">✓</div>
+              <div>
+                <p class="ui-row2-title">CPU · Memory · Network</p>
+                <p class="ui-row2-sub">All telemetry within nominal threshold</p>
+              </div>
+            </div>
+            <div class="ui-row2-date">Live <span>›</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-strip">
+        <svg width="18" height="18" viewBox="0 0 16 16"><path d="M8 1c1 2.6 1.3 5 .7 7.6-.6 2.4-2 3.9-3 5.6-.5-.3-.8-2-.6-3.7.3-2.3 1.3-4 2.2-6C7.8 3.4 7.9 2 8 1Z" fill="#5794F2"/></svg>
+        <div>
+          <p class="quote-text">See the signal before it becomes an incident.</p>
+          <div class="quote-under"></div>
+        </div>
+      </div>
+    
+      <div class="tone-export-actions">
+        <button class="tone-export-btn" onclick="copyToneMarkdown(5)" title="Sao chép Markdown đặc tả Tone 05">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+          Sao chép .MD
+        </button>
+        <button class="tone-export-btn primary" onclick="downloadToneMarkdown(5)" title="Tải file .md mô tả Tone 05">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Tải file .MD
+        </button>
+      </div>
+</section>
+
+
+    <!-- ============ CARD 06 : IT Infrastructure / Ocean Breeze ============ -->
+    <section class="card theme-6" id="tone-06" data-mode="light" data-family="teal blue">
+      <div class="head-wrap">
+        <div>
+          <p class="head-num">06</p>
+          <h2 class="head-title">IT Infrastructure / Ocean Breeze</h2>
+          <p class="head-sub">Vững vàng · Thanh mát · Thoáng đãng<br>Sắc xanh lam đại dương nhẹ nhàng kết hợp sắc lục pastel tươi mát.</p>
+        </div>
+        <span class="theme-badge">Light Mode</span>
+      </div>
+
+      <div class="logo-row">
+        <div class="bp-logo-box">
+          <b>dev</b><i>·</i><b>archive</b>
+        </div>
+        <div class="taglist">
+          <span>Networks</span>
+          <span>Reliability</span>
+          <span>Scalability</span>
+          <div class="underline"></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-label">Color Palette (Softened)</p>
+        <div class="palette-grid">
+          <div class="swatch-item" onclick="copyHex('#0284C7', 'Ocean Sky')"><p class="swatch-label">Ocean Sky</p><div class="swatch-circle" style="background:#0284C7"></div><p class="swatch-hex">#0284C7</p></div>
+          <div class="swatch-item" onclick="copyHex('#0EA5E9', 'Sky Breeze')"><p class="swatch-label">Sky Breeze</p><div class="swatch-circle" style="background:#0EA5E9"></div><p class="swatch-hex">#0EA5E9</p></div>
+          <div class="swatch-item" onclick="copyHex('#2DD4BF', 'Aqua Tint')"><p class="swatch-label">Aqua Tint</p><div class="swatch-circle" style="background:#2DD4BF"></div><p class="swatch-hex">#2DD4BF</p></div>
+          <div class="swatch-item" onclick="copyHex('#99F6E4', 'Ice Foam')"><p class="swatch-label">Ice Foam</p><div class="swatch-circle" style="background:#99F6E4"></div><p class="swatch-hex">#99F6E4</p></div>
+
+          <div class="swatch-item" onclick="copyHex('#F0F7F6', 'Breeze Card')"><p class="swatch-label">Breeze Card</p><div class="swatch-circle" style="background:#F0F7F6"></div><p class="swatch-hex">#F0F7F6</p></div>
+          <div class="swatch-item" onclick="copyHex('#FFFFFF', 'Surface')"><p class="swatch-label">Surface</p><div class="swatch-circle" style="background:#FFFFFF"></div><p class="swatch-hex">#FFFFFF</p></div>
+          <div class="swatch-item" onclick="copyHex('#0F172A', 'Text Primary')"><p class="swatch-label">Text Primary</p><div class="swatch-circle" style="background:#0F172A"></div><p class="swatch-hex">#0F172A</p></div>
+          <div class="swatch-item" onclick="copyHex('#475569', 'Text Soft')"><p class="swatch-label">Text Soft</p><div class="swatch-circle" style="background:#475569"></div><p class="swatch-hex">#475569</p></div>
+
+          <div class="swatch-item" onclick="copyHex('#DAEAE5', 'Border Soft')"><p class="swatch-label">Border Soft</p><div class="swatch-circle" style="background:#DAEAE5"></div><p class="swatch-hex">#DAEAE5</p></div>
+          <div class="swatch-item" onclick="copyHex('#34D399', 'Success Soft')"><p class="swatch-label">Success Soft</p><div class="swatch-circle" style="background:#34D399"></div><p class="swatch-hex">#34D399</p></div>
+          <div class="swatch-item" onclick="copyHex('#FBBF24', 'Warning Soft')"><p class="swatch-label">Warning Soft</p><div class="swatch-circle" style="background:#FBBF24"></div><p class="swatch-hex">#FBBF24</p></div>
+          <div class="swatch-item" onclick="copyHex('#FB7185', 'Rose Alert')"><p class="swatch-label">Rose Alert</p><div class="swatch-circle" style="background:#FB7185"></div><p class="swatch-hex">#FB7185</p></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-label">Infrastructure UI Example</p>
+        <div class="ui-card">
+          <div class="ui-top">
+            <div>
+              <p class="ui-headline">Multi-Region Fabric</p>
+              <p class="ui-subtext">Zero packet loss · BGP Anycast</p>
+            </div>
+            <div class="ring-wrap">
+              <svg width="56" height="56" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="24" stroke="#E2E8F0" stroke-width="5" fill="none"/>
+                <circle cx="30" cy="30" r="24" stroke="#0284C7" stroke-width="5" fill="none"
+                  stroke-dasharray="150.8" stroke-dashoffset="20" stroke-linecap="round"
+                  transform="rotate(-90 30 30)"/>
+                <text x="30" y="34.5" text-anchor="middle" class="ring-pct">88%</text>
+              </svg>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <div class="btn btn-fill">Configure Spine</div>
+            <div class="btn btn-outline">Topology Map</div>
+          </div>
+
+          <div class="ui-row2">
+            <div class="ui-row2-left">
+              <div class="check-circle" style="background:#0284C7">✓</div>
+              <div>
+                <p class="ui-row2-title">Edge PoP Singapore</p>
+                <p class="ui-row2-sub">100 Gbps uplinks synchronous</p>
+              </div>
+            </div>
+            <div class="ui-row2-date">Synced <span>›</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-strip">
+        <svg width="18" height="18" viewBox="0 0 16 16"><path d="M8 1c1 2.6 1.3 5 .7 7.6-.6 2.4-2 3.9-3 5.6-.5-.3-.8-2-.6-3.7.3-2.3 1.3-4 2.2-6C7.8 3.4 7.9 2 8 1Z" fill="#0284C7"/></svg>
+        <div>
+          <p class="quote-text">Robust foundations build enduring systems.</p>
+          <div class="quote-under"></div>
+        </div>
+      </div>
+    
+      <div class="tone-export-actions">
+        <button class="tone-export-btn" onclick="copyToneMarkdown(6)" title="Sao chép Markdown đặc tả Tone 06">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+          Sao chép .MD
+        </button>
+        <button class="tone-export-btn primary" onclick="downloadToneMarkdown(6)" title="Tải file .md mô tả Tone 06">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Tải file .MD
+        </button>
+      </div>
+</section>
+
+
+    <!-- ================================================================
+         CARD 07 : Technical Blueprint / Light (GIỮ NGUYÊN BẢN GỐC 07A)
+         ================================================================ -->
+    <section class="card theme-7" id="tone-07" data-mode="light" data-family="blueprint">
+      <div class="head-wrap">
+        <div>
+          <p class="head-num" style="color:#7ED957;">07</p>
+          <h2 class="head-title" style="font-family:var(--font-mono);font-size:24px;letter-spacing:-1px;">Technical Blueprint / Light</h2>
+          <p class="head-sub" style="font-size:14px;color:#666;line-height:1.65;max-width:440px;">
+            Precise. Technical. Minimal.<br>
+            A developer portfolio inspired by engineering drawings,
+            system documentation and a personal technical archive.
+          </p>
+        </div>
+        <span class="theme-badge" style="background:#F0FDF4;color:#15803D;border-color:#BBF7D0;">Light Mode · Blueprint</span>
+      </div>
+
+      <div class="logo-row" style="margin:6px 0;">
+        <div class="bp-logo-box">
+          <b>dev</b><i>·</i><b>archive</b>
+        </div>
+        <div class="bp-tagline">
+          Personal Developer Archive<br>
+          Fullstack + Cloud
+          <span class="line"></span>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-label" style="color:#666;letter-spacing:1.2px;">COLOR PALETTE</p>
+        <div class="palette-grid">
+          <div class="swatch-item" onclick="copyHex('#FFFFFF', 'Background')"><p class="swatch-label" style="color:#666;">Background</p><div class="swatch-circle" style="background:#FFFFFF;border-color:rgba(0,0,0,.1);"></div><p class="swatch-hex" style="color:#666;">#FFFFFF</p></div>
+          <div class="swatch-item" onclick="copyHex('#FAFAFA', 'Surface')"><p class="swatch-label" style="color:#666;">Surface</p><div class="swatch-circle" style="background:#FAFAFA;border-color:rgba(0,0,0,.1);"></div><p class="swatch-hex" style="color:#666;">#FAFAFA</p></div>
+          <div class="swatch-item" onclick="copyHex('#111111', 'Text Primary')"><p class="swatch-label" style="color:#666;">Text Primary</p><div class="swatch-circle" style="background:#111111;border-color:rgba(0,0,0,.1);"></div><p class="swatch-hex" style="color:#666;">#111111</p></div>
+          <div class="swatch-item" onclick="copyHex('#555555', 'Text Secondary')"><p class="swatch-label" style="color:#666;">Text Secondary</p><div class="swatch-circle" style="background:#555555;border-color:rgba(0,0,0,.1);"></div><p class="swatch-hex" style="color:#666;">#555555</p></div>
+
+          <div class="swatch-item" onclick="copyHex('#1A1A1A', 'Border')"><p class="swatch-label" style="color:#666;">Border</p><div class="swatch-circle" style="background:#1A1A1A;border-color:rgba(0,0,0,.1);"></div><p class="swatch-hex" style="color:#666;">#1A1A1A</p></div>
+          <div class="swatch-item" onclick="copyHex('#7ED957', 'Brand')"><p class="swatch-label" style="color:#666;">Brand</p><div class="swatch-circle" style="background:#7ED957;border-color:rgba(0,0,0,.1);"></div><p class="swatch-hex" style="color:#666;">#7ED957</p></div>
+          <div class="swatch-item" onclick="copyHex('#2563EB', 'Info')"><p class="swatch-label" style="color:#666;">Info</p><div class="swatch-circle" style="background:#2563EB;border-color:rgba(0,0,0,.1);"></div><p class="swatch-hex" style="color:#666;">#2563EB</p></div>
+          <div class="swatch-item" onclick="copyHex('#F59E0B', 'Warning')"><p class="swatch-label" style="color:#666;">Warning</p><div class="swatch-circle" style="background:#F59E0B;border-color:rgba(0,0,0,.1);"></div><p class="swatch-hex" style="color:#666;">#F59E0B</p></div>
+
+          <div class="swatch-item" onclick="copyHex('#EF4444', 'Error')"><p class="swatch-label" style="color:#666;">Error</p><div class="swatch-circle" style="background:#EF4444;border-color:rgba(0,0,0,.1);"></div><p class="swatch-hex" style="color:#666;">#EF4444</p></div>
+          <div class="swatch-item" onclick="copyHex('#D8D8D8', 'Border Soft')"><p class="swatch-label" style="color:#666;">Border Soft</p><div class="swatch-circle" style="background:#D8D8D8;border-color:rgba(0,0,0,.1);"></div><p class="swatch-hex" style="color:#666;">#D8D8D8</p></div>
+          <div class="swatch-item" onclick="copyHex('#F2F2F2', 'Surface Muted')"><p class="swatch-label" style="color:#666;">Surface Muted</p><div class="swatch-circle" style="background:#F2F2F2;border-color:rgba(0,0,0,.1);"></div><p class="swatch-hex" style="color:#666;">#F2F2F2</p></div>
+          <div class="swatch-item" onclick="copyHex('#888888', 'Muted')"><p class="swatch-label" style="color:#666;">Muted</p><div class="swatch-circle" style="background:#888888;border-color:rgba(0,0,0,.1);"></div><p class="swatch-hex" style="color:#666;">#888888</p></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-label" style="color:#666;letter-spacing:1.2px;">UI EXAMPLE</p>
+        <div class="bp-example-box">
+          <div class="bp-top">
+            <div>
+              <div class="bp-mini-label">01 / PROJECT</div>
+              <p class="bp-title">Cloud Architecture Lab</p>
+              <p class="bp-desc">Fullstack · AWS · Docker · Kubernetes</p>
+            </div>
+            <div class="bp-status">● COMPLETED</div>
+          </div>
+
+          <div class="bp-rule"></div>
+          <div class="bp-mini-label">STACK</div>
+          <div class="bp-tech-row">
+            <span class="bp-chip">React</span>
+            <span class="bp-chip">.NET</span>
+            <span class="bp-chip">AWS</span>
+            <span class="bp-chip">Docker</span>
+          </div>
+
+          <div class="bp-buttons">
+            <button class="bp-btn primary">VIEW PROJECT →</button>
+            <button class="bp-btn">ARCHITECTURE</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bp-footer-note">LIGHT MODE · TECHNICAL PAPER · DOCUMENTATION STYLE</div>
+    
+      <div class="tone-export-actions">
+        <button class="tone-export-btn" onclick="copyToneMarkdown(7)" title="Sao chép Markdown đặc tả Tone 07">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+          Sao chép .MD
+        </button>
+        <button class="tone-export-btn primary" onclick="downloadToneMarkdown(7)" title="Tải file .md mô tả Tone 07">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Tải file .MD
+        </button>
+      </div>
+</section>
+
+
+    <!-- ================================================================
+         CARD 08 : Technical Blueprint / Dark (GIỮ NGUYÊN BẢN GỐC 07B)
+         ================================================================ -->
+    <section class="card theme-8" id="tone-08" data-mode="dark" data-family="blueprint">
+      <div class="head-wrap">
+        <div>
+          <p class="head-num" style="color:#7ED957;">08</p>
+          <h2 class="head-title" style="font-family:var(--font-mono);font-size:24px;letter-spacing:-1px;color:#F5F5F5;">Technical Blueprint / Dark</h2>
+          <p class="head-sub" style="font-size:14px;color:#9B9B9B;line-height:1.65;max-width:440px;">
+            Precise. Technical. Focused.<br>
+            A dark developer archive with terminal-like contrast,
+            engineering diagrams and strong monochrome structure.
+          </p>
+        </div>
+        <span class="theme-badge" style="background:#152210;color:#7ED957;border-color:#2A4020;">Dark Mode · Blueprint</span>
+      </div>
+
+      <div class="logo-row" style="margin:6px 0;">
+        <div class="bp-logo-box">
+          <b>dev</b><i>·</i><b>archive</b>
+        </div>
+        <div class="bp-tagline" style="color:#F5F5F5;">
+          Personal Developer Archive<br>
+          Fullstack + Cloud
+          <span class="line"></span>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-label" style="color:#9B9B9B;letter-spacing:1.2px;">COLOR PALETTE</p>
+        <div class="palette-grid">
+          <div class="swatch-item" onclick="copyHex('#0B0B0B', 'Background')"><p class="swatch-label" style="color:#9B9B9B;">Background</p><div class="swatch-circle" style="background:#0B0B0B;border-color:rgba(255,255,255,.12);"></div><p class="swatch-hex" style="color:#888;">#0B0B0B</p></div>
+          <div class="swatch-item" onclick="copyHex('#111111', 'Surface')"><p class="swatch-label" style="color:#9B9B9B;">Surface</p><div class="swatch-circle" style="background:#111111;border-color:rgba(255,255,255,.12);"></div><p class="swatch-hex" style="color:#888;">#111111</p></div>
+          <div class="swatch-item" onclick="copyHex('#F5F5F5', 'Text Primary')"><p class="swatch-label" style="color:#9B9B9B;">Text Primary</p><div class="swatch-circle" style="background:#F5F5F5;border-color:rgba(255,255,255,.12);"></div><p class="swatch-hex" style="color:#888;">#F5F5F5</p></div>
+          <div class="swatch-item" onclick="copyHex('#A0A0A0', 'Text Secondary')"><p class="swatch-label" style="color:#9B9B9B;">Text Secondary</p><div class="swatch-circle" style="background:#A0A0A0;border-color:rgba(255,255,255,.12);"></div><p class="swatch-hex" style="color:#888;">#A0A0A0</p></div>
+
+          <div class="swatch-item" onclick="copyHex('#333333', 'Border')"><p class="swatch-label" style="color:#9B9B9B;">Border</p><div class="swatch-circle" style="background:#333333;border-color:rgba(255,255,255,.12);"></div><p class="swatch-hex" style="color:#888;">#333333</p></div>
+          <div class="swatch-item" onclick="copyHex('#7ED957', 'Brand')"><p class="swatch-label" style="color:#9B9B9B;">Brand</p><div class="swatch-circle" style="background:#7ED957;border-color:rgba(255,255,255,.12);"></div><p class="swatch-hex" style="color:#888;">#7ED957</p></div>
+          <div class="swatch-item" onclick="copyHex('#2563EB', 'Info')"><p class="swatch-label" style="color:#9B9B9B;">Info</p><div class="swatch-circle" style="background:#2563EB;border-color:rgba(255,255,255,.12);"></div><p class="swatch-hex" style="color:#888;">#2563EB</p></div>
+          <div class="swatch-item" onclick="copyHex('#F59E0B', 'Warning')"><p class="swatch-label" style="color:#9B9B9B;">Warning</p><div class="swatch-circle" style="background:#F59E0B;border-color:rgba(255,255,255,.12);"></div><p class="swatch-hex" style="color:#888;">#F59E0B</p></div>
+
+          <div class="swatch-item" onclick="copyHex('#EF4444', 'Error')"><p class="swatch-label" style="color:#9B9B9B;">Error</p><div class="swatch-circle" style="background:#EF4444;border-color:rgba(255,255,255,.12);"></div><p class="swatch-hex" style="color:#888;">#EF4444</p></div>
+          <div class="swatch-item" onclick="copyHex('#222222', 'Surface 2')"><p class="swatch-label" style="color:#9B9B9B;">Surface 2</p><div class="swatch-circle" style="background:#222222;border-color:rgba(255,255,255,.12);"></div><p class="swatch-hex" style="color:#888;">#222222</p></div>
+          <div class="swatch-item" onclick="copyHex('#181818', 'Surface Muted')"><p class="swatch-label" style="color:#9B9B9B;">Surface Muted</p><div class="swatch-circle" style="background:#181818;border-color:rgba(255,255,255,.12);"></div><p class="swatch-hex" style="color:#888;">#181818</p></div>
+          <div class="swatch-item" onclick="copyHex('#777777', 'Muted')"><p class="swatch-label" style="color:#9B9B9B;">Muted</p><div class="swatch-circle" style="background:#777777;border-color:rgba(255,255,255,.12);"></div><p class="swatch-hex" style="color:#888;">#777777</p></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-label" style="color:#9B9B9B;letter-spacing:1.2px;">UI EXAMPLE</p>
+        <div class="bp-example-box">
+          <div class="bp-top">
+            <div>
+              <div class="bp-mini-label">01 / PROJECT</div>
+              <p class="bp-title" style="color:#F5F5F5;">Cloud Architecture Lab</p>
+              <p class="bp-desc">Fullstack · AWS · Docker · Kubernetes</p>
+            </div>
+            <div class="bp-status">● BUILDING</div>
+          </div>
+
+          <div class="bp-rule"></div>
+          <div class="bp-mini-label">STACK</div>
+          <div class="bp-tech-row">
+            <span class="bp-chip">React</span>
+            <span class="bp-chip">.NET</span>
+            <span class="bp-chip">AWS</span>
+            <span class="bp-chip">Docker</span>
+          </div>
+
+          <div class="bp-buttons">
+            <button class="bp-btn primary">VIEW PROJECT →</button>
+            <button class="bp-btn">ARCHITECTURE</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bp-footer-note">DARK MODE · TERMINAL ARCHIVE · DEVELOPER FOCUS</div>
+    
+      <div class="tone-export-actions">
+        <button class="tone-export-btn" onclick="copyToneMarkdown(8)" title="Sao chép Markdown đặc tả Tone 08">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+          Sao chép .MD
+        </button>
+        <button class="tone-export-btn primary" onclick="downloadToneMarkdown(8)" title="Tải file .md mô tả Tone 08">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Tải file .MD
+        </button>
+      </div>
+</section>
+
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div>
+      <span>© 2026 Portfolio Design System · Consolidated 8 Tones</span>
+    </div>
+    <div class="footer-links">
+      <a href="#tone-01">Tone 01</a>
+      <a href="#tone-02">Tone 02</a>
+      <a href="#tone-03">Tone 03</a>
+      <a href="#tone-04">Tone 04</a>
+      <a href="#tone-05">Tone 05</a>
+      <a href="#tone-06">Tone 06</a>
+      <a href="#tone-07">Tone 07</a>
+      <a href="#tone-08">Tone 08</a>
+    </div>
+  </footer>
+
+</div>
+
+<!-- Copy Toast -->
+<div class="toast" id="copy-toast">
+  <span>✓</span>
+  <span id="toast-text">Mã màu đã được sao chép!</span>
+</div>
+
+<script>
+  
+  let currentGalleryPrimary = 'green';
+
+  
+  // Detect if running inside iframe
+  try {
+    if (window.self !== window.top) {
+      document.body.classList.add('embedded-mode');
+    }
+  } catch (e) {
+    document.body.classList.add('embedded-mode');
+  }
+
+  // Listen to postMessage from parent for color sync
+  window.addEventListener('message', (event) => {
+    if (event.data && event.data.type === 'SET_PRIMARY_COLOR') {
+      switchToneGalleryPrimary(event.data.color);
+    }
+  });
+
+
+  
+  const PALETTE_DATA_18 = {
+    green: {
+      1: { name: 'Natural Clean Light', num: '#22C55E', badge: 'Light Mode · Green', hexes: ['#FFFFFF', '#F8FBF7', '#1F2937', '#6B7280', '#E2ECE5', '#22C55E', '#34D399', '#F59E0B', '#EF4444', '#E2ECE5', '#F0FAF1', '#9CA3AF'] },
+      2: { name: 'Deep Professional Dark', num: '#22C55E', badge: 'Dark Mode · Green', hexes: ['#0B1220', '#111827', '#F9FAFB', '#9CA3AF', 'rgba(34,197,94,0.2)', '#22C55E', '#34D399', '#FBBF24', '#F87171', '#1F2937', '#162032', '#6B7280'] },
+      3: { name: 'Soft Mint Modern', num: '#4CAF50', badge: 'Light Mode · Green', hexes: ['#F5FAF6', '#FFFFFF', '#111827', '#4B5563', '#D1E7DD', '#4CAF50', '#60A5FA', '#F59E0B', '#EF4444', '#DFEFE7', '#E8F5EC', '#9CA3AF'] },
+      4: { name: 'Emerald Clarity IT', num: '#16A34A', badge: 'Light Mode · Green', hexes: ['#F0FDF4', '#FFFFFF', '#0F172A', '#475569', '#BBF7D0', '#16A34A', '#2563EB', '#F59E0B', '#EF4444', '#CEF9DF', '#DCFCE7', '#94A3B8'] },
+      5: { name: 'Forest Dark Monitor', num: '#10B981', badge: 'Dark Mode · Green', hexes: ['#0A120E', '#101E17', '#F0FDF4', '#86EFAC', '#1E382B', '#10B981', '#34D399', '#F59E0B', '#EF4444', '#1E382B', '#16281F', '#4ADE80'] },
+      6: { name: 'Sage Muted Corporate', num: '#059669', badge: 'Light Mode · Green', hexes: ['#EEF4F1', '#FFFFFF', '#064E3B', '#047857', '#CFE0D8', '#059669', '#10B981', '#F59E0B', '#EF4444', '#DFEDE6', '#D1FAE5', '#6EE7B7'] }
+    },
+    blue: {
+      1: { name: 'Sky Clean Light', num: '#0284C7', badge: 'Light Mode · Blue', hexes: ['#F8FAFC', '#FFFFFF', '#1E293B', '#64748B', '#E2E8F0', '#0284C7', '#38BDF8', '#F59E0B', '#EF4444', '#EDF2F7', '#F0F9FF', '#94A3B8'] },
+      2: { name: 'Deep Ocean Professional', num: '#38BDF8', badge: 'Dark Mode · Blue', hexes: ['#070C15', '#0C1322', '#F1F5F9', '#94A3B8', 'rgba(56,189,248,0.18)', '#38BDF8', '#0EA5E9', '#F59E0B', '#EF4444', 'rgba(255,255,255,0.06)', '#141E33', '#64748B'] },
+      3: { name: 'Soft Sky Modern Pastel', num: '#3B82F6', badge: 'Light Mode · Blue', hexes: ['#F0F7FF', '#FFFFFF', '#1E3A8A', '#3B82F6', '#DBEAFE', '#3B82F6', '#60A5FA', '#F59E0B', '#EF4444', '#E0EDFF', '#EFF6FF', '#93C5FD'] },
+      4: { name: 'IT Fleet Clarity Management', num: '#2563EB', badge: 'Light Mode · Blue', hexes: ['#F4F7FB', '#FFFFFF', '#0F172A', '#475569', '#CBD5E1', '#2563EB', '#38BDF8', '#F59E0B', '#EF4444', '#E2E8F0', '#EFF6FF', '#94A3B8'] },
+      5: { name: 'Midnight Blue Dark Console', num: '#38BDF8', badge: 'Dark Mode · Blue', hexes: ['#0B0F19', '#111827', '#F8FAFC', '#94A3B8', '#1E293B', '#38BDF8', '#60A5FA', '#F59E0B', '#EF4444', '#1E293B', '#162235', '#64748B'] },
+      6: { name: 'Cool Slate Corporate', num: '#0284C7', badge: 'Light Mode · Blue', hexes: ['#F1F5F9', '#FFFFFF', '#0F172A', '#475569', '#CBD5E1', '#0284C7', '#0D9488', '#F59E0B', '#EF4444', '#E2E8F0', '#E0F2FE', '#94A3B8'] }
+    },
+    grafana: {
+      1: { name: 'Warm Amber Clean Light', num: '#EA580C', badge: 'Light Mode · Grafana', hexes: ['#FAF7F5', '#FFFFFF', '#1C1917', '#78716C', '#EFE8E2', '#EA580C', '#F59E0B', '#10B981', '#EF4444', '#F5EFEA', '#FFF7ED', '#A8A29E'] },
+      2: { name: 'Grafana Obsidian Dark', num: '#FF9830', badge: 'Dark Mode · Grafana', hexes: ['#0E1117', '#161B22', '#F0F6FC', '#8B949E', '#30363D', '#FF9830', '#5794F2', '#73BF69', '#F2495C', '#21262D', '#1F242C', '#6E7681'] },
+      3: { name: 'Soft Amber Modern', num: '#F59E0B', badge: 'Light Mode · Grafana', hexes: ['#FDF8F0', '#FFFFFF', '#78350F', '#B45309', '#FDE68A', '#F59E0B', '#D97706', '#10B981', '#EF4444', '#FEF3C7', '#FFFBEB', '#D97706'] },
+      4: { name: 'Observability Ops Light', num: '#D97706', badge: 'Light Mode · Grafana', hexes: ['#FFF7ED', '#FFFFFF', '#1C1917', '#78716C', '#FED7AA', '#D97706', '#F59E0B', '#10B981', '#EF4444', '#FFEDD5', '#FFF7ED', '#A8A29E'] },
+      5: { name: 'Grafana Console Dark', num: '#5794F2', badge: 'Dark Mode · Grafana', hexes: ['#0B0F14', '#111827', '#F8FAFC', '#94A3B8', '#263241', '#5794F2', '#FF9830', '#73BF69', '#F2495C', '#1F2A38', '#182232', '#64748B'] },
+      6: { name: 'Industrial Amber Warm', num: '#EA580C', badge: 'Light Mode · Grafana', hexes: ['#F7F4EF', '#FFFFFF', '#292524', '#57534E', '#E8DFD5', '#EA580C', '#0F766E', '#10B981', '#EF4444', '#F0E8DE', '#EFE9E0', '#A8A29E'] }
+    }
+  };
+
+  function updateDynamicToneCards(family) {
+    const famData = PALETTE_DATA_18[family];
+    if (!famData) return;
+
+    for (let i = 1; i <= 6; i++) {
+      const card = document.getElementById('tone-0' + i);
+      if (!card) continue;
+      const data = famData[i];
+      if (!data) continue;
+
+      // Update card title and number accent
+      const titleEl = card.querySelector('.head-title');
+      if (titleEl) titleEl.textContent = data.name;
+
+      const numEl = card.querySelector('.head-num');
+      if (numEl) numEl.style.color = data.num;
+
+      const badgeEl = card.querySelector('.theme-badge');
+      if (badgeEl) badgeEl.textContent = data.badge;
+
+      // Update color swatches
+      const swatches = card.querySelectorAll('.swatch-item');
+      if (swatches && data.hexes) {
+        swatches.forEach((sw, idx) => {
+          if (data.hexes[idx]) {
+            const hex = data.hexes[idx];
+            const circle = sw.querySelector('.swatch-circle');
+            if (circle) circle.style.background = hex;
+            const hexText = sw.querySelector('.swatch-hex');
+            if (hexText) hexText.textContent = hex;
+          }
+        });
+      }
+    }
+    // Cards 07 & 08 stay 100% fixed Blueprint!
+  }
+
+  function switchToneGalleryPrimary(family) {
+    updateDynamicToneCards(family);
+    currentGalleryPrimary = family;
+    document.documentElement.setAttribute('data-primary', family);
+
+    document.querySelectorAll('.core-sw-btn').forEach(btn => {
+      if (btn.getAttribute('data-core') === family) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    showToast('Đã áp dụng màu chủ đạo ' + family.toUpperCase() + ' cho Tones 01–06 (Tones 07 & 08 giữ nguyên Blueprint)');
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    switchToneGalleryPrimary('green');
+  });
+
+  // Filter Tones (All / Green / Blue / Grafana / Blueprint / Light / Dark)
+  function filterTones(mode, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      if (mode === 'all') {
+        card.style.display = 'flex';
+      } else if (mode === 'light' || mode === 'dark') {
+        card.style.display = card.dataset.mode === mode ? 'flex' : 'none';
+      } else {
+        const families = (card.dataset.family || '').split(' ');
+        card.style.display = families.includes(mode) ? 'flex' : 'none';
+      }
+    });
+  }
+
+  // Copy Hex Code Toast
+  let toastTimer;
+  function copyHex(hex, name) {
+    navigator.clipboard.writeText(hex).then(() => {
+      const toast = document.getElementById('copy-toast');
+      const toastText = document.getElementById('toast-text');
+      toastText.textContent = `Đã chép mã màu ${name} (${hex})`;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2200);
+    }).catch(() => {
+      prompt('Mã màu:', hex);
+    });
+  }
+
+  // Metadata for Markdown generation
+  const TONE_SPECS = {
+  "1": {
+    "title": "Tone 01 : Natural Clean Light",
+    "mode": "Light Mode",
+    "family": "Green / Emerald (hoặc Blue / Grafana)",
+    "desc": "Thiết kế sáng tối giản, mềm mại, viền nhạt thanh thoát tạo cảm giác dễ chịu và thân thiện.",
+    "bg": "#F8FBF7",
+    "surface": "#FFFFFF",
+    "border": "#E2ECE5",
+    "primary": "#22C55E",
+    "accent": "#34D399",
+    "textPrimary": "#1F2937",
+    "textSecondary": "#6B7280",
+    "success": "#22C55E",
+    "warning": "#F59E0B",
+    "error": "#EF4444"
+  },
+  "2": {
+    "title": "Tone 02 : Deep Professional Dark",
+    "mode": "Dark Mode",
+    "family": "Green / Emerald (hoặc Blue / Grafana)",
+    "desc": "Tông nền đêm sâu lắng, đẳng cấp, điểm nhấn xanh lá dịu mắt, tăng độ tập trung cao độ.",
+    "bg": "#0B1220",
+    "surface": "#111827",
+    "border": "rgba(34, 197, 94, 0.2)",
+    "primary": "#22C55E",
+    "accent": "#34D399",
+    "textPrimary": "#F9FAFB",
+    "textSecondary": "#9CA3AF",
+    "success": "#34D399",
+    "warning": "#FBBF24",
+    "error": "#F87171"
+  },
+  "3": {
+    "title": "Tone 03 : Soft Modern Sky & Pastel",
+    "mode": "Light Mode",
+    "family": "Blue / Modern Sky (hoặc Green / Grafana)",
+    "desc": "Tông pastel hiện đại, tương phản hài hòa, viền mềm mại mang lại trải nghiệm êm ái.",
+    "bg": "#F5FAF6",
+    "surface": "#FFFFFF",
+    "border": "#D1E7DD",
+    "primary": "#4CAF50",
+    "accent": "#60A5FA",
+    "textPrimary": "#111827",
+    "textSecondary": "#4B5563",
+    "success": "#22C55E",
+    "warning": "#F59E0B",
+    "error": "#EF4444"
+  },
+  "4": {
+    "title": "Tone 04 : Clarity IT Management",
+    "mode": "Light Mode",
+    "family": "Blue / Modern IT (hoặc Green / Grafana)",
+    "desc": "Tông chuyên dụng cho quản trị hạ tầng và thiết bị phân tán, độ tương phản sắc nét, mạch lạc.",
+    "bg": "#F0FDF4",
+    "surface": "#FFFFFF",
+    "border": "#BBF7D0",
+    "primary": "#16A34A",
+    "accent": "#2563EB",
+    "textPrimary": "#0F172A",
+    "textSecondary": "#475569",
+    "success": "#16A34A",
+    "warning": "#F59E0B",
+    "error": "#EF4444"
+  },
+  "5": {
+    "title": "Tone 05 : Observability & Monitoring Dark",
+    "mode": "Dark Mode",
+    "family": "Grafana Dark / Charcoal (hoặc Green / Blue)",
+    "desc": "Thiết kế chuyên sâu giám sát metrics, biểu đồ telemetry, tông than chì graphite hiện đại.",
+    "bg": "#0B0F14",
+    "surface": "#111827",
+    "border": "#263241",
+    "primary": "#5794F2",
+    "accent": "#FF9830",
+    "textPrimary": "#F8FAFC",
+    "textSecondary": "#94A3B8",
+    "success": "#73BF69",
+    "warning": "#FF9830",
+    "error": "#F2495C"
+  },
+  "6": {
+    "title": "Tone 06 : Enterprise Muted Surface",
+    "mode": "Light Mode",
+    "family": "Teal / Corporate Muted",
+    "desc": "Tông màu dịu nhẹ, bề mặt kem trang nhã, giảm thiểu mỏi mắt cho người vận hành lâu dài.",
+    "bg": "#EEF4F1",
+    "surface": "#FFFFFF",
+    "border": "#D7E4DE",
+    "primary": "#0F766E",
+    "accent": "#10B981",
+    "textPrimary": "#10231A",
+    "textSecondary": "#60756A",
+    "success": "#22C55E",
+    "warning": "#F59E0B",
+    "error": "#EF4444"
+  },
+  "7": {
+    "title": "Tone 07 : Technical Blueprint / Light (CAD Drawing)",
+    "mode": "Light Mode · Blueprint Cố Định",
+    "family": "Technical Blueprint",
+    "desc": "Cảm hứng từ bản vẽ kỹ thuật CAD, tài liệu kiến trúc hệ thống. Nền giấy #ECECEC, khung viền đen #111111 tuyệt đối, điểm nhấn xanh neon #7ED957.",
+    "bg": "#ECECEC",
+    "surface": "#FFFFFF",
+    "border": "#111111",
+    "primary": "#111111",
+    "accent": "#7ED957",
+    "textPrimary": "#111111",
+    "textSecondary": "#555555",
+    "success": "#15803D",
+    "warning": "#B45309",
+    "error": "#B91C1C"
+  },
+  "8": {
+    "title": "Tone 08 : Technical Blueprint / Dark (CAD Obsidian)",
+    "mode": "Dark Mode · Blueprint Cố Định",
+    "family": "Technical Blueprint",
+    "desc": "Bản vẽ kỹ thuật chế độ tối, nền đen sâu thẳm #050505, khung đen kỹ thuật #1F1F1F, điểm nhấn neon #7ED957 rực sáng.",
+    "bg": "#050505",
+    "surface": "#0C0C0C",
+    "border": "#1F1F1F",
+    "primary": "#7ED957",
+    "accent": "#7ED957",
+    "textPrimary": "#F5F5F5",
+    "textSecondary": "#9B9B9B",
+    "success": "#7ED957",
+    "warning": "#F59E0B",
+    "error": "#EF4444"
+  }
+};
+
+    function buildMarkdownSpec(toneNum) {
+    const t = TONE_SPECS[toneNum] || TONE_SPECS[1];
+    const now = new Date().toLocaleDateString('vi-VN', { year: 'numeric', month: '2-digit', day: '2-digit' });
+    const isBp = toneNum === 7 || toneNum === 8;
+    
+    let md = '# Elite Design System — ' + t.title + '\n\n';
+    md += '> **Chế độ:** ' + t.mode + '  \n';
+    md += '> **Nhóm màu:** ' + t.family + '  \n';
+    md += '> **Hệ thống:** Elite Unified Design System v4.2  \n';
+    md += '> **Ngày xuất:** ' + now + '\n\n';
+    md += '---\n\n';
+    md += '## 1. Triết lý Thiết kế (Design Philosophy)\n';
+    md += t.desc + '\n\n';
+    md += 'Hệ màu được tinh chỉnh với độ tương phản cao, giảm mỏi mắt khi làm việc liên tục, viền nhẹ nhàng, phân cấp rõ ràng giữa các thành phần giao diện.\n\n';
+    md += '---\n\n';
+    md += '## 2. Bảng mã màu chi tiết (Design Tokens)\n\n';
+    md += '| Token CSS | Tên màu | Mã HEX / Giá trị | Vai trò & Ứng dụng |\n';
+    md += '| :--- | :--- | :--- | :--- |\n';
+    md += '| `--page-bg` | Background Canvas | `' + t.bg + '` | Nền toàn trang, khoảng đệm thị giác |\n';
+    md += '| `--surface-card` | Surface Card | `' + t.surface + '` | Nền container chính, panel, bảng điều khiển |\n';
+    md += '| `--border-color` | Border Outline | `' + t.border + '` | Đường viền ngăn cách, khung bảng |\n';
+    md += '| `--color-primary` | Primary Brand | `' + t.primary + '` | Nút bấm chính, tiêu điểm hành động (CTA) |\n';
+    md += '| `--color-accent` | Accent | `' + t.accent + '` | Điểm nhấn phụ, biểu đồ, tag danh mục |\n';
+    md += '| `--text-primary` | Text Main | `' + t.textPrimary + '` | Tiêu đề, số liệu KPI quan trọng |\n';
+    md += '| `--text-secondary` | Text Soft | `' + t.textSecondary + '` | Nhãn phụ, mô tả phụ, dữ liệu bảng |\n';
+    md += '| `--status-success` | Status Online | `' + t.success + '` | Trạng thái bình thường, dịch vụ khỏe |\n';
+    md += '| `--status-warning` | Status Warning | `' + t.warning + '` | Tải cao, vượt ngưỡng lưu lượng |\n';
+    md += '| `--status-error` | Status Error | `' + t.error + '` | Mất kết nối, cảnh báo nghiêm trọng |\n\n';
+    md += '---\n\n';
+    md += '## 3. Quy chuẩn Typography & Geometry\n\n';
+    md += '* **Font Tiêu đề:** ' + (isBp ? "'IBM Plex Mono', Consolas, monospace" : "'Plus Jakarta Sans', 'Poppins', sans-serif") + '\n';
+    md += "* **Font Nội dung:** 'Inter', -apple-system, sans-serif\n";
+    md += "* **Font Kỹ thuật:** 'IBM Plex Mono', Consolas, monospace\n";
+    md += '* **Bo góc (Border Radius):** ' + (isBp ? '4px - 6px (Kỹ thuật CAD tối giản)' : '12px - 22px (Mềm mại hiện đại)') + '\n';
+    md += '* **Độ dày viền:** ' + (toneNum === 7 ? '2px viền đen #111111 toàn bộ khung' : '1px tinh tế') + '\n\n';
+    md += '---\n\n';
+    md += '## 4. Đoạn mã CSS Variables (Sẵn sàng sử dụng)\n\n';
+    md += '```css\n';
+    md += ':root {\n';
+    md += '  --page-bg: ' + t.bg + ';\n';
+    md += '  --surface-card: ' + t.surface + ';\n';
+    md += '  --border-color: ' + t.border + ';\n';
+    md += '  --color-primary: ' + t.primary + ';\n';
+    md += '  --color-accent: ' + t.accent + ';\n';
+    md += '  --text-primary: ' + t.textPrimary + ';\n';
+    md += '  --text-secondary: ' + t.textSecondary + ';\n';
+    md += '  --status-success: ' + t.success + ';\n';
+    md += '  --status-warning: ' + t.warning + ';\n';
+    md += '  --status-error: ' + t.error + ';\n';
+    md += '}\n';
+    md += '```\n\n';
+    md += '*Tài liệu được tạo tự động từ Elite Design System Studio.*\n';
+    return md;
+  }
+
+  function downloadToneMarkdown(toneNum) {
+    const md = buildMarkdownSpec(toneNum);
+    const filename = `Elite_Tone_0${toneNum}_${toneNum === 7 ? 'Blueprint_Light' : toneNum === 8 ? 'Blueprint_Dark' : 'Palette'}.md`;
+    
+    // Download file
+    const blob = new Blob([md], { type: 'text/markdown;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    // Also copy to clipboard
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(md).catch(() => {});
+    }
+
+    showToast(`Đã tải file ${filename} và sao chép vào Clipboard!`);
+  }
+
+  function copyToneMarkdown(toneNum) {
+    const md = buildMarkdownSpec(toneNum);
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(md).then(() => {
+        showToast(`Đã sao chép Markdown Tone 0${toneNum} vào Clipboard!`);
+      }).catch(() => {
+        downloadToneMarkdown(toneNum);
+      });
+    } else {
+      downloadToneMarkdown(toneNum);
+    }
+  }
+
+</script>
+</body>
+</html>

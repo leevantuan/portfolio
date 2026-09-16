@@ -63,7 +63,7 @@ export interface ConvergenceDomain {
   metrics: ConvergenceMetric[];
   synergies: ConvergenceSynergy[];
   aiSupercharge: string;
-  demo?: { title: string; description: string; url: string; credentialsLabel?: string };
+  demos?: { title: string; description: string; url: string; ctaLabel: string; credentialsLabel?: string }[];
 }
 
 export interface ScenarioStep {
@@ -363,13 +363,13 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnChanges, OnDest
     return this.convergenceDomains.find((d) => d.id === 'ai');
   }
 
-  copiedDemoCreds = false;
-  copyDemoCredentials(text: string): void {
+  copiedDemoIndex: number | null = null;
+  copyDemoCredentials(text: string, index: number): void {
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
       navigator.clipboard.writeText(text);
-      this.copiedDemoCreds = true;
+      this.copiedDemoIndex = index;
       setTimeout(() => {
-        this.copiedDemoCreds = false;
+        this.copiedDemoIndex = null;
       }, 2500);
     }
   }

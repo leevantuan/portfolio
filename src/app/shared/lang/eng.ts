@@ -713,12 +713,22 @@ export const UIResourceENG = {
           { partnerNum: '01, 02, 03, 04', partnerDomain: 'ALL 4 DOMAINS', title: 'Full-Spectrum Technical Synchronization', description: 'There is no disconnect between Backend code, Network infrastructure, Server configuration, and the Cloud pipeline — AI acts as the absolute technical glue binding them together.', protocol: 'MCP Protocol Bus' },
         ],
         aiSupercharge: 'Transforms an engineer from a lone keyboard operator into a Technical Commander directing an elite army of AI Subagents operating 24/7.',
-        demo: {
-          title: 'Live Demo — AI-Built Language Learning App',
-          description: 'Built and shipped a full Chinese + English learning web app end-to-end with an AI-orchestrated engineering workflow (Claude Code) — from idea to production in just 3 hours.',
-          url: 'https://learnzh.website/',
-          credentialsLabel: 'Demo account: test01 / 12345678',
-        },
+        demos: [
+          {
+            title: 'Live Demo — AI-Built Language Learning App',
+            description: 'Built and shipped a full Chinese + English learning web app end-to-end with an AI-orchestrated engineering workflow (Claude Code) — from idea to production in just 3 hours.',
+            url: 'https://learnzh.website/',
+            ctaLabel: 'VIEW LIVE DEMO (learnzh.website) ↗',
+            credentialsLabel: 'Demo account: test01 / 12345678',
+          },
+          {
+            title: 'Live Demo — Elite Console (IT Ops Admin Dashboard)',
+            description: 'Built and shipped a full IT infrastructure admin console — device fleet, network topology, SLA analytics, and an Agent Core knowledge base — end-to-end with an AI-orchestrated engineering workflow (Claude Code), from idea to production in just 2 hours.',
+            url: '/storage/design_system/elite_design_system.html',
+            ctaLabel: 'VIEW LIVE DEMO (mystorage) ↗',
+            credentialsLabel: 'Demo account: test01 / 12345678',
+          },
+        ],
       },
     ],
     convergenceScenarios: [

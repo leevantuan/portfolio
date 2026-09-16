@@ -713,12 +713,22 @@ export const UIResourceVN = {
           { partnerNum: '01, 02, 03, 04', partnerDomain: 'ALL 4 DOMAINS', title: 'Full-Spectrum Technical Synchronization', description: 'Không có bất kỳ sự đứt gãy nào giữa code Backend, hạ tầng Mạng, cấu hình Máy chủ và Pipeline Cloud — AI đóng vai trò như chất keo kết dính kỹ thuật tuyệt đối.', protocol: 'MCP Protocol Bus' },
         ],
         aiSupercharge: 'Biến kỹ sư từ người gõ phím đơn lẻ thành Giám đốc Kỹ thuật (Technical Commander) điều khiển đội quân AI Subagents tinh nhuệ hoạt động 24/7.',
-        demo: {
-          title: 'Live Demo — Ứng Dụng Học Ngoại Ngữ Xây Dựng Bằng AI',
-          description: 'Xây dựng và triển khai trọn vẹn một web app học tiếng Trung + tiếng Anh bằng quy trình kỹ thuật điều phối AI (Claude Code) — từ ý tưởng đến sản phẩm thực tế chỉ trong 3 tiếng.',
-          url: 'https://learnzh.website/',
-          credentialsLabel: 'Tài khoản demo: test01 / 12345678',
-        },
+        demos: [
+          {
+            title: 'Live Demo — Ứng Dụng Học Ngoại Ngữ Xây Dựng Bằng AI',
+            description: 'Xây dựng và triển khai trọn vẹn một web app học tiếng Trung + tiếng Anh bằng quy trình kỹ thuật điều phối AI (Claude Code) — từ ý tưởng đến sản phẩm thực tế chỉ trong 3 tiếng.',
+            url: 'https://learnzh.website/',
+            ctaLabel: 'XEM LIVE DEMO (learnzh.website) ↗',
+            credentialsLabel: 'Tài khoản demo: test01 / 12345678',
+          },
+          {
+            title: 'Live Demo — Elite Console (Bảng Điều Khiển Hạ Tầng IT)',
+            description: 'Xây dựng và triển khai trọn vẹn một bảng điều khiển quản trị hạ tầng IT — quản lý thiết bị, network topology, phân tích SLA, và kho tri thức Agent Core — bằng quy trình kỹ thuật điều phối AI (Claude Code) — từ ý tưởng đến sản phẩm thực tế chỉ trong 2 tiếng.',
+            url: '/storage/design_system/elite_design_system.html',
+            ctaLabel: 'XEM LIVE DEMO (mystorage) ↗',
+            credentialsLabel: 'Tài khoản demo: test01 / 12345678',
+          },
+        ],
       },
     ],
     convergenceScenarios: [

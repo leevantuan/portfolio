@@ -1,0 +1,5 @@
+/* Pure CSS styles for mobile header */
+:host {
+  display: block;
+  width: 100%;
+}

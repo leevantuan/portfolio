@@ -1,0 +1,86 @@
+<div id="contact" class="w-full px-4 py-8 border-b border-[var(--border)]">
+  <!-- Section Heading -->
+  <div class="mb-5">
+    <div class="flex items-center gap-2 font-mono-tech text-[10px] text-[var(--accent)] font-bold tracking-wider uppercase mb-1">
+      <span>05 / DIRECT CONNECTION</span>
+      <span class="w-4 h-[1px] bg-[var(--accent)]"></span>
+    </div>
+    <h2 class="font-mono-tech text-xl sm:text-2xl font-bold text-[var(--text-1)] tracking-tight">
+      {{ UIResource?.contact_contact || 'Contact' }}
+    </h2>
+    <p class="text-xs text-[var(--text-2)] mt-1 leading-relaxed">
+      {{ UIResource?.contact_bio || 'Ready to connect and discuss distributed system architecture, DevOps/Cloud infrastructure, or Backend & IT System opportunities.' }}
+    </p>
+  </div>
+
+  <!-- Direct 1-Tap Action Buttons (Touch Optimized) -->
+  <div class="space-y-2.5 mb-6 font-mono-tech text-xs">
+    <!-- Email Button -->
+    <a
+      href="mailto:levantuan.work@gmail.com"
+      class="flex items-center justify-between p-3 rounded bg-[var(--surface)] border border-[var(--border)] text-[var(--text-1)] no-underline hover:border-[var(--accent)] transition-colors"
+    >
+      <div class="flex items-center gap-2.5">
+        <span class="text-[var(--accent)] text-sm">✉</span>
+        <div>
+          <div class="text-[9.5px] text-[var(--text-3)] uppercase font-semibold">EMAIL DISPATCH</div>
+          <div class="font-bold text-xs">levantuan.work&#64;gmail.com</div>
+        </div>
+      </div>
+      <span class="text-[var(--accent)] font-bold">SEND →</span>
+    </a>
+
+    <!-- Phone Call Button -->
+    <a
+      href="tel:+84817251624"
+      class="flex items-center justify-between p-3 rounded bg-[var(--surface)] border border-[var(--border)] text-[var(--text-1)] no-underline hover:border-[var(--accent)] transition-colors"
+    >
+      <div class="flex items-center gap-2.5">
+        <span class="text-[var(--accent)] text-sm">☎</span>
+        <div>
+          <div class="text-[9.5px] text-[var(--text-3)] uppercase font-semibold">DIRECT HOTLINE</div>
+          <div class="font-bold text-xs">+84 817 251 624</div>
+        </div>
+      </div>
+      <span class="text-[var(--accent)] font-bold">CALL →</span>
+    </a>
+
+    <!-- Location & Mode -->
+    <div class="flex items-center justify-between p-3 rounded bg-[var(--surface-2)] border border-[var(--border)] text-[var(--text-1)]">
+      <div class="flex items-center gap-2.5">
+        <span class="text-[var(--accent)] text-sm">📍</span>
+        <div>
+          <div class="text-[9.5px] text-[var(--text-3)] uppercase font-semibold">DEPLOYMENT BASE</div>
+          <div class="font-bold text-xs">Ho Chi Minh / Dong Nai, Vietnam</div>
+        </div>
+      </div>
+      <span class="text-[10px] text-[var(--text-3)] font-mono-tech">HYBRID / REMOTE</span>
+    </div>
+  </div>
+
+  <!-- Social Links & CV -->
+  <div class="grid grid-cols-3 gap-2 font-mono-tech text-xs">
+    <a
+      href="https://github.com/leevantuan"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="py-2.5 px-2 rounded bg-[var(--surface-2)] border border-[var(--border)] text-[var(--text-1)] text-center no-underline font-semibold hover:border-[var(--accent)] transition-colors"
+    >
+      GitHub ↗
+    </a>
+    <a
+      href="https://linkedin.com/in/levantuan"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="py-2.5 px-2 rounded bg-[var(--surface-2)] border border-[var(--border)] text-[var(--text-1)] text-center no-underline font-semibold hover:border-[var(--accent)] transition-colors"
+    >
+      LinkedIn ↗
+    </a>
+    <button
+      (click)="openResume()"
+      class="py-2.5 px-2 rounded bg-[var(--accent)] text-[#0B0B0B] border border-[var(--accent)] text-center font-bold cursor-pointer"
+    >
+      CV Drive ↗
+    </button>
+  </div>
+</div>

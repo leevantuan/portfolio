@@ -1951,28 +1951,28 @@
         </div>
       </div>
 
-      <!-- Live Demo Block (AI Domain only) -->
+      <!-- Live Demo Blocks (AI Domain only) -->
       <div
-        *ngIf="selectedDomainData.demo"
+        *ngFor="let demo of selectedDomainData.demos; let dIdx = index"
         class="mt-4 p-5 rounded-lg border-2 border-[var(--accent)] bg-[var(--surface-2)] flex flex-col gap-4 shadow-lg"
       >
         <div class="flex flex-wrap items-center justify-between gap-3">
           <div class="font-mono-tech text-xs sm:text-sm font-bold text-[var(--accent-text)] uppercase tracking-wider flex items-center gap-2">
             <span class="px-2 py-0.5 rounded bg-[var(--accent)] text-[#0b0b0b] font-mono text-[10px]">LIVE DEMO</span>
-            <span>{{ selectedDomainData.demo.title }}</span>
+            <span>{{ demo.title }}</span>
           </div>
           <a
-            [href]="selectedDomainData.demo.url"
+            [href]="demo.url"
             target="_blank"
             rel="noopener noreferrer"
             class="font-mono-tech text-xs font-bold uppercase tracking-wider px-4 py-2 rounded bg-[var(--accent)] text-[#0B0B0B] hover:brightness-110 transition-all cursor-pointer shadow-md inline-flex items-center gap-2 no-underline"
           >
             <span class="text-sm">🌐</span>
-            <span>OPEN LIVE DEMO (learnzh.website) ↗</span>
+            <span>{{ demo.ctaLabel }}</span>
           </a>
         </div>
         <p class="text-xs sm:text-sm text-[var(--text-2)] leading-relaxed">
-          {{ selectedDomainData.demo.description }}
+          {{ demo.description }}
         </p>
         <!-- Credentials highlight strip -->
         <div class="p-3 rounded border border-[rgba(126,217,87,0.3)] bg-[rgba(126,217,87,0.06)] flex flex-wrap items-center justify-between gap-3">
@@ -1989,10 +1989,10 @@
           </div>
           <button
             type="button"
-            (click)="copyDemoCredentials('test01 / 12345678')"
+            (click)="copyDemoCredentials('test01 / 12345678', dIdx)"
             class="px-3 py-1 rounded border border-[var(--accent)] hover:bg-[var(--accent)] hover:text-[#0b0b0b] text-xs font-mono-tech uppercase font-bold text-[var(--accent-text)] transition-colors cursor-pointer"
           >
-            {{ copiedDemoCreds ? '✓ COPIED CREDENTIALS!' : '📋 COPY ACCOUNT INFO' }}
+            {{ copiedDemoIndex === dIdx ? '✓ COPIED CREDENTIALS!' : '📋 COPY ACCOUNT INFO' }}
           </button>
         </div>
       </div>
@@ -2087,9 +2087,10 @@
 
     </div>
 
-    <!-- Always-Visible AI Orchestrator & Live Demo Showcase Banner (learnzh.website) when viewing ALL -->
+    <!-- Always-Visible AI Orchestrator & Live Demo Showcase Banners when viewing ALL -->
+    <ng-container *ngIf="selectedConvergenceTab === 'all'">
     <div
-      *ngIf="selectedConvergenceTab === 'all' && aiDomainData?.demo"
+      *ngFor="let demo of aiDomainData?.demos; let dIdx = index"
       class="mb-8 p-5 sm:p-6 rounded-xl border-2 border-[#7ED957]/60 bg-gradient-to-r from-[var(--surface-2)] via-[var(--surface)] to-[rgba(126,217,87,0.06)] shadow-lg flex flex-col md:flex-row md:items-center justify-between gap-5"
     >
       <div class="flex-1">
@@ -2102,10 +2103,10 @@
           </span>
         </div>
         <h4 class="font-mono-tech text-base sm:text-lg font-bold text-[var(--text-1)] mb-1.5">
-          {{ aiDomainData?.demo?.title }}
+          {{ demo.title }}
         </h4>
         <p class="text-xs text-[var(--text-2)] leading-relaxed max-w-2xl mb-3">
-          {{ aiDomainData?.demo?.description }}
+          {{ demo.description }}
         </p>
         <!-- Demo credentials badge strip -->
         <div class="flex flex-wrap items-center gap-2 font-mono-tech text-xs">
@@ -2118,23 +2119,23 @@
           </div>
           <button
             type="button"
-            (click)="copyDemoCredentials('test01 / 12345678')"
+            (click)="copyDemoCredentials('test01 / 12345678', dIdx)"
             class="px-2.5 py-0.5 rounded border border-[#7ED957]/40 hover:bg-[#7ED957] hover:text-[#0b0b0b] text-[10px] font-mono-tech font-bold text-[#7ED957] transition-all cursor-pointer"
           >
-            {{ copiedDemoCreds ? '✓ COPIED!' : '📋 COPY CREDENTIALS' }}
+            {{ copiedDemoIndex === dIdx ? '✓ COPIED!' : '📋 COPY CREDENTIALS' }}
           </button>
         </div>
       </div>
 
       <div class="flex flex-wrap md:flex-col items-start md:items-end gap-3 shrink-0">
         <a
-          [href]="aiDomainData?.demo?.url"
+          [href]="demo.url"
           target="_blank"
           rel="noopener noreferrer"
           class="h-10 px-5 rounded-md font-mono-tech text-xs font-bold uppercase tracking-wider bg-[#7ED957] text-[#0B0B0B] hover:brightness-110 border border-[#7ED957] transition-all inline-flex items-center gap-2 cursor-pointer shadow-lg no-underline"
         >
           <span class="text-base">🌐</span>
-          <span>VIEW LIVE DEMO (learnzh.website) ↗</span>
+          <span>{{ demo.ctaLabel }}</span>
         </a>
         <button
           type="button"
@@ -2146,6 +2147,7 @@
         </button>
       </div>
     </div>
+    </ng-container>
 
     <!-- ========================================================================= -->
     <!-- 3 REAL-WORLD CONVERGENCE SCENARIOS (INTERACTIVE RUNTIME SIMULATION)       -->

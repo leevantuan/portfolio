@@ -1,0 +1,63 @@
+<div class="w-full px-4 py-8 border-b border-[var(--border)]">
+  <!-- Section Heading -->
+  <div class="mb-5">
+    <div class="flex items-center gap-2 font-mono-tech text-[10px] text-[var(--accent)] font-bold tracking-wider uppercase mb-1">
+      <span>01 / CORE COMPETENCIES</span>
+      <span class="w-4 h-[1px] bg-[var(--accent)]"></span>
+    </div>
+    <h2 class="font-mono-tech text-xl sm:text-2xl font-bold text-[var(--text-1)] tracking-tight">
+      {{ UIResource?.tech_skill || 'Technical Skills Matrix' }}
+    </h2>
+    <p class="text-xs text-[var(--text-2)] mt-1">
+      {{ UIResource?.tech_skill_desc || 'Comprehensive engineering coverage spanning physical hardware, network routing, cloud DevOps, distributed backend architectures, and AI craft.' }}
+    </p>
+  </div>
+
+  <!-- Domain Selector Tabs (Clean Touch Horizontal Scroll) -->
+  <div class="flex items-center gap-1.5 overflow-x-auto pb-2 mb-4 scrollbar-none font-mono-tech text-[11px]">
+    <button
+      *ngFor="let d of domains"
+      (click)="selectDomain(d.id)"
+      class="px-2.5 py-1.5 rounded whitespace-nowrap border cursor-pointer font-semibold transition-colors"
+      [ngClass]="activeDomainId === d.id 
+        ? 'bg-[var(--accent)] text-[#0B0B0B] border-[var(--accent)] font-bold' 
+        : 'bg-[var(--surface-2)] text-[var(--text-2)] border-[var(--border)]'"
+    >
+      {{ d.num }}. {{ d.title.split('&')[0].trim() }}
+    </button>
+  </div>
+
+  <!-- Active Domain Card (Rendered Statically, Zero Lag) -->
+  <div *ngFor="let d of domains">
+    <div 
+      *ngIf="activeDomainId === d.id"
+      class="p-4 rounded border border-[var(--border)] bg-[var(--surface)] shadow-xs"
+    >
+      <div class="flex items-center justify-between border-b border-[var(--border)] pb-2.5 mb-3">
+        <div>
+          <div class="font-mono-tech text-xs font-bold text-[var(--text-1)]">{{ d.title }}</div>
+          <div class="font-mono-tech text-[10.5px] text-[var(--text-3)]">{{ d.subtitle }}</div>
+        </div>
+        <span class="px-2 py-0.5 rounded bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/30 font-mono-tech text-[10px] font-bold">
+          {{ d.badge }}
+        </span>
+      </div>
+
+      <div class="space-y-4">
+        <div *ngFor="let group of d.groups">
+          <div class="font-mono-tech text-[11px] font-bold text-[var(--accent-text)] uppercase tracking-wider mb-2">
+            // {{ group.title }}
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <span
+              *ngFor="let item of group.items"
+              class="font-mono-tech text-[11px] px-2 py-1 rounded bg-[var(--surface-2)] text-[var(--text-1)] border border-[var(--border)]"
+            >
+              {{ item }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

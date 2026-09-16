@@ -1,0 +1,90 @@
+<div class="w-full px-4 py-8 border-b border-[var(--border)]">
+  <!-- Section Heading -->
+  <div class="mb-5">
+    <div class="flex items-center gap-2 font-mono-tech text-[10px] text-[var(--accent)] font-bold tracking-wider uppercase mb-1">
+      <span>02 / CAREER EVOLUTION</span>
+      <span class="w-4 h-[1px] bg-[var(--accent)]"></span>
+    </div>
+    <h2 class="font-mono-tech text-xl sm:text-2xl font-bold text-[var(--text-1)] tracking-tight">
+      {{ UIResource?.roadmap?.title || 'Career Progression Roadmap' }}
+    </h2>
+    <p class="text-xs text-[var(--text-2)] mt-1">
+      {{ UIResource?.roadmap?.desc || 'A structured 6-tier evolution: from foundational knowledge learning (Fresher), advancing to IT systems & DevOps, and reaching Solution Architecture.' }}
+    </p>
+  </div>
+
+  <!-- Vertical Timeline (Static, No Canvas, No Telemetry Loop) -->
+  <div class="relative border-l-2 border-[var(--border)] ml-3 space-y-6">
+    <div
+      *ngFor="let item of UIResource?.roadmap?.levels; trackBy: trackByLevel"
+      class="relative pl-5"
+    >
+      <!-- Timeline Node Marker -->
+      <div 
+        class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full border-2 bg-[var(--bg)] flex items-center justify-center"
+        [ngClass]="item.status === 'current' 
+          ? 'border-[var(--accent)] text-[var(--accent)]' 
+          : (item.status === 'completed' ? 'border-[var(--accent)] bg-[var(--accent)]/20' : 'border-[var(--border)]')"
+      >
+        <span *ngIf="item.status === 'current'" class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>
+        <span *ngIf="item.status === 'completed'" class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>
+      </div>
+
+      <!-- Level Content Card -->
+      <div 
+        class="p-3.5 rounded border bg-[var(--surface)]"
+        [ngClass]="item.status === 'current' ? 'border-[var(--accent)] shadow-sm' : 'border-[var(--border)]'"
+      >
+        <!-- Card Header -->
+        <div class="flex items-center justify-between gap-2 mb-1.5">
+          <span class="font-mono-tech text-xs font-bold text-[var(--text-1)]">
+            LEVEL {{ item.level }}
+          </span>
+          <span 
+            class="px-2 py-0.5 rounded font-mono-tech text-[10px] font-bold"
+            [ngClass]="item.status === 'current'
+              ? 'bg-[var(--accent)] text-[#0B0B0B]'
+              : (item.status === 'completed' ? 'bg-[var(--surface-2)] text-[var(--accent-text)] border border-[var(--border)]' : 'bg-[var(--surface-2)] text-[var(--text-3)]')"
+          >
+            {{ item.badge }}
+          </span>
+        </div>
+
+        <div class="font-mono-tech text-xs font-semibold text-[var(--text-1)] mb-2">
+          {{ item.title }}
+        </div>
+
+        <p class="text-xs text-[var(--text-2)] leading-relaxed mb-3">
+          {{ item.desc }}
+        </p>
+
+        <!-- Certs if any -->
+        <div *ngIf="item.certs && item.certs.length > 0" class="mb-2">
+          <div class="text-[10px] font-mono-tech text-[var(--text-3)] uppercase font-semibold mb-1">
+            VERIFIED CERTS:
+          </div>
+          <div class="flex flex-wrap gap-1">
+            <span
+              *ngFor="let cert of item.certs"
+              class="font-mono-tech text-[10.5px] px-1.5 py-0.5 rounded bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/20 font-medium"
+            >
+              {{ cert }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Skills Tags -->
+        <div *ngIf="item.skills && item.skills.length > 0">
+          <div class="flex flex-wrap gap-1">
+            <span
+              *ngFor="let sk of item.skills"
+              class="font-mono-tech text-[10px] px-1.5 py-0.5 rounded bg-[var(--surface-2)] text-[var(--text-2)] border border-[var(--border)]"
+            >
+              {{ sk }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

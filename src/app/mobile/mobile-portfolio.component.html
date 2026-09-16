@@ -1,0 +1,58 @@
+<div class="mobile-portfolio-root w-full min-h-screen text-[var(--text-1)] bg-[var(--bg)] selection:bg-[var(--accent)] selection:text-[#0B0B0B] overflow-x-hidden">
+  
+  <!-- ======================================================== -->
+  <!-- MOBILE HEADER BAR (STICKY AT TOP)                        -->
+  <!-- ======================================================== -->
+  <app-mobile-header [lang]="lang" (langChange)="handleLangChange($event)"></app-mobile-header>
+
+  <!-- ======================================================== -->
+  <!-- MOBILE HERO (ONLY LIGHT PULSE ANIMATION HERE)            -->
+  <!-- ======================================================== -->
+  <section id="hero">
+    <app-mobile-hero
+      [lang]="lang"
+      [UIResource]="UIResource"
+      (viewArchitecture)="openArchitectureModal()"
+    ></app-mobile-hero>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- STATIC MOBILE SECTIONS (ZERO HEAVY ANIMATIONS)           -->
+  <!-- ======================================================== -->
+  <main class="w-full flex flex-col">
+    <!-- Skills Matrix -->
+    <section id="skills">
+      <app-mobile-skills [lang]="lang" [UIResource]="UIResource"></app-mobile-skills>
+    </section>
+
+    <!-- Career Roadmap -->
+    <section id="roadmap">
+      <app-mobile-roadmap [lang]="lang" [UIResource]="UIResource"></app-mobile-roadmap>
+    </section>
+
+    <!-- Verified Credentials -->
+    <section id="credentials">
+      <app-mobile-credentials [lang]="lang" [UIResource]="UIResource"></app-mobile-credentials>
+    </section>
+
+    <!-- Professional Experience -->
+    <section id="experience">
+      <app-mobile-experience [lang]="lang" [UIResource]="UIResource"></app-mobile-experience>
+    </section>
+
+    <!-- Direct Contact Terminal -->
+    <section id="contact">
+      <app-mobile-contact [lang]="lang" [UIResource]="UIResource"></app-mobile-contact>
+    </section>
+  </main>
+
+  <!-- Engineering Footer -->
+  <app-mobile-footer [lang]="lang"></app-mobile-footer>
+
+  <!-- Architecture Modal (Shared) -->
+  <app-diagram-viewer
+    [isOpen]="isDiagramOpen"
+    [lang]="lang"
+    (close)="closeArchitectureModal()"
+  ></app-diagram-viewer>
+</div>
