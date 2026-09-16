@@ -1,0 +1,702 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Claude Agent Core</title>
+<style>
+:root{
+  --bg:#f6f7f5; --surface:#ffffff; --surface-2:#f0f2ef; --border:#e2e5e0;
+  --ink:#16201c; --muted:#5b675f; --faint:#8b968f;
+  --accent:#0f7a4a; --accent-ink:#ffffff; --accent-soft:#e6f4ec; --accent-soft-ink:#0b5c38;
+  --blue:#2b5a8c; --blue-soft:#e8f0f8;
+  --amber:#8a5a10; --amber-soft:#fbf1de;
+  --red:#a13636; --red-soft:#fbeaea;
+  --code-bg:#111815; --code-ink:#d7e6dd;
+  --radius:12px; --radius-lg:18px;
+  --shadow:0 1px 2px rgba(20,30,24,.04), 0 8px 24px -12px rgba(20,30,24,.10);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#121613; --surface:#191f1b; --surface-2:#1e2521; --border:#2b332e;
+    --ink:#e9ede9; --muted:#a3ada2; --faint:#707b73;
+    --accent:#3fb883; --accent-ink:#0b1a12; --accent-soft:#14261c; --accent-soft-ink:#7fd7ac;
+    --blue:#7fb0e0; --blue-soft:#16222e;
+    --amber:#e2b063; --amber-soft:#2a2214;
+    --red:#e08585; --red-soft:#2a1717;
+    --code-bg:#0b0f0d; --code-ink:#c9dccf;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--ink);
+  font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent)}
+code,.mono{font:12.5px/1.6 ui-monospace,"Cascadia Code","SF Mono",Consolas,monospace}
+
+/* ---- layout ---- */
+.app{display:flex;min-height:100vh}
+.sidebar{
+  width:250px;flex:none;background:var(--surface);border-right:1px solid var(--border);
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:20px 14px;
+}
+.brand{display:flex;align-items:center;gap:10px;padding:4px 8px 18px}
+.brand .mark{width:32px;height:32px;border-radius:9px;background:var(--accent);color:var(--accent-ink);
+  display:grid;place-items:center;font-weight:800;font-size:14px;flex:none}
+.brand .txt b{display:block;font-size:14.5px;font-weight:800;letter-spacing:-.01em}
+.brand .txt span{display:block;font-size:11px;color:var(--faint)}
+.navgroup{margin:16px 0}
+.navgroup h4{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);
+  margin:0 0 6px 10px;font-weight:700}
+.navitem{display:flex;align-items:center;gap:9px;width:100%;text-align:left;border:0;background:none;
+  color:var(--muted);font:inherit;font-size:13.5px;font-weight:600;padding:8px 10px;border-radius:9px;
+  cursor:pointer}
+.navitem .dot{width:6px;height:6px;border-radius:50%;background:var(--border);flex:none}
+.navitem:hover{background:var(--surface-2);color:var(--ink)}
+.navitem.active{background:var(--accent-soft);color:var(--accent-soft-ink)}
+.navitem.active .dot{background:var(--accent)}
+.side-foot{margin-top:18px;padding:12px 10px;border-top:1px solid var(--border);font-size:11px;color:var(--faint)}
+
+main{flex:1;min-width:0}
+.topbar{
+  position:sticky;top:0;z-index:3;background:color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--border);
+  padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:12px
+}
+.topbar h2{margin:0;font-size:14px;font-weight:700}
+.topbar p{margin:2px 0 0;font-size:12px;color:var(--faint)}
+.crumbs{font-size:11px;color:var(--faint);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+
+.wrap{max-width:1120px;margin:0 auto;padding:28px 32px 90px}
+.panel{display:none}
+.panel.active{display:block}
+
+/* ---- typography blocks ---- */
+.hero{padding:26px 28px;margin-bottom:22px;background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius-lg);box-shadow:var(--shadow)}
+.hero .eyebrow{color:var(--accent);font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:.09em}
+.hero h1{font-size:26px;letter-spacing:-.02em;margin:8px 0 10px;font-weight:800}
+.hero p{color:var(--muted);margin:0;max-width:70ch;font-size:14.5px}
+h2.sec{font-size:16px;font-weight:800;letter-spacing:-.01em;margin:30px 0 12px;display:flex;align-items:center;gap:8px}
+h2.sec .n{font-size:11px;color:var(--faint);font-weight:700}
+h3{font-size:14px;margin:0 0 6px;font-weight:800}
+p.desc{color:var(--muted);margin:0;font-size:13.5px;line-height:1.6}
+
+/* ---- grid / cards ---- */
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.c12{grid-column:span 12}.c8{grid-column:span 8}.c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+.card.tight{padding:14px 16px}
+.statrow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
+.stat b{display:block;font-size:22px;font-weight:800;letter-spacing:-.02em}
+.stat span{font-size:11.5px;color:var(--faint)}
+
+/* ---- badges/tags ---- */
+.tag{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;border-radius:99px;
+  padding:3px 9px;background:var(--surface-2);color:var(--muted);border:1px solid var(--border)}
+.tag.good{background:var(--accent-soft);color:var(--accent-soft-ink);border-color:transparent}
+.tag.warn{background:var(--amber-soft);color:var(--amber);border-color:transparent}
+.tag.bad{background:var(--red-soft);color:var(--red);border-color:transparent}
+.tag.info{background:var(--blue-soft);color:var(--blue);border-color:transparent}
+
+/* ---- agent card ---- */
+.agent{display:flex;gap:13px}
+.agent .icon{width:38px;height:38px;flex:none;border-radius:10px;background:var(--accent-soft);
+  color:var(--accent-soft-ink);display:grid;place-items:center;font-weight:800;font-size:14px}
+.agent.gap-icon .icon{background:var(--surface-2);color:var(--faint);border:1px dashed var(--border)}
+
+/* ---- flow ---- */
+.flow{display:flex;align-items:stretch;gap:6px;overflow-x:auto;padding-bottom:4px}
+.node{min-width:128px;border:1px solid var(--border);border-radius:10px;padding:10px 11px;background:var(--surface2,var(--surface));flex:none}
+.node small{display:block;font-size:9.5px;color:var(--faint);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.node b{display:block;font-size:12px;margin:4px 0 3px}
+.node em{font-style:normal;font-size:10.5px;color:var(--muted);line-height:1.35}
+.node.g{background:var(--accent-soft);border-color:transparent}
+.node.b{background:var(--blue-soft);border-color:transparent}
+.node.a{background:var(--amber-soft);border-color:transparent}
+.arrow{display:grid;place-items:center;color:var(--faint);font-size:15px;flex:none}
+
+/* ---- table ---- */
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{padding:9px 10px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+th{color:var(--faint);font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;font-weight:700}
+tr:last-child td{border-bottom:none}
+td.mono{font:12px ui-monospace,Consolas,monospace;color:var(--muted)}
+
+/* ---- code ---- */
+.code{background:var(--code-bg);color:var(--code-ink);border-radius:10px;padding:14px 16px;
+  font:12.3px/1.65 ui-monospace,"Cascadia Code",Consolas,monospace;white-space:pre-wrap;overflow-x:auto}
+
+/* ---- callouts ---- */
+.callout{padding:13px 15px;border-radius:10px;border:1px solid var(--border);border-left:3px solid var(--accent);
+  background:var(--accent-soft);font-size:13px;line-height:1.6;color:var(--accent-soft-ink)}
+.callout.warn{border-left-color:var(--amber);background:var(--amber-soft);color:var(--amber)}
+.callout.bad{border-left-color:var(--red);background:var(--red-soft);color:var(--red)}
+.callout b{color:inherit}
+
+/* ---- steps ---- */
+.steps{display:grid;gap:10px}
+.step{display:grid;grid-template-columns:26px 1fr;gap:11px}
+.step .n{width:26px;height:26px;border-radius:50%;background:var(--accent);color:var(--accent-ink);
+  display:grid;place-items:center;font-size:11px;font-weight:800;flex:none}
+.step b{font-size:12.5px;display:block}
+.step p{font-size:12px;margin:2px 0 0;color:var(--muted)}
+
+/* ---- accordion ---- */
+details.acc{border:1px solid var(--border);border-radius:10px;background:var(--surface);margin-bottom:8px;overflow:hidden}
+details.acc summary{list-style:none;cursor:pointer;padding:12px 15px;display:flex;align-items:center;
+  justify-content:space-between;font-weight:700;font-size:13px}
+details.acc summary::-webkit-details-marker{display:none}
+details.acc summary:after{content:"+";color:var(--faint);font-size:16px;font-weight:400}
+details.acc[open] summary:after{content:"–"}
+details.acc .body{padding:0 15px 15px;font-size:13px;color:var(--muted);line-height:1.65}
+details.acc .body ul{margin:6px 0;padding-left:18px}
+details.acc .body li{margin:4px 0}
+
+ul.plain{margin:6px 0;padding-left:18px;color:var(--muted);font-size:13px;line-height:1.7}
+ul.plain li b{color:var(--ink)}
+ol.plain{margin:6px 0;padding-left:20px;color:var(--muted);font-size:13px;line-height:1.7}
+
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--faint);margin:8px 0 4px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:8px;height:8px;border-radius:2px;display:inline-block}
+
+@media(max-width:980px){
+  .sidebar{position:fixed;left:0;top:0;bottom:0;transform:translateX(-100%);transition:.2s;z-index:20;box-shadow:0 0 0 9999px rgba(0,0,0,.35)}
+  .sidebar.open{transform:translateX(0)}
+  .c8,.c6,.c4,.c3{grid-column:span 12}
+  .statrow{grid-template-columns:repeat(2,1fr)}
+  .wrap{padding:20px 16px 70px}
+  .topbar{padding:12px 16px}
+  .menu-btn{display:inline-flex!important}
+}
+.menu-btn{display:none;border:1px solid var(--border);background:var(--surface);border-radius:8px;
+  width:34px;height:34px;align-items:center;justify-content:center;cursor:pointer;color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="app">
+
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><span class="mark">A</span><span class="txt"><b>Claude Agent Core</b><span>7 project · 1 bộ não chung</span></span></div>
+
+  <div class="navgroup">
+    <h4>Bắt đầu</h4>
+    <button class="navitem active" data-x="overview"><span class="dot"></span>Tổng quan</button>
+    <button class="navitem" data-x="principles"><span class="dot"></span>Scope &amp; Security</button>
+  </div>
+  <div class="navgroup">
+    <h4>Vận hành</h4>
+    <button class="navitem" data-x="agents"><span class="dot"></span>Sub-agents</button>
+    <button class="navitem" data-x="workflow"><span class="dot"></span>Workflow &amp; Skills</button>
+    <button class="navitem" data-x="rules"><span class="dot"></span>Rules (.rules/)</button>
+  </div>
+  <div class="navgroup">
+    <h4>Tri thức</h4>
+    <button class="navitem" data-x="memory"><span class="dot"></span>Memory &amp; Audit</button>
+    <button class="navitem" data-x="structure"><span class="dot"></span>Cấu trúc thư mục</button>
+  </div>
+
+  <div class="side-foot">Đúc kết từ audit thật của CIO · CSR · Device · Face · Ops · TaskFlow · ZKTime. Không phải lý thuyết áp đặt.</div>
+</aside>
+
+<main>
+  <div class="topbar">
+    <div>
+      <span class="crumbs" id="crumb">Bắt đầu / Tổng quan</span>
+      <h2 id="topTitle" style="margin-top:2px">Claude Agent Core</h2>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Mở menu">☰</button>
+  </div>
+
+  <div class="wrap">
+
+  <!-- ============ OVERVIEW ============ -->
+  <section id="overview" class="panel active">
+    <div class="hero">
+      <span class="eyebrow">Không phải monorepo</span>
+      <h1>Bộ não &amp; quy ước dùng chung cho 7 project độc lập</h1>
+      <p>Workspace <code>Tranning AI</code> chứa 7 project tách biệt hoàn toàn — mỗi project 1 Git repo riêng, không share code, không build root. <code>.claude/</code> chỉ cung cấp <b>quy ước, agent, rule và skill dùng chung</b> để Claude làm việc nhất quán trên cả 7, dựa trên audit source code thật chứ không phải lý thuyết đúc sẵn.</p>
+    </div>
+
+    <div class="statrow">
+      <div class="stat"><b>7</b><span>project độc lập trong workspace</span></div>
+      <div class="stat"><b>3 / 4</b><span>sub-agent đã có file (Documentation Agent chưa)</span></div>
+      <div class="stat"><b>14</b><span>file rule trong <code>.rules/</code></span></div>
+      <div class="stat"><b>2</b><span>project có CLAUDE.md riêng: Face, TaskFlow</span></div>
+    </div>
+
+    <h2 class="sec"><span class="n">01</span> 7 project trong workspace</h2>
+    <div class="card">
+      <table>
+        <tr><th>Project</th><th>Backend</th><th>Frontend</th><th>Pattern kiến trúc</th><th>CLAUDE.md riêng</th></tr>
+        <tr><td><b>CIO</b></td><td class="mono">CIO_BE (.NET) + Face_Services (Python)</td><td class="mono">CIO_FE (Angular)</td><td>Endpoint → Service (BLL) → DbContext</td><td><span class="tag">dùng chung root</span></td></tr>
+        <tr><td><b>CSR</b></td><td class="mono">CSR_BE (.NET)</td><td class="mono">CSR_FE (Angular)</td><td>Endpoint → Service (BLL) → DbContext</td><td><span class="tag">dùng chung root</span></td></tr>
+        <tr><td><b>Device</b></td><td class="mono">Device_BE (.NET)</td><td class="mono">Device_FE (Angular)</td><td>Clean Architecture + MediatR + Carter</td><td><span class="tag">dùng chung root</span></td></tr>
+        <tr><td><b>Face</b></td><td class="mono" colspan="2">Hikvision face-recognition · meal check-in</td><td>Clean Architecture — <b>bản mẫu tham chiếu</b></td><td><span class="tag good">có, authoritative</span></td></tr>
+        <tr><td><b>Ops</b></td><td class="mono">OpsDashboard_BE (.NET)</td><td class="mono">OpsDashboard_FE (Angular)</td><td>Clean Architecture + MediatR + Carter</td><td><span class="tag">dùng chung root</span></td></tr>
+        <tr><td><b>TaskFlow</b></td><td class="mono">EliteTaskFlow_BE (.NET)</td><td class="mono">EliteTaskFlow_FE (Angular)</td><td>Carter, nhưng không MediatR/Result — logic lệch tầng</td><td><span class="tag good">có, authoritative</span></td></tr>
+        <tr><td><b>ZKTime</b></td><td class="mono">ZKTime_BE (.NET) — EAC time-attendance</td><td class="mono">ZKTime_FE (Angular)</td><td>Clean Architecture + MediatR + Carter</td><td><span class="tag">dùng chung root</span></td></tr>
+      </table>
+    </div>
+    <div class="callout" style="margin-top:10px"><b>Face</b> và <b>TaskFlow</b> đã có <code>CLAUDE.md</code> riêng chi tiết hơn — khi làm việc trong 2 folder này, đọc &amp; theo file đó thay vì root, kể cả khi nó mâu thuẫn với "target convention" chung.</div>
+
+    <h2 class="sec"><span class="n">02</span> Core flow — request tới hoàn thành</h2>
+    <div class="card">
+      <div class="flow">
+        <div class="node g"><small>01</small><b>User Request</b><em>Bug / Feature / Audit</em></div><i class="arrow">→</i>
+        <div class="node"><small>02</small><b>Xác định scope</b><em>Area nào bị chạm, project nào</em></div><i class="arrow">→</i>
+        <div class="node b"><small>03</small><b>Đọc Rules + Skills</b><em>Đúng vùng bị chạm, project-specific trước</em></div><i class="arrow">→</i>
+        <div class="node"><small>04</small><b>Researcher</b><em>Trace root cause, đọc code thật</em></div><i class="arrow">→</i>
+        <div class="node a"><small>05</small><b>Second-pass review</b><em>Trước khi code — sửa kế hoạch nếu thiếu</em></div><i class="arrow">→</i>
+        <div class="node g"><small>06</small><b>Implement</b><em>Thay đổi nhỏ nhất, đúng nhất</em></div><i class="arrow">→</i>
+        <div class="node b"><small>07</small><b>QA + Reviewer</b><em>Test tách loại · gate scope/security</em></div><i class="arrow">→</i>
+        <div class="node g"><small>08</small><b>Báo cáo</b><em>PASS/FAIL rõ ràng, không gộp mơ hồ</em></div>
+      </div>
+    </div>
+
+    <h2 class="sec"><span class="n">03</span> Mandatory gate</h2>
+    <div class="callout bad"><b>Không implement trước khi đọc context.</b> Task chạm Frontend → đọc FE rules + FE skills trước. Task chạm Backend/DB → đọc bộ tương ứng trước. Task chạm nhiều vùng → đọc tất cả bộ liên quan. Rule/skill riêng của project luôn ưu tiên hơn quy ước chung — nếu xung đột, nêu rõ trước khi implement, không tự chọn.</div>
+  </section>
+
+  <!-- ============ PRINCIPLES ============ -->
+  <section id="principles" class="panel">
+    <div class="hero">
+      <span class="eyebrow">Nguyên tắc tối cao</span>
+      <h1>Scope Discipline &amp; bảo vệ config/secret</h1>
+      <p>Đúc kết sau khi agent từng nhiều lần <b>tự ý xoá credential DingTalk thật</b> trong <code>appsettings.json</code> của TaskFlow dựa trên phán đoán bảo mật của chính nó — gây mất config thật lặp lại nhiều lần. Đây là lý do 2 rule dưới đây là <b>tuyệt đối</b>, không phải "dùng phán đoán tốt".</p>
+    </div>
+
+    <h2 class="sec"><span class="n">01</span> Thứ tự ưu tiên khi có xung đột</h2>
+    <div class="card">
+      <ol class="plain">
+        <li><b>Bảo toàn</b> dữ liệu và config của user.</li>
+        <li><b>Làm đúng</b> cái user yêu cầu.</li>
+        <li><b>Tôn trọng</b> các ràng buộc/loại trừ user đã nêu.</li>
+        <li><b>Thay đổi nhỏ nhất</b>, đúng nhất.</li>
+        <li><b>Verify</b> đúng hành vi được yêu cầu.</li>
+        <li><b>Báo cáo</b> rủi ro không liên quan phát hiện được — không tự sửa.</li>
+        <li><b>Dừng lại</b> khi task được yêu cầu đã xong.</li>
+      </ol>
+    </div>
+
+    <div class="grid" style="margin-top:14px">
+      <div class="card c6">
+        <h3>Không được làm (trừ khi user yêu cầu rõ cho từng việc)</h3>
+        <ul class="plain">
+          <li>Refactor/cleanup/optimization/security-hardening/migration <b>không liên quan</b> đến task.</li>
+          <li>Sửa code đang chạy ổn định ngoài luồng được yêu cầu.</li>
+          <li>Bịa thêm requirement, đoán API contract/DB column/response service ngoài.</li>
+          <li>Rename "cho đẹp", move file "tổ chức lại", đổi pattern vì sở thích, upgrade dependency không ai hỏi, reformat cả file, xoá code "unused" chưa chứng minh.</li>
+          <li>Tắt/xoá test hoặc làm yếu assertion chỉ để build xanh.</li>
+          <li>Gọi hệ thống/thiết bị thật (API đối tác, thiết bị chấm công, DB production) khi chưa được yêu cầu rõ cho lần đó — <b>có credential không có nghĩa là được phép</b>.</li>
+        </ul>
+      </div>
+      <div class="card c6">
+        <h3>Refactor chỉ hợp lệ khi</h3>
+        <ul class="plain">
+          <li>User yêu cầu rõ ràng, <b>hoặc</b></li>
+          <li>Không refactor thì không thể hoàn thành task an toàn, <b>hoặc</b></li>
+          <li>Hoàn toàn cục bộ và không đổi hành vi ra ngoài luồng đang sửa.</li>
+        </ul>
+        <p class="desc" style="margin-top:10px">Phát hiện vấn đề ngoài phạm vi → <b>không sửa</b> → ghi nhận riêng như 1 observation → tiếp tục task được giao → chỉ implement sau khi user duyệt riêng.</p>
+      </div>
+    </div>
+
+    <h2 class="sec"><span class="n">02</span> Bảo vệ config &amp; secret — rule tuyệt đối</h2>
+    <div class="callout bad">
+      <b>Không bao giờ</b> xoá / làm rỗng / ghi đè / khôi phục / sanitize / thay thế / mã hoá / di dời (User Secrets, env var…) / đổi tên key / reformat 1 file config chứa giá trị thật — <b>kể cả khi cách làm "sạch hơn" có vẻ hiển nhiên tốt hơn</b> — trừ khi user duyệt rõ ràng cho đúng lần đó. Không copy <code>.Example.json</code> đè file thật, không <code>git checkout/restore/reset --hard/clean</code> nhắm vào file config, không restore từ git.
+    </div>
+    <div class="card" style="margin-top:10px">
+      <h3>Nếu phát hiện secret thật trong file tracked</h3>
+      <p class="desc">Không xoá/mask/rotate, không in giá trị ra log/docs/diff/test output — chỉ báo: đường dẫn file, tên key, tình trạng <b>Configured / Missing</b>, rủi ro, và phương án cần user duyệt trước khi làm.</p>
+    </div>
+
+    <h2 class="sec"><span class="n">03</span> Hệ thống phải an toàn — checklist cho code mới</h2>
+    <p class="desc" style="margin-bottom:10px">Lấy pattern đúng của <b>Face</b> (project duy nhất tuân thủ đủ) đối chiếu với bad pattern đã audit thật — dùng làm target, không phải mô tả hiện trạng chung.</p>
+    <div class="grid">
+      <div class="card c6"><h3>Network &amp; Auth</h3><ul class="plain">
+        <li><b>CORS</b> — whitelist domain cụ thể, không bao giờ <code>AllowAnyOrigin()</code>/<code>SetIsOriginAllowed(_ =&gt; true)</code> ở bất kỳ environment nào.</li>
+        <li><b>JWT</b> — bật đủ 4 validation: Issuer, Audience, Lifetime, IssuerSigningKey.</li>
+        <li><b>Auth theo route</b>, không chỉ theo group — kiểm tra từng endpoint có bị <code>.AllowAnonymous()</code> đè lên <code>.RequireAuthorization()</code> hay không.</li>
+        <li><b>Swagger</b> chỉ Development, không public Production.</li>
+        <li><b>Rate limit</b> endpoint nhạy cảm: login, seed data, upload sinh trắc học, reset password.</li>
+      </ul></div>
+      <div class="card c6"><h3>Data &amp; Query</h3><ul class="plain">
+        <li><b>Raw SQL</b> — không nội suy giá trị chưa escape vào <code>FromSqlRaw</code>; tên cột sort/filter động phải whitelist.</li>
+        <li><b>EF Core</b> — không <code>EnableSensitiveDataLogging()</code>/<code>EnableDetailedErrors()</code> vô điều kiện; không <code>UseLazyLoadingProxies()</code>.</li>
+        <li><b>Secret tại rest</b> — mật khẩu thiết bị… mã hoá bằng ASP.NET Data Protection trước khi lưu DB.</li>
+        <li><b>Không log</b> secret/PII/dữ liệu sinh trắc học thô — chỉ log tên field + trạng thái.</li>
+        <li><b>appsettings</b> — chỉ commit <code>appsettings.Example.json</code> placeholder; file chứa giá trị thật phải <code>.gitignore</code> (nợ kỹ thuật hiện tại: gần như mọi project đang commit thẳng — xem <a href="#memory" class="nav-link" data-x="memory">Memory</a>).</li>
+      </ul></div>
+    </div>
+    <div class="callout" style="margin-top:10px">Tham chiếu "làm đúng trông như thế nào" → dùng <b>Face</b>. ZKTime có rule ghi ra nhưng code thật chưa sửa theo — đừng dùng ZKTime làm mẫu.</div>
+  </section>
+
+  <!-- ============ AGENTS ============ -->
+  <section id="agents" class="panel">
+    <div class="hero">
+      <span class="eyebrow">Sub-agent system</span>
+      <h1>4 vai trò chuyên trách, Main Agent điều phối</h1>
+      <p>Flow tham khảo: Research → Implementation → Review → QA → Documentation → Complete. Không nhất thiết qua đủ 4 agent cho mọi task nhỏ — dùng đúng agent cần thiết cho quy mô task.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card c6"><div class="agent"><div class="icon">R</div><div>
+        <h3>Researcher <span class="tag good">.agents/researcher.md</span></h3>
+        <p class="desc">Khảo sát codebase, trace flow, tìm root cause <b>trước khi</b> đề xuất/chạm code — không implement. Đọc code thật trước khi tin tài liệu audit cũ (doc có thể mô tả cái <i>nên</i> có, không phải cái <i>đang</i> có). Gắn nhãn <b>Confirmed</b> (đã đọc file:line) hoặc <b>Probable</b> (suy đoán) cho mọi kết luận.</p>
+      </div></div></div>
+
+      <div class="card c6"><div class="agent"><div class="icon">V</div><div>
+        <h3>Reviewer <span class="tag good">.agents/reviewer.md</span></h3>
+        <p class="desc">Gatekeeper trước khi báo "hoàn thành". Checklist 9 mục: Scope Discipline → Dependency direction → Error-handling consistency → Auth theo route → Security → Config protection → Test integrity → Database/Performance → Naming convention.</p>
+      </div></div></div>
+
+      <div class="card c6"><div class="agent"><div class="icon">Q</div><div>
+        <h3>QA Testing Agent <span class="tag good">.agents/qa-testing-agent.md</span></h3>
+        <p class="desc">Test feature/API/UI/DB/regression. Không bao giờ viết "đã test thành công" chung chung — tách riêng Build / Unit / Integration / Mock external / Real external (chưa chạy nếu chưa được duyệt) / Real device / Manual UI.</p>
+      </div></div></div>
+
+      <div class="card c6"><div class="agent gap-icon"><div class="icon">D</div><div>
+        <h3>Documentation Agent <span class="tag warn">chưa có file</span></h3>
+        <p class="desc">Được CLAUDE.md &amp; README.md tham chiếu (chuẩn hoá ADR, đồng bộ docs với code thật) nhưng <code>.agents/documentation-agent.md</code> <b>chưa tồn tại</b> trong repo hiện tại — 3/4 agent đã có file, Documentation còn là placeholder khi tài liệu này được viết.</p>
+      </div></div></div>
+    </div>
+
+    <h2 class="sec"><span class="n">01</span> Responsibility matrix</h2>
+    <div class="card">
+      <table>
+        <tr><th>Phase</th><th>Main</th><th>Researcher</th><th>Reviewer</th><th>QA</th><th>Docs</th></tr>
+        <tr><td>Understand / scope</td><td><b>Primary</b></td><td>Support</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td>Investigation</td><td>Coordinate</td><td><b>Primary</b></td><td>Support</td><td>Support</td><td>—</td></tr>
+        <tr><td>Review</td><td>Coordinate</td><td>Input</td><td><b>Primary</b></td><td>—</td><td>—</td></tr>
+        <tr><td>Testing</td><td>Coordinate</td><td>—</td><td>Review</td><td><b>Primary</b></td><td>—</td></tr>
+        <tr><td>Documentation</td><td>Coordinate</td><td>Input</td><td>Input</td><td>Input</td><td><b>Primary</b></td></tr>
+      </table>
+    </div>
+
+    <h2 class="sec"><span class="n">02</span> Chuẩn báo cáo bắt buộc</h2>
+    <div class="grid">
+      <div class="card c4"><h3>Researcher</h3><p class="desc">6 mục cố định: Phạm vi khảo sát → Kết luận (gắn nhãn Confirmed/Probable) → Bằng chứng (file:line) → Điểm bất đồng giữa các project → Giới hạn điều tra → Đề xuất tiếp theo. Audit-only thêm mục 7: xác nhận read-only.</p></div>
+      <div class="card c4"><h3>Reviewer</h3><p class="desc">Mỗi finding độc lập: file, line, category (scope/architecture/error-handling/auth/security/config-protection/test-integrity/database-performance/naming/correctness/simplification), summary 1 câu, failure_scenario cụ thể, verdict CONFIRMED/PLAUSIBLE nếu có verify.</p></div>
+      <div class="card c4"><h3>QA</h3><p class="desc">Không gộp "đã test thành công". Test invariant DB (filtered unique index) phải chạy SQL Server thật, không InMemory provider — InMemory không enforce unique index nên pass giả dù logic sai.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ WORKFLOW & SKILLS ============ -->
+  <section id="workflow" class="panel">
+    <div class="hero">
+      <span class="eyebrow">.skills/common/ + .rules/workflow.md</span>
+      <h1>2 orchestration workflow + 4 skill nền tảng</h1>
+      <p>Bug Fix và Feature Implementation dùng chung nguyên tắc: đọc rules/skills đúng vùng bị chạm → audit → second-pass review → implement → test → final QA. Không code hết một lần rồi mới báo cáo.</p>
+    </div>
+
+    <h2 class="sec"><span class="n">01</span> Bug Fix — <code class="mono">.skills/common/bug-fix/SKILL.md</code></h2>
+    <div class="card"><div class="flow">
+      <div class="node g"><b>Bug Report</b><em>Mô tả lỗi</em></div><i class="arrow">→</i>
+      <div class="node"><b>Audit</b><em>Trace flow thật, không giả định</em></div><i class="arrow">→</i>
+      <div class="node b"><b>Root Cause</b><em>Verify bằng code, phân biệt race/stale state</em></div><i class="arrow">→</i>
+      <div class="node"><b>Fix Plan</b><em>Nhỏ nhất, giữ nguyên UI/UX</em></div><i class="arrow">→</i>
+      <div class="node a"><b>Second-pass Review</b><em>Missing state, regression risk</em></div><i class="arrow">→</i>
+      <div class="node g"><b>Implement</b><em>Plan đã sửa đúng</em></div><i class="arrow">→</i>
+      <div class="node a"><b>Test</b><em>Fail → investigate → fix → retest</em></div><i class="arrow">→</i>
+      <div class="node g"><b>Final QA</b><em>PASS/FAIL rõ ràng</em></div>
+    </div></div>
+    <div class="callout warn" style="margin-top:10px"><b>Ghi chú hiện trạng:</b> file skill này hiện đang gắn cứng 1 ví dụ bug cụ thể ("card flip hiển thị đáp án cũ") của 1 app vocab flashcard không thuộc 7 project trong workspace — dùng phần khung quy trình (AUDIT → ROOT CAUSE → …) làm chuẩn chung, không áp dụng nguyên văn ví dụ bug đó cho task khác.</div>
+
+    <h2 class="sec"><span class="n">02</span> Feature Implementation — 2 bản mô tả song song</h2>
+    <div class="grid">
+      <div class="card c6">
+        <h3><code class="mono">.skills/common/feature-implement/SKILL.md</code></h3>
+        <p class="desc" style="margin-bottom:8px">8 phase: Requirement → Audit → Impact Analysis → Implementation Plan → Second-Pass Review → Implement → Testing → Final QA. Dừng ở mỗi phase, không code trước khi hiểu yêu cầu.</p>
+        <div class="steps">
+          <div class="step"><span class="n">1</span><div><b>Requirement</b><p>Behavior, user flow, AC, edge case — chưa code.</p></div></div>
+          <div class="step"><span class="n">2</span><div><b>Audit</b><p>Component/service/API/DB liên quan đã có, tái dùng tối đa.</p></div></div>
+          <div class="step"><span class="n">3</span><div><b>Impact Analysis</b><p>FE/BE/API/DB/auth/perf/security/responsive/test/docs.</p></div></div>
+          <div class="step"><span class="n">4</span><div><b>Implementation Plan</b><p>File tạo/sửa, data flow, validation, migration.</p></div></div>
+          <div class="step"><span class="n">5</span><div><b>Second-pass Review</b><p>Missing requirement, security, regression risk.</p></div></div>
+          <div class="step"><span class="n">6</span><div><b>Implement</b><p>Tối thiểu, giữ hành vi hiện có, không rewrite ngoài luồng.</p></div></div>
+          <div class="step"><span class="n">7</span><div><b>Testing</b><p>Happy path + edge + regression; fail → investigate → fix → retest.</p></div></div>
+          <div class="step"><span class="n">8</span><div><b>Final QA</b><p>Đúng AC, không thay đổi thừa, docs cập nhật nếu cần.</p></div></div>
+        </div>
+      </div>
+      <div class="card c6">
+        <h3><code class="mono">.rules/workflow.md</code> — Khung 6 bước</h3>
+        <p class="desc" style="margin-bottom:8px">Mô tả cùng ý tưởng nhưng đặt tên theo cấu trúc "pitch" (Hero/Problem/…​), gắn thêm chi tiết kỹ thuật cụ thể theo layer Clean Architecture.</p>
+        <div class="steps">
+          <div class="step"><span class="n">1</span><div><b>Hero — Scope Boundary &amp; AC</b><p>Checklist AC + "Out of Scope" tường minh + rủi ro breaking change.</p></div></div>
+          <div class="step"><span class="n">2</span><div><b>Problem — Gap Analysis</b><p>Grep pattern/entity/service tương tự, xác định touchpoint qua 7 tầng + Angular.</p></div></div>
+          <div class="step"><span class="n">3</span><div><b>How It Solves It — Contract Design</b><p><code>ICommand</code>/<code>IQuery</code>, <code>Result&lt;T&gt;</code>, route Carter <code>/api/v{version}/…</code>, TS interface FE.</p></div></div>
+          <div class="step"><span class="n">4</span><div><b>Vertical Slice Implementation</b><p>Domain → Persistence (migration + filtered index) → Application (handler, không tự gọi <code>SaveChangesAsync</code>) → Presentation → FE (đủ 4 trạng thái UI).</p></div></div>
+          <div class="step"><span class="n">5</span><div><b>Verification &amp; Testing</b><p>xUnit handler/validator, Vitest FE, happy + unhappy path.</p></div></div>
+          <div class="step"><span class="n">6</span><div><b>Review, Docs &amp; DoD</b><p>Reviewer check kiến trúc/secret/JWT/SQLi, cập nhật <code>memory.md</code>, AC đều <code>[x]</code>.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="sec"><span class="n">03</span> 4 skill nền tảng — <code class="mono">.skills/common/</code></h2>
+    <div class="grid">
+      <div class="card c6"><h3>code-analysis.md</h3><p class="desc">Trace request theo đúng layering: Clean Architecture (Device/Ops/ZKTime/Face) đi qua Presentation→Contract→Application→Behaviors→Domain→Persistence→Infrastructure; pattern đơn giản (CIO/CSR/TaskFlow) đi Endpoint→Service→DbContext. Xác nhận layering thật qua <code>ProjectReference</code>, không đoán theo tên thư mục.</p></div>
+      <div class="card c6"><h3>debugging.md</h3><p class="desc">Kiểm tra sink log thật đang active trước khi tìm log sai chỗ (case Ops: có <code>UseSerilog()</code> nhưng không có section config). 401/403 dù có <code>[Authorize]</code> → nghi <code>.AllowAnonymous()</code> đè. Deadlock SQL → kiểm tra transaction có nằm trong <code>CreateExecutionStrategy()</code> không.</p></div>
+      <div class="card c6"><h3>problem-solving.md</h3><p class="desc">Nguyên tắc cốt lõi: <b>smallest correct diff</b>. Không đoán API contract/DB column/response service ngoài khi thiếu thông tin — giữ nguyên hành vi, ghi rõ giới hạn. Refactor chỉ khi cần thiết, không vì "tiện thể".</p></div>
+      <div class="card c6"><h3>permission.md</h3><p class="desc">Mẫu RBAC bitmask chuẩn nhất (từ Ops/Device/TaskFlow, TaskFlow đầy đủ nhất). Claim dạng <code>(SubjectId, ClaimType, ClaimValue: bitmask)</code>; JWT chỉ chứa danh tính, quyền resolve lại từ DB mỗi request, ưu tiên UserClaim &gt; RoleClaim|DepartmentClaim.</p></div>
+    </div>
+
+    <h2 class="sec"><span class="n">04</span> Skill thiết kế FE (dùng khi cần, không gắn riêng project nào)</h2>
+    <div class="card">
+      <p class="desc" style="margin-bottom:8px">4 skill trong <code>.skills/</code> ở cấp cao hơn, mang tính "gu thiết kế" chung (chống UI kiểu AI generic) — độc lập với domain nghiệp vụ 7 project:</p>
+      <div class="grid">
+        <div class="c3"><span class="tag info">design-taste-frontend-v1</span><p class="desc" style="margin-top:6px">Baseline React/Next + Tailwind, chống "AI slop" (no Inter, no neon glow, no 3-card row).</p></div>
+        <div class="c3"><span class="tag info">image-to-code</span><p class="desc" style="margin-top:6px">Bắt buộc generate ảnh thiết kế trước, phân tích sâu, rồi mới code — cho task landing page/marketing.</p></div>
+        <div class="c3"><span class="tag info">redesign-existing-projects</span><p class="desc" style="margin-top:6px">Audit UI cũ theo checklist generic-pattern, nâng cấp tại chỗ, không đổi stack.</p></div>
+        <div class="c3"><span class="tag info">stitch-design-taste</span><p class="desc" style="margin-top:6px">Sinh <code>DESIGN.md</code> cho Google Stitch — cùng triết lý anti-generic.</p></div>
+      </div>
+    </div>
+
+    <h2 class="sec"><span class="n">05</span> Project skills — <code class="mono">.skills/project/</code></h2>
+    <div class="callout">Thư mục để trống <b>có chủ đích</b> cho tới khi Core dùng chung đã vận hành ổn định thực tế. Không tự tạo skill riêng cho từng project trừ khi được yêu cầu — Face và TaskFlow đã có tài liệu domain riêng ngay trong <code>CLAUDE.md</code> của chính nó, không đặt ở đây.</div>
+  </section>
+
+  <!-- ============ RULES ============ -->
+  <section id="rules" class="panel">
+    <div class="hero">
+      <span class="eyebrow">.rules/ — 14 file</span>
+      <h1>Quy ước dùng chung, đúc kết từ audit thật</h1>
+      <p>Không phải yêu cầu bắt buộc rewrite code cũ đang chạy ổn định — mô tả <b>target convention</b> cho code mới. Khi rule và code thực tế của 1 project lệch nhau, rule ghi rõ trạng thái thật thay vì giả vờ đã tuân thủ.</p>
+    </div>
+
+    <h2 class="sec"><span class="n">01</span> Nền tảng</h2>
+    <details class="acc" open><summary>coding.md — Tech stack &amp; naming convention <span class="tag">C# · TypeScript</span></summary>
+      <div class="body">
+        <b>Backend:</b> .NET 8/9, Nullable + ImplicitUsings mặc định, EF Core 8/9, MediatR 13–14 (codebase CQRS), Carter 8.x, Serilog (codebase mới) hoặc <code>ILogger&lt;T&gt;</code> thuần.<br>
+        <b>Frontend:</b> Angular 18–21, 100% standalone, TypeScript strict, Tailwind v4 CSS-first hoặc CSS token thuần, Signal API cho state mới.
+        <ul>
+          <li>PascalCase class/interface(<code>I</code>)/enum/method/property; camelCase local/param; method async luôn hậu tố <code>Async</code>.</li>
+          <li>Command/Query: <code>&lt;Verb&gt;&lt;Entity&gt;Command/Query</code>, handler hậu tố <code>Handler</code>; Carter module <code>&lt;Entity&gt;Api : ICarterModule</code>.</li>
+          <li>Angular: <code>input()</code>/<code>output()</code> thay <code>@Input/@Output</code>, <code>OnPush</code>, <code>inject()</code>, control-flow gốc <code>@if/@for</code>, không <code>.mutate()</code> trên signal.</li>
+          <li>Một số codebase cũ vẫn RxJS-first dù Angular mới — signal là hướng đi tới, không bắt buộc rewrite.</li>
+        </ul>
+      </div>
+    </details>
+    <details class="acc"><summary>architecture.md — Dependency direction &amp; layer boundary <span class="tag">Clean Architecture</span></summary>
+      <div class="body">
+        Chain đã xác nhận thật (4/7 BE: Device, Ops, ZKTime, Face — Face đầy đủ nhất):
+        <div class="code">Domain ← Contract ← Application ← { Infrastructure, Persistence } ← Presentation ← Api</div>
+        <ul>
+          <li>Kiểu đặc thù hạ tầng (<code>SqlException</code>, HTTP client cụ thể…) <b>không được lộ</b> ra khỏi Persistence/Infrastructure — case chuẩn: <code>UnitOfWork.SaveChangesAsync</code> bắt mã lỗi 2601/2627 convert thành domain exception.</li>
+          <li>Vi phạm thật đã thấy: Device's <code>JwtAuthorizeAttribute.cs</code> nằm trong Application nhưng reference <code>HttpContext</code> — bug kiến trúc, không phải style.</li>
+          <li>CIO, CSR: Endpoint→Service→DbContext trực tiếp — hợp lệ, không bắt buộc đổi. TaskFlow: có Carter nhưng logic nằm ở Persistence — hiện trạng thật, không tự "sửa cho đúng".</li>
+          <li>Device/protocol integration (Hikvision ISAPI…) phải sau 1 interface + <code>DelegatingHandler</code> riêng, không rò logic protocol vào Application/Domain.</li>
+        </ul>
+      </div>
+    </details>
+    <details class="acc"><summary>security.md — Checklist hệ thống + bảo vệ config <span class="tag bad">rule tuyệt đối</span></summary>
+      <div class="body">Xem đầy đủ tại tab <a data-x="principles" class="navlink">Scope &amp; Security</a> — phần A (hệ thống phải an toàn) và phần B (agent không tự ý động config/secret).</div>
+    </details>
+    <details class="acc"><summary>workflow.md — Staged delivery, quyết định đã chốt, audit read-only</summary>
+      <div class="body">
+        <ul>
+          <li><b>Giao hàng theo giai đoạn:</b> xong 1 giai đoạn → dừng → báo cáo (đã làm gì / build-test pass hay fail / còn gì chưa xong) → chờ xác nhận.</li>
+          <li><b>Quyết định đã chốt</b> trong CLAUDE.md hoặc hội thoại trước không tự ý lật lại — cần lý do kỹ thuật, giải thích <i>trước</i> khi đổi, ghi ngày tháng.</li>
+          <li><b>Hệ thống/thiết bị thật:</b> mặc định KHÔNG gọi API đối tác, thiết bị chấm công, DB production — có credential không đồng nghĩa được dùng.</li>
+          <li><b>Audit-only session:</b> chụp <code>git status</code> trước/sau, không migration/build sinh side-effect, không request ghi, DB chỉ <code>SELECT</code>.</li>
+        </ul>
+      </div>
+    </details>
+    <details class="acc"><summary>git.md — Không phá config bằng lệnh git rộng</summary>
+      <div class="body">
+        <ul>
+          <li>Không <code>git checkout -- &lt;file&gt;</code>/<code>restore</code>/<code>clean</code>/<code>reset --hard</code> nhắm vào config mà chưa được duyệt rõ cho lần đó — kể cả để "dọn working tree cho sạch".</li>
+          <li>Trước lệnh git có thể xoá thay đổi chưa commit: chạy <code>git status</code> trước, stash/commit nếu cần.</li>
+          <li>Không convention commit riêng nào ghi lại trong audit — mặc định Conventional Commits nếu project chưa có style khác.</li>
+          <li>Chỉ tạo commit khi user yêu cầu; review lại <code>git status</code>/<code>diff</code> đã stage trước khi commit, kể cả tên file trông vô hại.</li>
+        </ul>
+      </div>
+    </details>
+    <details class="acc"><summary>testing.md — AAA baseline, SQL Server thật cho concurrency</summary>
+      <div class="body">
+        <ul>
+          <li>Arrange-Act-Assert baseline cho unit test mới, không ép % coverage cụ thể.</li>
+          <li>Test invariant DB (filtered unique index) <b>phải chạy SQL Server thật</b>, không EF Core InMemory — InMemory không enforce unique index, pass giả dù logic sai.</li>
+          <li>Không claim "hoạt động trên thiết bị thật" chỉ từ 1 field trạng thái DB — cần bằng chứng test/log thiết bị thật.</li>
+          <li>FE test stack không đồng nhất — xem bảng ở tab <a data-x="memory" class="navlink">Memory</a>.</li>
+        </ul>
+      </div>
+    </details>
+
+    <h2 class="sec"><span class="n">02</span> Backend — <code class="mono">.rules/backend/</code></h2>
+    <div class="grid">
+      <div class="card c6"><h3>api.md</h3><p class="desc">Carter <code>ICarterModule</code> là pattern chiếm ưu thế (Device/Ops/ZKTime/Face/TaskFlow); CIO/CSR dùng minimal API thuần — hợp lệ. Route versioned <code>/api/v{version}/&lt;resource&gt;</code>. <code>RequireAuthorization()</code> ở group không đảm bảo route con được bảo vệ — bug thật ở Ops (<code>DepartmentApi.cs</code>).</p></div>
+      <div class="card c6"><h3>database.md</h3><p class="desc">Migration áp dụng thủ công, không <code>Database.Migrate()</code> lúc startup ở bất kỳ project nào. TaskFlow's fail-fast check (throw nếu còn pending migration) là pattern tốt nhất, nên nhân rộng. FK/cột filter-sort-join bắt buộc có index cùng migration.</p></div>
+      <div class="card c6"><h3>error-handling.md</h3><p class="desc"><code>Result&lt;T&gt;</code> ở 6/7 project (trừ TaskFlow). Vấn đề thật: service khai báo trả <code>Result</code> nhưng vẫn throw exception cho lỗi nghiệp vụ dự kiến được (CIO/CSR/Device) → 2 con đường lỗi song song, 2 hình dạng JSON khác nhau cho cùng API.</p></div>
+      <div class="card c6"><h3>logging.md</h3><p class="desc">Serilog: Device/Ops/ZKTime/Face; <code>ILogger&lt;T&gt;</code> thuần: CIO/CSR/TaskFlow — cả 2 hợp lệ. Case Ops: có <code>UseSerilog()</code> nhưng thiếu section config. Không log secret/PII/sinh trắc học thô. Correlation-ID <b>chưa tồn tại</b> ở project nào — nếu thêm là tính năng mới, không phải khôi phục.</p></div>
+      <div class="card c6" style="grid-column:span 12"><h3>performance.md</h3><p class="desc">Không <code>UseLazyLoadingProxies()</code> — N+1 ẩn đã xác nhận ở Device/ZKTime. List endpoint dữ liệu lớn phải phân trang server-side, không trả full dataset cho FE tự cắt. Retry/resilience chỉ cho lỗi transient thật, không retry mù mọi exception.</p></div>
+    </div>
+
+    <h2 class="sec"><span class="n">03</span> Frontend — <code class="mono">.rules/frontend/</code></h2>
+    <div class="grid">
+      <div class="card c4"><h3>ui-ux.md</h3><p class="desc">Nguồn: <code>Face/frontend/SKILL_TONE.md</code>. Design token theo vai trò, không hardcode màu/spacing. Data table: đủ loading/empty/error + phân trang server-side. Modal chỉ cho việc ngắn — danh sách lớn phải là route riêng.</p></div>
+      <div class="card c4"><h3>responsive.md</h3><p class="desc">Breakpoint Tailwind mặc định (640/768/1024/1280) dùng nhất quán kể cả ở project CSS thuần. Bảng dữ liệu cuộn ngang trong container riêng, không để cả trang cuộn ngang. Test tối thiểu 3 mốc: mobile/tablet/desktop.</p></div>
+      <div class="card c4"><h3>accessibility.md</h3><p class="desc">Nguồn: <code>ZKTime_FE/AGENTS.md</code> (MUST) + ví dụ Face. Bắt buộc pass AXE + WCAG AA tối thiểu. Icon-only button phải có <code>aria-label</code>; modal quản lý focus trap; cỡ chữ tối thiểu 12px.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ MEMORY ============ -->
+  <section id="memory" class="panel">
+    <div class="hero">
+      <span class="eyebrow">memory.md — tri thức dài hạn</span>
+      <h1>Pattern đã xác nhận &amp; bad pattern đã audit</h1>
+      <p>Tổng hợp từ audit thật: PROJECT_AUDIT.md (CIO), review_pj.md/PHASE1 (Device), BACKEND_ARCHITECTURE_ANALYSIS.md (Ops), ARCHITECTURE.md + FINAL_PROJECT_AUDIT/REAUDIT (ZKTime). Đây là snapshot tại thời điểm audit — luôn grep xác nhận code thật trước khi dùng làm căn cứ.</p>
+    </div>
+
+    <h2 class="sec"><span class="n">01</span> Pattern chung đã xác nhận</h2>
+    <div class="card">
+      <ul class="plain">
+        <li><b>Result / Result&lt;T&gt;</b> tại <code>&lt;Project&gt;.Contract/Abstractions/Shared/Result.cs</code> — CIO, CSR, Device, Ops, ZKTime, Face (không có ở TaskFlow).</li>
+        <li><b>AsNoTracking()</b> cho mọi read query — nhất quán ở cả 7 project.</li>
+        <li><b>Migration thủ công</b>, không auto-migrate lúc startup — TaskFlow's fail-fast (throw nếu còn pending migration) là pattern nên nhân rộng.</li>
+        <li><b>Filtered unique index</b> chống trùng/race condition ở tầng DB — Ops, ZKTime, Face, TaskFlow.</li>
+        <li><b>100% Angular standalone component</b>, không NgModule nào trong toàn bộ 7 FE.</li>
+        <li><code>ngx-toastr</code> có mặt ở <b>6/7 FE</b> (trừ TaskFlow).</li>
+      </ul>
+    </div>
+
+    <h2 class="sec"><span class="n">02</span> Bad pattern đã audit — đừng lặp lại ở code mới</h2>
+    <div class="card">
+      <table>
+        <tr><th>Vấn đề</th><th>Project</th><th>Mức</th></tr>
+        <tr><td>CORS <code>AllowAnyOrigin()</code> / <code>SetIsOriginAllowed(_=&gt;true)</code></td><td>CIO, Device, Ops, ZKTime</td><td><span class="tag bad">security</span></td></tr>
+        <tr><td>JWT <code>ValidateIssuer</code>/<code>ValidateAudience</code> = false</td><td>Device, ZKTime</td><td><span class="tag bad">security</span></td></tr>
+        <tr><td><code>.AllowAnonymous()</code> đè <code>.RequireAuthorization()</code> ở group — vô hiệu hoá auth toàn bộ nhóm route</td><td>Ops</td><td><span class="tag bad">bug thật</span></td></tr>
+        <tr><td>SQL injection: giá trị search chưa escape vào <code>FromSqlRaw</code></td><td>Device</td><td><span class="tag bad">security</span></td></tr>
+        <tr><td>SQL injection: tên cột filter/sort nội suy không whitelist</td><td>ZKTime</td><td><span class="tag bad">security</span></td></tr>
+        <tr><td><code>EnableSensitiveDataLogging()</code> + <code>EnableDetailedErrors()</code> bật vô điều kiện</td><td>Device, ZKTime</td><td><span class="tag warn">hardening</span></td></tr>
+        <tr><td><code>UseLazyLoadingProxies(true)</code> → N+1 ẩn</td><td>Device, ZKTime</td><td><span class="tag warn">performance</span></td></tr>
+        <tr><td>Secret thật (JWT key, DB password, SMTP, DingTalk…) commit thẳng vào <code>appsettings*.json</code></td><td>gần như mọi project</td><td><span class="tag bad">security</span></td></tr>
+        <tr><td>Swagger UI public trong Production</td><td>ZKTime</td><td><span class="tag warn">hardening</span></td></tr>
+        <tr><td>Seeded admin credential trong config, endpoint seed/diagnostics không yêu cầu auth</td><td>CIO</td><td><span class="tag bad">security</span></td></tr>
+        <tr><td>Doc kiến trúc tự nhận đã làm (RFC7807, CorrelationId) nhưng code thật không có</td><td>Ops</td><td><span class="tag info">tài liệu sai</span></td></tr>
+        <tr><td><code>npm test</code> có script nhưng không có test target đăng ký trong <code>angular.json</code></td><td>Device, TaskFlow</td><td><span class="tag warn">nợ kỹ thuật</span></td></tr>
+      </table>
+    </div>
+
+    <h2 class="sec"><span class="n">03</span> Test stack theo project (Frontend)</h2>
+    <div class="card">
+      <table>
+        <tr><th>Trạng thái</th><th>Project</th></tr>
+        <tr><td>Vitest qua <code>@angular/build:unit-test</code> (config trong <code>angular.json</code>)</td><td>CIO, CSR, Ops, ZKTime</td></tr>
+        <tr><td>Karma + Jasmine headless (<code>ng test --watch=false --browsers=ChromeHeadless</code>)</td><td>Face</td></tr>
+        <tr><td><b>Không có test target đăng ký</b> dù có script <code>npm test</code> — sẽ fail nếu chạy thật</td><td>Device, TaskFlow</td></tr>
+      </table>
+    </div>
+
+    <h2 class="sec"><span class="n">04</span> Ghi chú vận hành</h2>
+    <div class="callout">Chỉ Face và TaskFlow có CLAUDE.md riêng. <code>.rules/</code> trước audit này chỉ là khung placeholder mô tả "sẽ chứa gì" — giờ đã có nội dung thật, nhưng vẫn nên coi là điểm khởi đầu, cập nhật tiếp khi có bằng chứng mới từ code thật (không phải từ suy đoán).</div>
+  </section>
+
+  <!-- ============ STRUCTURE ============ -->
+  <section id="structure" class="panel">
+    <div class="hero">
+      <span class="eyebrow">Cấu trúc thư mục thật</span>
+      <h1><code>.claude/</code> — như đã tồn tại trên đĩa</h1>
+      <p>Cây thư mục dưới đây khớp với nội dung repo hiện tại (đã kiểm tra trực tiếp), không phải cấu trúc "đề xuất" — khác với README.md liệt kê rút gọn.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card c6">
+        <h3>Cây thư mục</h3>
+        <div class="code">.claude/
+├── CLAUDE.md            # bộ não / entry point
+├── README.md            # giới thiệu tổng quan
+├── memory.md            # tri thức dài hạn
+├── settings.json / settings.local.json
+├── .agents/
+│   ├── researcher.md
+│   ├── reviewer.md
+│   └── qa-testing-agent.md      (Documentation Agent: chưa có file)
+├── .rules/
+│   ├── coding.md
+│   ├── architecture.md
+│   ├── security.md
+│   ├── git.md
+│   ├── testing.md
+│   ├── workflow.md
+│   ├── backend/
+│   │   ├── api.md
+│   │   ├── database.md
+│   │   ├── error-handling.md
+│   │   ├── logging.md
+│   │   └── performance.md
+│   └── frontend/
+│       ├── ui-ux.md
+│       ├── responsive.md
+│       └── accessibility.md
+└── .skills/
+    ├── common/
+    │   ├── bug-fix/SKILL.md
+    │   ├── feature-implement/SKILL.md
+    │   ├── code-analysis.md
+    │   ├── debugging.md
+    │   ├── problem-solving.md
+    │   └── permission.md
+    ├── project/
+    │   └── README.md         (trống có chủ đích)
+    ├── design-taste-frontend-v1/SKILL.md
+    ├── image-to-code/SKILL.md
+    ├── redesign-existing-projects/SKILL.md
+    └── stitch-design-taste/{SKILL.md, DESIGN.md}</div>
+      </div>
+      <div class="card c6">
+        <h3>Nguồn gốc nội dung</h3>
+        <p class="desc">Rules trong <code>.rules/</code> không phải lý thuyết áp đặt — đúc kết từ audit thực tế source code + tài liệu audit (PROJECT_AUDIT.md, review_pj.md, ARCHITECTURE.md, FINAL_PROJECT_AUDIT/REAUDIT…) của cả 7 project, cộng với 2 file CLAUDE.md viết tay chi tiết nhất workspace (Face, TaskFlow).</p>
+        <p class="desc" style="margin-top:10px">Khi rule và code thực tế của 1 project lệch nhau (vd ZKTime), rule ghi rõ trạng thái thật, không giả vờ project đó đã tuân thủ.</p>
+        <h3 style="margin-top:18px">Golden rule</h3>
+        <div class="callout bad">Không được skip gate: đọc context → phân tích → review → implement → test → QA. Nếu fail thì quay lại phase phù hợp, không tuyên bố "xong" khi test còn fail.</div>
+      </div>
+    </div>
+  </section>
+
+  </div>
+</main>
+</div>
+
+<script>
+(function(){
+  var items = document.querySelectorAll('.navitem');
+  var panels = document.querySelectorAll('.panel');
+  var crumb = document.getElementById('crumb');
+  var title = document.getElementById('topTitle');
+  var titles = {
+    overview:['Bắt đầu','Tổng quan'],
+    principles:['Bắt đầu','Scope & Security'],
+    agents:['Vận hành','Sub-agents'],
+    workflow:['Vận hành','Workflow & Skills'],
+    rules:['Vận hành','Rules (.rules/)'],
+    memory:['Tri thức','Memory & Audit'],
+    structure:['Tri thức','Cấu trúc thư mục']
+  };
+  function go(key){
+    items.forEach(function(b){ b.classList.toggle('active', b.dataset.x===key); });
+    panels.forEach(function(p){ p.classList.toggle('active', p.id===key); });
+    var t = titles[key] || ['',''];
+    crumb.textContent = t[0] + ' / ' + t[1];
+    title.textContent = t[1];
+    document.getElementById('sidebar').classList.remove('open');
+    window.scrollTo(0,0);
+  }
+  items.forEach(function(b){ b.addEventListener('click', function(){ go(b.dataset.x); }); });
+  document.querySelectorAll('.navlink').forEach(function(b){
+    b.addEventListener('click', function(e){ e.preventDefault(); go(b.dataset.x); });
+  });
+  document.getElementById('menuBtn').addEventListener('click', function(){
+    document.getElementById('sidebar').classList.toggle('open');
+  });
+})();
+</script>
+</body>
+</html>
