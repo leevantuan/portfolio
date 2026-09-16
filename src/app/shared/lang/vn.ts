@@ -35,7 +35,7 @@ export const UIResourceVN = {
     levels: [
       {
         level: '01',
-        title: 'Fresh IT Graduate, Workplace Admin & Junior .NET / Angular',
+        title: 'Fresher IT Graduate, Workplace Admin & Fresher .NET / Angular',
         badge: 'HỌC VIỆC & 1 NĂM DEV NỀN TẢNG',
         status: 'completed',
         skills: [
@@ -75,7 +75,9 @@ export const UIResourceVN = {
           'Tích hợp thiết bị EAC, Face ID, Vân tay qua DLL & SDK bằng C# .NET',
           'Hạ tầng giám sát Zabbix, quản lý tài sản GLPI & Agent Services',
           'Lập trình Background Jobs, cân bằng tải & kết nối Database',
-          'Phân tích logs thiết bị EAC, viễn trắc Grafana & Tự động hoá với AI'
+          'Phân tích logs thiết bị EAC, viễn trắc Grafana & Tự động hoá với AI',
+          'Vận Hành & Nghiên Cứu Hệ Thống ERP/MES — Phân Tích Dữ Liệu Sản Xuất',
+          'Ảo Hóa Proxmox/VMware, Sao Lưu Veeam Backup & Remote Ops RustDesk/MeshCentral'
         ],
         desc: 'Trọng tâm thực chiến hiện tại chuyên sâu về IT System, DevOps & Mạng: làm chủ cụm VM Server, Active Directory OU, mạng Layer 2, giám sát Zabbix/GLPI; sử dụng C# .NET làm cầu nối tích hợp DLL/SDK thiết bị EAC & Face ID chấm công, xử lý cân bằng tải dữ liệu, lập trình Background Jobs và phân tích logs viễn trắc với Grafana & Claude AI.',
       },
@@ -149,6 +151,9 @@ export const UIResourceVN = {
     { name: 'AZ-104', issuer: 'Microsoft Azure Administrator', code: 'MS-AZ-104', category: 'Cloud Infrastructure' },
     { name: 'C1 CEFR', issuer: 'International English Proficiency — Level C1 (CEFR)', code: 'CEFR-C1', category: 'Language' },
     { name: 'HSK 4', issuer: 'Chinese Proficiency Test — Level 4 (HSK 4)', code: 'CTI-HSK4', category: 'Language' },
+    { name: 'SSCP', issuer: '(ISC)² – International Information System Security Certification Consortium', code: 'ISC2-SSCP', category: 'Security' },
+    { name: 'CSSLP', issuer: '(ISC)²', code: 'ISC2-CSSLP', category: 'Security' },
+    { name: 'SC-200', issuer: 'Microsoft Corporation', code: 'MS-SC-200', category: 'Security Operations' },
   ],
 
   // Experience Component
@@ -170,7 +175,10 @@ export const UIResourceVN = {
         'Claude AI Automation',
         'Jenkins CI/CD',
         'Angular & React Native',
-        'PostgreSQL & SQL Server'
+        'PostgreSQL & SQL Server',
+        'Proxmox VE & VMware ESXi',
+        'Veeam Backup & DR',
+        'RustDesk & MeshCentral'
       ],
       desc: 'Đảm nhiệm toàn diện vai trò IT Systems, DevOps & Mạng tương tự Level 04: quản trị cụm máy chủ ảo VM Server, phân cấp Active Directory OU/GPO, cấu hình mạng Layer 2, giám sát Zabbix/GLPI; lập trình C# .NET tích hợp DLL/SDK phần cứng thiết bị EAC & Face ID chấm công, xử lý cân bằng tải Database, Background Jobs và phân tích logs viễn trắc Grafana với Claude AI.',
       highlights: [
@@ -245,10 +253,22 @@ export const UIResourceVN = {
     {
       number: '03 / PROJECT',
       name: 'Cloud Architecture & DevOps Lab',
-      status: '● LIVE DEMO',
+      status: '● COMPLETED',
       status_type: 'completed',
       tags: ['Microsoft Azure', 'Kubernetes (K8s)', 'Docker', 'Jenkins CI/CD', 'Grafana', 'Prometheus'],
       desc: 'Môi trường lab thực nghiệm kiến trúc đám mây Azure kết hợp điều phối container Kubernetes, tích hợp đường ống CI/CD tự động bằng Jenkins và bảng điều khiển giám sát tài nguyên máy chủ với Grafana / Prometheus.',
+    },
+    {
+      number: '04 / LIVE PRODUCTION',
+      name: 'LearnZH — Nền Tảng Học Tiếng Trung & Anh Trực Tuyến (AI-Orchestrated)',
+      status: '● LIVE DEMO ONLINE',
+      status_type: 'completed',
+      tags: ['Claude Code (AI)', 'Next.js', 'PostgreSQL', 'RESTful API', 'TailwindCSS', 'Production Live'],
+      desc: 'Sản phẩm Web Application học ngoại ngữ thực tế được xây dựng trọn vẹn từ ý tưởng đến production thông qua quy trình kỹ thuật AI Orchestrator (Claude Code & MCP) chỉ trong 3 giờ. Đã triển khai môi trường Production tại learnzh.website với đầy đủ xác thực tài khoản, hệ thống bài học và kiểm tra tiến độ.',
+      demo_url: 'https://learnzh.website/',
+      demo_user: 'test01',
+      demo_pass: '12345678',
+      credentials: 'User: test01 | Pass: 12345678',
     },
   ],
 
@@ -614,7 +634,7 @@ export const UIResourceVN = {
       {
         id: '01', num: '01', title: 'Systems & Server Infrastructure', shortTitle: 'SYSTEMS / SERVERS', categoryBadge: 'CORE FOUNDATION', accentColor: '#7ED957',
         headline: 'Hạ tầng máy chủ vật lý, ảo hóa doanh nghiệp, phân quyền danh tính và sao lưu dữ liệu toàn diện.',
-        coreSkills: ['Windows Server & Linux (Ubuntu/RHEL)', 'Active Directory & Microsoft Entra ID', 'VMware ESXi & Hyper-V Clustering', 'Veeam Backup & Disaster Recovery', 'Zabbix & Grafana Telemetry'],
+        coreSkills: ['Windows Server & Linux (Ubuntu/RHEL)', 'Active Directory & Microsoft Entra ID', 'VMware ESXi, Hyper-V & Proxmox VE Clustering', 'Veeam Backup & Disaster Recovery', 'RustDesk & MeshCentral Remote Support', 'Zabbix & Grafana Telemetry'],
         operationalRole: 'Đảm bảo 99.98% độ sẵn sàng máy chủ vật lý và ảo hóa, kiểm soát toàn quyền Identity & Access Management, quản trị tài nguyên tính toán và lưu trữ dữ liệu an toàn cho doanh nghiệp.',
         metrics: [
           { label: 'UPTIME SLA', value: '99.98%', sub: 'High Availability Cluster' },
@@ -693,6 +713,12 @@ export const UIResourceVN = {
           { partnerNum: '01, 02, 03, 04', partnerDomain: 'ALL 4 DOMAINS', title: 'Full-Spectrum Technical Synchronization', description: 'Không có bất kỳ sự đứt gãy nào giữa code Backend, hạ tầng Mạng, cấu hình Máy chủ và Pipeline Cloud — AI đóng vai trò như chất keo kết dính kỹ thuật tuyệt đối.', protocol: 'MCP Protocol Bus' },
         ],
         aiSupercharge: 'Biến kỹ sư từ người gõ phím đơn lẻ thành Giám đốc Kỹ thuật (Technical Commander) điều khiển đội quân AI Subagents tinh nhuệ hoạt động 24/7.',
+        demo: {
+          title: 'Live Demo — Ứng Dụng Học Ngoại Ngữ Xây Dựng Bằng AI',
+          description: 'Xây dựng và triển khai trọn vẹn một web app học tiếng Trung + tiếng Anh bằng quy trình kỹ thuật điều phối AI (Claude Code) — từ ý tưởng đến sản phẩm thực tế chỉ trong 3 tiếng.',
+          url: 'https://learnzh.website/',
+          credentialsLabel: 'Tài khoản demo: test01 / 12345678',
+        },
       },
     ],
     convergenceScenarios: [

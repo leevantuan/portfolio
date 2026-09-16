@@ -75,7 +75,9 @@ export const UIResourceZH = {
           '通过 C# .NET 调用 DLL / SDK 对接入禁 (EAC)、人脸识别与考勤终端设备',
           'Zabbix 基础设施监控、GLPI 资产管理运维与 Agent 服务治理',
           '后台常驻任务 (Background Jobs)、数据库负载均衡与数据同步',
-          '设备日志分析、Grafana 可观测仪表盘与 AI 系统自动化脚本'
+          '设备日志分析、Grafana 可观测仪表盘与 AI 系统自动化脚本',
+          'ERP 与 MES 系统运维与研究 — 生产数据分析',
+          'Proxmox/VMware 虚拟化、Veeam Backup 备份与 RustDesk/MeshCentral 远程运维'
         ],
         desc: '当前实战核心聚焦于 IT 系统运维、DevOps 与网络工程：精通 VM 虚拟化集群、Active Directory OU 组织架构、二层网络；利用 C# .NET 调用硬件 DLL/SDK 连接门禁 (EAC) 与人脸考勤设备，处理数据库负载均衡、后台任务调度，并借助 Grafana 与 Claude AI 深度分析设备日志与自动化运维。',
       },
@@ -149,6 +151,9 @@ export const UIResourceZH = {
     { name: 'AZ-104', issuer: 'Microsoft Azure Administrator', code: 'MS-AZ-104', category: '云基础设施' },
     { name: 'C1 CEFR', issuer: '国际英语能力认证 — C1 级 (CEFR)', code: 'CEFR-C1', category: '语言能力' },
     { name: 'HSK 4', issuer: '中外语言交流合作中心 (汉考国际) — HSK 4 级', code: 'CTI-HSK4', category: '语言能力' },
+    { name: 'SSCP', issuer: '(ISC)² – International Information System Security Certification Consortium', code: 'ISC2-SSCP', category: '信息安全' },
+    { name: 'CSSLP', issuer: '(ISC)²', code: 'ISC2-CSSLP', category: '信息安全' },
+    { name: 'SC-200', issuer: 'Microsoft Corporation', code: 'MS-SC-200', category: '安全运营' },
   ],
 
   // Experience Component
@@ -171,7 +176,10 @@ export const UIResourceZH = {
         'Claude AI 自动化脚本',
         'Jenkins CI/CD 流水线',
         'Angular 与 React Native',
-        'PostgreSQL 与 SQL Server'
+        'PostgreSQL 与 SQL Server',
+        'Proxmox 与 VMware 虚拟化',
+        'Veeam Backup 备份与容灾',
+        'RustDesk 与 MeshCentral 远程运维'
       ],
       desc: '全面承担与 Level 04 一致的 IT 系统、DevOps 与网络工程核心职责：精通虚拟机集群、Active Directory OU/GPO 组策略与二层网络；利用 C# .NET 深度调用 DLL/SDK 集成门禁 (EAC) 与人脸考勤硬件，处理数据库负载均衡、后台任务调度，并借助 Grafana 与 Claude AI 进行日志分析与自动化运维。',
       highlights: [
@@ -246,10 +254,22 @@ export const UIResourceZH = {
     {
       number: '03 / PROJECT',
       name: 'Cloud 云架构与 DevOps 自动化实验平台',
-      status: '● 在线演示 LIVE DEMO',
+      status: '● 已完成 COMPLETED',
       status_type: 'completed',
       tags: ['Microsoft Azure', 'Kubernetes (K8s)', 'Docker', 'Jenkins CI/CD', 'Grafana', 'Prometheus'],
       desc: '模拟企业级混合云生产环境实验平台，运行于 Azure Kubernetes 集群之上，打通 Jenkins 自动化持续集成交付管道，并基于 Grafana + Prometheus 打造全链路监控告警大盘。',
+    },
+    {
+      number: '04 / LIVE PRODUCTION',
+      name: 'LearnZH — AI 驱动双语在线学习全栈 Web 应用 (真实生产环境)',
+      status: '● 在线演示 LIVE DEMO',
+      status_type: 'completed',
+      tags: ['Claude Code (AI)', 'Next.js', 'PostgreSQL', 'RESTful API', 'TailwindCSS', 'Production Live'],
+      desc: '完全通过 AI 自动化编排工作流 (Claude Code & MCP) 从零设计并在 3 小时内上线生产的中文/英语在线学习平台。已于 learnzh.website 正式运行，配备完整用户鉴权、课程体系与进度持久化。',
+      demo_url: 'https://learnzh.website/',
+      demo_user: 'test01',
+      demo_pass: '12345678',
+      credentials: 'User: test01 | Pass: 12345678',
     },
   ],
 
@@ -615,7 +635,7 @@ export const UIResourceZH = {
       {
         id: '01', num: '01', title: 'Systems & Server Infrastructure', shortTitle: 'SYSTEMS / SERVERS', categoryBadge: 'CORE FOUNDATION', accentColor: '#7ED957',
         headline: '物理服务器基础设施、企业级虚拟化、身份权限管理与全面数据备份。',
-        coreSkills: ['Windows Server & Linux (Ubuntu/RHEL)', 'Active Directory & Microsoft Entra ID', 'VMware ESXi & Hyper-V Clustering', 'Veeam Backup & Disaster Recovery', 'Zabbix & Grafana Telemetry'],
+        coreSkills: ['Windows Server & Linux (Ubuntu/RHEL)', 'Active Directory & Microsoft Entra ID', 'VMware ESXi, Hyper-V & Proxmox VE Clustering', 'Veeam Backup & Disaster Recovery', 'RustDesk & MeshCentral Remote Support', 'Zabbix & Grafana Telemetry'],
         operationalRole: '确保物理与虚拟化服务器 99.98% 的可用性，全面掌控身份与访问管理 (IAM)，并为企业管理计算资源与安全的数据存储。',
         metrics: [
           { label: 'UPTIME SLA', value: '99.98%', sub: 'High Availability Cluster' },
@@ -694,6 +714,12 @@ export const UIResourceZH = {
           { partnerNum: '01, 02, 03, 04', partnerDomain: 'ALL 4 DOMAINS', title: 'Full-Spectrum Technical Synchronization', description: '后端代码、网络基础设施、服务器配置与云端流水线之间毫无断层 —— AI 扮演着绝对的技术粘合剂角色。', protocol: 'MCP Protocol Bus' },
         ],
         aiSupercharge: '让工程师从单打独斗的键盘操作者，转变为指挥一支 7x24 小时运作的精锐 AI Subagent 军团的技术指挥官 (Technical Commander)。',
+        demo: {
+          title: 'Live Demo — AI 构建的语言学习应用',
+          description: '使用 AI 编排式工程工作流 (Claude Code) 端到端构建并上线一个中文 + 英文学习网页应用 —— 从创意到生产环境仅耗时 3 小时。',
+          url: 'https://learnzh.website/',
+          credentialsLabel: '演示账号: test01 / 12345678',
+        },
       },
     ],
     convergenceScenarios: [

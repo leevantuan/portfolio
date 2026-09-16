@@ -38,8 +38,38 @@ export class DiagramViewerComponent implements OnInit, OnChanges, OnDestroy {
   UIResource: any = UIResourceENG;
 
   // Active Tab: 01. Network | 02. System Architecture | 03. Permission & Access
-  activeTab: 'network' | 'system' | 'permission' = 'system';
+  activeTab: 'network' | 'system' | 'permission' = 'network';
   activeTimeFilter: 'live' | '1h' | '6h' | '24h' | '7d' = 'live';
+
+  // ==========================================
+  // TAB 01: NETWORK TOPOLOGY STATE
+  // ==========================================
+  tab1SelectedZone: number = 0;
+  tab1Zones = [
+    '01 Perimeter (FortiGate HA)',
+    '02 Core Switch (Catalyst L3)',
+    '03 Distribution & VLANs',
+    '04 Server Farm (vSphere/Dell)',
+    '05 Storage & Backup (Veeam)',
+    '06 Cloud Hybrid (AWS/Azure)',
+    '07 Branch Offices (IPsec)',
+    '08 Wireless UniFi APs',
+    '09 DMZ Isolated Zone',
+    '10 NOC & Observability',
+  ];
+
+  tab1Interfaces = [
+    { name: 'WAN 1 (Fiber 1G)', status: 'UP', color: 'emerald' },
+    { name: 'WAN 2 (Backup 500M)', status: 'STANDBY', color: 'zinc' },
+    { name: 'Core 10G SFP+ Trunk', status: '10 Gbps', color: 'emerald' },
+    { name: 'VLAN 10 Corporate', status: 'Active', color: 'emerald' },
+    { name: 'VLAN 20 IoT / Devices', status: 'Active', color: 'emerald' },
+    { name: 'VLAN 30 Guest WiFi', status: 'Active', color: 'emerald' },
+    { name: 'IPsec Site-to-Site', status: 'Connected', color: 'emerald' },
+    { name: 'AWS DirectConnect', status: '1 Gbps', color: 'emerald' },
+    { name: 'Azure ExpressRoute', status: '1 Gbps', color: 'emerald' },
+    { name: 'HA Heartbeat Sync', status: 'SYNC', color: 'emerald' },
+  ];
 
   // ==========================================
   // TAB 02: SYSTEM ARCHITECTURE STATE
@@ -99,6 +129,8 @@ export class DiagramViewerComponent implements OnInit, OnChanges, OnDestroy {
   isAccessCheckRunning: boolean = true;
   private accessCheckTimer: any = null;
 
+  cicdActiveStep: number = 8;
+
   tab3SelectedModule: number = 0;
   tab3Modules = [
     '01 User & Identity',
@@ -121,6 +153,25 @@ export class DiagramViewerComponent implements OnInit, OnChanges, OnDestroy {
     { name: 'dev-ops', role: 'Developer', active: true },
     { name: 'guest', role: 'Guest', active: false },
   ];
+
+  selectedRole: string = 'System Admin';
+  selectRole(role: string): void {
+    this.selectedRole = role;
+  }
+
+  expandedFolders: { [key: string]: boolean } = {
+    company: true,
+    IT: true,
+    Server: true,
+    Network: false,
+    Projects: false,
+    Shared: false,
+    Public: false,
+  };
+
+  toggleFolder(folder: string): void {
+    this.expandedFolders[folder] = !this.expandedFolders[folder];
+  }
 
   tab3FileTab: 'permissions' | 'inheritance' | 'audit' = 'permissions';
   tab3LogFilter: 'all' | 'info' | 'warn' | 'error' = 'all';
@@ -197,6 +248,7 @@ export class DiagramViewerComponent implements OnInit, OnChanges, OnDestroy {
     }
     if (changes['isOpen']) {
       if (this.isOpen) {
+        this.activeTab = 'network';
         this.startTimers();
       } else {
         this.stopTimers();

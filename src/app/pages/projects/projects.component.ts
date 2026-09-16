@@ -51,7 +51,19 @@ export class ProjectsComponent implements OnInit, OnChanges {
       'https://github.com/leevantuan',
       'https://github.com/leevantuan',
       'https://github.com/leevantuan',
+      'https://learnzh.website',
     ];
     window.open(urls[index] || 'https://github.com/leevantuan', '_blank');
+  }
+
+  copiedIndex: number | null = null;
+  copyCredentials(text: string, index: number): void {
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      navigator.clipboard.writeText(text);
+      this.copiedIndex = index;
+      setTimeout(() => {
+        this.copiedIndex = null;
+      }, 2500);
+    }
   }
 }

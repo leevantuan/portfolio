@@ -35,7 +35,7 @@ export const UIResourceENG = {
     levels: [
       {
         level: '01',
-        title: 'Fresh IT Graduate, Workplace Admin & Junior .NET / Angular',
+        title: 'Fresher IT Graduate, Workplace Admin & Fresher .NET / Angular',
         badge: 'FOUNDATION & 1-YR DEV EXP',
         status: 'completed',
         skills: [
@@ -75,7 +75,9 @@ export const UIResourceENG = {
           'EAC, Face ID & Biometrics Integration via C# .NET DLL / SDK',
           'Zabbix Infrastructure Monitoring, GLPI Asset Management & Agent Services',
           'Background Worker Jobs, Database Load Balancing & Event Sync',
-          'EAC/Device Log Analytics, Grafana Telemetry & AI Automation'
+          'EAC/Device Log Analytics, Grafana Telemetry & AI Automation',
+          'ERP & MES Systems — Production Data Analysis & Process Research',
+          'Proxmox/VMware Virtualization, Veeam Backup & RustDesk/MeshCentral Remote Ops'
         ],
         desc: 'Current production focus centered on IT Systems, DevOps & Enterprise Networking: managing virtualized VM servers, Active Directory OUs, Layer 2 networks, Zabbix/GLPI monitoring; engineering C# .NET middleware to interface with EAC and Face ID hardware SDKs/DLLs, managing database load balancing, background worker jobs, and telemetry log analysis via Grafana & Claude AI.',
       },
@@ -149,6 +151,9 @@ export const UIResourceENG = {
     { name: 'AZ-104', issuer: 'Microsoft Azure Administrator', code: 'MS-AZ-104', category: 'Cloud Infrastructure' },
     { name: 'C1 CEFR', issuer: 'International English Proficiency — Level C1 (CEFR)', code: 'CEFR-C1', category: 'Language' },
     { name: 'HSK 4', issuer: 'Chinese Proficiency Test — Level 4 (HSK 4)', code: 'CTI-HSK4', category: 'Language' },
+    { name: 'SSCP', issuer: '(ISC)² – International Information System Security Certification Consortium', code: 'ISC2-SSCP', category: 'Security' },
+    { name: 'CSSLP', issuer: '(ISC)²', code: 'ISC2-CSSLP', category: 'Security' },
+    { name: 'SC-200', issuer: 'Microsoft Corporation', code: 'MS-SC-200', category: 'Security Operations' },
   ],
 
   // Experience Component
@@ -170,7 +175,10 @@ export const UIResourceENG = {
         'Claude AI Automation',
         'Jenkins CI/CD',
         'Angular & React Native',
-        'PostgreSQL & SQL Server'
+        'PostgreSQL & SQL Server',
+        'Proxmox VE & VMware ESXi',
+        'Veeam Backup & DR',
+        'RustDesk & MeshCentral'
       ],
       desc: 'Executing a holistic IT Systems, DevOps & Enterprise Networking role aligned with Level 04: managing virtualized VM servers, Active Directory OU/GPO hierarchies, Layer 2 networks, Zabbix/GLPI monitoring; engineering C# .NET middleware to interface with EAC and Face ID hardware SDKs/DLLs, managing database load balancing, background worker jobs, and telemetry log analytics via Grafana & Claude AI.',
       highlights: [
@@ -245,10 +253,22 @@ export const UIResourceENG = {
     {
       number: '03 / PROJECT',
       name: 'Cloud Architecture & DevOps Lab',
-      status: '● LIVE DEMO',
+      status: '● COMPLETED',
       status_type: 'completed',
       tags: ['Microsoft Azure', 'Kubernetes (K8s)', 'Docker', 'Jenkins CI/CD', 'Grafana', 'Prometheus'],
       desc: 'Experimental laboratory simulating Azure cloud infrastructure orchestrated by Kubernetes, continuous automated delivery with Jenkins pipelines, and complete observability with Grafana and Prometheus monitoring.',
+    },
+    {
+      number: '04 / LIVE PRODUCTION',
+      name: 'LearnZH — AI-Orchestrated Language Learning Platform (Live Web)',
+      status: '● LIVE DEMO ONLINE',
+      status_type: 'completed',
+      tags: ['Claude Code (AI)', 'Next.js', 'PostgreSQL', 'RESTful API', 'TailwindCSS', 'Production Live'],
+      desc: 'A full-fledged web application for learning Chinese and English built and shipped from scratch using an autonomous AI orchestration toolchain (Claude Code & MCP) in just 3 hours. Live in production at learnzh.website with full user auth, curriculum progression, and persistent databases.',
+      demo_url: 'https://learnzh.website/',
+      demo_user: 'test01',
+      demo_pass: '12345678',
+      credentials: 'User: test01 | Pass: 12345678',
     },
   ],
 
@@ -614,7 +634,7 @@ export const UIResourceENG = {
       {
         id: '01', num: '01', title: 'Systems & Server Infrastructure', shortTitle: 'SYSTEMS / SERVERS', categoryBadge: 'CORE FOUNDATION', accentColor: '#7ED957',
         headline: 'Physical server infrastructure, enterprise virtualization, identity access management, and comprehensive data backup.',
-        coreSkills: ['Windows Server & Linux (Ubuntu/RHEL)', 'Active Directory & Microsoft Entra ID', 'VMware ESXi & Hyper-V Clustering', 'Veeam Backup & Disaster Recovery', 'Zabbix & Grafana Telemetry'],
+        coreSkills: ['Windows Server & Linux (Ubuntu/RHEL)', 'Active Directory & Microsoft Entra ID', 'VMware ESXi, Hyper-V & Proxmox VE Clustering', 'Veeam Backup & Disaster Recovery', 'RustDesk & MeshCentral Remote Support', 'Zabbix & Grafana Telemetry'],
         operationalRole: 'Ensures 99.98% availability across physical and virtualized servers, holds full control over Identity & Access Management, and administers compute resources and secure enterprise data storage.',
         metrics: [
           { label: 'UPTIME SLA', value: '99.98%', sub: 'High Availability Cluster' },
@@ -693,6 +713,12 @@ export const UIResourceENG = {
           { partnerNum: '01, 02, 03, 04', partnerDomain: 'ALL 4 DOMAINS', title: 'Full-Spectrum Technical Synchronization', description: 'There is no disconnect between Backend code, Network infrastructure, Server configuration, and the Cloud pipeline — AI acts as the absolute technical glue binding them together.', protocol: 'MCP Protocol Bus' },
         ],
         aiSupercharge: 'Transforms an engineer from a lone keyboard operator into a Technical Commander directing an elite army of AI Subagents operating 24/7.',
+        demo: {
+          title: 'Live Demo — AI-Built Language Learning App',
+          description: 'Built and shipped a full Chinese + English learning web app end-to-end with an AI-orchestrated engineering workflow (Claude Code) — from idea to production in just 3 hours.',
+          url: 'https://learnzh.website/',
+          credentialsLabel: 'Demo account: test01 / 12345678',
+        },
       },
     ],
     convergenceScenarios: [

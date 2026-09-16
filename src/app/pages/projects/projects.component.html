@@ -57,23 +57,60 @@
         </div>
       </div>
 
-      <!-- Action Buttons -->
-      <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-[var(--border)]">
-        <button 
-          (click)="openGithub(idx)"
-          class="h-9 px-4 rounded-sm font-mono-tech text-xs font-bold uppercase tracking-wider bg-[var(--accent)] text-[#0B0B0B] hover:brightness-110 border border-[var(--accent)] transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
-        >
-          <span>VIEW PROJECT GITHUB</span>
-          <span>→</span>
-        </button>
+      <!-- Action Buttons & Live Demo Row -->
+      <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-[var(--border)]">
+        <div class="flex flex-wrap items-center gap-3">
+          <!-- Direct Live Demo Button (if demo_url exists) -->
+          <a
+            *ngIf="proj.demo_url"
+            [href]="proj.demo_url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="h-9 px-4 rounded-sm font-mono-tech text-xs font-bold uppercase tracking-wider bg-[var(--accent)] text-[#0B0B0B] hover:brightness-110 border border-[var(--accent)] transition-all inline-flex items-center gap-2 cursor-pointer shadow-md no-underline"
+          >
+            <span class="text-sm">🌐</span>
+            <span>VIEW LIVE DEMO ↗</span>
+          </a>
 
-        <button 
-          (click)="onViewArchitecture()"
-          class="h-9 px-4 rounded-sm font-mono-tech text-xs font-semibold uppercase tracking-wider bg-[var(--surface-3)] text-[var(--text-1)] hover:border-[var(--accent)] border border-[var(--border)] transition-all flex items-center gap-1.5 cursor-pointer"
+          <button 
+            (click)="openGithub(idx)"
+            class="h-9 px-4 rounded-sm font-mono-tech text-xs font-bold uppercase tracking-wider bg-[var(--surface-3)] text-[var(--text-1)] hover:border-[var(--accent)] border border-[var(--border)] transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
+          >
+            <span>{{ proj.demo_url ? 'PROJECT REPO' : 'VIEW PROJECT GITHUB' }}</span>
+            <span>→</span>
+          </button>
+
+          <button 
+            (click)="onViewArchitecture()"
+            class="h-9 px-4 rounded-sm font-mono-tech text-xs font-semibold uppercase tracking-wider bg-[var(--surface-3)] text-[var(--text-1)] hover:border-[var(--accent)] border border-[var(--border)] transition-all flex items-center gap-1.5 cursor-pointer"
+          >
+            <span>ARCHITECTURE BLUEPRINT</span>
+            <span>⚡</span>
+          </button>
+        </div>
+
+        <!-- Demo Account Credentials Box -->
+        <div 
+          *ngIf="proj.demo_user" 
+          class="flex flex-wrap items-center gap-2.5 p-2 rounded border border-[var(--accent)]/30 bg-[rgba(126,217,87,0.06)] font-mono-tech text-xs"
         >
-          <span>ARCHITECTURE BLUEPRINT</span>
-          <span>⚡</span>
-        </button>
+          <span class="text-[10px] text-[var(--text-3)] font-bold uppercase">DEMO CREDENTIALS:</span>
+          <div class="flex items-center gap-1 px-2 py-0.5 rounded bg-[var(--surface)] border border-[var(--border)] text-[var(--accent-text)]">
+            <span class="text-[10px] text-[var(--text-3)]">User:</span>
+            <span class="font-bold font-mono">{{ proj.demo_user }}</span>
+          </div>
+          <div class="flex items-center gap-1 px-2 py-0.5 rounded bg-[var(--surface)] border border-[var(--border)] text-[var(--accent-text)]">
+            <span class="text-[10px] text-[var(--text-3)]">Pass:</span>
+            <span class="font-bold font-mono">{{ proj.demo_pass }}</span>
+          </div>
+          <button
+            type="button"
+            (click)="copyCredentials(proj.demo_user + ' / ' + proj.demo_pass, idx)"
+            class="px-2 py-0.5 rounded border border-[var(--accent)]/40 hover:bg-[var(--accent)] hover:text-[#0b0b0b] text-[10px] font-mono-tech uppercase font-bold text-[var(--accent-text)] transition-colors cursor-pointer"
+          >
+            {{ copiedIndex === idx ? '✓ COPIED!' : '📋 COPY' }}
+          </button>
+        </div>
       </div>
     </div>
   </div>
