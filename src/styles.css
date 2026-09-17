@@ -264,3 +264,412 @@ h4,
     scroll-behavior: auto !important;
   }
 }
+
+/* ========================================================
+   DIAGRAM VIEWER - LIGHT MODE (Tone 07A Technical Blueprint)
+   Strictly scoped under [data-theme="light"] app-diagram-viewer.
+   Dark mode & other components remain 100% untouched.
+   ======================================================== */
+[data-theme="light"] app-diagram-viewer .blueprint-grid {
+  background-color: #F8FAFC !important;
+  background-image: 
+    linear-gradient(to right, rgba(0, 102, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 102, 255, 0.05) 1px, transparent 1px) !important;
+  background-size: 24px 24px !important;
+  scrollbar-color: #CBD5E1 transparent !important;
+}
+
+[data-theme="light"] app-diagram-viewer .blueprint-grid::-webkit-scrollbar-thumb {
+  background-color: #CBD5E1 !important;
+}
+
+[data-theme="light"] app-diagram-viewer .blueprint-grid::-webkit-scrollbar-thumb:hover {
+  background-color: #94A3B8 !important;
+}
+
+/* Outer panels, sidebars & cards */
+[data-theme="light"] app-diagram-viewer [class*="bg-[#0c141a]"] {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+}
+
+/* Inner telemetry rows, steps & sub-cards */
+[data-theme="light"] app-diagram-viewer [class*="bg-[#0a1015]"] {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+}
+
+/* Inner chip boxes, code tags, devices */
+[data-theme="light"] app-diagram-viewer [class*="bg-[#0f171e]"],
+[data-theme="light"] app-diagram-viewer [class*="bg-[#131e27]"] {
+  background-color: #F1F5F9 !important;
+  border-color: #E2E8F0 !important;
+}
+
+/* Hover state on dark items */
+[data-theme="light"] app-diagram-viewer [class*="hover:bg-[#131e27]"]:hover {
+  background-color: #E2E8F0 !important;
+}
+
+/* SVG Canvases in Tab 1 & Tab 2 */
+[data-theme="light"] app-diagram-viewer .aspect-\[16\/9\.5\],
+[data-theme="light"] app-diagram-viewer .aspect-\[1100\/644\] {
+  background-color: #FFFFFF !important;
+  border-color: #CBD5E1 !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04) inset !important;
+}
+
+/* Cyber cards */
+[data-theme="light"] app-diagram-viewer .cyber-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] app-diagram-viewer .cyber-card:hover {
+  border-color: #0066FF !important;
+  box-shadow: 0 0 14px rgba(0, 102, 255, 0.16) !important;
+}
+
+[data-theme="light"] app-diagram-viewer .cyber-card-active {
+  background: #EFF6FF !important;
+  border-color: #0066FF !important;
+  box-shadow: 0 0 16px rgba(0, 102, 255, 0.22) !important;
+}
+
+/* High contrast badge and status tokens */
+[data-theme="light"] app-diagram-viewer .text-emerald-400 {
+  color: #16A34A !important;
+}
+[data-theme="light"] app-diagram-viewer .text-cyan-400 {
+  color: #0284C7 !important;
+}
+[data-theme="light"] app-diagram-viewer .text-amber-400 {
+  color: #D97706 !important;
+}
+[data-theme="light"] app-diagram-viewer .text-purple-400 {
+  color: #9333EA !important;
+}
+[data-theme="light"] app-diagram-viewer .text-sky-400 {
+  color: #0284C7 !important;
+}
+[data-theme="light"] app-diagram-viewer .text-orange-400 {
+  color: #EA580C !important;
+}
+[data-theme="light"] app-diagram-viewer .text-blue-400 {
+  color: #2563EB !important;
+}
+[data-theme="light"] app-diagram-viewer .text-amber-300 {
+  color: #D97706 !important;
+}
+[data-theme="light"] app-diagram-viewer .text-red-400 {
+  color: #DC2626 !important;
+}
+
+/* Tab buttons and active badges in light mode */
+[data-theme="light"] app-diagram-viewer button.bg-\[var\(--accent\)\],
+[data-theme="light"] app-diagram-viewer div.bg-\[var\(--accent\)\] {
+  color: #FFFFFF !important;
+}
+
+/* Specific pill tags */
+[data-theme="light"] app-diagram-viewer [class*="bg-cyan-950"] {
+  background-color: #E0F2FE !important;
+  border-color: #BAE6FD !important;
+  color: #0284C7 !important;
+}
+
+/* Blue glow replacements for cyber green lights in light mode */
+[data-theme="light"] app-diagram-viewer [class*="shadow-[0_0_8px_#7ED957]"] {
+  box-shadow: 0 0 8px rgba(0, 102, 255, 0.45) !important;
+}
+[data-theme="light"] app-diagram-viewer [class*="shadow-[0_0_10px_rgba(126,217,87"] {
+  box-shadow: 0 0 10px rgba(0, 102, 255, 0.25) !important;
+}
+[data-theme="light"] app-diagram-viewer [class*="shadow-[0_0_14px_rgba(126,217,87"] {
+  box-shadow: 0 0 14px rgba(0, 102, 255, 0.25) !important;
+}
+[data-theme="light"] app-diagram-viewer [class*="shadow-[0_0_18px_rgba(126,217,87"] {
+  box-shadow: 0 0 18px rgba(0, 102, 255, 0.25) !important;
+}
+[data-theme="light"] app-diagram-viewer [class*="shadow-[0_0_8px_rgba(126,217,87"] {
+  box-shadow: 0 0 8px rgba(0, 102, 255, 0.25) !important;
+}
+
+/* ========================================================
+   SKILLS & CONVERGENCE ECOSYSTEM - LIGHT MODE (Tone 07A Technical Blueprint)
+   Strictly scoped under [data-theme="light"] app-skills.
+   Dark mode & other components remain 100% untouched.
+   ======================================================== */
+
+/* 1. Global Terminal Window in Light Mode */
+[data-theme="light"] app-skills .terminal-window {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  color: #1E293B !important;
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Terminal top bar border and session title */
+[data-theme="light"] app-skills .terminal-window [class*="border-[#26292e]"] {
+  border-color: #E2E8F0 !important;
+}
+[data-theme="light"] app-skills .terminal-window [class*="text-[#A0A0A0]"] {
+  color: #475569 !important;
+}
+[data-theme="light"] app-skills .terminal-window [class*="text-[#F5F5F5]"] {
+  color: #0F172A !important;
+}
+[data-theme="light"] app-skills .terminal-window [class*="text-[#DDD]"] {
+  color: #1E293B !important;
+}
+[data-theme="light"] app-skills .terminal-window [class*="text-[#EEE]"] {
+  color: #1E293B !important;
+}
+[data-theme="light"] app-skills .terminal-window [class*="text-[#888]"] {
+  color: #64748B !important;
+}
+[data-theme="light"] app-skills .terminal-window [class*="text-[#777]"] {
+  color: #64748B !important;
+}
+[data-theme="light"] app-skills .terminal-window [class*="text-[#666]"] {
+  color: #64748B !important;
+}
+[data-theme="light"] app-skills .terminal-window [class*="border-[#222]"] {
+  border-color: #E2E8F0 !important;
+}
+[data-theme="light"] app-skills .terminal-window [class*="border-[#333]"] {
+  border-color: #E2E8F0 !important;
+}
+[data-theme="light"] app-skills .terminal-window [class*="hover:bg-[#222]"]:hover {
+  background-color: #F1F5F9 !important;
+}
+
+/* High contrast colored texts inside terminal */
+[data-theme="light"] app-skills [class*="text-[#7ED957]"] {
+  color: #16A34A !important;
+}
+[data-theme="light"] app-skills [class*="text-[#38bdf8]"] {
+  color: #0284C7 !important;
+}
+[data-theme="light"] app-skills [class*="text-[#F59E0B]"] {
+  color: #D97706 !important;
+}
+[data-theme="light"] app-skills [class*="text-[#22c55e]"] {
+  color: #16A34A !important;
+}
+[data-theme="light"] app-skills [class*="text-[#A855F7]"] {
+  color: #9333EA !important;
+}
+
+/* 2. Domain 02 - Network & Topology Simulator */
+[data-theme="light"] app-skills [class*="bg-[#1e293b]"] {
+  background-color: #F0F9FF !important;
+  border-color: #BAE6FD !important;
+  color: #0284C7 !important;
+}
+[data-theme="light"] app-skills [class*="text-[#555e69]"] {
+  color: #94A3B8 !important;
+}
+[data-theme="light"] app-skills [class*="bg-[#7ED957]/10"] {
+  background-color: #F0FDF4 !important;
+  border-color: #BBF7D0 !important;
+  color: #16A34A !important;
+}
+[data-theme="light"] app-skills [class*="bg-[#38bdf8]/10"] {
+  background-color: #F0F9FF !important;
+  border-color: #BAE6FD !important;
+  color: #0284C7 !important;
+}
+[data-theme="light"] app-skills [class*="bg-[#F59E0B]/10"] {
+  background-color: #FFFBEB !important;
+  border-color: #FDE68A !important;
+  color: #D97706 !important;
+}
+[data-theme="light"] app-skills [class*="bg-[#22c55e]/10"] {
+  background-color: #F0FDF4 !important;
+  border-color: #BBF7D0 !important;
+  color: #16A34A !important;
+}
+[data-theme="light"] app-skills [class*="bg-[#A855F7]/10"] {
+  background-color: #FAF5FF !important;
+  border-color: #E9D5FF !important;
+  color: #9333EA !important;
+}
+
+/* 3. Domain 03 - DevOps CI/CD & AKS Telemetry */
+[data-theme="light"] app-skills [class*="bg-[#16191f]"] {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+}
+[data-theme="light"] app-skills [class*="bg-[#16191f]"]:hover {
+  background-color: #FFFFFF !important;
+  border-color: #0066FF !important;
+}
+[data-theme="light"] app-skills [class*="border-[#2a303c]"] {
+  border-color: #E2E8F0 !important;
+}
+[data-theme="light"] app-skills [class*="border-[#222733]"] {
+  border-color: #E2E8F0 !important;
+}
+[data-theme="light"] app-skills [class*="bg-[#101216]"] {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03) !important;
+}
+[data-theme="light"] app-skills [class*="border-[#262b35]"] {
+  border-color: #E2E8F0 !important;
+}
+
+/* 4. Domain 04 - Microservices CQRS */
+[data-theme="light"] app-skills [class*="text-[#AAA]"] {
+  color: #64748B !important;
+}
+
+/* 5. AI Engineering Orchestration Layer */
+/* Left Column Phase Dialogue Cards */
+[data-theme="light"] app-skills .dialogue-card {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+}
+[data-theme="light"] app-skills .dialogue-card:hover {
+  background-color: #FFFFFF !important;
+  border-color: #0066FF !important;
+  box-shadow: 0 4px 14px rgba(0, 102, 255, 0.1) !important;
+}
+[data-theme="light"] app-skills .dialogue-card [class*="text-[#F5F5F5]"] {
+  color: #0F172A !important;
+}
+[data-theme="light"] app-skills .dialogue-card [class*="text-[#888]"] {
+  color: #475569 !important;
+}
+[data-theme="light"] app-skills .dialogue-card [class*="text-[#DDD]"] {
+  color: #1E293B !important;
+}
+[data-theme="light"] app-skills .dialogue-card [class*="text-[#777]"] {
+  color: #64748B !important;
+}
+/* Code snippet block inside dialogue card */
+[data-theme="light"] app-skills [class*="bg-[#080a0d]"] {
+  background-color: #F1F5F9 !important;
+  border-color: #E2E8F0 !important;
+  color: #0F172A !important;
+}
+
+/* Top Orchestrator Control Panel */
+[data-theme="light"] app-skills [class*="bg-[#101318]"] {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+}
+[data-theme="light"] app-skills [class*="border-[#262c36]"] {
+  border-color: #E2E8F0 !important;
+}
+[data-theme="light"] app-skills [class*="border-[#1e232d]"] {
+  border-color: #E2E8F0 !important;
+}
+[data-theme="light"] app-skills [class*="bg-[#161a22]"] {
+  background-color: #FFFFFF !important;
+  border-color: #CBD5E1 !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03) !important;
+}
+[data-theme="light"] app-skills [class*="border-[#2d3440]"] {
+  border-color: #CBD5E1 !important;
+}
+[data-theme="light"] app-skills [class*="text-[#BBB]"] {
+  color: #334155 !important;
+}
+[data-theme="light"] app-skills [class*="text-[#555]"] {
+  color: #CBD5E1 !important;
+}
+
+/* 8-Phase Automated Pipeline SVG Canvas Container */
+[data-theme="light"] app-skills [class*="bg-[#0b0e12]"] {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+}
+[data-theme="light"] app-skills [class*="border-[#222832]"] {
+  border-color: #E2E8F0 !important;
+}
+[data-theme="light"] app-skills [class*="border-[#181d26]"] {
+  border-color: #E2E8F0 !important;
+}
+
+/* SVG Pipeline Nodes & Cables in Light Mode */
+[data-theme="light"] app-skills svg line[stroke="#222834"],
+[data-theme="light"] app-skills svg path[stroke="#222834"] {
+  stroke: #CBD5E1 !important;
+}
+[data-theme="light"] app-skills .ai-stage-node rect {
+  fill: #FFFFFF !important;
+  stroke: #CBD5E1 !important;
+}
+[data-theme="light"] app-skills .ai-stage-node.active-node rect {
+  fill: #EFF6FF !important;
+  stroke: #0066FF !important;
+}
+[data-theme="light"] app-skills .ai-stage-node text[fill="#FFF"] {
+  fill: #0F172A !important;
+}
+
+/* Bottom Telemetry & Dialogue Console Container */
+[data-theme="light"] app-skills [class*="bg-[#11141a]"] {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+}
+[data-theme="light"] app-skills [class*="border-[#262c38]"] {
+  border-color: #E2E8F0 !important;
+}
+[data-theme="light"] app-skills [class*="border-[#202530]"] {
+  border-color: #E2E8F0 !important;
+}
+[data-theme="light"] app-skills button[class*="border-[#2d3442]"] {
+  background-color: #FFFFFF !important;
+  border-color: #CBD5E1 !important;
+  color: #64748B !important;
+}
+[data-theme="light"] app-skills button[class*="border-[#2d3442]"]:hover {
+  border-color: #0066FF !important;
+  color: #0F172A !important;
+}
+
+/* 6. Grand Unified Convergence Ecosystem (#convergence-ecosystem) */
+/* SVG Star & Neural Mesh Canvas Nodes */
+[data-theme="light"] app-skills #convergence-ecosystem .pillar-node rect[fill="#14181F"] {
+  fill: #FFFFFF !important;
+  stroke: #CBD5E1 !important;
+}
+[data-theme="light"] app-skills #convergence-ecosystem .pillar-node.active-pillar rect[fill="#14181F"] {
+  fill: #F0FDF4 !important;
+  stroke: #16A34A !important;
+}
+[data-theme="light"] app-skills #convergence-ecosystem .pillar-node text[fill="#FFFFFF"] {
+  fill: #0F172A !important;
+}
+[data-theme="light"] app-skills #convergence-ecosystem .pillar-node text[fill="#8E99A8"] {
+  fill: #475569 !important;
+}
+[data-theme="light"] app-skills #convergence-ecosystem .pillar-node text[fill="#667080"] {
+  fill: #64748B !important;
+}
+
+/* Central AI Core Button Node in Convergence SVG */
+[data-theme="light"] app-skills #convergence-ecosystem .pillar-node circle[fill="#14181F"] {
+  fill: #FFFFFF !important;
+  stroke: #0066FF !important;
+}
+[data-theme="light"] app-skills #convergence-ecosystem .pillar-node circle[fill="#1B222C"] {
+  fill: #EFF6FF !important;
+  stroke: rgba(0, 102, 255, 0.3) !important;
+}
+[data-theme="light"] app-skills #convergence-ecosystem .pillar-node text[fill="#FFF"] {
+  fill: #0F172A !important;
+}
+[data-theme="light"] app-skills #convergence-ecosystem .pillar-node text[fill="#888"] {
+  fill: #64748B !important;
+}
+[data-theme="light"] app-skills #convergence-ecosystem text[fill="#888"] {
+  fill: #64748B !important;
+}
+

@@ -29,8 +29,9 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   navItems: NavItem[] = [
     { id: 'topology', label: 'Topology' },
     { id: 'story', label: 'My Story' },
-    { id: 'skills', label: 'Skills Matrix' },
-    { id: 'roadmap', label: 'Roadmap & Telemetry' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'ai-automation', label: 'AI Automation' },
+    { id: 'roadmap', label: 'Roadmap' },
     { id: 'credentials', label: 'Credentials' },
     { id: 'experience', label: 'Experience' },
     { id: 'contact', label: 'Contact' },
