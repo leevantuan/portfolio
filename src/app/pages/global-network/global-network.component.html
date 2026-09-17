@@ -20,16 +20,21 @@
       </div>
     </div>
 
-    <!-- Quick Action / Spec Trigger -->
+    <!-- Quick Action / Spec Trigger: High Prominence & Glowing Neon Button -->
     <div class="flex items-center gap-3 self-end md:self-auto">
       <button 
         (click)="onViewSpecs()"
-        class="font-mono-tech text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-sm bg-[var(--accent)] text-[#0B0B0B] hover:brightness-105 transition-all cursor-pointer shadow-sm flex items-center gap-1.5"
+        class="btn-view-architecture font-mono-tech text-xs font-extrabold uppercase tracking-wider px-4 py-2 rounded-sm bg-[var(--accent)] text-[#0B0B0B] hover:brightness-110 hover:scale-105 active:scale-95 transition-all cursor-pointer flex items-center gap-2 border border-[var(--accent)]"
+        title="Open Interactive Infrastructure Architecture Diagram"
       >
-        <span>&gt; VIEW ARCHITECTURE</span>
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0B0B0B] opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-[#0B0B0B]"></span>
+        </span>
+        <span>&gt; VIEW MY ARCHITECTURE</span>
       </button>
-      <div class="font-mono-tech text-[11px] text-[var(--text-3)] border border-[var(--border)] px-2.5 py-1 rounded-sm bg-[var(--surface)]">
-        <span class="text-[var(--accent)]">●</span> 99.99% UPTIME
+      <div class="font-mono-tech text-[11px] text-[var(--text-3)] border border-[var(--border)] px-2.5 py-1.5 rounded-sm bg-[var(--surface)] hidden sm:flex items-center gap-1.5">
+        <span class="text-[var(--accent)] animate-pulse">●</span> 99.99% UPTIME
       </div>
     </div>
   </div>

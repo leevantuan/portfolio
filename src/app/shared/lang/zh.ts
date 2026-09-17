@@ -89,10 +89,11 @@ export const UIResourceZH = {
       },
       {
         level: '04',
-        title: 'IT 系统、DevOps 与硬件集成工程师 (Systems & Integration)',
-        badge: '当前阶段 · 系统与 DEVOPS',
+        title: 'IT 系统、DevOps 与数字化转型工程师 (Systems & Digital Transformation)',
+        badge: '当前阶段 · 系统与数字化转型',
         status: 'current',
         skills: [
+          '企业数字化转型 (Digital Transformation)、业务流程自动化与系统集成',
           '虚拟机集群 (VM Server)、Active Directory (OU/GPO) 与二层交换网络',
           '通过 C# .NET 调用 DLL / SDK 对接入禁 (EAC)、人脸识别与考勤终端设备',
           'Zabbix 基础设施监控、GLPI 资产管理运维与 Agent 服务治理',
@@ -101,7 +102,7 @@ export const UIResourceZH = {
           'ERP 与 MES 系统运维与研究 — 生产数据分析',
           'Proxmox/VMware 虚拟化、Veeam Backup 备份与 RustDesk/MeshCentral 远程运维'
         ],
-        desc: '当前实战核心聚焦于 IT 系统运维、DevOps 与网络工程：精通 VM 虚拟化集群、Active Directory OU 组织架构、二层网络；利用 C# .NET 调用硬件 DLL/SDK 连接门禁 (EAC) 与人脸考勤设备，处理数据库负载均衡、后台任务调度，并借助 Grafana 与 Claude AI 深度分析设备日志与自动化运维。',
+        desc: '当前实战核心聚焦于 IT 系统运维、DevOps、网络工程与企业数字化转型：推进业务与生产流程数字化；精通 VM 虚拟化集群、Active Directory OU 组织架构、二层网络；利用 C# .NET 调用硬件 DLL/SDK 连接门禁 (EAC) 与人脸考勤设备，处理数据库负载均衡、后台任务调度，并借助 Grafana 与 Claude AI 深度分析设备日志与自动化运维。',
       },
       {
         level: '05',

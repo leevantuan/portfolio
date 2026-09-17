@@ -3851,7 +3851,7 @@
 
       <nav class="sidebar-nav">
         <div class="nav-group-title">Giám sát & Quản trị</div>
-        <a class="nav-item active" data-screen="overview" onclick="switchScreen('overview')">
+        <a class="nav-item" data-screen="overview" onclick="switchScreen('overview')">
           <div class="nav-item-left">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/>
@@ -3860,17 +3860,7 @@
           </div>
         </a>
 
-        <a class="nav-item" data-screen="devices" onclick="switchScreen('devices')">
-          <div class="nav-item-left">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
-            </svg>
-            <span>Thiết bị Fleet</span>
-          </div>
-          <span class="nav-badge info">248</span>
-        </a>
-
-        <a class="nav-item" data-screen="network" onclick="switchScreen('network')">
+        <a class="nav-item active" data-screen="network" onclick="switchScreen('network')">
           <div class="nav-item-left">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/>
@@ -3886,6 +3876,16 @@
             </svg>
             <span>Hiệu năng & SLA</span>
           </div>
+        </a>
+
+        <a class="nav-item" data-screen="devices" onclick="switchScreen('devices')">
+          <div class="nav-item-left">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+            <span>Thiết bị Fleet</span>
+          </div>
+          <span class="nav-badge info">248</span>
         </a>
 
         <a class="nav-item" data-screen="alerts" onclick="switchScreen('alerts')">
@@ -4129,7 +4129,7 @@
         <!-- ==================================================================
              VIEW: OVERVIEW (Tổng quan)
              ================================================================== -->
-        <section id="view-overview" class="screen-view">
+        <section id="view-overview" class="screen-view" style="display:none;">
           <div class="page-head">
             <div class="page-title-wrap">
               <h1>Bảng điều khiển Tổng quan</h1>
@@ -4531,7 +4531,7 @@
         <!-- ==================================================================
              VIEW: NETWORK (Topology & Mạng)
              ================================================================== -->
-        <section id="view-network" class="screen-view" style="display:none;">
+        <section id="view-network" class="screen-view">
           <div class="page-head">
             <div class="page-title-wrap">
               <h1>Topology & Đường truyền Mạng</h1>
@@ -6563,9 +6563,7 @@ ${desc}
       { no: '05', color: 'g', title: 'Dùng làm căn cứ', sub: 'Luôn re-verify cho task mới', tag: 'REUSE', log: 'Dùng memory.md làm điểm khởi đầu cho task mới — vẫn re-verify code thật trước khi tin.' }
     ], { interval: 2200 });
 
-    // Trang này mở mặc định ở view "overview" — chỉ reveal Core Flow khi thực sự cần
-    // (không auto-reveal lúc load để không lệch với switchScreen('overview') mặc định).
-
+    // Mặc định mở view "network" (Topology & Mạng)
     function switchScreen(screenId) {
       // Nav active styling
       document.querySelectorAll('.nav-item').forEach(item => {
@@ -6869,6 +6867,13 @@ ${desc}
         const searchInput = document.getElementById('globalSearchInput');
         if (searchInput) searchInput.focus();
       }
+    });
+
+    // Auto focus network screen on load
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const initialScreen = urlParams.get('screen') || 'network';
+      switchScreen(initialScreen);
     });
   </script>
 </body>

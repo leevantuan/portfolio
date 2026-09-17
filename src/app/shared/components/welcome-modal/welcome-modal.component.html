@@ -1,0 +1,116 @@
+<div 
+  *ngIf="isOpen" 
+  class="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 bg-black/65 backdrop-blur-sm animate-fade-in"
+  (click)="onBackdropClick($event)"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="welcome-modal-title"
+>
+  <!-- Modal Dialog Card -->
+  <div class="relative w-full max-w-[620px] max-h-[92vh] flex flex-col rounded-lg border border-[var(--border)] bg-[var(--surface)] text-[var(--text-1)] shadow-2xl overflow-hidden animate-modal-pop">
+    
+    <!-- Subtle Blueprint Cara Grid Texture -->
+    <div class="absolute inset-0 welcome-cara-grid pointer-events-none"></div>
+
+    <!-- Soft Accent Glow Top-Right -->
+    <div class="absolute -top-20 -right-20 w-48 h-48 rounded-full pointer-events-none" style="background: radial-gradient(circle, var(--accent) 0%, transparent 70%); opacity: 0.12;"></div>
+
+    <!-- Card Content -->
+    <div class="relative z-10 p-4 sm:p-7 flex flex-col gap-3.5 sm:gap-4 overflow-y-auto max-h-[92vh]">
+      
+      <!-- Header Row with Badge & Close Button -->
+      <div class="flex items-center justify-between gap-4 pb-3 border-b border-[var(--border)]">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-[var(--accent)] animate-ping"></span>
+          <span class="font-mono-tech text-[11px] uppercase tracking-widest text-[var(--accent-text)] font-bold">
+            // WELCOME GUEST · SYSTEM INITIALIZED
+          </span>
+        </div>
+        
+        <!-- Close 'X' Button -->
+        <button 
+          (click)="closeModal()" 
+          class="w-8 h-8 rounded flex items-center justify-center text-[var(--text-3)] hover:text-[var(--text-1)] hover:bg-[var(--surface-2)] transition-colors cursor-pointer border border-transparent hover:border-[var(--border)]"
+          aria-label="Close Welcome Popup"
+          title="Close (Esc)"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Main Headline & Location Tag -->
+      <div>
+        <h2 id="welcome-modal-title" class="font-mono-tech text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-1)] mb-2 flex items-center gap-2">
+          <span>Welcome to My Portfolio!</span>
+          <span class="text-base">👋</span>
+        </h2>
+        <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-mono-tech text-[var(--accent-text)] bg-[var(--surface-2)] border border-[var(--border)]">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <span>Nhon Trach, Dong Nai, Vietnam</span>
+        </div>
+      </div>
+
+      <!-- Bio Paragraphs -->
+      <div class="text-xs sm:text-sm text-[var(--text-2)] leading-relaxed space-y-2">
+        <p>
+          I’m <strong class="text-[var(--text-1)] font-semibold">Le Van Tuan</strong>, an IT Engineer born in 2002. I graduated with a Bachelor's Degree in Information Technology in <strong class="text-[var(--text-1)] font-semibold">July 2025</strong> and bring <strong class="text-[var(--accent-text)] font-semibold">3 years of hands-on experience</strong> across IT infrastructure, enterprise networking, Linux/Windows server administration, and <strong class="text-[var(--accent-text)] font-semibold">Digital Transformation</strong> (Enterprise Automation &amp; System Integration).
+        </p>
+        <p class="text-[var(--text-3)] text-xs italic">
+          Beyond technical engineering, I enjoy sports, good food, great drinks, and quality times with friends. Always curious, always learning, always moving forward.
+        </p>
+      </div>
+
+      <!-- Recommended Viewing Modes (Desktop vs Mobile) -->
+      <div class="rounded-md border border-[var(--border)] bg-[var(--surface-2)]/70 p-3 sm:p-3.5 space-y-2">
+        <div class="flex items-center gap-2 font-mono-tech text-[11px] font-bold uppercase tracking-wider text-[var(--text-2)]">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-[var(--accent)]">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+          </svg>
+          <span>Recommended Experience</span>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+          <!-- Desktop Recommendation -->
+          <div class="p-2.5 rounded border border-[var(--border)] bg-[var(--surface)] flex items-start gap-2.5">
+            <span class="text-base select-none">💻</span>
+            <div>
+              <div class="font-mono-tech font-bold text-[var(--text-1)] text-[11px]">Desktop &amp; Laptop</div>
+              <div class="text-[var(--text-3)] text-[11px] mt-0.5 leading-normal">
+                Recommended in <span class="text-[var(--accent-text)] font-semibold">Dark Mode</span> for immersive 3D planetary topology &amp; cyber telemetry.
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile / Tablet Recommendation -->
+          <div class="p-2.5 rounded border border-[var(--border)] bg-[var(--surface)] flex items-start gap-2.5">
+            <span class="text-base select-none">📱</span>
+            <div>
+              <div class="font-mono-tech font-bold text-[var(--text-1)] text-[11px]">Tablet &amp; Mobile</div>
+              <div class="text-[var(--text-3)] text-[11px] mt-0.5 leading-normal">
+                Recommended in <span class="text-[var(--info,#3B82F6)] font-semibold">Light Mode</span> for high readability, clean contrast &amp; mobile ergonomics.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Action -->
+      <div class="pt-1 flex items-center justify-end">
+        <button 
+          (click)="closeModal()"
+          class="w-full sm:w-auto h-10 px-6 rounded font-mono-tech text-xs font-bold uppercase tracking-wider bg-[var(--accent)] text-[#0B0B0B] hover:brightness-110 active:scale-95 transition-all cursor-pointer flex items-center justify-center gap-2 shadow-md border border-[var(--accent)]"
+        >
+          <span>EXPLORE PORTFOLIO</span>
+          <span>→</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

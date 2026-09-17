@@ -89,10 +89,11 @@ export const UIResourceENG = {
       },
       {
         level: '04',
-        title: 'IT Systems, DevOps & Hardware Integration Engineer',
-        badge: 'CURRENT LEVEL · SYSTEM & DEVOPS',
+        title: 'IT Systems, DevOps & Digital Transformation Engineer',
+        badge: 'CURRENT LEVEL · SYSTEM & DIGITAL TRANSFORMATION',
         status: 'current',
         skills: [
+          'Enterprise Digital Transformation, Process Automation & System Integration',
           'VM Server Clusters, Active Directory (OU/GPO) & Layer 2 Switching',
           'EAC, Face ID & Biometrics Integration via C# .NET DLL / SDK',
           'Zabbix Infrastructure Monitoring, GLPI Asset Management & Agent Services',
@@ -101,7 +102,7 @@ export const UIResourceENG = {
           'ERP & MES Systems — Production Data Analysis & Process Research',
           'Proxmox/VMware Virtualization, Veeam Backup & RustDesk/MeshCentral Remote Ops'
         ],
-        desc: 'Current production focus centered on IT Systems, DevOps & Enterprise Networking: managing virtualized VM servers, Active Directory OUs, Layer 2 networks, Zabbix/GLPI monitoring; engineering C# .NET middleware to interface with EAC and Face ID hardware SDKs/DLLs, managing database load balancing, background worker jobs, and telemetry log analysis via Grafana & Claude AI.',
+        desc: 'Current production focus centered on IT Systems, DevOps, Enterprise Networking & Digital Transformation: accelerating operational digitization; managing virtualized VM servers, Active Directory OUs, Layer 2 networks, Zabbix/GLPI monitoring; engineering C# .NET middleware to interface with EAC and Face ID hardware SDKs/DLLs, managing database load balancing, background worker jobs, and telemetry log analysis via Grafana & Claude AI.',
       },
       {
         level: '05',

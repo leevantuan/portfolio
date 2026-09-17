@@ -89,10 +89,11 @@ export const UIResourceVN = {
       },
       {
         level: '04',
-        title: 'IT Systems, DevOps & Hardware Integration Engineer',
-        badge: 'HIỆN TẠI · SYSTEM & DEVOPS',
+        title: 'IT Systems, DevOps & Chuyển Đổi Số (Digital Transformation)',
+        badge: 'HIỆN TẠI · SYSTEM & CHUYỂN ĐỔI SỐ',
         status: 'current',
         skills: [
+          'Chuyển đổi số doanh nghiệp, tự động hóa quy trình & tích hợp hệ thống (Digital Transformation)',
           'Quản trị VM Server, Active Directory (OU/GPO) & Xử lý mạng Layer 2',
           'Tích hợp thiết bị EAC, Face ID, Vân tay qua DLL & SDK bằng C# .NET',
           'Hạ tầng giám sát Zabbix, quản lý tài sản GLPI & Agent Services',
@@ -101,7 +102,7 @@ export const UIResourceVN = {
           'Vận Hành & Nghiên Cứu Hệ Thống ERP/MES — Phân Tích Dữ Liệu Sản Xuất',
           'Ảo Hóa Proxmox/VMware, Sao Lưu Veeam Backup & Remote Ops RustDesk/MeshCentral'
         ],
-        desc: 'Trọng tâm thực chiến hiện tại chuyên sâu về IT System, DevOps & Mạng: làm chủ cụm VM Server, Active Directory OU, mạng Layer 2, giám sát Zabbix/GLPI; sử dụng C# .NET làm cầu nối tích hợp DLL/SDK thiết bị EAC & Face ID chấm công, xử lý cân bằng tải dữ liệu, lập trình Background Jobs và phân tích logs viễn trắc với Grafana & Claude AI.',
+        desc: 'Trọng tâm thực chiến hiện tại chuyên sâu về IT System, DevOps, Mạng & Chuyển đổi số doanh nghiệp: thúc đẩy số hóa quy trình vận hành; làm chủ cụm VM Server, Active Directory OU, mạng Layer 2, giám sát Zabbix/GLPI; sử dụng C# .NET làm cầu nối tích hợp DLL/SDK thiết bị EAC & Face ID chấm công, xử lý cân bằng tải dữ liệu, lập trình Background Jobs và phân tích logs viễn trắc với Grafana & Claude AI.',
       },
       {
         level: '05',

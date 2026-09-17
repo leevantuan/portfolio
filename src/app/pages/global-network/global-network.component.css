@@ -73,3 +73,23 @@
     animation: none !important;
   }
 }
+
+/* Prominent Glowing Neon Architecture Button */
+@keyframes archBtnGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px var(--accent), 0 0 22px var(--accent-glow), inset 0 0 8px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 22px var(--accent), 0 0 40px var(--accent), inset 0 0 12px rgba(255, 255, 255, 0.5);
+  }
+}
+
+.btn-view-architecture {
+  animation: archBtnGlow 2.2s ease-in-out infinite;
+  will-change: box-shadow, transform;
+}
+
+.btn-view-architecture:hover {
+  box-shadow: 0 0 28px var(--accent), 0 0 50px var(--accent) !important;
+}
+
