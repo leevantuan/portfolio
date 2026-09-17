@@ -11,9 +11,9 @@
   background-size: 28px 28px;
 }
 
-/* Lightweight mobile laser pulse & glow */
+/* Lightweight mobile laser pulse & glow - Optimized without CPU drop-shadow recalculations */
 .mobile-laser-line {
-  filter: drop-shadow(0 0 4px var(--accent));
+  will-change: stroke-dashoffset;
 }
 
 @keyframes laserFlowDash {
@@ -26,20 +26,22 @@
 }
 
 .mobile-laser-pulse {
-  animation: laserFlowDash 1.5s linear infinite;
+  animation: laserFlowDash 1.8s linear infinite;
+  will-change: stroke-dashoffset;
 }
 
 @keyframes shieldPulse {
   0%, 100% {
-    filter: drop-shadow(0 0 4px var(--accent));
+    stroke-opacity: 0.5;
   }
   50% {
-    filter: drop-shadow(0 0 12px var(--accent));
+    stroke-opacity: 1;
   }
 }
 
 .mobile-shield-pulse {
   animation: shieldPulse 3s ease-in-out infinite;
+  will-change: stroke-opacity;
 }
 
 /* Wavy cyber grid mesh at the bottom */
@@ -47,4 +49,11 @@
   opacity: 0.25;
   pointer-events: none;
   background: radial-gradient(ellipse at bottom, rgba(126, 217, 87, 0.2) 0%, transparent 70%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-laser-pulse,
+  .mobile-shield-pulse {
+    animation: none !important;
+  }
 }

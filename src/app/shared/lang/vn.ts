@@ -21,7 +21,7 @@ export const UIResourceVN = {
   // Hero / Greeting Component
   hero_kicker: 'FULL-SPECTRUM ENGINEER · 2Y SYSTEM/NETWORK + 1Y BACKEND DEV',
   header_title: 'Xin chào, tôi là',
-  header_name: 'Lê Văn Tuấn',
+  header_name: 'Le Van Tuan',
   header_position: 'Backend Developer & IT System / DevOps Engineer',
   header_description: 'Tôi tốt nghiệp chuyên ngành Kỹ thuật Công nghệ Thông tin, sở hữu 2 năm kinh nghiệm quản trị hạ tầng mạng & hệ thống máy chủ và 1 năm làm Backend Developer chuyên sâu với ASP.NET Core 8 & PostgreSQL. Tôi vận hành xuyên suốt chuỗi giá trị CNTT: từ phần cứng, mạng Cisco/Linux, tự động hóa Cloud/DevOps (Kubernetes, Jenkins, Azure) đến kiến trúc phần mềm phân tán (Microservices, Clean Architecture, CQRS) và ứng dụng Claude AI vào phát triển.',
 

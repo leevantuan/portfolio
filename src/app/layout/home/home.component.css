@@ -1,0 +1,11 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+/* Off-screen performance optimization: isolate and skip rendering #topology when scrolled past */
+#topology {
+  contain: paint layout;
+  content-visibility: auto;
+  contain-intrinsic-size: 100vh;
+}

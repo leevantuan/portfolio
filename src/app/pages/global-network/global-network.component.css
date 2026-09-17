@@ -7,7 +7,7 @@
   opacity: 0.75;
 }
 
-/* Traveling Data Packet Animations */
+/* Traveling Data Packet Animations - Optimized without per-frame drop-shadow rasterization */
 @keyframes flowDashForward {
   from {
     stroke-dashoffset: 40;
@@ -19,21 +19,22 @@
 
 .cable-flow-1 {
   animation: flowDashForward 1.3s linear infinite;
-  filter: drop-shadow(0 0 4px var(--accent));
+  will-change: stroke-dashoffset;
 }
 
 .cable-flow-2 {
   animation: flowDashForward 1.7s linear infinite;
-  filter: drop-shadow(0 0 4px var(--accent));
+  will-change: stroke-dashoffset;
 }
 
 .cable-flow-3 {
   animation: flowDashForward 2.1s linear infinite;
-  filter: drop-shadow(0 0 4px var(--accent));
+  will-change: stroke-dashoffset;
 }
 
 /* ======================================================== */
 /* TRUE 3D ROTATING CONTINENTS ACROSS SPHERICAL AXIS        */
+/* GPU Layer Promoted via translateZ(0)                     */
 /* ======================================================== */
 @keyframes continentsScrollOrbit {
   0% {
@@ -46,17 +47,29 @@
 
 .continents-scroll-track {
   animation: continentsScrollOrbit 28s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
-/* Station Hover Effects */
+/* Station Hover Effects - Hardware accelerated */
 .station-hover {
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
 }
 
 .station-hover:hover {
-  filter: drop-shadow(0 0 12px rgba(126, 217, 87, 0.5));
+  filter: drop-shadow(0 0 6px var(--accent));
 }
 
 .station-hover:hover polygon {
   stroke: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cable-flow-1,
+  .cable-flow-2,
+  .cable-flow-3,
+  .continents-scroll-track {
+    animation: none !important;
+  }
 }

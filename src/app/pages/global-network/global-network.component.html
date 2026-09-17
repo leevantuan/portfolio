@@ -3,8 +3,8 @@
   <!-- Edge-to-Edge Full-Bleed Blueprint Grid Background -->
   <div class="absolute inset-0 blueprint-grid-full pointer-events-none"></div>
 
-  <!-- Ambient Planetary Glow Behind Globe -->
-  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-[var(--accent)]/8 blur-[150px] pointer-events-none"></div>
+  <!-- Ambient Planetary Glow Behind Globe (Optimized with pure radial gradient, 0 blur GPU cost) -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none" style="background: radial-gradient(circle, var(--accent) 0%, transparent 65%); opacity: 0.08;"></div>
 
   <!-- Top Hero Bar: Sleek Technical Telemetry Strip & Architecture Trigger (High Z-Index) -->
   <h1 class="sr-only">Le Van Tuan — IT System &amp; Network Engineer Portfolio</h1>
@@ -53,10 +53,13 @@
           <stop offset="100%" stop-color="var(--accent)" stop-opacity="0.6" />
         </radialGradient>
 
-        <!-- Subtle Glow Filter -->
-        <filter id="cyanGlow" x="-30%" y="-30%" width="160%" height="160%">
-          <feGaussianBlur stdDeviation="3.5" result="blur" />
-          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        <!-- Optimized Lightweight Glow Filter for Lower-End Devices -->
+        <filter id="cyanGlow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="1.6" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
         </filter>
 
         <!-- Clip Path for Globe Continents & Grid -->

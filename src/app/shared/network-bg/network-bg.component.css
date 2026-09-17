@@ -15,6 +15,8 @@
   overflow: hidden;
   opacity: 0.20;
   transition: opacity 0.3s ease;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 :host-context([data-theme="light"]) .network-bg-root {
@@ -32,7 +34,7 @@
   opacity: 0.35;
 }
 
-/* Center ambient glow */
+/* Center ambient glow - smooth radial gradient without heavy blur filter */
 .network-ambient-glow {
   position: absolute;
   top: 50%;
@@ -41,9 +43,9 @@
   width: 900px;
   height: 600px;
   border-radius: 9999px;
-  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--accent) 0%, transparent 65%);
   opacity: 0.08;
-  filter: blur(120px);
+  pointer-events: none;
 }
 
 /* SVG World Map scaling */

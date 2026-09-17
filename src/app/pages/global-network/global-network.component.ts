@@ -139,7 +139,7 @@ export class GlobalNetworkComponent implements OnDestroy {
         clearInterval(this.typingTimer);
         this.typingTimer = null;
       }
-    }, 18);
+    }, 32);
   }
 
   private clearTypewriter(): void {
