@@ -9,6 +9,7 @@ import { MobileExperienceComponent } from './components/mobile-experience/mobile
 import { MobileContactComponent } from './components/mobile-contact/mobile-contact.component';
 import { MobileFooterComponent } from './components/mobile-footer/mobile-footer.component';
 import { DiagramViewerComponent } from '../pages/diagram-viewer/diagram-viewer.component';
+import { MyStoryComponent } from '../pages/my-story/my-story.component';
 import { SessionService } from '../shared/session.service';
 import { UIResourceENG } from '../shared/lang/eng';
 import { UIResourceVN } from '../shared/lang/vn';
@@ -21,6 +22,7 @@ import { UIResourceZH } from '../shared/lang/zh';
     CommonModule,
     MobileHeaderComponent,
     MobileHeroComponent,
+    MyStoryComponent,
     MobileSkillsComponent,
     MobileRoadmapComponent,
     MobileCredentialsComponent,

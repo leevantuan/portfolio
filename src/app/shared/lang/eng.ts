@@ -9,6 +9,7 @@ export const UIResourceENG = {
 
   // Navigation
   nav: {
+    story: 'My Story',
     roadmap: 'Roadmap',
     skills: 'Skills',
     projects: 'Projects',
@@ -23,6 +24,27 @@ export const UIResourceENG = {
   header_name: 'Le Van Tuan',
   header_position: 'Backend Developer & IT System / DevOps Engineer',
   header_description: 'Information Technology graduate with 2 years of experience managing enterprise network & server infrastructure, and 1 year as a Backend Developer specializing in ASP.NET Core 8 & PostgreSQL. I operate across the full IT value chain: from hardware and Cisco/Linux networking, cloud/DevOps automation (Kubernetes, Jenkins, Azure) to distributed software architecture (Microservices, Clean Architecture, CQRS) and accelerating engineering workflows with Claude AI.',
+
+  // My Story Section
+  my_story: {
+    kicker: 'JOURNEY & EVOLUTION',
+    title: 'My Story',
+    subtitle: 'Something about me you should know...',
+    p1: 'I had an interest in designing and coding when I was in high school. I started with Frontend Web Development - building static websites, UI components, and exploring modern styling techniques.',
+    p1_tag: 'Frontend Web Development',
+    p2: 'I used to think that "Front" was all there was in coding. But then I realized that Frontend is only the tip of the iceberg, and both Frontend and Backend are vast "Oceans" with endless depths of knowledge. So, I set out on a mission to conquer both shores.',
+    p2_front: 'Front',
+    p2_ocean: 'Oceans',
+    p3: 'In 2024, I reached a transformative milestone: diving deep into Cloud Computing (AWS) through the First Cloud Journey program, while actively exploring Blockchain technology, distributed architectures, and scalable cloud-native infrastructure.',
+    p3_fcj: 'First Cloud Journey',
+    p3_blockchain: 'Blockchain',
+    p4: 'I see coding and engineering as an adventurous, lifelong journey. I love writing, documenting system insights, and sharing technical experiences with fellow developers along the way.',
+    blueprint_badge: 'SYS-CHRONICLE // ORIGIN & TRAJECTORY',
+    journey_step_1: 'HIGH SCHOOL: HTML/CSS/JS',
+    journey_step_2: 'FULL-STACK & SYSTEMS EXPLORATION',
+    journey_step_3: '2024: AWS CLOUD & BLOCKCHAIN',
+    journey_step_4: 'CONTINUOUS EVOLUTION & SHARING',
+  },
 
   // Career Roadmap
   roadmap: {

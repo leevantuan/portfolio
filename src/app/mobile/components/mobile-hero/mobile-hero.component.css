@@ -4,9 +4,47 @@
 }
 
 .mobile-hero-container {
-  /* Subtle CSS Blueprint Grid - Zero SVG, Zero Compositing Cost */
+  /* Subtle CSS Blueprint Grid - Zero Compositing Cost */
   background-image: 
     linear-gradient(to right, var(--border-soft, rgba(128,128,128,0.08)) 1px, transparent 1px),
     linear-gradient(to bottom, var(--border-soft, rgba(128,128,128,0.08)) 1px, transparent 1px);
   background-size: 28px 28px;
+}
+
+/* Lightweight mobile laser pulse & glow */
+.mobile-laser-line {
+  filter: drop-shadow(0 0 4px var(--accent));
+}
+
+@keyframes laserFlowDash {
+  from {
+    stroke-dashoffset: 20;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.mobile-laser-pulse {
+  animation: laserFlowDash 1.5s linear infinite;
+}
+
+@keyframes shieldPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 4px var(--accent));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px var(--accent));
+  }
+}
+
+.mobile-shield-pulse {
+  animation: shieldPulse 3s ease-in-out infinite;
+}
+
+/* Wavy cyber grid mesh at the bottom */
+.cyber-wave-mesh {
+  opacity: 0.25;
+  pointer-events: none;
+  background: radial-gradient(ellipse at bottom, rgba(126, 217, 87, 0.2) 0%, transparent 70%);
 }

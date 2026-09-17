@@ -1,68 +1,384 @@
-<div class="mobile-hero-container w-full px-4 py-8 border-b border-[var(--border)] bg-[var(--bg)] flex flex-col justify-center">
-  <!-- Status Tag with Single Subtle Radar Pulse Animation -->
-  <div class="mb-4">
-    <span class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[var(--accent)]/10 border border-[var(--accent)]/30 text-[var(--accent)] text-[11px] font-mono-tech font-bold tracking-wider">
-      <!-- Light subtle pulse beacon (ONLY animation on mobile) -->
-      <span class="relative flex h-2 w-2">
-        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-2 w-2 bg-[var(--accent)]"></span>
-      </span>
-      <span>// ONLINE · IT SYSTEM &amp; NETWORK ARCHITECTURE</span>
-    </span>
+<div class="mobile-hero-container w-full min-h-[calc(100dvh-49px)] flex flex-col justify-between items-center relative overflow-hidden px-3 pt-1 pb-4 select-none bg-[var(--bg)] border-b border-[var(--border)]">
+  
+  <!-- ======================================================== -->
+  <!-- TOP SVG STAGE: LARGE PORTRAIT ISOMETRIC NETWORK TOPOLOGY -->
+  <!-- ======================================================== -->
+  <div class="relative w-full flex-1 min-h-0 flex items-center justify-center p-0 z-10 overflow-hidden">
+    <svg class="w-full h-full max-h-[50vh] sm:max-h-[54vh]" viewBox="0 0 420 480" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Dynamic Globe Sphere Lighting (Dark Console vs Light Cyber Blue) -->
+        <radialGradient id="mGlobeSpherical" cx="35%" cy="30%" r="68%" fx="30%" fy="25%">
+          <stop offset="0%" stop-color="var(--iso-globe-stop1)" stop-opacity="0.9" />
+          <stop offset="35%" stop-color="var(--iso-globe-stop2)" stop-opacity="0.95" />
+          <stop offset="70%" stop-color="var(--iso-globe-stop3)" stop-opacity="1" />
+          <stop offset="100%" stop-color="var(--iso-globe-stop4)" stop-opacity="1" />
+        </radialGradient>
+
+        <!-- Atmosphere Edge Glow -->
+        <radialGradient id="mGlobeAtmo" cx="50%" cy="50%" r="50%">
+          <stop offset="85%" stop-color="var(--accent)" stop-opacity="0" />
+          <stop offset="97%" stop-color="var(--accent)" stop-opacity="0.35" />
+          <stop offset="100%" stop-color="var(--accent)" stop-opacity="0.8" />
+        </radialGradient>
+
+        <!-- Globe Sphere Clip -->
+        <clipPath id="mGlobeClip">
+          <circle cx="210" cy="110" r="54" />
+        </clipPath>
+      </defs>
+
+      <!-- Floor Wireframe Axis Lines -->
+      <g class="opacity-20" stroke="var(--border)" stroke-width="0.8">
+        <line x1="40" y1="240" x2="210" y2="440" stroke-dasharray="3 6" />
+        <line x1="210" y1="440" x2="380" y2="240" stroke-dasharray="3 6" />
+        <line x1="80" y1="120" x2="210" y2="260" stroke-dasharray="3 6" />
+        <line x1="210" y1="260" x2="340" y2="120" stroke-dasharray="3 6" />
+      </g>
+
+      <!-- ======================================================== -->
+      <!-- LASER DATA CABLES & TRAVELING PACKET PULSES              -->
+      <!-- ======================================================== -->
+
+      <!-- Cable 0: Central Firewall (210, 216) -> Globe (210, 164) -->
+      <path d="M 210 216 L 210 164" stroke="var(--border)" stroke-width="1.6" />
+      <path d="M 210 216 L 210 164" stroke="var(--accent)" stroke-width="2.2" class="mobile-laser-line mobile-laser-pulse" stroke-dasharray="5 5" />
+      <circle r="2.8" fill="var(--accent)" class="mobile-laser-line">
+        <animateMotion dur="1.8s" repeatCount="indefinite" path="M 210 216 L 210 164" />
+      </circle>
+
+      <!-- Cable 1: Central Firewall (185, 226) -> SERVERS (120, 212) -->
+      <path d="M 185 226 L 120 212" stroke="var(--border)" stroke-width="1.6" />
+      <path d="M 185 226 L 120 212" stroke="var(--accent)" stroke-width="2.2" class="mobile-laser-line mobile-laser-pulse" stroke-dasharray="5 5" />
+      <circle r="2.8" fill="var(--accent)" class="mobile-laser-line">
+        <animateMotion dur="2.1s" repeatCount="indefinite" path="M 185 226 L 120 212" />
+      </circle>
+
+      <!-- Cable 2: Central Firewall (235, 226) -> CLOUD (300, 212) -->
+      <path d="M 235 226 L 300 212" stroke="var(--border)" stroke-width="1.6" />
+      <path d="M 235 226 L 300 212" stroke="var(--accent)" stroke-width="2.2" class="mobile-laser-line mobile-laser-pulse" stroke-dasharray="5 5" />
+      <circle r="2.8" fill="var(--accent)" class="mobile-laser-line">
+        <animateMotion dur="2.3s" repeatCount="indefinite" path="M 235 226 L 300 212" />
+      </circle>
+
+      <!-- Cable 3: Central Firewall (188, 245) -> CLIENTS (110, 325) -->
+      <path d="M 188 245 L 110 325" stroke="var(--border)" stroke-width="1.6" />
+      <path d="M 188 245 L 110 325" stroke="var(--accent)" stroke-width="2.2" class="mobile-laser-line mobile-laser-pulse" stroke-dasharray="5 5" />
+      <circle r="2.8" fill="var(--accent)" class="mobile-laser-line">
+        <animateMotion dur="2.5s" repeatCount="indefinite" path="M 188 245 L 110 325" />
+      </circle>
+
+      <!-- Cable 4: Central Firewall (232, 245) -> NETWORK (310, 325) -->
+      <path d="M 232 245 L 310 325" stroke="var(--border)" stroke-width="1.6" />
+      <path d="M 232 245 L 310 325" stroke="var(--accent)" stroke-width="2.2" class="mobile-laser-line mobile-laser-pulse" stroke-dasharray="5 5" />
+      <circle r="2.8" fill="var(--accent)" class="mobile-laser-line">
+        <animateMotion dur="2.4s" repeatCount="indefinite" path="M 232 245 L 310 325" />
+      </circle>
+
+      <!-- Cable 5: Central Firewall (210, 256) -> STORAGE (210, 355) -->
+      <path d="M 210 256 L 210 355" stroke="var(--border)" stroke-width="1.6" />
+      <path d="M 210 256 L 210 355" stroke="var(--accent)" stroke-width="2.2" class="mobile-laser-line mobile-laser-pulse" stroke-dasharray="5 5" />
+      <circle r="2.8" fill="var(--accent)" class="mobile-laser-line">
+        <animateMotion dur="2.0s" repeatCount="indefinite" path="M 210 256 L 210 355" />
+      </circle>
+
+      <!-- Terminal Connection Dots -->
+      <circle cx="210" cy="164" r="3" fill="var(--accent)" />
+      <circle cx="120" cy="212" r="3" fill="var(--accent)" />
+      <circle cx="300" cy="212" r="3" fill="var(--accent)" />
+      <circle cx="110" cy="325" r="3" fill="var(--accent)" />
+      <circle cx="310" cy="325" r="3" fill="var(--accent)" />
+      <circle cx="210" cy="355" r="3" fill="var(--accent)" />
+
+      <!-- ======================================================== -->
+      <!-- 3D PLANETARY CYBER GLOBE (TOP CENTER)                    -->
+      <!-- ======================================================== -->
+      <g id="m-globe-system">
+        <!-- Orbital Ring 1 (-26 deg) -->
+        <g transform="rotate(-26 210 110)">
+          <ellipse cx="210" cy="110" rx="96" ry="32" stroke="var(--accent)" stroke-width="1.3" stroke-dasharray="5 4" fill="none" opacity="0.85" />
+          <circle r="2.8" fill="var(--accent)" class="mobile-laser-line">
+            <animateMotion dur="7s" repeatCount="indefinite" path="M 114 110 a 96 32 0 1 0 192 0 a 96 32 0 1 0 -192 0" />
+          </circle>
+        </g>
+
+        <!-- Orbital Ring 2 (+34 deg) -->
+        <g transform="rotate(34 210 110)">
+          <ellipse cx="210" cy="110" rx="90" ry="28" stroke="var(--accent)" stroke-width="1.3" stroke-dasharray="6 4" fill="none" opacity="0.8" />
+          <circle r="2.5" fill="var(--accent)" class="mobile-laser-line">
+            <animateMotion dur="8.5s" repeatCount="indefinite" path="M 120 110 a 90 28 0 1 1 180 0 a 90 28 0 1 1 -180 0" />
+          </circle>
+        </g>
+
+        <!-- Spherical Base Body -->
+        <circle cx="210" cy="110" r="54" fill="url(#mGlobeSpherical)" stroke="var(--border)" stroke-width="1.5" />
+
+        <!-- Clipped Surface (Cyber Continents & Latitude Curves) -->
+        <g clip-path="url(#mGlobeClip)">
+          <!-- Dot Matrix Continents Representation -->
+          <g fill="var(--accent)" fill-opacity="0.9">
+            <!-- Asia & Eurasia Dots -->
+            <circle cx="185" cy="85" r="1.3" /><circle cx="192" cy="83" r="1.3" /><circle cx="200" cy="83" r="1.3" /><circle cx="208" cy="85" r="1.3" /><circle cx="216" cy="85" r="1.3" /><circle cx="224" cy="87" r="1.3" />
+            <circle cx="180" cy="93" r="1.3" /><circle cx="188" cy="91" r="1.3" /><circle cx="196" cy="91" r="1.3" /><circle cx="204" cy="93" r="1.3" /><circle cx="212" cy="93" r="1.3" /><circle cx="220" cy="95" r="1.3" /><circle cx="228" cy="97" r="1.3" />
+            <circle cx="185" cy="101" r="1.3" /><circle cx="193" cy="99" r="1.3" /><circle cx="201" cy="99" r="1.3" /><circle cx="209" cy="101" r="1.3" /><circle cx="217" cy="101" r="1.3" /><circle cx="225" cy="103" r="1.3" />
+            <circle cx="190" cy="109" r="1.3" /><circle cx="198" cy="107" r="1.3" /><circle cx="206" cy="107" r="1.3" /><circle cx="214" cy="109" r="1.3" /><circle cx="222" cy="111" r="1.3" />
+            <!-- Vietnam Beacon -->
+            <circle cx="210" cy="115" r="2.2" fill="var(--accent)" />
+            <circle cx="210" cy="115" r="5.5" fill="var(--accent)" opacity="0.4" class="animate-ping" />
+            <!-- Southeast Asia & Australia Dots -->
+            <circle cx="202" cy="122" r="1.3" /><circle cx="210" cy="124" r="1.3" /><circle cx="218" cy="122" r="1.3" /><circle cx="226" cy="124" r="1.3" />
+            <circle cx="212" cy="133" r="1.3" /><circle cx="220" cy="131" r="1.3" /><circle cx="228" cy="131" r="1.3" /><circle cx="236" cy="133" r="1.3" />
+            <circle cx="216" cy="141" r="1.3" /><circle cx="224" cy="139" r="1.3" /><circle cx="232" cy="141" r="1.3" />
+            <!-- Americas (East flank) -->
+            <circle cx="242" cy="90" r="1.3" /><circle cx="248" cy="92" r="1.3" /><circle cx="254" cy="95" r="1.3" />
+            <circle cx="240" cy="102" r="1.3" /><circle cx="246" cy="104" r="1.3" /><circle cx="252" cy="108" r="1.3" />
+          </g>
+
+          <!-- Latitude Curves -->
+          <ellipse cx="210" cy="90" rx="48" ry="12" stroke="var(--border)" stroke-width="0.8" stroke-dasharray="2 3" fill="none" opacity="0.5" />
+          <ellipse cx="210" cy="110" rx="54" ry="15" stroke="var(--accent)" stroke-width="1" stroke-dasharray="3 3" fill="none" opacity="0.75" />
+          <ellipse cx="210" cy="130" rx="48" ry="12" stroke="var(--border)" stroke-width="0.8" stroke-dasharray="2 3" fill="none" opacity="0.5" />
+          <line x1="210" y1="56" x2="210" y2="164" stroke="var(--accent)" stroke-width="1" opacity="0.6" />
+
+          <!-- Atmospheric Rim Light -->
+          <circle cx="210" cy="110" r="54" fill="url(#mGlobeAtmo)" />
+        </g>
+
+        <!-- Outer Rim Glow -->
+        <circle cx="210" cy="110" r="54" stroke="var(--accent)" stroke-width="1.8" fill="none" opacity="0.7" class="mobile-laser-line" />
+      </g>
+
+      <!-- ======================================================== -->
+      <!-- CENTRAL FIREWALL BLOCK & SECURITY SHIELD EMBLEM          -->
+      <!-- ======================================================== -->
+      <g id="m-firewall-center" class="mobile-shield-pulse">
+        <!-- 3D Isometric Wall / Brick Structure -->
+        <!-- Top Surface -->
+        <polygon points="180,222 210,208 240,222 210,236" fill="var(--iso-brick-top)" stroke="var(--border)" stroke-width="1" />
+        <!-- Left Wall -->
+        <polygon points="180,222 210,236 210,254 180,240" fill="var(--iso-brick-left)" stroke="var(--border)" stroke-width="1" />
+        <!-- Right Wall -->
+        <polygon points="210,236 240,222 240,240 210,254" fill="var(--iso-brick-right)" stroke="var(--border)" stroke-width="1" />
+        <!-- Brick Mortar Lines -->
+        <line x1="180" y1="231" x2="210" y2="245" stroke="var(--border)" stroke-width="0.8" opacity="0.6" />
+        <line x1="210" y1="245" x2="240" y2="231" stroke="var(--border)" stroke-width="0.8" opacity="0.6" />
+        <line x1="195" y1="229" x2="195" y2="238" stroke="var(--border)" stroke-width="0.8" opacity="0.6" />
+        <line x1="225" y1="238" x2="225" y2="229" stroke="var(--border)" stroke-width="0.8" opacity="0.6" />
+
+        <!-- Security Shield Emblem Floating in Front -->
+        <g transform="translate(210, 236)">
+          <!-- Outer Shield Base -->
+          <path d="M 0 -18 L 14 -11 L 14 5 C 14 16 0 24 0 24 C 0 24 -14 16 -14 5 L -14 -11 Z" fill="var(--iso-shield-fill)" stroke="var(--accent)" stroke-width="2" class="mobile-laser-line" />
+          <!-- Inner Glowing Shield Ridge -->
+          <path d="M 0 -13 L 9 -8 L 9 4 C 9 12 0 18 0 18 C 0 18 -9 12 -9 4 L -9 -8 Z" fill="none" stroke="var(--accent)" stroke-width="1.3" opacity="0.9" />
+          <!-- Center Core Pulse -->
+          <circle cx="0" cy="4" r="2.2" fill="var(--accent)" />
+        </g>
+      </g>
+
+      <!-- ======================================================== -->
+      <!-- 5 ISOMETRIC PERIPHERAL STATIONS                          -->
+      <!-- ======================================================== -->
+
+      <!-- 1. SERVERS (Top Left) -->
+      <g id="m-st-servers" class="cursor-pointer" (click)="selectNode('servers')">
+        <!-- Text Label & Underline -->
+        <text x="85" y="145" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10.5" font-weight="extrabold" fill="var(--iso-station-label)" letter-spacing="1">SERVERS</text>
+        <line x1="62" y1="152" x2="108" y2="152" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" class="mobile-laser-line" />
+
+        <!-- Isometric Pedestal Base -->
+        <polygon points="50,215 85,197 120,215 85,233" fill="var(--iso-pedestal-top)" stroke="var(--iso-pedestal-border)" stroke-width="1.1" />
+        <polygon points="50,215 85,233 85,241 50,223" fill="var(--iso-pedestal-side)" stroke="var(--iso-pedestal-border)" stroke-width="1.1" />
+        <polygon points="85,233 120,215 120,223 85,241" fill="var(--iso-pedestal-edge)" stroke="var(--iso-pedestal-border)" stroke-width="1.1" />
+
+        <!-- Server Rack Tower Chassis -->
+        <g transform="translate(68, 168)">
+          <!-- Top Face -->
+          <polygon points="0,15 17,6 34,15 17,24" fill="#334155" stroke="var(--border)" stroke-width="0.9" />
+          <!-- Left Face -->
+          <polygon points="0,15 17,24 17,58 0,49" fill="#1e293b" stroke="var(--border)" stroke-width="0.9" />
+          <!-- Right Face -->
+          <polygon points="17,24 34,15 34,49 17,58" fill="#0f172a" stroke="var(--border)" stroke-width="0.9" />
+          <!-- Horizontal Drive Blades / LEDs -->
+          <line x1="3" y1="28" x2="14" y2="33" stroke="var(--accent)" stroke-width="1.4" opacity="0.9" />
+          <line x1="3" y1="35" x2="14" y2="40" stroke="var(--accent)" stroke-width="1.4" opacity="0.9" />
+          <line x1="3" y1="42" x2="14" y2="47" stroke="var(--accent)" stroke-width="1.4" opacity="0.9" />
+          <line x1="3" y1="49" x2="14" y2="54" stroke="var(--accent)" stroke-width="1.4" opacity="0.9" />
+          <!-- Status LEDs -->
+          <circle cx="21" cy="30" r="1.2" fill="var(--accent)" />
+          <circle cx="27" cy="27" r="1.2" fill="var(--accent)" />
+          <circle cx="21" cy="37" r="1.2" fill="var(--accent)" />
+          <circle cx="27" cy="34" r="1.2" fill="var(--accent)" />
+          <circle cx="21" cy="44" r="1.2" fill="var(--accent)" />
+          <circle cx="27" cy="41" r="1.2" fill="var(--accent)" />
+          <circle cx="21" cy="51" r="1.2" fill="var(--accent)" />
+          <circle cx="27" cy="48" r="1.2" fill="var(--accent)" />
+        </g>
+      </g>
+
+      <!-- 2. CLOUD (Top Right) -->
+      <g id="m-st-cloud" class="cursor-pointer" (click)="selectNode('cloud')">
+        <!-- Text Label & Underline -->
+        <text x="335" y="145" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10.5" font-weight="extrabold" fill="var(--iso-station-label)" letter-spacing="1">CLOUD</text>
+        <line x1="312" y1="152" x2="358" y2="152" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" class="mobile-laser-line" />
+
+        <!-- Isometric Pedestal Base -->
+        <polygon points="300,215 335,197 370,215 335,233" fill="var(--iso-pedestal-top)" stroke="var(--iso-pedestal-border)" stroke-width="1.1" />
+        <polygon points="300,215 335,233 335,241 300,223" fill="var(--iso-pedestal-side)" stroke="var(--iso-pedestal-border)" stroke-width="1.1" />
+        <polygon points="335,233 370,215 370,223 335,241" fill="var(--iso-pedestal-edge)" stroke="var(--iso-pedestal-border)" stroke-width="1.1" />
+
+        <!-- 3D Floating Cloud Volume -->
+        <g transform="translate(314, 168)">
+          <!-- Drop Shadow on Platform -->
+          <ellipse cx="21" cy="36" rx="16" ry="6" fill="#000000" opacity="0.25" />
+          <!-- Cloud Geometry -->
+          <path d="M 8 24 A 9 9 0 0 1 20 12 A 12 12 0 0 1 36 17 A 8 8 0 0 1 39 26 A 7 7 0 0 1 34 32 L 10 32 A 8 8 0 0 1 8 24 Z" fill="var(--iso-cloud-fill)" stroke="var(--accent)" stroke-width="1.6" class="mobile-laser-line" />
+          <!-- Cloud Cyber Ridges -->
+          <path d="M 12 26 Q 20 18 28 20 Q 34 22 34 28" stroke="var(--accent)" stroke-width="1.2" fill="none" opacity="0.85" />
+          <circle cx="21" cy="20" r="1.5" fill="var(--accent)" />
+        </g>
+      </g>
+
+      <!-- 3. CLIENTS (Bottom Left) -->
+      <g id="m-st-clients" class="cursor-pointer" (click)="selectNode('clients')">
+        <!-- Text Label & Underline -->
+        <text x="75" y="378" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10.5" font-weight="extrabold" fill="var(--iso-station-label)" letter-spacing="1">CLIENTS</text>
+        <line x1="52" y1="385" x2="98" y2="385" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" class="mobile-laser-line" />
+
+        <!-- Isometric Pedestal Base -->
+        <polygon points="40,335 75,317 110,335 75,353" fill="var(--iso-pedestal-top)" stroke="var(--iso-pedestal-border)" stroke-width="1.1" />
+        <polygon points="40,335 75,353 75,361 40,343" fill="var(--iso-pedestal-side)" stroke="var(--iso-pedestal-border)" stroke-width="1.1" />
+        <polygon points="75,353 110,335 110,343 75,361" fill="var(--iso-pedestal-edge)" stroke="var(--iso-pedestal-border)" stroke-width="1.1" />
+
+        <!-- Isometric Laptop -->
+        <g transform="translate(56, 302)">
+          <!-- Base keyboard deck -->
+          <polygon points="0,26 22,14 38,22 16,34" fill="var(--iso-laptop-base)" stroke="var(--border)" stroke-width="1.1" />
+          <!-- Trackpad -->
+          <polygon points="8,28 14,25 18,27 12,30" fill="var(--surface)" stroke="var(--border)" stroke-width="0.7" />
+          <!-- Display lid back -->
+          <polygon points="22,14 38,22 38,2 22,-6" fill="var(--iso-laptop-lid)" stroke="var(--border)" stroke-width="1.1" />
+          <!-- Glowing Screen panel -->
+          <polygon points="21,12 36,19 36,4 21,-4" fill="#0B0B0B" stroke="var(--accent)" stroke-width="1" class="mobile-laser-line" />
+          <!-- Terminal code lines -->
+          <line x1="24" y1="1" x2="33" y2="5" stroke="var(--accent)" stroke-width="0.8" />
+          <line x1="24" y1="6" x2="31" y2="10" stroke="var(--accent)" stroke-width="0.8" />
+        </g>
+      </g>
+
+      <!-- 4. NETWORK (Bottom Right) -->
+      <g id="m-st-network" class="cursor-pointer" (click)="selectNode('network')">
+        <!-- Text Label & Underline -->
+        <text x="345" y="378" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10.5" font-weight="extrabold" fill="var(--iso-station-label)" letter-spacing="1">NETWORK</text>
+        <line x1="322" y1="385" x2="368" y2="385" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" class="mobile-laser-line" />
+
+        <!-- Isometric Pedestal Base -->
+        <polygon points="310,335 345,317 380,335 345,353" fill="var(--iso-pedestal-top)" stroke="var(--iso-pedestal-border)" stroke-width="1.1" />
+        <polygon points="310,335 345,353 345,361 310,343" fill="var(--iso-pedestal-side)" stroke="var(--iso-pedestal-border)" stroke-width="1.1" />
+        <polygon points="345,353 380,335 380,343 345,361" fill="var(--iso-pedestal-edge)" stroke="var(--iso-pedestal-border)" stroke-width="1.1" />
+
+        <!-- Isometric Wireless Router -->
+        <g transform="translate(326, 300)">
+          <!-- Top Panel -->
+          <polygon points="0,20 18,10 36,20 18,30" fill="var(--iso-router-body)" stroke="var(--border)" stroke-width="1.1" />
+          <!-- Left Front Panel -->
+          <polygon points="0,20 18,30 18,38 0,28" fill="#1e293b" stroke="var(--border)" stroke-width="1.1" />
+          <!-- Right Front Panel -->
+          <polygon points="18,30 36,20 36,28 18,38" fill="#0f172a" stroke="var(--border)" stroke-width="1.1" />
+          <!-- Ethernet Port Array -->
+          <line x1="4" y1="26" x2="14" y2="31" stroke="var(--border)" stroke-width="2" stroke-linecap="round" />
+          <!-- Front Status LEDs -->
+          <circle cx="6" cy="27" r="1.1" fill="var(--accent)" />
+          <circle cx="10" cy="29" r="1.1" fill="var(--accent)" />
+          <circle cx="14" cy="31" r="1.1" fill="var(--accent)" />
+          <!-- Antennas -->
+          <line x1="7" y1="16" x2="7" y2="-4" stroke="var(--text-1)" stroke-width="1.8" stroke-linecap="round" />
+          <circle cx="7" cy="-4" r="1.4" fill="var(--accent)" class="mobile-laser-line" />
+          <line x1="29" y1="16" x2="29" y2="-4" stroke="var(--text-1)" stroke-width="1.8" stroke-linecap="round" />
+          <circle cx="29" cy="-4" r="1.4" fill="var(--accent)" class="mobile-laser-line" />
+        </g>
+      </g>
+
+      <!-- 5. STORAGE (Bottom Center) -->
+      <g id="m-st-storage" class="cursor-pointer" (click)="selectNode('storage')">
+        <!-- Text Label & Underline -->
+        <text x="210" y="432" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10.5" font-weight="extrabold" fill="var(--iso-station-label)" letter-spacing="1">STORAGE</text>
+        <line x1="188" y1="439" x2="232" y2="439" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" class="mobile-laser-line" />
+
+        <!-- Isometric Pedestal Base -->
+        <polygon points="175,380 210,362 245,380 210,398" fill="var(--iso-pedestal-top)" stroke="var(--iso-pedestal-border)" stroke-width="1.1" />
+        <polygon points="175,380 210,398 210,406 175,388" fill="var(--iso-pedestal-side)" stroke="var(--iso-pedestal-border)" stroke-width="1.1" />
+        <polygon points="210,398 245,380 245,388 210,406" fill="var(--iso-pedestal-edge)" stroke="var(--iso-pedestal-border)" stroke-width="1.1" />
+
+        <!-- Isometric SAN Database Cylinder -->
+        <g transform="translate(193, 342)">
+          <!-- Tier 1 (Bottom Platter) -->
+          <path d="M 0 24 A 17 7 0 0 0 34 24 L 34 34 A 17 7 0 0 1 0 34 Z" fill="var(--iso-storage-base)" stroke="var(--border)" stroke-width="0.8" />
+          <ellipse cx="17" cy="24" rx="17" ry="7" fill="var(--iso-storage-platter)" stroke="var(--border)" stroke-width="0.8" />
+          <!-- Glowing Green/Blue Stripe 1 -->
+          <path d="M 2 29 A 15 5 0 0 0 32 29" stroke="var(--accent)" stroke-width="1.6" fill="none" class="mobile-laser-line" />
+
+          <!-- Tier 2 (Middle Platter) -->
+          <path d="M 0 14 A 17 7 0 0 0 34 14 L 34 24 A 17 7 0 0 1 0 24 Z" fill="var(--iso-storage-base)" stroke="var(--border)" stroke-width="0.8" />
+          <ellipse cx="17" cy="14" rx="17" ry="7" fill="var(--iso-storage-platter)" stroke="var(--border)" stroke-width="0.8" />
+          <!-- Glowing Green/Blue Stripe 2 -->
+          <path d="M 2 19 A 15 5 0 0 0 32 19" stroke="var(--accent)" stroke-width="1.6" fill="none" class="mobile-laser-line" />
+
+          <!-- Tier 3 (Top Platter) -->
+          <path d="M 0 4 A 17 7 0 0 0 34 4 L 34 14 A 17 7 0 0 1 0 14 Z" fill="var(--iso-storage-base)" stroke="var(--border)" stroke-width="0.8" />
+          <ellipse cx="17" cy="4" rx="17" ry="7" fill="#334155" stroke="var(--border)" stroke-width="0.8" />
+          <circle cx="17" cy="4" r="1.6" fill="var(--accent)" />
+        </g>
+      </g>
+    </svg>
   </div>
 
-  <!-- Name & Professional Title -->
-  <div class="space-y-1 mb-4">
-    <div class="font-mono-tech text-xs text-[var(--text-3)] font-semibold tracking-widest uppercase">
-      Lê Văn Tuấn
-    </div>
-    <h1 class="font-mono-tech text-2xl sm:text-3xl font-black text-[var(--text-1)] tracking-tight">
-      IT SYSTEM &amp; NETWORK ENGINEER
+  <!-- ======================================================== -->
+  <!-- MIDDLE STAGE: PERSONAL BRANDING & CORE IDENTITY          -->
+  <!-- ======================================================== -->
+  <div class="w-full flex flex-col items-center shrink-0 mt-0 mb-1 z-20">
+    <!-- Domain Slogan -->
+    <p class="font-mono-tech text-[10.5px] sm:text-xs text-[var(--accent)] font-bold tracking-widest text-center">
+      // BUILD • CONNECT • SECURE • SCALE
+    </p>
+
+    <!-- Main Headline Name (Standardized with Tone 07 IBM Plex Mono) -->
+    <h1 class="text-3xl sm:text-4xl font-mono-tech font-extrabold tracking-wider text-[var(--text-1)] text-center uppercase my-1">
+      LE VAN TUAN
     </h1>
-    <div class="font-mono-tech text-xs sm:text-sm text-[var(--accent-text)] font-bold">
-      Backend Developer &amp; Hybrid Cloud Infrastructure
+
+    <!-- Professional Subtitle -->
+    <p class="font-mono-tech text-xs sm:text-sm text-[var(--text-3)] tracking-widest text-center uppercase font-semibold">
+      IT SYSTEM &amp; NETWORK ENGINEER
+    </p>
+
+    <!-- Accent Divider Pill: Two-segment Cyber Pill matching reference image -->
+    <div class="flex items-center gap-1.5 my-2.5">
+      <div class="w-9 h-1 bg-[var(--accent)] rounded-full shadow-[0_0_8px_var(--accent)]"></div>
+      <div class="w-9 h-1 bg-[var(--accent)]/30 rounded-full"></div>
     </div>
   </div>
 
-  <!-- Brief Description -->
-  <p class="text-[var(--text-2)] text-xs sm:text-sm leading-relaxed mb-6">
-    {{ UIResource?.header_description || 'Information Technology engineer specializing in enterprise network & server infrastructure, hybrid cloud virtualization, and high-performance backend systems.' }}
-  </p>
+  <!-- ======================================================== -->
+  <!-- BOTTOM STAGE: SCROLL DOWN INDICATOR & CYBER MESH         -->
+  <!-- ======================================================== -->
+  <div class="w-full flex flex-col items-center justify-center shrink-0 pt-0 pb-1 relative z-20 cursor-pointer" (click)="scrollToNext()">
+    <!-- Subtle Cyber Mesh Glow at Bottom -->
+    <div class="absolute inset-x-0 bottom-0 h-16 cyber-wave-mesh pointer-events-none"></div>
 
-  <!-- Technical Specs Cards (Clean Static Grid) -->
-  <div class="grid grid-cols-2 gap-2 mb-6 font-mono-tech">
-    <div class="p-2.5 rounded bg-[var(--surface)] border border-[var(--border)]">
-      <div class="text-[10px] text-[var(--text-3)] uppercase font-semibold">INFRASTRUCTURE</div>
-      <div class="text-xs font-bold text-[var(--text-1)]">2+ YRS IT INFRA &amp; NETWORKS</div>
+    <!-- Mouse Scroll Indicator -->
+    <div class="w-5 h-8 rounded-full border-2 border-[var(--accent)] flex items-start justify-center p-1 bg-[var(--bg)]/80 backdrop-blur-xs shadow-xs">
+      <div class="w-1.5 h-2 bg-[var(--accent)] rounded-full animate-bounce shadow-[0_0_6px_var(--accent)]"></div>
     </div>
-    <div class="p-2.5 rounded bg-[var(--surface)] border border-[var(--border)]">
-      <div class="text-[10px] text-[var(--text-3)] uppercase font-semibold">SOFTWARE &amp; CLOUD</div>
-      <div class="text-xs font-bold text-[var(--text-1)]">1+ YRS DEV &amp; CLOUD</div>
-    </div>
-    <div class="p-2.5 rounded bg-[var(--surface)] border border-[var(--border)]">
-      <div class="text-[10px] text-[var(--text-3)] uppercase font-semibold">VERIFICATION</div>
-      <div class="text-xs font-bold text-[var(--accent)]">8+ CERTIFICATIONS</div>
-    </div>
-    <div class="p-2.5 rounded bg-[var(--surface)] border border-[var(--border)]">
-      <div class="text-[10px] text-[var(--text-3)] uppercase font-semibold">FOREIGN LANGUAGES</div>
-      <div class="text-xs font-bold text-[var(--text-1)]">EN (TOEIC) · ZH (HSK)</div>
-    </div>
+
+    <!-- Scroll Down Text -->
+    <span class="font-mono-tech text-[9.5px] tracking-widest text-[var(--text-3)] uppercase mt-1">
+      SCROLL DOWN
+    </span>
+
+    <!-- Down Chevron -->
+    <svg class="w-3.5 h-3.5 text-[var(--accent)] mt-0.5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+    </svg>
   </div>
 
-  <!-- Action CTA Buttons -->
-  <div class="flex flex-col sm:flex-row gap-2.5 font-mono-tech text-xs">
-    <button
-      (click)="onViewSpecs()"
-      class="w-full py-2.5 px-4 rounded bg-[var(--accent)] text-[#0B0B0B] font-bold text-center border border-[var(--accent)] flex items-center justify-center gap-2 cursor-pointer shadow-xs"
-    >
-      <span>&gt; VIEW ARCHITECTURE</span>
-      <span>⬡</span>
-    </button>
-    <button
-      (click)="scrollToContact()"
-      class="w-full py-2.5 px-4 rounded bg-[var(--surface-2)] text-[var(--text-1)] font-bold text-center border border-[var(--border)] hover:border-[var(--accent)] transition-colors cursor-pointer"
-    >
-      [ CONTACT &amp; RESUME ]
-    </button>
-  </div>
 </div>

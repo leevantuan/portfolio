@@ -1,47 +1,58 @@
-<header class="w-full bg-[var(--bg)]/95 backdrop-blur-md border-b border-[var(--border)] px-3 py-2.5 flex items-center justify-between sticky top-0 z-50">
-  <!-- Brand Name -->
-  <a href="#" class="flex items-center gap-2 no-underline text-[var(--text-1)]">
-    <span class="w-2 h-2 rounded-full bg-[var(--accent)]"></span>
-    <span class="font-mono-tech text-xs font-bold tracking-tight">Le Van Tuan</span>
+<header class="w-full bg-[var(--bg)]/95 backdrop-blur-md border-b border-[var(--border)] px-3.5 py-2 flex items-center justify-between sticky top-0 z-50 select-none">
+  <!-- Brand Name & Profession (Image exact match) -->
+  <a href="#" class="flex items-center gap-2.5 no-underline group">
+    <!-- Active status neon beacon with radar ping -->
+    <span class="relative flex h-2.5 w-2.5 shrink-0">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--accent)]"></span>
+    </span>
+    <div class="flex flex-col justify-center">
+      <span class="font-mono-tech text-sm font-extrabold tracking-tight text-[var(--text-1)] group-hover:text-[var(--accent)] transition-colors">
+        Le Van Tuan
+      </span>
+      <span class="font-mono-tech text-[9px] text-[var(--text-3)] font-semibold uppercase tracking-wider -mt-0.5">
+        IT SYSTEM &amp; NETWORK
+      </span>
+    </div>
   </a>
 
-  <!-- Actions: Theme, Lang, Menu -->
-  <div class="flex items-center gap-1.5">
-    <!-- Theme Toggle -->
+  <!-- Actions: Theme (Moon/Sun), Lang (EN v), Hamburger Menu (Image exact match) -->
+  <div class="flex items-center gap-2">
+    <!-- Theme Toggle (Moon / Sun) -->
     <button
       (click)="toggleTheme()"
-      class="h-7 w-7 rounded border border-[var(--border)] bg-[var(--surface-2)] flex items-center justify-center text-xs text-[var(--text-1)] cursor-pointer"
-      [title]="currentTheme === 'light' ? 'Switch to Dark' : 'Switch to Light'"
+      class="h-8 w-8 rounded-lg border border-[var(--border)] bg-[var(--surface-2)] hover:border-[var(--accent)] flex items-center justify-center text-xs text-[var(--accent)] transition-all cursor-pointer shadow-xs"
+      [title]="currentTheme === 'light' ? 'Switch to Dark Console' : 'Switch to Light Blueprint'"
     >
-      {{ currentTheme === 'light' ? '☀️' : '🌙' }}
+      <span *ngIf="currentTheme === 'dark'" class="text-sm">🌙</span>
+      <span *ngIf="currentTheme === 'light'" class="text-sm">☀️</span>
     </button>
 
-    <!-- Language Selector -->
-    <select
-      [ngModel]="lang"
-      (ngModelChange)="onLangSelect($event)"
-      class="h-7 px-1 rounded border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-1)] font-mono-tech text-[11px] cursor-pointer focus:outline-none"
-    >
-      <option value="VI">VN</option>
-      <option value="ENG">EN</option>
-      <option value="ZH">ZH</option>
-    </select>
+    <!-- Language Selector (Dropdown EN ⌵) -->
+    <div class="relative">
+      <select
+        [ngModel]="lang"
+        (ngModelChange)="onLangSelect($event)"
+        class="h-8 px-2.5 rounded-lg border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-1)] font-mono-tech text-xs font-semibold cursor-pointer focus:outline-none focus:border-[var(--accent)] transition-all shadow-xs"
+      >
+        <option value="ENG">EN ⌵</option>
+        <option value="VI">VN ⌵</option>
+        <option value="ZH">ZH ⌵</option>
+      </select>
+    </div>
 
-    <!-- Quick CV Button -->
-    <button
-      (click)="openResume()"
-      class="h-7 px-2 rounded bg-[var(--accent)] text-[#0B0B0B] font-mono-tech text-[10.5px] font-bold tracking-wider uppercase border border-[var(--accent)] cursor-pointer"
-    >
-      CV
-    </button>
-
-    <!-- Menu Toggle Button -->
+    <!-- Menu Toggle Button [ ☰ ] -->
     <button
       (click)="toggleMenu()"
-      class="h-7 w-7 rounded border border-[var(--border)] bg-[var(--surface-2)] flex items-center justify-center text-[var(--text-1)] text-xs font-mono-tech cursor-pointer"
+      class="h-8 w-8 rounded-lg border border-[var(--border)] bg-[var(--surface-2)] hover:border-[var(--accent)] flex items-center justify-center text-[var(--text-1)] text-xs font-mono-tech transition-all cursor-pointer shadow-xs"
       aria-label="Toggle navigation menu"
     >
-      {{ isMenuOpen ? '✕' : '☰' }}
+      <svg *ngIf="!isMenuOpen" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <svg *ngIf="isMenuOpen" class="w-4 h-4 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
     </button>
   </div>
 </header>
@@ -49,42 +60,67 @@
 <!-- Mobile Navigation Drawer -->
 <nav
   *ngIf="isMenuOpen"
-  class="fixed top-[45px] left-0 right-0 z-40 bg-[var(--surface)] border-b border-[var(--border)] p-4 shadow-xl font-mono-tech text-xs space-y-2.5"
+  class="fixed top-[49px] left-0 right-0 z-40 bg-[var(--surface)]/98 backdrop-blur-xl border-b border-[var(--border)] p-4 shadow-2xl font-mono-tech text-xs space-y-2.5 animate-in fade-in slide-in-from-top-2 duration-150"
 >
-  <div class="text-[10px] text-[var(--text-3)] uppercase tracking-wider mb-2 font-bold">// QUICK NAVIGATION</div>
+  <div class="text-[10px] text-[var(--text-3)] uppercase tracking-wider mb-2 font-bold flex items-center gap-1.5">
+    <span class="text-[var(--accent)]">//</span> QUICK NAVIGATION
+  </div>
+  <a
+    href="#hero"
+    (click)="closeMenu()"
+    class="block py-2.5 px-3.5 rounded-lg bg-[var(--surface-2)] border border-[var(--border)] hover:border-[var(--accent)] text-[var(--text-1)] no-underline font-semibold transition-all"
+  >
+    [ TOPOLOGY ]
+  </a>
+  <a
+    href="#story"
+    (click)="closeMenu()"
+    class="block py-2.5 px-3.5 rounded-lg bg-[var(--surface-2)] border border-[var(--border)] hover:border-[var(--accent)] text-[var(--text-1)] no-underline font-semibold transition-all"
+  >
+    [ MY STORY ]
+  </a>
   <a
     href="#skills"
     (click)="closeMenu()"
-    class="block py-2 px-3 rounded bg-[var(--surface-2)] border border-[var(--border)] text-[var(--text-1)] no-underline font-semibold"
+    class="block py-2.5 px-3.5 rounded-lg bg-[var(--surface-2)] border border-[var(--border)] hover:border-[var(--accent)] text-[var(--text-1)] no-underline font-semibold transition-all"
   >
-    [ 01. SKILLS MATRIX ]
+    [ SKILLS MATRIX ]
   </a>
   <a
     href="#roadmap"
     (click)="closeMenu()"
-    class="block py-2 px-3 rounded bg-[var(--surface-2)] border border-[var(--border)] text-[var(--text-1)] no-underline font-semibold"
+    class="block py-2.5 px-3.5 rounded-lg bg-[var(--surface-2)] border border-[var(--border)] hover:border-[var(--accent)] text-[var(--text-1)] no-underline font-semibold transition-all"
   >
-    [ 02. CAREER ROADMAP ]
+    [ CAREER ROADMAP ]
   </a>
   <a
     href="#credentials"
     (click)="closeMenu()"
-    class="block py-2 px-3 rounded bg-[var(--surface-2)] border border-[var(--border)] text-[var(--text-1)] no-underline font-semibold"
+    class="block py-2.5 px-3.5 rounded-lg bg-[var(--surface-2)] border border-[var(--border)] hover:border-[var(--accent)] text-[var(--text-1)] no-underline font-semibold transition-all"
   >
-    [ 03. CREDENTIALS ]
+    [ CREDENTIALS ]
   </a>
   <a
     href="#experience"
     (click)="closeMenu()"
-    class="block py-2 px-3 rounded bg-[var(--surface-2)] border border-[var(--border)] text-[var(--text-1)] no-underline font-semibold"
+    class="block py-2.5 px-3.5 rounded-lg bg-[var(--surface-2)] border border-[var(--border)] hover:border-[var(--accent)] text-[var(--text-1)] no-underline font-semibold transition-all"
   >
-    [ 04. EXPERIENCE ]
+    [ EXPERIENCE ]
   </a>
-  <a
-    href="#contact"
-    (click)="closeMenu()"
-    class="block py-2 px-3 rounded bg-[var(--accent)] text-[#0B0B0B] border border-[var(--accent)] text-center no-underline font-bold"
-  >
-    &gt; LET'S CONNECT
-  </a>
+  <div class="pt-2 border-t border-[var(--border)] flex flex-col gap-2">
+    <a
+      href="#contact"
+      (click)="closeMenu()"
+      class="block py-2.5 px-3.5 rounded-lg bg-[var(--surface-2)] border border-[var(--border)] text-[var(--text-1)] text-center no-underline font-bold"
+    >
+      [ CONTACT TERMINAL ]
+    </a>
+    <button
+      (click)="openResume(); closeMenu()"
+      class="w-full py-2.5 px-3.5 rounded-lg bg-[var(--accent)] text-[#0B0B0B] border border-[var(--accent)] text-center font-bold font-mono-tech text-xs tracking-wider uppercase flex items-center justify-center gap-2 cursor-pointer shadow-md"
+    >
+      <span>LET'S CONNECT / RESUME</span>
+      <span>→</span>
+    </button>
+  </div>
 </nav>

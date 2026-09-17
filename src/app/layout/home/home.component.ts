@@ -10,6 +10,7 @@ import { ExperienceComponent } from '../../pages/experience/experience.component
 import { DiagramViewerComponent } from '../../pages/diagram-viewer/diagram-viewer.component';
 import { ContactComponent } from '../../pages/contact/contact.component';
 import { FooterComponent } from '../../pages/footer/footer.component';
+import { MyStoryComponent } from '../../pages/my-story/my-story.component';
 import { NetworkBgComponent } from '../../shared/network-bg/network-bg.component';
 import { SessionService } from '../../shared/session.service';
 import { UIResourceENG } from '../../shared/lang/eng';
@@ -24,6 +25,7 @@ import { UIResourceZH } from '../../shared/lang/zh';
     HeaderComponent,
     GlobalNetworkComponent,
     InfrastructureHudComponent,
+    MyStoryComponent,
     SkillsComponent,
     RoadmapComponent,
     CredentialsComponent,

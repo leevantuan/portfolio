@@ -2,10 +2,15 @@
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *, .dark, .dark *));
 
+@theme {
+  --font-mono: "IBM Plex Mono", Consolas, monospace;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
 /* 
  * Tone 07 — Technical Blueprint 
  * Primary Default: Dark Console (07B)
- * Secondary: Light Blueprint (07A)
+ * Secondary: Light Blueprint (07A) with Cyber Blue Accent
  */
 :root,
 [data-theme="dark"] {
@@ -27,25 +32,69 @@
   --error: #EF4444;
   --font-mono: "IBM Plex Mono", Consolas, monospace;
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* 3D Isometric Tokens (Dark Mode) */
+  --iso-pedestal-top: #1e293b;
+  --iso-pedestal-side: #0f172a;
+  --iso-pedestal-edge: #080c14;
+  --iso-pedestal-border: var(--border);
+  --iso-globe-stop1: #475569;
+  --iso-globe-stop2: #1e293b;
+  --iso-globe-stop3: #0f172a;
+  --iso-globe-stop4: #05080f;
+  --iso-cloud-fill: #1e293b;
+  --iso-shield-fill: #0B0B0B;
+  --iso-brick-top: #1e293b;
+  --iso-brick-left: #0f172a;
+  --iso-brick-right: #080c14;
+  --iso-laptop-base: var(--surface-2);
+  --iso-laptop-lid: var(--surface);
+  --iso-router-body: var(--surface-2);
+  --iso-storage-platter: #1e293b;
+  --iso-storage-base: #0f172a;
+  --iso-station-label: #94a3b8;
+  --iso-mesh-color: rgba(126, 217, 87, 0.2);
 }
 
 [data-theme="light"] {
   --bg: #FFFFFF;
-  --surface: #FAFAFA;
-  --surface-2: #F3F4F6;
-  --surface-3: #E5E7EB;
-  --border: #D8D8D8;
-  --border-soft: #E5E7EB;
-  --border-dark: #1A1A1A;
-  --text-1: #111111;
-  --text-2: #4B5563;
-  --text-3: #6B7280;
-  --accent: #7ED957;
-  --accent-glow: rgba(126, 217, 87, 0.28);
-  --accent-text: #206d11;
-  --info: #2563EB;
+  --surface: #F8FAFC;
+  --surface-2: #F1F5F9;
+  --surface-3: #E2E8F0;
+  --border: #E2E8F0;
+  --border-soft: #EEF2F6;
+  --border-dark: #0F172A;
+  --text-1: #0F172A;
+  --text-2: #475569;
+  --text-3: #64748B;
+  --accent: #0066FF;
+  --accent-glow: rgba(0, 102, 255, 0.25);
+  --accent-text: #0066FF;
+  --info: #0066FF;
   --warning: #F59E0B;
   --error: #EF4444;
+
+  /* 3D Isometric Tokens (Light Mode - Cyber Blue Exact Match) */
+  --iso-pedestal-top: #FFFFFF;
+  --iso-pedestal-side: #E8EEF5;
+  --iso-pedestal-edge: #D3E0EE;
+  --iso-pedestal-border: #D0DFEE;
+  --iso-globe-stop1: #E0F2FE;
+  --iso-globe-stop2: #BAE6FD;
+  --iso-globe-stop3: #7DD3FC;
+  --iso-globe-stop4: #38BDF8;
+  --iso-cloud-fill: #38BDF8;
+  --iso-shield-fill: #EFF6FF;
+  --iso-brick-top: #F0F7FF;
+  --iso-brick-left: #DBEAFE;
+  --iso-brick-right: #BFDBFE;
+  --iso-laptop-base: #E8EEF5;
+  --iso-laptop-lid: #FFFFFF;
+  --iso-router-body: #1E293B;
+  --iso-storage-platter: #1E293B;
+  --iso-storage-base: #0F172A;
+  --iso-station-label: #1E3A8A;
+  --iso-mesh-color: rgba(0, 102, 255, 0.25);
 }
 
 * {
@@ -71,7 +120,11 @@ body {
 }
 
 /* Monospace headings and labels */
-h1, h2, h3, h4, .font-mono-tech {
+h1,
+h2,
+h3,
+h4,
+.font-mono-tech {
   font-family: var(--font-mono);
   letter-spacing: -0.02em;
 }
@@ -81,6 +134,7 @@ h1, h2, h3, h4, .font-mono-tech {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -95,6 +149,7 @@ h1, h2, h3, h4, .font-mono-tech {
   0% {
     stroke-dashoffset: 80;
   }
+
   100% {
     stroke-dashoffset: 0;
   }
@@ -115,10 +170,12 @@ h1, h2, h3, h4, .font-mono-tech {
     transform: scale(0.9);
     box-shadow: 0 0 0 0 rgba(126, 217, 87, 0.7);
   }
+
   70% {
     transform: scale(1.1);
     box-shadow: 0 0 0 12px rgba(126, 217, 87, 0);
   }
+
   100% {
     transform: scale(0.9);
     box-shadow: 0 0 0 0 rgba(126, 217, 87, 0);
@@ -134,6 +191,7 @@ h1, h2, h3, h4, .font-mono-tech {
   from {
     stroke-dashoffset: 40;
   }
+
   to {
     stroke-dashoffset: 0;
   }
@@ -147,9 +205,11 @@ h1, h2, h3, h4, .font-mono-tech {
   0% {
     transform: scaleY(0.4);
   }
+
   50% {
     transform: scaleY(1);
   }
+
   100% {
     transform: scaleY(0.4);
   }
@@ -163,13 +223,13 @@ h1, h2, h3, h4, .font-mono-tech {
 /* Blueprint Grid Background Pattern */
 .blueprint-paper-grid {
   background-size: 28px 28px;
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(126, 217, 87, 0.08) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(126, 217, 87, 0.08) 1px, transparent 1px);
 }
 
 [data-theme="light"] .blueprint-paper-grid {
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
 }
@@ -179,13 +239,16 @@ h1, h2, h3, h4, .font-mono-tech {
   width: 6px;
   height: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--bg);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--border);
   border-radius: 2px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent);
 }

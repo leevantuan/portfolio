@@ -156,6 +156,13 @@ export class GlobalNetworkComponent implements OnDestroy {
     this.viewArchitecture.emit();
   }
 
+  scrollToNext(): void {
+    const el = document.getElementById('story');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
   ngOnDestroy(): void {
     this.clearTypewriter();
   }

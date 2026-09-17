@@ -1,0 +1,269 @@
+<div class="my-story-container w-full max-w-[1500px] mx-auto py-8 sm:py-12">
+  <!-- Blueprint Main Card with Cyber Technical Frame -->
+  <div class="relative rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5 sm:p-8 lg:p-10 shadow-sm overflow-hidden">
+    
+    <!-- Top Decorative Technical Header Bar -->
+    <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--border)] pb-4 mb-6 sm:mb-8 font-mono-tech text-[10px] sm:text-xs">
+      <div class="flex items-center gap-2 text-[var(--accent-text)] font-bold uppercase tracking-wider">
+        <span class="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse"></span>
+        <span>{{ storyData?.kicker || 'SYS.CHRONICLE // ORIGIN & TRAJECTORY' }}</span>
+      </div>
+      <div class="flex items-center gap-4 text-[var(--text-3)]">
+        <span class="hidden sm:inline">COORDS: [37.7749° N, 122.4194° W]</span>
+        <span class="px-2 py-0.5 rounded bg-[var(--surface-2)] border border-[var(--border)] text-[var(--text-2)] font-semibold">
+          STORY // NODE-01
+        </span>
+      </div>
+    </div>
+
+    <!-- Section Title & Subtitle (Image 1:1 match) -->
+    <div class="mb-8">
+      <h2 class="font-mono-tech text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-1)] tracking-tight mb-2">
+        {{ storyData?.title || 'My story' }}
+      </h2>
+      <p class="font-mono-tech text-sm sm:text-base text-[var(--accent-text)] font-medium">
+        {{ storyData?.subtitle || 'Something about me you should know...' }}
+      </p>
+    </div>
+
+    <!-- Story Narrative Grid: 4 Core Evolutionary Milestones -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 mb-10">
+      
+      <!-- Milestone 01: High School & Web Frontend Roots -->
+      <div class="relative p-4 sm:p-5 rounded-md border border-[var(--border)] bg-[var(--surface-2)]/60 flex flex-col justify-between hover:border-[var(--accent)] transition-all group">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="font-mono-tech text-[10px] font-bold text-[var(--text-3)] uppercase tracking-widest">
+              [ 01 // GENESIS ]
+            </span>
+            <span class="font-mono-tech text-[10px] px-2 py-0.5 rounded bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/30 font-semibold">
+              ORIGINS
+            </span>
+          </div>
+          <p class="text-[var(--text-2)] text-xs sm:text-sm leading-relaxed">
+            {{ storyData?.p1 }}
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-[var(--border)]/60 flex flex-wrap items-center gap-1.5 font-mono-tech text-[11px]">
+          <span class="px-2 py-0.5 rounded bg-[var(--surface)] text-[var(--accent)] border border-[var(--border)] font-bold">
+            {{ storyData?.p1_tag || 'Frontend Web Development' }}
+          </span>
+          <span class="text-[var(--text-3)] text-[10px]">HTML5 · CSS3 · JS</span>
+        </div>
+      </div>
+
+      <!-- Milestone 02: The Realization & The Vast Ocean of Tech -->
+      <div class="relative p-4 sm:p-5 rounded-md border border-[var(--border)] bg-[var(--surface-2)]/60 flex flex-col justify-between hover:border-[var(--accent)] transition-all group">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="font-mono-tech text-[10px] font-bold text-[var(--text-3)] uppercase tracking-widest">
+              [ 02 // REALIZATION ]
+            </span>
+            <span class="font-mono-tech text-[10px] px-2 py-0.5 rounded bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/30 font-semibold">
+              PERSPECTIVE
+            </span>
+          </div>
+          <p class="text-[var(--text-2)] text-xs sm:text-sm leading-relaxed">
+            {{ storyData?.p2 }}
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-[var(--border)]/60 flex flex-wrap items-center gap-1.5 font-mono-tech text-[11px]">
+          <span class="px-2 py-0.5 rounded bg-[var(--surface)] text-[var(--text-1)] border border-[var(--border)] font-semibold">
+            "{{ storyData?.p2_front || 'Front' }}"
+          </span>
+          <span class="text-[var(--accent)]">⇄</span>
+          <span class="px-2 py-0.5 rounded bg-[var(--surface)] text-[var(--accent)] border border-[var(--border)] font-bold">
+            "{{ storyData?.p2_ocean || 'Oceans' }}"
+          </span>
+          <span class="text-[var(--text-3)] text-[10px]">Full-Stack Exploration</span>
+        </div>
+      </div>
+
+      <!-- Milestone 03: 2024 Milestone - AWS Cloud & Blockchain -->
+      <div class="relative p-4 sm:p-5 rounded-md border border-[var(--border)] bg-[var(--surface-2)]/60 flex flex-col justify-between hover:border-[var(--accent)] transition-all group">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="font-mono-tech text-[10px] font-bold text-[var(--text-3)] uppercase tracking-widest">
+              [ 03 // TRANSFORM ]
+            </span>
+            <span class="font-mono-tech text-[10px] px-2 py-0.5 rounded bg-[var(--accent)] text-[#0B0B0B] font-bold shadow-xs">
+              2024 MILESTONE
+            </span>
+          </div>
+          <p class="text-[var(--text-2)] text-xs sm:text-sm leading-relaxed">
+            {{ storyData?.p3 }}
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-[var(--border)]/60 flex flex-wrap items-center gap-2 font-mono-tech text-[11px]">
+          <span class="px-2 py-0.5 rounded bg-[var(--surface)] text-[var(--accent)] border border-[var(--accent)]/40 font-bold flex items-center gap-1">
+            <span>☁️</span> {{ storyData?.p3_fcj || 'First Cloud Journey' }}
+          </span>
+          <span class="px-2 py-0.5 rounded bg-[var(--surface)] text-[var(--text-1)] border border-[var(--border)] font-semibold flex items-center gap-1">
+            <span>⛓️</span> {{ storyData?.p3_blockchain || 'Blockchain' }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Milestone 04: Engineering Adventure & Continuous Sharing -->
+      <div class="relative p-4 sm:p-5 rounded-md border border-[var(--border)] bg-[var(--surface-2)]/60 flex flex-col justify-between hover:border-[var(--accent)] transition-all group">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="font-mono-tech text-[10px] font-bold text-[var(--text-3)] uppercase tracking-widest">
+              [ 04 // HORIZON ]
+            </span>
+            <span class="font-mono-tech text-[10px] px-2 py-0.5 rounded bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/30 font-semibold">
+              LIFELONG QUEST
+            </span>
+          </div>
+          <p class="text-[var(--text-2)] text-xs sm:text-sm leading-relaxed">
+            {{ storyData?.p4 }}
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-[var(--border)]/60 flex flex-wrap items-center gap-1.5 font-mono-tech text-[11px]">
+          <span class="px-2 py-0.5 rounded bg-[var(--surface)] text-[var(--text-1)] border border-[var(--border)] font-medium">
+            📝 Technical Writing
+          </span>
+          <span class="px-2 py-0.5 rounded bg-[var(--surface)] text-[var(--accent)] border border-[var(--border)] font-medium">
+            🤝 Knowledge Sharing
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- BLUEPRINT VECTOR ARTWORK BANNER (Exact Reference Match)  -->
+    <!-- Schematic illustration of Coin, Diamond, PCB Circuit Net -->
+    <!-- ======================================================== -->
+    <div class="w-full rounded-md border border-[var(--border)] bg-[var(--surface-2)]/40 p-4 sm:p-6 overflow-hidden relative">
+      <div class="flex items-center justify-between text-[10px] font-mono-tech text-[var(--text-3)] mb-2 uppercase tracking-wider">
+        <span>// SCHEMATIC ARTWORK :: DECENTRALIZED CLOUD &amp; ASSETS</span>
+        <span class="text-[var(--accent-text)]">SYS-SPEC #2024</span>
+      </div>
+
+      <!-- Vector Blueprint SVG Scene -->
+      <div class="w-full flex items-center justify-center">
+        <svg viewBox="0 0 900 180" class="w-full h-auto max-h-[160px] select-none pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <!-- Blueprint grid pattern -->
+            <pattern id="storyGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-opacity="0.6" />
+            </pattern>
+            <!-- Cyan / Green dynamic glow -->
+            <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+
+          <!-- Background Pattern -->
+          <rect width="900" height="180" fill="url(#storyGrid)" opacity="0.75" />
+
+          <!-- Left Sector: Blockchain / Crypto Token Blueprint (Coin with Circuit Traces) -->
+          <g transform="translate(160, 90)">
+            <!-- Outer dashed radar circle -->
+            <circle cx="0" cy="0" r="56" fill="none" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="6 4" opacity="0.6" />
+            <!-- Inner coin rim -->
+            <circle cx="0" cy="0" r="44" fill="var(--surface)" stroke="var(--border)" stroke-width="2" />
+            <circle cx="0" cy="0" r="38" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="1.5" />
+            
+            <!-- Central Blockchain Coin Emblem (Hexagon with Nodes) -->
+            <polygon points="0,-22 19,-11 19,11 0,22 -19,11 -19,-11" fill="none" stroke="var(--accent)" stroke-width="2" />
+            <circle cx="0" cy="-22" r="3" fill="var(--accent)" />
+            <circle cx="19" cy="-11" r="3" fill="var(--accent)" />
+            <circle cx="19" cy="11" r="3" fill="var(--accent)" />
+            <circle cx="0" cy="22" r="3" fill="var(--accent)" />
+            <circle cx="-19" cy="11" r="3" fill="var(--accent)" />
+            <circle cx="-19" cy="-11" r="3" fill="var(--accent)" />
+            <circle cx="0" cy="0" r="5" fill="var(--accent)" />
+
+            <!-- Orbital pulse dot -->
+            <circle cx="0" cy="0" r="3" fill="var(--accent)" filter="url(#glowEffect)">
+              <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="8s" repeatCount="indefinite" />
+            </circle>
+
+            <!-- Technical label -->
+            <text x="0" y="74" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" font-weight="700" fill="var(--text-1)">
+              ASSET // TOKEN
+            </text>
+            <text x="0" y="86" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7.5" fill="var(--text-3)">
+              BLOCKCHAIN PROTOCOL
+            </text>
+          </g>
+
+          <!-- Middle Sector: Connecting Highway Circuit Traces & Cloud Bus -->
+          <g>
+            <!-- Bus lines with 45 degree bends -->
+            <path d="M 220 90 L 320 90 L 350 60 L 550 60 L 580 90 L 680 90" fill="none" stroke="var(--border)" stroke-width="2" />
+            <path d="M 220 105 L 310 105 L 345 130 L 555 130 L 590 105 L 680 105" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="8 6" opacity="0.75" />
+            
+            <!-- Central Node (Cloud Anchor) -->
+            <g transform="translate(450, 95)">
+              <rect x="-65" y="-30" width="130" height="42" rx="4" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5" />
+              <rect x="-65" y="-30" width="130" height="12" rx="3" fill="var(--surface-2)" />
+              <text x="0" y="-21" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7.5" font-weight="bold" fill="var(--accent)">
+                AWS · HYBRID CLOUD
+              </text>
+              <text x="0" y="-1" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8.5" font-weight="700" fill="var(--text-1)">
+                FIRST CLOUD JOURNEY
+              </text>
+              <!-- Circuit connector pins -->
+              <circle cx="-50" cy="12" r="2" fill="var(--accent)" />
+              <circle cx="0" cy="12" r="2" fill="var(--accent)" />
+              <circle cx="50" cy="12" r="2" fill="var(--accent)" />
+            </g>
+
+            <!-- Traveling Data Packets along the bus -->
+            <circle r="3.5" fill="var(--accent)" filter="url(#glowEffect)">
+              <animateMotion dur="4s" repeatCount="indefinite" path="M 220 90 L 320 90 L 350 60 L 550 60 L 580 90 L 680 90" />
+            </circle>
+            <circle r="3" fill="var(--accent)" opacity="0.8">
+              <animateMotion dur="5.5s" repeatCount="indefinite" path="M 680 105 L 590 105 L 555 130 L 345 130 L 310 105 L 220 105" />
+            </circle>
+          </g>
+
+          <!-- Right Sector: Diamond / Value Crystallization Blueprint -->
+          <g transform="translate(740, 90)">
+            <!-- Outer dashed radar circle -->
+            <circle cx="0" cy="0" r="56" fill="none" stroke="var(--border)" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.7" />
+            
+            <!-- Isometric Faceted Diamond Gemstone (Image exact match) -->
+            <!-- Diamond Crown -->
+            <polygon points="-36,-10 -20,-30 20,-30 36,-10 0,-10" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="1.8" />
+            <!-- Diamond Table facets -->
+            <polygon points="-20,-30 0,-10 20,-30" fill="var(--accent)" fill-opacity="0.15" stroke="var(--accent)" stroke-width="1.2" />
+            <polygon points="-36,-10 -20,-30 0,-10" fill="none" stroke="var(--accent)" stroke-width="1.2" />
+            <polygon points="36,-10 20,-30 0,-10" fill="none" stroke="var(--accent)" stroke-width="1.2" />
+            
+            <!-- Diamond Pavilion (Lower cone) -->
+            <polygon points="-36,-10 36,-10 0,38" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.8" />
+            <polygon points="-36,-10 0,-10 0,38" fill="var(--accent)" fill-opacity="0.1" stroke="var(--accent)" stroke-width="1.2" />
+            <polygon points="36,-10 0,-10 0,38" fill="var(--accent)" fill-opacity="0.25" stroke="var(--accent)" stroke-width="1.2" />
+
+            <!-- Highlight spark -->
+            <circle cx="0" cy="-30" r="2.5" fill="var(--accent)" filter="url(#glowEffect)" />
+            <circle cx="0" cy="38" r="2.5" fill="var(--accent)" filter="url(#glowEffect)" />
+
+            <!-- Technical label -->
+            <text x="0" y="74" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" font-weight="700" fill="var(--text-1)">
+              VALUE // DIAMOND
+            </text>
+            <text x="0" y="86" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7.5" fill="var(--text-3)">
+              CRYSTALLIZED SKILLS
+            </text>
+          </g>
+
+          <!-- Technical Corner Coordinates & Markers -->
+          <text x="20" y="25" font-family="'IBM Plex Mono', monospace" font-size="8" fill="var(--text-3)">[+0.824, -1.942]</text>
+          <text x="880" y="25" text-anchor="end" font-family="'IBM Plex Mono', monospace" font-size="8" fill="var(--text-3)">SYS-SPEC: 2024-ARCH</text>
+          <text x="20" y="165" font-family="'IBM Plex Mono', monospace" font-size="8" fill="var(--text-3)">FCJ.AWS.CERT::ACTIVE</text>
+          <text x="880" y="165" text-anchor="end" font-family="'IBM Plex Mono', monospace" font-size="8" fill="var(--accent)">STATUS // OPERATIONAL</text>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+</div>

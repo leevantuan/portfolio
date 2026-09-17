@@ -13,12 +13,18 @@ export class MobileHeroComponent {
   @Input() UIResource: any;
   @Output() viewArchitecture = new EventEmitter<void>();
 
+  selectedNode: string | null = null;
+
+  selectNode(node: string): void {
+    this.selectedNode = this.selectedNode === node ? null : node;
+  }
+
   onViewSpecs(): void {
     this.viewArchitecture.emit();
   }
 
-  scrollToContact(): void {
-    const el = document.getElementById('contact');
+  scrollToNext(): void {
+    const el = document.getElementById('story');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }

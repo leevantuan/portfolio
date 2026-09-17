@@ -1291,7 +1291,7 @@
 
             <!-- QA FAIL LOOP (From 04 back to 03) -->
             <path d="M 585 58 Q 500 84 415 58" fill="none" stroke="#A855F7" stroke-width="1.5" stroke-dasharray="3 4" class="ai-cable-flow-reverse" />
-            <text x="500" y="80" fill="#A855F7" font-size="7" text-anchor="middle" font-family="monospace">QA Fix Loop ↺</text>
+            <text x="500" y="80" fill="#A855F7" font-size="7" text-anchor="middle" font-family="'IBM Plex Mono', monospace">QA Fix Loop ↺</text>
 
             <!-- CABLE: DOWN FROM ROW 1 TO ROW 2 (04 down to 05) -->
             <path d="M 645 36 Q 675 36 675 78 T 645 118 L 135 118" fill="none" stroke="#222834" stroke-width="2" />
@@ -1309,7 +1309,7 @@
 
             <!-- ================= SELF-HEALING LOOP (From 08 back to 07 & Orchestrator) ================= -->
             <path d="M 585 138 Q 500 172 415 138" fill="none" stroke="#22c55e" stroke-width="2" stroke-dasharray="4 4" class="ai-cable-flow-reverse" filter="url(#aiPulseGlow)" />
-            <text x="500" y="165" fill="#22c55e" font-size="8" font-weight="bold" text-anchor="middle" font-family="monospace">Autonomous Self-Healing Loop ↺</text>
+            <text x="500" y="165" fill="#22c55e" font-size="8" font-weight="bold" text-anchor="middle" font-family="'IBM Plex Mono', monospace">Autonomous Self-Healing Loop ↺</text>
 
 
             <!-- ================= ROW 1: NODES 01, 02, 03, 04 ================= -->
@@ -1321,8 +1321,8 @@
                     [attr.stroke]="currentAiStep === 1 ? '#38bdf8' : '#262d38'" stroke-width="1.5" />
               <circle cx="28" cy="37" r="3" fill="#38bdf8" />
               <circle cx="28" cy="37" r="6" fill="#38bdf8" opacity="0.3" class="animate-ping" *ngIf="currentAiStep === 1" />
-              <text x="38" y="32" fill="#FFF" font-size="8.5" font-weight="bold" font-family="monospace">01. DISCOVER</text>
-              <text x="38" y="44" fill="#38bdf8" font-size="7.5" font-family="monospace">Researcher · Gemini</text>
+              <text x="38" y="32" fill="#FFF" font-size="8.5" font-weight="bold" font-family="'IBM Plex Mono', monospace">01. DISCOVER</text>
+              <text x="38" y="44" fill="#38bdf8" font-size="7.5" font-family="'IBM Plex Mono', monospace">Researcher · Gemini</text>
             </g>
 
             <!-- NODE 02: ARCHITECT -->
@@ -1332,8 +1332,8 @@
                     [attr.stroke]="currentAiStep === 2 ? 'var(--accent)' : '#262d38'" stroke-width="1.5" />
               <circle cx="198" cy="37" r="3" fill="var(--accent)" />
               <circle cx="198" cy="37" r="6" fill="var(--accent)" opacity="0.3" class="animate-ping" *ngIf="currentAiStep === 2" />
-              <text x="208" y="32" fill="#FFF" font-size="8.5" font-weight="bold" font-family="monospace">02. ARCHITECT</text>
-              <text x="208" y="44" fill="var(--accent)" font-size="7.5" font-family="monospace">Claude 3.7 · Specs</text>
+              <text x="208" y="32" fill="#FFF" font-size="8.5" font-weight="bold" font-family="'IBM Plex Mono', monospace">02. ARCHITECT</text>
+              <text x="208" y="44" fill="var(--accent)" font-size="7.5" font-family="'IBM Plex Mono', monospace">Claude 3.7 · Specs</text>
             </g>
 
             <!-- NODE 03: IMPLEMENT -->
@@ -1343,8 +1343,8 @@
                     [attr.stroke]="currentAiStep === 3 ? '#F59E0B' : '#262d38'" stroke-width="1.5" />
               <circle cx="368" cy="37" r="3" fill="#F59E0B" />
               <circle cx="368" cy="37" r="6" fill="#F59E0B" opacity="0.3" class="animate-ping" *ngIf="currentAiStep === 3" />
-              <text x="378" y="32" fill="#FFF" font-size="8.5" font-weight="bold" font-family="monospace">03. IMPLEMENT</text>
-              <text x="378" y="44" fill="#F59E0B" font-size="7.5" font-family="monospace">Claude Code · MCP</text>
+              <text x="378" y="32" fill="#FFF" font-size="8.5" font-weight="bold" font-family="'IBM Plex Mono', monospace">03. IMPLEMENT</text>
+              <text x="378" y="44" fill="#F59E0B" font-size="7.5" font-family="'IBM Plex Mono', monospace">Claude Code · MCP</text>
             </g>
 
             <!-- NODE 04: VERIFY -->
@@ -1354,8 +1354,8 @@
                     [attr.stroke]="currentAiStep === 4 ? '#A855F7' : '#262d38'" stroke-width="1.5" />
               <circle cx="538" cy="37" r="3" fill="#A855F7" />
               <circle cx="538" cy="37" r="6" fill="#A855F7" opacity="0.3" class="animate-ping" *ngIf="currentAiStep === 4" />
-              <text x="548" y="32" fill="#FFF" font-size="8.5" font-weight="bold" font-family="monospace">04. VERIFY</text>
-              <text x="548" y="44" fill="#A855F7" font-size="7.5" font-family="monospace">QA · xUnit · Tests</text>
+              <text x="548" y="32" fill="#FFF" font-size="8.5" font-weight="bold" font-family="'IBM Plex Mono', monospace">04. VERIFY</text>
+              <text x="548" y="44" fill="#A855F7" font-size="7.5" font-family="'IBM Plex Mono', monospace">QA · xUnit · Tests</text>
             </g>
 
 
@@ -1368,8 +1368,8 @@
                     [attr.stroke]="currentAiStep === 5 ? '#38bdf8' : '#262d38'" stroke-width="1.5" />
               <circle cx="28" cy="119" r="3" fill="#38bdf8" />
               <circle cx="28" cy="119" r="6" fill="#38bdf8" opacity="0.3" class="animate-ping" *ngIf="currentAiStep === 5" />
-              <text x="38" y="114" fill="#FFF" font-size="8.5" font-weight="bold" font-family="monospace">05. BUILD</text>
-              <text x="38" y="126" fill="#38bdf8" font-size="7.5" font-family="monospace">Jenkins CI · Docker</text>
+              <text x="38" y="114" fill="#FFF" font-size="8.5" font-weight="bold" font-family="'IBM Plex Mono', monospace">05. BUILD</text>
+              <text x="38" y="126" fill="#38bdf8" font-size="7.5" font-family="'IBM Plex Mono', monospace">Jenkins CI · Docker</text>
             </g>
 
             <!-- NODE 06: SECURITY -->
@@ -1379,8 +1379,8 @@
                     [attr.stroke]="currentAiStep === 6 ? '#22C55E' : '#262d38'" stroke-width="1.5" />
               <circle cx="198" cy="119" r="3" fill="#22C55E" />
               <circle cx="198" cy="119" r="6" fill="#22C55E" opacity="0.3" class="animate-ping" *ngIf="currentAiStep === 6" />
-              <text x="208" y="114" fill="#FFF" font-size="8.5" font-weight="bold" font-family="monospace">06. SECURITY</text>
-              <text x="208" y="126" fill="#22C55E" font-size="7.5" font-family="monospace">SAST · Trivy · Audit</text>
+              <text x="208" y="114" fill="#FFF" font-size="8.5" font-weight="bold" font-family="'IBM Plex Mono', monospace">06. SECURITY</text>
+              <text x="208" y="126" fill="#22C55E" font-size="7.5" font-family="'IBM Plex Mono', monospace">SAST · Trivy · Audit</text>
             </g>
 
             <!-- NODE 07: DEPLOY -->
@@ -1390,8 +1390,8 @@
                     [attr.stroke]="currentAiStep === 7 ? 'var(--accent)' : '#262d38'" stroke-width="1.5" />
               <circle cx="368" cy="119" r="3" fill="var(--accent)" />
               <circle cx="368" cy="119" r="6" fill="var(--accent)" opacity="0.3" class="animate-ping" *ngIf="currentAiStep === 7" />
-              <text x="378" y="114" fill="#FFF" font-size="8.5" font-weight="bold" font-family="monospace">07. DEPLOY</text>
-              <text x="378" y="126" fill="var(--accent)" font-size="7.5" font-family="monospace">Azure AKS · Cisco</text>
+              <text x="378" y="114" fill="#FFF" font-size="8.5" font-weight="bold" font-family="'IBM Plex Mono', monospace">07. DEPLOY</text>
+              <text x="378" y="126" fill="var(--accent)" font-size="7.5" font-family="'IBM Plex Mono', monospace">Azure AKS · Cisco</text>
             </g>
 
             <!-- NODE 08: OPERATE -->
@@ -1401,8 +1401,8 @@
                     [attr.stroke]="currentAiStep === 8 ? '#22C55E' : '#262d38'" stroke-width="1.5" />
               <circle cx="538" cy="119" r="3" fill="#22C55E" />
               <circle cx="538" cy="119" r="6" fill="#22C55E" opacity="0.3" class="animate-ping" *ngIf="currentAiStep === 8" />
-              <text x="548" y="114" fill="#FFF" font-size="8.5" font-weight="bold" font-family="monospace">08. OPERATE</text>
-              <text x="548" y="126" fill="#22C55E" font-size="7.5" font-family="monospace">Grafana · Self-Heal</text>
+              <text x="548" y="114" fill="#FFF" font-size="8.5" font-weight="bold" font-family="'IBM Plex Mono', monospace">08. OPERATE</text>
+              <text x="548" y="126" fill="#22C55E" font-size="7.5" font-family="'IBM Plex Mono', monospace">Grafana · Self-Heal</text>
             </g>
 
           </svg>

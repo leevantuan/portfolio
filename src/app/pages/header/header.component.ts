@@ -8,7 +8,6 @@ import { UIResourceZH } from '../../shared/lang/zh';
 
 export interface NavItem {
   id: string;
-  num: string;
   label: string;
 }
 
@@ -28,12 +27,13 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   mobileMenuOpen: boolean = false;
 
   navItems: NavItem[] = [
-    { id: 'topology', num: '01', label: 'Topology' },
-    { id: 'skills', num: '02', label: 'Skills Matrix' },
-    { id: 'roadmap', num: '03', label: 'Roadmap & Telemetry' },
-    { id: 'credentials', num: '04', label: 'Credentials' },
-    { id: 'experience', num: '05', label: 'Experience' },
-    { id: 'contact', num: '06', label: 'Contact' },
+    { id: 'topology', label: 'Topology' },
+    { id: 'story', label: 'My Story' },
+    { id: 'skills', label: 'Skills Matrix' },
+    { id: 'roadmap', label: 'Roadmap & Telemetry' },
+    { id: 'credentials', label: 'Credentials' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'contact', label: 'Contact' },
   ];
   activeSection: string = 'topology';
 

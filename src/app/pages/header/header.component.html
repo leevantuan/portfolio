@@ -28,9 +28,9 @@
           : 'px-2 py-1 text-[var(--text-2)] hover:text-[var(--accent-text)] transition-colors'"
       >
         <ng-container *ngIf="isActive(item.id); else plainNavLabel">
-          <span class="text-[var(--accent)]">[</span>{{ item.num }}. {{ item.label }}<span class="text-[var(--accent)]">]</span>
+          <span class="text-[var(--accent)]">[</span>{{ item.label }}<span class="text-[var(--accent)]">]</span>
         </ng-container>
-        <ng-template #plainNavLabel>[ {{ item.num }}. {{ item.label }} ]</ng-template>
+        <ng-template #plainNavLabel>[ {{ item.label }} ]</ng-template>
       </a>
     </nav>
 

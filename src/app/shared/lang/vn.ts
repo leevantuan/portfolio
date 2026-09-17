@@ -9,6 +9,7 @@ export const UIResourceVN = {
 
   // Navigation
   nav: {
+    story: 'Hành Trình',
     roadmap: 'Lộ Trình',
     skills: 'Kỹ Năng',
     projects: 'Dự Án',
@@ -23,6 +24,27 @@ export const UIResourceVN = {
   header_name: 'Lê Văn Tuấn',
   header_position: 'Backend Developer & IT System / DevOps Engineer',
   header_description: 'Tôi tốt nghiệp chuyên ngành Kỹ thuật Công nghệ Thông tin, sở hữu 2 năm kinh nghiệm quản trị hạ tầng mạng & hệ thống máy chủ và 1 năm làm Backend Developer chuyên sâu với ASP.NET Core 8 & PostgreSQL. Tôi vận hành xuyên suốt chuỗi giá trị CNTT: từ phần cứng, mạng Cisco/Linux, tự động hóa Cloud/DevOps (Kubernetes, Jenkins, Azure) đến kiến trúc phần mềm phân tán (Microservices, Clean Architecture, CQRS) và ứng dụng Claude AI vào phát triển.',
+
+  // My Story Section
+  my_story: {
+    kicker: 'HÀNH TRÌNH & ĐỊNH HƯỚNG PHÁT TRIỂN',
+    title: 'Câu Chuyện Của Tôi',
+    subtitle: 'Đôi nét về tôi và hành trình làm nghề...',
+    p1: 'Tôi bắt đầu niềm đam mê với thiết kế và lập trình từ những năm học cấp 3. Điểm khởi đầu của tôi là Phát Triển Web Frontend - xây dựng các trang web tĩnh, thiết kế giao diện UI và tìm hiểu các kỹ thuật tạo kiểu hiện đại.',
+    p1_tag: 'Phát Triển Web Frontend',
+    p2: 'Từng có thời điểm tôi nghĩ "Front" là toàn bộ thế giới lập trình. Nhưng rồi tôi nhận ra Frontend chỉ là phần nổi của tảng băng chìm, cả Frontend và Backend đều là những "Đại Dương" tri thức mênh mông bất tận. Vì vậy, tôi quyết định dấn thân để chinh phục cả hai bến bờ.',
+    p2_front: 'Front',
+    p2_ocean: 'Đại Dương',
+    p3: 'Năm 2024, tôi đạt được cột mốc chuyển mình quan trọng: nghiên cứu chuyên sâu về Điện Toán Đám Mây (AWS) qua chương trình First Cloud Journey, đồng thời khám phá công nghệ Blockchain, kiến trúc phân tán và hạ tầng Cloud-Native có khả năng mở rộng cao.',
+    p3_fcj: 'First Cloud Journey',
+    p3_blockchain: 'Blockchain',
+    p4: 'Tôi xem kỹ thuật và lập trình như một chuyến hành trình phiêu lưu đầy thú vị trong đời. Tôi yêu thích việc viết lách, đúc kết kiến thức hệ thống và chia sẻ trải nghiệm kỹ thuật cùng cộng đồng công nghệ.',
+    blueprint_badge: 'SYS-CHRONICLE // KHỞI ĐẦU & QUỸ ĐẠO',
+    journey_step_1: 'CẤP 3: NỀN TẢNG WEB & GIAO DIỆN',
+    journey_step_2: 'KHÁM PHÁ FULL-STACK & HỆ THỐNG',
+    journey_step_3: '2024: AWS CLOUD & BLOCKCHAIN',
+    journey_step_4: 'HỌC HỎI & CHIA SẺ LIÊN TỤC',
+  },
 
   // Career Roadmap
   roadmap: {

@@ -9,6 +9,7 @@ export const UIResourceZH = {
 
   // Navigation
   nav: {
+    story: '我的故事',
     roadmap: '职业路线',
     skills: '技术矩阵',
     projects: '实战项目',
@@ -23,6 +24,27 @@ export const UIResourceZH = {
   header_name: 'Lê Văn Tuấn (黎文俊)',
   header_position: '后端开发工程师 & IT 系统 / DevOps 运维工程师',
   header_description: '拥有信息技术工程学位，拥有2年网络基础设施与服务器系统管理经验，以及1年基于 ASP.NET Core 8 和 PostgreSQL 的高性能后端开发经验。我的工作贯穿IT全链路：从物理硬件、Cisco/Linux 网络、云与容器自动化（Kubernetes、Jenkins、Azure），到分布式微服务架构（Clean Architecture、CQRS），并将 Claude AI 深度融入工程提效中。',
+
+  // My Story Section
+  my_story: {
+    kicker: '成长旅程与轨迹',
+    title: '我的故事',
+    subtitle: '关于我，你应当了解的一些事...',
+    p1: '从高中时代起，我便对设计和编码产生了浓厚兴趣。我的起点是前端网页开发——搭建静态网站、打磨 UI 组件并探索现代样式技术。',
+    p1_tag: '前端网页开发',
+    p2: '我曾以为“前端”就是编程的全部世界。直到后来我领悟到前端只是冰山一角，前端与后端都是深不见底的知识“海洋”。因此，我下定决心探索并征服这两座大陆。',
+    p2_front: '前端',
+    p2_ocean: '海洋',
+    p3: '2024年，我迎来了重要的技术里程碑：通过 First Cloud Journey 项目深入研习 AWS 云计算，并积极探索区块链技术、分布式架构与高可用云原生基础设施。',
+    p3_fcj: 'First Cloud Journey',
+    p3_blockchain: '区块链',
+    p4: '我将工程与编程视为一场充满惊喜与乐趣的终身探索之旅。我热衷于书写、沉淀系统架构心得，并与同行开发者共享实践经验。',
+    blueprint_badge: 'SYS-CHRONICLE // 起源与演进轨迹',
+    journey_step_1: '高中时期：前端界面与基础',
+    journey_step_2: '全栈与系统底层探索',
+    journey_step_3: '2024年：AWS 云计算与区块链',
+    journey_step_4: '持续进化与技术分享',
+  },
 
   // Career Roadmap
   roadmap: {

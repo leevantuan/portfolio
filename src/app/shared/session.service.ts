@@ -15,9 +15,18 @@ export class SessionService {
 
   private initTheme(): void {
     if (typeof window !== 'undefined') {
+      const manualTheme = localStorage.getItem('theme_manual');
       const savedTheme = localStorage.getItem('theme') as 'dark' | 'light' | null;
-      // Default to dark unless user explicitly chose light
-      const initialTheme = savedTheme === 'light' ? 'light' : 'dark';
+      
+      let initialTheme: 'dark' | 'light';
+      if (manualTheme && savedTheme) {
+        // User manually selected a theme previously
+        initialTheme = savedTheme;
+      } else {
+        // Mobile prioritizes Light mode, Desktop prioritizes Dark mode
+        const isMobile = window.innerWidth < 1024;
+        initialTheme = isMobile ? 'light' : 'dark';
+      }
       this.setTheme(initialTheme);
     }
   }
@@ -33,18 +42,21 @@ export class SessionService {
     }
   }
 
-  setTheme(theme: 'dark' | 'light'): void {
+  setTheme(theme: 'dark' | 'light', isManual: boolean = false): void {
     this.currentTheme.set(theme);
     if (typeof window !== 'undefined') {
       document.documentElement.setAttribute('data-theme', theme);
       document.documentElement.classList.toggle('dark', theme === 'dark');
       localStorage.setItem('theme', theme);
+      if (isManual) {
+        localStorage.setItem('theme_manual', 'true');
+      }
     }
   }
 
   toggleTheme(): 'dark' | 'light' {
     const nextTheme = this.currentTheme() === 'dark' ? 'light' : 'dark';
-    this.setTheme(nextTheme);
+    this.setTheme(nextTheme, true);
     return nextTheme;
   }
 
