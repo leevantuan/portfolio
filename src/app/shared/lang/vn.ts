@@ -29,21 +29,44 @@ export const UIResourceVN = {
   my_story: {
     kicker: 'HÀNH TRÌNH & ĐỊNH HƯỚNG PHÁT TRIỂN',
     title: 'Câu Chuyện Của Tôi',
-    subtitle: 'Đôi nét về tôi và hành trình làm nghề...',
-    p1: 'Tôi bắt đầu niềm đam mê với thiết kế và lập trình từ những năm học cấp 3. Điểm khởi đầu của tôi là Phát Triển Web Frontend - xây dựng các trang web tĩnh, thiết kế giao diện UI và tìm hiểu các kỹ thuật tạo kiểu hiện đại.',
-    p1_tag: 'Phát Triển Web Frontend',
-    p2: 'Từng có thời điểm tôi nghĩ "Front" là toàn bộ thế giới lập trình. Nhưng rồi tôi nhận ra Frontend chỉ là phần nổi của tảng băng chìm, cả Frontend và Backend đều là những "Đại Dương" tri thức mênh mông bất tận. Vì vậy, tôi quyết định dấn thân để chinh phục cả hai bến bờ.',
-    p2_front: 'Front',
-    p2_ocean: 'Đại Dương',
-    p3: 'Năm 2024, tôi đạt được cột mốc chuyển mình quan trọng: nghiên cứu chuyên sâu về Điện Toán Đám Mây (AWS) qua chương trình First Cloud Journey, đồng thời khám phá công nghệ Blockchain, kiến trúc phân tán và hạ tầng Cloud-Native có khả năng mở rộng cao.',
-    p3_fcj: 'First Cloud Journey',
-    p3_blockchain: 'Blockchain',
-    p4: 'Tôi xem kỹ thuật và lập trình như một chuyến hành trình phiêu lưu đầy thú vị trong đời. Tôi yêu thích việc viết lách, đúc kết kiến thức hệ thống và chia sẻ trải nghiệm kỹ thuật cùng cộng đồng công nghệ.',
+    subtitle: 'Hành trình từ những dòng code đầu tiên đến tư duy hệ sinh thái toàn diện...',
+    stages: [
+      {
+        step: '01 // FOUNDATION',
+        badge: 'NỀN MÓNG',
+        title: 'Bắt đầu từ Software Development',
+        desc: 'Hành trình công nghệ của tôi khởi đầu từ những dòng code phần mềm — nơi ý tưởng được chuyển hóa thành các hệ thống web thực tế. Thay vì chỉ viết code cho chạy, tôi luôn bị cuốn hút bởi việc bóc tách bài toán nghiệp vụ và giải quyết chúng bằng những giải pháp phần mềm mạch lạc, tin cậy.',
+        tags: ['.NET Backend', 'Frontend', 'Database']
+      },
+      {
+        step: '02 // ENGINEERING',
+        badge: 'CHIỀU SÂU KỸ THUẬT',
+        title: 'Đi sâu vào Backend & System Architecture',
+        desc: 'Càng dấn thân, tôi nhận ra việc tạo nên một tính năng chỉ là bề nổi của tảng băng chìm. Tôi bị thôi thúc phải hiểu tận cùng cách một hệ thống thực sự vận hành phía sau: từ thiết kế REST API chuẩn mực, kiến trúc Clean Architecture tách bạch, đến tối ưu Database, bảo mật phân quyền và luồng xử lý nghiệp vụ phức tạp.',
+        tags: ['C# / .NET', 'PostgreSQL / SQL Server', 'Clean Architecture']
+      },
+      {
+        step: '03 // INFRASTRUCTURE',
+        badge: 'BƯỚC NGOẶT 2025',
+        title: 'Từ Software đến System Infrastructure',
+        desc: 'Năm 2025 đánh dấu bước chuyển mình lớn trong tư duy làm nghề: tôi chủ động bước ra khỏi tầng ứng dụng để làm chủ hạ tầng vận hành bên dưới. Trực tiếp đắm mình vào thế giới Server, Network, Ảo hóa VMware/Hyper-V, Active Directory và hệ thống giám sát Zabbix/DevOps, tôi thấu suốt toàn diện một hệ thống từ nền móng hạ tầng đến môi trường production thực chiến.',
+        tags: ['VMware / Hyper-V', 'Network', 'AD / GPO', 'Zabbix / Grafana']
+      },
+      {
+        step: '04 // INTEGRATION',
+        badge: 'GIAO THOA TOÀN DIỆN',
+        title: 'Kết nối Software · Infrastructure · Hardware · AI',
+        desc: 'Hiện tại là điểm giao thoa của mọi nền tảng tôi tích lũy: kết nối thông suốt từ Backend, Hạ tầng, CI/CD đến Tích hợp phần cứng thiết bị (Hardware Integration), đồng thời khai phóng sức mạnh của AI và automation để nâng tầm tốc độ cũng như chất lượng kỹ thuật — kiến tạo những giải pháp end-to-end hoàn chỉnh.',
+        tags: ['DevOps', 'Hardware Integration', 'AI Engineering', 'Automation']
+      }
+    ],
+    p1: 'Hành trình công nghệ của tôi khởi đầu từ những dòng code phần mềm — nơi ý tưởng được chuyển hóa thành các hệ thống web thực tế. Thay vì chỉ viết code cho chạy, tôi luôn bị cuốn hút bởi việc bóc tách bài toán nghiệp vụ và giải quyết chúng bằng những giải pháp phần mềm mạch lạc, tin cậy.',
+    p2: 'Càng dấn thân, tôi nhận ra việc tạo nên một tính năng chỉ là bề nổi của tảng băng chìm. Tôi bị thôi thúc phải hiểu tận cùng cách một hệ thống thực sự vận hành phía sau: từ thiết kế REST API chuẩn mực, kiến trúc Clean Architecture tách bạch, đến tối ưu Database, bảo mật phân quyền và luồng xử lý nghiệp vụ phức tạp.',
+    p3: 'Năm 2025 đánh dấu bước chuyển mình lớn trong tư duy làm nghề: tôi chủ động bước ra khỏi tầng ứng dụng để làm chủ hạ tầng vận hành bên dưới. Trực tiếp đắm mình vào thế giới Server, Network, Ảo hóa VMware/Hyper-V, Active Directory và hệ thống giám sát Zabbix/DevOps, tôi thấu suốt toàn diện một hệ thống từ nền móng hạ tầng đến môi trường production thực chiến.',
+    p4: 'Hiện tại là điểm giao thoa của mọi nền tảng tôi tích lũy: kết nối thông suốt từ Backend, Hạ tầng, CI/CD đến Tích hợp phần cứng thiết bị (Hardware Integration), đồng thời khai phóng sức mạnh của AI và automation để nâng tầm tốc độ cũng như chất lượng kỹ thuật — kiến tạo những giải pháp end-to-end hoàn chỉnh.',
     blueprint_badge: 'SYS-CHRONICLE // KHỞI ĐẦU & QUỸ ĐẠO',
-    journey_step_1: 'CẤP 3: NỀN TẢNG WEB & GIAO DIỆN',
-    journey_step_2: 'KHÁM PHÁ FULL-STACK & HỆ THỐNG',
-    journey_step_3: '2024: AWS CLOUD & BLOCKCHAIN',
-    journey_step_4: 'HỌC HỎI & CHIA SẺ LIÊN TỤC',
+    schematic_title: '// KIẾN TRÚC TOÀN DIỆN :: SOFTWARE · INFRASTRUCTURE · HARDWARE · AI',
+    schematic_spec: 'SYS-SPEC #2025-PROD',
   },
 
   // Career Roadmap

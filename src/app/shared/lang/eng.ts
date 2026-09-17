@@ -29,21 +29,44 @@ export const UIResourceENG = {
   my_story: {
     kicker: 'JOURNEY & EVOLUTION',
     title: 'My Story',
-    subtitle: 'Something about me you should know...',
-    p1: 'I had an interest in designing and coding when I was in high school. I started with Frontend Web Development - building static websites, UI components, and exploring modern styling techniques.',
-    p1_tag: 'Frontend Web Development',
-    p2: 'I used to think that "Front" was all there was in coding. But then I realized that Frontend is only the tip of the iceberg, and both Frontend and Backend are vast "Oceans" with endless depths of knowledge. So, I set out on a mission to conquer both shores.',
-    p2_front: 'Front',
-    p2_ocean: 'Oceans',
-    p3: 'In 2024, I reached a transformative milestone: diving deep into Cloud Computing (AWS) through the First Cloud Journey program, while actively exploring Blockchain technology, distributed architectures, and scalable cloud-native infrastructure.',
-    p3_fcj: 'First Cloud Journey',
-    p3_blockchain: 'Blockchain',
-    p4: 'I see coding and engineering as an adventurous, lifelong journey. I love writing, documenting system insights, and sharing technical experiences with fellow developers along the way.',
+    subtitle: 'From the very first lines of code to full-spectrum engineering...',
+    stages: [
+      {
+        step: '01 // FOUNDATION',
+        badge: 'FOUNDATION',
+        title: 'Starting from Software Development',
+        desc: 'My journey in tech took flight with software engineering—turning ideas into living, production-ready web systems. Rather than just making code compile, I was fascinated by deconstructing intricate business requirements and crafting clean, dependable solutions to solve them.',
+        tags: ['.NET Backend', 'Frontend', 'Database']
+      },
+      {
+        step: '02 // ENGINEERING',
+        badge: 'CORE ENGINEERING',
+        title: 'Diving into Backend & System Architecture',
+        desc: 'As I ventured deeper, I realized that shipping features is merely the tip of the iceberg. I felt a strong pull to master how systems truly breathe under the hood: standardizing REST APIs, enforcing Clean Architecture boundaries, tuning databases, and orchestrating robust authentication and high-throughput workflows.',
+        tags: ['C# / .NET', 'PostgreSQL / SQL Server', 'Clean Architecture']
+      },
+      {
+        step: '03 // INFRASTRUCTURE',
+        badge: '2025 PIVOT',
+        title: 'From Software to System Infrastructure',
+        desc: '2025 marked a defining leap in my engineering perspective: stepping beyond the application layer to command the underlying infrastructure. Diving headfirst into Servers, Enterprise Networking, VMware/Hyper-V virtualization, Active Directory, and Zabbix/DevOps observability, I gained a panoramic view of systems from bare-metal foundation to battle-tested production.',
+        tags: ['VMware / Hyper-V', 'Network', 'AD / GPO', 'Zabbix / Grafana']
+      },
+      {
+        step: '04 // INTEGRATION',
+        badge: 'FULL-SPECTRUM',
+        title: 'Bridging Software · Infrastructure · Hardware · AI',
+        desc: 'Today represents the convergence point of every discipline I have built: connecting seamlessly from Backend and Infrastructure to CI/CD and physical Hardware Integration, while unleashing the power of AI and automation to elevate engineering velocity and architect complete, end-to-end solutions.',
+        tags: ['DevOps', 'Hardware Integration', 'AI Engineering', 'Automation']
+      }
+    ],
+    p1: 'My journey in tech took flight with software engineering—turning ideas into living, production-ready web systems. Rather than just making code compile, I was fascinated by deconstructing intricate business requirements and crafting clean, dependable solutions to solve them.',
+    p2: 'As I ventured deeper, I realized that shipping features is merely the tip of the iceberg. I felt a strong pull to master how systems truly breathe under the hood: standardizing REST APIs, enforcing Clean Architecture boundaries, tuning databases, and orchestrating robust authentication and high-throughput workflows.',
+    p3: '2025 marked a defining leap in my engineering perspective: stepping beyond the application layer to command the underlying infrastructure. Diving headfirst into Servers, Enterprise Networking, VMware/Hyper-V virtualization, Active Directory, and Zabbix/DevOps observability, I gained a panoramic view of systems from bare-metal foundation to battle-tested production.',
+    p4: 'Today represents the convergence point of every discipline I have built: connecting seamlessly from Backend and Infrastructure to CI/CD and physical Hardware Integration, while unleashing the power of AI and automation to elevate engineering velocity and architect complete, end-to-end solutions.',
     blueprint_badge: 'SYS-CHRONICLE // ORIGIN & TRAJECTORY',
-    journey_step_1: 'HIGH SCHOOL: HTML/CSS/JS',
-    journey_step_2: 'FULL-STACK & SYSTEMS EXPLORATION',
-    journey_step_3: '2024: AWS CLOUD & BLOCKCHAIN',
-    journey_step_4: 'CONTINUOUS EVOLUTION & SHARING',
+    schematic_title: '// SCHEMATIC ARCHITECTURE :: SOFTWARE · INFRASTRUCTURE · HARDWARE · AI',
+    schematic_spec: 'SYS-SPEC #2025-PROD',
   },
 
   // Career Roadmap
