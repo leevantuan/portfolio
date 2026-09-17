@@ -3,13 +3,102 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Elite Console — Unified Design System & Fleet Management</title>
+  <title>Design Console — Unified Design System & Fleet Management</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Poppins:wght@600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
+    
     /* ==========================================================================
-       ELITE DESIGN SYSTEM — CSS TOKENS & 8-TONE COLOR SYSTEM
+       TYPOGRAPHY SYSTEM MATRIX (1-Font System: Inter, Roboto, Manrope, IBM Plex Mono)
+       ========================================================================== */
+    :root,
+    html[data-font="inter"] {
+      --font-system: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    html[data-font="roboto"] {
+      --font-system: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    html[data-font="manrope"] {
+      --font-system: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    html[data-font="portfolio"] {
+      --font-system: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    }
+    html[data-font="noto"] {
+      --font-system: 'Noto Sans SC', 'Inter', -apple-system, sans-serif;
+    }
+
+    :root {
+      --font-display: var(--font-system);
+      --font-body: var(--font-system);
+      --font-mono: 'IBM Plex Mono', Consolas, monospace;
+      --font-hanzi: 'Noto Sans SC', sans-serif;
+    }
+
+    body, button, input, select, textarea, table, th, td, h1, h2, h3, h4, h5, h6, p, span, a, label, .nav-item, .brand-name, .sidebar-brand-text, .kpi-num, .user-meta-name {
+      font-family: var(--font-system) !important;
+    }
+
+    /* Retain monospace only for code and log terminals */
+    pre, code, .terminal-output, .code-snippet, .font-mono-strict {
+      font-family: var(--font-mono) !important;
+    }
+
+    /* Font weight hierarchy */
+    h1, h2, .sidebar-brand-text h2, .login-header h1 { font-weight: 700; }
+    h3, h4, .kpi-num, .stat-value { font-weight: 600; }
+    .nav-item span, .btn-primary, .btn-secondary, label, th, .topbar-search-input { font-weight: 500; }
+    body, p, td, input, .subtext { font-weight: 400; }
+
+    /* Topbar Font Selector Button Group */
+    .font-btn-group {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .font-ctrl-tag {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-tertiary);
+      padding-right: 2px;
+      display: flex;
+      align-items: center;
+      user-select: none;
+    }
+    .font-btn {
+      padding: 3px 8px;
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: var(--radius-xs);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+    }
+    .font-btn:hover {
+      color: var(--text-primary);
+      background: var(--surface-hover);
+    }
+    .font-btn.active {
+      color: var(--color-primary);
+      background: var(--color-primary-subtle);
+      border-color: var(--color-primary);
+      font-weight: 700;
+    }
+    [data-tone="7"] .font-btn {
+      border-radius: 3px !important;
+    }
+    [data-tone="7"] .font-btn.active {
+      background: #111111 !important;
+      color: #7ED957 !important;
+      border-color: #111111 !important;
+    }
+
+    /* ==========================================================================
+       DESIGN CONSOLE — CSS TOKENS & 8-TONE COLOR SYSTEM
        Faithfully adhering to src/storage/tone/tone_design_elt.html
        ========================================================================== */
 
@@ -1119,9 +1208,16 @@
     }
 
     .brand-icon-leaf {
-      width: 22px;
-      height: 22px;
+      width: 18px;
+      height: 18px;
       color: var(--color-primary);
+    }
+    .brand-logo-img {
+      width: 26px;
+      height: 26px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
     }
 
     .brand-name {
@@ -1600,15 +1696,20 @@
       width: 34px;
       height: 34px;
       border-radius: var(--radius-md);
-      background: var(--color-primary);
-      color: var(--text-on-accent);
+      background: #FAFAFA;
+      border: 1px solid var(--border-color);
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 800;
-      font-family: var(--font-display);
-      font-size: 16px;
       flex-shrink: 0;
+    }
+    .sidebar-logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+      display: block;
     }
 
     .sidebar-brand-text h2 {
@@ -1944,6 +2045,115 @@
     }
 
 
+    
+    /* Modern Select Dropdown Popups for Color & Font */
+    .topbar-dropdown-wrap {
+      position: relative;
+      display: inline-block;
+    }
+    .topbar-select-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      background: var(--surface-hover);
+      border: 1px solid var(--border-color);
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+      user-select: none;
+    }
+    .topbar-select-btn:hover {
+      border-color: var(--color-primary);
+      background: var(--surface-card);
+      box-shadow: var(--shadow-sm);
+    }
+    .topbar-select-btn .dropdown-arrow {
+      transition: transform var(--transition-fast);
+      color: var(--text-secondary);
+    }
+    .topbar-dropdown-wrap.is-open .topbar-select-btn .dropdown-arrow {
+      transform: rotate(180deg);
+    }
+    .topbar-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      min-width: 170px;
+      background: var(--surface-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      padding: 6px;
+      z-index: 1200;
+      display: none;
+      flex-direction: column;
+      gap: 3px;
+      backdrop-filter: blur(16px);
+      animation: ddSlideIn 0.16s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes ddSlideIn {
+      from { opacity: 0; transform: translate(-50%, -6px); }
+      to { opacity: 1; transform: translate(-50%, 0); }
+    }
+    .topbar-dropdown-wrap.is-open .topbar-dropdown-menu {
+      display: flex;
+    }
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+    }
+    .dropdown-item:hover {
+      background: var(--surface-hover);
+      color: var(--color-primary);
+    }
+    .dropdown-item.is-selected {
+      background: var(--color-primary-subtle);
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+    .dropdown-item-desc {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.25;
+    }
+    .dropdown-item-desc small {
+      font-size: 10px;
+      color: var(--text-secondary);
+      font-weight: 400;
+    }
+    .color-dot-indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    [data-tone="7"] .topbar-select-btn,
+    [data-tone="7"] .topbar-dropdown-menu,
+    [data-tone="7"] .dropdown-item {
+      border-radius: 4px !important;
+      border-color: #111111 !important;
+    }
+    [data-tone="7"] .dropdown-item.is-selected {
+      background: #111111 !important;
+      color: #7ED957 !important;
+    }
+
     /* Topbar Integrated Tone Control */
     .topbar-tone-control {
       display: flex;
@@ -1973,7 +2183,10 @@
     }
 
     /* Hide floating switcher when logged into app-view */
-    body.is-logged-in #loginToneSwitcher {
+    body.is-logged-in #loginToneSwitcher,
+    #app-view:not([style*="display: none"]) ~ #loginToneSwitcher,
+    body:has(#app-view:not([style*="display: none"])) #loginToneSwitcher,
+    #loginToneSwitcher.is-hidden {
       display: none !important;
     }
   
@@ -3465,12 +3678,10 @@
         <div>
           <div class="brand-badge-wrap">
             <div class="brand-logo-plate">
-              <svg class="brand-icon-leaf" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 2-8 2s7-1 7-1a18.3 18.3 0 0 0-4 4z"/>
-              </svg>
-              <span class="brand-name">Elite</span>
+              <img src="../../logo_tl.png" alt="Tuan Lee" class="brand-logo-img">
+              <span class="brand-name">Tuan Lee</span>
             </div>
-            <span class="brand-system-tag">Fleet Console</span>
+            <span class="brand-system-tag">Design Console</span>
           </div>
 
           <div class="login-header">
@@ -3542,7 +3753,7 @@
         </div>
 
         <div class="login-footer-strip">
-          <span>Elite Design System · v4.2</span>
+          <span>Design Console · Tuan Lee · v4.2</span>
           <div class="system-status-indicator">
             <span class="status-dot-pulse"></span>
             <span>Mọi dịch vụ vận hành tối ưu</span>
@@ -3629,9 +3840,11 @@
     <!-- Sidebar Navigation -->
     <aside class="app-sidebar">
       <div class="sidebar-header">
-        <div class="sidebar-logo">E</div>
+        <div class="sidebar-logo">
+          <img src="../../logo_tl.png" alt="Tuan Lee" class="sidebar-logo-img">
+        </div>
         <div class="sidebar-brand-text">
-          <h2>Elite Console</h2>
+          <h2>Design Console</h2>
           <span>IT Infrastructure & Labs</span>
         </div>
       </div>
@@ -3784,12 +3997,41 @@
 
         <!-- Integrated Topbar Tone Control (Fits in flow, zero overlaps) -->
         <div class="topbar-tone-control" id="topbarToneControl">
-          <div class="family-btn-group">
-            <button class="family-btn" data-fam="green" onclick="setPrimaryColor('green')">🌿 Green</button>
-            <button class="family-btn active" data-fam="blue" onclick="setPrimaryColor('blue')">🔷 Blue</button>
-            <button class="family-btn" data-fam="grafana" onclick="setPrimaryColor('grafana')">📊 Grafana</button>
+          <!-- 1. Color Theme Select Popup -->
+          <div class="topbar-dropdown-wrap" id="colorDropdownWrap">
+            <button type="button" class="topbar-select-btn" id="currentColorBtn" onclick="toggleDropdown('colorDropdownWrap')" title="Chọn bộ màu chủ đạo">
+              <span id="currentColorDot" class="color-dot-indicator" style="background:#0284C7;"></span>
+              <span id="currentColorLabel">🔷 Blue</span>
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="topbar-dropdown-menu" id="colorDropdownMenu">
+              <div class="dropdown-item" data-fam="green" onclick="selectColorTheme('green')">
+                <span class="color-dot-indicator" style="background:#22C55E;"></span>
+                <div class="dropdown-item-desc">
+                  <strong>🌿 Green</strong>
+                  <small>Tự nhiên, tươi mát</small>
+                </div>
+              </div>
+              <div class="dropdown-item is-selected" data-fam="blue" onclick="selectColorTheme('blue')">
+                <span class="color-dot-indicator" style="background:#0284C7;"></span>
+                <div class="dropdown-item-desc">
+                  <strong>🔷 Blue (Mặc định)</strong>
+                  <small>Modern IT & Cloud</small>
+                </div>
+              </div>
+              <div class="dropdown-item" data-fam="grafana" onclick="selectColorTheme('grafana')">
+                <span class="color-dot-indicator" style="background:#F97316;"></span>
+                <div class="dropdown-item-desc">
+                  <strong>📊 Grafana</strong>
+                  <small>Hổ phách telemetry</small>
+                </div>
+              </div>
+            </div>
           </div>
+
           <div class="topbar-sep"></div>
+
+          <!-- 2. Tone Matrix Numbers (01 - 08) -->
           <div class="tone-numbers-wrap">
             <button class="tone-btn" data-t="1" data-tip="01 Clean Light">1<span class="dot-preview" id="dot-top-1"></span></button>
             <button class="tone-btn" data-t="2" data-tip="02 Deep Dark">2<span class="dot-preview" id="dot-top-2"></span></button>
@@ -3801,7 +4043,53 @@
             <button class="tone-btn" data-t="7" data-tip="07 Blueprint Light (Khung đen #111111)">7<span class="dot-preview" style="background:#7ED957; border:1.5px solid #111111;"></span></button>
             <button class="tone-btn" data-t="8" data-tip="08 Blueprint Dark (Neon #7ED957)">8<span class="dot-preview" style="background:#7ED957; border:1.5px solid #000;"></span></button>
           </div>
+
           <div class="topbar-sep"></div>
+
+          <!-- 3. Font System Select Popup (5 Fonts including Noto Sans SC) -->
+          <div class="topbar-dropdown-wrap" id="fontDropdownWrap">
+            <button type="button" class="topbar-select-btn" id="currentFontBtn" onclick="toggleDropdown('fontDropdownWrap')" title="Chọn hệ thống Typography">
+              <span style="font-weight:700; color:var(--color-primary); font-size:12px;">Aa</span>
+              <span id="currentFontLabel">Inter</span>
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="topbar-dropdown-menu" id="fontDropdownMenu" style="min-width: 195px;">
+              <div class="dropdown-item is-selected" data-font="inter" onclick="selectFontFamily('inter')">
+                <div class="dropdown-item-desc">
+                  <strong>🥇 Inter (Khuyên dùng)</strong>
+                  <small>IT Admin, Grafana & Mobile</small>
+                </div>
+              </div>
+              <div class="dropdown-item" data-font="roboto" onclick="selectFontFamily('roboto')">
+                <div class="dropdown-item-desc">
+                  <strong>🥈 Roboto</strong>
+                  <small>Enterprise Tool & Tables</small>
+                </div>
+              </div>
+              <div class="dropdown-item" data-font="manrope" onclick="selectFontFamily('manrope')">
+                <div class="dropdown-item-desc">
+                  <strong>🥉 Manrope</strong>
+                  <small>Modern SaaS & AI Analytics</small>
+                </div>
+              </div>
+              <div class="dropdown-item" data-font="portfolio" onclick="selectFontFamily('portfolio')">
+                <div class="dropdown-item-desc">
+                  <strong>🏅 Plex Mono</strong>
+                  <small>Portfolio Blueprint CAD</small>
+                </div>
+              </div>
+              <div class="dropdown-item" data-font="noto" onclick="selectFontFamily('noto')">
+                <div class="dropdown-item-desc">
+                  <strong>🇨🇳 Noto Sans SC</strong>
+                  <small>East Asian Modern / Hanzi</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="topbar-sep"></div>
+
+          <!-- 4. Export & Copy -->
           <button class="tone-export-quick-btn primary" onclick="downloadCurrentToneMarkdown()" title="Tải file .md mô tả Tone">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             .MD
@@ -5127,7 +5415,7 @@
         <section id="view-learngo" class="screen-view" style="display:none;">
           <div class="learngo-hero-card">
             <div class="learngo-hero-text">
-              <span class="brand-system-tag">Elite · LearnGo Lab</span>
+              <span class="brand-system-tag">Design Console · LearnGo Lab</span>
               <h2>Không gian Học tập & Rèn luyện Flashcard</h2>
               <p>Tích hợp hệ thống ghi nhớ từ vựng tiếng Trung & thuật ngữ lập trình Go. Bấm vào thẻ để lật 3D xem phiên âm Pinyin và ví dụ.</p>
             </div>
@@ -5496,7 +5784,7 @@
           <div class="page-head">
             <div class="page-title-wrap">
               <h1>Quản trị Thành viên & Phân quyền</h1>
-              <p>Danh sách tài khoản quản trị hệ thống Elite Console.</p>
+              <p>Danh sách tài khoản quản trị hệ thống Design Console.</p>
             </div>
             <div class="page-head-actions">
               <button class="btn-sm-primary" onclick="showToast('Thêm thành viên mới: liên hệ SuperAdmin')">
@@ -5896,7 +6184,7 @@ ${desc}
 }
 \`\`\`
 
-*Tạo bởi Elite Console — Unified Design System & Fleet Management.*
+*Tạo bởi Design Console — Unified Design System & Fleet Management.*
 `;
     }
 
@@ -5963,6 +6251,8 @@ ${desc}
           loginView.style.display = 'none';
           appView.style.display = 'flex';
           document.body.classList.add('is-logged-in');
+          const loginSw = document.getElementById('loginToneSwitcher');
+          if (loginSw) loginSw.style.display = 'none';
           showToast('Xin chào test01! Đăng nhập thành công.');
         } else {
           btn.innerHTML = 'Truy cập bảng điều khiển';
@@ -5978,6 +6268,9 @@ ${desc}
       isAuthed = true;
       loginView.style.display = 'none';
       appView.style.display = 'flex';
+      document.body.classList.add('is-logged-in');
+      const loginSw = document.getElementById('loginToneSwitcher');
+      if (loginSw) loginSw.style.display = 'none';
       showToast('Đăng nhập 1-chạm thành công với test01');
     }
 
@@ -5993,10 +6286,123 @@ ${desc}
        4. NAVIGATION & SCREEN SWITCHING
        -------------------------------------------------------------------------- */
     
+    
+    // Hide floating switcher whenever inside app-view
+      setInterval(() => {
+        const app = document.getElementById('app-view');
+        const sw = document.getElementById('loginToneSwitcher');
+        if (app && sw && app.style.display !== 'none' && getComputedStyle(app).display !== 'none') {
+          sw.style.display = 'none';
+        }
+      }, 300);
+
+      
+    // --- Dropdown Popup Management ---
+    function toggleDropdown(wrapId) {
+      const wrap = document.getElementById(wrapId);
+      if (!wrap) return;
+      const isOpen = wrap.classList.contains('is-open');
+      closeAllDropdowns();
+      if (!isOpen) {
+        wrap.classList.add('is-open');
+      }
+    }
+
+    function closeAllDropdowns() {
+      document.querySelectorAll('.topbar-dropdown-wrap').forEach(w => w.classList.remove('is-open'));
+    }
+
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.topbar-dropdown-wrap')) {
+        closeAllDropdowns();
+      }
+    });
+
+    const COLOR_THEME_LABELS = {
+      green: { label: '🌿 Green', color: '#22C55E' },
+      blue: { label: '🔷 Blue', color: '#0284C7' },
+      grafana: { label: '📊 Grafana', color: '#F97316' }
+    };
+
+    function selectColorTheme(colorKey) {
+      setPrimaryColor(colorKey);
+      closeAllDropdowns();
+      updateColorThemeUI(colorKey);
+    }
+
+    function updateColorThemeUI(colorKey) {
+      const info = COLOR_THEME_LABELS[colorKey] || COLOR_THEME_LABELS.blue;
+      const labelEl = document.getElementById('currentColorLabel');
+      const dotEl = document.getElementById('currentColorDot');
+      if (labelEl) labelEl.textContent = info.label;
+      if (dotEl) dotEl.style.background = info.color;
+
+      document.querySelectorAll('#colorDropdownMenu .dropdown-item').forEach(item => {
+        item.classList.toggle('is-selected', item.dataset.fam === colorKey);
+      });
+    }
+
+    const FONT_MAP_LABELS = {
+      inter: 'Inter',
+      roboto: 'Roboto',
+      manrope: 'Manrope',
+      portfolio: 'Plex Mono',
+      noto: 'Noto Sans SC'
+    };
+
+    function selectFontFamily(fontKey) {
+      setFontFamily(fontKey);
+      closeAllDropdowns();
+    }
+
+    function setFontFamily(fontKey) {
+      const validFonts = ['inter', 'roboto', 'manrope', 'portfolio', 'noto'];
+      if (!validFonts.includes(fontKey)) fontKey = 'inter';
+
+      document.documentElement.setAttribute('data-font', fontKey);
+      try {
+        localStorage.setItem('storage_font_family', fontKey);
+      } catch (e) {}
+
+      // Update button label & active dropdown item
+      const labelEl = document.getElementById('currentFontLabel');
+      if (labelEl) labelEl.textContent = FONT_MAP_LABELS[fontKey] || fontKey;
+
+      document.querySelectorAll('#fontDropdownMenu .dropdown-item').forEach(item => {
+        item.classList.toggle('is-selected', item.dataset.font === fontKey);
+      });
+
+      // Post message to iframe
+      const iframe = document.getElementById('allTonesIframe');
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage({ type: 'SET_FONT_FAMILY', font: fontKey }, '*');
+      }
+    }
+
+    // Initialize font & color UI immediately
+    (function initTopbarSelects() {
+      let savedFont = 'inter';
+      try {
+        savedFont = localStorage.getItem('storage_font_family') || 'inter';
+      } catch (e) {}
+      setFontFamily(savedFont);
+
+      let savedColor = 'blue';
+      try {
+        savedColor = localStorage.getItem('elite_primary_color') || 'blue';
+      } catch (e) {}
+      updateColorThemeUI(savedColor);
+    })();
+
+
     function refreshToneIframe() {
       const frame = document.getElementById('allTonesIframe');
       if (frame) {
         frame.src = frame.src;
+      setTimeout(() => {
+        const curFont = document.documentElement.getAttribute('data-font') || 'inter';
+        frame.contentWindow.postMessage({ type: 'SET_FONT_FAMILY', font: curFont }, '*');
+      }, 300);
         showToast('Đang làm mới dữ liệu All Tones...');
       }
     }

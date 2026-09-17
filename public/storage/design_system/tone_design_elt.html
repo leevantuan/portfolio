@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Design System — 8 Tones Color Exploration</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --radius-card: 22px;
@@ -249,12 +249,45 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: Arial, sans-serif;
-    font-size: 36px;
-    letter-spacing: -3.5px;
-    color: #111;
+    gap: 12px;
     border-radius: 10px;
     flex-shrink: 0;
+    padding: 8px 12px;
+    box-sizing: border-box;
+  }
+
+  .bp-logo-box .bp-logo-img {
+    width: 58px;
+    height: 58px;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .bp-logo-box .bp-logo-title-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .bp-logo-box .bp-logo-title-wrap .bp-logo-name {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+    color: #111;
+    line-height: 1.15;
+  }
+
+  .bp-logo-box .bp-logo-title-wrap .bp-logo-sub {
+    font-family: var(--font-mono, monospace);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--accent-num, #059669);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 2px;
   }
 
   .theme-2 .bp-logo-box,
@@ -1313,7 +1346,7 @@
   }
 
 
-  /* Embedded iframe mode (inside Elite Console) */
+  /* Embedded iframe mode (inside Design Console) */
   body.embedded-mode {
     padding: 12px 14px 48px !important;
     background: transparent !important;
@@ -1340,7 +1373,7 @@
         </h1>
         <p class="hero-desc">
           Bảng hệ thống màu gom 2 file thành <strong>1 file duy nhất với thứ tự 01 đến 08</strong>.
-          Tất cả các tone từ 01 đến 08 đều đồng bộ logo <strong>dev·archive</strong>.
+          Tất cả các tone từ 01 đến 08 đều đồng bộ logo <strong>Tuan Lee</strong>.
           <strong>Tone 1–6:</strong> Tinh chỉnh theo phong cách Sky nhẹ nhàng, loại bỏ màu đỏ gắt/xanh đậm/đỏ đô, border hạ thanh mảnh mềm mại.
           <strong>Tone 07–08:</strong> Giữ nguyên vẹn 100% thiết kế, mã màu kỹ thuật và layout bản gốc Technical Blueprint (Light & Dark).
         </p>
@@ -1388,7 +1421,11 @@
 
       <div class="logo-row">
         <div class="bp-logo-box">
-          <b>dev</b><i>·</i><b>archive</b>
+          <img src="../../logo_tl.png" alt="Tuan Lee" class="bp-logo-img">
+          <div class="bp-logo-title-wrap">
+            <span class="bp-logo-name">Tuan Lee</span>
+            <span class="bp-logo-sub">Design</span>
+          </div>
         </div>
         <div class="taglist">
           <span>People</span>
@@ -1493,7 +1530,11 @@
 
       <div class="logo-row">
         <div class="bp-logo-box">
-          <b>dev</b><i>·</i><b>archive</b>
+          <img src="../../logo_tl.png" alt="Tuan Lee" class="bp-logo-img">
+          <div class="bp-logo-title-wrap">
+            <span class="bp-logo-name">Tuan Lee</span>
+            <span class="bp-logo-sub">Design</span>
+          </div>
         </div>
         <div class="taglist">
           <span>People</span>
@@ -1598,7 +1639,11 @@
 
       <div class="logo-row">
         <div class="bp-logo-box">
-          <b>dev</b><i>·</i><b>archive</b>
+          <img src="../../logo_tl.png" alt="Tuan Lee" class="bp-logo-img">
+          <div class="bp-logo-title-wrap">
+            <span class="bp-logo-name">Tuan Lee</span>
+            <span class="bp-logo-sub">Design</span>
+          </div>
         </div>
         <div class="taglist">
           <span>People</span>
@@ -1703,7 +1748,11 @@
 
       <div class="logo-row">
         <div class="bp-logo-box">
-          <b>dev</b><i>·</i><b>archive</b>
+          <img src="../../logo_tl.png" alt="Tuan Lee" class="bp-logo-img">
+          <div class="bp-logo-title-wrap">
+            <span class="bp-logo-name">Tuan Lee</span>
+            <span class="bp-logo-sub">Design</span>
+          </div>
         </div>
         <div class="taglist">
           <span>Devices</span>
@@ -1804,7 +1853,11 @@
 
       <div class="logo-row">
         <div class="bp-logo-box">
-          <b>dev</b><i>·</i><b>archive</b>
+          <img src="../../logo_tl.png" alt="Tuan Lee" class="bp-logo-img">
+          <div class="bp-logo-title-wrap">
+            <span class="bp-logo-name">Tuan Lee</span>
+            <span class="bp-logo-sub">Design</span>
+          </div>
         </div>
         <div class="taglist">
           <span>Metrics</span>
@@ -1909,7 +1962,11 @@
 
       <div class="logo-row">
         <div class="bp-logo-box">
-          <b>dev</b><i>·</i><b>archive</b>
+          <img src="../../logo_tl.png" alt="Tuan Lee" class="bp-logo-img">
+          <div class="bp-logo-title-wrap">
+            <span class="bp-logo-name">Tuan Lee</span>
+            <span class="bp-logo-sub">Design</span>
+          </div>
         </div>
         <div class="taglist">
           <span>Networks</span>
@@ -2016,10 +2073,14 @@
 
       <div class="logo-row" style="margin:6px 0;">
         <div class="bp-logo-box">
-          <b>dev</b><i>·</i><b>archive</b>
+          <img src="../../logo_tl.png" alt="Tuan Lee" class="bp-logo-img">
+          <div class="bp-logo-title-wrap">
+            <span class="bp-logo-name">Tuan Lee</span>
+            <span class="bp-logo-sub">Design</span>
+          </div>
         </div>
         <div class="bp-tagline">
-          Personal Developer Archive<br>
+          Tuan Lee — Design Console<br>
           Fullstack + Cloud
           <span class="line"></span>
         </div>
@@ -2107,10 +2168,14 @@
 
       <div class="logo-row" style="margin:6px 0;">
         <div class="bp-logo-box">
-          <b>dev</b><i>·</i><b>archive</b>
+          <img src="../../logo_tl.png" alt="Tuan Lee" class="bp-logo-img">
+          <div class="bp-logo-title-wrap">
+            <span class="bp-logo-name">Tuan Lee</span>
+            <span class="bp-logo-sub">Design</span>
+          </div>
         </div>
         <div class="bp-tagline" style="color:#F5F5F5;">
-          Personal Developer Archive<br>
+          Tuan Lee — Design Console<br>
           Fullstack + Cloud
           <span class="line"></span>
         </div>
@@ -2484,10 +2549,10 @@
     const now = new Date().toLocaleDateString('vi-VN', { year: 'numeric', month: '2-digit', day: '2-digit' });
     const isBp = toneNum === 7 || toneNum === 8;
     
-    let md = '# Elite Design System — ' + t.title + '\n\n';
+    let md = '# Design Console — ' + t.title + '\n\n';
     md += '> **Chế độ:** ' + t.mode + '  \n';
     md += '> **Nhóm màu:** ' + t.family + '  \n';
-    md += '> **Hệ thống:** Elite Unified Design System v4.2  \n';
+    md += '> **Hệ thống:** Design Console — Unified Design System v4.2  \n';
     md += '> **Ngày xuất:** ' + now + '\n\n';
     md += '---\n\n';
     md += '## 1. Triết lý Thiết kế (Design Philosophy)\n';
@@ -2530,13 +2595,13 @@
     md += '  --status-error: ' + t.error + ';\n';
     md += '}\n';
     md += '```\n\n';
-    md += '*Tài liệu được tạo tự động từ Elite Design System Studio.*\n';
+    md += '*Tài liệu được tạo tự động từ Design Console Studio.*\n';
     return md;
   }
 
   function downloadToneMarkdown(toneNum) {
     const md = buildMarkdownSpec(toneNum);
-    const filename = `Elite_Tone_0${toneNum}_${toneNum === 7 ? 'Blueprint_Light' : toneNum === 8 ? 'Blueprint_Dark' : 'Palette'}.md`;
+    const filename = `Design_Console_Tone_0${toneNum}_${toneNum === 7 ? 'Blueprint_Light' : toneNum === 8 ? 'Blueprint_Dark' : 'Palette'}.md`;
     
     // Download file
     const blob = new Blob([md], { type: 'text/markdown;charset=utf-8;' });
