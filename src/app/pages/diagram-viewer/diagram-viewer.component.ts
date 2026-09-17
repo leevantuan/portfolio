@@ -37,9 +37,43 @@ export class DiagramViewerComponent implements OnInit, OnChanges, OnDestroy {
   TECH = TECH_TERMS;
   UIResource: any = UIResourceENG;
 
-  // Active Tab: 01. Network | 02. System Architecture | 03. Permission & Access
-  activeTab: 'network' | 'system' | 'permission' = 'network';
+  // Active Tab: 01. Enterprise Network | 02. Enterprise Server | 03. Enterprise System | 04. Enterprise Access
+  activeTab: 'network' | 'server' | 'system' | 'permission' = 'network';
   activeTimeFilter: 'live' | '1h' | '6h' | '24h' | '7d' = 'live';
+
+  // ==========================================
+  // TAB 02: ENTERPRISE SERVER INFRASTRUCTURE STATE
+  // ==========================================
+  tabServerSelectedTier: number = 0;
+  tabServerTiers = [
+    '01 Multi-Region Users (10k+)',
+    '02 Edge DDoS & WAF Protection',
+    '03 Fortinet HA Active/Standby',
+    '04 Enterprise Load Balancer',
+    '05 Scalable Service Clusters',
+    '06 HA Database (PostgreSQL/SQL)',
+    '07 Primary DC (HCM Production)',
+    '08 DR Site (Singapore Standby)',
+    '09 SAN/NAS Storage & Retention',
+  ];
+
+  tabServerInterfaces = [
+    { name: 'Edge DDoS / WAF Shield', status: 'ARMED', color: 'emerald' },
+    { name: 'Fortinet HA Cluster', status: 'SYNC OK', color: 'emerald' },
+    { name: 'Enterprise Load Balancer', status: 'L4/L7 ACTIVE', color: 'emerald' },
+    { name: 'Web Cluster (Auto-Scale)', status: '3/3 NODES', color: 'emerald' },
+    { name: 'Application Microservices', status: '3/3 NODES', color: 'emerald' },
+    { name: 'Internal Directory & Mail', status: 'HEALTHY', color: 'emerald' },
+    { name: 'Database Sync Replication', status: '< 2.4ms LAG', color: 'emerald' },
+    { name: 'Primary DC (HCM, VN)', status: 'ACTIVE (PROD)', color: 'emerald' },
+    { name: 'Disaster Recovery (SG)', status: 'WARM STANDBY', color: 'cyan' },
+    { name: 'SAN/NAS Snapshots (365d)', status: 'SYNCHRONIZED', color: 'emerald' },
+  ];
+
+  isServerFailoverActive: boolean = false;
+  toggleServerFailover(): void {
+    this.isServerFailoverActive = !this.isServerFailoverActive;
+  }
 
   // ==========================================
   // TAB 01: NETWORK TOPOLOGY STATE
@@ -260,7 +294,7 @@ export class DiagramViewerComponent implements OnInit, OnChanges, OnDestroy {
     this.stopTimers();
   }
 
-  setTab(tab: 'network' | 'system' | 'permission'): void {
+  setTab(tab: 'network' | 'server' | 'system' | 'permission'): void {
     this.activeTab = tab;
   }
 

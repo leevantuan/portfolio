@@ -86,11 +86,11 @@
 
 ---
 
-## Architecture Modal (2 Tab - Ưu Tiên Network Topology Đầu Tiên)
+## Architecture Modal (Bộ 4 Tab Kiến Trúc Enterprise)
 **File:** `src/app/pages/diagram-viewer/diagram-viewer.component.html` & `.ts`
 
 - Trigger: nút `> VIEW ARCHITECTURE` trong hero (mặc định mở ngay Tab 1 Network)
-- **Tab 1: `[ 01. NETWORK TOPOLOGY ]`** — Sơ đồ mạng hạ tầng chuẩn Doanh Nghiệp (Enterprise Network Topology - Mặc định kích hoạt):
+- **Tab 1: `[ 01. ENTERPRISE NETWORK TOPOLOGY ]`** — Sơ đồ mạng hạ tầng chuẩn Doanh Nghiệp (Enterprise Network Topology - Mặc định kích hoạt):
   - Canvas SVG: `viewBox="0 0 1060 650"` hỗ trợ co giãn toàn diện, tương thích 2 theme `07B Dark Console` (mặc định) và `07A Light Blueprint`.
   - **Bảo mật danh tính & Anonymization:**
     - `Head Office / HQ (VN)`: Trụ sở chính
@@ -114,11 +114,43 @@
     - Access Switches phân phối tới các VLAN tách biệt: VLAN 10 (Office Subnet 192.168.10.0/24), VLAN 20 (IoT/Warehouse Subnet 192.168.20.0/24), VLAN 30 (CCTV Subnet 192.168.30.0/24).
   - Time filter: `Live / 1h / 6h / 24h / 7d`
   - Animated packet pulses: `<animateMotion>` trực quan hóa chuyển động gói tin trên các tuyến WAN, IPsec, Trunk và Access.
-- **Tab 2: `[ 02. SYSTEM ARCHITECTURE ]`** — 4 tầng vi dịch vụ phân tán:
+
+- **Tab 2: `[ 02. ENTERPRISE SERVER INFRASTRUCTURE ]`** — Hạ tầng Server Doanh Nghiệp (Enterprise Server Architecture):
+  - Tiêu đề modal: `// Enterprise Server Architecture` (thay thế nhãn cũ Multi-Region).
+  - Đã loại bỏ thanh toolbar lặp lại ở phía trên canvas SVG (giúp sơ đồ nở rộng tối đa chiều cao, thoáng đãng và sắc nét).
+  - Canvas SVG: `viewBox="0 0 1100 700"` tinh chỉnh theo chuẩn Tone 07 Technical Blueprint & Dark Console.
+  - **3 Vùng người dùng toàn cầu:** Americas (~3,000 users), Europe (~4,000 users), APAC (~3,000 users) kèm vector kiến trúc biểu trưng.
+  - **Tầng biên Internet & Bảo mật:**
+    - Cloud Internet với quả cầu cyber wireframe.
+    - Dàn Firewall Fortinet HA Active (Xanh neon) và Standby (Đỏ/Cam) dạng rack server 2U với khe cắm mạng và LED trạng thái hoạt động.
+    - Trung tâm DDoS Protection: WAF, CDN, Anti-Bot với rào chắn bảo vệ dữ liệu.
+  - **Tầng cân bằng tải:** `Enterprise Load Balancer` (L4/L7, SSL Offload, Health Check, Geo Routing).
+  - **4 Cụm Server & Dịch vụ:**
+    - Web Cluster (Auto Scaling) kèm 3 blade server 1U.
+    - Application Cluster (Microservices / APIs) kèm 3 blade server 1U.
+    - Internal Services (AD / File / Mail / ...) kèm 3 blade server 1U.
+    - Management (Monitoring / Logging) kèm 3 blade server 1U.
+  - **Tầng Database & Đồng bộ 2 chiều:**
+    - Database Cluster (Primary - PostgreSQL / SQL Server) với 1 khối cylinder master 3D + 4 cylinder read-replica.
+    - Đường truyền đồng bộ dữ liệu hai chiều: `<--- Replication (Real-time / Async) --->`.
+    - Database Cluster (Standby) phục vụ Failover tức thì.
+  - **Hạ tầng Vật lý & Disaster Recovery:**
+    - Primary Data Center (Production Active, TP. Hồ Chí Minh, Việt Nam) dạng tủ rack server cao cấp.
+    - Storage & Backup (SAN / NAS, Snapshots, Backup, Retention: 30 / 90 / 365 days).
+    - Disaster Recovery Site (Standby Warm, Singapore).
+    - Tuyến cáp đồng bộ dữ liệu xanh neon liên kết Primary DC ⮂ Storage ⮂ DR Site.
+  - **Thanh KPI 6 chỉ số:** High Availability 99.99%, Auto Scaling On Demand, Security Firewall + WAF, Monitoring 24/7, Backup & DR Multi-Region, Enterprise Access Low Latency.
+  - **Hệ thống animation `<animateMotion>` luồng gói tin:** Chạy liên tục từ người dùng 3 châu lục qua Internet, lọc qua Firewall/DDoS, phân phối qua Load Balancer vào 4 cụm máy chủ, ghi vào Database và truyền đồng bộ đến trung tâm dự phòng DR Singapore.
+  - **Sidebar tương tác:** Danh mục 9 tầng kiến trúc, bảng trạng thái hạ tầng thực tế, nút mô phỏng Failover chuyển đổi trạng thái Active/Standby tức thì.
+
+- **Tab 3: `[ 03. ENTERPRISE SYSTEM ARCHITECTURE ]`** — 4 tầng vi dịch vụ phân tán:
   1. Client & Ingress (Angular SPA / API Gateway)
   2. Core Microservices (Auth, Order, Real-time, ERP)
   3. Broker & Storage (RabbitMQ, Redis, PostgreSQL, MongoDB)
   4. K8s AKS & Observability (Prometheus, Grafana NOC, Jenkins CI/CD)
+
+- **Tab 4: `[ 04. ENTERPRISE ACCESS & PERMISSION ]`** — Công cụ phân quyền doanh nghiệp & File/Folder ACL:
+  - RBAC, Binary Permissions (Bitmask), Phân quyền thư mục kế thừa, Audit Logs.
 
 ---
 
