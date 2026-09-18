@@ -2,3 +2,137 @@
   display: block;
   width: 100%;
 }
+
+/* ======================================================== */
+/* 4-CORNER SLIDE IN & OUT ANIMATION (FULL VIEWPORT SCALE)   */
+/* Cards fly in from screen edges and glide away on scroll  */
+/* ======================================================== */
+.story-card-corner {
+  will-change: transform, opacity;
+  transition: 
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+  transition-delay: 0s;
+}
+
+/* State 1: Below Viewport (Outside screen edges / 4 corners) */
+.story-card-corner.corner-tl {
+  transform: translate3d(calc(-50vw - 120px), -240px, 0) scale(0.88);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.story-card-corner.corner-tr {
+  transform: translate3d(calc(50vw + 120px), -240px, 0) scale(0.88);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.story-card-corner.corner-bl {
+  transform: translate3d(calc(-50vw - 120px), 240px, 0) scale(0.88);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.story-card-corner.corner-br {
+  transform: translate3d(calc(50vw + 120px), 240px, 0) scale(0.88);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* State 2: Active In-View (Docked smoothly in 4 grid positions) */
+.story-card-corner.corner-active {
+  transform: translate3d(0, 0, 0) scale(1) !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* Fluid micro-stagger on entering */
+.story-card-corner.corner-tl.corner-active {
+  transition-delay: 0.04s;
+}
+
+.story-card-corner.corner-tr.corner-active {
+  transition-delay: 0.12s;
+}
+
+.story-card-corner.corner-bl.corner-active {
+  transition-delay: 0.20s;
+}
+
+.story-card-corner.corner-br.corner-active {
+  transition-delay: 0.28s;
+}
+
+/* State 3: Above Viewport (When scrolled past 90% - "chạy từ từ ra 4 góc") */
+.story-card-corner.corner-exit-above {
+  transition: 
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 1.05s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.story-card-corner.corner-exit-above.corner-tl {
+  transform: translate3d(calc(-50vw - 120px), -280px, 0) scale(0.88) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition-delay: 0.05s !important;
+}
+
+.story-card-corner.corner-exit-above.corner-tr {
+  transform: translate3d(calc(50vw + 120px), -280px, 0) scale(0.88) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition-delay: 0.15s !important;
+}
+
+.story-card-corner.corner-exit-above.corner-bl {
+  transform: translate3d(calc(-50vw - 120px), 280px, 0) scale(0.88) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition-delay: 0.25s !important;
+}
+
+.story-card-corner.corner-exit-above.corner-br {
+  transform: translate3d(calc(50vw + 120px), 280px, 0) scale(0.88) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition-delay: 0.35s !important;
+}
+
+/* Tablet / Mobile screen adjustments */
+@media (max-width: 768px) {
+  .story-card-corner.corner-tl {
+    transform: translate3d(calc(-60vw - 40px), -160px, 0) scale(0.92);
+  }
+  .story-card-corner.corner-tr {
+    transform: translate3d(calc(60vw + 40px), -160px, 0) scale(0.92);
+  }
+  .story-card-corner.corner-bl {
+    transform: translate3d(calc(-60vw - 40px), 160px, 0) scale(0.92);
+  }
+  .story-card-corner.corner-br {
+    transform: translate3d(calc(60vw + 40px), 160px, 0) scale(0.92);
+  }
+  .story-card-corner.corner-exit-above.corner-tl {
+    transform: translate3d(calc(-60vw - 40px), -200px, 0) scale(0.92) !important;
+  }
+  .story-card-corner.corner-exit-above.corner-tr {
+    transform: translate3d(calc(60vw + 40px), -200px, 0) scale(0.92) !important;
+  }
+  .story-card-corner.corner-exit-above.corner-bl {
+    transform: translate3d(calc(-60vw - 40px), 200px, 0) scale(0.92) !important;
+  }
+  .story-card-corner.corner-exit-above.corner-br {
+    transform: translate3d(calc(60vw + 40px), 200px, 0) scale(0.92) !important;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .story-card-corner {
+    transition: opacity 0.3s ease !important;
+    transform: none !important;
+  }
+}

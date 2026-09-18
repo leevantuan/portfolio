@@ -211,8 +211,16 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnChanges, OnDest
           if (entry.target.id === 'networking' || entry.target.querySelector('#networking-terminal')) {
             this.startCiscoTyping();
           }
-
-          this.observer?.unobserve(entry.target);
+        } else {
+          entry.target.classList.remove('is-revealed');
+          if (entry.target.id === 'systems' || entry.target.querySelector('#systems-terminal')) {
+            this.linuxTypedCmd = '';
+            this.isLinuxTypingDone = false;
+          }
+          if (entry.target.id === 'networking' || entry.target.querySelector('#networking-terminal')) {
+            this.ciscoTypedCmd = '';
+            this.isCiscoTypingDone = false;
+          }
         }
       });
     }, options);

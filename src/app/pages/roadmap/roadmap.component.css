@@ -61,36 +61,133 @@
 }
 
 /* ========================================================================= */
-/* GNOME SHELL 26.04 ULTRA-SMOOTH REVEAL MOTION                              */
+/* ROADMAP ULTRA-SMOOTH REVEAL & DIRECTIONAL MOTION                          */
 /* ========================================================================= */
-.gnome-reveal-item {
+
+.roadmap-reveal-item {
   opacity: 0;
-  transform: translateY(24px) scale(0.96);
-  filter: blur(8px);
-  will-change: transform, opacity, filter;
-  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
-              filter 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(20px);
+  will-change: transform, opacity;
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.gnome-reveal-item.is-revealed {
+.roadmap-reveal-item.is-revealed {
   opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0);
+  transform: translateY(0);
+}
+
+/* SLIDE IN FROM LEFT & RIGHT */
+.slide-from-left {
+  opacity: 0;
+  transform: translate3d(-40px, 0, 0);
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.slide-from-right {
+  opacity: 0;
+  transform: translate3d(40px, 0, 0);
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.is-revealed .slide-from-left,
+.is-revealed.slide-from-left {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.is-revealed .slide-from-right,
+.is-revealed.slide-from-right {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* CENTER NODE CONNECTOR INDICATOR */
+.center-node-indicator {
+  opacity: 0;
+  transform: scale(0.3);
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s,
+              opacity 0.4s ease 0.15s;
+  will-change: transform, opacity;
+}
+
+.is-revealed .center-node-indicator {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* CLUSTER TAG: BUNCHED IN CENTER THEN BLOSSOMS OUT */
+.cluster-tag {
+  opacity: 0;
+  transform: translate3d(14px, 10px, 0) scale(0.7) rotate(-3deg);
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              opacity 0.45s ease;
+  will-change: transform, opacity;
+}
+
+.is-revealed .cluster-tag {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+}
+
+.is-revealed .cluster-tag:nth-child(1) { transition-delay: 0.22s; }
+.is-revealed .cluster-tag:nth-child(2) { transition-delay: 0.27s; }
+.is-revealed .cluster-tag:nth-child(3) { transition-delay: 0.32s; }
+.is-revealed .cluster-tag:nth-child(4) { transition-delay: 0.37s; }
+.is-revealed .cluster-tag:nth-child(5) { transition-delay: 0.42s; }
+.is-revealed .cluster-tag:nth-child(6) { transition-delay: 0.47s; }
+.is-revealed .cluster-tag:nth-child(n+7) { transition-delay: 0.52s; }
+
+/* CASCADE DOWNWARD WATERFALL */
+.terminal-cascade-line {
+  opacity: 0;
+  transform: translate3d(0, -10px, 0);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 0.4s ease;
+  will-change: transform, opacity;
+}
+
+.is-revealed .terminal-cascade-line {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.is-revealed .terminal-cascade-line:nth-child(1) { transition-delay: 0.14s; }
+.is-revealed .terminal-cascade-line:nth-child(2) { transition-delay: 0.20s; }
+.is-revealed .terminal-cascade-line:nth-child(3) { transition-delay: 0.26s; }
+.is-revealed .terminal-cascade-line:nth-child(4) { transition-delay: 0.32s; }
+.is-revealed .terminal-cascade-line:nth-child(n+5) { transition-delay: 0.38s; }
+
+/* CIRCUIT SPARK FLOW */
+@keyframes circuitSignalFlow {
+  0% { transform: translateY(-100%); opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { transform: translateY(800%); opacity: 0; }
+}
+
+.animate-circuit-flow {
+  animation: circuitSignalFlow 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 .delay-75 { transition-delay: 75ms; }
 .delay-100 { transition-delay: 100ms; }
 .delay-150 { transition-delay: 150ms; }
 .delay-200 { transition-delay: 200ms; }
-.delay-300 { transition-delay: 300ms; }
-.delay-400 { transition-delay: 400ms; }
 
 @media (prefers-reduced-motion: reduce) {
-  .gnome-reveal-item {
+  .roadmap-reveal-item,
+  .slide-from-left,
+  .slide-from-right,
+  .center-node-indicator,
+  .cluster-tag,
+  .terminal-cascade-line {
     opacity: 1 !important;
     transform: none !important;
-    filter: none !important;
     transition: none !important;
   }
 }

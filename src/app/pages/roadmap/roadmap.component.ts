@@ -77,19 +77,20 @@ export class RoadmapComponent implements OnInit, OnChanges, OnDestroy, AfterView
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-revealed');
-          this.observer?.unobserve(entry.target);
+        } else {
+          entry.target.classList.remove('is-revealed');
         }
       });
     }, options);
 
-    const targets = this.el.nativeElement.querySelectorAll('.gnome-reveal-item');
+    const targets = this.el.nativeElement.querySelectorAll('.roadmap-reveal-item');
     targets.forEach((target: Element) => {
       this.observer?.observe(target);
     });
   }
 
   private revealAll(): void {
-    const targets = this.el.nativeElement.querySelectorAll('.gnome-reveal-item');
+    const targets = this.el.nativeElement.querySelectorAll('.roadmap-reveal-item');
     targets.forEach((target: Element) => {
       target.classList.add('is-revealed');
     });

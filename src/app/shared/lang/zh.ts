@@ -563,6 +563,9 @@ export const UIResourceZH = {
       title: '从需求调研到自愈的 8 阶段编排体系',
       desc: '',
       process_label: '端到端工程流程 (8 个阶段)',
+      group1_title: 'AI模型与自主编程Agent',
+      group2_title: 'MCP协议与Agent工具链',
+      group3_title: '自主生命周期与自愈闭环',
       pillars: [
         { title: 'Phases 01 → 02：需求调研与架构设计', desc: '分析业务需求，检索超过 100 万 token 的 RFC 文档，设计分布式 CQRS 架构、PostgreSQL/Redis 数据模型，并规划 Azure AKS 集群规模。' },
         { title: 'Phases 03 → 04：代码实现与全面测试', desc: 'Claude Code CLI 通过 MCP 操作生成 .NET 8 源代码，自动运行单元测试 (xUnit)、端到端 Playwright 测试，测试失败时自动触发自我修复循环。' },

@@ -30,10 +30,10 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     { id: 'topology', label: 'Topology' },
     { id: 'story', label: 'My Story' },
     { id: 'skills', label: 'Skills' },
-    { id: 'ai-automation', label: 'AI Automation' },
+    { id: 'ai-engineering', label: 'AI Automation' },
     { id: 'roadmap', label: 'Roadmap' },
-    { id: 'credentials', label: 'Credentials' },
     { id: 'experience', label: 'Experience' },
+    { id: 'credentials', label: 'Credentials' },
     { id: 'contact', label: 'Contact' },
   ];
   activeSection: string = 'topology';

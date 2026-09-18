@@ -562,6 +562,9 @@ export const UIResourceVN = {
       title: 'Hệ Thống Điều Phối 8 Giai Đoạn Từ Khảo Sát Đến Tự Phục Hồi',
       desc: '',
       process_label: 'QUY TRÌNH KỸ THUẬT ĐÓNG GÓI TỪ A → Z (8 PHASES)',
+      group1_title: 'Mô Hình & Trợ Lý Lập Trình AI',
+      group2_title: 'Giao Thức MCP & Công Cụ Agent',
+      group3_title: 'Vòng Đời Tự Động & Tự Phục Hồi',
       pillars: [
         { title: 'Phases 01 → 02: Khảo Sát & Thiết Kế Kiến Trúc', desc: 'Phân tích yêu cầu, tra cứu 1M+ token tài liệu RFC, thiết kế kiến trúc phân tán CQRS, mô hình dữ liệu PostgreSQL/Redis và sizing cụm Azure AKS.' },
         { title: 'Phases 03 → 04: Thực Thi Mã Nguồn & Testing Toàn Diện', desc: 'Claude Code CLI thao tác qua MCP sinh mã nguồn .NET 8, chạy tự động Unit Test (xUnit), E2E Playwright và kích hoạt vòng lặp tự sửa lỗi khi test fail.' },

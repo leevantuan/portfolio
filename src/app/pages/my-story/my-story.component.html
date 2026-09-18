@@ -1,6 +1,6 @@
 <div class="my-story-container w-full max-w-[1500px] mx-auto py-2 sm:py-4">
-  <!-- Blueprint Main Card with Cyber Technical Frame -->
-  <div class="relative rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4 sm:p-7 lg:p-8 shadow-sm overflow-hidden">
+  <!-- Blueprint Main Card with Cyber Technical Frame (No overflow-hidden so cards can fly from outside) -->
+  <div class="relative rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4 sm:p-7 lg:p-8 shadow-sm">
     
     <!-- Top Decorative Technical Header Bar -->
     <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--border)] pb-4 mb-6 sm:mb-8 font-mono-tech text-[10px] sm:text-xs">
@@ -26,11 +26,19 @@
       </p>
     </div>
 
-    <!-- Story Narrative Grid: 4 Core Evolutionary Milestones -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 mb-10">
+    <!-- Story Narrative Grid: 4 Core Evolutionary Milestones (4-corner slide-in/out across screen) -->
+    <div #storyGrid class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 mb-10 p-1 relative z-10">
       <div 
         *ngFor="let stage of storyData?.stages; let idx = index"
-        class="relative p-4 sm:p-5 rounded-md border border-[var(--border)] bg-[var(--surface-2)]/60 flex flex-col justify-between hover:border-[var(--accent)] transition-all group"
+        class="story-card-corner relative z-10 p-4 sm:p-5 rounded-md border border-[var(--border)] bg-[var(--surface-2)]/90 backdrop-blur-xs flex flex-col justify-between hover:border-[var(--accent)] group"
+        [ngClass]="{
+          'corner-tl': idx === 0,
+          'corner-tr': idx === 1,
+          'corner-bl': idx === 2,
+          'corner-br': idx === 3,
+          'corner-active': storyState === 'active',
+          'corner-exit-above': storyState === 'above'
+        }"
       >
         <div class="space-y-3">
           <!-- Step Header & Badge -->
@@ -82,7 +90,7 @@
         <svg viewBox="0 0 900 180" class="w-full h-auto max-h-[160px] select-none pointer-events-none" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <!-- Blueprint grid pattern -->
-            <pattern id="storyGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+            <pattern id="patternStoryGrid" width="20" height="20" patternUnits="userSpaceOnUse">
               <path d="M 20 0 L 0 0 0 20" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-opacity="0.6" />
             </pattern>
             <!-- Accent glow filter -->
@@ -96,7 +104,7 @@
           </defs>
 
           <!-- Background Pattern -->
-          <rect width="900" height="180" fill="url(#storyGrid)" opacity="0.75" />
+          <rect width="900" height="180" fill="url(#patternStoryGrid)" opacity="0.75" />
 
           <!-- Left Sector: Software & Clean Architecture Blueprint -->
           <g transform="translate(160, 90)">

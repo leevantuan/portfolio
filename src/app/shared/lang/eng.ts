@@ -562,6 +562,9 @@ export const UIResourceENG = {
       title: 'An 8-Phase Orchestration System From Discovery to Self-Healing',
       desc: '',
       process_label: 'END-TO-END ENGINEERING PROCESS (8 PHASES)',
+      group1_title: 'AI Models & Coding Agents',
+      group2_title: 'MCP Protocol & Agent Tooling',
+      group3_title: 'Autonomous Lifecycle & Self-Healing',
       pillars: [
         { title: 'Phases 01 → 02: Discovery & Architecture Design', desc: 'Analyze requirements, search 1M+ tokens of RFC documentation, design distributed CQRS architecture, PostgreSQL/Redis data models, and Azure AKS cluster sizing.' },
         { title: 'Phases 03 → 04: Code Implementation & Comprehensive Testing', desc: 'Claude Code CLI operates via MCP to generate .NET 8 source code, automatically runs Unit Tests (xUnit), E2E Playwright, and triggers a self-correction loop whenever a test fails.' },

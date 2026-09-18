@@ -1,4 +1,4 @@
-<div class="relative isolate w-full min-h-screen text-[var(--text-1)] selection:bg-[var(--accent)] selection:text-[#0B0B0B]">
+<div class="relative isolate w-full min-h-screen overflow-x-clip text-[var(--text-1)] selection:bg-[var(--accent)] selection:text-[#0B0B0B]">
   
   <!-- ======================================================== -->
   <!-- FIXED GLOBAL INFRASTRUCTURE BACKGROUND (STICKY UNDERNEATH)-->
@@ -38,6 +38,32 @@
   </aside>
 
   <!-- ======================================================== -->
+  <!-- ACTIVE SCROLLSPY CHAPTER RAIL (FIXED LEFT SIDEBAR)        -->
+  <!-- Đi đến đâu sáng đến đó theo vị trí viewport             -->
+  <!-- ======================================================== -->
+  <aside 
+    class="fixed left-3 sm:left-5 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col items-center gap-1.5 font-mono-tech text-[11px] select-none pointer-events-auto bg-[var(--surface)]/90 backdrop-blur-md px-2 py-3.5 rounded-md border border-[var(--border)] shadow-xl"
+    aria-label="Chapter Navigator"
+  >
+    <ng-container *ngFor="let ch of chapters; let i = index; let last = last">
+      <button 
+        type="button"
+        (click)="scrollToChapter(ch.id)"
+        [attr.title]="ch.num + ' / ' + ch.title"
+        class="relative px-2 py-1 rounded transition-all duration-200 cursor-pointer flex items-center justify-center font-mono-tech"
+        [ngClass]="activeChapter === ch.id 
+          ? 'bg-[var(--accent)] text-[#0B0B0B] font-extrabold shadow-sm scale-110' 
+          : 'text-[var(--text-3)] hover:text-[var(--text-1)] font-medium'"
+      >
+        <span>{{ ch.num }}</span>
+      </button>
+
+      <!-- Divider line between items -->
+      <span *ngIf="!last" class="w-[1px] h-2.5 bg-[var(--border)] opacity-60"></span>
+    </ng-container>
+  </aside>
+
+  <!-- ======================================================== -->
   <!-- HERO SCREEN (PAGE 1): 100vw x 100vh FULL-BLEED TOPOLOGY  -->
   <!-- Covers background completely with bg-[var(--bg)]         -->
   <!-- ======================================================== -->
@@ -55,30 +81,30 @@
   <!-- ======================================================== -->
   <div class="w-full max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-10 py-4 sm:py-6 space-y-8 sm:space-y-10 relative z-10">
     
-    <!-- My Story (Genesis & Trajectory) -->
+    <!-- 02: My Story (Genesis & Trajectory) -->
     <section id="story">
       <app-my-story [lang]="lang" [UIResource]="UIResource"></app-my-story>
     </section>
 
-    <!-- Technical Skills Matrix & AI Automation Orchestrator -->
+    <!-- 03 & 04: Technical Skills Matrix & AI Automation Orchestrator -->
     <app-skills [lang]="lang"></app-skills>
 
-    <!-- Career Roadmap (6 Levels from Fresh IT to Solution Architect) & Grafana Telemetry -->
+    <!-- 05: Career Roadmap (6 Levels from Fresh IT to Solution Architect) & Grafana Telemetry -->
     <section id="roadmap">
       <app-roadmap [lang]="lang"></app-roadmap>
     </section>
 
-    <!-- International Credential Vault (8 Verified Certifications) -->
-    <section id="credentials">
-      <app-credentials [lang]="lang"></app-credentials>
-    </section>
-
-    <!-- Professional Experience (2Y Infra + 1Y Dev) -->
+    <!-- 06: Professional Experience (Production Timeline) -->
     <section id="experience">
       <app-experience [lang]="lang"></app-experience>
     </section>
 
-    <!-- Contact Terminal & Connection Direct -->
+    <!-- 07: International Credential Vault (8 Verified Certifications) -->
+    <section id="credentials">
+      <app-credentials [lang]="lang"></app-credentials>
+    </section>
+
+    <!-- 08: Contact Terminal & Connection Direct -->
     <section id="contact">
       <app-contact [lang]="lang"></app-contact>
     </section>
