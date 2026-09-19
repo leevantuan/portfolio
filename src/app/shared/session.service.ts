@@ -4,8 +4,8 @@ import { Injectable, signal } from '@angular/core';
   providedIn: 'root',
 })
 export class SessionService {
-  // Default to Dark Console (07B) as requested
-  currentTheme = signal<'dark' | 'light'>('dark');
+  // Default to Light Blueprint (07A)
+  currentTheme = signal<'dark' | 'light'>('light');
   currentLang = signal<'VI' | 'ENG' | 'ZH'>('ENG');
 
   constructor() {
@@ -23,9 +23,8 @@ export class SessionService {
         // User manually selected a theme previously
         initialTheme = savedTheme;
       } else {
-        // Mobile prioritizes Light mode, Desktop prioritizes Dark mode
-        const isMobile = window.innerWidth < 1024;
-        initialTheme = isMobile ? 'light' : 'dark';
+        // Default mode is Light for all devices (desktop and mobile)
+        initialTheme = 'light';
       }
       this.setTheme(initialTheme);
     }

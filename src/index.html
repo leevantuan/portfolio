@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="dark" class="dark">
+<html lang="en" data-theme="light">
 
 <head>
   <meta charset="utf-8">
@@ -16,8 +16,7 @@
       try {
         var manual = localStorage.getItem('theme_manual');
         var saved = localStorage.getItem('theme');
-        var isMobile = window.innerWidth < 1024;
-        var theme = (manual && saved) ? saved : (isMobile ? 'light' : 'dark');
+        var theme = (manual && saved) ? saved : 'light';
         document.documentElement.setAttribute('data-theme', theme);
         if (theme === 'dark') {
           document.documentElement.classList.add('dark');

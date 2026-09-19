@@ -63,8 +63,8 @@ non-English locales. Default language is `'ENG'` (falls back to VN resource if a
 reaches the `default` case — the fallback constant, not the initial default).
 
 **Theme is CSS custom properties, not Angular theming.** `SessionService` holds
-`currentTheme = signal<'dark'|'light'>('dark')`, defaulting to dark (`07B Dark Console`) unless
-`localStorage.theme === 'light'`. Toggling sets both `data-theme` attribute and a `.dark` class on
+`currentTheme = signal<'dark'|'light'>('light')`, defaulting to light (`07A Light Blueprint`) unless
+`localStorage.theme === 'dark'`. Toggling sets both `data-theme` attribute and a `.dark` class on
 `<html>` (kept in sync for the Tailwind v4 custom variant in `src/styles.css`:
 `@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *, .dark, .dark *))`). All theme
 colors are CSS vars defined once in `src/styles.css` under `:root, [data-theme="dark"]` and
