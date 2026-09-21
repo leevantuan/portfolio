@@ -1,0 +1,947 @@
+    /* ==========================================================================
+       TYPOGRAPHY SYSTEM MATRIX (1-Font System: Inter, Roboto, Manrope, IBM Plex Mono)
+       ========================================================================== */
+    :root,
+    html[data-font="inter"] {
+      --font-system: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    html[data-font="roboto"] {
+      --font-system: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    html[data-font="manrope"] {
+      --font-system: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    html[data-font="portfolio"] {
+      --font-system: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    }
+    html[data-font="noto"] {
+      --font-system: 'Noto Sans SC', 'Inter', -apple-system, sans-serif;
+    }
+
+    :root {
+      --font-display: var(--font-system);
+      --font-body: var(--font-system);
+      --font-mono: 'IBM Plex Mono', Consolas, monospace;
+      --font-hanzi: 'Noto Sans SC', sans-serif;
+    }
+
+    body, button, input, select, textarea, table, th, td, h1, h2, h3, h4, h5, h6, p, span, a, label, .nav-item, .brand-name, .sidebar-brand-text, .kpi-num, .user-meta-name {
+      font-family: var(--font-system) !important;
+    }
+
+    /* Retain monospace only for code and log terminals */
+    pre, code, .terminal-output, .code-snippet, .font-mono-strict {
+      font-family: var(--font-mono) !important;
+    }
+
+    /* Font weight hierarchy */
+    h1, h2, .sidebar-brand-text h2, .login-header h1 { font-weight: 700; }
+    h3, h4, .kpi-num, .stat-value { font-weight: 600; }
+    .nav-item span, .btn-primary, .btn-secondary, label, th, .topbar-search-input { font-weight: 500; }
+    body, p, td, input, .subtext { font-weight: 400; }
+
+    /* Topbar Font Selector Button Group */
+    .font-btn-group {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .font-ctrl-tag {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-tertiary);
+      padding-right: 2px;
+      display: flex;
+      align-items: center;
+      user-select: none;
+    }
+    .font-btn {
+      padding: 3px 8px;
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: var(--radius-xs);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+    }
+    .font-btn:hover {
+      color: var(--text-primary);
+      background: var(--surface-hover);
+    }
+    .font-btn.active {
+      color: var(--color-primary);
+      background: var(--color-primary-subtle);
+      border-color: var(--color-primary);
+      font-weight: 700;
+    }
+    [data-tone="7"] .font-btn {
+      border-radius: 3px !important;
+    }
+    [data-tone="7"] .font-btn.active {
+      background: #111111 !important;
+      color: #7ED957 !important;
+      border-color: #111111 !important;
+    }
+
+    /* ==========================================================================
+       DESIGN CONSOLE — CSS TOKENS & 8-TONE COLOR SYSTEM
+       Faithfully adhering to src/storage/tone/tone_design_elt.html
+       ========================================================================== */
+
+    :root {
+      /* Shared Geometry & Spacing */
+      --radius-xs: 4px;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 22px;
+      --radius-full: 9999px;
+
+      --font-display: 'Plus Jakarta Sans', 'Poppins', sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'IBM Plex Mono', Consolas, monospace;
+      --font-hanzi: 'Noto Sans SC', sans-serif;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.03);
+      --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+      --shadow-lg: 0 12px 32px -4px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+      --shadow-pop: 0 20px 48px -8px rgba(15, 23, 42, 0.12);
+
+      --transition-fast: 160ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-normal: 240ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-smooth: 320ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    
+    /* ==========================================================================
+       20-PALETTE THEME MATRIX (3 Core Colors x 6 Tones + 2 Fixed Blueprints)
+       - Primary: Green, Blue, Grafana (Orange/Amber)
+       - Tone 7: Exact Technical Blueprint Light with BLACK FRAME (#111111)
+       - Tone 8: Exact Technical Blueprint Dark
+       ========================================================================== */
+
+    /* --------------------------------------------------------------------------
+       FAMILY 1: BLUE (Sky / Modern IT Blue)
+       -------------------------------------------------------------------------- */
+    [data-primary="blue"][data-tone="1"],
+    :root:not([data-primary])[data-tone="1"] {
+      --is-dark: 0;
+      --page-bg: #F8FAFC;
+      --surface-card: #FFFFFF;
+      --surface-sidebar: #FFFFFF;
+      --surface-header: rgba(255, 255, 255, 0.9);
+      --surface-subtle: #F0F9FF;
+      --surface-hover: #F1F5F9;
+      --border-color: #E2E8F0;
+      --border-subtle: #EDF2F7;
+      --border-focus: #0284C7;
+      --text-primary: #1E293B;
+      --text-secondary: #64748B;
+      --text-tertiary: #94A3B8;
+      --text-on-accent: #FFFFFF;
+      --color-primary: #0284C7;
+      --color-primary-hover: #0369A1;
+      --color-primary-subtle: #E0F2FE;
+      --color-accent: #38BDF8;
+      --color-secondary: #0EA5E9;
+      --status-success: #10B981;
+      --status-success-bg: #ECFDF5;
+      --status-warning: #F59E0B;
+      --status-warning-bg: #FFFBEB;
+      --status-error: #EF4444;
+      --status-error-bg: #FEF2F2;
+      --badge-bg: #F0F9FF;
+      --badge-color: #0284C7;
+      --badge-border: #BAE6FD;
+      --chart-fill: rgba(2, 132, 199, 0.12);
+      --chart-stroke: #0284C7;
+      --chart-accent: #38BDF8;
+    }
+
+    [data-primary="blue"][data-tone="2"] {
+      --is-dark: 1;
+      --page-bg: #070C15;
+      --surface-card: #0C1322;
+      --surface-sidebar: #090F1B;
+      --surface-header: rgba(12, 19, 34, 0.9);
+      --surface-subtle: #141E33;
+      --surface-hover: rgba(56, 189, 248, 0.08);
+      --border-color: rgba(56, 189, 248, 0.18);
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --border-focus: #38BDF8;
+      --text-primary: #F1F5F9;
+      --text-secondary: #94A3B8;
+      --text-tertiary: #64748B;
+      --text-on-accent: #070C15;
+      --color-primary: #38BDF8;
+      --color-primary-hover: #7DD3FC;
+      --color-primary-subtle: rgba(56, 189, 248, 0.16);
+      --color-accent: #0284C7;
+      --color-secondary: #38BDF8;
+      --status-success: #34D399;
+      --status-success-bg: rgba(52, 211, 153, 0.14);
+      --status-warning: #FBBF24;
+      --status-warning-bg: rgba(251, 191, 36, 0.12);
+      --status-error: #F87171;
+      --status-error-bg: rgba(248, 113, 113, 0.12);
+      --badge-bg: rgba(56, 189, 248, 0.12);
+      --badge-color: #38BDF8;
+      --badge-border: rgba(56, 189, 248, 0.28);
+      --chart-fill: rgba(56, 189, 248, 0.15);
+      --chart-stroke: #38BDF8;
+      --chart-accent: #0284C7;
+    }
+
+    [data-primary="blue"][data-tone="3"],
+    :root:not([data-primary])[data-tone="3"] {
+      --is-dark: 0;
+      --page-bg: #F5F7FB;
+      --surface-card: #FFFFFF;
+      --surface-sidebar: #FFFFFF;
+      --surface-header: rgba(255, 255, 255, 0.9);
+      --surface-subtle: #EEF2FF;
+      --surface-hover: #F8FAFD;
+      --border-color: #E0E7FF;
+      --border-subtle: #EEF2F6;
+      --border-focus: #3B82F6;
+      --text-primary: #0F172A;
+      --text-secondary: #64748B;
+      --text-tertiary: #94A3B8;
+      --text-on-accent: #FFFFFF;
+      --color-primary: #3B82F6;
+      --color-primary-hover: #2563EB;
+      --color-primary-subtle: #EFF6FF;
+      --color-accent: #60A5FA;
+      --color-secondary: #4CAF50;
+      --status-success: #22C55E;
+      --status-success-bg: #ECFDF5;
+      --status-warning: #F59E0B;
+      --status-warning-bg: #FFFBEB;
+      --status-error: #EF4444;
+      --status-error-bg: #FEF2F2;
+      --badge-bg: #EFF6FF;
+      --badge-color: #2563EB;
+      --badge-border: #BFDBFE;
+      --chart-fill: rgba(96, 165, 250, 0.15);
+      --chart-stroke: #3B82F6;
+      --chart-accent: #60A5FA;
+    }
+
+    [data-primary="blue"][data-tone="4"],
+    :root:not([data-primary])[data-tone="4"] {
+      --is-dark: 0;
+      --page-bg: #F0F4F9;
+      --surface-card: #FFFFFF;
+      --surface-sidebar: #FFFFFF;
+      --surface-header: rgba(255, 255, 255, 0.9);
+      --surface-subtle: #EFF6FF;
+      --surface-hover: #F8FAFD;
+      --border-color: #DFE8F3;
+      --border-subtle: #EBF1F8;
+      --border-focus: #2563EB;
+      --text-primary: #0F172A;
+      --text-secondary: #64748B;
+      --text-tertiary: #94A3B8;
+      --text-on-accent: #FFFFFF;
+      --color-primary: #2563EB;
+      --color-primary-hover: #1D4ED8;
+      --color-primary-subtle: #EFF6FF;
+      --color-accent: #38BDF8;
+      --color-secondary: #2563EB;
+      --status-success: #10B981;
+      --status-success-bg: #ECFDF5;
+      --status-warning: #F59E0B;
+      --status-warning-bg: #FFFBEB;
+      --status-error: #EF4444;
+      --status-error-bg: #FEF2F2;
+      --badge-bg: #EFF6FF;
+      --badge-color: #2563EB;
+      --badge-border: #BFDBFE;
+      --chart-fill: rgba(37, 99, 235, 0.12);
+      --chart-stroke: #2563EB;
+      --chart-accent: #38BDF8;
+    }
+
+    [data-primary="blue"][data-tone="5"] {
+      --is-dark: 1;
+      --page-bg: #070D18;
+      --surface-card: #0E1726;
+      --surface-sidebar: #09101C;
+      --surface-header: rgba(14, 23, 38, 0.92);
+      --surface-subtle: #142238;
+      --surface-hover: rgba(56, 189, 248, 0.08);
+      --border-color: #1A2E4C;
+      --border-subtle: #122036;
+      --border-focus: #38BDF8;
+      --text-primary: #F8FAFC;
+      --text-secondary: #94A3B8;
+      --text-tertiary: #64748B;
+      --text-on-accent: #070D18;
+      --color-primary: #38BDF8;
+      --color-primary-hover: #7DD3FC;
+      --color-primary-subtle: rgba(56, 189, 248, 0.16);
+      --color-accent: #818CF8;
+      --color-secondary: #38BDF8;
+      --status-success: #34D399;
+      --status-success-bg: rgba(52, 211, 153, 0.14);
+      --status-warning: #FBBF24;
+      --status-warning-bg: rgba(251, 191, 36, 0.12);
+      --status-error: #F87171;
+      --status-error-bg: rgba(248, 113, 113, 0.12);
+      --badge-bg: rgba(56, 189, 248, 0.12);
+      --badge-color: #38BDF8;
+      --badge-border: rgba(56, 189, 248, 0.28);
+      --chart-fill: rgba(56, 189, 248, 0.15);
+      --chart-stroke: #38BDF8;
+      --chart-accent: #818CF8;
+    }
+
+    [data-primary="blue"][data-tone="6"] {
+      --is-dark: 0;
+      --page-bg: #EDF5F8;
+      --surface-card: #FFFFFF;
+      --surface-sidebar: #FFFFFF;
+      --surface-header: rgba(255, 255, 255, 0.9);
+      --surface-subtle: #E1EFF5;
+      --surface-hover: #F2F8FA;
+      --border-color: #DAE7EC;
+      --border-subtle: #E5EEF2;
+      --border-focus: #0284C7;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-tertiary: #94A3B8;
+      --text-on-accent: #FFFFFF;
+      --color-primary: #0284C7;
+      --color-primary-hover: #0369A1;
+      --color-primary-subtle: #E0F2FE;
+      --color-accent: #0D9488;
+      --color-secondary: #0284C7;
+      --status-success: #10B981;
+      --status-success-bg: #ECFDF5;
+      --status-warning: #F59E0B;
+      --status-warning-bg: #FFFBEB;
+      --status-error: #EF4444;
+      --status-error-bg: #FEF2F2;
+      --badge-bg: #E0F2FE;
+      --badge-color: #0369A1;
+      --badge-border: #BAE6FD;
+      --chart-fill: rgba(2, 132, 199, 0.12);
+      --chart-stroke: #0284C7;
+      --chart-accent: #0D9488;
+    }
+
+    /* --------------------------------------------------------------------------
+       FAMILY 2: GREEN (Natural Green / Emerald)
+       -------------------------------------------------------------------------- */
+    [data-primary="green"][data-tone="1"] {
+      --is-dark: 0;
+      --page-bg: #F8FBF7;
+      --surface-card: #FFFFFF;
+      --surface-sidebar: #FFFFFF;
+      --surface-header: rgba(255, 255, 255, 0.9);
+      --surface-subtle: #F0FAF1;
+      --surface-hover: #F2F8F3;
+      --border-color: #E2ECE5;
+      --border-subtle: #EBF2ED;
+      --border-focus: #22C55E;
+      --text-primary: #1F2937;
+      --text-secondary: #6B7280;
+      --text-tertiary: #9CA3AF;
+      --text-on-accent: #FFFFFF;
+      --color-primary: #22C55E;
+      --color-primary-hover: #16A34A;
+      --color-primary-subtle: #DCFCE7;
+      --color-accent: #34D399;
+      --color-secondary: #22C55E;
+      --status-success: #22C55E;
+      --status-success-bg: #DCFCE7;
+      --status-warning: #F59E0B;
+      --status-warning-bg: #FFFBEB;
+      --status-error: #EF4444;
+      --status-error-bg: #FEF2F2;
+      --badge-bg: #F0FDF4;
+      --badge-color: #15803D;
+      --badge-border: #BBF7D0;
+      --chart-fill: rgba(34, 197, 94, 0.14);
+      --chart-stroke: #22C55E;
+      --chart-accent: #34D399;
+    }
+
+    [data-primary="green"][data-tone="2"] {
+      --is-dark: 1;
+      --page-bg: #0B1220;
+      --surface-card: #111827;
+      --surface-sidebar: #0E1523;
+      --surface-header: rgba(17, 24, 39, 0.9);
+      --surface-subtle: #162032;
+      --surface-hover: rgba(34, 197, 94, 0.08);
+      --border-color: rgba(34, 197, 94, 0.2);
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --border-focus: #22C55E;
+      --text-primary: #F9FAFB;
+      --text-secondary: #9CA3AF;
+      --text-tertiary: #6B7280;
+      --text-on-accent: #05140A;
+      --color-primary: #22C55E;
+      --color-primary-hover: #4ADE80;
+      --color-primary-subtle: rgba(34, 197, 94, 0.16);
+      --color-accent: #34D399;
+      --color-secondary: #22C55E;
+      --status-success: #34D399;
+      --status-success-bg: rgba(52, 211, 153, 0.14);
+      --status-warning: #FBBF24;
+      --status-warning-bg: rgba(251, 191, 36, 0.12);
+      --status-error: #F87171;
+      --status-error-bg: rgba(248, 113, 113, 0.12);
+      --badge-bg: rgba(34, 197, 94, 0.12);
+      --badge-color: #34D399;
+      --badge-border: rgba(34, 197, 94, 0.28);
+      --chart-fill: rgba(34, 197, 94, 0.16);
+      --chart-stroke: #22C55E;
+      --chart-accent: #34D399;
+    }
+
+    [data-primary="green"][data-tone="3"] {
+      --is-dark: 0;
+      --page-bg: #F5FAF6;
+      --surface-card: #FFFFFF;
+      --surface-sidebar: #FFFFFF;
+      --surface-header: rgba(255, 255, 255, 0.9);
+      --surface-subtle: #E8F5EC;
+      --surface-hover: #F2F9F4;
+      --border-color: #D1E7DD;
+      --border-subtle: #DFEFE7;
+      --border-focus: #4CAF50;
+      --text-primary: #111827;
+      --text-secondary: #4B5563;
+      --text-tertiary: #9CA3AF;
+      --text-on-accent: #FFFFFF;
+      --color-primary: #4CAF50;
+      --color-primary-hover: #388E3C;
+      --color-primary-subtle: #DCFCE7;
+      --color-accent: #60A5FA;
+      --color-secondary: #4CAF50;
+      --status-success: #22C55E;
+      --status-success-bg: #ECFDF5;
+      --status-warning: #F59E0B;
+      --status-warning-bg: #FFFBEB;
+      --status-error: #EF4444;
+      --status-error-bg: #FEF2F2;
+      --badge-bg: #EFF6FF;
+      --badge-color: #2563EB;
+      --badge-border: #BFDBFE;
+      --chart-fill: rgba(76, 175, 80, 0.14);
+      --chart-stroke: #4CAF50;
+      --chart-accent: #60A5FA;
+    }
+
+    [data-primary="green"][data-tone="4"] {
+      --is-dark: 0;
+      --page-bg: #F0FDF4;
+      --surface-card: #FFFFFF;
+      --surface-sidebar: #FFFFFF;
+      --surface-header: rgba(255, 255, 255, 0.9);
+      --surface-subtle: #DCFCE7;
+      --surface-hover: #EAFBF0;
+      --border-color: #BBF7D0;
+      --border-subtle: #CEF9DF;
+      --border-focus: #16A34A;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-tertiary: #94A3B8;
+      --text-on-accent: #FFFFFF;
+      --color-primary: #16A34A;
+      --color-primary-hover: #15803D;
+      --color-primary-subtle: #DCFCE7;
+      --color-accent: #22C55E;
+      --color-secondary: #16A34A;
+      --status-success: #16A34A;
+      --status-success-bg: #DCFCE7;
+      --status-warning: #F59E0B;
+      --status-warning-bg: #FFFBEB;
+      --status-error: #EF4444;
+      --status-error-bg: #FEF2F2;
+      --badge-bg: #DCFCE7;
+      --badge-color: #15803D;
+      --badge-border: #86EFAC;
+      --chart-fill: rgba(22, 163, 74, 0.14);
+      --chart-stroke: #16A34A;
+      --chart-accent: #22C55E;
+    }
+
+    [data-primary="green"][data-tone="5"] {
+      --is-dark: 1;
+      --page-bg: #09140C;
+      --surface-card: #112015;
+      --surface-sidebar: #0C1710;
+      --surface-header: rgba(17, 32, 21, 0.92);
+      --surface-subtle: #182C1E;
+      --surface-hover: rgba(34, 197, 94, 0.08);
+      --border-color: #1E3826;
+      --border-subtle: #162B1D;
+      --border-focus: #22C55E;
+      --text-primary: #F8FAFC;
+      --text-secondary: #A7F3D0;
+      --text-tertiary: #6EE7B7;
+      --text-on-accent: #09140C;
+      --color-primary: #22C55E;
+      --color-primary-hover: #4ADE80;
+      --color-primary-subtle: rgba(34, 197, 94, 0.18);
+      --color-accent: #86EFAC;
+      --color-secondary: #22C55E;
+      --status-success: #22C55E;
+      --status-success-bg: rgba(34, 197, 94, 0.14);
+      --status-warning: #FBBF24;
+      --status-warning-bg: rgba(251, 191, 36, 0.12);
+      --status-error: #F87171;
+      --status-error-bg: rgba(248, 113, 113, 0.12);
+      --badge-bg: rgba(34, 197, 94, 0.14);
+      --badge-color: #34D399;
+      --badge-border: rgba(34, 197, 94, 0.28);
+      --chart-fill: rgba(34, 197, 94, 0.16);
+      --chart-stroke: #22C55E;
+      --chart-accent: #86EFAC;
+    }
+
+    [data-primary="green"][data-tone="6"] {
+      --is-dark: 0;
+      --page-bg: #EEF7F2;
+      --surface-card: #FFFFFF;
+      --surface-sidebar: #FFFFFF;
+      --surface-header: rgba(255, 255, 255, 0.9);
+      --surface-subtle: #E2F2E9;
+      --surface-hover: #F2FAF5;
+      --border-color: #D1EAE0;
+      --border-subtle: #DFEDE6;
+      --border-focus: #059669;
+      --text-primary: #064E3B;
+      --text-secondary: #047857;
+      --text-tertiary: #6EE7B7;
+      --text-on-accent: #FFFFFF;
+      --color-primary: #059669;
+      --color-primary-hover: #047857;
+      --color-primary-subtle: #D1FAE5;
+      --color-accent: #10B981;
+      --color-secondary: #059669;
+      --status-success: #10B981;
+      --status-success-bg: #D1FAE5;
+      --status-warning: #F59E0B;
+      --status-warning-bg: #FFFBEB;
+      --status-error: #EF4444;
+      --status-error-bg: #FEF2F2;
+      --badge-bg: #D1FAE5;
+      --badge-color: #047857;
+      --badge-border: #A7F3D0;
+      --chart-fill: rgba(5, 150, 105, 0.14);
+      --chart-stroke: #059669;
+      --chart-accent: #10B981;
+    }
+
+    /* --------------------------------------------------------------------------
+       FAMILY 3: GRAFANA (Orange / Amber / Observability)
+       -------------------------------------------------------------------------- */
+    [data-primary="grafana"][data-tone="1"] {
+      --is-dark: 0;
+      --page-bg: #FAF7F5;
+      --surface-card: #FFFFFF;
+      --surface-sidebar: #FFFFFF;
+      --surface-header: rgba(255, 255, 255, 0.9);
+      --surface-subtle: #FFF7ED;
+      --surface-hover: #FBF5F0;
+      --border-color: #EFE8E2;
+      --border-subtle: #F5EFEA;
+      --border-focus: #F59E0B;
+      --text-primary: #1C1917;
+      --text-secondary: #78716C;
+      --text-tertiary: #A8A29E;
+      --text-on-accent: #FFFFFF;
+      --color-primary: #EA580C;
+      --color-primary-hover: #C2410C;
+      --color-primary-subtle: #FFEDD5;
+      --color-accent: #F59E0B;
+      --color-secondary: #EA580C;
+      --status-success: #10B981;
+      --status-success-bg: #ECFDF5;
+      --status-warning: #F59E0B;
+      --status-warning-bg: #FFFBEB;
+      --status-error: #EF4444;
+      --status-error-bg: #FEF2F2;
+      --badge-bg: #FFEDD5;
+      --badge-color: #C2410C;
+      --badge-border: #FED7AA;
+      --chart-fill: rgba(234, 88, 12, 0.14);
+      --chart-stroke: #EA580C;
+      --chart-accent: #F59E0B;
+    }
+
+    [data-primary="grafana"][data-tone="2"] {
+      --is-dark: 1;
+      --page-bg: #0E1117;
+      --surface-card: #161B22;
+      --surface-sidebar: #0D1117;
+      --surface-header: rgba(22, 27, 34, 0.92);
+      --surface-subtle: #1F242C;
+      --surface-hover: rgba(255, 152, 48, 0.08);
+      --border-color: #30363D;
+      --border-subtle: #21262D;
+      --border-focus: #FF9830;
+      --text-primary: #F0F6FC;
+      --text-secondary: #8B949E;
+      --text-tertiary: #6E7681;
+      --text-on-accent: #0E1117;
+      --color-primary: #FF9830;
+      --color-primary-hover: #FFA94D;
+      --color-primary-subtle: rgba(255, 152, 48, 0.16);
+      --color-accent: #5794F2;
+      --color-secondary: #73BF69;
+      --status-success: #73BF69;
+      --status-success-bg: rgba(115, 191, 105, 0.14);
+      --status-warning: #FF9830;
+      --status-warning-bg: rgba(255, 152, 48, 0.14);
+      --status-error: #F2495C;
+      --status-error-bg: rgba(242, 73, 92, 0.14);
+      --badge-bg: rgba(255, 152, 48, 0.14);
+      --badge-color: #FF9830;
+      --badge-border: rgba(255, 152, 48, 0.28);
+      --chart-fill: rgba(255, 152, 48, 0.16);
+      --chart-stroke: #FF9830;
+      --chart-accent: #5794F2;
+    }
+
+    [data-primary="grafana"][data-tone="3"] {
+      --is-dark: 0;
+      --page-bg: #F8F6F0;
+      --surface-card: #FFFFFF;
+      --surface-sidebar: #FFFFFF;
+      --surface-header: rgba(255, 255, 255, 0.9);
+      --surface-subtle: #FFFBEB;
+      --surface-hover: #FDF9F2;
+      --border-color: #EBE4D8;
+      --border-subtle: #F3ECE2;
+      --border-focus: #F59E0B;
+      --text-primary: #1C1917;
+      --text-secondary: #57534E;
+      --text-tertiary: #A8A29E;
+      --text-on-accent: #FFFFFF;
+      --color-primary: #F59E0B;
+      --color-primary-hover: #D97706;
+      --color-primary-subtle: #FEF3C7;
+      --color-accent: #5794F2;
+      --color-secondary: #73BF69;
+      --status-success: #10B981;
+      --status-success-bg: #ECFDF5;
+      --status-warning: #F59E0B;
+      --status-warning-bg: #FFFBEB;
+      --status-error: #EF4444;
+      --status-error-bg: #FEF2F2;
+      --badge-bg: #FEF3C7;
+      --badge-color: #B45309;
+      --badge-border: #FDE68A;
+      --chart-fill: rgba(245, 158, 11, 0.14);
+      --chart-stroke: #F59E0B;
+      --chart-accent: #5794F2;
+    }
+
+    [data-primary="grafana"][data-tone="4"] {
+      --is-dark: 0;
+      --page-bg: #FFFBEB;
+      --surface-card: #FFFFFF;
+      --surface-sidebar: #FFFFFF;
+      --surface-header: rgba(255, 255, 255, 0.9);
+      --surface-subtle: #FEF3C7;
+      --surface-hover: #FEF9E7;
+      --border-color: #FDE68A;
+      --border-subtle: #FEF0B2;
+      --border-focus: #D97706;
+      --text-primary: #451A03;
+      --text-secondary: #78350F;
+      --text-tertiary: #B45309;
+      --text-on-accent: #FFFFFF;
+      --color-primary: #D97706;
+      --color-primary-hover: #B45309;
+      --color-primary-subtle: #FEF3C7;
+      --color-accent: #F59E0B;
+      --color-secondary: #D97706;
+      --status-success: #10B981;
+      --status-success-bg: #ECFDF5;
+      --status-warning: #F59E0B;
+      --status-warning-bg: #FFFBEB;
+      --status-error: #EF4444;
+      --status-error-bg: #FEF2F2;
+      --badge-bg: #FEF3C7;
+      --badge-color: #92400E;
+      --badge-border: #FCD34D;
+      --chart-fill: rgba(217, 119, 6, 0.14);
+      --chart-stroke: #D97706;
+      --chart-accent: #F59E0B;
+    }
+
+    [data-primary="grafana"][data-tone="5"],
+    :root:not([data-primary])[data-tone="5"] {
+      --is-dark: 1;
+      --page-bg: #0B0F14;
+      --surface-card: #111827;
+      --surface-sidebar: #0E121B;
+      --surface-header: rgba(17, 24, 39, 0.92);
+      --surface-subtle: #182232;
+      --surface-hover: rgba(87, 148, 242, 0.08);
+      --border-color: #263241;
+      --border-subtle: #1F2A38;
+      --border-focus: #5794F2;
+      --text-primary: #F8FAFC;
+      --text-secondary: #94A3B8;
+      --text-tertiary: #64748B;
+      --text-on-accent: #0B0F14;
+      --color-primary: #5794F2;
+      --color-primary-hover: #79A8F5;
+      --color-primary-subtle: rgba(87, 148, 242, 0.14);
+      --color-accent: #FF9830;
+      --color-secondary: #73BF69;
+      --status-success: #73BF69;
+      --status-success-bg: rgba(115, 191, 105, 0.14);
+      --status-warning: #FF9830;
+      --status-warning-bg: rgba(255, 152, 48, 0.14);
+      --status-error: #F2495C;
+      --status-error-bg: rgba(242, 73, 92, 0.14);
+      --badge-bg: rgba(87, 148, 242, 0.12);
+      --badge-color: #5794F2;
+      --badge-border: rgba(87, 148, 242, 0.28);
+      --chart-fill: rgba(87, 148, 242, 0.16);
+      --chart-stroke: #5794F2;
+      --chart-accent: #FF9830;
+    }
+
+    [data-primary="grafana"][data-tone="6"] {
+      --is-dark: 0;
+      --page-bg: #F7F4EF;
+      --surface-card: #FFFFFF;
+      --surface-sidebar: #FFFFFF;
+      --surface-header: rgba(255, 255, 255, 0.9);
+      --surface-subtle: #EFE9E0;
+      --surface-hover: #FBF9F6;
+      --border-color: #E8DFD5;
+      --border-subtle: #F0E8DE;
+      --border-focus: #EA580C;
+      --text-primary: #292524;
+      --text-secondary: #57534E;
+      --text-tertiary: #A8A29E;
+      --text-on-accent: #FFFFFF;
+      --color-primary: #EA580C;
+      --color-primary-hover: #C2410C;
+      --color-primary-subtle: #FFEDD5;
+      --color-accent: #0F766E;
+      --color-secondary: #EA580C;
+      --status-success: #10B981;
+      --status-success-bg: #ECFDF5;
+      --status-warning: #F59E0B;
+      --status-warning-bg: #FFFBEB;
+      --status-error: #EF4444;
+      --status-error-bg: #FEF2F2;
+      --badge-bg: #FFEDD5;
+      --badge-color: #C2410C;
+      --badge-border: #FED7AA;
+      --chart-fill: rgba(234, 88, 12, 0.14);
+      --chart-stroke: #EA580C;
+      --chart-accent: #0F766E;
+    }
+
+        /* --------------------------------------------------------------------------
+       FIXED TONE 07 : Technical Blueprint / Light — EXACT BLACK FRAME (#111111)
+       -------------------------------------------------------------------------- */
+    [data-tone="7"] {
+      --is-dark: 0;
+      --page-bg: #ECECEC;
+      --surface-card: #FFFFFF;
+      --surface-sidebar: #FFFFFF;
+      --surface-header: rgba(255, 255, 255, 0.96);
+      --surface-subtle: #F4F4F4;
+      --surface-hover: #E8E8E8;
+      --surface-elevated: #FFFFFF;
+
+      /* KHUNG MÀU ĐEN THUẦN KỸ THUẬT BLUEPRINT */
+      --border-color: #111111;
+      --border-subtle: #333333;
+      --border-focus: #111111;
+
+      --text-primary: #111111;
+      --text-secondary: #444444;
+      --text-tertiary: #777777;
+      --text-on-accent: #FFFFFF;
+
+      --color-primary: #111111;
+      --color-primary-hover: #262626;
+      --color-primary-subtle: #E0E0E0;
+      --color-accent: #7ED957;
+      --color-secondary: #7ED957;
+
+      --status-success: #15803D;
+      --status-success-bg: #F0FDF4;
+      --status-warning: #B45309;
+      --status-warning-bg: #FFFBEB;
+      --status-error: #B91C1C;
+      --status-error-bg: #FEF2F2;
+
+      --badge-bg: #111111;
+      --badge-color: #7ED957;
+      --badge-border: #111111;
+
+      --chart-fill: rgba(126, 217, 87, 0.18);
+      --chart-stroke: #111111;
+      --chart-accent: #7ED957;
+    }
+
+    /* Khung viền màu đen thuần túy cho Tone 7 (Technical Blueprint Light) */
+    [data-tone="7"] #login-view {
+      background: #ECECEC !important;
+    }
+    [data-tone="7"] .login-container {
+      border: 2px solid #111111 !important;
+      border-radius: 6px !important;
+      background: #FFFFFF !important;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.14) !important;
+    }
+    [data-tone="7"] .login-status-side {
+      border-left: 2px solid #111111 !important;
+      background: #F8F8F8 !important;
+    }
+    [data-tone="7"] .status-card-inner {
+      border: 1.5px solid #111111 !important;
+      border-radius: 4px !important;
+      background: #FFFFFF !important;
+    }
+    [data-tone="7"] .metric-box-card {
+      border: 1.5px solid #111111 !important;
+      border-radius: 4px !important;
+      background: #F5F5F5 !important;
+    }
+    [data-tone="7"] .quote-strip {
+      border: 1.5px solid #111111 !important;
+      border-left: 4px solid #111111 !important;
+      border-radius: 4px !important;
+      font-family: var(--font-mono) !important;
+    }
+    [data-tone="7"] .form-input {
+      border: 1.5px solid #111111 !important;
+      border-radius: 4px !important;
+      background: #FFFFFF !important;
+      color: #111111 !important;
+      font-family: var(--font-mono) !important;
+    }
+    [data-tone="7"] .form-input:focus {
+      border-color: #111111 !important;
+      box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.15) !important;
+    }
+    [data-tone="7"] .demo-credentials-card {
+      border: 1.5px dashed #111111 !important;
+      border-radius: 4px !important;
+      background: #F5F5F5 !important;
+    }
+    [data-tone="7"] .brand-logo-plate {
+      border: 1.5px solid #111111 !important;
+      border-radius: 4px !important;
+    }
+    [data-tone="7"] .btn-primary {
+      background: #111111 !important;
+      color: #FFFFFF !important;
+      border: 1.5px solid #111111 !important;
+      border-radius: 4px !important;
+      font-family: var(--font-mono) !important;
+    }
+    [data-tone="7"] .btn-primary:hover {
+      background: #262626 !important;
+      border-color: #7ED957 !important;
+    }
+    [data-tone="7"] .btn-sso {
+      border: 1.5px solid #111111 !important;
+      border-radius: 4px !important;
+      color: #111111 !important;
+      font-family: var(--font-mono) !important;
+    }
+    [data-tone="7"] .ring-bg {
+      stroke: #DDDDDD !important;
+    }
+    [data-tone="7"] .ring-fill {
+      stroke: #7ED957 !important;
+    }
+    [data-tone="7"] .health-item-icon {
+      background: #111111 !important;
+      color: #7ED957 !important;
+    }
+    [data-tone="7"] .status-badge-pill.online {
+      background: #111111 !important;
+      color: #7ED957 !important;
+      font-weight: 700 !important;
+      border: 1px solid #111111 !important;
+    }
+    [data-tone="7"] .dashboard-panel-card,
+    [data-tone="7"] .stat-card,
+    [data-tone="7"] .table-container-card,
+    [data-tone="7"] .app-sidebar,
+    [data-tone="7"] .app-topbar,
+    [data-tone="7"] .learngo-hero-card {
+      border-color: #111111 !important;
+      border-width: 1.5px !important;
+      border-radius: 4px !important;
+    }
+    [data-tone="7"] .brand-system-tag {
+      background: #111111 !important;
+      color: #7ED957 !important;
+      border-color: #111111 !important;
+    }
+
+    /* --------------------------------------------------------------------------
+       FIXED TONE 08 : Technical Blueprint / Dark — EXACT CAD NEON GREEN
+       -------------------------------------------------------------------------- */
+    [data-tone="8"] {
+      --is-dark: 1;
+      --page-bg: #050505;
+      --surface-card: #0B0B0B;
+      --surface-sidebar: #080808;
+      --surface-header: rgba(11, 11, 11, 0.95);
+      --surface-subtle: #121212;
+      --surface-hover: rgba(126, 217, 87, 0.08);
+      --surface-elevated: #161616;
+
+      --border-color: #262626;
+      --border-subtle: #1C1C1C;
+      --border-focus: #7ED957;
+
+      --text-primary: #F5F5F5;
+      --text-secondary: #9B9B9B;
+      --text-tertiary: #666666;
+      --text-on-accent: #050505;
+
+      --color-primary: #7ED957;
+      --color-primary-hover: #96E872;
+      --color-primary-subtle: rgba(126, 217, 87, 0.16);
+      --color-accent: #7ED957;
+      --color-secondary: #7ED957;
+
+      --status-success: #7ED957;
+      --status-success-bg: rgba(126, 217, 87, 0.12);
+      --status-warning: #F59E0B;
+      --status-warning-bg: rgba(245, 158, 11, 0.12);
+      --status-error: #EF4444;
+      --status-error-bg: rgba(239, 68, 68, 0.12);
+
+      --badge-bg: #152210;
+      --badge-color: #7ED957;
+      --badge-border: #2A4020;
+
+      --chart-fill: rgba(126, 217, 87, 0.14);
+      --chart-stroke: #7ED957;
+      --chart-accent: #7ED957;
+    }
+
+    [data-tone="8"] .login-container,
+    [data-tone="8"] .dashboard-panel-card,
+    [data-tone="8"] .stat-card,
+    [data-tone="8"] .table-container-card,
+    [data-tone="8"] .status-card-inner,
+    [data-tone="8"] .metric-box-card {
+      border-color: #333333 !important;
+    }
+
