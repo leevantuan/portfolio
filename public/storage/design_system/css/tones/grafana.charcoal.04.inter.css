@@ -1,0 +1,109 @@
+/* ==========================================================================
+   Elite Unified Design System — Standalone Tone Theme
+   --------------------------------------------------------------------------
+   File:             grafana.charcoal.04.inter.css
+   Color Family:     Grafana (Sunset Amber & Obsidian)
+   Sidebar Tone:     Tone Sidebar 2: Charcoal Obsidian (#18181B)
+   Tone Index:       Tone 04 — Obsidian Operations Dark
+   Typography:       INTER
+   Architecture:     Self-contained drop-in CSS (tokens applied directly to :root)
+   ========================================================================== */
+
+:root,
+[data-theme-tone="4"],
+[data-tone="4"] {
+  /* --- Typography: Inter Standard --- */
+  --font-system: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: var(--font-system);
+  --font-body: var(--font-system);
+  --font-mono: 'IBM Plex Mono', Consolas, monospace;
+
+  /* --- Shared Geometry & Spacing (Enterprise Dashboard Crisp Scale) --- */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 10px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.03);
+  --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+  --shadow-lg: 0 12px 32px -4px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+  --shadow-pop: 0 20px 48px -8px rgba(15, 23, 42, 0.12);
+
+  --transition-fast: 160ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 240ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 320ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* --- Semantic Color & Surface Tokens --- */
+  --is-dark: 0;
+  --page-bg: #EAE0D9;
+  --surface-card: #FFFFFF;
+  --surface-sidebar: #FFFFFF;
+  --surface-header: rgba(255, 255, 255, 0.94);
+  --surface-subtle: #DDD0C7;
+  --surface-hover: #E6DAD2;
+  --border-color: #CBB9AE;
+  --border-subtle: #D8C7BC;
+  --border-focus: #EA580C;
+  --text-primary: #21130E;
+  --text-secondary: #573F36;
+  --text-tertiary: #846D64;
+  --text-on-accent: #FFFFFF;
+  --color-primary: #EA580C;
+  --color-primary-hover: #C2410C;
+  --color-primary-subtle: #FFEDD5;
+  --color-accent: #0284C7;
+  --color-secondary: #FF5B38;
+  --status-success: #15803D;
+  --status-success-bg: #DCFCE7;
+  --status-warning: #B45309;
+  --status-warning-bg: #FEF3C7;
+  --status-error: #B91C1C;
+  --status-error-bg: #FEE2E2;
+  --badge-bg: #FFEDD5;
+  --badge-color: #C2410C;
+  --badge-border: #FED7AA;
+  --chart-fill: rgba(234, 88, 12, 0.18);
+  --chart-stroke: #EA580C;
+  --chart-accent: #0284C7;
+}
+
+/* --------------------------------------------------------------------------
+   Tone Sidebar 2: Charcoal Obsidian Override
+   -------------------------------------------------------------------------- */
+.app-sidebar {
+  background: #18181B !important;
+  border-right: 1px solid #27272A !important;
+}
+.app-sidebar .sidebar-header {
+  border-bottom: 1px solid #27272A !important;
+}
+.app-sidebar .sidebar-footer {
+  border-top: 1px solid #27272A !important;
+}
+.app-sidebar .sidebar-brand-text h2 {
+  color: #FAFAFA !important;
+}
+.app-sidebar .sidebar-brand-text span {
+  color: #A1A1AA !important;
+}
+.app-sidebar .nav-group-title {
+  color: #71717A !important;
+}
+.app-sidebar .nav-item {
+  color: #A1A1AA !important;
+}
+.app-sidebar .nav-item:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #FAFAFA !important;
+}
+.app-sidebar .nav-item.active {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  font-weight: 600 !important;
+}
+.app-sidebar .sidebar-live-toggle {
+  color: #A1A1AA !important;
+}

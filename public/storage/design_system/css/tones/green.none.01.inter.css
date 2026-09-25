@@ -1,0 +1,70 @@
+/* ==========================================================================
+   Elite Unified Design System — Standalone Tone Theme
+   --------------------------------------------------------------------------
+   File:             green.none.01.inter.css
+   Color Family:     Green (Rich Jade Emerald #12A97E)
+   Sidebar Tone:     Mặc định (Auto / Đồng bộ theo Tone)
+   Tone Index:       Tone 01 — Soft Enterprise Light
+   Typography:       INTER
+   Architecture:     Self-contained drop-in CSS (tokens applied directly to :root)
+   ========================================================================== */
+
+:root,
+[data-theme-tone="1"],
+[data-tone="1"] {
+  /* --- Typography: Inter Standard --- */
+  --font-system: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: var(--font-system);
+  --font-body: var(--font-system);
+  --font-mono: 'IBM Plex Mono', Consolas, monospace;
+
+  /* --- Shared Geometry & Spacing (Enterprise Dashboard Crisp Scale) --- */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 10px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.03);
+  --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+  --shadow-lg: 0 12px 32px -4px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+  --shadow-pop: 0 20px 48px -8px rgba(15, 23, 42, 0.12);
+
+  --transition-fast: 160ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 240ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 320ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* --- Semantic Color & Surface Tokens --- */
+  --is-dark: 0;
+  --page-bg: #EDF4F0;
+  --surface-card: #FFFFFF;
+  --surface-sidebar: #FFFFFF;
+  --surface-header: rgba(255, 255, 255, 0.94);
+  --surface-subtle: #E1ECE6;
+  --surface-hover: #F0F6F2;
+  --border-color: #CFE0D7;
+  --border-subtle: #DEECE4;
+  --border-focus: #12A97E;
+  --text-primary: #11261F;
+  --text-secondary: #486E60;
+  --text-tertiary: #7D9F93;
+  --text-on-accent: #FFFFFF;
+  --color-primary: #12A97E;
+  --color-primary-hover: #0E8A66;
+  --color-primary-subtle: #E2F6F0;
+  --color-accent: #22D3EE;
+  --color-secondary: #12A97E;
+  --status-success: #12A97E;
+  --status-success-bg: #E2F6F0;
+  --status-warning: #F59E0B;
+  --status-warning-bg: #FFFBEB;
+  --status-error: #EF4444;
+  --status-error-bg: #FEF2F2;
+  --badge-bg: #E2F6F0;
+  --badge-color: #0E8A66;
+  --badge-border: #B7E8D9;
+  --chart-fill: rgba(18, 169, 126, 0.12);
+  --chart-stroke: #12A97E;
+  --chart-accent: #22D3EE;
+}

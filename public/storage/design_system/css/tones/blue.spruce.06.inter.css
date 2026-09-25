@@ -1,0 +1,110 @@
+/* ==========================================================================
+   Elite Unified Design System — Standalone Tone Theme
+   --------------------------------------------------------------------------
+   File:             blue.spruce.06.inter.css
+   Color Family:     Blue (Modern IT & Cloud Sky)
+   Sidebar Tone:     Tone Sidebar 3: Deep Spruce Gentelella (#2A3F54)
+   Tone Index:       Tone 06 — Warm Sandpaper Light
+   Typography:       INTER
+   Architecture:     Self-contained drop-in CSS (tokens applied directly to :root)
+   ========================================================================== */
+
+:root,
+[data-theme-tone="6"],
+[data-tone="6"] {
+  /* --- Typography: Inter Standard --- */
+  --font-system: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: var(--font-system);
+  --font-body: var(--font-system);
+  --font-mono: 'IBM Plex Mono', Consolas, monospace;
+
+  /* --- Shared Geometry & Spacing (Enterprise Dashboard Crisp Scale) --- */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 10px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.03);
+  --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+  --shadow-lg: 0 12px 32px -4px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+  --shadow-pop: 0 20px 48px -8px rgba(15, 23, 42, 0.12);
+
+  --transition-fast: 160ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 240ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 320ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* --- Semantic Color & Surface Tokens --- */
+  --is-dark: 0;
+  --page-bg: #F4F1EC;
+  --surface-card: #FCFAF7;
+  --surface-sidebar: #FCFAF7;
+  --surface-header: rgba(252, 250, 247, 0.94);
+  --surface-subtle: #E9E3DA;
+  --surface-hover: #F0ECE4;
+  --border-color: #DBD4C7;
+  --border-subtle: #E5DFC2;
+  --border-focus: #0369A1;
+  --text-primary: #1C1917;
+  --text-secondary: #57534E;
+  --text-tertiary: #8C847A;
+  --text-on-accent: #FFFFFF;
+  --color-primary: #0369A1;
+  --color-primary-hover: #075985;
+  --color-primary-subtle: #E0F2FE;
+  --color-accent: #0D9488;
+  --color-secondary: #0284C7;
+  --status-success: #15803D;
+  --status-success-bg: #E8F5E9;
+  --status-warning: #B45309;
+  --status-warning-bg: #FEF3C7;
+  --status-error: #B91C1C;
+  --status-error-bg: #FEE2E2;
+  --badge-bg: #E0F2FE;
+  --badge-color: #0369A1;
+  --badge-border: #BAE6FD;
+  --chart-fill: rgba(3, 105, 161, 0.14);
+  --chart-stroke: #0369A1;
+  --chart-accent: #0D9488;
+}
+
+/* --------------------------------------------------------------------------
+   Tone Sidebar 3: Deep Spruce Override
+   -------------------------------------------------------------------------- */
+.app-sidebar {
+  background: #2A3F54 !important;
+  border-right: 1px solid #374E64 !important;
+}
+.app-sidebar .sidebar-header {
+  border-bottom: 1px solid #374E64 !important;
+}
+.app-sidebar .sidebar-footer {
+  border-top: 1px solid #374E64 !important;
+}
+.app-sidebar .sidebar-brand-text h2 {
+  color: #FFFFFF !important;
+}
+.app-sidebar .sidebar-brand-text span {
+  color: #A3B5C7 !important;
+}
+.app-sidebar .nav-group-title {
+  color: #7B8F9F !important;
+}
+.app-sidebar .nav-item {
+  color: #A3B5C7 !important;
+}
+.app-sidebar .nav-item:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #FFFFFF !important;
+}
+.app-sidebar .nav-item.active {
+  background: rgba(16, 185, 129, 0.18) !important;
+  color: var(--color-primary) !important;
+  border-left: 3px solid var(--color-primary) !important;
+  border-color: rgba(16, 185, 129, 0.3) !important;
+  font-weight: 600 !important;
+}
+.app-sidebar .sidebar-live-toggle {
+  color: #A3B5C7 !important;
+}

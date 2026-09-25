@@ -5,14 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Design System — 8 Tones Color Exploration</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Roboto:wght@300;400;500;700;900&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --radius-card: 22px;
-    --radius-sm: 12px;
-    --font-head: 'Poppins', 'Inter', sans-serif;
-    --font-body: 'Inter', sans-serif;
-    --font-mono: 'IBM Plex Mono', Consolas, monospace;
+    --radius-card: 8px;
+    --radius-sm: 4px;
+    --font-system: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-head: var(--font-system);
+    --font-body: var(--font-system);
+    --font-mono: 'Roboto Mono', 'IBM Plex Mono', Consolas, monospace;
     --page-bg: #EDF3F8;
     --page-text: #1E293B;
   }
@@ -1260,8 +1262,8 @@
 
   @media (max-width: 600px) {
     body { padding: 16px 12px 40px; }
-    .hero-bar { padding: 20px 18px; border-radius: 16px; }
-    .card { padding: 22px 18px; border-radius: 16px; }
+    .hero-bar { padding: 20px 18px; border-radius: 8px; }
+    .card { padding: 22px 18px; border-radius: 8px; }
     .palette-grid { grid-template-columns: repeat(3, 1fr); }
     .logo-row { flex-direction: column; align-items: flex-start; gap: 12px; }
     .btn-row { flex-direction: column; }
@@ -2295,12 +2297,12 @@
   
   const PALETTE_DATA_18 = {
     green: {
-      1: { name: 'Natural Clean Light', num: '#22C55E', badge: 'Light Mode · Green', hexes: ['#FFFFFF', '#F8FBF7', '#1F2937', '#6B7280', '#E2ECE5', '#22C55E', '#34D399', '#F59E0B', '#EF4444', '#E2ECE5', '#F0FAF1', '#9CA3AF'] },
-      2: { name: 'Deep Professional Dark', num: '#22C55E', badge: 'Dark Mode · Green', hexes: ['#0B1220', '#111827', '#F9FAFB', '#9CA3AF', 'rgba(34,197,94,0.2)', '#22C55E', '#34D399', '#FBBF24', '#F87171', '#1F2937', '#162032', '#6B7280'] },
-      3: { name: 'Soft Mint Modern', num: '#4CAF50', badge: 'Light Mode · Green', hexes: ['#F5FAF6', '#FFFFFF', '#111827', '#4B5563', '#D1E7DD', '#4CAF50', '#60A5FA', '#F59E0B', '#EF4444', '#DFEFE7', '#E8F5EC', '#9CA3AF'] },
-      4: { name: 'Emerald Clarity IT', num: '#16A34A', badge: 'Light Mode · Green', hexes: ['#F0FDF4', '#FFFFFF', '#0F172A', '#475569', '#BBF7D0', '#16A34A', '#2563EB', '#F59E0B', '#EF4444', '#CEF9DF', '#DCFCE7', '#94A3B8'] },
-      5: { name: 'Forest Dark Monitor', num: '#10B981', badge: 'Dark Mode · Green', hexes: ['#0A120E', '#101E17', '#F0FDF4', '#86EFAC', '#1E382B', '#10B981', '#34D399', '#F59E0B', '#EF4444', '#1E382B', '#16281F', '#4ADE80'] },
-      6: { name: 'Sage Muted Corporate', num: '#059669', badge: 'Light Mode · Green', hexes: ['#EEF4F1', '#FFFFFF', '#064E3B', '#047857', '#CFE0D8', '#059669', '#10B981', '#F59E0B', '#EF4444', '#DFEDE6', '#D1FAE5', '#6EE7B7'] }
+      1: { name: 'Jade Clean Light', num: '#12A97E', badge: 'Light Mode · Green', hexes: ['#F7FAF8', '#FFFFFF', '#11261F', '#486E60', '#D6ECE3', '#12A97E', '#22D3EE', '#F59E0B', '#EF4444', '#E5F4EE', '#E8F7F2', '#7D9F93'] },
+      2: { name: 'Deep Jade Dark NOC', num: '#12A97E', badge: 'Dark Mode · Green', hexes: ['#07100C', '#0E1D16', '#F8FAFC', '#94B8A9', '#1D3D2F', '#12A97E', '#22D3EE', '#FBBF24', '#F87171', '#142B21', '#152A20', '#608876'] },
+      3: { name: 'Corporate Emerald Light', num: '#12A97E', badge: 'Light Mode · Green', hexes: ['#F6FAF8', '#FFFFFF', '#11261F', '#486E60', '#D3ECE1', '#12A97E', '#22D3EE', '#F59E0B', '#EF4444', '#E2F3EC', '#EAF6F1', '#7D9F93'] },
+      4: { name: 'Forest Operations Clear', num: '#0E8A66', badge: 'Light Mode · Green', hexes: ['#F2FDF8', '#FFFFFF', '#0A241A', '#2C5E4B', '#BBEBD8', '#0E8A66', '#12A97E', '#F59E0B', '#EF4444', '#CDF2E2', '#DDF5EB', '#5A8F7A'] },
+      5: { name: 'Obsidian Emerald Dark', num: '#1ED29E', badge: 'Dark Mode · Green', hexes: ['#050D0A', '#0B1913', '#F8FAFC', '#90B6A6', '#193629', '#1ED29E', '#22D3EE', '#FBBF24', '#F87171', '#11261D', '#12241C', '#5A8271'] },
+      6: { name: 'Warm Jade Light', num: '#12A97E', badge: 'Light Mode · Green', hexes: ['#F4F8F6', '#FFFFFF', '#182C24', '#4B6B5F', '#D3E5DC', '#12A97E', '#0D9488', '#F59E0B', '#EF4444', '#E1ECE5', '#E8F3EE', '#849E94'] }
     },
     blue: {
       1: { name: 'Sky Clean Light', num: '#0284C7', badge: 'Light Mode · Blue', hexes: ['#F8FAFC', '#FFFFFF', '#1E293B', '#64748B', '#E2E8F0', '#0284C7', '#38BDF8', '#F59E0B', '#EF4444', '#EDF2F7', '#F0F9FF', '#94A3B8'] },
@@ -2355,6 +2357,16 @@
       }
     }
     // Cards 07 & 08 stay 100% fixed Blueprint!
+  }
+
+  function showToast(msg) {
+    try {
+      if (window.parent && typeof window.parent.showToast === 'function' && window.parent !== window) {
+        window.parent.showToast(msg);
+        return;
+      }
+    } catch (e) {}
+    console.log('[Toast]', msg);
   }
 
   function switchToneGalleryPrimary(family) {
@@ -2545,38 +2557,119 @@
 };
 
     function buildMarkdownSpec(toneNum) {
-    const t = TONE_SPECS[toneNum] || TONE_SPECS[1];
-    const now = new Date().toLocaleDateString('vi-VN', { year: 'numeric', month: '2-digit', day: '2-digit' });
     const isBp = toneNum === 7 || toneNum === 8;
-    const isDark = toneNum === 2 || toneNum === 4 || toneNum === 5 || toneNum === 8;
-    
+    const fam = isBp ? 'blueprint' : (currentGalleryPrimary || 'green');
+    const famData = (PALETTE_DATA_18 && PALETTE_DATA_18[fam]) ? PALETTE_DATA_18[fam] : PALETTE_DATA_18.green;
+    const toneInfo = (!isBp && famData && famData[toneNum]) ? famData[toneNum] : null;
+
+    let title = '';
+    let mode = '';
+    let familyDesc = '';
+    let desc = '';
+    let hexes = [];
+    let primary = '';
+    let accent = '';
+    let bg = '';
+    let card = '';
+    let border = '';
+    let textPrimary = '';
+    let textSecondary = '';
+    let subtle = '';
+    let hover = '';
+    let textTertiary = '';
+    let warning = '#F59E0B';
+    let error = '#EF4444';
+
+    if (toneNum === 7) {
+      title = 'Tone 07 : Technical Blueprint / Light (CAD Drawing)';
+      mode = 'Light Mode · Blueprint CAD Cố Định';
+      familyDesc = 'Technical Blueprint (#111111 Frame & #7ED957 Accent)';
+      desc = 'Bản vẽ kỹ thuật CAD trên nền giấy xám nhạt #ECECEC, khung viền đen #111111 tuyệt đối (2px) và điểm nhấn neon xanh lá #7ED957.';
+      bg = '#ECECEC';
+      card = '#FFFFFF';
+      border = '#111111';
+      primary = '#111111';
+      accent = '#7ED957';
+      textPrimary = '#111111';
+      textSecondary = '#555555';
+      textTertiary = '#777777';
+      subtle = '#E2E2E2';
+      hover = '#DCDCDC';
+    } else if (toneNum === 8) {
+      title = 'Tone 08 : Technical Blueprint / Dark (CAD Obsidian)';
+      mode = 'Dark Mode · Blueprint CAD Cố Định';
+      familyDesc = 'Technical Blueprint (#1F1F1F Frame & #7ED957 Accent)';
+      desc = 'Bản vẽ kỹ thuật CAD màn đêm sâu thẳm #050505, khung đen kỹ thuật #1F1F1F, điểm nhấn neon xanh lá #7ED957 phát quang rực sáng.';
+      bg = '#050505';
+      card = '#0C0C0C';
+      border = '#1F1F1F';
+      primary = '#7ED957';
+      accent = '#7ED957';
+      textPrimary = '#F5F5F5';
+      textSecondary = '#9B9B9B';
+      textTertiary = '#666666';
+      subtle = '#141414';
+      hover = '#1A1A1A';
+    } else {
+      const isDark = toneNum === 2 || toneNum === 5;
+      mode = isDark ? 'Dark Mode' : 'Light Mode';
+      familyDesc = fam.toUpperCase() + ' (' + (fam === 'green' ? 'Jade Emerald #12A97E' : (fam === 'blue' ? 'Modern Cloud #0284C7' : 'Grafana Amber #EA580C')) + ')';
+      title = 'Tone 0' + toneNum + ' : ' + (toneInfo ? toneInfo.name : 'Enterprise UI');
+      desc = (toneInfo ? toneInfo.badge : '') + ' — Tối ưu cho hệ thống giám sát và quản trị vận hành đám mây & trung tâm dữ liệu.';
+      if (toneInfo && toneInfo.hexes) {
+        hexes = toneInfo.hexes;
+        bg = hexes[0] || '#FFFFFF';
+        card = hexes[1] || '#FFFFFF';
+        textPrimary = hexes[2] || '#0F172A';
+        textSecondary = hexes[3] || '#475569';
+        border = hexes[4] || '#E2E8F0';
+        primary = hexes[5] || (fam === 'green' ? '#12A97E' : '#0284C7');
+        accent = hexes[6] || primary;
+        warning = hexes[7] || '#F59E0B';
+        error = hexes[8] || '#EF4444';
+        subtle = hexes[9] || '#F1F5F9';
+        hover = hexes[10] || '#E2E8F0';
+        textTertiary = hexes[11] || '#94A3B8';
+      }
+    }
+
+    const cssFilename = isBp 
+      ? ('blueprint.none.0' + toneNum + '.inter.css')
+      : (fam + '.none.0' + toneNum + '.inter.css');
+
     const fontName = isBp ? 'IBM Plex Mono (CAD Technical Blueprint)' : 'Inter (Enterprise UI & Cloud Ops)';
     const fontStack = isBp 
       ? "'IBM Plex Mono', Consolas, 'Courier New', monospace"
       : "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
 
-    const radiusXs = isBp ? '2px' : '4px';
-    const radiusSm = isBp ? '4px' : '8px';
-    const radiusMd = isBp ? '4px' : '12px';
-    const radiusLg = isBp ? '6px' : '16px';
-    const radiusXl = isBp ? '6px' : '22px';
+    const radiusXs = isBp ? '2px' : '2px';
+    const radiusSm = isBp ? '2px' : '4px';
+    const radiusMd = isBp ? '4px' : '6px';
+    const radiusLg = isBp ? '4px' : '8px';
+    const radiusXl = isBp ? '6px' : '10px';
     const radiusFull = '9999px';
 
-    let md = '# Design Console — ' + t.title + '\n\n';
-    md += '> **Chế độ hiển thị:** ' + t.mode + '  \n';
-    md += '> **Nhóm màu chủ đạo:** ' + t.family + ' (' + t.primary + ')  \n';
+    const now = new Date().toLocaleDateString('vi-VN', { year: 'numeric', month: '2-digit', day: '2-digit' });
+
+    let md = '';
+    md += '# Design Console — ' + title + '\n\n';
+    md += '> **Chế độ hiển thị:** ' + mode + '  \n';
+    md += '> **Bộ Palette màu:** ' + familyDesc + '  \n';
+    md += '> **Màu chủ đạo (Primary):** `' + primary + '`  \n';
+    md += '> **File CSS độc lập tương ứng:** `src/storage/design_system/css/tones/' + cssFilename + '`  \n';
     md += '> **Font chữ mặc định:** ' + fontName + '  \n';
     md += '> **Font-family Stack:** ```' + fontStack + '```  \n';
     md += '> **Hệ thống:** Design Console — Unified Design System v4.5  \n';
-    md += '> **Kiến trúc CSS:** `storage/design_system/css/tokens.css` & `css/design-system.css`  \n';
     md += '> **Ngày xuất bản:** ' + now + '\n\n';
     md += '---\n\n';
+
     md += '## 1. Triết lý Thiết kế (Design Philosophy)\n';
-    md += t.desc + '\n\n';
+    md += desc + '\n\n';
     md += '* **Độ tương phản:** Đạt chuẩn WCAG 2.1 AA/AAA cho ứng dụng vận hành và giám sát hạ tầng mạng.\n';
-    md += '* **Hình học:** ' + (isBp ? 'Góc nhọn kỹ thuật CAD 4px - 6px, viền kỹ thuật 1.5px - 2px.' : 'Bo góc hiện đại mềm mại 8px - 22px, viền mảnh 1px dịu mắt.') + '\n';
+    md += '* **Hình học:** ' + (isBp ? 'Góc nhọn kỹ thuật CAD 2px - 6px, viền kỹ thuật 1.5px - 2px sắc sảo tuyệt đối.' : 'Bo góc Enterprise tinh gọn chuẩn Dashboard 4px - 8px, viền mảnh 1px thanh lịch (tuyệt đối không bo tròn quá đà).') + '\n';
     md += '* **Font chữ:** ' + fontName + '\n\n';
     md += '---\n\n';
+
     md += '## 2. Hệ Thống Typography Matrix — Size Gì Dùng Cho Gì (Type Scale Chi Tiết)\n\n';
     md += '| Cấp độ Token / Role | Font Size (px / rem) | Font Weight | Line Height | Letter Spacing | Vị trí & Mục đích sử dụng chi tiết trên UI |\n';
     md += '| :--- | :--- | :--- | :--- | :--- | :--- |\n';
@@ -2593,85 +2686,110 @@
     md += '| `Button / CTA Text` | `13px (0.8125rem)` | Medium 500 / 600 | `1.20 (16px)` | `+0.01em` | Chữ trên nút bấm chính (Primary Button), nút phụ, tab chọn, action filter |\n';
     md += '| `Monospace / Code / Data`| `12px (0.75rem)` | Regular 400 / 500 | `1.50 (18px)` | `0` | Địa chỉ IP (IPv4/IPv6), MAC address, hash chuỗi, Port, terminal log, JSON specs |\n\n';
     md += '---\n\n';
-    md += '## 3. Hệ Thống Khoảng Cách & Bố Cục (Spacing & Layout Scale — Size Gì Dùng Cho Gì)\n\n';
-    md += '| Token Spacing | Kích thước thực tế | Quy chuẩn sử dụng cụ thể trên UI |\n';
+
+    md += '## 3. Hệ Thống Khoảng Cách & Bố Cục (Spacing & Layout Scale)\n\n';
+    md += '| Token Spacing | Kích thước | Quy chuẩn sử dụng cụ thể trên UI |\n';
     md += '| :--- | :--- | :--- |\n';
-    md += '| `--space-3xs` | `2px` | Khoảng cách viền đôi, offset viền nét đứt CAD, viền bao quanh icon nhỏ |\n';
-    md += '| `--space-2xs` | `4px` | Khoảng cách giữa icon và chữ trong badge, khoảng cách nhóm button nhỏ |\n';
-    md += '| `--space-xs` | `8px` | Khoảng cách giữa các chip/tag, gap giữa các button trong action bar, padding nút bấm nhỏ |\n';
-    md += '| `--space-sm` | `12px` | Padding trong ô input/select, khoảng cách giữa các phần tử trong form group |\n';
-    md += '| `--space-md` | `16px` | Padding tiêu chuẩn bên trong thẻ Card, khoảng cách giữa các khối nội dung vừa |\n';
-    md += '| `--space-lg` | `20px - 24px` | Grid gap giữa các widget lớn trên Dashboard, khoảng cách phân cách header và body |\n';
-    md += '| `--space-xl` | `32px` | Padding bao ngoài trang (Page wrapper), khoảng cách giữa các Section chính |\n';
-    md += '| `--space-2xl` | `48px - 64px` | Khoảng cách phân chia khối lớn của Login split-screen / Landing hero |\n\n';
+    md += '| `--space-3xs` | `2px` | Khoảng cách viền đôi, offset viền CAD, bao quanh icon nhỏ |\n';
+    md += '| `--space-2xs` | `4px` | Khoảng cách icon và chữ trong badge, khoảng cách nhóm button nhỏ |\n';
+    md += '| `--space-xs` | `8px` | Khoảng cách giữa các chip/tag, gap action bar, padding nút bấm nhỏ |\n';
+    md += '| `--space-sm` | `12px` | Padding trong ô input/select, khoảng cách giữa các phần tử form |\n';
+    md += '| `--space-md` | `16px` | Padding tiêu chuẩn bên trong thẻ Card, khoảng cách giữa các khối |\n';
+    md += '| `--space-lg` | `24px` | Grid gap giữa các widget lớn trên Dashboard, header và body |\n';
+    md += '| `--space-xl` | `32px` | Padding bao ngoài trang (Page wrapper), phân cách Section chính |\n';
+    md += '| `--space-2xl` | `48px` | Khoảng cách phân chia khối lớn của Login split-screen |\n\n';
     md += '---\n\n';
+
     md += '## 4. Hệ Thống Hình Học (Border Radius) & Đổ Bóng (Shadows)\n\n';
+    md += '### 4.1. Quy chuẩn Bo góc (Chuẩn Enterprise Dashboard Tinh Gọn — Không Bo Tròn Quá Đà)\n';
     md += '* `--radius-xs: ' + radiusXs + '`: Áp dụng cho checkbox, mini badge, tags nhỏ.\n';
     md += '* `--radius-sm: ' + radiusSm + '`: Áp dụng cho nút bấm nhỏ, ô input, dropdown menu items.\n';
     md += '* `--radius-md: ' + radiusMd + '`: Áp dụng cho nút bấm CTA, thẻ card nhỏ, toast thông báo.\n';
     md += '* `--radius-lg: ' + radiusLg + '`: Áp dụng cho thẻ card dashboard, panel nội dung chính.\n';
     md += '* `--radius-xl: ' + radiusXl + '`: Áp dụng cho khung modal lớn, container chia màn hình split view.\n';
     md += '* `--radius-full: ' + radiusFull + '`: Áp dụng cho avatar tròn, pill status badge, chấm indicator.\n\n';
+
+    md += '### 4.2. Quy chuẩn Đổ bóng (Elevation Shadows)\n';
+    md += '* `--shadow-sm`: `0 1px 3px rgba(15, 23, 42, 0.05)` (Thẻ phẳng, phân tách nhẹ nhàng).\n';
+    md += '* `--shadow-md`: `0 4px 16px -2px rgba(15, 23, 42, 0.06)` (Thẻ Card nổi, dropdown menu bật lên).\n';
+    md += '* `--shadow-lg`: `0 12px 32px -4px rgba(15, 23, 42, 0.08)` (Hộp thoại Modal, thông báo Toast nổi).\n\n';
     md += '---\n\n';
-    md += '## 5. Bảng mã màu chi tiết (Design Tokens)\n\n';
-    md += '| Token CSS | Tên màu | Mã HEX / Giá trị | Vai trò & Ứng dụng |\n';
+
+    md += '## 5. Bảng Mã Màu Tokens Đầy Đủ (Full Semantic Tokens Palette)\n\n';
+    md += '| Token CSS | Tên màu | Giá trị thực tế | Vai trò & Ứng dụng |\n';
     md += '| :--- | :--- | :--- | :--- |\n';
-    md += '| `--page-bg` | Background Canvas | `' + t.bg + '` | Nền toàn trang, khoảng đệm thị giác |\n';
-    md += '| `--surface-card` | Surface Card | `' + t.surface + '` | Nền container chính, panel, bảng điều khiển |\n';
-    md += '| `--border-color` | Border Outline | `' + t.border + '` | Đường viền ngăn cách, khung bảng |\n';
-    md += '| `--color-primary` | Primary Brand | `' + t.primary + '` | Nút bấm chính, tiêu điểm hành động (CTA) |\n';
-    md += '| `--color-accent` | Accent | `' + t.accent + '` | Điểm nhấn phụ, biểu đồ, tag danh mục |\n';
-    md += '| `--text-primary` | Text Main | `' + t.textPrimary + '` | Tiêu đề, số liệu KPI quan trọng |\n';
-    md += '| `--text-secondary` | Text Soft | `' + t.textSecondary + '` | Nhãn phụ, mô tả phụ, dữ liệu bảng |\n';
-    md += '| `--status-success` | Status Online | `' + t.success + '` | Trạng thái bình thường, dịch vụ khỏe |\n';
-    md += '| `--status-warning` | Status Warning | `' + t.warning + '` | Tải cao, vượt ngưỡng lưu lượng |\n';
-    md += '| `--status-error` | Status Error | `' + t.error + '` | Mất kết nối, cảnh báo nghiêm trọng |\n\n';
+    md += '| `--page-bg` | Page Background | `' + bg + '` | Màu nền bao quát toàn bộ viewport trang web |\n';
+    md += '| `--surface-card` | Surface Card | `' + card + '` | Màu nền của các thẻ card nội dung, widget thống kê |\n';
+    md += '| `--surface-sidebar` | Sidebar Surface | `' + card + '` | Màu nền thanh điều hướng cố định bên trái |\n';
+    md += '| `--surface-header` | Header Surface | `' + card + '` | Màu nền thanh Topbar phía trên cùng |\n';
+    md += '| `--surface-subtle` | Surface Subtle | `' + subtle + '` | Màu nền phụ, hàng tiêu đề bảng, khối highlight |\n';
+    md += '| `--surface-hover` | Surface Hover | `' + hover + '` | Màu nền phản hồi khi rê chuột vào item, menu, row bảng |\n';
+    md += '| `--border-color` | Border Default | `' + border + '` | Khung viền chính bao quanh card, panel, vách ngăn |\n';
+    md += '| `--border-subtle` | Border Subtle | `' + subtle + '` | Đường kẻ phân cách mờ giữa các hàng trong bảng dữ liệu |\n';
+    md += '| `--border-focus` | Border Focus | `' + primary + '` | Đường viền khi con trỏ chuột focus vào ô nhập liệu |\n';
+    md += '| `--color-primary` | Primary Color | `' + primary + '` | Màu thương hiệu chính, nút CTA, điểm nhấn nổi bật nhất |\n';
+    md += '| `--color-accent` | Accent Color | `' + accent + '` | Điểm nhấn phụ, biểu đồ, tag danh mục |\n';
+    md += '| `--text-primary` | Text Primary | `' + textPrimary + '` | Chữ nội dung chính, tiêu đề trang, số liệu quan trọng |\n';
+    md += '| `--text-secondary` | Text Secondary | `' + textSecondary + '` | Chữ nhãn mô tả phụ, dữ liệu thứ cấp, chú thích |\n';
+    md += '| `--text-tertiary` | Text Tertiary | `' + textTertiary + '` | Chữ làm mờ, placeholder, đơn vị đo lường |\n';
+    md += '| `--status-success` | Status Success | `' + (isBp ? (toneNum === 7 ? '#15803D' : '#7ED957') : primary) + '` | Trạng thái Online, dịch vụ hoạt động bình thường |\n';
+    md += '| `--status-warning` | Status Warning | `' + warning + '` | Trạng thái Cảnh báo, tải cao, ngưỡng lưu lượng |\n';
+    md += '| `--status-error` | Status Error | `' + error + '` | Trạng thái Lỗi, thiết bị ngắt kết nối, sự cố khẩn cấp |\n\n';
     md += '---\n\n';
-    md += '## 6. Đoạn mã CSS Variables (Sẵn sàng sử dụng)\n\n';
+
+    md += '## 6. Đoạn Mã CSS Variables Độc Lập Hoàn Chỉnh (Drop-in Ready CSS)\n\n';
+    md += 'File CSS độc lập: `src/storage/design_system/css/tones/' + cssFilename + '`\n\n';
     md += '```css\n';
     md += ':root {\n';
-    md += '  /* Typography */\n';
+    md += '  /* --- Typography --- */\n';
     md += '  --font-system: ' + fontStack + ';\n';
+    md += '  --font-display: var(--font-system);\n';
+    md += '  --font-body: var(--font-system);\n';
     md += '  --font-mono: \'IBM Plex Mono\', Consolas, monospace;\n\n';
-    md += '  /* Type Scale */\n';
-    md += '  --font-size-display: 32px;\n';
-    md += '  --font-size-h1: 24px;\n';
-    md += '  --font-size-h2: 18px;\n';
-    md += '  --font-size-h3: 15px;\n';
-    md += '  --font-size-h4: 14px;\n';
-    md += '  --font-size-body: 13.5px;\n';
-    md += '  --font-size-small: 12px;\n';
-    md += '  --font-size-caption: 11px;\n';
-    md += '  --font-size-micro: 10px;\n\n';
-    md += '  /* Spacing */\n';
-    md += '  --space-3xs: 2px;\n';
-    md += '  --space-2xs: 4px;\n';
-    md += '  --space-xs: 8px;\n';
-    md += '  --space-sm: 12px;\n';
-    md += '  --space-md: 16px;\n';
-    md += '  --space-lg: 24px;\n';
-    md += '  --space-xl: 32px;\n';
-    md += '  --space-2xl: 48px;\n\n';
-    md += '  /* Radius */\n';
+    md += '  /* --- Shared Geometry & Spacing (Enterprise Crisp Scale) --- */\n';
     md += '  --radius-xs: ' + radiusXs + ';\n';
     md += '  --radius-sm: ' + radiusSm + ';\n';
     md += '  --radius-md: ' + radiusMd + ';\n';
     md += '  --radius-lg: ' + radiusLg + ';\n';
     md += '  --radius-xl: ' + radiusXl + ';\n';
     md += '  --radius-full: 9999px;\n\n';
-    md += '  /* Colors */\n';
-    md += '  --page-bg: ' + t.bg + ';\n';
-    md += '  --surface-card: ' + t.surface + ';\n';
-    md += '  --border-color: ' + t.border + ';\n';
-    md += '  --color-primary: ' + t.primary + ';\n';
-    md += '  --color-accent: ' + t.accent + ';\n';
-    md += '  --text-primary: ' + t.textPrimary + ';\n';
-    md += '  --text-secondary: ' + t.textSecondary + ';\n';
-    md += '  --status-success: ' + t.success + ';\n';
-    md += '  --status-warning: ' + t.warning + ';\n';
-    md += '  --status-error: ' + t.error + ';\n';
+    md += '  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);\n';
+    md += '  --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.06);\n';
+    md += '  --shadow-lg: 0 12px 32px -4px rgba(15, 23, 42, 0.08);\n\n';
+    md += '  /* --- Semantic Color & Surface Tokens --- */\n';
+    md += '  --page-bg: ' + bg + ';\n';
+    md += '  --surface-card: ' + card + ';\n';
+    md += '  --surface-sidebar: ' + card + ';\n';
+    md += '  --surface-header: ' + card + ';\n';
+    md += '  --surface-subtle: ' + subtle + ';\n';
+    md += '  --surface-hover: ' + hover + ';\n';
+    md += '  --border-color: ' + border + ';\n';
+    md += '  --border-subtle: ' + subtle + ';\n';
+    md += '  --border-focus: ' + primary + ';\n';
+    md += '  --text-primary: ' + textPrimary + ';\n';
+    md += '  --text-secondary: ' + textSecondary + ';\n';
+    md += '  --text-tertiary: ' + textTertiary + ';\n';
+    md += '  --text-on-accent: ' + (isBp && toneNum === 7 ? '#7ED957' : '#FFFFFF') + ';\n';
+    md += '  --color-primary: ' + primary + ';\n';
+    md += '  --color-primary-hover: ' + (isBp ? primary : accent) + ';\n';
+    md += '  --color-primary-subtle: ' + subtle + ';\n';
+    md += '  --color-accent: ' + accent + ';\n';
+    md += '  --status-success: ' + (isBp ? (toneNum === 7 ? '#15803D' : '#7ED957') : primary) + ';\n';
+    md += '  --status-warning: ' + warning + ';\n';
+    md += '  --status-error: ' + error + ';\n';
     md += '}\n';
     md += '```\n\n';
+
+    md += '## 7. Cách Sử Dụng File CSS Độc Lập Trong Ứng Dụng\n\n';
+    md += '* **Cách 1: Nhúng file CSS độc lập riêng biệt:**\n';
+    md += '  ```html\n';
+    md += '  <link rel="stylesheet" href="css/tones/' + cssFilename + '">\n';
+    md += '  ```\n';
+    md += '* **Cách 2: Nhúng hệ thống token cốt lõi:**\n';
+    md += '  ```html\n';
+    md += '  <link rel="stylesheet" href="css/tokens.css">\n';
+    md += '  <link rel="stylesheet" href="css/design-system.css">\n';
+    md += '  ```\n\n';
     md += '*Tài liệu được tạo tự động từ Design Console Studio v4.5 — Đồng bộ hệ thống lưu trữ dự án.*\n';
     return md;
   }
@@ -2712,6 +2830,33 @@
     }
   }
 
+  // Dynamic Font Synchronization with Parent Window
+  const FONT_MAP = {
+    inter: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+    roboto: "'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif",
+    manrope: "'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif",
+    portfolio: "'Roboto Mono', 'IBM Plex Mono', 'JetBrains Mono', Consolas, monospace",
+    noto: "'Noto Sans', 'Noto Sans SC', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+  };
+
+  function applyFontFamily(fontKey) {
+    const fontStack = FONT_MAP[fontKey] || FONT_MAP.inter;
+    document.documentElement.style.setProperty('--font-body', fontStack);
+    document.documentElement.style.setProperty('--font-head', fontStack);
+    document.documentElement.style.setProperty('--font-system', fontStack);
+    document.documentElement.setAttribute('data-font', fontKey);
+  }
+
+  window.addEventListener('message', function(e) {
+    if (e.data && e.data.type === 'SET_FONT_FAMILY') {
+      applyFontFamily(e.data.font);
+    }
+  });
+
+  try {
+    const saved = localStorage.getItem('storage_font_family');
+    if (saved) applyFontFamily(saved);
+  } catch(e) {}
 </script>
 </body>
 </html>

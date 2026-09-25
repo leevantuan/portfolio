@@ -6,7 +6,7 @@
   <title>Design Console — Unified Design System & Fleet Management</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Roboto:wght@300;400;500;700;900&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Core CSS Design Tokens & Unified System (Modularized to avoid inline hardcoding) -->
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/design-system.css">
@@ -21,7 +21,9 @@
     <div class="family-btn-group">
       <button class="family-btn" data-fam="green" onclick="setPrimaryColor('green')" title="Green">🌿 Green</button>
       <button class="family-btn active" data-fam="blue" onclick="setPrimaryColor('blue')" title="Blue">🔷 Blue</button>
-      <button class="family-btn" data-fam="grafana" onclick="setPrimaryColor('grafana')" title="Grafana">📊 Grafana</button>
+      <button class="family-btn" data-fam="grafana" onclick="setPrimaryColor('grafana')" title="Grafana (Sunset)">📊 Grafana</button>
+      <button class="family-btn" data-fam="web3" onclick="setPrimaryColor('web3')" title="Web3 / FinTech (Tím ETHFI)">🔮 Web3</button>
+      <button class="family-btn" data-fam="volt" onclick="setPrimaryColor('volt')" title="Binance Volt (Xanh chuối Neon)">⚡ Volt</button>
     </div>
     <div style="width:1px; height:16px; background:var(--border-color); margin:0 3px;"></div>
     <span class="tone-label">Tone:</span>
@@ -34,6 +36,12 @@
     <div style="width:1px; height:16px; background:var(--border-color); margin:0 2px;"></div>
     <button class="tone-btn" data-t="7" data-tip="07 Blueprint L">7<span class="dot-preview" style="background:#7ED957; border:1.5px solid #111111;"></span></button>
     <button class="tone-btn" data-t="8" data-tip="08 Blueprint D">8<span class="dot-preview" style="background:#7ED957; border:1.5px solid #000;"></span></button>
+    <div style="width:1px; height:16px; background:var(--border-color); margin:0 3px;"></div>
+    <span class="tone-label">Sidebar:</span>
+    <button class="tone-btn active" data-sbt="none" onclick="setSidebarTone('none')" title="Trắng / None (Ăn theo Tone)">⚪<span class="dot-preview" style="background:#FFFFFF; border:1px solid #CBD5E1;"></span></button>
+    <button class="tone-btn" data-sbt="1" onclick="setSidebarTone('1')" title="Tone Sidebar 1: Midnight Navy (Admindek)">SB1<span class="dot-preview" style="background:#1E293B; border:1px solid #334155;"></span></button>
+    <button class="tone-btn" data-sbt="2" onclick="setSidebarTone('2')" title="Tone Sidebar 2: Charcoal Obsidian">SB2<span class="dot-preview" style="background:#18181B; border:1px solid #27272A;"></span></button>
+    <button class="tone-btn" data-sbt="3" onclick="setSidebarTone('3')" title="Tone Sidebar 3: Deep Spruce (Gentelella)">SB3<span class="dot-preview" style="background:#2A3F54; border:1px solid #374E64;"></span></button>
     <div style="width:1px; height:16px; background:var(--border-color); margin:0 3px;"></div>
     <button class="tone-export-quick-btn primary" onclick="downloadCurrentToneMarkdown()" title="Tải file .md mô tả Tone">.MD</button>
     <button class="tone-export-quick-btn" onclick="copyCurrentToneMarkdown()" title="Sao chép Markdown">Copy</button>
@@ -49,7 +57,7 @@
         <div>
           <div class="brand-badge-wrap">
             <div class="brand-logo-plate">
-              <img src="../../logo_tl.png" alt="Tuan Lee" class="brand-logo-img">
+              <img src="logo_tl.png" onerror="this.onerror=null; this.src='../../logo_tl.png';" alt="Tuan Lee" class="brand-logo-img">
               <span class="brand-name">Tuan Lee</span>
             </div>
             <span class="brand-system-tag">Design Console</span>
@@ -212,7 +220,7 @@
     <aside class="app-sidebar">
       <div class="sidebar-header">
         <div class="sidebar-logo">
-          <img src="../../logo_tl.png" alt="Tuan Lee" class="sidebar-logo-img">
+          <img src="logo_tl.png" onerror="this.onerror=null; this.src='../../logo_tl.png';" alt="Tuan Lee" class="sidebar-logo-img">
         </div>
         <div class="sidebar-brand-text">
           <h2>Design Console</h2>
@@ -222,7 +230,7 @@
 
       <nav class="sidebar-nav">
         <div class="nav-group-title">Giám sát & Quản trị</div>
-        <a class="nav-item" data-screen="overview" onclick="switchScreen('overview')">
+        <a class="nav-item active" data-screen="overview" onclick="switchScreen('overview')">
           <div class="nav-item-left">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/>
@@ -231,7 +239,7 @@
           </div>
         </a>
 
-        <a class="nav-item active" data-screen="network" onclick="switchScreen('network')">
+        <a class="nav-item" data-screen="network" onclick="switchScreen('network')">
           <div class="nav-item-left">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/>
@@ -377,10 +385,10 @@
             </button>
             <div class="topbar-dropdown-menu" id="colorDropdownMenu">
               <div class="dropdown-item" data-fam="green" onclick="selectColorTheme('green')">
-                <span class="color-dot-indicator" style="background:#22C55E;"></span>
+                <span class="color-dot-indicator" style="background:#12A97E;"></span>
                 <div class="dropdown-item-desc">
                   <strong>🌿 Green</strong>
-                  <small>Tự nhiên, tươi mát</small>
+                  <small>Jade Emerald sâu sắc</small>
                 </div>
               </div>
               <div class="dropdown-item is-selected" data-fam="blue" onclick="selectColorTheme('blue')">
@@ -391,10 +399,24 @@
                 </div>
               </div>
               <div class="dropdown-item" data-fam="grafana" onclick="selectColorTheme('grafana')">
-                <span class="color-dot-indicator" style="background:#F97316;"></span>
+                <span class="color-dot-indicator" style="background:#FF5B38;"></span>
                 <div class="dropdown-item-desc">
-                  <strong>📊 Grafana</strong>
-                  <small>Hổ phách telemetry</small>
+                  <strong>📊 Grafana (Sunset Orange)</strong>
+                  <small>Cam san hô FinTech dịu mắt</small>
+                </div>
+              </div>
+              <div class="dropdown-item" data-fam="web3" onclick="selectColorTheme('web3')">
+                <span class="color-dot-indicator" style="background:#8B5CF6;"></span>
+                <div class="dropdown-item-desc">
+                  <strong>🔮 Web3 / FinTech (Tím ETHFI)</strong>
+                  <small>Cosmic Purple, Neon Cyan</small>
+                </div>
+              </div>
+              <div class="dropdown-item" data-fam="volt" onclick="selectColorTheme('volt')">
+                <span class="color-dot-indicator" style="background:#D4FE00; border:1px solid #64748B;"></span>
+                <div class="dropdown-item-desc">
+                  <strong>⚡ Binance Volt (Xanh chuối Neon)</strong>
+                  <small>Pitch Black & High-Voltage Lime</small>
                 </div>
               </div>
             </div>
@@ -402,17 +424,66 @@
 
           <div class="topbar-sep"></div>
 
-          <!-- 2. Tone Matrix Numbers (01 - 08) -->
-          <div class="tone-numbers-wrap">
-            <button class="tone-btn" data-t="1" data-tip="01 Clean Light">1<span class="dot-preview" id="dot-top-1"></span></button>
-            <button class="tone-btn" data-t="2" data-tip="02 Deep Dark">2<span class="dot-preview" id="dot-top-2"></span></button>
-            <button class="tone-btn active" data-t="3" data-tip="03 Soft Modern">3<span class="dot-preview" id="dot-top-3"></span></button>
-            <button class="tone-btn" data-t="4" data-tip="04 Clarity IT">4<span class="dot-preview" id="dot-top-4"></span></button>
-            <button class="tone-btn" data-t="5" data-tip="05 Midnight Dark">5<span class="dot-preview" id="dot-top-5"></span></button>
-            <button class="tone-btn" data-t="6" data-tip="06 Muted Surface">6<span class="dot-preview" id="dot-top-6"></span></button>
-            <span class="tone-bp-divider">|</span>
-            <button class="tone-btn" data-t="7" data-tip="07 Blueprint Light (Khung đen #111111)">7<span class="dot-preview" style="background:#7ED957; border:1.5px solid #111111;"></span></button>
-            <button class="tone-btn" data-t="8" data-tip="08 Blueprint Dark (Neon #7ED957)">8<span class="dot-preview" style="background:#7ED957; border:1.5px solid #000;"></span></button>
+          <!-- 2. Integrated Tone Matrix Dropdown (2 Parts: Tone 1-8 & Tone Sidebar 1-3) -->
+          <div class="topbar-dropdown-wrap" id="toneMatrixDropdownWrap">
+            <button type="button" class="topbar-select-btn" id="currentToneSelectBtn" onclick="toggleDropdown('toneMatrixDropdownWrap')" title="Chọn Tone Giao Diện & Tone Sidebar">
+              <span id="currentToneLabelBadge" style="font-weight:700; font-size:12px; font-family:var(--font-mono); color:var(--color-primary);">Tone 03</span>
+              <span style="color:var(--border-color); font-size:11px;">|</span>
+              <span id="currentSidebarToneLabelBadge" style="font-size:11.5px; color:var(--text-secondary); font-weight:500;">SB: Trắng</span>
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="topbar-dropdown-menu" id="toneMatrixDropdownMenu" style="min-width: 285px; padding: 10px;">
+              <!-- PHẦN 1: TONE GIAO DIỆN (TONE 1 - 8) -->
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; padding:0 4px;">
+                <span style="font-size:10px; font-weight:700; color:var(--text-tertiary); text-transform:uppercase; letter-spacing:0.8px;">⚡ Phần 1: Tone 1 - 8</span>
+                <span style="font-size:10px; color:var(--color-primary); font-family:var(--font-mono); font-weight:700;" id="dropdownToneStatus">Tone 03</span>
+              </div>
+              <div class="tone-matrix-grid" style="display:grid; grid-template-columns:repeat(4, 1fr); gap:5px; margin-bottom:8px;">
+                <button type="button" class="tone-btn" data-t="1" style="width:100%; justify-content:center;" onclick="selectToneFromMenu(1)" data-tip="01 Clean Light">1<span class="dot-preview" id="dot-menu-1"></span></button>
+                <button type="button" class="tone-btn" data-t="2" style="width:100%; justify-content:center;" onclick="selectToneFromMenu(2)" data-tip="02 Deep Dark">2<span class="dot-preview" id="dot-menu-2"></span></button>
+                <button type="button" class="tone-btn active" data-t="3" style="width:100%; justify-content:center;" onclick="selectToneFromMenu(3)" data-tip="03 Soft Modern">3<span class="dot-preview" id="dot-menu-3"></span></button>
+                <button type="button" class="tone-btn" data-t="4" style="width:100%; justify-content:center;" onclick="selectToneFromMenu(4)" data-tip="04 Clarity IT">4<span class="dot-preview" id="dot-menu-4"></span></button>
+                <button type="button" class="tone-btn" data-t="5" style="width:100%; justify-content:center;" onclick="selectToneFromMenu(5)" data-tip="05 Midnight Dark">5<span class="dot-preview" id="dot-menu-5"></span></button>
+                <button type="button" class="tone-btn" data-t="6" style="width:100%; justify-content:center;" onclick="selectToneFromMenu(6)" data-tip="06 Muted Surface">6<span class="dot-preview" id="dot-menu-6"></span></button>
+                <button type="button" class="tone-btn" data-t="7" style="width:100%; justify-content:center;" onclick="selectToneFromMenu(7)" data-tip="07 Blueprint L">7<span class="dot-preview" style="background:#7ED957; border:1px solid #111;"></span></button>
+                <button type="button" class="tone-btn" data-t="8" style="width:100%; justify-content:center;" onclick="selectToneFromMenu(8)" data-tip="08 Blueprint D">8<span class="dot-preview" style="background:#7ED957; border:1px solid #000;"></span></button>
+              </div>
+
+              <div style="height:1px; background:var(--border-color); margin:8px 0;"></div>
+
+              <!-- PHẦN 2: TONE SIDEBAR 1 ... -->
+              <div style="margin-bottom:6px; padding:0 4px;">
+                <span style="font-size:10px; font-weight:700; color:var(--text-tertiary); text-transform:uppercase; letter-spacing:0.8px;">🎨 Phần 2: Tone Sidebar</span>
+              </div>
+              <div class="dropdown-item is-selected" data-sbtone="none" onclick="selectSidebarTone('none')">
+                <span class="color-dot-indicator" style="background:#FFFFFF; border:1px solid #CBD5E1;"></span>
+                <div class="dropdown-item-desc">
+                  <strong>⚪ Trắng / Mặc định (None)</strong>
+                  <small>Ăn theo màu sáng của Tone</small>
+                </div>
+              </div>
+              <div class="dropdown-item" data-sbtone="1" onclick="selectSidebarTone('1')">
+                <span class="color-dot-indicator" style="background:#1E293B; border:1px solid #334155;"></span>
+                <div class="dropdown-item-desc">
+                  <strong>🔷 Tone Sidebar 1: Midnight Navy</strong>
+                  <small>Admindek & AdminLTE 3</small>
+                </div>
+              </div>
+              <div class="dropdown-item" data-sbtone="2" onclick="selectSidebarTone('2')">
+                <span class="color-dot-indicator" style="background:#18181B; border:1px solid #27272A;"></span>
+                <div class="dropdown-item-desc">
+                  <strong>⬛ Tone Sidebar 2: Charcoal Obsidian</strong>
+                  <small>Xám than công nghệ cao</small>
+                </div>
+              </div>
+              <div class="dropdown-item" data-sbtone="3" onclick="selectSidebarTone('3')">
+                <span class="color-dot-indicator" style="background:#2A3F54; border:1px solid #374E64;"></span>
+                <div class="dropdown-item-desc">
+                  <strong>🌲 Tone Sidebar 3: Deep Spruce</strong>
+                  <small>Gentelella Petrol Teal</small>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="topbar-sep"></div>
@@ -451,8 +522,8 @@
               </div>
               <div class="dropdown-item" data-font="noto" onclick="selectFontFamily('noto')">
                 <div class="dropdown-item-desc">
-                  <strong>🇨🇳 Noto Sans SC</strong>
-                  <small>East Asian Modern / Hanzi</small>
+                  <strong>🌐 Noto Sans</strong>
+                  <small>Clean Multilingual / Noto Sans</small>
                 </div>
               </div>
             </div>
@@ -500,7 +571,7 @@
         <!-- ==================================================================
              VIEW: OVERVIEW (Tổng quan)
              ================================================================== -->
-        <section id="view-overview" class="screen-view" style="display:none;">
+        <section id="view-overview" class="screen-view" style="display:block;">
           <div class="page-head">
             <div class="page-title-wrap">
               <h1>Bảng điều khiển Tổng quan</h1>
@@ -581,267 +652,572 @@
             </div>
           </div>
 
-          <!-- Charts Row 1: Area Line Chart (Time-series) + Bar/Column Chart (Throughput by Cluster) -->
-          <div class="dashboard-two-col">
-            <!-- Left: Line Chart -->
-            <div class="dashboard-panel-card">
-              <div class="panel-card-head">
-                <div>
-                  <h2>Lưu lượng mạng theo thời gian</h2>
-                  <p style="font-size:12px; color:var(--text-secondary);">Thống kê luồng truyền tải và tải trọng máy chủ.</p>
+          <!-- Advanced Telemetry & Analytics Charts Suite (HUD Reference Layout) -->
+          <div class="telemetry-charts-grid">
+
+            <!-- ROW 1: Dual Radial Gauges | Market Synthesis Multi-Wave | Radar Metric Field -->
+            <div class="telemetry-row-1">
+              <!-- 1. CAPITAL PULSE (Dual Radial Gauges) -->
+              <div class="chart-hud-card">
+                <div class="chart-hud-head">
+                  <div>
+                    <div class="chart-hud-title">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                      CAPITAL PULSE
+                    </div>
+                    <div class="chart-hud-subtitle">Segmented progress metrics</div>
+                  </div>
+                  <div style="text-align:right;">
+                    <div style="font-family:var(--font-mono); font-size:12px; font-weight:800; color:var(--text-primary);">128.5 TB</div>
+                    <div style="font-family:var(--font-system); font-size:9px; color:var(--text-tertiary);">Tổng dung lượng</div>
+                  </div>
                 </div>
-                <div class="segmented-tabs">
-                  <button class="seg-tab-btn active" onclick="setChartRange(this, '24h')">24h</button>
-                  <button class="seg-tab-btn" onclick="setChartRange(this, '7d')">7 ngày</button>
-                  <button class="seg-tab-btn" onclick="setChartRange(this, '30d')">30 ngày</button>
+                <div style="display:flex; justify-content:space-around; align-items:center; padding:4px 0;">
+                  <!-- Gauge 1 (52%) -->
+                  <div style="position:relative; width:88px; height:88px; display:grid; place-items:center;">
+                    <svg viewBox="0 0 100 100" style="transform:rotate(-90deg); width:100%; height:100%;">
+                      <circle cx="50" cy="50" r="40" fill="none" stroke="var(--surface-subtle)" stroke-width="8"/>
+                      <circle cx="50" cy="50" r="40" fill="none" stroke="var(--color-primary)" stroke-width="8" stroke-dasharray="251.2" stroke-dashoffset="120" stroke-linecap="round"/>
+                    </svg>
+                    <div style="position:absolute; text-align:center;">
+                      <span style="font-family:var(--font-mono); font-size:15px; font-weight:800; color:var(--text-primary);">52%</span>
+                      <span style="display:block; font-size:8px; font-family:var(--font-mono); color:var(--color-primary); font-weight:700;">ALPHA</span>
+                    </div>
+                  </div>
+                  <!-- Gauge 2 (48%) -->
+                  <div style="position:relative; width:88px; height:88px; display:grid; place-items:center;">
+                    <svg viewBox="0 0 100 100" style="transform:rotate(-90deg); width:100%; height:100%;">
+                      <circle cx="50" cy="50" r="40" fill="none" stroke="var(--surface-subtle)" stroke-width="8"/>
+                      <circle cx="50" cy="50" r="40" fill="none" stroke="var(--color-accent)" stroke-width="8" stroke-dasharray="251.2" stroke-dashoffset="130" stroke-linecap="round"/>
+                    </svg>
+                    <div style="position:absolute; text-align:center;">
+                      <span style="font-family:var(--font-mono); font-size:15px; font-weight:800; color:var(--text-primary);">48%</span>
+                      <span style="display:block; font-size:8px; font-family:var(--font-mono); color:var(--color-accent); font-weight:700;">BETA</span>
+                    </div>
+                  </div>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:5px; margin-top:6px; font-family:var(--font-mono); font-size:9px; color:var(--text-tertiary);">
+                  <div style="padding:4px 6px; background:var(--surface-subtle); border-radius:4px; border-left:2px solid var(--color-primary);">
+                    <div style="font-weight:700; color:var(--text-primary); font-size:10px;">66.8 TB</div>
+                    <div>Alpha · <span style="color:var(--status-success);">+2.1%</span></div>
+                  </div>
+                  <div style="padding:4px 6px; background:var(--surface-subtle); border-radius:4px; border-left:2px solid var(--color-accent);">
+                    <div style="font-weight:700; color:var(--text-primary); font-size:10px;">61.7 TB</div>
+                    <div>Beta · <span style="color:var(--status-success);">+1.4%</span></div>
+                  </div>
+                </div>
+                <div style="display:flex; gap:5px; margin-top:6px;">
+                  <div class="hud-pill-tag active-p">ALPHA 52%</div>
+                  <div class="hud-pill-tag active-a">BETA 48%</div>
+                  <div class="hud-pill-tag active-s">CORE OK</div>
                 </div>
               </div>
 
-              <!-- Interactive Area Chart SVG -->
-              <div class="svg-chart-wrapper">
-                <svg viewBox="0 0 600 200" preserveAspectRatio="none">
-                  <defs>
-                    <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stop-color="var(--chart-stroke)" stop-opacity="0.25"/>
-                      <stop offset="100%" stop-color="var(--chart-stroke)" stop-opacity="0.0"/>
-                    </linearGradient>
-                  </defs>
-                  <!-- Grid lines -->
-                  <line x1="40" y1="30" x2="590" y2="30" stroke="var(--border-subtle)" stroke-dasharray="4"/>
-                  <line x1="40" y1="80" x2="590" y2="80" stroke="var(--border-subtle)" stroke-dasharray="4"/>
-                  <line x1="40" y1="130" x2="590" y2="130" stroke="var(--border-subtle)" stroke-dasharray="4"/>
-                  <line x1="40" y1="170" x2="590" y2="170" stroke="var(--border-color)"/>
-                  
-                  <!-- Fill Area -->
-                  <polygon id="chartPolygon" points="40,170 40,120 90,105 140,130 190,95 240,70 290,85 340,60 390,75 440,45 490,65 540,40 590,55 590,170" fill="url(#areaGrad)"/>
-                  <!-- Stroke Line -->
-                  <polyline id="chartPolyline" points="40,120 90,105 140,130 190,95 240,70 290,85 340,60 390,75 440,45 490,65 540,40 590,55" fill="none" stroke="var(--chart-stroke)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  
-                  <!-- Dots -->
-                  <circle cx="240" cy="70" r="4" fill="var(--surface-card)" stroke="var(--chart-stroke)" stroke-width="2"/>
-                  <circle cx="440" cy="45" r="4" fill="var(--surface-card)" stroke="var(--chart-stroke)" stroke-width="2"/>
-                  <circle cx="540" cy="40" r="5" fill="var(--color-primary)" stroke="var(--surface-card)" stroke-width="2"/>
-                </svg>
-              </div>
-
-              <div style="display:flex; justify-content:space-between; margin-top:14px; font-family:var(--font-mono); font-size:11px; color:var(--text-tertiary);">
-                <span>00:00</span>
-                <span>04:00</span>
-                <span>08:00</span>
-                <span>12:00</span>
-                <span>16:00</span>
-                <span>20:00</span>
-                <span>Hiện tại</span>
-              </div>
-            </div>
-
-            <!-- Right: Grafana-style Column / Bar Chart -->
-            <div class="dashboard-panel-card">
-              <div class="panel-card-head">
-                <div>
-                  <h2>Phân bổ tải theo Cụm Node</h2>
-                  <p style="font-size:12px; color:var(--text-secondary);">Thông lượng I/O đỉnh trên 5 cụm máy chủ.</p>
+              <!-- 2. MARKET SYNTHESIS (Multi-Wave Stream Area Chart) -->
+              <div class="chart-hud-card">
+                <div class="chart-hud-head">
+                  <div>
+                    <div class="chart-hud-title">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                      MARKET SYNTHESIS
+                    </div>
+                    <div class="chart-hud-subtitle">Layered flow graph · Temporal data stream</div>
+                  </div>
+                  <div style="text-align:right;">
+                    <div class="chart-hud-metric">74.8<span style="font-size:11px; font-weight:600; color:var(--text-tertiary); margin-left:3px;">Gbps</span></div>
+                    <div style="font-size:9.5px; color:var(--status-success); font-weight:700;"><span style="font-family:var(--font-mono);">▲ +12.6%</span> so với giờ trước</div>
+                  </div>
                 </div>
-                <span class="status-badge-pill" style="font-family:var(--font-mono); font-size:11px;">Gbps / Node</span>
-              </div>
-
-              <div class="svg-bar-chart-wrapper">
-                <svg viewBox="0 0 420 195" class="bar-chart-svg">
-                  <defs>
-                    <linearGradient id="barGradPrimary" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stop-color="var(--color-primary)" stop-opacity="0.95"/>
-                      <stop offset="100%" stop-color="var(--color-primary)" stop-opacity="0.45"/>
-                    </linearGradient>
-                    <linearGradient id="barGradAccent" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stop-color="var(--color-accent)" stop-opacity="0.95"/>
-                      <stop offset="100%" stop-color="var(--color-accent)" stop-opacity="0.45"/>
-                    </linearGradient>
-                  </defs>
-
-                  <!-- Horizontal Grid Lines -->
-                  <line x1="38" y1="25" x2="400" y2="25" stroke="var(--border-subtle)" stroke-dasharray="3"/>
-                  <text x="30" y="28" fill="var(--text-tertiary)" font-family="var(--font-mono)" font-size="9" text-anchor="end">2.0G</text>
-                  
-                  <line x1="38" y1="65" x2="400" y2="65" stroke="var(--border-subtle)" stroke-dasharray="3"/>
-                  <text x="30" y="68" fill="var(--text-tertiary)" font-family="var(--font-mono)" font-size="9" text-anchor="end">1.5G</text>
-                  
-                  <line x1="38" y1="105" x2="400" y2="105" stroke="var(--border-subtle)" stroke-dasharray="3"/>
-                  <text x="30" y="108" fill="var(--text-tertiary)" font-family="var(--font-mono)" font-size="9" text-anchor="end">1.0G</text>
-
-                  <line x1="38" y1="145" x2="400" y2="145" stroke="var(--border-subtle)" stroke-dasharray="3"/>
-                  <text x="30" y="148" fill="var(--text-tertiary)" font-family="var(--font-mono)" font-size="9" text-anchor="end">0.5G</text>
-
-                  <line x1="38" y1="165" x2="400" y2="165" stroke="var(--border-color)"/>
-
-                  <!-- Bar 1: HN-Core (1.84G) -->
-                  <g class="bar-group" tabindex="0">
-                    <rect class="bar-rect" x="52" y="38" width="44" height="127" rx="4" fill="url(#barGradPrimary)" stroke="var(--color-primary)" stroke-width="1"/>
-                    <text class="bar-val" x="74" y="30" fill="var(--text-primary)" font-family="var(--font-mono)" font-size="10.5" font-weight="700" text-anchor="middle">1.84</text>
-                    <text class="bar-name" x="74" y="182" fill="var(--text-secondary)" font-size="10" font-family="var(--font-mono)" text-anchor="middle">HN-01</text>
-                  </g>
-
-                  <!-- Bar 2: HCM-Edge (1.42G) -->
-                  <g class="bar-group" tabindex="0">
-                    <rect class="bar-rect" x="124" y="72" width="44" height="93" rx="4" fill="url(#barGradAccent)" stroke="var(--color-accent)" stroke-width="1"/>
-                    <text class="bar-val" x="146" y="64" fill="var(--text-primary)" font-family="var(--font-mono)" font-size="10.5" font-weight="700" text-anchor="middle">1.42</text>
-                    <text class="bar-name" x="146" y="182" fill="var(--text-secondary)" font-size="10" font-family="var(--font-mono)" text-anchor="middle">HCM-02</text>
-                  </g>
-
-                  <!-- Bar 3: DN-DC (0.95G) -->
-                  <g class="bar-group" tabindex="0">
-                    <rect class="bar-rect" x="196" y="105" width="44" height="60" rx="4" fill="url(#barGradPrimary)" stroke="var(--color-primary)" stroke-width="1"/>
-                    <text class="bar-val" x="218" y="97" fill="var(--text-primary)" font-family="var(--font-mono)" font-size="10.5" font-weight="700" text-anchor="middle">0.95</text>
-                    <text class="bar-name" x="218" y="182" fill="var(--text-secondary)" font-size="10" font-family="var(--font-mono)" text-anchor="middle">DN-DC</text>
-                  </g>
-
-                  <!-- Bar 4: Cloud AWS (1.68G) -->
-                  <g class="bar-group" tabindex="0">
-                    <rect class="bar-rect" x="268" y="52" width="44" height="113" rx="4" fill="url(#barGradAccent)" stroke="var(--color-accent)" stroke-width="1"/>
-                    <text class="bar-val" x="290" y="44" fill="var(--text-primary)" font-family="var(--font-mono)" font-size="10.5" font-weight="700" text-anchor="middle">1.68</text>
-                    <text class="bar-name" x="290" y="182" fill="var(--text-secondary)" font-size="10" font-family="var(--font-mono)" text-anchor="middle">AWS-SG</text>
-                  </g>
-
-                  <!-- Bar 5: GoLab VPN (0.62G) -->
-                  <g class="bar-group" tabindex="0">
-                    <rect class="bar-rect" x="340" y="126" width="44" height="39" rx="4" fill="url(#barGradPrimary)" stroke="var(--color-primary)" stroke-width="1"/>
-                    <text class="bar-val" x="362" y="118" fill="var(--text-primary)" font-family="var(--font-mono)" font-size="10.5" font-weight="700" text-anchor="middle">0.62</text>
-                    <text class="bar-name" x="362" y="182" fill="var(--text-secondary)" font-size="10" font-family="var(--font-mono)" text-anchor="middle">GoLab</text>
-                  </g>
-                </svg>
-              </div>
-            </div>
-          </div>
-
-          <!-- Charts Row 2: Grafana Donut Chart (Fleet Distribution) + Recent Live Telemetry Feed -->
-          <div class="dashboard-two-col reverse">
-            <!-- Left: Grafana-style Donut Chart -->
-            <div class="dashboard-panel-card">
-              <div class="panel-card-head">
-                <div>
-                  <h2>Trạng thái & Tải Fleet</h2>
-                  <p style="font-size:12px; color:var(--text-secondary);">Tỷ lệ sẵn sàng và phân loại 248 thiết bị.</p>
+                <!-- Stats row -->
+                <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:4px; margin-bottom:6px; font-size:9.5px; color:var(--text-tertiary);">
+                  <div><div style="font-family:var(--font-mono); font-weight:700; color:var(--text-primary); font-size:10px;">66.4</div>Trước đó</div>
+                  <div><div style="font-family:var(--font-mono); font-weight:700; color:var(--text-primary); font-size:10px;">82.1</div>Cao nhất</div>
+                  <div><div style="font-family:var(--font-mono); font-weight:700; color:var(--text-primary); font-size:10px;">28.7</div>Thấp nhất</div>
+                  <div><div style="font-family:var(--font-mono); font-weight:700; color:var(--color-accent); font-size:10px;">Live</div>Trạng thái</div>
                 </div>
-                <span class="status-badge-pill online" style="font-family:var(--font-mono); font-size:11px;">95.2% Online</span>
-              </div>
-
-              <div class="donut-card-layout">
-                <!-- Donut SVG -->
-                <div class="donut-svg-wrapper">
-                  <svg viewBox="0 0 160 160" class="donut-svg">
-                    <!-- Total Circumference = 2 * PI * 58 = 364.42 -->
-                    <!-- Track Background -->
-                    <circle cx="80" cy="80" r="58" fill="transparent" stroke="var(--surface-subtle)" stroke-width="18"/>
-                    
-                    <!-- Online: 236/248 = 95.16% -> length = 345 -->
-                    <circle class="donut-segment seg-online" cx="80" cy="80" r="58" fill="transparent"
-                            stroke="var(--status-success)" stroke-width="18"
-                            stroke-dasharray="344 365" stroke-dashoffset="0"
-                            transform="rotate(-90 80 80)"/>
-
-                    <!-- Warning: 8/248 = 3.23% -> length = 12 -->
-                    <circle class="donut-segment seg-warning" cx="80" cy="80" r="58" fill="transparent"
-                            stroke="var(--status-warning)" stroke-width="18"
-                            stroke-dasharray="12 365" stroke-dashoffset="-346"
-                            transform="rotate(-90 80 80)"/>
-
-                    <!-- Error: 4/248 = 1.61% -> length = 6 -->
-                    <circle class="donut-segment seg-error" cx="80" cy="80" r="58" fill="transparent"
-                            stroke="var(--status-error)" stroke-width="18"
-                            stroke-dasharray="6 365" stroke-dashoffset="-359"
-                            transform="rotate(-90 80 80)"/>
-
-                    <!-- Center Text -->
-                    <text x="80" y="74" text-anchor="middle" font-family="var(--font-display)" font-size="24" font-weight="800" fill="var(--text-primary)">248</text>
-                    <text x="80" y="93" text-anchor="middle" font-family="var(--font-mono)" font-size="10" font-weight="600" fill="var(--text-tertiary)" letter-spacing="0.6">THIẾT BỊ</text>
+                <!-- Legend -->
+                <div style="display:flex; gap:12px; margin-bottom:5px; font-family:var(--font-mono); font-size:9px; color:var(--text-tertiary);">
+                  <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--color-accent);margin-right:4px;vertical-align:middle;"></span>Inbound (In) &nbsp;<b style="color:var(--text-primary);">42.1 Gbps</b></span>
+                  <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--color-primary);margin-right:4px;vertical-align:middle;"></span>Outbound (Out) &nbsp;<b style="color:var(--text-primary);">32.7 Gbps</b></span>
+                </div>
+                <div style="height:110px; width:100%;">
+                  <svg viewBox="0 0 500 110" preserveAspectRatio="none" style="width:100%; height:100%;">
+                    <defs>
+                      <linearGradient id="hudWave1Grad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="var(--color-accent)" stop-opacity="0.4"/>
+                        <stop offset="100%" stop-color="var(--color-accent)" stop-opacity="0.03"/>
+                      </linearGradient>
+                      <linearGradient id="hudWave2Grad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="var(--color-primary)" stop-opacity="0.55"/>
+                        <stop offset="100%" stop-color="var(--color-primary)" stop-opacity="0.05"/>
+                      </linearGradient>
+                    </defs>
+                    <!-- Grid lines -->
+                    <text x="2" y="18" fill="var(--text-tertiary)" font-family="var(--font-mono)" font-size="9">100</text>
+                    <line x1="30" y1="14" x2="500" y2="14" stroke="var(--border-subtle)" stroke-dasharray="3"/>
+                    <text x="2" y="60" fill="var(--text-tertiary)" font-family="var(--font-mono)" font-size="9">50</text>
+                    <line x1="30" y1="56" x2="500" y2="56" stroke="var(--border-subtle)" stroke-dasharray="3"/>
+                    <line x1="30" y1="100" x2="500" y2="100" stroke="var(--border-subtle)"/>
+                    <!-- X-axis time labels -->
+                    <text x="30" y="110" fill="var(--text-tertiary)" font-family="var(--font-mono)" font-size="8">00:00</text>
+                    <text x="135" y="110" fill="var(--text-tertiary)" font-family="var(--font-mono)" font-size="8">06:00</text>
+                    <text x="245" y="110" fill="var(--text-tertiary)" font-family="var(--font-mono)" font-size="8">12:00</text>
+                    <text x="355" y="110" fill="var(--text-tertiary)" font-family="var(--font-mono)" font-size="8">18:00</text>
+                    <text x="460" y="110" fill="var(--text-tertiary)" font-family="var(--font-mono)" font-size="8">23:59</text>
+                    <!-- Wave 1 (Upper stream) -->
+                    <path d="M 30,98 Q 100,88 160,72 T 290,42 T 410,26 T 500,16 L 500,105 L 30,105 Z" fill="url(#hudWave1Grad)"/>
+                    <path d="M 30,98 Q 100,88 160,72 T 290,42 T 410,26 T 500,16" fill="none" stroke="var(--color-accent)" stroke-width="2.5"/>
+                    <!-- Wave 2 -->
+                    <path d="M 30,100 Q 110,92 170,80 T 300,60 T 420,40 T 500,30 L 500,105 L 30,105 Z" fill="url(#hudWave2Grad)"/>
+                    <path d="M 30,100 Q 110,92 170,80 T 300,60 T 420,40 T 500,30" fill="none" stroke="var(--color-primary)" stroke-width="2.5"/>
+                    <!-- Peak dots -->
+                    <circle cx="410" cy="26" r="4" fill="var(--color-accent)" stroke="var(--surface-card)" stroke-width="2"/>
+                    <circle cx="500" cy="16" r="4.5" fill="var(--color-primary)" stroke="var(--surface-card)" stroke-width="2"/>
                   </svg>
                 </div>
+              </div>
 
-                <!-- Donut Legend & Stats -->
-                <div class="donut-legend-list">
-                  <div class="donut-legend-item">
-                    <div class="legend-left">
-                      <span class="legend-dot" style="background:var(--status-success);"></span>
-                      <span class="legend-name">Hoạt động tối ưu</span>
+              <!-- 3. RADAR METRIC FIELD (Spider Radar Chart + Progress Bars) -->
+              <div class="chart-hud-card">
+                <div class="chart-hud-head">
+                  <div>
+                    <div class="chart-hud-title">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                      RADAR METRIC FIELD
                     </div>
-                    <div class="legend-right">
-                      <span class="legend-count">236</span>
-                      <span class="legend-pct">95.2%</span>
-                    </div>
+                    <div class="chart-hud-subtitle">Spatial context load · Multipoint field</div>
                   </div>
-
-                  <div class="donut-legend-item">
-                    <div class="legend-left">
-                      <span class="legend-dot" style="background:var(--status-warning);"></span>
-                      <span class="legend-name">Cảnh báo tải cao</span>
-                    </div>
-                    <div class="legend-right">
-                      <span class="legend-count">8</span>
-                      <span class="legend-pct">3.2%</span>
-                    </div>
+                  <div style="text-align:right;">
+                    <div style="font-family:var(--font-system); font-size:10px; color:var(--text-tertiary);">Hiện tại</div>
+                    <div style="font-family:var(--font-system); font-size:11px; font-weight:700; color:var(--color-primary);">Thực chiến</div>
                   </div>
-
-                  <div class="donut-legend-item">
-                    <div class="legend-left">
-                      <span class="legend-dot" style="background:var(--status-error);"></span>
-                      <span class="legend-name">Bảo trì / Mất kết nối</span>
-                    </div>
-                    <div class="legend-right">
-                      <span class="legend-count">4</span>
-                      <span class="legend-pct">1.6%</span>
-                    </div>
+                </div>
+                <div style="display:flex; align-items:center; gap:12px;">
+                  <!-- Radar Chart SVG -->
+                  <div style="width:130px; height:130px; flex-shrink:0; position:relative;">
+                    <svg viewBox="0 0 120 120" style="width:100%; height:100%;">
+                      <!-- Axis labels -->
+                      <text x="54" y="8" fill="var(--text-tertiary)" font-family="var(--font-mono)" font-size="7.5" text-anchor="middle">CPU</text>
+                      <text x="112" y="50" fill="var(--text-tertiary)" font-family="var(--font-mono)" font-size="7.5" text-anchor="start">I/O</text>
+                      <text x="90" y="112" fill="var(--text-tertiary)" font-family="var(--font-mono)" font-size="7.5" text-anchor="middle">MEM</text>
+                      <text x="28" y="112" fill="var(--text-tertiary)" font-family="var(--font-mono)" font-size="7.5" text-anchor="middle">NET</text>
+                      <text x="5" y="50" fill="var(--text-tertiary)" font-family="var(--font-mono)" font-size="7.5" text-anchor="end">DISK</text>
+                      <!-- Pentagonal Web Grids -->
+                      <polygon points="60,10 108,45 89,102 31,102 12,45" fill="none" stroke="var(--border-subtle)" stroke-width="1"/>
+                      <polygon points="60,28 94,53 81,93 39,93 26,53" fill="none" stroke="var(--border-subtle)" stroke-width="1"/>
+                      <polygon points="60,45 79,59 72,82 48,82 41,59" fill="none" stroke="var(--border-subtle)" stroke-width="1"/>
+                      <!-- Spokes -->
+                      <line x1="60" y1="60" x2="60" y2="10" stroke="var(--border-subtle)" stroke-width="1"/>
+                      <line x1="60" y1="60" x2="108" y2="45" stroke="var(--border-subtle)" stroke-width="1"/>
+                      <line x1="60" y1="60" x2="89" y2="102" stroke="var(--border-subtle)" stroke-width="1"/>
+                      <line x1="60" y1="60" x2="31" y2="102" stroke="var(--border-subtle)" stroke-width="1"/>
+                      <line x1="60" y1="60" x2="12" y2="45" stroke="var(--border-subtle)" stroke-width="1"/>
+                      <!-- Data Polygon -->
+                      <polygon points="60,20 100,50 82,90 42,95 24,48" fill="var(--color-primary-subtle)" stroke="var(--color-primary)" stroke-width="2"/>
+                      <circle cx="60" cy="20" r="3" fill="var(--color-primary)"/>
+                      <circle cx="100" cy="50" r="3" fill="var(--color-primary)"/>
+                      <circle cx="82" cy="90" r="3" fill="var(--color-accent)"/>
+                      <circle cx="42" cy="95" r="3" fill="var(--color-primary)"/>
+                      <circle cx="24" cy="48" r="3" fill="var(--color-accent)"/>
+                    </svg>
                   </div>
-
-                  <div class="donut-summary-bar">
-                    Thời gian trung bình phục hồi (MTTR): <strong>4.2 phút</strong> · Đạt Tier III
+                  <!-- Right side stats -->
+                  <div style="flex:1; display:flex; flex-direction:column; gap:5px;">
+                    <div style="display:flex; justify-content:space-between; align-items:baseline;">
+                      <span style="font-family:var(--font-mono); font-size:18px; font-weight:800; color:var(--text-primary);">38.6K</span>
+                      <span class="hud-delta-chip positive">+6.2%</span>
+                    </div>
+                    <div style="font-size:9px; font-family:var(--font-mono); color:var(--text-tertiary); margin-bottom:2px; text-transform:uppercase; letter-spacing:0.5px;">Active Signals</div>
+                    <!-- bars with label -->
+                    <div class="hud-bar-row">
+                      <span style="font-family:var(--font-mono); font-size:8.5px; color:var(--text-tertiary); width:24px;">CPU</span>
+                      <div class="hud-bar-track"><div class="hud-bar-fill" style="width:82%; background:var(--color-primary);"></div></div>
+                      <span class="hud-bar-num">82%</span>
+                    </div>
+                    <div class="hud-bar-row">
+                      <span style="font-family:var(--font-mono); font-size:8.5px; color:var(--text-tertiary); width:24px;">MEM</span>
+                      <div class="hud-bar-track"><div class="hud-bar-fill" style="width:56%; background:var(--color-accent);"></div></div>
+                      <span class="hud-bar-num">56%</span>
+                    </div>
+                    <div class="hud-bar-row">
+                      <span style="font-family:var(--font-mono); font-size:8.5px; color:var(--text-tertiary); width:24px;">DISK</span>
+                      <div class="hud-bar-track"><div class="hud-bar-fill" style="width:91%; background:var(--color-secondary);"></div></div>
+                      <span class="hud-bar-num">91%</span>
+                    </div>
+                    <div class="hud-bar-row">
+                      <span style="font-family:var(--font-mono); font-size:8.5px; color:var(--text-tertiary); width:24px;">NET</span>
+                      <div class="hud-bar-track"><div class="hud-bar-fill" style="width:68%; background:var(--color-primary);"></div></div>
+                      <span class="hud-bar-num">68%</span>
+                    </div>
+                    <div class="hud-bar-row">
+                      <span style="font-family:var(--font-mono); font-size:8.5px; color:var(--text-tertiary); width:24px;">I/O</span>
+                      <div class="hud-bar-track"><div class="hud-bar-fill" style="width:73%; background:var(--color-accent);"></div></div>
+                      <span class="hud-bar-num">73%</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Right: Recent Live Telemetry Feed -->
-            <div class="dashboard-panel-card">
-              <div class="panel-card-head">
+            <!-- ROW 2: Vertical Comparison | Donut Segments | Future Line Channel | Histogram Grid -->
+            <div class="telemetry-row-2">
+              <!-- 4. VERTICAL COMPARISON (Multi-Color Columns) -->
+              <div class="chart-hud-card">
+                <div class="chart-hud-head">
+                  <div>
+                    <div class="chart-hud-title">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                      VERTICAL COMPARISON
+                    </div>
+                    <div class="chart-hud-subtitle">Cluster load cycle</div>
+                  </div>
+                  <select style="font-family:var(--font-mono); font-size:9px; background:var(--surface-subtle); border:1px solid var(--border-color); color:var(--text-secondary); border-radius:4px; padding:2px 5px; cursor:pointer;">
+                    <option>CPU Usage</option><option>Mem</option><option>I/O</option>
+                  </select>
+                </div>
+                <!-- Summary row -->
+                <div style="display:flex; gap:8px; margin-bottom:6px; font-size:9.5px;">
+                  <span style="color:var(--text-tertiary);">Tổng: <b style="font-family:var(--font-mono); color:var(--color-primary);">320%</b></span>
+                  <span style="color:var(--text-tertiary);">Trung bình: <b style="font-family:var(--font-mono); color:var(--text-primary);">64%</b></span>
+                  <span style="color:var(--text-tertiary);">Cao nhất: <b style="font-family:var(--font-mono); color:var(--status-warning, #F59E0B);">92%</b></span>
+                </div>
+                <!-- Chart + x labels -->
                 <div>
-                  <h2>Nhật ký Telemetry gần nhất</h2>
-                  <p style="font-size:12px; color:var(--text-secondary);">Sự kiện thời gian thực từ agent giám sát.</p>
+                  <div style="height:95px; width:100%; display:flex; align-items:flex-end; gap:5px; padding-top:4px;">
+                    <div class="hud-col-bar" style="height:45%; background:var(--color-primary);" title="18/09: 45%"></div>
+                    <div class="hud-col-bar" style="height:70%; background:var(--color-accent);" title="19/09: 70%"></div>
+                    <div class="hud-col-bar" style="height:60%; background:var(--color-primary);" title="20/09: 60%"></div>
+                    <div class="hud-col-bar" style="height:90%; background:var(--color-secondary);" title="21/09: 90%"></div>
+                    <div class="hud-col-bar" style="height:75%; background:var(--color-accent);" title="22/09: 75%"></div>
+                    <div class="hud-col-bar" style="height:92%; background:var(--status-warning, #F59E0B);" title="23/09: 92%"></div>
+                    <div class="hud-col-bar" style="height:85%; background:var(--color-accent);" title="24/09: 85%"></div>
+                    <div class="hud-col-bar" style="height:65%; background:var(--color-secondary);" title="25/09: 65%"></div>
+                  </div>
+                  <div style="display:flex; gap:5px; font-family:var(--font-mono); font-size:8px; color:var(--text-tertiary); padding-top:2px;">
+                    <span style="flex:1;text-align:center;">18/09</span><span style="flex:1;text-align:center;">19/09</span><span style="flex:1;text-align:center;">20/09</span><span style="flex:1;text-align:center;">21/09</span><span style="flex:1;text-align:center;">22/09</span><span style="flex:1;text-align:center;">23/09</span><span style="flex:1;text-align:center;">24/09</span><span style="flex:1;text-align:center;">25/09</span>
+                  </div>
                 </div>
-                <span class="status-badge-pill online">Trực tiếp</span>
               </div>
 
-              <div class="activity-stream">
-                <div class="activity-item">
-                  <div class="activity-icon ok">✓</div>
-                  <div class="activity-details">
-                    <p>Đồng bộ cấu hình BGP trên Core Hà Nội hoàn tất</p>
-                    <div class="activity-time">Vừa xong · sw-hn-core-01</div>
+              <!-- 5. DONUT SEGMENTS (Segmented Ring + Legend) -->
+              <div class="chart-hud-card">
+                <div class="chart-hud-head">
+                  <div>
+                    <div class="chart-hud-title">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+                      DONUT SEGMENTS
+                    </div>
+                    <div class="chart-hud-subtitle">Distribution mode cycle</div>
                   </div>
                 </div>
-
-                <div class="activity-item">
-                  <div class="activity-icon warn">!</div>
-                  <div class="activity-details">
-                    <p>Sử dụng RAM vượt 82% trên máy chủ lưu trữ</p>
-                    <div class="activity-time">5 phút trước · srv-dn-app-02</div>
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <div style="position:relative; width:90px; height:90px; flex-shrink:0;">
+                    <svg viewBox="0 0 100 100" style="transform:rotate(-90deg); width:100%; height:100%;">
+                      <circle cx="50" cy="50" r="36" fill="none" stroke="var(--surface-subtle)" stroke-width="12"/>
+                      <circle cx="50" cy="50" r="36" fill="none" stroke="var(--color-primary)" stroke-width="12" stroke-dasharray="226" stroke-dashoffset="90" stroke-linecap="round"/>
+                      <circle cx="50" cy="50" r="36" fill="none" stroke="var(--color-accent)" stroke-width="12" stroke-dasharray="226" stroke-dashoffset="170" stroke-linecap="round"/>
+                      <circle cx="50" cy="50" r="36" fill="none" stroke="var(--color-secondary)" stroke-width="12" stroke-dasharray="226" stroke-dashoffset="205" stroke-linecap="round"/>
+                    </svg>
+                    <div style="position:absolute; inset:0; display:grid; place-items:center; text-align:center;">
+                      <div>
+                        <span style="font-family:var(--font-mono); font-size:18px; font-weight:800; color:var(--text-primary);">64</span>
+                        <span style="display:block; font-size:8px; font-family:var(--font-mono); color:var(--text-tertiary);">Total</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="flex:1; display:flex; flex-direction:column; gap:6px;">
+                    <!-- Mode 01 -->
+                    <div>
+                      <div style="display:flex; justify-content:space-between; font-size:9px; font-family:var(--font-mono); color:var(--text-secondary); margin-bottom:2px;">
+                        <span>Mode 01</span><span style="color:var(--text-primary); font-weight:700;">72% &nbsp;<span style="color:var(--text-tertiary);">46</span></span>
+                      </div>
+                      <div class="hud-bar-track"><div class="hud-bar-fill" style="width:72%; background:var(--color-primary);"></div></div>
+                    </div>
+                    <!-- Mode 02 -->
+                    <div>
+                      <div style="display:flex; justify-content:space-between; font-size:9px; font-family:var(--font-mono); color:var(--text-secondary); margin-bottom:2px;">
+                        <span>Mode 02</span><span style="color:var(--text-primary); font-weight:700;">46% &nbsp;<span style="color:var(--text-tertiary);">29</span></span>
+                      </div>
+                      <div class="hud-bar-track"><div class="hud-bar-fill" style="width:46%; background:var(--color-accent);"></div></div>
+                    </div>
+                    <!-- Status footer -->
+                    <div style="font-size:9px; color:var(--text-tertiary); margin-top:2px;">
+                      <span style="color:var(--status-success); font-weight:700;">● Hoạt động <span style="font-family:var(--font-mono);">56 (87.5%)</span></span>&nbsp; · &nbsp;<span style="color:var(--status-error); font-weight:700;">● Bất thường <span style="font-family:var(--font-mono);">8 (12.5%)</span></span>
+                    </div>
                   </div>
                 </div>
+              </div>
 
-                <div class="activity-item">
-                  <div class="activity-icon info">ℹ</div>
-                  <div class="activity-details">
-                    <p>Khởi động bản sao lưu tự động Edge TP.HCM</p>
-                    <div class="activity-time">18 phút trước · fw-hcm-edge-01</div>
+              <!-- 6. FUTURE LINE CHANNEL (Dual Smooth Spline Curves) -->
+              <div class="chart-hud-card">
+                <div class="chart-hud-head">
+                  <div>
+                    <div class="chart-hud-title">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 4-6"/></svg>
+                      FUTURE LINE CHANNEL
+                    </div>
+                    <div class="chart-hud-subtitle">Predictive trajectory</div>
                   </div>
+                  <select style="font-family:var(--font-mono); font-size:9px; background:var(--surface-subtle); border:1px solid var(--border-color); color:var(--text-secondary); border-radius:4px; padding:2px 5px; cursor:pointer;">
+                    <option>CPU</option><option>Memory</option><option>Latency</option>
+                  </select>
                 </div>
+                <!-- Summary metrics -->
+                <div style="display:flex; gap:12px; margin-bottom:5px; font-size:9.5px;">
+                  <span><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--color-accent);margin-right:3px;vertical-align:middle;"></span>Hiện tại <b style="font-family:var(--font-mono); color:var(--text-primary);">78%</b></span>
+                  <span><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--color-primary);margin-right:3px;vertical-align:middle;"></span>Mục tiêu <b style="font-family:var(--font-mono); color:var(--text-primary);">65%</b></span>
+                  <span><span style="display:inline-block;width:7px;height:3px;background:var(--color-primary);margin-right:3px;vertical-align:middle;"></span>Dự báo <b style="font-family:var(--font-mono); color:var(--text-primary);">62%</b></span>
+                </div>
+                <div style="height:108px; width:100%; position:relative;">
+                  <svg viewBox="0 0 240 100" preserveAspectRatio="none" style="width:100%; height:100%;">
+                    <!-- Y axis labels -->
+                    <text x="2" y="12" fill="var(--text-tertiary)" font-family="var(--font-mono)" font-size="8">100%</text>
+                    <line x1="28" y1="8" x2="240" y2="8" stroke="var(--border-subtle)" stroke-dasharray="2"/>
+                    <text x="2" y="55" fill="var(--text-tertiary)" font-family="var(--font-mono)" font-size="8">50%</text>
+                    <line x1="28" y1="51" x2="240" y2="51" stroke="var(--border-subtle)" stroke-dasharray="2"/>
+                    <text x="6" y="98" fill="var(--text-tertiary)" font-family="var(--font-mono)" font-size="8">0%</text>
+                    <line x1="28" y1="94" x2="240" y2="94" stroke="var(--border-subtle)"/>
+                    <!-- Actual line -->
+                    <path d="M 30,82 Q 80,72 130,46 T 240,15" fill="none" stroke="var(--color-accent)" stroke-width="2.5" stroke-linecap="round"/>
+                    <!-- Predicted dashed line -->
+                    <path d="M 30,75 Q 90,62 150,44 T 240,28" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round"/>
+                    <!-- Key data dots -->
+                    <circle cx="130" cy="46" r="3.5" fill="var(--color-accent)" stroke="var(--surface-card)" stroke-width="1.5"/>
+                    <circle cx="240" cy="15" r="4" fill="var(--color-primary)" stroke="var(--surface-card)" stroke-width="2"/>
+                    <!-- X axis labels -->
+                    <text x="28" y="108" fill="var(--text-tertiary)" font-family="var(--font-mono)" font-size="7.5">00:00</text>
+                    <text x="100" y="108" fill="var(--text-tertiary)" font-family="var(--font-mono)" font-size="7.5">12:00</text>
+                    <text x="195" y="108" fill="var(--text-tertiary)" font-family="var(--font-mono)" font-size="7.5">23:59</text>
+                  </svg>
+                </div>
+              </div>
 
-                <div class="activity-item">
-                  <div class="activity-icon ok">✓</div>
-                  <div class="activity-details">
-                    <p>Chứng chỉ SSL wildcard gia hạn thành công (365 ngày)</p>
-                    <div class="activity-time">42 phút trước · cloud-ingress</div>
+              <!-- 7. HISTOGRAM STATUS GRID (Equalizer Histogram + Target Badges) -->
+              <div class="chart-hud-card">
+                <div class="chart-hud-head">
+                  <div>
+                    <div class="chart-hud-title">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="2" width="5" height="20" rx="1"/><rect x="9.5" y="8" width="5" height="14" rx="1"/><rect x="17" y="5" width="5" height="17" rx="1"/></svg>
+                      HISTOGRAM STATUS GRID
+                    </div>
+                    <div class="chart-hud-subtitle">I/O Frequency spectrum</div>
+                  </div>
+                  <select style="font-family:var(--font-mono); font-size:9px; background:var(--surface-subtle); border:1px solid var(--border-color); color:var(--text-secondary); border-radius:4px; padding:2px 5px; cursor:pointer;">
+                    <option>Request/sec</option><option>I/O ops</option>
+                  </select>
+                </div>
+                <div style="display:flex; align-items:stretch; gap:12px;">
+                  <!-- Histogram bars with y axis -->
+                  <div style="flex:1; display:flex; flex-direction:column;">
+                    <div style="display:flex; align-items:flex-end; gap:3px; flex:1; height:90px;">
+                      <div style="display:flex; flex-direction:column; justify-content:space-between; height:100%; padding-right:2px; font-family:var(--font-mono); font-size:7.5px; color:var(--text-tertiary);">
+                        <span>100</span><span>50</span><span>0</span>
+                      </div>
+                      <div class="hud-hist-bar" style="height:55%; background:var(--color-accent);"></div>
+                      <div class="hud-hist-bar" style="height:75%; background:var(--color-primary);"></div>
+                      <div class="hud-hist-bar" style="height:45%; background:var(--color-accent);"></div>
+                      <div class="hud-hist-bar" style="height:85%; background:var(--color-primary);"></div>
+                      <div class="hud-hist-bar" style="height:95%; background:var(--color-accent);"></div>
+                      <div class="hud-hist-bar" style="height:65%; background:var(--color-primary);"></div>
+                      <div class="hud-hist-bar" style="height:80%; background:var(--color-accent);"></div>
+                      <div class="hud-hist-bar" style="height:90%; background:var(--color-primary);"></div>
+                      <div class="hud-hist-bar" style="height:60%; background:var(--color-accent);"></div>
+                    </div>
+                    <div style="display:flex; gap:3px; justify-content:flex-end; font-family:var(--font-mono); font-size:7.5px; color:var(--text-tertiary); padding-top:2px; padding-left:18px;">
+                      <span style="flex:1;text-align:center;">16</span><span style="flex:1;text-align:center;">17</span><span style="flex:1;text-align:center;">18</span><span style="flex:1;text-align:center;">19</span><span style="flex:1;text-align:center;">20</span><span style="flex:1;text-align:center;">21</span><span style="flex:1;text-align:center;">22</span><span style="flex:1;text-align:center;">23</span><span style="flex:1;text-align:center;">24</span>
+                    </div>
+                  </div>
+                  <!-- Target Badges -->
+                  <div style="display:flex; flex-direction:column; gap:5px; min-width:100px;">
+                    <div class="hud-target-badge" style="border-left:2px solid var(--status-success);">
+                      <span class="hud-target-num" style="color:var(--status-success);">91%</span>
+                      <span class="hud-target-text">STABLE</span>
+                    </div>
+                    <div class="hud-target-badge" style="border-left:2px solid var(--status-error);">
+                      <span class="hud-target-num" style="color:var(--status-error);">38%</span>
+                      <span class="hud-target-text">ALERT</span>
+                    </div>
+                    <div class="hud-target-badge" style="border-left:2px solid var(--color-primary);">
+                      <span class="hud-target-num">76%</span>
+                      <span class="hud-target-text">TARGET</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            <!-- ROW 3: Area Micro Modules | Minimal Status Bars | Layered Analytic Blocks -->
+            <div class="telemetry-row-3">
+              <!-- 8. AREA MICRO MODULES (3 Layered Sparkline Wave Cards) -->
+              <div class="chart-hud-card">
+                <div class="chart-hud-head">
+                  <div>
+                    <div class="chart-hud-title">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 20h20"/><path d="M2 20 Q 6,8 10,14 T 18,4 T 22,10"/></svg>
+                      AREA MICRO MODULES
+                    </div>
+                    <div class="chart-hud-subtitle">Wave segment sub-layers</div>
+                  </div>
+                  <div style="font-family:var(--font-mono); font-size:9px; color:var(--text-tertiary);">⋮</div>
+                </div>
+                <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:6px;">
+                  <!-- Layer 01 -->
+                  <div class="hud-micro-module">
+                    <div style="display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:9px; color:var(--text-tertiary); margin-bottom:3px;">
+                      <span>LAYER 01</span><span style="color:var(--color-primary); font-weight:700;">42%</span>
+                    </div>
+                    <div style="height:52px; width:100%;">
+                      <svg viewBox="0 0 100 52" preserveAspectRatio="none" style="width:100%; height:100%;">
+                        <path d="M 0,48 Q 30,44 60,26 T 100,8 L 100,52 L 0,52 Z" fill="var(--color-primary-subtle)"/>
+                        <path d="M 0,48 Q 30,44 60,26 T 100,8" fill="none" stroke="var(--color-primary)" stroke-width="2"/>
+                      </svg>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:8px; color:var(--text-tertiary); margin-top:3px;">
+                      <span>Min 12%</span><span>Max 88%</span>
+                    </div>
+                  </div>
+                  <!-- Layer 02 -->
+                  <div class="hud-micro-module">
+                    <div style="display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:9px; color:var(--text-tertiary); margin-bottom:3px;">
+                      <span>LAYER 02</span><span style="color:var(--color-accent); font-weight:700;">68%</span>
+                    </div>
+                    <div style="height:52px; width:100%;">
+                      <svg viewBox="0 0 100 52" preserveAspectRatio="none" style="width:100%; height:100%;">
+                        <path d="M 0,44 Q 30,34 50,38 T 100,16 L 100,52 L 0,52 Z" fill="var(--color-primary-subtle)"/>
+                        <path d="M 0,44 Q 30,34 50,38 T 100,16" fill="none" stroke="var(--color-accent)" stroke-width="2"/>
+                      </svg>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:8px; color:var(--text-tertiary); margin-top:3px;">
+                      <span>Min 32%</span><span>Max 91%</span>
+                    </div>
+                  </div>
+                  <!-- Layer 03 -->
+                  <div class="hud-micro-module">
+                    <div style="display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:9px; color:var(--text-tertiary); margin-bottom:3px;">
+                      <span>LAYER 03</span><span style="color:var(--color-secondary); font-weight:700;">25%</span>
+                    </div>
+                    <div style="height:52px; width:100%;">
+                      <svg viewBox="0 0 100 52" preserveAspectRatio="none" style="width:100%; height:100%;">
+                        <path d="M 0,50 Q 40,40 60,22 T 100,4 L 100,52 L 0,52 Z" fill="var(--color-primary-subtle)"/>
+                        <path d="M 0,50 Q 40,40 60,22 T 100,4" fill="none" stroke="var(--color-secondary)" stroke-width="2"/>
+                      </svg>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:8px; color:var(--text-tertiary); margin-top:3px;">
+                      <span>Min 10%</span><span>Max 64%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 9. MINIMAL STATUS BARS (Stepped Milestone Timeline) -->
+              <div class="chart-hud-card">
+                <div class="chart-hud-head">
+                  <div>
+                    <div class="chart-hud-title">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12H2"/><path d="M5 4l-3 8 3 8M19 4l3 8-3 8"/></svg>
+                      MINIMAL STATUS BARS
+                    </div>
+                    <div class="chart-hud-subtitle">Staggered SLA mode cycle</div>
+                  </div>
+                  <div style="font-family:var(--font-mono); font-size:9px; color:var(--text-tertiary);">⋮</div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:8px;">
+                  <div>
+                    <div style="display:flex; justify-content:space-between; font-size:9px; font-family:var(--font-mono); color:var(--text-secondary); margin-bottom:3px;">
+                      <span><svg style="display:inline;margin-right:3px;" width="8" height="8" viewBox="0 0 24 24" fill="var(--color-primary)"><circle cx="12" cy="12" r="10"/></svg>CPU Load</span>
+                      <span style="color:var(--text-primary); font-weight:700;">72% &nbsp;<span style="color:var(--text-tertiary);">8/11 node</span></span>
+                    </div>
+                    <div class="hud-bar-track"><div class="hud-bar-fill" style="width:72%; background:var(--color-primary);"></div></div>
+                  </div>
+                  <div>
+                    <div style="display:flex; justify-content:space-between; font-size:9px; font-family:var(--font-mono); color:var(--text-secondary); margin-bottom:3px;">
+                      <span><svg style="display:inline;margin-right:3px;" width="8" height="8" viewBox="0 0 24 24" fill="var(--color-accent)"><circle cx="12" cy="12" r="10"/></svg>Memory Usage</span>
+                      <span style="color:var(--text-primary); font-weight:700;">42% &nbsp;<span style="color:var(--text-tertiary);">5/11 node</span></span>
+                    </div>
+                    <div class="hud-bar-track"><div class="hud-bar-fill" style="width:42%; background:var(--color-accent);"></div></div>
+                  </div>
+                  <div>
+                    <div style="display:flex; justify-content:space-between; font-size:9px; font-family:var(--font-mono); color:var(--text-secondary); margin-bottom:3px;">
+                      <span><svg style="display:inline;margin-right:3px;" width="8" height="8" viewBox="0 0 24 24" fill="var(--color-secondary)"><circle cx="12" cy="12" r="10"/></svg>Disk Usage</span>
+                      <span style="color:var(--text-primary); font-weight:700;">91% &nbsp;<span style="color:var(--status-error);">10/11 node</span></span>
+                    </div>
+                    <div class="hud-bar-track"><div class="hud-bar-fill" style="width:91%; background:var(--status-error);"></div></div>
+                  </div>
+                  <div>
+                    <div style="display:flex; justify-content:space-between; font-size:9px; font-family:var(--font-mono); color:var(--text-secondary); margin-bottom:3px;">
+                      <span><svg style="display:inline;margin-right:3px;" width="8" height="8" viewBox="0 0 24 24" fill="var(--color-primary)"><rect x="2" y="2" width="20" height="20" rx="4"/></svg>Network I/O</span>
+                      <span style="color:var(--text-primary); font-weight:700;">64% &nbsp;<span style="color:var(--text-tertiary);">7/11 node</span></span>
+                    </div>
+                    <div class="hud-bar-track"><div class="hud-bar-fill" style="width:64%; background:var(--color-primary);"></div></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 10. LAYERED ANALYTIC BLOCKS (Micro Sparklines + Ribbon Waves) -->
+              <div class="chart-hud-card">
+                <div class="chart-hud-head">
+                  <div>
+                    <div class="chart-hud-title">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 16L8 10L13 15L22 6"/><path d="M2 22h20"/></svg>
+                      LAYERED ANALYTIC BLOCKS
+                    </div>
+                    <div class="chart-hud-subtitle">Waveform streams &amp; telemetry</div>
+                  </div>
+                  <div style="font-family:var(--font-mono); font-size:9px; color:var(--text-tertiary);">⋮</div>
+                </div>
+                <!-- Top 3 Micro KPI Chips -->
+                <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:6px; margin-bottom:8px;">
+                  <div class="hud-kpi-chip">
+                    <div>
+                      <span class="hud-kpi-val">12.4</span>
+                      <span class="hud-kpi-lbl">INDEX</span>
+                    </div>
+                    <div style="text-align:right;">
+                      <svg width="44" height="22" viewBox="0 0 44 22"><path d="M 0,18 Q 14,22 24,9 T 44,3" fill="none" stroke="var(--color-primary)" stroke-width="2"/></svg>
+                      <span style="font-family:var(--font-mono); font-size:7.5px; color:var(--status-success);">+2.1</span>
+                    </div>
+                  </div>
+                  <div class="hud-kpi-chip">
+                    <div>
+                      <span class="hud-kpi-val">68%</span>
+                      <span class="hud-kpi-lbl">RATIO</span>
+                    </div>
+                    <div style="text-align:right;">
+                      <svg width="44" height="22" viewBox="0 0 44 22"><path d="M 0,20 Q 16,20 26,10 T 44,2" fill="none" stroke="var(--color-accent)" stroke-width="2"/></svg>
+                      <span style="font-family:var(--font-mono); font-size:7.5px; color:var(--status-success);">+5%</span>
+                    </div>
+                  </div>
+                  <div class="hud-kpi-chip">
+                    <div>
+                      <span class="hud-kpi-val">+9.7</span>
+                      <span class="hud-kpi-lbl">DELTA</span>
+                    </div>
+                    <div style="text-align:right;">
+                      <svg width="44" height="22" viewBox="0 0 44 22"><path d="M 0,16 Q 12,5 28,16 T 44,2" fill="none" stroke="var(--color-secondary)" stroke-width="2"/></svg>
+                      <span style="font-family:var(--font-mono); font-size:7.5px; color:var(--status-success);">+1.2</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Bottom Ribbon Waves SVG with time labels -->
+                <div style="flex:1; position:relative;">
+                  <div style="height:62px; width:100%;">
+                    <svg viewBox="0 0 400 60" preserveAspectRatio="none" style="width:100%; height:100%;">
+                      <!-- y grid -->
+                      <line x1="0" y1="10" x2="400" y2="10" stroke="var(--border-subtle)" stroke-dasharray="2"/>
+                      <line x1="0" y1="30" x2="400" y2="30" stroke="var(--border-subtle)" stroke-dasharray="2"/>
+                      <line x1="0" y1="50" x2="400" y2="50" stroke="var(--border-subtle)"/>
+                      <path d="M 0,40 C 50,18 100,50 150,26 C 200,8 250,45 300,22 C 350,8 380,30 400,16" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round"/>
+                      <path d="M 0,50 C 50,30 100,55 150,35 C 200,20 250,55 300,30 C 350,16 380,40 400,25" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-opacity="0.85"/>
+                      <path d="M 0,55 C 60,40 110,58 160,45 C 210,30 260,58 310,40 C 360,25 385,50 400,35" fill="none" stroke="var(--color-secondary)" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.6"/>
+                    </svg>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:7.5px; color:var(--text-tertiary); padding-top:2px;">
+                    <span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>23:59</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </section>
 
@@ -902,7 +1278,7 @@
         <!-- ==================================================================
              VIEW: NETWORK (Topology & Mạng)
              ================================================================== -->
-        <section id="view-network" class="screen-view">
+        <section id="view-network" class="screen-view" style="display:none;">
           <div class="page-head">
             <div class="page-title-wrap">
               <h1>Topology & Đường truyền Mạng</h1>
@@ -1125,7 +1501,7 @@
                 <!-- Pulse Core -->
                 <circle cx="0" cy="0" r="4" fill="var(--color-primary)" opacity="0.9"/>
                 <!-- Label -->
-                <text y="54" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-display)" font-size="14" font-weight="700">Internet</text>
+                <text y="54" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-mono)" font-size="14" font-weight="700">Internet</text>
               </g>
 
               <!-- ======================================================== -->
@@ -1149,7 +1525,7 @@
                   <animate attributeName="opacity" values="1;0.4;1" dur="1.2s" repeatCount="indefinite"/>
                 </circle>
                 <!-- Label -->
-                <text y="44" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-display)" font-size="13.5" font-weight="700">Firewall</text>
+                <text y="44" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-mono)" font-size="13.5" font-weight="700">Firewall</text>
                 <text y="58" text-anchor="middle" fill="var(--text-secondary)" font-family="var(--font-mono)" font-size="11" font-weight="500">Fortinet</text>
               </g>
 
@@ -1174,7 +1550,7 @@
                 <circle cx="15" cy="9" r="1.2" fill="var(--color-primary)"/>
                 <circle cx="20" cy="6.5" r="1.2" fill="var(--color-primary)"/>
                 <!-- Label -->
-                <text y="42" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-display)" font-size="13.5" font-weight="700">Core Switch</text>
+                <text y="42" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-mono)" font-size="13.5" font-weight="700">Core Switch</text>
                 <text y="56" text-anchor="middle" fill="var(--text-secondary)" font-family="var(--font-mono)" font-size="11" font-weight="500">Cisco</text>
               </g>
 
@@ -1197,7 +1573,7 @@
                 <circle cx="-6" cy="6" r="1.5" fill="var(--status-success)"/>
                 <circle cx="-6" cy="14" r="1.5" fill="var(--status-success)"/>
                 <!-- Label -->
-                <text y="50" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-display)" font-size="13.5" font-weight="700">Servers</text>
+                <text y="50" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-mono)" font-size="13.5" font-weight="700">Servers</text>
                 <text y="64" text-anchor="middle" fill="var(--text-secondary)" font-family="var(--font-mono)" font-size="11" font-weight="500">Proxmox</text>
               </g>
 
@@ -1223,7 +1599,7 @@
                 <circle cx="0" cy="-26" r="3.5" fill="var(--color-primary)" filter="url(#nodeGlow)"/>
 
                 <!-- Label -->
-                <text y="42" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-display)" font-size="13.5" font-weight="700">Virtualization</text>
+                <text y="42" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-mono)" font-size="13.5" font-weight="700">Virtualization</text>
                 <text y="56" text-anchor="middle" fill="var(--text-secondary)" font-family="var(--font-mono)" font-size="11" font-weight="500">Proxmox</text>
               </g>
 
@@ -1242,7 +1618,7 @@
                 <circle cx="8" cy="4" r="1.5" fill="var(--status-success)"/>
                 <circle cx="8" cy="12" r="1.5" fill="var(--color-primary)"/>
                 <!-- Label -->
-                <text y="46" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-display)" font-size="13.5" font-weight="700">Backup</text>
+                <text y="46" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-mono)" font-size="13.5" font-weight="700">Backup</text>
                 <text y="60" text-anchor="middle" fill="var(--text-secondary)" font-family="var(--font-mono)" font-size="11" font-weight="500">Veeam / PBS</text>
               </g>
 
@@ -1272,7 +1648,7 @@
                 <ellipse cx="0" cy="-6" rx="14" ry="5.5" fill="none" stroke="var(--color-primary)" stroke-width="1.2" opacity="0.85"/>
 
                 <!-- Label -->
-                <text y="46" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-display)" font-size="13.5" font-weight="700">Storage</text>
+                <text y="46" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-mono)" font-size="13.5" font-weight="700">Storage</text>
                 <text y="60" text-anchor="middle" fill="var(--text-secondary)" font-family="var(--font-mono)" font-size="11" font-weight="500">NAS / SAN</text>
               </g>
 
@@ -1291,7 +1667,7 @@
                 <rect x="-14" y="2" width="8" height="2" fill="var(--status-success)" rx="1"/>
                 <rect x="6" y="2" width="8" height="2" fill="var(--color-primary)" rx="1"/>
                 <!-- Label -->
-                <text y="38" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-display)" font-size="13.5" font-weight="700">Network</text>
+                <text y="38" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-mono)" font-size="13.5" font-weight="700">Network</text>
                 <text y="52" text-anchor="middle" fill="var(--text-secondary)" font-family="var(--font-mono)" font-size="11" font-weight="500">UniFi</text>
               </g>
 
@@ -1313,7 +1689,7 @@
                 <polygon points="0,2 20,2 24,8 -4,8" fill="#334155" stroke="#475569" stroke-width="0.8"/>
 
                 <!-- Label -->
-                <text y="38" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-display)" font-size="13.5" font-weight="700">Clients</text>
+                <text y="38" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-mono)" font-size="13.5" font-weight="700">Clients</text>
               </g>
 
               <!-- ======================================================== -->
@@ -1328,7 +1704,7 @@
                   <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/>
                 </circle>
                 <!-- Label -->
-                <text y="42" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-display)" font-size="13.5" font-weight="700">Remote Access</text>
+                <text y="42" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-mono)" font-size="13.5" font-weight="700">Remote Access</text>
                 <text y="56" text-anchor="middle" fill="var(--text-secondary)" font-family="var(--font-mono)" font-size="11" font-weight="500">RustDesk</text>
               </g>
             </svg>
@@ -2376,8 +2752,10 @@
 
     const primaryColorDots = {
       blue: { 1: '#0284C7', 2: '#38BDF8', 3: '#3B82F6', 4: '#2563EB', 5: '#38BDF8', 6: '#0284C7' },
-      green: { 1: '#22C55E', 2: '#22C55E', 3: '#4CAF50', 4: '#16A34A', 5: '#22C55E', 6: '#059669' },
-      grafana: { 1: '#EA580C', 2: '#FF9830', 3: '#F59E0B', 4: '#D97706', 5: '#FF9830', 6: '#EA580C' }
+      green: { 1: '#12A97E', 2: '#12A97E', 3: '#12A97E', 4: '#0E8A66', 5: '#1ED29E', 6: '#12A97E' },
+      grafana: { 1: '#FF5B38', 2: '#FF5B38', 3: '#FF5B38', 4: '#F04F2B', 5: '#FF6B4E', 6: '#FF5B38' },
+      web3: { 1: '#7C3AED', 2: '#8B5CF6', 3: '#7C3AED', 4: '#6D28D9', 5: '#A78BFA', 6: '#7C3AED' },
+      volt: { 1: '#65A30D', 2: '#D4FE00', 3: '#65A30D', 4: '#4D7C0F', 5: '#D4FE00', 6: '#65A30D' }
     };
 
     function setPrimaryColor(colorFamily) {
@@ -2410,6 +2788,8 @@
         if (dotEl) dotEl.style.background = dots[i];
         const dotTop = document.getElementById('dot-top-' + i);
         if (dotTop) dotTop.style.background = dots[i];
+        const dotMenu = document.getElementById('dot-menu-' + i);
+        if (dotMenu) dotMenu.style.background = dots[i];
       }
 
       // Also sync iframe if All Tones is open
@@ -2425,13 +2805,19 @@
       localStorage.setItem('elite_tone', currentTone);
 
       // Update active tone button
-      document.querySelectorAll('.tone-btn').forEach(btn => {
+      document.querySelectorAll('.tone-btn[data-t]').forEach(btn => {
         if (parseInt(btn.getAttribute('data-t'), 10) === currentTone) {
           btn.classList.add('active');
         } else {
           btn.classList.remove('active');
         }
       });
+
+      // Update tone badge labels
+      const toneBadge = document.getElementById('currentToneLabelBadge');
+      if (toneBadge) toneBadge.textContent = `Tone 0${currentTone}`;
+      const dropdownToneStatus = document.getElementById('dropdownToneStatus');
+      if (dropdownToneStatus) dropdownToneStatus.textContent = `Tone 0${currentTone}`;
 
       // Special notification for tone 7 & 8
       if (showToastNotice) {
@@ -2445,7 +2831,68 @@
       }
     }
 
-    document.querySelectorAll('.tone-btn').forEach(btn => {
+    /* --------------------------------------------------------------------------
+       2.1 SIDEBAR TONE SYSTEM (Store & State Management)
+       - none: Trắng / Mặc định theo Tone
+       - 1: Midnight Navy (#1E293B) - Admindek & AdminLTE 3
+       - 2: Charcoal Obsidian (#18181B) - High-tech Gunmetal
+       - 3: Deep Spruce (#2A3F54) - Gentelella Petrol Teal
+       -------------------------------------------------------------------------- */
+    let currentSidebarTone = 'none';
+
+    const SIDEBAR_TONE_CONFIG = {
+      none: { label: 'SB: Trắng', fullName: '⚪ Trắng / Mặc định (None)', dot: '#FFFFFF', border: '#CBD5E1' },
+      '1': { label: 'SB 1: Midnight Navy', fullName: '🔷 Tone Sidebar 1: Midnight Navy', dot: '#1E293B', border: '#334155' },
+      '2': { label: 'SB 2: Charcoal', fullName: '⬛ Tone Sidebar 2: Charcoal Obsidian', dot: '#18181B', border: '#27272A' },
+      '3': { label: 'SB 3: Deep Spruce', fullName: '🌲 Tone Sidebar 3: Deep Spruce', dot: '#2A3F54', border: '#374E64' }
+    };
+
+    function setSidebarTone(toneKey, showToastNotice = true) {
+      if (!['none', '1', '2', '3'].includes(String(toneKey))) toneKey = 'none';
+      currentSidebarTone = String(toneKey);
+
+      if (currentSidebarTone === 'none') {
+        document.documentElement.removeAttribute('data-sidebar-tone');
+      } else {
+        document.documentElement.setAttribute('data-sidebar-tone', currentSidebarTone);
+      }
+      localStorage.setItem('elite_sidebar_tone', currentSidebarTone);
+
+      updateSidebarToneUI(currentSidebarTone);
+
+      if (showToastNotice) {
+        const info = SIDEBAR_TONE_CONFIG[currentSidebarTone] || SIDEBAR_TONE_CONFIG.none;
+        showToast(`Đã áp dụng ${info.fullName}`);
+      }
+    }
+
+    function selectSidebarTone(toneKey) {
+      setSidebarTone(toneKey, true);
+      closeAllDropdowns();
+    }
+
+    function selectToneFromMenu(toneNumber) {
+      setTone(toneNumber, true);
+      closeAllDropdowns();
+    }
+
+    function updateSidebarToneUI(toneKey) {
+      const info = SIDEBAR_TONE_CONFIG[toneKey] || SIDEBAR_TONE_CONFIG.none;
+      const badge = document.getElementById('currentSidebarToneLabelBadge');
+      if (badge) badge.textContent = info.label;
+
+      // Update dropdown item states
+      document.querySelectorAll('#toneMatrixDropdownMenu .dropdown-item').forEach(item => {
+        item.classList.toggle('is-selected', item.getAttribute('data-sbtone') === toneKey);
+      });
+
+      // Update floating buttons
+      document.querySelectorAll('[data-sbt]').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-sbt') === toneKey);
+      });
+    }
+
+    document.querySelectorAll('.tone-btn[data-t]').forEach(btn => {
       btn.addEventListener('click', () => {
         setTone(btn.getAttribute('data-t'));
       });
@@ -2454,8 +2901,11 @@
     window.addEventListener('DOMContentLoaded', () => {
       const savedPrimary = localStorage.getItem('elite_primary') || 'blue';
       const savedTone = localStorage.getItem('elite_tone') || 3;
+      const savedSidebarTone = localStorage.getItem('elite_sidebar_tone') || 'none';
       setPrimaryColor(savedPrimary);
       setTone(savedTone, false);
+      setSidebarTone(savedSidebarTone, false);
+      switchScreen('overview');
       renderDevicesTable(devicesData);
       renderVocabGrid();
     });
@@ -2487,14 +2937,14 @@
         roboto: 'Roboto (Google Enterprise Tool & High-Density Tables)',
         manrope: 'Manrope (Modern SaaS, AI Analytics & Clean UI)',
         portfolio: 'IBM Plex Mono (Technical CAD Blueprint & Terminal)',
-        noto: 'Noto Sans SC (East Asian Modern / Hanzi CJK)'
+        noto: 'Noto Sans (Clean Multilingual / Noto Sans)'
       };
       const fontStacks = {
-        inter: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-        roboto: "'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-        manrope: "'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-        portfolio: "'IBM Plex Mono', Consolas, 'Courier New', monospace",
-        noto: "'Noto Sans SC', 'Inter', -apple-system, sans-serif"
+        inter: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+        roboto: "'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif",
+        manrope: "'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif",
+        portfolio: "'Roboto Mono', 'IBM Plex Mono', 'JetBrains Mono', Consolas, monospace",
+        noto: "'Noto Sans', 'Noto Sans SC', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
       };
       const activeFontName = fontLabels[activeFontKey] || activeFontKey;
       const activeFontStack = fontStacks[activeFontKey] || fontStacks.inter;
@@ -2529,20 +2979,20 @@
       const error = rootStyle.getPropertyValue('--status-error').trim() || '#EF4444';
       const errorBg = rootStyle.getPropertyValue('--status-error-bg').trim() || 'rgba(239, 68, 68, 0.12)';
 
-      const radiusXs = isBlueprint ? '2px' : '4px';
-      const radiusSm = isBlueprint ? '4px' : '8px';
-      const radiusMd = isBlueprint ? '4px' : '12px';
-      const radiusLg = isBlueprint ? '6px' : '16px';
-      const radiusXl = isBlueprint ? '6px' : '22px';
-      const radiusFull = '9999px';
+      const radiusXs = rootStyle.getPropertyValue('--radius-xs').trim() || (isBlueprint ? '2px' : '2px');
+      const radiusSm = rootStyle.getPropertyValue('--radius-sm').trim() || (isBlueprint ? '2px' : '4px');
+      const radiusMd = rootStyle.getPropertyValue('--radius-md').trim() || (isBlueprint ? '4px' : '6px');
+      const radiusLg = rootStyle.getPropertyValue('--radius-lg').trim() || (isBlueprint ? '4px' : '8px');
+      const radiusXl = rootStyle.getPropertyValue('--radius-xl').trim() || (isBlueprint ? '6px' : '10px');
+      const radiusFull = rootStyle.getPropertyValue('--radius-full').trim() || '9999px';
 
       const toneDescriptions = {
-        1: 'Tone 01: Soft Enterprise Light — Nền sáng thanh lịch, độ tương phản dịu mắt, tối ưu cho ứng dụng ERP, CRM và cổng thông tin nội bộ doanh nghiệp.',
-        2: 'Tone 02: Deep Midnight Dark — Nền tối sâu thẳm giảm phát xạ ánh sáng xanh, bảo vệ thị giác cho kỹ sư trực ca đêm Network Operations Center (NOC).',
-        3: 'Tone 03: Corporate Azure Light — Phối màu công nghệ Enterprise chuẩn mực, đường nét sắc sảo, tối ưu cho giám sát hạ tầng mạng và Cloud Fleet Management.',
-        4: 'Tone 04: Obsidian Operations Dark — Tương phản công nghệ đen huyền bí, hiển thị biểu đồ lưu lượng mạng thời gian thực với độ chính xác cao.',
-        5: 'Tone 05: Modern Indigo Slate Dark — Phong cách SaaS hiện đại, phối màu chàm sang trọng cho báo cáo phân tích số liệu thông minh AI & SLA Analytics.',
-        6: 'Tone 06: Warm Sandpaper Light — Tone giấy thủ công / kem ấm cổ điển, tạo cảm giác thư giãn cho tác vụ đọc tài liệu kỹ thuật dài hạn.',
+        1: 'Tone 01: Clean Studio White — Nền xám bạc thanh lịch, thẻ card trắng tinh khiết nổi bật với bóng đổ mềm dịu, chuẩn mực cho Dashboard ERP & CRM.',
+        2: 'Tone 02: Deep Midnight Dark — Chế độ tối sâu thẳm bảo vệ thị giác, giảm ánh sáng xanh cho kỹ sư trực ca đêm Network Operations Center (NOC).',
+        3: 'Tone 03: Pastel Canvas Light — Nền trang trắng tinh khôi kết hợp thẻ card phủ màu Pastel thương hiệu dịu mát, tạo cảm giác thoáng đãng và sang trọng.',
+        4: 'Tone 04: Industrial High-Contrast — Nền xám công nghiệp tương phản cao, thẻ card viền đậm sắc nét, nút CTA đậm chất kỹ thuật vận hành.',
+        5: 'Tone 05: Modern Cyber Dark — Chế độ tối phong cách SaaS hiện đại, phối màu chàm ánh kim sang trọng và viền phát quang Cyberpunk sống động.',
+        6: 'Tone 06: Warm Sandpaper Light — Nền giấy thủ công kem be ấm áp cổ điển, triệt tiêu mỏi mắt cho tác vụ phân tích số liệu và đọc báo cáo dài hạn.',
         7: 'Tone 07: Technical CAD Blueprint Light — Bản vẽ kỹ thuật CAD tối giản trên nền giấy #ECECEC, khung viền đen #111111 tuyệt đối (2px) và điểm nhấn neon xanh lá #7ED957.',
         8: 'Tone 08: Technical CAD Blueprint Dark — Chế độ kỹ thuật CAD màn đêm #050505, viền kỹ thuật #262626 và điểm nhấn neon xanh lá #7ED957 sắc nét.'
       };
@@ -2551,22 +3001,26 @@
       const q = String.fromCharCode(96);
       const q3 = q + q + q;
 
+      const standaloneCss = isBlueprint
+        ? ('blueprint.' + currentSidebarTone + '.0' + currentTone + '.' + (activeFontKey === 'portfolio' ? 'mono' : 'inter') + '.css')
+        : (currentPrimary + '.' + currentSidebarTone + '.0' + currentTone + '.' + (activeFontKey === 'portfolio' ? 'mono' : 'inter') + '.css');
+
       let md = '';
       md += '# Elite Design System — Tone 0' + currentTone + ' (' + primaryName + ')\n\n';
       md += '> **Chế độ hiển thị:** ' + modeName + '  \n';
       md += '> **Bộ Palette màu:** ' + primaryName + ' (' + primary + ')  \n';
+      md += '> **File CSS độc lập tương ứng:** `src/storage/design_system/css/tones/' + standaloneCss + '`  \n';
       md += '> **Font chữ đang chọn:** ' + activeFontName + '  \n';
       md += '> **Font-family Stack:** ' + q + activeFontStack + q + '  \n';
       md += '> **Bộ mã Tone:** ' + (currentTone <= 6 ? ('Tone 0' + currentTone + ' (Biến thể 18 màu)') : ('Tone 0' + currentTone + ' (Cố định Blueprint CAD)')) + '  \n';
       md += '> **Hệ thống:** Elite Unified Design System v4.5 (Storage Master)  \n';
-      md += '> **Kiến trúc CSS:** ' + q + 'storage/design_system/css/tokens.css' + q + ' & ' + q + 'css/design-system.css' + q + '  \n';
       md += '> **Ngày xuất bản:** ' + now + '\n\n';
       md += '---\n\n';
 
       md += '## 1. Triết lý Thiết kế & Định hình Phong cách\n';
       md += currentDesc + '\n\n';
       md += '* **Chuẩn Accessibility:** Đạt độ tương phản WCAG 2.1 AA / AAA, đảm bảo hiển thị sắc nét trên màn hình IPS, OLED và máy chiếu phòng điều hành.\n';
-      md += '* **Hình học:** ' + (isBlueprint ? 'Góc nhọn kỹ thuật CAD 4px - 6px, viền đậm 1.5px - 2px, khung nét vi tính chính xác.' : 'Bo góc hiện đại mềm mại 8px - 22px, viền mảnh 1px dịu mắt, card nổi phân lớp tinh tế.') + '\n';
+      md += '* **Hình học:** ' + (isBlueprint ? 'Góc nhọn kỹ thuật CAD 2px - 6px, viền đậm 1.5px - 2px, khung nét vi tính chính xác.' : 'Bo góc Enterprise tinh gọn chuẩn Dashboard 4px - 8px, viền mảnh 1px thanh lịch, card nổi phân lớp tinh tế (tuyệt đối không bo tròn quá đà).') + '\n';
       md += '* **Font chữ hoạt động:** ' + activeFontName + '.\n\n';
       md += '---\n\n';
 
@@ -2603,13 +3057,13 @@
       md += '---\n\n';
 
       md += '## 4. Hệ Thống Hình Học (Border Radius) & Đổ Bóng (Shadows)\n\n';
-      md += '### 4.1. Quy chuẩn Bo góc (Border Radius)\n';
-      md += '* ' + q + '--radius-xs: ' + radiusXs + q + ': Áp dụng cho checkbox, mini badge, tags nhỏ.\n';
-      md += '* ' + q + '--radius-sm: ' + radiusSm + q + ': Áp dụng cho nút bấm nhỏ, ô input, dropdown menu items.\n';
-      md += '* ' + q + '--radius-md: ' + radiusMd + q + ': Áp dụng cho nút bấm CTA, thẻ card nhỏ, toast thông báo.\n';
-      md += '* ' + q + '--radius-lg: ' + radiusLg + q + ': Áp dụng cho thẻ card dashboard, panel nội dung chính.\n';
-      md += '* ' + q + '--radius-xl: ' + radiusXl + q + ': Áp dụng cho khung modal lớn, container chia màn hình split view.\n';
-      md += '* ' + q + '--radius-full: ' + radiusFull + q + ': Áp dụng cho avatar tròn, pill status badge, chấm indicator.\n\n';
+      md += '### 4.1. Quy chuẩn Bo góc (Border Radius — Chuẩn Enterprise Dashboard Tinh Gọn)\n';
+      md += '* ' + q + '--radius-xs: ' + radiusXs + q + ' (' + radiusXs + '): Áp dụng cho checkbox, mini badge, tags nhỏ.\n';
+      md += '* ' + q + '--radius-sm: ' + radiusSm + q + ' (' + radiusSm + '): Áp dụng cho nút bấm nhỏ, ô input, dropdown menu items.\n';
+      md += '* ' + q + '--radius-md: ' + radiusMd + q + ' (' + radiusMd + '): Áp dụng cho nút bấm CTA, thẻ card nhỏ, toast thông báo.\n';
+      md += '* ' + q + '--radius-lg: ' + radiusLg + q + ' (' + radiusLg + '): Áp dụng cho thẻ card dashboard, panel nội dung chính.\n';
+      md += '* ' + q + '--radius-xl: ' + radiusXl + q + ' (' + radiusXl + '): Áp dụng cho khung modal lớn, container chia màn hình split view.\n';
+      md += '* ' + q + '--radius-full: ' + radiusFull + q + ' (' + radiusFull + '): Áp dụng cho avatar tròn, pill status badge, chấm indicator.\n\n';
 
       md += '### 4.2. Quy chuẩn Đổ bóng (Elevation Shadows)\n';
       md += '* ' + q + '--shadow-sm' + q + ': ' + q + '0 1px 3px rgba(15, 23, 42, 0.05)' + q + ' (Thẻ phẳng, phân tách nhẹ nhàng).\n';
@@ -2744,16 +3198,19 @@
       md += '  * Dùng cặp màu semantic: Thành công (nền ' + q + '--status-success-bg' + q + ', chữ ' + q + '--status-success' + q + '), Cảnh báo (nền ' + q + '--status-warning-bg' + q + ', chữ ' + q + '--status-warning' + q + '), Lỗi (nền ' + q + '--status-error-bg' + q + ', chữ ' + q + '--status-error' + q + ').\n\n';
       md += '---\n\n';
 
-      md += '## 8. Đồng Bộ Kiến Trúc Dự Án Storage\n';
-      md += '* Tất cả CSS của dự án được tách riêng tại thư mục:\n';
-      md += '  * ' + q + 'src/storage/design_system/css/tokens.css' + q + '\n';
-      md += '  * ' + q + 'src/storage/design_system/css/design-system.css' + q + '\n';
-      md += '* Mọi file HTML trong hệ thống chỉ gọi lại thông qua:\n';
+      md += '## 8. Đồng Bộ Kiến Trúc & File CSS Độc Lập\n';
+      md += '* **File CSS độc lập riêng biệt cho Tone này:**\n';
+      md += '  * `src/storage/design_system/css/tones/' + standaloneCss + '`\n';
+      md += '* **Cách 1: Nhúng trực tiếp file CSS độc lập (Khuyên dùng khi tích hợp nhanh):**\n';
+      md += '  ' + q3 + 'html\n';
+      md += '  <link rel="stylesheet" href="css/tones/' + standaloneCss + '">\n';
+      md += '  ' + q3 + '\n';
+      md += '* **Cách 2: Nhúng hệ thống tokens tổng thể:**\n';
       md += '  ' + q3 + 'html\n';
       md += '  <link rel="stylesheet" href="css/tokens.css">\n';
       md += '  <link rel="stylesheet" href="css/design-system.css">\n';
       md += '  ' + q3 + '\n';
-      md += '* Tuyệt đối tránh hardcode CSS inline trong file HTML để đảm bảo tính nhất quán và khả năng đồng bộ cao nhất khi sao chép giữa các ứng dụng!\n';
+      md += '* **Quy tắc:** Tuyệt đối tránh hardcode CSS inline trong file HTML để đảm bảo tính nhất quán và khả năng đồng bộ cao nhất khi sao chép giữa các ứng dụng!\n';
 
       return md;
     }
@@ -2823,6 +3280,7 @@
           document.body.classList.add('is-logged-in');
           const loginSw = document.getElementById('loginToneSwitcher');
           if (loginSw) loginSw.style.display = 'none';
+          switchScreen('overview');
           showToast('Xin chào test01! Đăng nhập thành công.');
         } else {
           btn.innerHTML = 'Truy cập bảng điều khiển';
@@ -2841,6 +3299,7 @@
       document.body.classList.add('is-logged-in');
       const loginSw = document.getElementById('loginToneSwitcher');
       if (loginSw) loginSw.style.display = 'none';
+      switchScreen('overview');
       showToast('Đăng nhập 1-chạm thành công với test01');
     }
 
@@ -2889,9 +3348,11 @@
     });
 
     const COLOR_THEME_LABELS = {
-      green: { label: '🌿 Green', color: '#22C55E' },
+      green: { label: '🌿 Green (Jade Emerald)', color: '#12A97E' },
       blue: { label: '🔷 Blue', color: '#0284C7' },
-      grafana: { label: '📊 Grafana', color: '#F97316' }
+      grafana: { label: '📊 Grafana (Sunset Orange)', color: '#FF5B38' },
+      web3: { label: '🔮 Web3 / FinTech (Tím)', color: '#8B5CF6' },
+      volt: { label: '⚡ Binance Volt (Xanh)', color: '#D4FE00' }
     };
 
     function selectColorTheme(colorKey) {
@@ -2917,7 +3378,7 @@
       roboto: 'Roboto',
       manrope: 'Manrope',
       portfolio: 'Plex Mono',
-      noto: 'Noto Sans SC'
+      noto: 'Noto Sans'
     };
 
     function selectFontFamily(fontKey) {
