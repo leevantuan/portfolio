@@ -1,0 +1,116 @@
+/* ==========================================================================
+   Elite Unified Design System — Standalone Tone Theme
+   --------------------------------------------------------------------------
+   File:             blueprint.spruce.08.inter.css
+   Color Family:     Technical CAD Blueprint
+   Sidebar Tone:     Tone Sidebar 3: Deep Spruce Gentelella (#2A3F54)
+   Tone Index:       Tone 08 — Technical CAD Blueprint Dark
+   Typography:       INTER
+   Architecture:     Self-contained drop-in CSS (tokens applied directly to :root)
+   ========================================================================== */
+
+:root,
+[data-theme-tone="8"],
+[data-tone="8"] {
+  /* --- Typography: Inter Standard --- */
+  --font-system: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: var(--font-system);
+  --font-body: var(--font-system);
+  --font-mono: 'IBM Plex Mono', Consolas, monospace;
+
+  /* --- Shared Geometry & Spacing (Blueprint CAD Sharp Technical Scale) --- */
+  --radius-xs: 2px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px -2px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 12px 32px -4px rgba(0, 0, 0, 0.18);
+  --shadow-pop: 0 20px 48px -8px rgba(0, 0, 0, 0.25);
+
+  --transition-fast: 160ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 240ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 320ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* --- Semantic Color & Surface Tokens --- */
+  --is-dark: 1;
+  --page-bg: #050505;
+  --surface-card: #0B0B0B;
+  --surface-sidebar: #080808;
+  --surface-header: rgba(11, 11, 11, 0.95);
+  --surface-subtle: #121212;
+  --surface-hover: rgba(126, 217, 87, 0.08);
+  --surface-elevated: #161616;
+  --border-color: #262626;
+  --border-subtle: #1C1C1C;
+  --border-focus: #7ED957;
+  --text-primary: #F5F5F5;
+  --text-secondary: #9B9B9B;
+  --text-tertiary: #666666;
+  --text-on-accent: #050505;
+  --color-primary: #7ED957;
+  --color-primary-hover: #96E872;
+  --color-primary-subtle: rgba(126, 217, 87, 0.16);
+  --color-accent: #7ED957;
+  --color-secondary: #7ED957;
+  --status-success: #7ED957;
+  --status-success-bg: rgba(126, 217, 87, 0.12);
+  --status-warning: #F59E0B;
+  --status-warning-bg: rgba(245, 158, 11, 0.12);
+  --status-error: #EF4444;
+  --status-error-bg: rgba(239, 68, 68, 0.12);
+  --badge-bg: #152210;
+  --badge-color: #7ED957;
+  --badge-border: #2A4020;
+  --chart-fill: rgba(126, 217, 87, 0.14);
+  --chart-stroke: #7ED957;
+  --chart-accent: #7ED957;
+}
+
+/* --------------------------------------------------------------------------
+   Tone Sidebar 3: Deep Spruce Override
+   -------------------------------------------------------------------------- */
+.app-sidebar {
+  background: #2A3F54 !important;
+  border-right: 1px solid #374E64 !important;
+}
+.app-sidebar .sidebar-header {
+  border-bottom: 1px solid #374E64 !important;
+}
+.app-sidebar .sidebar-footer {
+  border-top: 1px solid #374E64 !important;
+}
+.app-sidebar .sidebar-brand-text h2 {
+  color: #FFFFFF !important;
+}
+.app-sidebar .sidebar-brand-text span {
+  color: #A3B5C7 !important;
+}
+.app-sidebar .nav-group-title {
+  color: #7B8F9F !important;
+}
+.app-sidebar .nav-item {
+  color: #A3B5C7 !important;
+}
+.app-sidebar .nav-item:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #FFFFFF !important;
+}
+.app-sidebar .nav-item.active {
+  background: rgba(16, 185, 129, 0.18) !important;
+  color: var(--color-primary) !important;
+  border-left: 3px solid var(--color-primary) !important;
+  border-color: rgba(16, 185, 129, 0.3) !important;
+  font-weight: 600 !important;
+}
+.app-sidebar .sidebar-live-toggle {
+  color: #A3B5C7 !important;
+}
+
+/* Tone 08 Blueprint CAD Dark Extra Component Rules */
+.login-container, .dashboard-panel-card, .stat-card, .table-container-card, .status-card-inner, .metric-box-card {
+  border-color: #333333 !important;
+}
